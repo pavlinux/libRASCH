@@ -19,7 +19,8 @@
 #include <stdlib.h>
 
 
-unsigned char base64_alph[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+unsigned char base64_alph[] =
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 
 
 /* to be sure of hex-values
@@ -39,64 +40,65 @@ unsigned char base64_alph[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvw
  * The function encodes the input stream 'in' using MIME-base64.
  */
 int
-encode_base64(unsigned char *in, size_t isize, unsigned char **out, size_t *osize)
+encode_base64 (unsigned char *in, size_t isize, unsigned char **out,
+	       size_t * osize)
 {
-	size_t l, o_pos = 0, len;
-	unsigned char t;
-	size_t line_size = 0;
+  size_t l, o_pos = 0, len;
+  unsigned char t;
+  size_t line_size = 0;
 
-	len = (size_t) ((double) isize * 1.33) + 4;
-	len += ((len / 76) * 2) + 2;
-	*out = malloc(len);
-	if (*out == NULL)
-		return -1;
+  len = (size_t) ((double) isize * 1.33) + 4;
+  len += ((len / 76) * 2) + 2;
+  *out = malloc (len);
+  if (*out == NULL)
+    return -1;
 
-	for (l = 0; l < isize; l += 3)
+  for (l = 0; l < isize; l += 3)
+    {
+      if (l < (isize - 2))
 	{
-		if (l < (isize - 2))
-		{
-			t = (in[l] & 0xfc) >> 2;
-			(*out)[o_pos++] = base64_alph[t];
-			t = ((in[l] & 0x03) << 4) | ((in[l + 1] & 0xf0) >> 4);
-			(*out)[o_pos++] = base64_alph[t];
-			t = ((in[l + 1] & 0x0f) << 2) | ((in[l + 2] & 0xc0) >> 6);
-			(*out)[o_pos++] = base64_alph[t];
-			t = in[l + 2] & 0x3f;
-			(*out)[o_pos++] = base64_alph[t];
-		}
-		else if (l < (isize - 1))
-		{
-			t = (in[l] & 0xfc) >> 2;
-			(*out)[o_pos++] = base64_alph[t];
-			t = ((in[l] & 0x03) << 4) | ((in[l + 1] & 0xf0) >> 4);
-			(*out)[o_pos++] = base64_alph[t];
-			t = (in[l + 1] & 0x0f) << 2;
-			(*out)[o_pos++] = base64_alph[t];
-			(*out)[o_pos++] = '=';
-		}
-		else
-		{
-			t = (in[l] & 0xfc) >> 2;
-			(*out)[o_pos++] = base64_alph[t];
-			t = (in[l] & 0x03) << 4;
-			(*out)[o_pos++] = base64_alph[t];
-			(*out)[o_pos++] = '=';
-			(*out)[o_pos++] = '=';
-		}
-		line_size += 4;
-
-		if (line_size >= 76)
-		{
-			(*out)[o_pos++] = '\n';	/* libxml2 has problems with CRLF */
-			line_size = 0;
-		}
+	  t = (in[l] & 0xfc) >> 2;
+	  (*out)[o_pos++] = base64_alph[t];
+	  t = ((in[l] & 0x03) << 4) | ((in[l + 1] & 0xf0) >> 4);
+	  (*out)[o_pos++] = base64_alph[t];
+	  t = ((in[l + 1] & 0x0f) << 2) | ((in[l + 2] & 0xc0) >> 6);
+	  (*out)[o_pos++] = base64_alph[t];
+	  t = in[l + 2] & 0x3f;
+	  (*out)[o_pos++] = base64_alph[t];
 	}
-	(*out)[o_pos] = '\0';	/* being save if osize will be ignored */
-	*osize = o_pos;
-	*out = realloc(*out, *osize + 1);
+      else if (l < (isize - 1))
+	{
+	  t = (in[l] & 0xfc) >> 2;
+	  (*out)[o_pos++] = base64_alph[t];
+	  t = ((in[l] & 0x03) << 4) | ((in[l + 1] & 0xf0) >> 4);
+	  (*out)[o_pos++] = base64_alph[t];
+	  t = (in[l + 1] & 0x0f) << 2;
+	  (*out)[o_pos++] = base64_alph[t];
+	  (*out)[o_pos++] = '=';
+	}
+      else
+	{
+	  t = (in[l] & 0xfc) >> 2;
+	  (*out)[o_pos++] = base64_alph[t];
+	  t = (in[l] & 0x03) << 4;
+	  (*out)[o_pos++] = base64_alph[t];
+	  (*out)[o_pos++] = '=';
+	  (*out)[o_pos++] = '=';
+	}
+      line_size += 4;
 
-	return 0;
-} /* encode_base64() */
+      if (line_size >= 76)
+	{
+	  (*out)[o_pos++] = '\n';	/* libxml2 has problems with CRLF */
+	  line_size = 0;
+	}
+    }
+  (*out)[o_pos] = '\0';		/* being save if osize will be ignored */
+  *osize = o_pos;
+  *out = realloc (*out, *osize + 1);
+
+  return 0;
+}				/* encode_base64() */
 
 
 /**
@@ -111,49 +113,50 @@ encode_base64(unsigned char *in, size_t isize, unsigned char **out, size_t *osiz
  * than this will be the maximal number of values decoded.
  */
 int
-decode_base64(unsigned char *in, size_t isize, unsigned char **out, size_t *osize, size_t max_size)
+decode_base64 (unsigned char *in, size_t isize, unsigned char **out,
+	       size_t * osize, size_t max_size)
 {
-	size_t l;
-	size_t o_pos = 0;
+  size_t l;
+  size_t o_pos = 0;
 
-	unsigned char decode_alph[255];
+  unsigned char decode_alph[255];
 
-	for (l = 0; l < 64; l++)
-		decode_alph[base64_alph[l]] = (unsigned char)l;
+  for (l = 0; l < 64; l++)
+    decode_alph[base64_alph[l]] = (unsigned char) l;
 
-	*out = malloc(isize);
+  *out = malloc (isize);
 
-	l = 0;
-	for (;;)
+  l = 0;
+  for (;;)
+    {
+      if ((max_size >= 0) && (o_pos >= max_size))
+	break;			/* we have all needed data */
+
+      if ((l + 3) >= isize)
+	break;
+
+      if ((in[l] == 0x0A) || (in[l] == 0x0D) || (in[l] == ' '))
 	{
-		if ((max_size >= 0) && (o_pos >= max_size))
-			break;  /* we have all needed data */
-
-		if ((l + 3) >= isize)
-			break;
-
-		if ((in[l] == 0x0A) || (in[l] == 0x0D) || (in[l] == ' '))
-		{
-			l++;
-			continue;
-		}
-
-		(*out)[o_pos++] =
-			(decode_alph[in[l]] << 2) | ((decode_alph[in[l + 1]] & 0xf0) >> 4);
-		if (in[l + 2] != '=')
-			(*out)[o_pos++] =
-				((decode_alph[in[l + 1]] & 0x0f) << 4) |
-				((decode_alph[in[l + 2]] & 0xfc) >> 2);
-
-		if (in[l + 3] != '=')
-			(*out)[o_pos++] =
-				((decode_alph[in[l + 2]] & 0x03) << 6) | decode_alph[in[l + 3]];
-
-		l += 4;
+	  l++;
+	  continue;
 	}
 
-	*osize = o_pos;
-	*out = realloc(*out, *osize);
+      (*out)[o_pos++] =
+	(decode_alph[in[l]] << 2) | ((decode_alph[in[l + 1]] & 0xf0) >> 4);
+      if (in[l + 2] != '=')
+	(*out)[o_pos++] =
+	  ((decode_alph[in[l + 1]] & 0x0f) << 4) |
+	  ((decode_alph[in[l + 2]] & 0xfc) >> 2);
 
-	return 0;
-} /* decode_base64() */
+      if (in[l + 3] != '=')
+	(*out)[o_pos++] =
+	  ((decode_alph[in[l + 2]] & 0x03) << 6) | decode_alph[in[l + 3]];
+
+      l += 4;
+    }
+
+  *osize = o_pos;
+  *out = realloc (*out, *osize);
+
+  return 0;
+}				/* decode_base64() */

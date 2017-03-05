@@ -40,97 +40,100 @@
  * 'handle_plugin_win32.c'.
  */
 int
-read_plugins(struct librasch *ra)
+read_plugins (struct librasch *ra)
 {
-	DIR *dir;
-	struct dirent *dir_info;
-	struct plugin_struct *phead = NULL;
-	struct plugin_struct *pcurr = phead;
-	char dir_locale[MAX_PATH_RA];
+  DIR *dir;
+  struct dirent *dir_info;
+  struct plugin_struct *phead = NULL;
+  struct plugin_struct *pcurr = phead;
+  char dir_locale[MAX_PATH_RA];
 
-	utf8_to_local(ra->config.plugin_dir, dir_locale, MAX_PATH_RA);
+  utf8_to_local (ra->config.plugin_dir, dir_locale, MAX_PATH_RA);
 
-	if ((dir = opendir(dir_locale)) == NULL)
-		return -1;
+  if ((dir = opendir (dir_locale)) == NULL)
+    return -1;
 
-	while ((dir_info = readdir(dir)) != NULL)
+  while ((dir_info = readdir (dir)) != NULL)
+    {
+      char path[MAX_PATH_RA];
+      struct stat s;
+      struct plugin_struct *pnew;
+
+      sprintf (path, "%s%c%s", dir_locale, SEPARATOR, dir_info->d_name);
+
+      if (stat (path, &s) == -1)
+	continue;		/* TODO: error handling */
+
+      /* check if d_name is not a dir */
+      if (S_ISDIR (s.st_mode))
+	continue;
+
+      /* no -> try to load the plugin */
+      pnew = dload_plugin (path);
+      if (!pnew)
 	{
-		char path[MAX_PATH_RA];
-		struct stat s;
-		struct plugin_struct *pnew;
-
-		sprintf(path, "%s%c%s", dir_locale, SEPARATOR, dir_info->d_name);
-
-		if (stat(path, &s) == -1)
-			continue;	/* TODO: error handling */
-
-		/* check if d_name is not a dir */
-		if (S_ISDIR(s.st_mode))
-			continue;
-
-		/* no -> try to load the plugin */
-		pnew = dload_plugin(path);
-		if (!pnew)
-		{
-			if (ra_print_debug_infos)
-				fprintf(stderr, gettext("can't load %s: %s\n"), path, dlerror());
-			continue;
-		}
-		pnew->ra = ra;
-
-		if (pcurr)
-		{
-			pcurr->next = pnew;
-			pnew->prev = pcurr;
-			pcurr = pcurr->next;
-		}
-		else
-			phead = pcurr = pnew;
+	  if (ra_print_debug_infos)
+	    fprintf (stderr, gettext ("can't load %s: %s\n"), path,
+		     dlerror ());
+	  continue;
 	}
-	closedir(dir);
-	ra->pl_head = phead;
+      pnew->ra = ra;
 
-	/* now run init-functions for every plugin */
-	pcurr = phead;
-	while (pcurr)
+      if (pcurr)
 	{
-		struct plugin_struct *p;
-		int (*init)(struct librasch *, struct plugin_struct *);
+	  pcurr->next = pnew;
+	  pnew->prev = pcurr;
+	  pcurr = pcurr->next;
+	}
+      else
+	phead = pcurr = pnew;
+    }
+  closedir (dir);
+  ra->pl_head = phead;
+
+  /* now run init-functions for every plugin */
+  pcurr = phead;
+  while (pcurr)
+    {
+      struct plugin_struct *p;
+      int (*init) (struct librasch *, struct plugin_struct *);
 
 /* 		*(void **) (&cosine)init = (int(*)(struct librasch *, struct plugin_struct *))dlsym(pcurr->dl, INIT_PLUGIN_FUNC); */
-		dlerror();
-		*(void **) (&init) = dlsym(pcurr->dl, INIT_PLUGIN_FUNC);
-		if (!init)
-		{
-			if (ra_print_debug_infos)
-				fprintf(stderr, gettext("error load plugin %s: %s\n"), pcurr->info.name, dlerror());
+      dlerror ();
+      *(void **) (&init) = dlsym (pcurr->dl, INIT_PLUGIN_FUNC);
+      if (!init)
+	{
+	  if (ra_print_debug_infos)
+	    fprintf (stderr, gettext ("error load plugin %s: %s\n"),
+		     pcurr->info.name, dlerror ());
 
-			dlclose(pcurr->dl);
-			if (pcurr->prev)
-				pcurr->prev->next = pcurr->next;
-			p = pcurr;
-			free(p);
-			pcurr = pcurr->next;
-			continue;
-		}
-		if ((*init)(ra, pcurr) != 0)
-		{
-			if (ra_print_debug_infos)
-				fprintf(stderr, gettext("error init plugin %s: %s\n"), pcurr->info.name, dlerror());
-
-			dlclose(pcurr->dl);
-			if (pcurr->prev)
-				pcurr->prev->next = pcurr->next;
-			p = pcurr;
-			free(p);
-			pcurr = pcurr->next;
-			continue;
-		}
-		pcurr = pcurr->next;
+	  dlclose (pcurr->dl);
+	  if (pcurr->prev)
+	    pcurr->prev->next = pcurr->next;
+	  p = pcurr;
+	  free (p);
+	  pcurr = pcurr->next;
+	  continue;
 	}
+      if ((*init) (ra, pcurr) != 0)
+	{
+	  if (ra_print_debug_infos)
+	    fprintf (stderr, gettext ("error init plugin %s: %s\n"),
+		     pcurr->info.name, dlerror ());
 
-	return 0;
-} /* read_plugins() */
+	  dlclose (pcurr->dl);
+	  if (pcurr->prev)
+	    pcurr->prev->next = pcurr->next;
+	  p = pcurr;
+	  free (p);
+	  pcurr = pcurr->next;
+	  continue;
+	}
+      pcurr = pcurr->next;
+    }
+
+  return 0;
+}				/* read_plugins() */
 
 
 
@@ -141,61 +144,61 @@ read_plugins(struct librasch *ra)
  * Load a plugin and call 'load_ra_plugin' function in the loaded plugin.
  */
 struct plugin_struct *
-dload_plugin(char *file)
+dload_plugin (char *file)
 {
-	int ret = 0;
-	struct plugin_struct *p;
-	int (*load) (struct plugin_struct *);
+  int ret = 0;
+  struct plugin_struct *p;
+  int (*load) (struct plugin_struct *);
 
-	p = malloc(sizeof(*p));
-	if (!p)
-		return NULL;
-	memset(p, 0, sizeof(*p));
-	p->handle_id = RA_HANDLE_PLUGIN;
+  p = malloc (sizeof (*p));
+  if (!p)
+    return NULL;
+  memset (p, 0, sizeof (*p));
+  p->handle_id = RA_HANDLE_PLUGIN;
 
-	p->dl = dlopen(file, RTLD_NOW);
-	if (!p->dl)
-	{
-		if (ra_print_debug_infos)
-			fprintf(stderr, gettext("dlopen() failed\n"));
+  p->dl = dlopen (file, RTLD_NOW);
+  if (!p->dl)
+    {
+      if (ra_print_debug_infos)
+	fprintf (stderr, gettext ("dlopen() failed\n"));
 
-		free(p);
-		return NULL;
-	}
+      free (p);
+      return NULL;
+    }
 
-	dlerror();
-	*(void **)(&load) = dlsym(p->dl, LOAD_PLUGIN_FUNC);
-	if (!load)
-	{
-		if (ra_print_debug_infos)
-			fprintf(stderr, gettext("dlsym() failed\n"));
+  dlerror ();
+  *(void **) (&load) = dlsym (p->dl, LOAD_PLUGIN_FUNC);
+  if (!load)
+    {
+      if (ra_print_debug_infos)
+	fprintf (stderr, gettext ("dlsym() failed\n"));
 
-		dlclose(p->dl);
-		free(p);
-		return NULL;
-	}
-	if ((ret = (*load) (p)) != 0)
-	{
-		dlclose(p->dl);
-		free(p);
-		return NULL;
-	}
+      dlclose (p->dl);
+      free (p);
+      return NULL;
+    }
+  if ((ret = (*load) (p)) != 0)
+    {
+      dlclose (p->dl);
+      free (p);
+      return NULL;
+    }
 
-	if (!is_plugin_ok(p))
-	{
-		dlclose(p->dl);
-		free(p);
-		return NULL;
-	}
+  if (!is_plugin_ok (p))
+    {
+      dlclose (p->dl);
+      free (p);
+      return NULL;
+    }
 
 
-	strncpy(p->info.file, file, MAX_PATH_RA);
-	local_to_utf8_inplace(p->info.file, MAX_PATH_RA);
+  strncpy (p->info.file, file, MAX_PATH_RA);
+  local_to_utf8_inplace (p->info.file, MAX_PATH_RA);
 
-	p->info.use_plugin = 1;
+  p->info.use_plugin = 1;
 
-	return p;
-} /* dload_plugin() */
+  return p;
+}				/* dload_plugin() */
 
 
 /**
@@ -205,11 +208,11 @@ dload_plugin(char *file)
  * The function checks if a plugin is ok. (Nothing special yet.)
  */
 int
-is_plugin_ok(struct plugin_struct *p)
+is_plugin_ok (struct plugin_struct *p)
 {
-	/* check if minimal settings are done */
-	return 1;
-} /* is_plugin_ok() */
+  /* check if minimal settings are done */
+  return 1;
+}				/* is_plugin_ok() */
 
 
 /**
@@ -220,30 +223,30 @@ is_plugin_ok(struct plugin_struct *p)
  * and unloads the plugin.
  */
 void
-close_plugins(struct plugin_struct *p)
+close_plugins (struct plugin_struct *p)
 {
-	struct plugin_struct *next;
-	void (*close_func) ();
+  struct plugin_struct *next;
+  void (*close_func) ();
 
-	while (p)
-	{
-		if (p->info.res)
-			ra_free_mem(p->info.res);
-		if (p->info.opt)
-			ra_free_mem(p->info.opt);
+  while (p)
+    {
+      if (p->info.res)
+	ra_free_mem (p->info.res);
+      if (p->info.opt)
+	ra_free_mem (p->info.opt);
 
-		ra_free_mem(p->info.create_class);
-		ra_free_mem(p->info.create_prop);
+      ra_free_mem (p->info.create_class);
+      ra_free_mem (p->info.create_prop);
 
 
 /* 		close_func = (void(*)())dlsym(p->dl, FINI_PLUGIN_FUNC); */
-		dlerror();
-		*(void **)(&close_func) = dlsym(p->dl, FINI_PLUGIN_FUNC);
-		if (close_func)
-			(*close_func) ();
-		dlclose(p->dl);
-		next = p->next;
-		free(p);
-		p = next;
-	}
-} /* close_plugins() */
+      dlerror ();
+      *(void **) (&close_func) = dlsym (p->dl, FINI_PLUGIN_FUNC);
+      if (close_func)
+	(*close_func) ();
+      dlclose (p->dl);
+      next = p->next;
+      free (p);
+      p = next;
+    }
+}				/* close_plugins() */

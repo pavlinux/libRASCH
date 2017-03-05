@@ -35,33 +35,33 @@
 
 
 LIBRAAPI int
-ra_eval_edit_start(any_handle h)
+ra_eval_edit_start (any_handle h)
 {
-	if (!h)
-		return -1;
-	else
- 		return 0;
-} /* ra_eval_edit_start() */
+  if (!h)
+    return -1;
+  else
+    return 0;
+}				/* ra_eval_edit_start() */
 
 
 LIBRAAPI int
-ra_eval_edit_complete(any_handle h)
+ra_eval_edit_complete (any_handle h)
 {
-	if (!h)
-		return -1;
-	else
- 		return 0;
-} /* ra_eval_edit_complete() */
+  if (!h)
+    return -1;
+  else
+    return 0;
+}				/* ra_eval_edit_complete() */
 
 
 LIBRAAPI int
-ra_eval_edit_cancel(any_handle h)
+ra_eval_edit_cancel (any_handle h)
 {
-	if (!h)
-		return -1;
-	else
- 		return 0;
-} /* ra_eval_edit_cancel() */
+  if (!h)
+    return -1;
+  else
+    return 0;
+}				/* ra_eval_edit_cancel() */
 
 
 /* ------------------------------ attribute functions ------------------------------ */
@@ -74,47 +74,47 @@ ra_eval_edit_cancel(any_handle h)
  * This function returns a list of all attributes associated to handle 'h'.
  */
 LIBRAAPI int
-ra_eval_attribute_list(any_handle h, value_handle vh)
+ra_eval_attribute_list (any_handle h, value_handle vh)
 {
-	int ret = 0;
-	int i, num;
-	struct eval_head *head = (struct eval_head *)h;	
-	char **names;
-	struct eval_attribute *curr;
+  int ret = 0;
+  int i, num;
+  struct eval_head *head = (struct eval_head *) h;
+  char **names;
+  struct eval_attribute *curr;
 
-	if (h == NULL)
-		return -1;
+  if (h == NULL)
+    return -1;
 
-	_ra_set_error(h, RA_ERR_NONE, "libRASCH");
-	ra_value_reset(vh);
+  _ra_set_error (h, RA_ERR_NONE, "libRASCH");
+  ra_value_reset (vh);
 
-	num = 0;
-	names = NULL;
-	curr = head->meas->eval.attribute;
-	while (curr)
+  num = 0;
+  names = NULL;
+  curr = head->meas->eval.attribute;
+  while (curr)
+    {
+      if (curr->src_handle == h)
 	{
-		if (curr->src_handle == h)
-		{
-			num++;
-			names = realloc(names, sizeof(char *) * num);
+	  num++;
+	  names = realloc (names, sizeof (char *) * num);
 
-			names[num-1] = (char *)malloc(sizeof(char) * MAX_ATTRIB_LEN);
-			strncpy(names[num-1], curr->name, MAX_ATTRIB_LEN);
-		}
-		curr = curr->next;
+	  names[num - 1] = (char *) malloc (sizeof (char) * MAX_ATTRIB_LEN);
+	  strncpy (names[num - 1], curr->name, MAX_ATTRIB_LEN);
 	}
+      curr = curr->next;
+    }
 
-	if (num > 0)
-	{
-		ra_value_set_string_array(vh, (const char **)names, num);
+  if (num > 0)
+    {
+      ra_value_set_string_array (vh, (const char **) names, num);
 
-		for (i = 0; i < num; i++)
-			free(names[i]);
-		free(names);
-	}
+      for (i = 0; i < num; i++)
+	free (names[i]);
+      free (names);
+    }
 
-	return ret;
-} /* ra_eval_attribute_list() */
+  return ret;
+}				/* ra_eval_attribute_list() */
 
 
 /**
@@ -126,32 +126,32 @@ ra_eval_attribute_list(any_handle h, value_handle vh)
  * This function returns the value stored in the attribute 'name'.
  */
 LIBRAAPI int
-ra_eval_attribute_get(any_handle h, const char *id, value_handle vh)
+ra_eval_attribute_get (any_handle h, const char *id, value_handle vh)
 {
-	int ret = -1;
-	struct eval_head *head= (struct eval_head *)h;
-	struct eval_attribute *curr;
+  int ret = -1;
+  struct eval_head *head = (struct eval_head *) h;
+  struct eval_attribute *curr;
 
-	if (h == NULL)
-		return -1;
+  if (h == NULL)
+    return -1;
 
-	_ra_set_error(h, RA_ERR_NONE, "libRASCH");
-	ra_value_reset(vh);
+  _ra_set_error (h, RA_ERR_NONE, "libRASCH");
+  ra_value_reset (vh);
 
-	if ((curr = find_attribute(head, id)) == NULL)
-	{
-		char t[1000];
-		sprintf(t, "libRASCH - ra_eval_attribute_get() '%s'", id);
-		/* TODO: check error code */
-		_ra_set_error(h, RA_ERR_ERROR, t);
+  if ((curr = find_attribute (head, id)) == NULL)
+    {
+      char t[1000];
+      sprintf (t, "libRASCH - ra_eval_attribute_get() '%s'", id);
+      /* TODO: check error code */
+      _ra_set_error (h, RA_ERR_ERROR, t);
 /* 		assert(0); */
-		return -1;
-	}
+      return -1;
+    }
 
-	ret = ra_value_copy(vh, curr->value);
+  ret = ra_value_copy (vh, curr->value);
 
-	return ret;
-} /* ra_eval_attribute_get() */
+  return ret;
+}				/* ra_eval_attribute_get() */
 
 
 /**
@@ -163,31 +163,32 @@ ra_eval_attribute_get(any_handle h, const char *id, value_handle vh)
  * This function sets the value of the attribute 'name'.
  */
 LIBRAAPI int
-ra_eval_attribute_set(any_handle h, const char *id, value_handle vh)
+ra_eval_attribute_set (any_handle h, const char *id, value_handle vh)
 {
-	int ret = -1;
-	struct eval_head *head = (struct eval_head *)h;
-	struct eval_attribute *curr;
+  int ret = -1;
+  struct eval_head *head = (struct eval_head *) h;
+  struct eval_attribute *curr;
 
-	if (h == NULL)
-		return -1;
+  if (h == NULL)
+    return -1;
 
-	_ra_set_error(h, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (h, RA_ERR_NONE, "libRASCH");
 
-	if ((curr = find_attribute(head, id)) == NULL)
-	{
-		curr = (struct eval_attribute *)calloc(1, sizeof(struct eval_attribute));
-		ra_list_add((void **)&(head->meas->eval.attribute), curr);
+  if ((curr = find_attribute (head, id)) == NULL)
+    {
+      curr =
+	(struct eval_attribute *) calloc (1, sizeof (struct eval_attribute));
+      ra_list_add ((void **) &(head->meas->eval.attribute), curr);
 
-		curr->src_handle = h;
-		strncpy(curr->name, id, MAX_ATTRIB_LEN-1);
-		curr->value = ra_value_malloc();
-	}
+      curr->src_handle = h;
+      strncpy (curr->name, id, MAX_ATTRIB_LEN - 1);
+      curr->value = ra_value_malloc ();
+    }
 
-	ret = ra_value_copy(curr->value, vh);
+  ret = ra_value_copy (curr->value, vh);
 
-	return ret;
-} /* ra_eval_attribute_set() */
+  return ret;
+}				/* ra_eval_attribute_set() */
 
 
 /**
@@ -198,71 +199,72 @@ ra_eval_attribute_set(any_handle h, const char *id, value_handle vh)
  * This function removes the attribute 'name'.
  */
 LIBRAAPI int
-ra_eval_attribute_unset(any_handle h, const char *id)
+ra_eval_attribute_unset (any_handle h, const char *id)
 {
-	int ret = -1;
-	struct eval_head *head = (struct eval_head *)h;
-	struct eval_attribute *curr;
+  int ret = -1;
+  struct eval_head *head = (struct eval_head *) h;
+  struct eval_attribute *curr;
 
-	if (h == NULL)
-		return -1;
+  if (h == NULL)
+    return -1;
 
-	_ra_set_error(h, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (h, RA_ERR_NONE, "libRASCH");
 
-	if ((curr = find_attribute(head, id)) == NULL)
-	{
-		/* TODO: check error code */
-		_ra_set_error(h, RA_ERR_ERROR, "libRASCH");
-		return -1;
-	}
+  if ((curr = find_attribute (head, id)) == NULL)
+    {
+      /* TODO: check error code */
+      _ra_set_error (h, RA_ERR_ERROR, "libRASCH");
+      return -1;
+    }
 
-	ra_value_free(curr->value);
-	ret = ra_list_del((void **)&(head->meas->eval.attribute), curr);
+  ra_value_free (curr->value);
+  ret = ra_list_del ((void **) &(head->meas->eval.attribute), curr);
 
-	return ret;
-} /* ra_eval_attribute_unset() */
+  return ret;
+}				/* ra_eval_attribute_unset() */
 
 
 struct eval_attribute *
-find_attribute(struct eval_head *h, const char *id)
+find_attribute (struct eval_head *h, const char *id)
 {
-	struct eval_attribute *curr;
-	
-	curr = h->meas->eval.attribute;
-	while (curr)
-	{
-		if ((curr->src_handle == h) && (strncmp(curr->name, id, MAX_ATTRIB_LEN) == 0))
-		    break;
-		
-		curr = curr->next;
-	}
+  struct eval_attribute *curr;
 
-	return curr;
-} /* find_attribute() */
+  curr = h->meas->eval.attribute;
+  while (curr)
+    {
+      if ((curr->src_handle == h)
+	  && (strncmp (curr->name, id, MAX_ATTRIB_LEN) == 0))
+	break;
+
+      curr = curr->next;
+    }
+
+  return curr;
+}				/* find_attribute() */
 
 
 int
-delete_attributes(struct eval_head *h)
+delete_attributes (struct eval_head *h)
 {
-	struct eval_attribute *a;
+  struct eval_attribute *a;
 
-	a = h->meas->eval.attribute;
-	while (a)
+  a = h->meas->eval.attribute;
+  while (a)
+    {
+      if (a->src_handle == h)
 	{
-		if (a->src_handle == h)
-		{
-			ra_value_free(a->value);
-			ra_list_del((void **)&(h->meas->eval.attribute), a);
-			free(a);
-			a = h->meas->eval.attribute;
-			continue;
-		}
-
-		a = a->next;
+	  ra_value_free (a->value);
+	  ra_list_del ((void **) &(h->meas->eval.attribute), a);
+	  free (a);
+	  a = h->meas->eval.attribute;
+	  continue;
 	}
 
-	return 0;
-} /* delete_attributes() */
+      a = a->next;
+    }
+
+  return 0;
+}				/* delete_attributes() */
 
 
 /* ------------------------------ evaluation functions ------------------------------ */
@@ -278,87 +280,88 @@ delete_attributes(struct eval_head *h)
  * This function adds an evaluation to a measurement.
  */
 LIBRAAPI eval_handle
-ra_eval_add(meas_handle mh, const char *name, const char *desc, int original)
+ra_eval_add (meas_handle mh, const char *name, const char *desc, int original)
 {
-	struct ra_meas *meas = (struct ra_meas *) mh;
-	struct eval *e = NULL;
-	char text[EVAL_MAX_DESC];
-	struct tm *t;
-	time_t tt;
-	value_handle vh = NULL;
+  struct ra_meas *meas = (struct ra_meas *) mh;
+  struct eval *e = NULL;
+  char text[EVAL_MAX_DESC];
+  struct tm *t;
+  time_t tt;
+  value_handle vh = NULL;
 
-	if (!mh)
-		return NULL;
+  if (!mh)
+    return NULL;
 
-	_ra_set_error(mh, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (mh, RA_ERR_NONE, "libRASCH");
 
-	if (meas->handle_id != RA_HANDLE_MEAS)
+  if (meas->handle_id != RA_HANDLE_MEAS)
+    {
+      _ra_set_error (mh, RA_ERR_WRONG_HANDLE, "libRASCH");
+      return NULL;
+    }
+
+  /* if the new eval should be the original check if not already an original one is available */
+  if (original)
+    {
+      e = ra_eval_get_original (mh);
+      if (e)
 	{
-		_ra_set_error(mh, RA_ERR_WRONG_HANDLE, "libRASCH");
-		return NULL;
+	  _ra_set_error (mh, RA_ERR_EVAL_WRONG_TYPE, "libRASCH");
+	  return NULL;
 	}
+    }
 
-	/* if the new eval should be the original check if not already an original one is available */
-	if (original)
-	{
-		e = ra_eval_get_original(mh);
-		if (e)
-		{
-			_ra_set_error(mh, RA_ERR_EVAL_WRONG_TYPE, "libRASCH");
-			return NULL;
-		}
-	}
+  e = (struct eval *) calloc (1, sizeof (struct eval));
+  ra_list_add ((void **) &(meas->eval.evaluations), e);
 
-	e = (struct eval *)calloc(1, sizeof(struct eval));
-	ra_list_add((void **)&(meas->eval.evaluations), e);
+  e->handle_id = RA_HANDLE_EVAL;
+  e->meas = meas;
+  e->original = original;
 
-	e->handle_id = RA_HANDLE_EVAL;
-	e->meas = meas;
-	e->original = original;
+  time (&tt);
+  t = gmtime (&tt);
+  sprintf (text, "%02d.%02d.%4d  %02d:%02d:%02d", t->tm_mday,
+	   t->tm_mon + 1, (t->tm_year + 1900), t->tm_hour, t->tm_min,
+	   t->tm_sec);
 
-	time(&tt);
-	t = gmtime(&tt);
-	sprintf(text, "%02d.%02d.%4d  %02d:%02d:%02d", t->tm_mday,
-		t->tm_mon + 1, (t->tm_year + 1900), t->tm_hour, t->tm_min, t->tm_sec);
+  vh = ra_value_malloc ();
+  ra_value_set_string (vh, text);
+  if (ra_eval_attribute_set (e, "add-timestamp", vh) != 0)
+    goto error;
+  if (ra_eval_attribute_set (e, "modify-timestamp", vh) != 0)
+    goto error;
 
-	vh = ra_value_malloc();
-	ra_value_set_string(vh, text);
-	if (ra_eval_attribute_set(e, "add-timestamp", vh) != 0)
-		goto error;
-	if (ra_eval_attribute_set(e, "modify-timestamp", vh) != 0)
-		goto error;
+  if (set_env (e) != 0)
+    goto error;
 
-	if (set_env(e) != 0)
-		goto error;
+  /* set the new evaluation as the default evaluation */
+  if (ra_eval_set_default (e) != 0)
+    goto error;
 
-	/* set the new evaluation as the default evaluation */
-	if (ra_eval_set_default(e) != 0)
-		goto error;
+  if (name)
+    {
+      ra_value_set_string (vh, name);
+      if (ra_eval_attribute_set (e, "name", vh) != 0)
+	goto error;
+    }
+  if (desc)
+    {
+      ra_value_set_string (vh, desc);
+      if (ra_eval_attribute_set (e, "description", vh) != 0)
+	goto error;
+    }
+  ra_value_free (vh);
 
-	if (name)
-	{
-		ra_value_set_string(vh, name);
-		if (ra_eval_attribute_set(e, "name", vh) != 0)
-			goto error;
-	}
-	if (desc)
-	{
-		ra_value_set_string(vh, desc);
-		if (ra_eval_attribute_set(e, "description", vh) != 0)
-			goto error;
-	}	
-	ra_value_free(vh);
+  return e;
 
-	return e;
+error:
+  if (e)
+    ra_list_del ((void **) &(meas->eval.evaluations), e);
+  if (vh)
+    ra_value_free (vh);
 
- error:
-	if (e)
-		ra_list_del((void **)&(meas->eval.evaluations), e);
-	if (vh)
-		ra_value_free(vh);
-
-	return NULL;
-} /* ra_eval_add() */
+  return NULL;
+}				/* ra_eval_add() */
 
 
 
@@ -372,126 +375,126 @@ ra_eval_add(meas_handle mh, const char *name, const char *desc, int original)
  */
 #ifdef LINUX
 int
-set_env(struct eval *e)
+set_env (struct eval *e)
 {
-	char t[EVAL_MAX_DESC];
-	char fn[MAX_PATH_RA];
-	FILE *f;
-	value_handle vh;
+  char t[EVAL_MAX_DESC];
+  char fn[MAX_PATH_RA];
+  FILE *f;
+  value_handle vh;
 
-	vh = ra_value_malloc();
+  vh = ra_value_malloc ();
 
-	gethostname(t, EVAL_MAX_HOST);
-	if (t[0] != '\0')
+  gethostname (t, EVAL_MAX_HOST);
+  if (t[0] != '\0')
+    {
+      ra_value_set_string (vh, t);
+      ra_eval_attribute_set (e, "add-host", vh);
+    }
+
+  if (getenv ("LOGNAME") != NULL)
+    {
+      ra_value_set_string (vh, getenv ("LOGNAME"));
+      ra_eval_attribute_set (e, "add-user", vh);
+    }
+
+  sprintf (fn, "/proc/%d/status", getpid ());
+  f = fopen (fn, "r");
+  if (f != NULL)
+    {
+      char *p;
+
+      fgets (t, 200, f);
+      fclose (f);
+
+      p = strchr (t, '\t');
+      if ((p != NULL) && (p + 1 != '\0'))
 	{
-		ra_value_set_string(vh, t);
-		ra_eval_attribute_set(e, "add-host", vh);
+	  char *newline;
+
+	  p++;
+	  newline = strchr (p, '\n');
+	  if (newline)
+	    *newline = '\0';
+	  ra_value_set_string (vh, p);
+	  ra_eval_attribute_set (e, "add-program", vh);
 	}
+    }
 
-	if (getenv("LOGNAME") != NULL)
-	{
-		ra_value_set_string(vh, getenv("LOGNAME"));
-		ra_eval_attribute_set(e, "add-user", vh);
-	}
+  ra_value_free (vh);
 
-	sprintf(fn, "/proc/%d/status", getpid());
-	f = fopen(fn, "r");
-	if (f != NULL)
-	{
-		char *p;
-
-		fgets(t, 200, f);
-		fclose(f);
-
-		p = strchr(t, '\t');
-		if ((p != NULL) && (p + 1 != '\0'))
-		{
-			char *newline;
-
-			p++;
-			newline = strchr(p, '\n');
-			if (newline)
-				*newline = '\0';
-			ra_value_set_string(vh, p);
-			ra_eval_attribute_set(e, "add-program", vh);
-		}
-	}
-
-	ra_value_free(vh);
-
-	return 0;
-} /* set_env() */
+  return 0;
+}				/* set_env() */
 
 #elif WIN32
 
 int
-set_env(struct eval *e)
+set_env (struct eval *e)
 {
-	char t[EVAL_MAX_DESC];
-	char full_path[MAX_PATH_RA];
-	char *pos, *cmd;
-	DWORD size;
-	value_handle vh;
+  char t[EVAL_MAX_DESC];
+  char full_path[MAX_PATH_RA];
+  char *pos, *cmd;
+  DWORD size;
+  value_handle vh;
 
-	vh = ra_value_malloc();
+  vh = ra_value_malloc ();
 
-	size = EVAL_MAX_DESC;
-	GetComputerName(t, &size);
-	ra_value_set_string(vh, t);
-	ra_eval_attribute_set(e, "add-host", vh);
-	size = EVAL_MAX_DESC;
-	GetUserName(t, &size);
-	ra_value_set_string(vh, t);
-	ra_eval_attribute_set(e, "add-user", vh);
+  size = EVAL_MAX_DESC;
+  GetComputerName (t, &size);
+  ra_value_set_string (vh, t);
+  ra_eval_attribute_set (e, "add-host", vh);
+  size = EVAL_MAX_DESC;
+  GetUserName (t, &size);
+  ra_value_set_string (vh, t);
+  ra_eval_attribute_set (e, "add-user", vh);
 
-	memset(full_path, 0, MAX_PATH_RA);
-	cmd = GetCommandLine();
-	/* first check if first argument is in qoutes */
-	if (cmd[0] == '\"')
+  memset (full_path, 0, MAX_PATH_RA);
+  cmd = GetCommandLine ();
+  /* first check if first argument is in qoutes */
+  if (cmd[0] == '\"')
+    {
+      /* ok, now find "closing" quote */
+      pos = strchr (cmd + 1, '\"');
+      if (pos != NULL)
+	strncpy (full_path, cmd + 1, pos - cmd - 1);
+      else
 	{
-		/* ok, now find "closing" quote */
-		pos = strchr(cmd+1, '\"');
-		if (pos != NULL)
-			strncpy(full_path, cmd+1, pos - cmd - 1);
-		else
-		{
-			/* at the moment I do not know what to do if the
-			   closing quote can not be found */
-			;
-		}
+	  /* at the moment I do not know what to do if the
+	     closing quote can not be found */
+	  ;
 	}
-	else
-	{
-		pos = strchr(cmd, ' ');
-		if (pos == NULL)
-			strncpy(full_path, cmd, MAX_PATH_RA);
-		else
-			strncpy(full_path, cmd, pos - cmd);
-	}
-	pos = strrchr(full_path, '\\');
-	if (pos == NULL)
-		pos = full_path;
-	else
-		pos++;
-	strncpy(t, pos, EVAL_MAX_PRG);
-	pos = strchr(t, '\"');
-	if (pos != NULL)
-		*pos = '\0';
-	ra_value_set_string(vh, t);
-	ra_eval_attribute_set(e, "add-program", vh);
+    }
+  else
+    {
+      pos = strchr (cmd, ' ');
+      if (pos == NULL)
+	strncpy (full_path, cmd, MAX_PATH_RA);
+      else
+	strncpy (full_path, cmd, pos - cmd);
+    }
+  pos = strrchr (full_path, '\\');
+  if (pos == NULL)
+    pos = full_path;
+  else
+    pos++;
+  strncpy (t, pos, EVAL_MAX_PRG);
+  pos = strchr (t, '\"');
+  if (pos != NULL)
+    *pos = '\0';
+  ra_value_set_string (vh, t);
+  ra_eval_attribute_set (e, "add-program", vh);
 
-	ra_value_free(vh);
+  ra_value_free (vh);
 
-	return 0;
-} /* set_env() */
+  return 0;
+}				/* set_env() */
 
 #else /* no matching system found -> do nothing */
 
 int
-set_env(struct eval *e)
+set_env (struct eval *e)
 {
-	return 0;
-} /* set_env() */
+  return 0;
+}				/* set_env() */
 #endif
 
 
@@ -508,81 +511,81 @@ set_env(struct eval *e)
  *
  */
 LIBRAAPI eval_handle
-ra_eval_copy(eval_handle eh, const char *name, const char *desc)
+ra_eval_copy (eval_handle eh, const char *name, const char *desc)
 {
-	unsigned long l;
-	value_handle vh, vh2;
-	struct eval *e_src = (struct eval *)eh;
-	struct eval *e_dest = NULL;
-	const char **attribs;
+  unsigned long l;
+  value_handle vh, vh2;
+  struct eval *e_src = (struct eval *) eh;
+  struct eval *e_dest = NULL;
+  const char **attribs;
 
-	if (!eh)
-		return NULL;
+  if (!eh)
+    return NULL;
 
-	_ra_set_error(eh, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (eh, RA_ERR_NONE, "libRASCH");
 
-	if (e_src->handle_id != RA_HANDLE_EVAL)
+  if (e_src->handle_id != RA_HANDLE_EVAL)
+    {
+      _ra_set_error (eh, RA_ERR_WRONG_HANDLE, "libRASCH");
+      return NULL;
+    }
+
+
+  e_dest = (struct eval *) calloc (1, sizeof (struct eval));
+  ra_list_add ((void **) &(e_src->meas->eval.evaluations), e_dest);
+
+  e_dest->handle_id = RA_HANDLE_EVAL;
+  e_dest->meas = e_src->meas;
+
+  /* copy attributes */
+  vh = ra_value_malloc ();
+  ra_eval_attribute_list (e_src, vh);
+  vh2 = ra_value_malloc ();
+  attribs = ra_value_get_string_array (vh);
+  for (l = 0; l < ra_value_get_num_elem (vh); l++)
+    {
+      ra_eval_attribute_get (e_src, attribs[l], vh2);
+      if (strcmp (attribs[l], "name") == 0)
 	{
-		_ra_set_error(eh, RA_ERR_WRONG_HANDLE, "libRASCH");
-		return NULL;
+	  char *buf;
+	  buf = malloc (strlen (ra_value_get_string (vh2)) + 5);
+	  sprintf (buf, "copy-%s", ra_value_get_string (vh2));
+	  ra_value_set_string (vh2, buf);
+	  free (buf);
 	}
-	
-	
-	e_dest = (struct eval *)calloc(1, sizeof(struct eval));
-	ra_list_add((void **)&(e_src->meas->eval.evaluations), e_dest);
+      ra_eval_attribute_set (e_dest, attribs[l], vh2);
+    }
+  ra_value_free (vh2);
 
-	e_dest->handle_id = RA_HANDLE_EVAL;
-	e_dest->meas = e_src->meas;
+  /* set name and description if given */
+  if (name)
+    {
+      ra_value_set_string (vh, name);
+      if (ra_eval_attribute_set (e_dest, "name", vh) != 0)
+	goto error;
+    }
+  if (desc)
+    {
+      ra_value_set_string (vh, desc);
+      if (ra_eval_attribute_set (e_dest, "description", vh) != 0)
+	goto error;
+    }
 
-	/* copy attributes */
-	vh = ra_value_malloc();
-	ra_eval_attribute_list(e_src, vh);	
-	vh2 = ra_value_malloc();
-	attribs = ra_value_get_string_array(vh);
-	for (l = 0; l < ra_value_get_num_elem(vh); l++)
-	{
-		ra_eval_attribute_get(e_src, attribs[l], vh2);
-		if (strcmp(attribs[l], "name") == 0)
-		{
-			char *buf;
-			buf = malloc(strlen(ra_value_get_string(vh2)) + 5);
-			sprintf(buf, "copy-%s", ra_value_get_string(vh2));
-			ra_value_set_string(vh2, buf);
-			free(buf);
-		}
-		ra_eval_attribute_set(e_dest, attribs[l], vh2);		
-	}
-	ra_value_free(vh2);
+  /* copy event-classes */
 
-	/* set name and description if given */
-	if (name)
-	{
-		ra_value_set_string(vh, name);
-		if (ra_eval_attribute_set(e_dest, "name", vh) != 0)
-			goto error;
-	}
-	if (desc)
-	{
-		ra_value_set_string(vh, desc);
-		if (ra_eval_attribute_set(e_dest, "description", vh) != 0)
-			goto error;
-	}
+  /* copy event-summaries */
 
-	/* copy event-classes */
+  ra_value_free (vh);
 
-	/* copy event-summaries */
+error:
+  if (e_dest)
+    {
+      ra_list_del ((void **) &(e_src->meas->eval.evaluations), e_dest);
+      e_dest = NULL;
+    }
 
-	ra_value_free(vh);
-
- error:
-	if (e_dest)
-	{
-		ra_list_del((void **)&(e_src->meas->eval.evaluations), e_dest);
-		e_dest = NULL;
-	}
-
-	return e_dest;
-} /* ra_eval_copy() */
+  return e_dest;
+}				/* ra_eval_copy() */
 
 
 /**
@@ -592,57 +595,57 @@ ra_eval_copy(eval_handle eh, const char *name, const char *desc)
  * The function deletes the evaluation given by 'eh'.
  */
 LIBRAAPI int
-ra_eval_delete(eval_handle eh)
+ra_eval_delete (eval_handle eh)
 {
-	int ret;
-	value_handle vh;
-	struct eval *e = (struct eval *)eh;
-	struct eval_info *ei;
+  int ret;
+  value_handle vh;
+  struct eval *e = (struct eval *) eh;
+  struct eval_info *ei;
 
-	if (!eh)
-		return -1;
+  if (!eh)
+    return -1;
 
-	_ra_set_error(eh, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (eh, RA_ERR_NONE, "libRASCH");
 
-	if (e->handle_id != RA_HANDLE_EVAL)
-	{
-		_ra_set_error(eh, RA_ERR_WRONG_HANDLE, "libRASCH");
-		return -1;
-	}
+  if (e->handle_id != RA_HANDLE_EVAL)
+    {
+      _ra_set_error (eh, RA_ERR_WRONG_HANDLE, "libRASCH");
+      return -1;
+    }
 
-	/* first delete all classes */
-	vh = ra_value_malloc();
-	for (;;)
-	{
-		const void **p;
-		long n;
+  /* first delete all classes */
+  vh = ra_value_malloc ();
+  for (;;)
+    {
+      const void **p;
+      long n;
 
-		ret = ra_class_get(eh, NULL, vh);
-		if (ret != 0)
-			break;
-		n = ra_value_get_num_elem(vh);
-		if (n <= 0)
-			break;
-		p = ra_value_get_voidp_array(vh);
-		if (!p)
-			break;
-		ra_class_delete((class_handle)(p[0]));
-	}
-	ra_value_free(vh);
-	if (ret != 0)
-		return -1;
+      ret = ra_class_get (eh, NULL, vh);
+      if (ret != 0)
+	break;
+      n = ra_value_get_num_elem (vh);
+      if (n <= 0)
+	break;
+      p = ra_value_get_voidp_array (vh);
+      if (!p)
+	break;
+      ra_class_delete ((class_handle) (p[0]));
+    }
+  ra_value_free (vh);
+  if (ret != 0)
+    return -1;
 
-	/* now delete all attributes associated with this evaluation */
-	delete_attributes((struct eval_head *)e);
+  /* now delete all attributes associated with this evaluation */
+  delete_attributes ((struct eval_head *) e);
 
-	/* and finally delete the evaluation entry */
-	ei = &(e->meas->eval);
-	ra_list_del((void **)&(ei->evaluations), e);
+  /* and finally delete the evaluation entry */
+  ei = &(e->meas->eval);
+  ra_list_del ((void **) &(ei->evaluations), e);
 
-	free(e);
+  free (e);
 
-	return 0;
-} /* ra_eval_delete() */
+  return 0;
+}				/* ra_eval_delete() */
 
 
 /**
@@ -653,44 +656,44 @@ ra_eval_delete(eval_handle eh)
  * This function returns all evaluation-handles in the evaluation file associated with mh.
  */
 LIBRAAPI int
-ra_eval_get_all(meas_handle mh, value_handle vh)
+ra_eval_get_all (meas_handle mh, value_handle vh)
 {
-	struct ra_meas *meas = (struct ra_meas *)mh;
-	void **p;
-	int i, cnt;
-	struct eval *curr;
+  struct ra_meas *meas = (struct ra_meas *) mh;
+  void **p;
+  int i, cnt;
+  struct eval *curr;
 
-	if ((!mh) || (!vh))
-	{
-		if (mh)
-			_ra_set_error(mh, RA_ERR_INFO_MISSING, "libRASCH");
-		return -1;
-	}
+  if ((!mh) || (!vh))
+    {
+      if (mh)
+	_ra_set_error (mh, RA_ERR_INFO_MISSING, "libRASCH");
+      return -1;
+    }
 
-	ra_value_reset(vh);
-	_ra_set_error(mh, RA_ERR_NONE, "libRASCH");
+  ra_value_reset (vh);
+  _ra_set_error (mh, RA_ERR_NONE, "libRASCH");
 
-	if (meas->eval.evaluations == NULL)
-		return 0;
+  if (meas->eval.evaluations == NULL)
+    return 0;
 
-	cnt = ra_list_len(meas->eval.evaluations);
+  cnt = ra_list_len (meas->eval.evaluations);
 
-	p = (void **)calloc(cnt, sizeof(void *));
+  p = (void **) calloc (cnt, sizeof (void *));
 
-	curr = meas->eval.evaluations;
-	for (i = 0; i < cnt; i++)
-	{
-		if (curr == NULL)
-			break;
-		p[i] = curr;
-		curr = curr->next;
-	}
-	ra_value_set_voidp_array(vh, (const void **)p, cnt);
+  curr = meas->eval.evaluations;
+  for (i = 0; i < cnt; i++)
+    {
+      if (curr == NULL)
+	break;
+      p[i] = curr;
+      curr = curr->next;
+    }
+  ra_value_set_voidp_array (vh, (const void **) p, cnt);
 
-	free(p);
+  free (p);
 
-	return 0;
-} /* ra_eval_get_all() */
+  return 0;
+}				/* ra_eval_get_all() */
 
 
 /**
@@ -700,26 +703,26 @@ ra_eval_get_all(meas_handle mh, value_handle vh)
  * This function returns the original evaluation-handle.
  */
 LIBRAAPI eval_handle
-ra_eval_get_original(meas_handle mh)
+ra_eval_get_original (meas_handle mh)
 {
-	struct ra_meas *meas = (struct ra_meas *)mh;
-	struct eval *e = NULL;
+  struct ra_meas *meas = (struct ra_meas *) mh;
+  struct eval *e = NULL;
 
-	if (!mh)
-		return NULL;
+  if (!mh)
+    return NULL;
 
-	_ra_set_error(mh, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (mh, RA_ERR_NONE, "libRASCH");
 
-	e = meas->eval.evaluations;
-	while (e)
-	{
-		if (e->original)
-			break;
-		e = e->next;
-	}
+  e = meas->eval.evaluations;
+  while (e)
+    {
+      if (e->original)
+	break;
+      e = e->next;
+    }
 
-	return e;
-} /* ra_eval_get_original() */
+  return e;
+}				/* ra_eval_get_original() */
 
 
 /**
@@ -729,26 +732,26 @@ ra_eval_get_original(meas_handle mh)
  * This function returns the default evaluation-handle.
  */
 LIBRAAPI eval_handle
-ra_eval_get_default(meas_handle mh)
+ra_eval_get_default (meas_handle mh)
 {
-	struct ra_meas *meas = (struct ra_meas *)mh;
-	struct eval *e = NULL;
+  struct ra_meas *meas = (struct ra_meas *) mh;
+  struct eval *e = NULL;
 
-	if (!mh)
-		return NULL;
+  if (!mh)
+    return NULL;
 
-	_ra_set_error(mh, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (mh, RA_ERR_NONE, "libRASCH");
 
-	e = meas->eval.evaluations;
-	while (e)
-	{
-		if (e->def)
-			break;
-		e = e->next;
-	}
+  e = meas->eval.evaluations;
+  while (e)
+    {
+      if (e->def)
+	break;
+      e = e->next;
+    }
 
-	return e;
-} /* ra_eval_get_default() */
+  return e;
+}				/* ra_eval_get_default() */
 
 
 /**
@@ -758,25 +761,25 @@ ra_eval_get_default(meas_handle mh)
  * The function sets the evaluation given by 'eh' to the default one.
  */
 LIBRAAPI int
-ra_eval_set_default(eval_handle eh)
+ra_eval_set_default (eval_handle eh)
 {
-	struct eval *e, *e_prev;
-			
-	if (!eh)
-		return -1;
+  struct eval *e, *e_prev;
 
-	_ra_set_error(eh, RA_ERR_NONE, "libRASCH");
+  if (!eh)
+    return -1;
 
-	e = (struct eval *)eh;
+  _ra_set_error (eh, RA_ERR_NONE, "libRASCH");
 
-	e_prev = ra_eval_get_default(ra_meas_handle_from_any_handle(eh));
-	if (e_prev)
-		e_prev->def = 0;
+  e = (struct eval *) eh;
 
-	e->def = 1;
+  e_prev = ra_eval_get_default (ra_meas_handle_from_any_handle (eh));
+  if (e_prev)
+    e_prev->def = 0;
 
-	return 0;
-} /* ra_eval_set_default() */
+  e->def = 1;
+
+  return 0;
+}				/* ra_eval_set_default() */
 
 
 /**
@@ -787,23 +790,23 @@ ra_eval_set_default(eval_handle eh)
  * given by 'clh' belongs to.
  */
 LIBRAAPI eval_handle
-ra_eval_get_handle(class_handle clh)
+ra_eval_get_handle (class_handle clh)
 {
-	struct eval_class *c = (struct eval_class *)clh;
+  struct eval_class *c = (struct eval_class *) clh;
 
-	if (!clh)
-		return NULL;
+  if (!clh)
+    return NULL;
 
-	_ra_set_error(clh, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (clh, RA_ERR_NONE, "libRASCH");
 
-	if (c->handle_id != RA_HANDLE_EVAL_CLASS)
-	{
-		_ra_set_error(clh, RA_ERR_WRONG_HANDLE, "libRASCH");
-		return NULL;
-	}
-	
-	return (eval_handle)(c->eval);
-} /* ra_eval_get_handle() */
+  if (c->handle_id != RA_HANDLE_EVAL_CLASS)
+    {
+      _ra_set_error (clh, RA_ERR_WRONG_HANDLE, "libRASCH");
+      return NULL;
+    }
+
+  return (eval_handle) (c->eval);
+}				/* ra_eval_get_handle() */
 
 
 
@@ -825,57 +828,58 @@ ra_eval_get_handle(class_handle clh)
  * If you want to use a pre-defined event-class, use ra_class_add_predef().
  */
 LIBRAAPI class_handle
-ra_class_add(eval_handle eh, const char *id, const char *name, const char *desc)
+ra_class_add (eval_handle eh, const char *id, const char *name,
+	      const char *desc)
 {
-	struct eval *e = (struct eval *)eh;
-	struct eval_class *c = NULL;
-	value_handle vh = NULL;
+  struct eval *e = (struct eval *) eh;
+  struct eval_class *c = NULL;
+  value_handle vh = NULL;
 
-	if (!eh)
-		return NULL;
+  if (!eh)
+    return NULL;
 
-	if ((id == NULL) || (id[0] == '\0'))
-	{
-		_ra_set_error(eh, RA_ERR_INFO_MISSING, "libRASCH");
-		return NULL;
-	}
+  if ((id == NULL) || (id[0] == '\0'))
+    {
+      _ra_set_error (eh, RA_ERR_INFO_MISSING, "libRASCH");
+      return NULL;
+    }
 
-	_ra_set_error(eh, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (eh, RA_ERR_NONE, "libRASCH");
 
-	c = calloc(1, sizeof(struct eval_class));
-	ra_list_add((void **)&(e->cl), c);
+  c = calloc (1, sizeof (struct eval_class));
+  ra_list_add ((void **) &(e->cl), c);
 
-	c->handle_id = RA_HANDLE_EVAL_CLASS;
-	c->id = get_class_id(id);
-	strncpy(c->ascii_id, id, MAX_ID_LEN);
-	c->meas = e->meas;
-	c->eval = e;
+  c->handle_id = RA_HANDLE_EVAL_CLASS;
+  c->id = get_class_id (id);
+  strncpy (c->ascii_id, id, MAX_ID_LEN);
+  c->meas = e->meas;
+  c->eval = e;
 
-	vh = ra_value_malloc();
-	if (name)
-	{
-		ra_value_set_string(vh, name);
-		if (ra_eval_attribute_set(c, "name", vh) != 0)
-			goto error;
-	}
-	if (desc)
-	{
-		ra_value_set_string(vh, desc);
-		if (ra_eval_attribute_set(c, "description", vh) != 0)
-			goto error;
-	}	
-	ra_value_free(vh);
+  vh = ra_value_malloc ();
+  if (name)
+    {
+      ra_value_set_string (vh, name);
+      if (ra_eval_attribute_set (c, "name", vh) != 0)
+	goto error;
+    }
+  if (desc)
+    {
+      ra_value_set_string (vh, desc);
+      if (ra_eval_attribute_set (c, "description", vh) != 0)
+	goto error;
+    }
+  ra_value_free (vh);
 
-	return c;
+  return c;
 
- error:
-	ra_class_delete(c);
+error:
+  ra_class_delete (c);
 
-	if (vh)
-		ra_value_free(vh);
+  if (vh)
+    ra_value_free (vh);
 
-	return NULL;
-} /* ra_class_add() */
+  return NULL;
+}				/* ra_class_add() */
 
 
 /**
@@ -888,28 +892,30 @@ ra_class_add(eval_handle eh, const char *id, const char *name, const char *desc)
  * If you want to add not a pre-defined event-class, use ra_class_add().
  */
 LIBRAAPI class_handle
-ra_class_add_predef(eval_handle eh, const char *id)
+ra_class_add_predef (eval_handle eh, const char *id)
 {
-	class_handle clh = NULL;
-	value_handle vh_name, vh_desc;
+  class_handle clh = NULL;
+  value_handle vh_name, vh_desc;
 
-	if (!eh)
-		return NULL;
+  if (!eh)
+    return NULL;
 
-	vh_name = ra_value_malloc();
-	vh_desc = ra_value_malloc();
+  vh_name = ra_value_malloc ();
+  vh_desc = ra_value_malloc ();
 
-	if (fill_predef_class_info_ascii(id, vh_name, vh_desc) != 0)
-		goto error;
+  if (fill_predef_class_info_ascii (id, vh_name, vh_desc) != 0)
+    goto error;
 
-	clh = ra_class_add(eh, id, ra_value_get_string(vh_name), ra_value_get_string(vh_desc));
+  clh =
+    ra_class_add (eh, id, ra_value_get_string (vh_name),
+		  ra_value_get_string (vh_desc));
 
- error:
-	ra_value_free(vh_name);
-	ra_value_free(vh_desc);
+error:
+  ra_value_free (vh_name);
+  ra_value_free (vh_desc);
 
-	return clh;
-} /* ra_class_add_predef() */
+  return clh;
+}				/* ra_class_add_predef() */
 
 
 /**
@@ -919,47 +925,47 @@ ra_class_add_predef(eval_handle eh, const char *id)
  * The function deletes the event-class 'clh'.
  */
 LIBRAAPI int
-ra_class_delete(class_handle clh)
+ra_class_delete (class_handle clh)
 {
-	struct eval_class *c = (struct eval_class *)clh;
-	struct eval *e;
-	struct eval_property *p;
-	struct eval_summary *s;
+  struct eval_class *c = (struct eval_class *) clh;
+  struct eval *e;
+  struct eval_property *p;
+  struct eval_summary *s;
 
-	if (!clh)
-		return -1;
+  if (!clh)
+    return -1;
 
-	_ra_set_error(clh, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (clh, RA_ERR_NONE, "libRASCH");
 
-	if (c->handle_id != RA_HANDLE_EVAL_CLASS)
-	{
-		_ra_set_error(clh, RA_ERR_WRONG_HANDLE, "libRASCH");
-		return -1;
-	}
+  if (c->handle_id != RA_HANDLE_EVAL_CLASS)
+    {
+      _ra_set_error (clh, RA_ERR_WRONG_HANDLE, "libRASCH");
+      return -1;
+    }
 
-	/* delete all properties associated with this class */
-	while ((p = c->prop) != NULL)
-		ra_prop_delete(p);
+  /* delete all properties associated with this class */
+  while ((p = c->prop) != NULL)
+    ra_prop_delete (p);
 
-	/* delete all event-summaries associated with this class */
-	while ((s = c->summaries) != NULL)
-		ra_sum_delete(s);
+  /* delete all event-summaries associated with this class */
+  while ((s = c->summaries) != NULL)
+    ra_sum_delete (s);
 
-	/* then delete all events associated with this event class */
-	if (c->ev)
-		free(c->ev);
-	
-	/* now delete all attributes associated with this evaluation */
-	delete_attributes((struct eval_head *)c);
-	
-	/* and finally delete the class entry */
-	e = c->eval;
-	ra_list_del((void **)&(e->cl), c);
+  /* then delete all events associated with this event class */
+  if (c->ev)
+    free (c->ev);
 
-	free(c);
+  /* now delete all attributes associated with this evaluation */
+  delete_attributes ((struct eval_head *) c);
 
-	return 0;
-} /* ra_class_delete() */
+  /* and finally delete the class entry */
+  e = c->eval;
+  ra_list_del ((void **) &(e->cl), c);
+
+  free (c);
+
+  return 0;
+}				/* ra_class_delete() */
 
 
 /**
@@ -973,58 +979,58 @@ ra_class_delete(class_handle clh)
  * the evaluation 'eh' are given.
  */
 LIBRAAPI int
-ra_class_get(eval_handle eh, const char *id, value_handle vh)
+ra_class_get (eval_handle eh, const char *id, value_handle vh)
 {
-	struct eval *e = (struct eval *)eh;	
-	struct eval_class *c;
-	int num;
-	void **vp;
+  struct eval *e = (struct eval *) eh;
+  struct eval_class *c;
+  int num;
+  void **vp;
 
-	if (!eh)
-		return -1;
+  if (!eh)
+    return -1;
 
-	_ra_set_error(eh, RA_ERR_NONE, "libRASCH");
-	ra_value_reset(vh);
+  _ra_set_error (eh, RA_ERR_NONE, "libRASCH");
+  ra_value_reset (vh);
 
-	if (e->handle_id != RA_HANDLE_EVAL)
+  if (e->handle_id != RA_HANDLE_EVAL)
+    {
+      _ra_set_error (eh, RA_ERR_WRONG_HANDLE, "libRASCH");
+      return -1;
+    }
+  if (!vh)
+    {
+      _ra_set_error (eh, RA_ERR_INFO_MISSING, "libRASCH");
+      return -1;
+    }
+
+  c = e->cl;
+  num = 0;
+  vp = NULL;
+  while (c)
+    {
+      int ok = 1;
+
+      if (id && (id[0] != '\0') && (strcmp (c->ascii_id, id) != 0))
+	ok = 0;
+
+      if (ok)
 	{
-		_ra_set_error(eh, RA_ERR_WRONG_HANDLE, "libRASCH");
-		return -1;
-	}
-	if (!vh)
-	{
-		_ra_set_error(eh, RA_ERR_INFO_MISSING, "libRASCH");
-		return -1;
-	}
-
-	c = e->cl;
-	num = 0;
-	vp = NULL;
-	while (c)
-	{
-		int ok = 1;
-
-		if (id && (id[0] != '\0') && (strcmp(c->ascii_id, id) != 0))
-			ok = 0;
-
-		if (ok)
-		{
-			num++;
-			vp = (void **)realloc(vp, sizeof(void *) * num);
-			vp[num-1] = c;
-		}
-
-		c = c->next;
+	  num++;
+	  vp = (void **) realloc (vp, sizeof (void *) * num);
+	  vp[num - 1] = c;
 	}
 
-	if (num > 0)
-	{
-		ra_value_set_voidp_array(vh, (const void **)vp, num);
-		free(vp);
-	}
+      c = c->next;
+    }
 
-	return 0;
-} /* ra_class_get() */
+  if (num > 0)
+    {
+      ra_value_set_voidp_array (vh, (const void **) vp, num);
+      free (vp);
+    }
+
+  return 0;
+}				/* ra_class_get() */
 
 
 /**
@@ -1039,32 +1045,34 @@ ra_class_get(eval_handle eh, const char *id, value_handle vh)
  * A unique event-id is returned.
  */
 LIBRAAPI long
-ra_class_add_event(class_handle clh, long start, long end)
+ra_class_add_event (class_handle clh, long start, long end)
 {
-	struct eval_class *c = (struct eval_class *)clh;
+  struct eval_class *c = (struct eval_class *) clh;
 
-	if (!clh)
-		return -1;
+  if (!clh)
+    return -1;
 
-	_ra_set_error(clh, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (clh, RA_ERR_NONE, "libRASCH");
 
-	if (c->handle_id != RA_HANDLE_EVAL_CLASS)
-	{
-		_ra_set_error(clh, RA_ERR_WRONG_HANDLE, "libRASCH");
-		return -1;
-	}
+  if (c->handle_id != RA_HANDLE_EVAL_CLASS)
+    {
+      _ra_set_error (clh, RA_ERR_WRONG_HANDLE, "libRASCH");
+      return -1;
+    }
 
-	c->num_event++;
-	c->ev = (struct eval_event *)realloc(c->ev, sizeof(struct eval_event) * c->num_event);
-	c->last_id++;
-	c->ev[c->num_event-1].id = c->last_id;
-	c->ev[c->num_event-1].start = start;
-	c->ev[c->num_event-1].end = end;
+  c->num_event++;
+  c->ev =
+    (struct eval_event *) realloc (c->ev,
+				   sizeof (struct eval_event) * c->num_event);
+  c->last_id++;
+  c->ev[c->num_event - 1].id = c->last_id;
+  c->ev[c->num_event - 1].start = start;
+  c->ev[c->num_event - 1].end = end;
 
-	add_prop_mem(c);
+  add_prop_mem (c);
 
-	return c->last_id;
-} /* ra_class_add_event() */
+  return c->last_id;
+}				/* ra_class_add_event() */
 
 
 /**
@@ -1080,129 +1088,155 @@ ra_class_add_event(class_handle clh, long start, long end)
  * are returned in the array 'ev_ids'.
  */
 LIBRAAPI int
-ra_class_add_event_mass(class_handle clh, unsigned long num_events, const long *start, const long *end, long *ev_ids)
+ra_class_add_event_mass (class_handle clh, unsigned long num_events,
+			 const long *start, const long *end, long *ev_ids)
 {
-	int ret = 0;
-	struct eval_class *c = (struct eval_class *)clh;
-	size_t l;
+  int ret = 0;
+  struct eval_class *c = (struct eval_class *) clh;
+  size_t l;
 
-	if (!clh)
-		return -1;
+  if (!clh)
+    return -1;
 
-	_ra_set_error(clh, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (clh, RA_ERR_NONE, "libRASCH");
 
-	if (c->handle_id != RA_HANDLE_EVAL_CLASS)
-	{
-		_ra_set_error(clh, RA_ERR_WRONG_HANDLE, "libRASCH");
-		return -1;
-	}
+  if (c->handle_id != RA_HANDLE_EVAL_CLASS)
+    {
+      _ra_set_error (clh, RA_ERR_WRONG_HANDLE, "libRASCH");
+      return -1;
+    }
 
-	c->ev = (struct eval_event *)realloc(c->ev, sizeof(struct eval_event) * (c->num_event + num_events));
-	
-	for (l = c->num_event; l < (c->num_event + num_events); l++)
-	{
-		c->last_id++;
+  c->ev =
+    (struct eval_event *) realloc (c->ev,
+				   sizeof (struct eval_event) *
+				   (c->num_event + num_events));
 
-		c->ev[l].id = c->last_id;
-		c->ev[l].start = start[l - c->num_event];
-		c->ev[l].end = end[l - c->num_event];
-		
-		add_prop_mem(c);
+  for (l = c->num_event; l < (c->num_event + num_events); l++)
+    {
+      c->last_id++;
 
-		ev_ids[l - c->num_event] = c->last_id;
-	}
-	c->num_event += num_events;
+      c->ev[l].id = c->last_id;
+      c->ev[l].start = start[l - c->num_event];
+      c->ev[l].end = end[l - c->num_event];
 
-	return ret;
-} /* ra_class_add_event_mass() */
+      add_prop_mem (c);
+
+      ev_ids[l - c->num_event] = c->last_id;
+    }
+  c->num_event += num_events;
+
+  return ret;
+}				/* ra_class_add_event_mass() */
 
 
 int
-add_prop_mem(struct eval_class *c)
+add_prop_mem (struct eval_class *c)
 {
-	struct eval_property *p = c->prop;
-	unsigned long total, added;
+  struct eval_property *p = c->prop;
+  unsigned long total, added;
 
-	while (p)
+  while (p)
+    {
+      /* check if memory needs to be allocated */
+      if (p->allocated_events >= c->num_event)
 	{
-		/* check if memory needs to be allocated */
-		if (p->allocated_events >= c->num_event)
-		{
-			p = p->next;
-			continue;
-		}
-
-		/* memory is needed -> prepare variables */
-		added = (long)((double)p->allocated_events * EVENT_MEM_ADD);
-		if (added < 1)
-			added = 1;
-
-		total = p->allocated_events + added;
-		if (total < c->num_event)
-		{
-			total = c->num_event;
-			added = total - p->allocated_events;
-		}
-
-		switch (p->value_type)
-		{
-		case RA_VALUE_TYPE_SHORT:
-			p->value.s = realloc(p->value.s, p->entry_size * total);
-			memset(p->value.s + (p->allocated_events * (p->entry_size / sizeof(short))), 0xff, p->entry_size * added);
-			break;
-		case RA_VALUE_TYPE_LONG:
-			p->value.l = realloc(p->value.l, p->entry_size * total);
-			memset(p->value.l + (p->allocated_events * (p->entry_size / sizeof(long))), 0xff, p->entry_size * added);
-			break;
-		case RA_VALUE_TYPE_DOUBLE:
-			p->value.d = realloc(p->value.d, p->entry_size * total);
-			memset(p->value.d + (p->allocated_events * (p->entry_size / sizeof(double))), 0xff, p->entry_size * added);
-			break;
-		case RA_VALUE_TYPE_CHAR:
-			p->value.c = realloc(p->value.c, p->entry_size * total);
-			memset(p->value.c + (p->allocated_events * (p->entry_size / sizeof(char *))), 0, p->entry_size * added);
-			break;
-		case RA_VALUE_TYPE_SHORT_ARRAY:
-			p->value.sa = realloc(p->value.sa, p->entry_size * total);
-			memset(p->value.sa + (p->allocated_events * (p->entry_size / sizeof(short *))), 0, p->entry_size * added);
-			break;
-		case RA_VALUE_TYPE_LONG_ARRAY:
-			p->value.la = realloc(p->value.la, p->entry_size * total);
-			memset(p->value.la + (p->allocated_events * (p->entry_size / sizeof(long *))), 0, p->entry_size * added);
-			break;
-		case RA_VALUE_TYPE_DOUBLE_ARRAY:
-			p->value.da = realloc(p->value.da, p->entry_size * total);
-			memset(p->value.da + (p->allocated_events * (p->entry_size / sizeof(double *))), 0, p->entry_size * added);
-			break;
-		case RA_VALUE_TYPE_CHAR_ARRAY:
-			p->value.ca = realloc(p->value.ca, p->entry_size * total);
-			memset(p->value.ca + (p->allocated_events * (p->entry_size / sizeof(char **))), 0, p->entry_size * added);
-			break;
-		}
-
-		switch (p->num_type)
-		{
-		case RA_PROP_NUM_ELEM_TYPE_BYTE:
-			p->num_elements.b = realloc(p->num_elements.b, sizeof(unsigned char) * total * p->num_ch_values);
-			memset(p->num_elements.b + (p->allocated_events * p->num_ch_values), 0,
-			       sizeof(unsigned char) * added * p->num_ch_values);
-			break;
-		case RA_PROP_NUM_ELEM_TYPE_LONG:
-			p->num_elements.l = realloc(p->num_elements.b, sizeof(long) * total * p->num_ch_values);
-			memset(p->num_elements.l + (p->allocated_events * p->num_ch_values), 0,
-			       sizeof(long) * added * p->num_ch_values);
-			break;
-		}
-
-		/* the value of the allocated events has to be set at the end
-		   because the old value is needed above*/
-		p->allocated_events = total;
-		
-		p = p->next;
+	  p = p->next;
+	  continue;
 	}
 
-	return 0;
-} /* add_prop_mem() */
+      /* memory is needed -> prepare variables */
+      added = (long) ((double) p->allocated_events * EVENT_MEM_ADD);
+      if (added < 1)
+	added = 1;
+
+      total = p->allocated_events + added;
+      if (total < c->num_event)
+	{
+	  total = c->num_event;
+	  added = total - p->allocated_events;
+	}
+
+      switch (p->value_type)
+	{
+	case RA_VALUE_TYPE_SHORT:
+	  p->value.s = realloc (p->value.s, p->entry_size * total);
+	  memset (p->value.s +
+		  (p->allocated_events * (p->entry_size / sizeof (short))),
+		  0xff, p->entry_size * added);
+	  break;
+	case RA_VALUE_TYPE_LONG:
+	  p->value.l = realloc (p->value.l, p->entry_size * total);
+	  memset (p->value.l +
+		  (p->allocated_events * (p->entry_size / sizeof (long))),
+		  0xff, p->entry_size * added);
+	  break;
+	case RA_VALUE_TYPE_DOUBLE:
+	  p->value.d = realloc (p->value.d, p->entry_size * total);
+	  memset (p->value.d +
+		  (p->allocated_events * (p->entry_size / sizeof (double))),
+		  0xff, p->entry_size * added);
+	  break;
+	case RA_VALUE_TYPE_CHAR:
+	  p->value.c = realloc (p->value.c, p->entry_size * total);
+	  memset (p->value.c +
+		  (p->allocated_events * (p->entry_size / sizeof (char *))),
+		  0, p->entry_size * added);
+	  break;
+	case RA_VALUE_TYPE_SHORT_ARRAY:
+	  p->value.sa = realloc (p->value.sa, p->entry_size * total);
+	  memset (p->value.sa +
+		  (p->allocated_events * (p->entry_size / sizeof (short *))),
+		  0, p->entry_size * added);
+	  break;
+	case RA_VALUE_TYPE_LONG_ARRAY:
+	  p->value.la = realloc (p->value.la, p->entry_size * total);
+	  memset (p->value.la +
+		  (p->allocated_events * (p->entry_size / sizeof (long *))),
+		  0, p->entry_size * added);
+	  break;
+	case RA_VALUE_TYPE_DOUBLE_ARRAY:
+	  p->value.da = realloc (p->value.da, p->entry_size * total);
+	  memset (p->value.da +
+		  (p->allocated_events * (p->entry_size / sizeof (double *))),
+		  0, p->entry_size * added);
+	  break;
+	case RA_VALUE_TYPE_CHAR_ARRAY:
+	  p->value.ca = realloc (p->value.ca, p->entry_size * total);
+	  memset (p->value.ca +
+		  (p->allocated_events * (p->entry_size / sizeof (char **))),
+		  0, p->entry_size * added);
+	  break;
+	}
+
+      switch (p->num_type)
+	{
+	case RA_PROP_NUM_ELEM_TYPE_BYTE:
+	  p->num_elements.b =
+	    realloc (p->num_elements.b,
+		     sizeof (unsigned char) * total * p->num_ch_values);
+	  memset (p->num_elements.b +
+		  (p->allocated_events * p->num_ch_values), 0,
+		  sizeof (unsigned char) * added * p->num_ch_values);
+	  break;
+	case RA_PROP_NUM_ELEM_TYPE_LONG:
+	  p->num_elements.l =
+	    realloc (p->num_elements.b,
+		     sizeof (long) * total * p->num_ch_values);
+	  memset (p->num_elements.l +
+		  (p->allocated_events * p->num_ch_values), 0,
+		  sizeof (long) * added * p->num_ch_values);
+	  break;
+	}
+
+      /* the value of the allocated events has to be set at the end
+         because the old value is needed above */
+      p->allocated_events = total;
+
+      p = p->next;
+    }
+
+  return 0;
+}				/* add_prop_mem() */
 
 
 /**
@@ -1213,281 +1247,311 @@ add_prop_mem(struct eval_class *c)
  * The function deletes the event 'event_id' from the event-class 'clh'.
  */
 LIBRAAPI int
-ra_class_del_event(class_handle clh, long event_id)
+ra_class_del_event (class_handle clh, long event_id)
 {
-	struct eval_class *c = (struct eval_class *)clh;
-	unsigned long idx;
-	static long last_event_idx = -1;
+  struct eval_class *c = (struct eval_class *) clh;
+  unsigned long idx;
+  static long last_event_idx = -1;
 
-	if (!clh)
-		return -1;
+  if (!clh)
+    return -1;
 
-	_ra_set_error(clh, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (clh, RA_ERR_NONE, "libRASCH");
 
-	if (c->handle_id != RA_HANDLE_EVAL_CLASS)
-	{
-		_ra_set_error(clh, RA_ERR_WRONG_HANDLE, "libRASCH");
-		return -1;
-	}
-	if ((event_id < 0) || (event_id > c->last_id))
-	{
-		_ra_set_error(clh, RA_ERR_OUT_OF_RANGE, "libRASCH");
-		return -1;
-	}
+  if (c->handle_id != RA_HANDLE_EVAL_CLASS)
+    {
+      _ra_set_error (clh, RA_ERR_WRONG_HANDLE, "libRASCH");
+      return -1;
+    }
+  if ((event_id < 0) || (event_id > c->last_id))
+    {
+      _ra_set_error (clh, RA_ERR_OUT_OF_RANGE, "libRASCH");
+      return -1;
+    }
 
-	idx = get_event_idx(c, event_id, last_event_idx);
-	if (idx < 0)
-	{
-		_ra_set_error(clh, RA_ERR_WRONG_INPUT, "libRASCH");
-		return -1;
-	}
-	last_event_idx = idx;
+  idx = get_event_idx (c, event_id, last_event_idx);
+  if (idx < 0)
+    {
+      _ra_set_error (clh, RA_ERR_WRONG_INPUT, "libRASCH");
+      return -1;
+    }
+  last_event_idx = idx;
 
-	del_prop_values(c, idx);
+  del_prop_values (c, idx);
 
-	if (idx == 0)
-		memmove(c->ev, c->ev + 1, sizeof(struct eval_event) * (c->num_event - 1));
-	else if (idx < (c->num_event-1))
-		memmove(c->ev + idx, c->ev + idx+1, sizeof(struct eval_event) * (c->num_event - idx - 1));
+  if (idx == 0)
+    memmove (c->ev, c->ev + 1,
+	     sizeof (struct eval_event) * (c->num_event - 1));
+  else if (idx < (c->num_event - 1))
+    memmove (c->ev + idx, c->ev + idx + 1,
+	     sizeof (struct eval_event) * (c->num_event - idx - 1));
 
-	c->num_event--;
+  c->num_event--;
 
-	c->ev = (struct eval_event *)realloc(c->ev, sizeof(struct eval_event) * c->num_event);
+  c->ev =
+    (struct eval_event *) realloc (c->ev,
+				   sizeof (struct eval_event) * c->num_event);
 
-	del_ev_summary(c, event_id);
-	
-	return 0;
-} /* ra_class_del_event() */
+  del_ev_summary (c, event_id);
+
+  return 0;
+}				/* ra_class_del_event() */
 
 
 long
-get_event_idx(struct eval_class *c, long event_id, long last_idx)
+get_event_idx (struct eval_class *c, long event_id, long last_idx)
 {
-	static long event_id_save, idx_save;
-	static class_handle cl_save;
-	long idx = -1;
-	long start = 0;
-	long l;
+  static long event_id_save, idx_save;
+  static class_handle cl_save;
+  long idx = -1;
+  long start = 0;
+  long l;
 
-	if (((class_handle)c == cl_save) && (event_id == event_id_save))
-		return idx_save;
+  if (((class_handle) c == cl_save) && (event_id == event_id_save))
+    return idx_save;
 
-	if (last_idx >= 0)
-		start = last_idx + 1;
+  if (last_idx >= 0)
+    start = last_idx + 1;
 
-	for (l = start; l < (long)c->num_event; l++)
+  for (l = start; l < (long) c->num_event; l++)
+    {
+      if (c->ev[l].id == event_id)
 	{
-		if (c->ev[l].id == event_id)
-		{
-			idx = l;
-			break;
-		}
+	  idx = l;
+	  break;
 	}
+    }
 
-	if ((idx == -1) && (last_idx >= 0))
+  if ((idx == -1) && (last_idx >= 0))
+    {
+      if (last_idx >= (long) c->num_event)
+	last_idx = (long) c->num_event - 1;
+
+      for (l = 0; l <= last_idx; l++)
 	{
-		if (last_idx >= (long)c->num_event)
-			last_idx = (long)c->num_event - 1;
-
-		for (l = 0; l <= last_idx; l++)
-		{
-			if (c->ev[l].id == event_id)
-			{
-				idx = l;
-				break;
-			}
-		}
+	  if (c->ev[l].id == event_id)
+	    {
+	      idx = l;
+	      break;
+	    }
 	}
+    }
 
-	cl_save = (class_handle)c;
-	event_id_save = event_id;
-	idx_save = idx;
+  cl_save = (class_handle) c;
+  event_id_save = event_id;
+  idx_save = idx;
 
-	return idx;
-} /* get_event_idx() */
+  return idx;
+}				/* get_event_idx() */
 
 
 int
-del_prop_values(struct eval_class *c, unsigned long idx)
+del_prop_values (struct eval_class *c, unsigned long idx)
 {
-	unsigned long l, m, offset, num;
-	struct eval_property *p = c->prop;
+  unsigned long l, m, offset, num;
+  struct eval_property *p = c->prop;
 
-	while (p)
+  while (p)
+    {
+      offset = idx * p->num_ch_values;
+
+      switch (p->value_type)
 	{
-		offset = idx * p->num_ch_values;
-
-		switch (p->value_type)
+	case RA_VALUE_TYPE_SHORT:
+	  if (idx < (c->num_event - 1))
+	    {
+	      memmove (p->value.s + offset,
+		       p->value.s + (offset + p->num_ch_values),
+		       sizeof (short) * p->num_ch_values * (c->num_event -
+							    idx - 1));
+	    }
+	  break;
+	case RA_VALUE_TYPE_LONG:
+	  if (idx < (c->num_event - 1))
+	    {
+	      memmove (p->value.l + offset,
+		       p->value.l + (offset + p->num_ch_values),
+		       sizeof (long) * p->num_ch_values * (c->num_event -
+							   idx - 1));
+	    }
+	  break;
+	case RA_VALUE_TYPE_DOUBLE:
+	  if (idx < (c->num_event - 1))
+	    {
+	      memmove (p->value.d + offset,
+		       p->value.d + (offset + p->num_ch_values),
+		       sizeof (double) * p->num_ch_values * (c->num_event -
+							     idx - 1));
+	    }
+	  break;
+	case RA_VALUE_TYPE_CHAR:
+	  for (l = 0; l < p->num_ch_values; l++)
+	    free (p->value.c[offset + l]);
+	  if (idx < (c->num_event - 1))
+	    {
+	      memmove (p->value.c + offset,
+		       p->value.c + (offset + p->num_ch_values),
+		       sizeof (char *) * p->num_ch_values * (c->num_event -
+							     idx - 1));
+	    }
+	  for (l = 0; l < p->num_ch_values; l++)
+	    p->value.c[((c->num_event - 1) * p->num_ch_values) + l] = NULL;
+	  break;
+	case RA_VALUE_TYPE_SHORT_ARRAY:
+	  for (l = 0; l < p->num_ch_values; l++)
+	    free (p->value.sa[offset + l]);
+	  if (idx < (c->num_event - 1))
+	    {
+	      memmove (p->value.sa + offset,
+		       p->value.sa + (offset + p->num_ch_values),
+		       sizeof (short *) * p->num_ch_values * (c->num_event -
+							      idx - 1));
+	    }
+	  for (l = 0; l < p->num_ch_values; l++)
+	    p->value.sa[((c->num_event - 1) * p->num_ch_values) + l] = NULL;
+	  break;
+	case RA_VALUE_TYPE_LONG_ARRAY:
+	  for (l = 0; l < p->num_ch_values; l++)
+	    free (p->value.la[offset + l]);
+	  if (idx < (c->num_event - 1))
+	    {
+	      memmove (p->value.la + offset,
+		       p->value.la + (offset + p->num_ch_values),
+		       sizeof (long *) * p->num_ch_values * (c->num_event -
+							     idx - 1));
+	    }
+	  for (l = 0; l < p->num_ch_values; l++)
+	    p->value.la[((c->num_event - 1) * p->num_ch_values) + l] = NULL;
+	  break;
+	case RA_VALUE_TYPE_DOUBLE_ARRAY:
+	  for (l = 0; l < p->num_ch_values; l++)
+	    free (p->value.da[offset + l]);
+	  if (idx < (c->num_event - 1))
+	    {
+	      memmove (p->value.da + offset,
+		       p->value.da + (offset + p->num_ch_values),
+		       sizeof (double *) * p->num_ch_values * (c->num_event -
+							       idx - 1));
+	    }
+	  for (l = 0; l < p->num_ch_values; l++)
+	    p->value.da[((c->num_event - 1) * p->num_ch_values) + l] = NULL;
+	  break;
+	case RA_VALUE_TYPE_CHAR_ARRAY:
+	  for (l = 0; l < p->num_ch_values; l++)
+	    {
+	      num = 0;
+	      switch (p->num_type)
 		{
-		case RA_VALUE_TYPE_SHORT:
-			if (idx < (c->num_event - 1))
-			{
-				memmove(p->value.s + offset, p->value.s + (offset+p->num_ch_values),
-					sizeof(short) * p->num_ch_values * (c->num_event - idx - 1));
-			}
-			break;
-		case RA_VALUE_TYPE_LONG:
-			if (idx < (c->num_event - 1))
-			{
-				memmove(p->value.l + offset, p->value.l + (offset+p->num_ch_values),
-					sizeof(long) * p->num_ch_values * (c->num_event - idx - 1));
-			}
-			break;
-		case RA_VALUE_TYPE_DOUBLE:
-			if (idx < (c->num_event - 1))
-			{
-				memmove(p->value.d + offset, p->value.d + (offset+p->num_ch_values),
-					sizeof(double) * p->num_ch_values * (c->num_event - idx - 1));
-			}
-			break;
-		case RA_VALUE_TYPE_CHAR:
-			for (l = 0; l < p->num_ch_values; l++)
-				free(p->value.c[offset + l]);
-			if (idx < (c->num_event - 1))
-			{
-				memmove(p->value.c + offset, p->value.c + (offset+p->num_ch_values),
-					sizeof(char *) * p->num_ch_values * (c->num_event - idx - 1));
-			}
-			for (l = 0; l < p->num_ch_values; l++)
-				p->value.c[((c->num_event-1) * p->num_ch_values) + l] = NULL;
-			break;
-		case RA_VALUE_TYPE_SHORT_ARRAY:
-			for (l = 0; l < p->num_ch_values; l++)
-				free(p->value.sa[offset + l]);
-			if (idx < (c->num_event - 1))
-			{
-				memmove(p->value.sa + offset, p->value.sa + (offset+p->num_ch_values),
-					sizeof(short *) * p->num_ch_values * (c->num_event - idx - 1));
-			}
-			for (l = 0; l < p->num_ch_values; l++)
-				p->value.sa[((c->num_event-1) * p->num_ch_values) + l] = NULL;
-			break;
-		case RA_VALUE_TYPE_LONG_ARRAY:
-			for (l = 0; l < p->num_ch_values; l++)
-				free(p->value.la[offset + l]);
-			if (idx < (c->num_event - 1))
-			{
-				memmove(p->value.la + offset, p->value.la + (offset+p->num_ch_values),
-					sizeof(long *) * p->num_ch_values * (c->num_event - idx - 1));
-			}
-			for (l = 0; l < p->num_ch_values; l++)
-				p->value.la[((c->num_event-1) * p->num_ch_values) + l] = NULL;
-			break;
-		case RA_VALUE_TYPE_DOUBLE_ARRAY:
-			for (l = 0; l < p->num_ch_values; l++)
-				free(p->value.da[offset + l]);
-			if (idx < (c->num_event - 1))
-			{
-				memmove(p->value.da + offset, p->value.da + (offset+p->num_ch_values),
-					sizeof(double *) * p->num_ch_values * (c->num_event - idx - 1));
-			}
-			for (l = 0; l < p->num_ch_values; l++)
-				p->value.da[((c->num_event-1) * p->num_ch_values) + l] = NULL;
-			break;
-		case RA_VALUE_TYPE_CHAR_ARRAY:
-			for (l = 0; l < p->num_ch_values; l++)
-			{
-				num = 0;
-				switch (p->num_type)
-				{
-				case RA_PROP_NUM_ELEM_TYPE_BYTE: num = p->num_elements.b[offset+l]; break;
-				case RA_PROP_NUM_ELEM_TYPE_LONG: num = p->num_elements.l[offset+l]; break;
-				}
-				for (m = 0; m < num; m++)
-					free(p->value.ca[offset+l][m]);
-				free(p->value.ca[offset+l]);
-			}
-			if (idx < (c->num_event - 1))
-			{
-				memmove(p->value.ca + offset, p->value.ca + (offset+p->num_ch_values),
-					sizeof(char **) * p->num_ch_values * (c->num_event - idx - 1));
-			}
-			for (l = 0; l < p->num_ch_values; l++)
-				p->value.ca[((c->num_event-1) * p->num_ch_values) + l] = NULL;
-			break;
+		case RA_PROP_NUM_ELEM_TYPE_BYTE:
+		  num = p->num_elements.b[offset + l];
+		  break;
+		case RA_PROP_NUM_ELEM_TYPE_LONG:
+		  num = p->num_elements.l[offset + l];
+		  break;
 		}
-
-		if (p->num_type == RA_PROP_NUM_ELEM_TYPE_BYTE)
-		{
-			memmove(p->num_elements.b + offset, p->num_elements.b + (offset+p->num_ch_values),
-				sizeof(unsigned char) * p->num_ch_values * (c->num_event - idx - 1));
-			for (l = 0; l < p->num_ch_values; l++)
-				p->num_elements.b[((c->num_event-1) * p->num_ch_values) + l] = 0;
-		}
-		else
-		{
-			memmove(p->num_elements.l + offset, p->num_elements.l + (offset+p->num_ch_values),
-				sizeof(long) * p->num_ch_values * (c->num_event - idx - 1));
-			for (l = 0; l < p->num_ch_values; l++)
-				p->num_elements.l[((c->num_event-1) * p->num_ch_values) + l] = 0;
-		}
-		
-		p = p->next;
+	      for (m = 0; m < num; m++)
+		free (p->value.ca[offset + l][m]);
+	      free (p->value.ca[offset + l]);
+	    }
+	  if (idx < (c->num_event - 1))
+	    {
+	      memmove (p->value.ca + offset,
+		       p->value.ca + (offset + p->num_ch_values),
+		       sizeof (char **) * p->num_ch_values * (c->num_event -
+							      idx - 1));
+	    }
+	  for (l = 0; l < p->num_ch_values; l++)
+	    p->value.ca[((c->num_event - 1) * p->num_ch_values) + l] = NULL;
+	  break;
 	}
 
-	return 0;
-} /* del_prop_values() */
+      if (p->num_type == RA_PROP_NUM_ELEM_TYPE_BYTE)
+	{
+	  memmove (p->num_elements.b + offset,
+		   p->num_elements.b + (offset + p->num_ch_values),
+		   sizeof (unsigned char) * p->num_ch_values * (c->num_event -
+								idx - 1));
+	  for (l = 0; l < p->num_ch_values; l++)
+	    p->num_elements.b[((c->num_event - 1) * p->num_ch_values) + l] =
+	      0;
+	}
+      else
+	{
+	  memmove (p->num_elements.l + offset,
+		   p->num_elements.l + (offset + p->num_ch_values),
+		   sizeof (long) * p->num_ch_values * (c->num_event - idx -
+						       1));
+	  for (l = 0; l < p->num_ch_values; l++)
+	    p->num_elements.l[((c->num_event - 1) * p->num_ch_values) + l] =
+	      0;
+	}
+
+      p = p->next;
+    }
+
+  return 0;
+}				/* del_prop_values() */
 
 
 int
-del_ev_summary(class_handle clh, long event_id)
+del_ev_summary (class_handle clh, long event_id)
 {
-	struct eval_class *c;
-	struct eval_summary *sum;
-	struct eval_sum_data *sd, *sd_next;
-	unsigned long l, cnt;
-	long *new_id;
-	
-	c = (struct eval_class *)clh;
-	sum = c->summaries;
+  struct eval_class *c;
+  struct eval_summary *sum;
+  struct eval_sum_data *sd, *sd_next;
+  unsigned long l, cnt;
+  long *new_id;
 
-	while (sum)
+  c = (struct eval_class *) clh;
+  sum = c->summaries;
+
+  while (sum)
+    {
+      sd = sum->sum;
+      while (sd)
 	{
-		sd = sum->sum;
-		while (sd)
-		{
-			if (sd->num_events <= 0)
-			{
-				sd = sd->next;
-				continue;
-			}
+	  if (sd->num_events <= 0)
+	    {
+	      sd = sd->next;
+	      continue;
+	    }
 
-			new_id = malloc(sizeof(long) * sd->num_events);
-			cnt = 0;
-			for (l = 0; l < sd->num_events; l++)
-			{
-				if (sd->event_ids[l] == event_id)
-					continue;
+	  new_id = malloc (sizeof (long) * sd->num_events);
+	  cnt = 0;
+	  for (l = 0; l < sd->num_events; l++)
+	    {
+	      if (sd->event_ids[l] == event_id)
+		continue;
 
-				new_id[cnt++] = sd->event_ids[l];
-			}
-			sd_next = sd->next;
+	      new_id[cnt++] = sd->event_ids[l];
+	    }
+	  sd_next = sd->next;
 
-			if (sd->event_ids)
-			{
-				sd->num_events = 0;
-				free(sd->event_ids);
-				sd->event_ids = NULL;
-			}
-			if (cnt > 0)
-			{
-				sd->num_events = cnt;
-				sd->event_ids = new_id;
-			}
-			else
-			{
-				free(new_id);
-				ra_sum_del_part(sum, sd->id);
-			}
+	  if (sd->event_ids)
+	    {
+	      sd->num_events = 0;
+	      free (sd->event_ids);
+	      sd->event_ids = NULL;
+	    }
+	  if (cnt > 0)
+	    {
+	      sd->num_events = cnt;
+	      sd->event_ids = new_id;
+	    }
+	  else
+	    {
+	      free (new_id);
+	      ra_sum_del_part (sum, sd->id);
+	    }
 
-			sd = sd_next;
-		}
-
-		sum = sum->next;
+	  sd = sd_next;
 	}
 
-	return 0;
-} /* del_ev_summary() */
+      sum = sum->next;
+    }
+
+  return 0;
+}				/* del_ev_summary() */
 
 
 /**
@@ -1501,43 +1565,44 @@ del_ev_summary(class_handle clh, long event_id)
  * from the event-class 'clh'. The positions are in sample-units.
  */
 LIBRAAPI int
-ra_class_get_event_pos(class_handle clh, long event_id, long *start, long *end)
+ra_class_get_event_pos (class_handle clh, long event_id, long *start,
+			long *end)
 {
-	static long last_event_idx = -1;
-	struct eval_class *c= (struct eval_class *)clh;
-	long idx;
+  static long last_event_idx = -1;
+  struct eval_class *c = (struct eval_class *) clh;
+  long idx;
 
-	if (!clh)
-		return -1;
+  if (!clh)
+    return -1;
 
-	_ra_set_error(clh, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (clh, RA_ERR_NONE, "libRASCH");
 
-	if (c->handle_id != RA_HANDLE_EVAL_CLASS)
-	{
-		_ra_set_error(clh, RA_ERR_WRONG_HANDLE, "libRASCH");
-		return -1;
-	}
-	if ((event_id < 0) || (event_id > c->last_id))
-	{
-		_ra_set_error(clh, RA_ERR_OUT_OF_RANGE, "libRASCH");
-		return -1;
-	}
+  if (c->handle_id != RA_HANDLE_EVAL_CLASS)
+    {
+      _ra_set_error (clh, RA_ERR_WRONG_HANDLE, "libRASCH");
+      return -1;
+    }
+  if ((event_id < 0) || (event_id > c->last_id))
+    {
+      _ra_set_error (clh, RA_ERR_OUT_OF_RANGE, "libRASCH");
+      return -1;
+    }
 
-	idx = get_event_idx(c, event_id, last_event_idx);
-	if (idx < 0)
-	{
-		_ra_set_error(clh, RA_ERR_WRONG_INPUT, "libRASCH");
-		return -1;
-	}
-	last_event_idx = idx;
+  idx = get_event_idx (c, event_id, last_event_idx);
+  if (idx < 0)
+    {
+      _ra_set_error (clh, RA_ERR_WRONG_INPUT, "libRASCH");
+      return -1;
+    }
+  last_event_idx = idx;
 
-	if (start)
-		*start = c->ev[idx].start;
-	if (end)
-		*end = c->ev[idx].end;
+  if (start)
+    *start = c->ev[idx].start;
+  if (end)
+    *end = c->ev[idx].end;
 
-	return 0;
-} /* ra_class_get_event_pos() */
+  return 0;
+}				/* ra_class_get_event_pos() */
 
 
 /**
@@ -1551,51 +1616,51 @@ ra_class_get_event_pos(class_handle clh, long event_id, long *start, long *end)
  * event-class 'clh' to the values 'start' and 'end'.
  */
 LIBRAAPI int
-ra_class_set_event_pos(class_handle clh, long event_id, long start, long end)
+ra_class_set_event_pos (class_handle clh, long event_id, long start, long end)
 {
-	static long last_event_idx = -1;
-	struct eval_class *c= (struct eval_class *)clh;
-	long idx;
+  static long last_event_idx = -1;
+  struct eval_class *c = (struct eval_class *) clh;
+  long idx;
 
-	if (!clh)
-		return -1;
+  if (!clh)
+    return -1;
 
-	_ra_set_error(clh, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (clh, RA_ERR_NONE, "libRASCH");
 
-	if (c->handle_id != RA_HANDLE_EVAL_CLASS)
-	{
-		_ra_set_error(clh, RA_ERR_WRONG_HANDLE, "libRASCH");
-		return -1;
-	}
-	if ((event_id < 0) || (event_id > c->last_id))
-	{
-		_ra_set_error(clh, RA_ERR_OUT_OF_RANGE, "libRASCH");
-		return -1;
-	}
+  if (c->handle_id != RA_HANDLE_EVAL_CLASS)
+    {
+      _ra_set_error (clh, RA_ERR_WRONG_HANDLE, "libRASCH");
+      return -1;
+    }
+  if ((event_id < 0) || (event_id > c->last_id))
+    {
+      _ra_set_error (clh, RA_ERR_OUT_OF_RANGE, "libRASCH");
+      return -1;
+    }
 
-	idx = get_event_idx(c, event_id, last_event_idx);
-	if (idx < 0)
-	{
-		_ra_set_error(clh, RA_ERR_WRONG_INPUT, "libRASCH");
-		return -1;
-	}
-	last_event_idx = idx;
+  idx = get_event_idx (c, event_id, last_event_idx);
+  if (idx < 0)
+    {
+      _ra_set_error (clh, RA_ERR_WRONG_INPUT, "libRASCH");
+      return -1;
+    }
+  last_event_idx = idx;
 
-	c->ev[idx].start = start;
-	c->ev[idx].end = end;
+  c->ev[idx].start = start;
+  c->ev[idx].end = end;
 
-	return 0;
-} /* ra_class_set_event_pos() */
+  return 0;
+}				/* ra_class_set_event_pos() */
 
 
 int
-comp_pos(const void* arg1, const void* arg2)
+comp_pos (const void *arg1, const void *arg2)
 {
-	struct sort_pos *b1 = (struct sort_pos *)arg1;
-	struct sort_pos *b2 = (struct sort_pos *)arg2;
+  struct sort_pos *b1 = (struct sort_pos *) arg1;
+  struct sort_pos *b2 = (struct sort_pos *) arg2;
 
-	return (b1->pos - b2->pos);
-}  /* comp_pos() */
+  return (b1->pos - b2->pos);
+}				/* comp_pos() */
 
 
 
@@ -1614,78 +1679,80 @@ comp_pos(const void* arg1, const void* arg2)
  * are returned which starts or ends inside the ROI.
  */
 LIBRAAPI int
-ra_class_get_events(class_handle clh, long start, long end, int complete, int sort, value_handle vh)
+ra_class_get_events (class_handle clh, long start, long end, int complete,
+		     int sort, value_handle vh)
 {
-	struct eval_class *c= (struct eval_class *)clh;	
-	struct sort_pos *sp = NULL;
-	long *ids;
-	unsigned long l, num;
+  struct eval_class *c = (struct eval_class *) clh;
+  struct sort_pos *sp = NULL;
+  long *ids;
+  unsigned long l, num;
 
-	if (!clh)
-		return -1;
+  if (!clh)
+    return -1;
 
-	_ra_set_error(clh, RA_ERR_NONE, "libRASCH");
-	ra_value_reset(vh);
+  _ra_set_error (clh, RA_ERR_NONE, "libRASCH");
+  ra_value_reset (vh);
 
-	if (c->handle_id != RA_HANDLE_EVAL_CLASS)
+  if (c->handle_id != RA_HANDLE_EVAL_CLASS)
+    {
+      _ra_set_error (clh, RA_ERR_WRONG_HANDLE, "libRASCH");
+      return -1;
+    }
+  if (!vh)
+    {
+      _ra_set_error (clh, RA_ERR_INFO_MISSING, "libRASCH");
+      return -1;
+    }
+
+  if ((start <= 0) && (end < 0))
+    {
+      num = c->num_event;
+      sp = (struct sort_pos *) malloc (sizeof (struct sort_pos) * num);
+      for (l = 0; l < num; l++)
 	{
-		_ra_set_error(clh, RA_ERR_WRONG_HANDLE, "libRASCH");
-		return -1;
+	  sp[l].id = c->ev[l].id;
+	  sp[l].pos = c->ev[l].start;
 	}
-	if (!vh)
+    }
+  else
+    {
+      num = 0;
+      for (l = 0; l < c->num_event; l++)
 	{
-		_ra_set_error(clh, RA_ERR_INFO_MISSING, "libRASCH");
-		return -1;
+	  if ((c->ev[l].start < start) && complete)
+	    continue;
+	  if ((end != -1) && ((c->ev[l].end > end) && complete))
+	    continue;
+	  if ((end != -1) && (c->ev[l].end < start))
+	    continue;
+	  if (c->ev[l].start > end)
+	    continue;
+
+	  num++;
+	  sp =
+	    (struct sort_pos *) realloc (sp, sizeof (struct sort_pos) * num);
+	  sp[num - 1].id = c->ev[l].id;
+	  sp[num - 1].pos = c->ev[l].start;
 	}
+    }
 
-	if ((start <= 0) && (end < 0))
-	{
-		num = c->num_event;
-		sp = (struct sort_pos *)malloc(sizeof(struct sort_pos) * num);
-		for (l = 0; l < num; l++)
-		{
-			sp[l].id = c->ev[l].id;
-			sp[l].pos = c->ev[l].start;
-		}
-	}
-	else
-	{
-		num = 0;
-		for (l = 0; l < c->num_event; l++)
-		{
-			if ((c->ev[l].start < start) && complete)
-				continue;
-			if ((end != -1) && ((c->ev[l].end > end) && complete))
-				continue;
-			if ((end != -1) && (c->ev[l].end < start))
-				continue;
-			if (c->ev[l].start > end)
-				continue;
+  if ((num > 0) && sort)
+    qsort (sp, num, sizeof (struct sort_pos), comp_pos);
 
-			num++;
-			sp = (struct sort_pos *)realloc(sp, sizeof(struct sort_pos) * num);
-			sp[num-1].id = c->ev[l].id;
-			sp[num-1].pos = c->ev[l].start;
-		}
-	}
-	
-	if ((num > 0) && sort)
-		qsort(sp, num, sizeof(struct sort_pos), comp_pos);
+  if (num > 0)
+    {
+      ids = (long *) malloc (sizeof (long) * num);
+      for (l = 0; l < num; l++)
+	ids[l] = sp[l].id;
 
-	if (num > 0)
-	{
-		ids = (long *)malloc(sizeof(long) * num);
-		for (l = 0; l < num; l++)
-			ids[l] = sp[l].id;
+      ra_value_set_long_array (vh, ids, num);
 
-		ra_value_set_long_array(vh, ids, num);
+      free (ids);
+      free (sp);
+    }
 
-		free(ids);
-		free(sp);
-	}
-
-	return 0;
-} /* ra_class_get_events() */
+  return 0;
+}				/* ra_class_get_events() */
 
 
 /**
@@ -1697,34 +1764,34 @@ ra_class_get_events(class_handle clh, long start, long end, int complete, int so
  * If the given event is the first one '-1' is returned.
  */
 LIBRAAPI long
-ra_class_get_prev_event(class_handle clh, long event_id)
+ra_class_get_prev_event (class_handle clh, long event_id)
 {
-	value_handle vh;
-	long l, num, id_prev;
-	const long *id;
+  value_handle vh;
+  long l, num, id_prev;
+  const long *id;
 
-	if (!clh)
-		return -1;
+  if (!clh)
+    return -1;
 
-	vh = ra_value_malloc();
+  vh = ra_value_malloc ();
 
-	ra_class_get_events(clh, -1, -1, 0, 1, vh);
-	id = ra_value_get_long_array(vh);
-	num = ra_value_get_num_elem(vh);
+  ra_class_get_events (clh, -1, -1, 0, 1, vh);
+  id = ra_value_get_long_array (vh);
+  num = ra_value_get_num_elem (vh);
 
-	id_prev = -1;
-	for (l = 0; l < num; l++)
+  id_prev = -1;
+  for (l = 0; l < num; l++)
+    {
+      if (id[l] == event_id)
 	{
-		if (id[l] == event_id)
-		{
-			if (l > 0)
-				id_prev = id[l-1];
-			break;
-		}
+	  if (l > 0)
+	    id_prev = id[l - 1];
+	  break;
 	}
+    }
 
-	return id_prev;
-} /* ra_class_get_prev_event() */
+  return id_prev;
+}				/* ra_class_get_prev_event() */
 
 
 /**
@@ -1736,34 +1803,34 @@ ra_class_get_prev_event(class_handle clh, long event_id)
  * If the given event is the first one '-1' is returned.
  */
 LIBRAAPI long
-ra_class_get_next_event(class_handle clh, long event_id)
+ra_class_get_next_event (class_handle clh, long event_id)
 {
-	value_handle vh;
-	long l, num, id_next;
-	const long *id;
+  value_handle vh;
+  long l, num, id_next;
+  const long *id;
 
-	if (!clh)
-		return -1;
+  if (!clh)
+    return -1;
 
-	vh = ra_value_malloc();
+  vh = ra_value_malloc ();
 
-	ra_class_get_events(clh, -1, -1, 0, 1, vh);
-	id = ra_value_get_long_array(vh);
-	num = ra_value_get_num_elem(vh);
+  ra_class_get_events (clh, -1, -1, 0, 1, vh);
+  id = ra_value_get_long_array (vh);
+  num = ra_value_get_num_elem (vh);
 
-	id_next = -1;
-	for (l = 0; l < num; l++)
+  id_next = -1;
+  for (l = 0; l < num; l++)
+    {
+      if (id[l] == event_id)
 	{
-		if (id[l] == event_id)
-		{
-			if (l < (num-1))
-				id_next = id[l+1];
-			break;
-		}
+	  if (l < (num - 1))
+	    id_next = id[l + 1];
+	  break;
 	}
+    }
 
-	return id_next;
-} /* ra_class_get_next_event() */
+  return id_next;
+}				/* ra_class_get_next_event() */
 
 
 /**
@@ -1773,34 +1840,34 @@ ra_class_get_next_event(class_handle clh, long event_id)
  * The function returns the event-class handle the event-property 'ph' belongs to.
  */
 LIBRAAPI class_handle
-ra_class_get_handle(any_handle h)
+ra_class_get_handle (any_handle h)
 {
-	struct eval_property *p;
-	struct eval_summary *s;
-	unsigned short type;
-	class_handle clh = NULL;
+  struct eval_property *p;
+  struct eval_summary *s;
+  unsigned short type;
+  class_handle clh = NULL;
 
-	if (!h)
-		return NULL;
+  if (!h)
+    return NULL;
 
-	_ra_set_error(h, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (h, RA_ERR_NONE, "libRASCH");
 
-	type = *((unsigned short *)h);
-	if (type == RA_HANDLE_EVAL_PROP)
-	{
-		p = (struct eval_property *)h;
-		clh = (class_handle)(p->evclass);
-	}
-	else if (type == RA_HANDLE_EVAL_SUMMARY)
-	{
-		s = (struct eval_summary *)h;
-		clh = (class_handle)(s->evclass);
-	}
-	else
-		_ra_set_error(h, RA_ERR_WRONG_HANDLE, "libRASCH");
-	
-	return clh;
-} /* ra_class_get_handle() */
+  type = *((unsigned short *) h);
+  if (type == RA_HANDLE_EVAL_PROP)
+    {
+      p = (struct eval_property *) h;
+      clh = (class_handle) (p->evclass);
+    }
+  else if (type == RA_HANDLE_EVAL_SUMMARY)
+    {
+      s = (struct eval_summary *) h;
+      clh = (class_handle) (s->evclass);
+    }
+  else
+    _ra_set_error (h, RA_ERR_WRONG_HANDLE, "libRASCH");
+
+  return clh;
+}				/* ra_class_get_handle() */
 
 
 /* ------------------------------ event-property functions ------------------------------ */
@@ -1827,289 +1894,291 @@ ra_class_get_handle(any_handle h)
  * If you want to use a pre-defined event-property, use ra_prop_add_predef().
  */
 LIBRAAPI prop_handle
-ra_prop_add(class_handle clh, const char *id, long value_type, const char *name,
-	    const char *desc, const char *unit, int use_minmax, double min, double max,
-	    int has_ignore_value, double ignore_value)
+ra_prop_add (class_handle clh, const char *id, long value_type,
+	     const char *name, const char *desc, const char *unit,
+	     int use_minmax, double min, double max, int has_ignore_value,
+	     double ignore_value)
 {
-	struct eval_class *c = (struct eval_class *)clh;
-	struct eval_property *p = NULL;
-	value_handle vh = NULL;
-	unsigned long l, num_ch;
-	long *ch = NULL;
+  struct eval_class *c = (struct eval_class *) clh;
+  struct eval_property *p = NULL;
+  value_handle vh = NULL;
+  unsigned long l, num_ch;
+  long *ch = NULL;
 
-	if (!clh)
-		return NULL;
+  if (!clh)
+    return NULL;
 
-	_ra_set_error(clh, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (clh, RA_ERR_NONE, "libRASCH");
 
-	if (c->handle_id != RA_HANDLE_EVAL_CLASS)
-	{
-		_ra_set_error(clh, RA_ERR_WRONG_HANDLE, "libRASCH");
-		return NULL;
-	}
-	if (id == NULL)
-	{
-		_ra_set_error(clh, RA_ERR_INFO_MISSING, "libRASCH");
-		return NULL;
-	}
+  if (c->handle_id != RA_HANDLE_EVAL_CLASS)
+    {
+      _ra_set_error (clh, RA_ERR_WRONG_HANDLE, "libRASCH");
+      return NULL;
+    }
+  if (id == NULL)
+    {
+      _ra_set_error (clh, RA_ERR_INFO_MISSING, "libRASCH");
+      return NULL;
+    }
 
-	p = calloc(1, sizeof(struct eval_property));
-	ra_list_add((void **)&(c->prop), p);
+  p = calloc (1, sizeof (struct eval_property));
+  ra_list_add ((void **) &(c->prop), p);
 
-	p->handle_id = RA_HANDLE_EVAL_PROP;
-	p->id = get_prop_id(id);
-	strncpy(p->ascii_id, id, MAX_ID_LEN);
-	p->meas = c->meas;
-	p->evclass = c;
-	p->value_type = value_type;
+  p->handle_id = RA_HANDLE_EVAL_PROP;
+  p->id = get_prop_id (id);
+  strncpy (p->ascii_id, id, MAX_ID_LEN);
+  p->meas = c->meas;
+  p->evclass = c;
+  p->value_type = value_type;
 
-	vh = ra_value_malloc();
-	if (name)
-	{
-		ra_value_set_string(vh, name);
-		if (ra_eval_attribute_set(p, "name", vh) != 0)
-			goto error;
-	}
-	if (desc)
-	{
-		ra_value_set_string(vh, desc);
-		if (ra_eval_attribute_set(p, "description", vh) != 0)
-			goto error;
-	}
-	if (unit)
-	{
-		ra_value_set_string(vh, unit);
-		if (ra_eval_attribute_set(p, "unit", vh) != 0)
-			goto error;
-	}
-	if (use_minmax)
-	{
-		ra_value_set_long(vh, 1);
-		if (ra_eval_attribute_set(p, "use-minmax", vh) != 0)
-			goto error;
-		ra_value_set_double(vh, min);
-		if (ra_eval_attribute_set(p, "min", vh) != 0)
-			goto error;
-		ra_value_set_double(vh, max);
-		if (ra_eval_attribute_set(p, "max", vh) != 0)
-			goto error;
-	}
-	if (has_ignore_value)
-	{
-		ra_value_set_long(vh, 1);
-		if (ra_eval_attribute_set(p, "has-ignore-value", vh) != 0)
-			goto error;
-		ra_value_set_double(vh, ignore_value);
-		if (ra_eval_attribute_set(p, "ignore-value", vh) != 0)
-			goto error;		
-	}
+  vh = ra_value_malloc ();
+  if (name)
+    {
+      ra_value_set_string (vh, name);
+      if (ra_eval_attribute_set (p, "name", vh) != 0)
+	goto error;
+    }
+  if (desc)
+    {
+      ra_value_set_string (vh, desc);
+      if (ra_eval_attribute_set (p, "description", vh) != 0)
+	goto error;
+    }
+  if (unit)
+    {
+      ra_value_set_string (vh, unit);
+      if (ra_eval_attribute_set (p, "unit", vh) != 0)
+	goto error;
+    }
+  if (use_minmax)
+    {
+      ra_value_set_long (vh, 1);
+      if (ra_eval_attribute_set (p, "use-minmax", vh) != 0)
+	goto error;
+      ra_value_set_double (vh, min);
+      if (ra_eval_attribute_set (p, "min", vh) != 0)
+	goto error;
+      ra_value_set_double (vh, max);
+      if (ra_eval_attribute_set (p, "max", vh) != 0)
+	goto error;
+    }
+  if (has_ignore_value)
+    {
+      ra_value_set_long (vh, 1);
+      if (ra_eval_attribute_set (p, "has-ignore-value", vh) != 0)
+	goto error;
+      ra_value_set_double (vh, ignore_value);
+      if (ra_eval_attribute_set (p, "ignore-value", vh) != 0)
+	goto error;
+    }
 
-	if (get_channels(clh, &num_ch, &ch) == 0)
-	{
-		p->num_ch_values = num_ch + 1;
-		p->ch_map = malloc(sizeof(unsigned short) * p->num_ch_values);
-		p->ch_map[0] = -1;
-		for (l = 1; l < p->num_ch_values; l++)
-			p->ch_map[l] = (short)(ch[l-1]);
-	}
-	else
-		goto error;
+  if (get_channels (clh, &num_ch, &ch) == 0)
+    {
+      p->num_ch_values = num_ch + 1;
+      p->ch_map = malloc (sizeof (unsigned short) * p->num_ch_values);
+      p->ch_map[0] = -1;
+      for (l = 1; l < p->num_ch_values; l++)
+	p->ch_map[l] = (short) (ch[l - 1]);
+    }
+  else
+    goto error;
 
-	if (alloc_prop_mem(p) != 0)
-		goto error;
+  if (alloc_prop_mem (p) != 0)
+    goto error;
 
-	ra_value_free(vh);
-	free(ch);
-	
-	return p;
+  ra_value_free (vh);
+  free (ch);
 
- error:
-	ra_prop_delete(p);
+  return p;
 
-	if (vh)
-		ra_value_free(vh);
-	if (ch)
-		free(ch);
+error:
+  ra_prop_delete (p);
 
-	return NULL;
-} /* ra_prop_add() */
+  if (vh)
+    ra_value_free (vh);
+  if (ch)
+    free (ch);
+
+  return NULL;
+}				/* ra_prop_add() */
 
 
 int
-get_channels(class_handle clh, unsigned long *num_ch, long **ch)
+get_channels (class_handle clh, unsigned long *num_ch, long **ch)
 {
-	meas_handle meas;
-	rec_handle rec;
-	value_handle vh;
-	unsigned long l, num;
-	struct eval_class *cl = (struct eval_class *)clh;
+  meas_handle meas;
+  rec_handle rec;
+  value_handle vh;
+  unsigned long l, num;
+  struct eval_class *cl = (struct eval_class *) clh;
 
-	*num_ch = 0;
-	*ch = NULL;
+  *num_ch = 0;
+  *ch = NULL;
 
-	meas = ra_meas_handle_from_any_handle(clh);
-	rec = ra_rec_get_first(meas, 0);
-	vh = ra_value_malloc();
-	if (ra_info_get(rec, RA_INFO_REC_GEN_NUM_CHANNEL_L, vh) != 0)
+  meas = ra_meas_handle_from_any_handle (clh);
+  rec = ra_rec_get_first (meas, 0);
+  vh = ra_value_malloc ();
+  if (ra_info_get (rec, RA_INFO_REC_GEN_NUM_CHANNEL_L, vh) != 0)
+    {
+      ra_value_free (vh);
+      return 0;
+    }
+
+  num = ra_value_get_long (vh);
+  *ch = malloc (sizeof (long) * num);
+  for (l = 0; l < num; l++)
+    {
+      int skip_ch = 0;
+      long ch_type = -1;
+
+      /* check if it is a real channel and not a fake one to needed to
+         get the samplerate */
+      ra_value_set_number (vh, l);
+      if (ra_info_get (rec, RA_INFO_REC_CH_NAME_C, vh) != 0)
+	continue;
+
+      if (ra_info_get (rec, RA_INFO_REC_CH_TYPE_L, vh) == 0)
+	ch_type = ra_value_get_long (vh);
+
+      /* check if channel fits to current event-class */
+      switch (cl->id)
 	{
-		ra_value_free(vh);
-		return 0;
+	case EVENT_CLASS_HEARTBEAT:
+	  if ((ch_type != RA_CH_TYPE_ECG) && (ch_type != RA_CH_TYPE_RR)
+	      && (ch_type != RA_CH_TYPE_RESP))
+	    skip_ch = 1;
+	  break;
+	case EVENT_CLASS_RR_CALIBRATION:
+	  if (ch_type != RA_CH_TYPE_RR)
+	    skip_ch = 1;
+	  break;
+	case EVENT_CLASS_ARRHYTHMIA:
+	case EVENT_CLASS_ARRHYTHMIA_ORIGINAL:
+	  skip_ch = 1;
+	  break;
+	case EVENT_CLASS_UTERINE_CONTRACTION:
+	  if (ch_type != RA_CH_TYPE_CTG_UC)
+	    skip_ch = 1;
+	  break;
+	case EVENT_CLASS_RESPIRATION:
+	  if (ch_type != RA_CH_TYPE_RESP)
+	    skip_ch = 1;
+	  break;
+	case EVENT_CLASS_ANNOT:
+	default:
+	  break;
 	}
 
-	num = ra_value_get_long(vh);
-	*ch = malloc(sizeof(long) * num);
-	for (l = 0; l < num; l++)
-	{
-		int skip_ch = 0;
-		long ch_type = -1;
+      if (skip_ch)
+	continue;
 
-		/* check if it is a real channel and not a fake one to needed to
-		   get the samplerate */
-		ra_value_set_number(vh, l);
-		if (ra_info_get(rec, RA_INFO_REC_CH_NAME_C, vh) != 0)
-			continue;
+      (*ch)[*num_ch] = l;
+      (*num_ch)++;
+    }
+  ra_value_free (vh);
 
-		if (ra_info_get(rec, RA_INFO_REC_CH_TYPE_L, vh) == 0)
-			ch_type = ra_value_get_long(vh);
+  if (*num_ch == 0)
+    {
+      free (*ch);
+      *ch = NULL;
+    }
 
-		/* check if channel fits to current event-class */
-		switch (cl->id)
-		{
-		case EVENT_CLASS_HEARTBEAT:
-			if ((ch_type != RA_CH_TYPE_ECG) && (ch_type != RA_CH_TYPE_RR) && (ch_type != RA_CH_TYPE_RESP))
-				skip_ch = 1;
-			break;
-		case EVENT_CLASS_RR_CALIBRATION:
-			if (ch_type != RA_CH_TYPE_RR)
-				skip_ch = 1;
-			break;
-		case EVENT_CLASS_ARRHYTHMIA:
-		case EVENT_CLASS_ARRHYTHMIA_ORIGINAL:
-			skip_ch = 1;
-			break;
-		case EVENT_CLASS_UTERINE_CONTRACTION:
-			if (ch_type != RA_CH_TYPE_CTG_UC)
-				skip_ch = 1;
-			break;
-		case EVENT_CLASS_RESPIRATION:
-			if (ch_type != RA_CH_TYPE_RESP)
-				skip_ch = 1;
-			break;
-		case EVENT_CLASS_ANNOT:
-		default:
-			break;
-		}
-
-		if (skip_ch)
-			continue;
-
-		(*ch)[*num_ch] = l;
-		(*num_ch)++;
-	}
-	ra_value_free(vh);
-
-	if (*num_ch == 0)
-	{
-		free(*ch);
-		*ch = NULL;
-	}
-
-	return 0;
-} /* get_channels() */
+  return 0;
+}				/* get_channels() */
 
 
 int
-alloc_prop_mem(struct eval_property *p)
+alloc_prop_mem (struct eval_property *p)
 {
-	struct eval_class *c = p->evclass;
-	size_t size;
-	
-	p->allocated_events = c->num_event;
+  struct eval_class *c = p->evclass;
+  size_t size;
 
-	switch (p->value_type)
+  p->allocated_events = c->num_event;
+
+  switch (p->value_type)
+    {
+    case RA_VALUE_TYPE_SHORT:
+      p->entry_size = sizeof (short) * p->num_ch_values;
+      if (c->num_event > 0)
 	{
-	case RA_VALUE_TYPE_SHORT:
-		p->entry_size = sizeof(short) * p->num_ch_values;
-		if (c->num_event > 0)
-		{
-			size = c->num_event * p->entry_size;
-			p->value.s = malloc(size);
-			memset(p->value.s, 0, size);
-		}
-		break;
-	case RA_VALUE_TYPE_LONG:
-		p->entry_size = sizeof(long) * p->num_ch_values;
-		if (c->num_event > 0)
-		{
-			size = c->num_event * p->entry_size;
-			p->value.l = malloc(size);		
- 			memset(p->value.l, 0, size);
-		}
-		break;
-	case RA_VALUE_TYPE_DOUBLE:
-		p->entry_size = sizeof(double) * p->num_ch_values;
-		if (c->num_event > 0)
-		{
-			size = c->num_event * p->entry_size;
-			p->value.d = malloc(size);
- 			memset(p->value.d, 0, size);
-		}
-		break;
-	case RA_VALUE_TYPE_CHAR:
-		p->entry_size = sizeof(char *) * p->num_ch_values;
-		if (c->num_event > 0)
-		{
-			size = c->num_event * p->entry_size;
-			p->value.c = malloc(size);
-			memset(p->value.c, 0, size);
-		}
-		break;
-	case RA_VALUE_TYPE_SHORT_ARRAY:
-		p->entry_size = sizeof(short *) * p->num_ch_values;
-		if (c->num_event > 0)
-		{
-			size = c->num_event * p->entry_size;
-			p->value.sa = malloc(size);
-			memset(p->value.sa, 0, size);
-		}
-		break;
-	case RA_VALUE_TYPE_LONG_ARRAY:
-		p->entry_size = sizeof(long *) * p->num_ch_values;
-		if (c->num_event > 0)
-		{
-			size = c->num_event * p->entry_size;
-			p->value.la = malloc(size);
-			memset(p->value.la, 0, size);
-		}
-		break;
-	case RA_VALUE_TYPE_DOUBLE_ARRAY:
-		p->entry_size = sizeof(double *) * p->num_ch_values;
-		if (c->num_event > 0)
-		{
-			size = c->num_event * p->entry_size;
-			p->value.da = malloc(size);
-			memset(p->value.da, 0, size);
-		}
-		break;
-	case RA_VALUE_TYPE_CHAR_ARRAY:
-		p->entry_size = sizeof(char **) * p->num_ch_values;
-		if (c->num_event > 0)
-		{
-			size = c->num_event * p->entry_size;
-			p->value.ca = malloc(size);
-			memset(p->value.ca, 0, size);
-		}
-		break;
+	  size = c->num_event * p->entry_size;
+	  p->value.s = malloc (size);
+	  memset (p->value.s, 0, size);
 	}
-	
-	/* initially we start with the byte array for holding the number
-	   of elements because most of the times only one value will be
-	   stored */
-	p->num_type = RA_PROP_NUM_ELEM_TYPE_BYTE;
-	p->num_elements.b = calloc(c->num_event * p->num_ch_values, 1);
-	
-	return 0;
-} /* alloc_prop_mem() */
+      break;
+    case RA_VALUE_TYPE_LONG:
+      p->entry_size = sizeof (long) * p->num_ch_values;
+      if (c->num_event > 0)
+	{
+	  size = c->num_event * p->entry_size;
+	  p->value.l = malloc (size);
+	  memset (p->value.l, 0, size);
+	}
+      break;
+    case RA_VALUE_TYPE_DOUBLE:
+      p->entry_size = sizeof (double) * p->num_ch_values;
+      if (c->num_event > 0)
+	{
+	  size = c->num_event * p->entry_size;
+	  p->value.d = malloc (size);
+	  memset (p->value.d, 0, size);
+	}
+      break;
+    case RA_VALUE_TYPE_CHAR:
+      p->entry_size = sizeof (char *) * p->num_ch_values;
+      if (c->num_event > 0)
+	{
+	  size = c->num_event * p->entry_size;
+	  p->value.c = malloc (size);
+	  memset (p->value.c, 0, size);
+	}
+      break;
+    case RA_VALUE_TYPE_SHORT_ARRAY:
+      p->entry_size = sizeof (short *) * p->num_ch_values;
+      if (c->num_event > 0)
+	{
+	  size = c->num_event * p->entry_size;
+	  p->value.sa = malloc (size);
+	  memset (p->value.sa, 0, size);
+	}
+      break;
+    case RA_VALUE_TYPE_LONG_ARRAY:
+      p->entry_size = sizeof (long *) * p->num_ch_values;
+      if (c->num_event > 0)
+	{
+	  size = c->num_event * p->entry_size;
+	  p->value.la = malloc (size);
+	  memset (p->value.la, 0, size);
+	}
+      break;
+    case RA_VALUE_TYPE_DOUBLE_ARRAY:
+      p->entry_size = sizeof (double *) * p->num_ch_values;
+      if (c->num_event > 0)
+	{
+	  size = c->num_event * p->entry_size;
+	  p->value.da = malloc (size);
+	  memset (p->value.da, 0, size);
+	}
+      break;
+    case RA_VALUE_TYPE_CHAR_ARRAY:
+      p->entry_size = sizeof (char **) * p->num_ch_values;
+      if (c->num_event > 0)
+	{
+	  size = c->num_event * p->entry_size;
+	  p->value.ca = malloc (size);
+	  memset (p->value.ca, 0, size);
+	}
+      break;
+    }
+
+  /* initially we start with the byte array for holding the number
+     of elements because most of the times only one value will be
+     stored */
+  p->num_type = RA_PROP_NUM_ELEM_TYPE_BYTE;
+  p->num_elements.b = calloc (c->num_event * p->num_ch_values, 1);
+
+  return 0;
+}				/* alloc_prop_mem() */
 
 
 /**
@@ -2122,53 +2191,59 @@ alloc_prop_mem(struct eval_property *p)
  * If you want to add not a pre-defined event-property, use ra_prop_add().
  */
 LIBRAAPI prop_handle
-ra_prop_add_predef(class_handle clh, const char *id)
+ra_prop_add_predef (class_handle clh, const char *id)
 {
-	prop_handle ph = NULL;
-	value_handle vh_type, vh_len, vh_name, vh_desc, vh_unit;
-	value_handle vh_use_minmax, vh_min, vh_max;
-	value_handle vh_has_ign_val, vh_ign_val;
+  prop_handle ph = NULL;
+  value_handle vh_type, vh_len, vh_name, vh_desc, vh_unit;
+  value_handle vh_use_minmax, vh_min, vh_max;
+  value_handle vh_has_ign_val, vh_ign_val;
 
-	if (!clh)
-		return NULL;
+  if (!clh)
+    return NULL;
 
-	vh_type = ra_value_malloc();
-	vh_len = ra_value_malloc();
-	vh_name = ra_value_malloc();
-	vh_desc = ra_value_malloc();
-	vh_unit = ra_value_malloc();
-	vh_use_minmax = ra_value_malloc();
-	vh_min = ra_value_malloc();
-	vh_max = ra_value_malloc();
-	vh_has_ign_val = ra_value_malloc();
-	vh_ign_val = ra_value_malloc();
+  vh_type = ra_value_malloc ();
+  vh_len = ra_value_malloc ();
+  vh_name = ra_value_malloc ();
+  vh_desc = ra_value_malloc ();
+  vh_unit = ra_value_malloc ();
+  vh_use_minmax = ra_value_malloc ();
+  vh_min = ra_value_malloc ();
+  vh_max = ra_value_malloc ();
+  vh_has_ign_val = ra_value_malloc ();
+  vh_ign_val = ra_value_malloc ();
 
-	if (fill_predef_prop_info_ascii(id, vh_type, vh_len, vh_name, vh_desc, vh_unit,
-					vh_use_minmax, vh_min, vh_max, vh_has_ign_val, vh_ign_val) != 0)
-	{
-		goto error;
-	}
-	
-	/* add property */
-	ph = ra_prop_add(clh, id, ra_value_get_long(vh_type),
-			 ra_value_get_string(vh_name), ra_value_get_string(vh_desc), ra_value_get_string(vh_unit),
-			 ra_value_get_long(vh_use_minmax), ra_value_get_double(vh_min), ra_value_get_double(vh_max),
-			 ra_value_get_long(vh_has_ign_val), ra_value_get_double(vh_ign_val));
+  if (fill_predef_prop_info_ascii
+      (id, vh_type, vh_len, vh_name, vh_desc, vh_unit, vh_use_minmax, vh_min,
+       vh_max, vh_has_ign_val, vh_ign_val) != 0)
+    {
+      goto error;
+    }
 
- error:
-	ra_value_free(vh_type);
-	ra_value_free(vh_len);
-	ra_value_free(vh_name);
-	ra_value_free(vh_desc);
-	ra_value_free(vh_unit);
-	ra_value_free(vh_use_minmax);
-	ra_value_free(vh_min);
-	ra_value_free(vh_max);
-	ra_value_free(vh_has_ign_val);
-	ra_value_free(vh_ign_val);
+  /* add property */
+  ph = ra_prop_add (clh, id, ra_value_get_long (vh_type),
+		    ra_value_get_string (vh_name),
+		    ra_value_get_string (vh_desc),
+		    ra_value_get_string (vh_unit),
+		    ra_value_get_long (vh_use_minmax),
+		    ra_value_get_double (vh_min),
+		    ra_value_get_double (vh_max),
+		    ra_value_get_long (vh_has_ign_val),
+		    ra_value_get_double (vh_ign_val));
 
-	return ph;
-} /* ra_prop_add_predef() */
+error:
+  ra_value_free (vh_type);
+  ra_value_free (vh_len);
+  ra_value_free (vh_name);
+  ra_value_free (vh_desc);
+  ra_value_free (vh_unit);
+  ra_value_free (vh_use_minmax);
+  ra_value_free (vh_min);
+  ra_value_free (vh_max);
+  ra_value_free (vh_has_ign_val);
+  ra_value_free (vh_ign_val);
+
+  return ph;
+}				/* ra_prop_add_predef() */
 
 
 /**
@@ -2178,168 +2253,172 @@ ra_prop_add_predef(class_handle clh, const char *id)
  * The function deletes the event-property 'ph'.
  */
 LIBRAAPI int
-ra_prop_delete(prop_handle ph)
+ra_prop_delete (prop_handle ph)
 {
-	struct eval_property *p = (struct eval_property *)ph;	
-	struct eval_class *c;
+  struct eval_property *p = (struct eval_property *) ph;
+  struct eval_class *c;
 
-	if (!ph)
-		return -1;
+  if (!ph)
+    return -1;
 
-	_ra_set_error(ph, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (ph, RA_ERR_NONE, "libRASCH");
 
-	if (p->handle_id != RA_HANDLE_EVAL_PROP)
-	{
-		_ra_set_error(ph, RA_ERR_WRONG_HANDLE, "libRASCH");
-		return -1;
-	}
+  if (p->handle_id != RA_HANDLE_EVAL_PROP)
+    {
+      _ra_set_error (ph, RA_ERR_WRONG_HANDLE, "libRASCH");
+      return -1;
+    }
 
 
-	/* delete allocated memory */
-	free_prop_values(p);
+  /* delete allocated memory */
+  free_prop_values (p);
 
-	if (p->ch_map)
-		free(p->ch_map);
-	switch (p->num_type)
-	{
-	case RA_PROP_NUM_ELEM_TYPE_BYTE:
-		free(p->num_elements.b);
-		break;
-	case RA_PROP_NUM_ELEM_TYPE_LONG:
-		free(p->num_elements.l);
-		break;
-	}
+  if (p->ch_map)
+    free (p->ch_map);
+  switch (p->num_type)
+    {
+    case RA_PROP_NUM_ELEM_TYPE_BYTE:
+      free (p->num_elements.b);
+      break;
+    case RA_PROP_NUM_ELEM_TYPE_LONG:
+      free (p->num_elements.l);
+      break;
+    }
 
-	/* now delete all attributes associated with this event property */
-	delete_attributes(ph);
-	
-	/* delete event-property entry */
-	c = p->evclass;
-	ra_list_del((void **)&(c->prop), p);
+  /* now delete all attributes associated with this event property */
+  delete_attributes (ph);
 
-	free(p);
+  /* delete event-property entry */
+  c = p->evclass;
+  ra_list_del ((void **) &(c->prop), p);
 
-	return 0;	
-} /* ra_prop_delete() */
+  free (p);
+
+  return 0;
+}				/* ra_prop_delete() */
 
 
 int
-free_prop_values(struct eval_property *p)
+free_prop_values (struct eval_property *p)
 {
-	unsigned long m, n, num;
-	struct eval_class *c;
+  unsigned long m, n, num;
+  struct eval_class *c;
 
-	c = p->evclass;
+  c = p->evclass;
 
-	switch (p->value_type)
+  switch (p->value_type)
+    {
+    case RA_VALUE_TYPE_SHORT:
+      free (p->value.s);
+      break;
+    case RA_VALUE_TYPE_LONG:
+      free (p->value.l);
+      break;
+    case RA_VALUE_TYPE_DOUBLE:
+      free (p->value.d);
+      break;
+    case RA_VALUE_TYPE_CHAR:
+      if (p->num_type == RA_PROP_NUM_ELEM_TYPE_BYTE)
 	{
-	case RA_VALUE_TYPE_SHORT:
-		free(p->value.s);
-		break;
-	case RA_VALUE_TYPE_LONG:
-		free(p->value.l);
-		break;
-	case RA_VALUE_TYPE_DOUBLE:
-		free(p->value.d);
-		break;
-	case RA_VALUE_TYPE_CHAR:
-		if (p->num_type == RA_PROP_NUM_ELEM_TYPE_BYTE)
-		{
-			for (m = 0; m < (p->num_ch_values * c->num_event); m++)
-			{
-				if (p->num_elements.b[m] > 0)
-					free(p->value.c[m]);
-			}
-		}
-		else
-		{
-			for (m = 0; m < (p->num_ch_values * c->num_event); m++)
-			{
-				if (p->num_elements.l[m] > 0)
-					free(p->value.c[m]);
-			}
-		}
-		free(p->value.c);
-		break;
-	case RA_VALUE_TYPE_SHORT_ARRAY:
-		if (p->num_type == RA_PROP_NUM_ELEM_TYPE_BYTE)
-		{
-			for (m = 0; m < (p->num_ch_values * c->num_event); m++)
-			{
-				if (p->num_elements.b[m] > 0)
-					free(p->value.sa[m]);
-			}
-		}
-		else
-		{
-			for (m = 0; m < (p->num_ch_values * c->num_event); m++)
-			{
-				if (p->num_elements.l[m] > 0)
-					free(p->value.sa[m]);
-			}
-		}
-		free(p->value.sa);
-		break;
-	case RA_VALUE_TYPE_LONG_ARRAY:
-		if (p->num_type == RA_PROP_NUM_ELEM_TYPE_BYTE)
-		{
-			for (m = 0; m < (p->num_ch_values * c->num_event); m++)
-			{
-				if (p->num_elements.b[m] > 0)
-					free(p->value.la[m]);
-			}
-		}
-		else
-		{
-			for (m = 0; m < (p->num_ch_values * c->num_event); m++)
-			{
-				if (p->num_elements.l[m] > 0)
-					free(p->value.la[m]);
-			}
-		}
-		free(p->value.la);
-		break;
-	case RA_VALUE_TYPE_DOUBLE_ARRAY:
-		if (p->num_type == RA_PROP_NUM_ELEM_TYPE_BYTE)
-		{
-			for (m = 0; m < (p->num_ch_values * c->num_event); m++)
-			{
-				if (p->num_elements.b[m] > 0)
-					free(p->value.da[m]);
-			}
-		}
-		else
-		{
-			for (m = 0; m < (p->num_ch_values * c->num_event); m++)
-			{
-				if (p->num_elements.l[m] > 0)
-					free(p->value.da[m]);
-			}
-		}
-		free(p->value.da);
-		break;
-	case RA_VALUE_TYPE_CHAR_ARRAY:
-		for (m = 0; m < (p->num_ch_values * c->num_event); m++)
-		{
-			num = 0;
-			switch (p->num_type)
-			{
-			case RA_PROP_NUM_ELEM_TYPE_BYTE: num = p->num_elements.b[m]; break;
-			case RA_PROP_NUM_ELEM_TYPE_LONG: num = p->num_elements.l[m]; break;
-			}
-			for (n = 0; n < num; n++)
-				free(p->value.ca[m][n]);
-			free(p->value.ca[m]);
-		}
-		free(p->value.ca);
-		break;
-	default:
-		_ra_set_error(p, RA_ERR_ERROR, "libRASCH");
-		break;
+	  for (m = 0; m < (p->num_ch_values * c->num_event); m++)
+	    {
+	      if (p->num_elements.b[m] > 0)
+		free (p->value.c[m]);
+	    }
 	}
+      else
+	{
+	  for (m = 0; m < (p->num_ch_values * c->num_event); m++)
+	    {
+	      if (p->num_elements.l[m] > 0)
+		free (p->value.c[m]);
+	    }
+	}
+      free (p->value.c);
+      break;
+    case RA_VALUE_TYPE_SHORT_ARRAY:
+      if (p->num_type == RA_PROP_NUM_ELEM_TYPE_BYTE)
+	{
+	  for (m = 0; m < (p->num_ch_values * c->num_event); m++)
+	    {
+	      if (p->num_elements.b[m] > 0)
+		free (p->value.sa[m]);
+	    }
+	}
+      else
+	{
+	  for (m = 0; m < (p->num_ch_values * c->num_event); m++)
+	    {
+	      if (p->num_elements.l[m] > 0)
+		free (p->value.sa[m]);
+	    }
+	}
+      free (p->value.sa);
+      break;
+    case RA_VALUE_TYPE_LONG_ARRAY:
+      if (p->num_type == RA_PROP_NUM_ELEM_TYPE_BYTE)
+	{
+	  for (m = 0; m < (p->num_ch_values * c->num_event); m++)
+	    {
+	      if (p->num_elements.b[m] > 0)
+		free (p->value.la[m]);
+	    }
+	}
+      else
+	{
+	  for (m = 0; m < (p->num_ch_values * c->num_event); m++)
+	    {
+	      if (p->num_elements.l[m] > 0)
+		free (p->value.la[m]);
+	    }
+	}
+      free (p->value.la);
+      break;
+    case RA_VALUE_TYPE_DOUBLE_ARRAY:
+      if (p->num_type == RA_PROP_NUM_ELEM_TYPE_BYTE)
+	{
+	  for (m = 0; m < (p->num_ch_values * c->num_event); m++)
+	    {
+	      if (p->num_elements.b[m] > 0)
+		free (p->value.da[m]);
+	    }
+	}
+      else
+	{
+	  for (m = 0; m < (p->num_ch_values * c->num_event); m++)
+	    {
+	      if (p->num_elements.l[m] > 0)
+		free (p->value.da[m]);
+	    }
+	}
+      free (p->value.da);
+      break;
+    case RA_VALUE_TYPE_CHAR_ARRAY:
+      for (m = 0; m < (p->num_ch_values * c->num_event); m++)
+	{
+	  num = 0;
+	  switch (p->num_type)
+	    {
+	    case RA_PROP_NUM_ELEM_TYPE_BYTE:
+	      num = p->num_elements.b[m];
+	      break;
+	    case RA_PROP_NUM_ELEM_TYPE_LONG:
+	      num = p->num_elements.l[m];
+	      break;
+	    }
+	  for (n = 0; n < num; n++)
+	    free (p->value.ca[m][n]);
+	  free (p->value.ca[m]);
+	}
+      free (p->value.ca);
+      break;
+    default:
+      _ra_set_error (p, RA_ERR_ERROR, "libRASCH");
+      break;
+    }
 
-	return 0;
-} /* free_prop_values() */
+  return 0;
+}				/* free_prop_values() */
 
 
 /**
@@ -2350,55 +2429,55 @@ free_prop_values(struct eval_property *p)
  * The function returns in 'vh' all event-properties available in event-class 'clh'.
  */
 LIBRAAPI int
-ra_prop_get_all(class_handle clh, value_handle vh)
+ra_prop_get_all (class_handle clh, value_handle vh)
 {
-	struct eval_class *c = (struct eval_class *)clh;
-	void ** vp;
-	long num, cnt;
-	struct eval_property *p;
+  struct eval_class *c = (struct eval_class *) clh;
+  void **vp;
+  long num, cnt;
+  struct eval_property *p;
 
-	if (!clh)
-		return -1;
+  if (!clh)
+    return -1;
 
-	_ra_set_error(clh, RA_ERR_NONE, "libRASCH");
-	ra_value_reset(vh);
+  _ra_set_error (clh, RA_ERR_NONE, "libRASCH");
+  ra_value_reset (vh);
 
-	if (c->handle_id != RA_HANDLE_EVAL_CLASS)
-	{
-		_ra_set_error(clh, RA_ERR_WRONG_HANDLE, "libRASCH");
-		return -1;
-	}
-	if (!vh)
-	{
-		_ra_set_error(clh, RA_ERR_INFO_MISSING, "libRASCH");
-		return -1;
-	}
+  if (c->handle_id != RA_HANDLE_EVAL_CLASS)
+    {
+      _ra_set_error (clh, RA_ERR_WRONG_HANDLE, "libRASCH");
+      return -1;
+    }
+  if (!vh)
+    {
+      _ra_set_error (clh, RA_ERR_INFO_MISSING, "libRASCH");
+      return -1;
+    }
 
-	num = ra_list_len(c->prop);
-	if (num <= 0)
-		return 0;
+  num = ra_list_len (c->prop);
+  if (num <= 0)
+    return 0;
 
-	vp = malloc(sizeof(void *) * num);
+  vp = malloc (sizeof (void *) * num);
 
-	p = c->prop;
-	cnt = 0;
-	while(p)
-	{
-		if (cnt >= num)
-			break;
+  p = c->prop;
+  cnt = 0;
+  while (p)
+    {
+      if (cnt >= num)
+	break;
 
-		vp[cnt] = p;
-		cnt++;
-		p = p->next;
-	}
+      vp[cnt] = p;
+      cnt++;
+      p = p->next;
+    }
 
-	if (cnt > 0)
-		ra_value_set_voidp_array(vh, (const void **)vp, cnt);
+  if (cnt > 0)
+    ra_value_set_voidp_array (vh, (const void **) vp, cnt);
 
-	free(vp);
+  free (vp);
 
-	return 0;
-} /* ra_prop_get_all() */
+  return 0;
+}				/* ra_prop_get_all() */
 
 
 /**
@@ -2410,37 +2489,37 @@ ra_prop_get_all(class_handle clh, value_handle vh)
  * If the event-property is not available 'NULL' is returned.
  */
 LIBRAAPI prop_handle
-ra_prop_get(class_handle clh, const char *id)
+ra_prop_get (class_handle clh, const char *id)
 {
-	struct eval_class *c = (struct eval_class *)clh;	
-	struct eval_property *p;
+  struct eval_class *c = (struct eval_class *) clh;
+  struct eval_property *p;
 
-	if (!clh)
-		return NULL;
+  if (!clh)
+    return NULL;
 
-	_ra_set_error(clh, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (clh, RA_ERR_NONE, "libRASCH");
 
-	if (c->handle_id != RA_HANDLE_EVAL_CLASS)
-	{
-		_ra_set_error(clh, RA_ERR_WRONG_HANDLE, "libRASCH");
-		return NULL;
-	}
-	if (!id || (id[0] == '\0'))
-	{
-		_ra_set_error(clh, RA_ERR_INFO_MISSING, "libRASCH");
-		return NULL;
-	}
+  if (c->handle_id != RA_HANDLE_EVAL_CLASS)
+    {
+      _ra_set_error (clh, RA_ERR_WRONG_HANDLE, "libRASCH");
+      return NULL;
+    }
+  if (!id || (id[0] == '\0'))
+    {
+      _ra_set_error (clh, RA_ERR_INFO_MISSING, "libRASCH");
+      return NULL;
+    }
 
-	p = c->prop;
-	while (p)
-	{
-		if (strcmp(p->ascii_id, id) == 0)
-			break;
-		p = p->next;
-	}
+  p = c->prop;
+  while (p)
+    {
+      if (strcmp (p->ascii_id, id) == 0)
+	break;
+      p = p->next;
+    }
 
-	return p;
-} /* ra_prop_get() */
+  return p;
+}				/* ra_prop_get() */
 
 
 /**
@@ -2455,129 +2534,141 @@ ra_prop_get(class_handle clh, const char *id)
  * use '-1' for the channel number.
  */
 LIBRAAPI int
-ra_prop_set_value(prop_handle ph, long event_id, long ch, value_handle vh)
+ra_prop_set_value (prop_handle ph, long event_id, long ch, value_handle vh)
 {
-	struct eval_property *p = (struct eval_property *)ph;	
-	unsigned long offset, num_elem;
-	long l, col, idx;
-	const char **ca;
-	static long last_event_idx = -1;
+  struct eval_property *p = (struct eval_property *) ph;
+  unsigned long offset, num_elem;
+  long l, col, idx;
+  const char **ca;
+  static long last_event_idx = -1;
 
-	if (!ph)
-		return -1;
+  if (!ph)
+    return -1;
 
-	_ra_set_error(ph, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (ph, RA_ERR_NONE, "libRASCH");
 
-	if (p->handle_id != RA_HANDLE_EVAL_PROP)
-	{
-		_ra_set_error(ph, RA_ERR_WRONG_HANDLE, "libRASCH");
-		return -1;
-	}
-	if (!vh || !ra_value_is_ok(vh))
-	{
-		_ra_set_error(ph, RA_ERR_INFO_MISSING, "libRASCH");
-		return -1;
-	}
-	/* TODO: think how to handle "compatible" value types */
+  if (p->handle_id != RA_HANDLE_EVAL_PROP)
+    {
+      _ra_set_error (ph, RA_ERR_WRONG_HANDLE, "libRASCH");
+      return -1;
+    }
+  if (!vh || !ra_value_is_ok (vh))
+    {
+      _ra_set_error (ph, RA_ERR_INFO_MISSING, "libRASCH");
+      return -1;
+    }
+  /* TODO: think how to handle "compatible" value types */
 /*  	if (p->value_type != ra_value_get_type(vh)) */
 /*  	{ */
 /*  		_ra_set_error(ph, RA_ERR_EVAL_WRONG_TYPE, "libRASCH"); */
 /*  		return -1; */
 /*  	} */
 
-	idx = get_event_idx(p->evclass, event_id, last_event_idx);
-	if (idx < 0)
-	{
-		_ra_set_error(ph, RA_ERR_OUT_OF_RANGE, "libRASCH");
-		return -1;
-	}
-	last_event_idx = idx;
-	
-	col = -1;
-	for (l = 0; l < (long)p->num_ch_values; l++)
-	{
-		if (p->ch_map[l] == ch)
-		{
-			col = l;
-			break;
-		}
-	}
-	if (col == -1)
-	{
-		_ra_set_error(ph, RA_ERR_OUT_OF_RANGE, "libRASCH");
-		return -1;
-	}
+  idx = get_event_idx (p->evclass, event_id, last_event_idx);
+  if (idx < 0)
+    {
+      _ra_set_error (ph, RA_ERR_OUT_OF_RANGE, "libRASCH");
+      return -1;
+    }
+  last_event_idx = idx;
 
-	offset = (idx * p->num_ch_values) + col;
-	num_elem = ra_value_get_num_elem(vh);
-	if (num_elem < 256)
+  col = -1;
+  for (l = 0; l < (long) p->num_ch_values; l++)
+    {
+      if (p->ch_map[l] == ch)
 	{
-		switch (p->num_type)
-		{
-		case RA_PROP_NUM_ELEM_TYPE_BYTE: p->num_elements.b[offset] = (unsigned char)num_elem; break;
-		case RA_PROP_NUM_ELEM_TYPE_LONG: p->num_elements.l[offset] = num_elem; break;
-		}
+	  col = l;
+	  break;
 	}
-	else
-	{
-		/* do we have the long-type array already */
-		if (p->num_type != RA_PROP_NUM_ELEM_TYPE_LONG)
-		{
-			/* switch to the long-type array */
-			unsigned long *num_elem_new = malloc(p->evclass->num_event * p->entry_size);
-			for (l = 0; l < (long)(p->evclass->num_event * p->num_ch_values); l++)
-				num_elem_new[l] = p->num_elements.b[l];
-			free(p->num_elements.b);
-			p->num_elements.l = num_elem_new;
-			p->num_type = RA_PROP_NUM_ELEM_TYPE_LONG;
-		}
-		p->num_elements.l[offset] = num_elem;
-	}
+    }
+  if (col == -1)
+    {
+      _ra_set_error (ph, RA_ERR_OUT_OF_RANGE, "libRASCH");
+      return -1;
+    }
 
-	switch (p->value_type)
+  offset = (idx * p->num_ch_values) + col;
+  num_elem = ra_value_get_num_elem (vh);
+  if (num_elem < 256)
+    {
+      switch (p->num_type)
 	{
-	case RA_VALUE_TYPE_SHORT:
-		p->value.s[offset] = ra_value_get_short(vh);
-		break;
-	case RA_VALUE_TYPE_LONG:
-		p->value.l[offset] = ra_value_get_long(vh);
-		break;
-	case RA_VALUE_TYPE_DOUBLE:
-		p->value.d[offset] = ra_value_get_double(vh);
-		break;
-	case RA_VALUE_TYPE_CHAR:
-		p->value.c[offset] = (char *)calloc((strlen(ra_value_get_string_utf8(vh)) + 1), sizeof(char));
-		strcpy(p->value.c[offset], ra_value_get_string_utf8(vh));
-		break;
-	case RA_VALUE_TYPE_SHORT_ARRAY:
-		p->value.sa[offset] = (short *)malloc(sizeof(short) * num_elem);
-		memcpy(p->value.sa[offset], ra_value_get_short_array(vh), sizeof(short) * num_elem);
-		break;
-	case RA_VALUE_TYPE_LONG_ARRAY:
-		p->value.la[offset] = (long *)malloc(sizeof(long) * num_elem);
-		memcpy(p->value.la[offset], ra_value_get_long_array(vh), sizeof(long) * num_elem);
-		break;
-	case RA_VALUE_TYPE_DOUBLE_ARRAY:
-		p->value.da[offset] = (double *)malloc(sizeof(double) * num_elem);
-		memcpy(p->value.da[offset], ra_value_get_double_array(vh), sizeof(double) * num_elem);
-		break;
-	case RA_VALUE_TYPE_CHAR_ARRAY:
-		p->value.ca[offset] = (char **)malloc(sizeof(char *) * num_elem);
-		ca = ra_value_get_string_array_utf8(vh);
-		for (l = 0; l < (long)num_elem; l++)
-		{
-			p->value.ca[offset][l] = (char *)calloc(strlen(ca[l]) + 1, sizeof(char));
-			strcpy(p->value.ca[offset][l], ca[l]);
-		}
-		break;
-	default:
-		_ra_set_error(ph, RA_ERR_ERROR, "libRASCH");
-		return -1;
+	case RA_PROP_NUM_ELEM_TYPE_BYTE:
+	  p->num_elements.b[offset] = (unsigned char) num_elem;
+	  break;
+	case RA_PROP_NUM_ELEM_TYPE_LONG:
+	  p->num_elements.l[offset] = num_elem;
+	  break;
 	}
+    }
+  else
+    {
+      /* do we have the long-type array already */
+      if (p->num_type != RA_PROP_NUM_ELEM_TYPE_LONG)
+	{
+	  /* switch to the long-type array */
+	  unsigned long *num_elem_new =
+	    malloc (p->evclass->num_event * p->entry_size);
+	  for (l = 0; l < (long) (p->evclass->num_event * p->num_ch_values);
+	       l++)
+	    num_elem_new[l] = p->num_elements.b[l];
+	  free (p->num_elements.b);
+	  p->num_elements.l = num_elem_new;
+	  p->num_type = RA_PROP_NUM_ELEM_TYPE_LONG;
+	}
+      p->num_elements.l[offset] = num_elem;
+    }
 
-	
-	return 0;
-} /* ra_prop_set_value() */
+  switch (p->value_type)
+    {
+    case RA_VALUE_TYPE_SHORT:
+      p->value.s[offset] = ra_value_get_short (vh);
+      break;
+    case RA_VALUE_TYPE_LONG:
+      p->value.l[offset] = ra_value_get_long (vh);
+      break;
+    case RA_VALUE_TYPE_DOUBLE:
+      p->value.d[offset] = ra_value_get_double (vh);
+      break;
+    case RA_VALUE_TYPE_CHAR:
+      p->value.c[offset] =
+	(char *) calloc ((strlen (ra_value_get_string_utf8 (vh)) + 1),
+			 sizeof (char));
+      strcpy (p->value.c[offset], ra_value_get_string_utf8 (vh));
+      break;
+    case RA_VALUE_TYPE_SHORT_ARRAY:
+      p->value.sa[offset] = (short *) malloc (sizeof (short) * num_elem);
+      memcpy (p->value.sa[offset], ra_value_get_short_array (vh),
+	      sizeof (short) * num_elem);
+      break;
+    case RA_VALUE_TYPE_LONG_ARRAY:
+      p->value.la[offset] = (long *) malloc (sizeof (long) * num_elem);
+      memcpy (p->value.la[offset], ra_value_get_long_array (vh),
+	      sizeof (long) * num_elem);
+      break;
+    case RA_VALUE_TYPE_DOUBLE_ARRAY:
+      p->value.da[offset] = (double *) malloc (sizeof (double) * num_elem);
+      memcpy (p->value.da[offset], ra_value_get_double_array (vh),
+	      sizeof (double) * num_elem);
+      break;
+    case RA_VALUE_TYPE_CHAR_ARRAY:
+      p->value.ca[offset] = (char **) malloc (sizeof (char *) * num_elem);
+      ca = ra_value_get_string_array_utf8 (vh);
+      for (l = 0; l < (long) num_elem; l++)
+	{
+	  p->value.ca[offset][l] =
+	    (char *) calloc (strlen (ca[l]) + 1, sizeof (char));
+	  strcpy (p->value.ca[offset][l], ca[l]);
+	}
+      break;
+    default:
+      _ra_set_error (ph, RA_ERR_ERROR, "libRASCH");
+      return -1;
+    }
+
+
+  return 0;
+}				/* ra_prop_set_value() */
 
 
 /**
@@ -2593,161 +2684,167 @@ ra_prop_set_value(prop_handle ph, long event_id, long ch, value_handle vh)
  * the same. And the number of values in 'vh' has to be the same as in 'event_id'/'ch'.
  */
 LIBRAAPI int
-ra_prop_set_value_mass(prop_handle ph, const long *event_id, const long *ch, value_handle vh)
+ra_prop_set_value_mass (prop_handle ph, const long *event_id, const long *ch,
+			value_handle vh)
 {
-	int ret;
-	struct eval_property *p = (struct eval_property *)ph;	
-	long num, l, m, *idx, *col, last_idx;
+  int ret;
+  struct eval_property *p = (struct eval_property *) ph;
+  long num, l, m, *idx, *col, last_idx;
 
-	if (!ph)
-		return -1;
+  if (!ph)
+    return -1;
 
-	_ra_set_error(ph, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (ph, RA_ERR_NONE, "libRASCH");
 
-	if (p->handle_id != RA_HANDLE_EVAL_PROP)
-	{
-		_ra_set_error(ph, RA_ERR_WRONG_HANDLE, "libRASCH");
-		return -1;
-	}
-	if (!vh || !ra_value_is_ok(vh))
-	{
-		_ra_set_error(ph, RA_ERR_INFO_MISSING, "libRASCH");
-		return -1;
-	}
-	if ((p->value_type != RA_VALUE_TYPE_SHORT) &&
-	    (p->value_type != RA_VALUE_TYPE_LONG) &&
-	    (p->value_type != RA_VALUE_TYPE_DOUBLE))
-	{
-		_ra_set_error(ph, RA_ERR_UNSUPPORTED, "libRASCH");
-		return -1;
-	}
-	if (((p->value_type == RA_VALUE_TYPE_SHORT) && (ra_value_get_type(vh) != RA_VALUE_TYPE_SHORT_ARRAY)) ||
-	    ((p->value_type == RA_VALUE_TYPE_LONG) && (ra_value_get_type(vh) != RA_VALUE_TYPE_LONG_ARRAY)) ||
-	    ((p->value_type == RA_VALUE_TYPE_DOUBLE) && (ra_value_get_type(vh) != RA_VALUE_TYPE_DOUBLE_ARRAY)))
-	{
-		_ra_set_error(ph, RA_ERR_WRONG_INPUT, "libRASCH");
-		return -1;
-	}
+  if (p->handle_id != RA_HANDLE_EVAL_PROP)
+    {
+      _ra_set_error (ph, RA_ERR_WRONG_HANDLE, "libRASCH");
+      return -1;
+    }
+  if (!vh || !ra_value_is_ok (vh))
+    {
+      _ra_set_error (ph, RA_ERR_INFO_MISSING, "libRASCH");
+      return -1;
+    }
+  if ((p->value_type != RA_VALUE_TYPE_SHORT) &&
+      (p->value_type != RA_VALUE_TYPE_LONG) &&
+      (p->value_type != RA_VALUE_TYPE_DOUBLE))
+    {
+      _ra_set_error (ph, RA_ERR_UNSUPPORTED, "libRASCH");
+      return -1;
+    }
+  if (((p->value_type == RA_VALUE_TYPE_SHORT)
+       && (ra_value_get_type (vh) != RA_VALUE_TYPE_SHORT_ARRAY))
+      || ((p->value_type == RA_VALUE_TYPE_LONG)
+	  && (ra_value_get_type (vh) != RA_VALUE_TYPE_LONG_ARRAY))
+      || ((p->value_type == RA_VALUE_TYPE_DOUBLE)
+	  && (ra_value_get_type (vh) != RA_VALUE_TYPE_DOUBLE_ARRAY)))
+    {
+      _ra_set_error (ph, RA_ERR_WRONG_INPUT, "libRASCH");
+      return -1;
+    }
 
-	num = ra_value_get_num_elem(vh);
-	idx = malloc(sizeof(long) * num);
-	col = malloc(sizeof(long) * num);
-	last_idx = -1;
-	for (l = 0; l < num; l++)
-	{
-		idx[l] = get_event_idx(p->evclass, event_id[l], last_idx);
-		last_idx = idx[l];
+  num = ra_value_get_num_elem (vh);
+  idx = malloc (sizeof (long) * num);
+  col = malloc (sizeof (long) * num);
+  last_idx = -1;
+  for (l = 0; l < num; l++)
+    {
+      idx[l] = get_event_idx (p->evclass, event_id[l], last_idx);
+      last_idx = idx[l];
 
-		col[l] = -1;
-		for (m = 0; m < (long)p->num_ch_values; m++)
-		{
-			if (p->ch_map[m] == ch[l])
-			{
-				col[l] = m;
-				break;
-			}
-		}
-		if (col[l] == -1)
-		{
-			fprintf(stderr, "eval.c: given channel (ch=%ld) is not a valid one\n", ch[l]);
-			free(idx);
-			free(col);
-			_ra_set_error(ph, RA_ERR_WRONG_INPUT, "libRASCH");
-			return -1;
-		}
-	}
-
-	switch(p->value_type)
+      col[l] = -1;
+      for (m = 0; m < (long) p->num_ch_values; m++)
 	{
-	case RA_VALUE_TYPE_SHORT:
-		ret = set_short_events_mass(p, idx, col, vh, num);
-		break;
-	case RA_VALUE_TYPE_LONG:
-		ret = set_long_events_mass(p, idx, col, vh, num);
-		break;
-	case RA_VALUE_TYPE_DOUBLE:
-		ret = set_double_events_mass(p, idx, col, vh, num);
-		break;
-	default:
-		ret = -1;
-		_ra_set_error(ph, RA_ERR_ERROR_INTERNAL, "libRASCH");
-		break;
+	  if (p->ch_map[m] == ch[l])
+	    {
+	      col[l] = m;
+	      break;
+	    }
 	}
-	
-	free(idx);
-	free(col);
-	
-	return ret;
-} /* ra_prop_set_value_mass() */
+      if (col[l] == -1)
+	{
+	  fprintf (stderr,
+		   "eval.c: given channel (ch=%ld) is not a valid one\n",
+		   ch[l]);
+	  free (idx);
+	  free (col);
+	  _ra_set_error (ph, RA_ERR_WRONG_INPUT, "libRASCH");
+	  return -1;
+	}
+    }
+
+  switch (p->value_type)
+    {
+    case RA_VALUE_TYPE_SHORT:
+      ret = set_short_events_mass (p, idx, col, vh, num);
+      break;
+    case RA_VALUE_TYPE_LONG:
+      ret = set_long_events_mass (p, idx, col, vh, num);
+      break;
+    case RA_VALUE_TYPE_DOUBLE:
+      ret = set_double_events_mass (p, idx, col, vh, num);
+      break;
+    default:
+      ret = -1;
+      _ra_set_error (ph, RA_ERR_ERROR_INTERNAL, "libRASCH");
+      break;
+    }
+
+  free (idx);
+  free (col);
+
+  return ret;
+}				/* ra_prop_set_value_mass() */
 
 
 int
-set_short_events_mass(struct eval_property *p, const long *idx, const long *col,
-		      value_handle vh, long num)
+set_short_events_mass (struct eval_property *p, const long *idx,
+		       const long *col, value_handle vh, long num)
 {
-	const short *v;
-	long l, offset;
+  const short *v;
+  long l, offset;
 
-	v = ra_value_get_short_array(vh);
+  v = ra_value_get_short_array (vh);
 
-	for (l = 0; l < num; l++)
-	{
-		long idx_c = idx[l];
-		long col_c = col[l];
+  for (l = 0; l < num; l++)
+    {
+      long idx_c = idx[l];
+      long col_c = col[l];
 
-		offset = (idx_c * p->num_ch_values) + col_c;
-		p->value.s[offset] = v[l];
-		p->num_elements.b[offset] = 1; /* only single-values are allowed in mass functions */
-	}
+      offset = (idx_c * p->num_ch_values) + col_c;
+      p->value.s[offset] = v[l];
+      p->num_elements.b[offset] = 1;	/* only single-values are allowed in mass functions */
+    }
 
-	return 0;
-} /* set_short_events_mass() */
+  return 0;
+}				/* set_short_events_mass() */
 
 
 int
-set_long_events_mass(struct eval_property *p, const long *idx, const long *col,
-		     value_handle vh, long num)
+set_long_events_mass (struct eval_property *p, const long *idx,
+		      const long *col, value_handle vh, long num)
 {
-	const long *v;
-	long l, offset;
+  const long *v;
+  long l, offset;
 
-	v = ra_value_get_long_array(vh);
+  v = ra_value_get_long_array (vh);
 
-	for (l = 0; l < num; l++)
-	{
-		long idx_c = idx[l];
-		long col_c = col[l];
+  for (l = 0; l < num; l++)
+    {
+      long idx_c = idx[l];
+      long col_c = col[l];
 
-		offset = (idx_c * p->num_ch_values) + col_c;
-		p->value.l[offset] = v[l];
-		p->num_elements.b[offset] = 1; /* only single-values are allowed in mass functions */
-	}
+      offset = (idx_c * p->num_ch_values) + col_c;
+      p->value.l[offset] = v[l];
+      p->num_elements.b[offset] = 1;	/* only single-values are allowed in mass functions */
+    }
 
-	return 0;
-} /* set_long_events_mass() */
+  return 0;
+}				/* set_long_events_mass() */
 
 
 int
-set_double_events_mass(struct eval_property *p, const long *idx, const long *col,
-		       value_handle vh, long num)
+set_double_events_mass (struct eval_property *p, const long *idx,
+			const long *col, value_handle vh, long num)
 {
-	const double *v;
-	long l, offset;
+  const double *v;
+  long l, offset;
 
-	v = ra_value_get_double_array(vh);
+  v = ra_value_get_double_array (vh);
 
-	for (l = 0; l < num; l++)
-	{
-		long idx_c = idx[l];
-		long col_c = col[l];
+  for (l = 0; l < num; l++)
+    {
+      long idx_c = idx[l];
+      long col_c = col[l];
 
-		offset = (idx_c * p->num_ch_values) + col_c;
-		p->value.d[offset] = v[l];
-		p->num_elements.b[offset] = 1; /* only single-values are allowed in mass functions */
-	}
+      offset = (idx_c * p->num_ch_values) + col_c;
+      p->value.d[offset] = v[l];
+      p->num_elements.b[offset] = 1;	/* only single-values are allowed in mass functions */
+    }
 
-	return 0;
-} /* set_double_events_mass() */
+  return 0;
+}				/* set_double_events_mass() */
 
 
 /**
@@ -2760,121 +2857,121 @@ set_double_events_mass(struct eval_property *p, const long *idx, const long *col
  * for event-id 'event_id' and event-property 'ph'.
  */
 LIBRAAPI int
-ra_prop_get_ch(prop_handle ph, long event_id, value_handle vh)
+ra_prop_get_ch (prop_handle ph, long event_id, value_handle vh)
 {
-	struct eval_property *p = (struct eval_property *)ph;
-	short *ch = NULL;
-	unsigned long l, num_valid, offset;
-	long idx;
-	static long last_event_idx;
+  struct eval_property *p = (struct eval_property *) ph;
+  short *ch = NULL;
+  unsigned long l, num_valid, offset;
+  long idx;
+  static long last_event_idx;
 
-	if (!ph)
-		return -1;
+  if (!ph)
+    return -1;
 
-	_ra_set_error(ph, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (ph, RA_ERR_NONE, "libRASCH");
 
-	if (p->handle_id != RA_HANDLE_EVAL_PROP)
+  if (p->handle_id != RA_HANDLE_EVAL_PROP)
+    {
+      _ra_set_error (ph, RA_ERR_WRONG_HANDLE, "libRASCH");
+      return -1;
+    }
+  idx = get_event_idx (p->evclass, event_id, last_event_idx);
+  if (idx < 0)
+    {
+      _ra_set_error (ph, RA_ERR_OUT_OF_RANGE, "libRASCH");
+      return -1;
+    }
+  last_event_idx = idx;
+
+  num_valid = 0;
+  ch = malloc (sizeof (short) * p->num_ch_values);
+  offset = idx * p->num_ch_values;
+  switch (p->value_type)
+    {
+    case RA_VALUE_TYPE_SHORT:
+      for (l = 0; l < p->num_ch_values; l++)
 	{
-		_ra_set_error(ph, RA_ERR_WRONG_HANDLE, "libRASCH");
-		return -1;
+	  if (p->num_elements.b[offset + l] == 0)
+	    continue;
+	  ch[num_valid] = p->ch_map[l];
+	  num_valid++;
 	}
-	idx = get_event_idx(p->evclass, event_id, last_event_idx);
-	if (idx < 0)
+      break;
+    case RA_VALUE_TYPE_LONG:
+      for (l = 0; l < p->num_ch_values; l++)
 	{
-		_ra_set_error(ph, RA_ERR_OUT_OF_RANGE, "libRASCH");
-		return -1;
+	  if (p->num_elements.b[offset + l] == 0)
+	    continue;
+	  ch[num_valid] = p->ch_map[l];
+	  num_valid++;
 	}
-	last_event_idx = idx;
-
-	num_valid = 0;
-	ch = malloc(sizeof(short) * p->num_ch_values);
-	offset = idx * p->num_ch_values;
-	switch (p->value_type)
+      break;
+    case RA_VALUE_TYPE_DOUBLE:
+      for (l = 0; l < p->num_ch_values; l++)
 	{
-	case RA_VALUE_TYPE_SHORT:
-		for (l = 0; l < p->num_ch_values; l++)
-		{
-			if (p->num_elements.b[offset+l] == 0)
-				continue;
-			ch[num_valid] = p->ch_map[l];
-			num_valid++;
-		}
-		break;
-	case RA_VALUE_TYPE_LONG:
-		for (l = 0; l < p->num_ch_values; l++)
-		{
-			if (p->num_elements.b[offset+l] == 0)
-				continue;
-			ch[num_valid] = p->ch_map[l];
-			num_valid++;
-		}
-		break;
-	case RA_VALUE_TYPE_DOUBLE:
-		for (l = 0; l < p->num_ch_values; l++)
-		{
-			if (p->num_elements.b[offset+l] == 0)
-				continue;
-			ch[num_valid] = p->ch_map[l];
-			num_valid++;
-		}
-		break;
-	case RA_VALUE_TYPE_CHAR:
-		for (l = 0; l < p->num_ch_values; l++)
-		{
-			if (p->value.c[offset+l] == NULL)
-				continue;
-			ch[num_valid] = p->ch_map[l];
-			num_valid++;
-		}
-		break;
-	case RA_VALUE_TYPE_SHORT_ARRAY:
-		for (l = 0; l < p->num_ch_values; l++)
-		{
-			if (p->value.sa[offset+l] == NULL)
-				continue;
-			ch[num_valid] = p->ch_map[l];
-			num_valid++;
-		}
-		break;
-	case RA_VALUE_TYPE_LONG_ARRAY:
-		for (l = 0; l < p->num_ch_values; l++)
-		{
-			if (p->value.la[offset+l] == NULL)
-				continue;
-			ch[num_valid] = p->ch_map[l];
-			num_valid++;
-		}
-		break;
-	case RA_VALUE_TYPE_DOUBLE_ARRAY:
-		for (l = 0; l < p->num_ch_values; l++)
-		{
-			if (p->value.da[offset+l] == NULL)
-				continue;
-			ch[num_valid] = p->ch_map[l];
-			num_valid++;
-		}
-		break;
-	case RA_VALUE_TYPE_CHAR_ARRAY:
-		for (l = 0; l < p->num_ch_values; l++)
-		{
-			if (p->value.ca[offset+l] == NULL)
-				continue;
-			ch[num_valid] = p->ch_map[l];
-			num_valid++;
-		}
-		break;
-	default:
-		_ra_set_error(ph, RA_ERR_ERROR, "libRASCH");
-		free(ch);
-		return -1;
+	  if (p->num_elements.b[offset + l] == 0)
+	    continue;
+	  ch[num_valid] = p->ch_map[l];
+	  num_valid++;
 	}
+      break;
+    case RA_VALUE_TYPE_CHAR:
+      for (l = 0; l < p->num_ch_values; l++)
+	{
+	  if (p->value.c[offset + l] == NULL)
+	    continue;
+	  ch[num_valid] = p->ch_map[l];
+	  num_valid++;
+	}
+      break;
+    case RA_VALUE_TYPE_SHORT_ARRAY:
+      for (l = 0; l < p->num_ch_values; l++)
+	{
+	  if (p->value.sa[offset + l] == NULL)
+	    continue;
+	  ch[num_valid] = p->ch_map[l];
+	  num_valid++;
+	}
+      break;
+    case RA_VALUE_TYPE_LONG_ARRAY:
+      for (l = 0; l < p->num_ch_values; l++)
+	{
+	  if (p->value.la[offset + l] == NULL)
+	    continue;
+	  ch[num_valid] = p->ch_map[l];
+	  num_valid++;
+	}
+      break;
+    case RA_VALUE_TYPE_DOUBLE_ARRAY:
+      for (l = 0; l < p->num_ch_values; l++)
+	{
+	  if (p->value.da[offset + l] == NULL)
+	    continue;
+	  ch[num_valid] = p->ch_map[l];
+	  num_valid++;
+	}
+      break;
+    case RA_VALUE_TYPE_CHAR_ARRAY:
+      for (l = 0; l < p->num_ch_values; l++)
+	{
+	  if (p->value.ca[offset + l] == NULL)
+	    continue;
+	  ch[num_valid] = p->ch_map[l];
+	  num_valid++;
+	}
+      break;
+    default:
+      _ra_set_error (ph, RA_ERR_ERROR, "libRASCH");
+      free (ch);
+      return -1;
+    }
 
-	ra_value_set_short_array(vh, ch, num_valid);
+  ra_value_set_short_array (vh, ch, num_valid);
 
-	free(ch);
+  free (ch);
 
-	return 0;
-} /* ra_prop_get_ch() */
+  return 0;
+}				/* ra_prop_get_ch() */
 
 
 /**
@@ -2889,1044 +2986,1065 @@ ra_prop_get_ch(prop_handle ph, long event_id, value_handle vh)
  * independent value use '-1' for the channel number.
  */
 LIBRAAPI int
-ra_prop_get_value(prop_handle ph, long event_id, long ch, value_handle vh)
+ra_prop_get_value (prop_handle ph, long event_id, long ch, value_handle vh)
 {
-	int ret = 0;
-	static long last_event_idx = -1;
-	struct eval_property *p = (struct eval_property *)ph;	
-	long l, idx, col, col_def, col_use, offset, num_elem;
-	int val_ok, def_ok;
+  int ret = 0;
+  static long last_event_idx = -1;
+  struct eval_property *p = (struct eval_property *) ph;
+  long l, idx, col, col_def, col_use, offset, num_elem;
+  int val_ok, def_ok;
 
-	if (!ph)
-		return -1;
+  if (!ph)
+    return -1;
 
-	_ra_set_error(ph, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (ph, RA_ERR_NONE, "libRASCH");
 
-	if (p->handle_id != RA_HANDLE_EVAL_PROP)
-	{
-		_ra_set_error(ph, RA_ERR_WRONG_HANDLE, "libRASCH");
-		return -1;
-	}
-	idx = get_event_idx(p->evclass, event_id, last_event_idx);
-	if (idx < 0)
-	{
- 		_ra_set_error(ph, RA_ERR_OUT_OF_RANGE, "libRASCH");
-		return -1;
-	}
-	last_event_idx = idx;
-	
-	col = -1;
-	col_def = 0;
-	for (l = 0; l < (long)p->num_ch_values; l++)
-	{
-		if (p->ch_map[l] == ch)
-		{
-			col = l;
-			break;
-		}
-	}
+  if (p->handle_id != RA_HANDLE_EVAL_PROP)
+    {
+      _ra_set_error (ph, RA_ERR_WRONG_HANDLE, "libRASCH");
+      return -1;
+    }
+  idx = get_event_idx (p->evclass, event_id, last_event_idx);
+  if (idx < 0)
+    {
+      _ra_set_error (ph, RA_ERR_OUT_OF_RANGE, "libRASCH");
+      return -1;
+    }
+  last_event_idx = idx;
 
-	/* check if column was found; if not then check if overall-value is available and then use this value */
+  col = -1;
+  col_def = 0;
+  for (l = 0; l < (long) p->num_ch_values; l++)
+    {
+      if (p->ch_map[l] == ch)
+	{
+	  col = l;
+	  break;
+	}
+    }
 
-	val_ok = def_ok = 0;
-	offset = idx * p->num_ch_values;
-	switch (p->value_type)
-	{
-	case RA_VALUE_TYPE_SHORT:
-		if (p->num_elements.b[offset] > 0)
-			def_ok = 1;
-		if ((col >= 0) && (p->num_elements.b[offset+col] > 0))
-			val_ok = 1;
-		break;
-	case RA_VALUE_TYPE_LONG:
-		if (p->num_elements.b[offset] > 0)
-			def_ok = 1;
-		if ((col >= 0) && (p->num_elements.b[offset+col] > 0))
-			val_ok = 1;
-		break;
-	case RA_VALUE_TYPE_DOUBLE:
-		if (p->num_elements.b[offset] > 0)
-			def_ok = 1;
-		if ((col >= 0) && (p->num_elements.b[offset+col] > 0))
-			val_ok = 1;
-		break;
-	case RA_VALUE_TYPE_CHAR:
-		if (p->value.c[offset] != NULL)
-			def_ok = 1;
-		if ((col >= 0) && (p->value.c[offset+col] != NULL))
-			val_ok = 1;
-		break;
-	case RA_VALUE_TYPE_SHORT_ARRAY:
-		if (p->value.sa[offset] != NULL)
-			def_ok = 1;
-		if ((col >= 0) && (p->value.sa[offset+col] != NULL))
-			val_ok = 1;
-		break;
-	case RA_VALUE_TYPE_LONG_ARRAY:
-		if (p->value.la[offset] != NULL)
-			def_ok = 1;
-		if ((col >= 0) && (p->value.la[offset+col] != NULL))
-			val_ok = 1;
-		break;
-	case RA_VALUE_TYPE_DOUBLE_ARRAY:
-		if (p->value.da[offset] != NULL)
-			def_ok = 1;
-		if ((col >= 0) && (p->value.da[offset+col] != NULL))
-			val_ok = 1;
-		break;
-	case RA_VALUE_TYPE_CHAR_ARRAY:
-		if (p->value.ca[offset] != NULL)
-			def_ok = 1;
-		if ((col >= 0) && (p->value.ca[offset+col] != NULL))
-			val_ok = 1;
-		break;
-	default:
-		_ra_set_error(ph, RA_ERR_ERROR, "libRASCH");
-		return -1;
-	}
+  /* check if column was found; if not then check if overall-value is available and then use this value */
 
-	if (!def_ok && !val_ok)
-	{
- 		_ra_set_error(ph, RA_ERR_OUT_OF_RANGE, "libRASCH");
-		return -1;
-	}
+  val_ok = def_ok = 0;
+  offset = idx * p->num_ch_values;
+  switch (p->value_type)
+    {
+    case RA_VALUE_TYPE_SHORT:
+      if (p->num_elements.b[offset] > 0)
+	def_ok = 1;
+      if ((col >= 0) && (p->num_elements.b[offset + col] > 0))
+	val_ok = 1;
+      break;
+    case RA_VALUE_TYPE_LONG:
+      if (p->num_elements.b[offset] > 0)
+	def_ok = 1;
+      if ((col >= 0) && (p->num_elements.b[offset + col] > 0))
+	val_ok = 1;
+      break;
+    case RA_VALUE_TYPE_DOUBLE:
+      if (p->num_elements.b[offset] > 0)
+	def_ok = 1;
+      if ((col >= 0) && (p->num_elements.b[offset + col] > 0))
+	val_ok = 1;
+      break;
+    case RA_VALUE_TYPE_CHAR:
+      if (p->value.c[offset] != NULL)
+	def_ok = 1;
+      if ((col >= 0) && (p->value.c[offset + col] != NULL))
+	val_ok = 1;
+      break;
+    case RA_VALUE_TYPE_SHORT_ARRAY:
+      if (p->value.sa[offset] != NULL)
+	def_ok = 1;
+      if ((col >= 0) && (p->value.sa[offset + col] != NULL))
+	val_ok = 1;
+      break;
+    case RA_VALUE_TYPE_LONG_ARRAY:
+      if (p->value.la[offset] != NULL)
+	def_ok = 1;
+      if ((col >= 0) && (p->value.la[offset + col] != NULL))
+	val_ok = 1;
+      break;
+    case RA_VALUE_TYPE_DOUBLE_ARRAY:
+      if (p->value.da[offset] != NULL)
+	def_ok = 1;
+      if ((col >= 0) && (p->value.da[offset + col] != NULL))
+	val_ok = 1;
+      break;
+    case RA_VALUE_TYPE_CHAR_ARRAY:
+      if (p->value.ca[offset] != NULL)
+	def_ok = 1;
+      if ((col >= 0) && (p->value.ca[offset + col] != NULL))
+	val_ok = 1;
+      break;
+    default:
+      _ra_set_error (ph, RA_ERR_ERROR, "libRASCH");
+      return -1;
+    }
 
-	col_use = col;
-	if (!val_ok)
-	{
-		col_use = col_def;
-		ret = RA_WARN_CH_INDEP_PROP_VALUE;
-	}
+  if (!def_ok && !val_ok)
+    {
+      _ra_set_error (ph, RA_ERR_OUT_OF_RANGE, "libRASCH");
+      return -1;
+    }
 
-	/* get value */
-	offset = (idx * p->num_ch_values) + col_use;
-	num_elem = 0;
-	switch (p->num_type)
-	{
-	case RA_PROP_NUM_ELEM_TYPE_BYTE: num_elem = p->num_elements.b[offset]; break;
-	case RA_PROP_NUM_ELEM_TYPE_LONG: num_elem = p->num_elements.l[offset]; break;
-	}
-	switch (p->value_type)
-	{
-	case RA_VALUE_TYPE_SHORT:
-		ra_value_set_short(vh, p->value.s[offset]);
-		break;
-	case RA_VALUE_TYPE_LONG:
-		ra_value_set_long(vh, p->value.l[offset]);
-		break;
-	case RA_VALUE_TYPE_DOUBLE:
-		ra_value_set_double(vh, p->value.d[offset]);
-		break;
-	case RA_VALUE_TYPE_CHAR:
-		ra_value_set_string_utf8(vh, p->value.c[offset]);
-		break;
-	case RA_VALUE_TYPE_SHORT_ARRAY:
-		ra_value_set_short_array(vh, p->value.sa[offset], num_elem);
-		break;
-	case RA_VALUE_TYPE_LONG_ARRAY:
-		ra_value_set_long_array(vh, p->value.la[offset], num_elem);
-		break;
-	case RA_VALUE_TYPE_DOUBLE_ARRAY:
-		ra_value_set_double_array(vh, p->value.da[offset], num_elem);
-		break;
-	case RA_VALUE_TYPE_CHAR_ARRAY:
-		ra_value_set_string_array_utf8(vh, (const char **)p->value.ca[offset], num_elem);
-		break;
-	default:
-		_ra_set_error(ph, RA_ERR_ERROR, "libRASCH");
-		return -1;
-	}
-	
-	return ret;
-} /* ra_prop_get_value() */
+  col_use = col;
+  if (!val_ok)
+    {
+      col_use = col_def;
+      ret = RA_WARN_CH_INDEP_PROP_VALUE;
+    }
+
+  /* get value */
+  offset = (idx * p->num_ch_values) + col_use;
+  num_elem = 0;
+  switch (p->num_type)
+    {
+    case RA_PROP_NUM_ELEM_TYPE_BYTE:
+      num_elem = p->num_elements.b[offset];
+      break;
+    case RA_PROP_NUM_ELEM_TYPE_LONG:
+      num_elem = p->num_elements.l[offset];
+      break;
+    }
+  switch (p->value_type)
+    {
+    case RA_VALUE_TYPE_SHORT:
+      ra_value_set_short (vh, p->value.s[offset]);
+      break;
+    case RA_VALUE_TYPE_LONG:
+      ra_value_set_long (vh, p->value.l[offset]);
+      break;
+    case RA_VALUE_TYPE_DOUBLE:
+      ra_value_set_double (vh, p->value.d[offset]);
+      break;
+    case RA_VALUE_TYPE_CHAR:
+      ra_value_set_string_utf8 (vh, p->value.c[offset]);
+      break;
+    case RA_VALUE_TYPE_SHORT_ARRAY:
+      ra_value_set_short_array (vh, p->value.sa[offset], num_elem);
+      break;
+    case RA_VALUE_TYPE_LONG_ARRAY:
+      ra_value_set_long_array (vh, p->value.la[offset], num_elem);
+      break;
+    case RA_VALUE_TYPE_DOUBLE_ARRAY:
+      ra_value_set_double_array (vh, p->value.da[offset], num_elem);
+      break;
+    case RA_VALUE_TYPE_CHAR_ARRAY:
+      ra_value_set_string_array_utf8 (vh, (const char **) p->value.ca[offset],
+				      num_elem);
+      break;
+    default:
+      _ra_set_error (ph, RA_ERR_ERROR, "libRASCH");
+      return -1;
+    }
+
+  return ret;
+}				/* ra_prop_get_value() */
 
 
 LIBRAAPI int
-ra_prop_get_value_some(prop_handle ph, long *event_ids, long num_events, long ch, short *ok, value_handle vh)
+ra_prop_get_value_some (prop_handle ph, long *event_ids, long num_events,
+			long ch, short *ok, value_handle vh)
 {
-	int ret = 0;
-	struct eval_property *p = (struct eval_property *)ph;	
-	long l, m, idx, last_idx, col, offset;
-	short *s_values = NULL;
-	long *l_values = NULL;
-	double *d_values = NULL;
-	char **strings = NULL;
+  int ret = 0;
+  struct eval_property *p = (struct eval_property *) ph;
+  long l, m, idx, last_idx, col, offset;
+  short *s_values = NULL;
+  long *l_values = NULL;
+  double *d_values = NULL;
+  char **strings = NULL;
 
-	if (!ph)
-		return -1;
+  if (!ph)
+    return -1;
 
-	_ra_set_error(ph, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (ph, RA_ERR_NONE, "libRASCH");
 
-	if (p->handle_id != RA_HANDLE_EVAL_PROP)
+  if (p->handle_id != RA_HANDLE_EVAL_PROP)
+    {
+      _ra_set_error (ph, RA_ERR_WRONG_HANDLE, "libRASCH");
+      return -1;
+    }
+
+  switch (p->value_type)
+    {
+    case RA_VALUE_TYPE_SHORT:
+      s_values = malloc (sizeof (short) * num_events);
+      break;
+    case RA_VALUE_TYPE_LONG:
+      l_values = malloc (sizeof (long) * num_events);
+      break;
+    case RA_VALUE_TYPE_DOUBLE:
+      d_values = malloc (sizeof (double) * num_events);
+      break;
+    case RA_VALUE_TYPE_CHAR:
+      strings = calloc (num_events, sizeof (char **));
+      break;
+    default:
+      ret = -1;
+      _ra_set_error (ph, RA_ERR_UNSUPPORTED, "libRASCH");
+      return -1;
+    }
+
+  col = -1;
+  for (m = 0; m < (long) p->num_ch_values; m++)
+    {
+      if (p->ch_map[m] == ch)
 	{
-		_ra_set_error(ph, RA_ERR_WRONG_HANDLE, "libRASCH");
-		return -1;
+	  col = m;
+	  break;
 	}
+    }
+  if (col == -1)
+    {
+      _ra_set_error (ph, RA_ERR_OUT_OF_RANGE, "libRASCH");
+      return -1;
+    }
 
-	switch (p->value_type)
+  last_idx = -1;
+  for (l = 0; l < num_events; l++)
+    {
+      idx = get_event_idx (p->evclass, event_ids[l], last_idx);
+      if (idx < 0)
 	{
-	case RA_VALUE_TYPE_SHORT:
-		s_values = malloc(sizeof(short) * num_events);
-		break;
-	case RA_VALUE_TYPE_LONG:
-		l_values = malloc(sizeof(long) * num_events);
-		break;
-	case RA_VALUE_TYPE_DOUBLE:
-		d_values = malloc(sizeof(double) * num_events);
-		break;
-	case RA_VALUE_TYPE_CHAR:
-		strings = calloc(num_events, sizeof(char **));
-		break;
-	default:
-		ret = -1;
-		_ra_set_error(ph, RA_ERR_UNSUPPORTED, "libRASCH");
-		return -1;
+	  _ra_set_error (ph, RA_ERR_OUT_OF_RANGE, "libRASCH");
+	  return -1;
 	}
+      last_idx = idx;
 
-	col = -1;
-	for (m = 0; m < (long)p->num_ch_values; m++)
-	{
-		if (p->ch_map[m] == ch)
-		{
-			col = m;
-			break;
-		}
-	}
-	if (col == -1)
-	{
-		_ra_set_error(ph, RA_ERR_OUT_OF_RANGE, "libRASCH");
-		return -1;
-	}
-
-	last_idx = -1;
-	for (l = 0; l < num_events; l++)
-	{
-		idx = get_event_idx(p->evclass, event_ids[l], last_idx);
-		if (idx < 0)
-		{
-			_ra_set_error(ph, RA_ERR_OUT_OF_RANGE, "libRASCH");
-			return -1;
-		}
-		last_idx = idx;
-
-		offset = idx * p->num_ch_values + col;
-		switch (p->value_type)
-		{
-		case RA_VALUE_TYPE_SHORT:
-			if (p->num_elements.b[offset] > 0)
-			{
-				s_values[l] = p->value.s[offset];
-				ok[l] = 1;
-			}
-			break;
-		case RA_VALUE_TYPE_LONG:
-			if (p->num_elements.b[offset] > 0)
-			{
-				l_values[l] = p->value.l[offset];
-				ok[l] = 1;
-			}
-			break;
-		case RA_VALUE_TYPE_DOUBLE:
-			if (p->num_elements.b[offset] > 0)
-			{
-				d_values[l] = p->value.d[offset];
-				ok[l] = 1;
-			}
-			break;
-		case RA_VALUE_TYPE_CHAR:
-			if (p->value.c[offset] != NULL)
-			{
-				strings[l] = malloc(sizeof(char) * (strlen(p->value.c[offset])+1));
-				strcpy(strings[l], p->value.c[offset]);
-				ok[l] = 1;
-			}
-			break;
-		}
-	}
-	
-	switch (p->value_type)
+      offset = idx * p->num_ch_values + col;
+      switch (p->value_type)
 	{
 	case RA_VALUE_TYPE_SHORT:
-		ra_value_set_short_array(vh, s_values, num_events);
-		free(s_values);
-		break;
+	  if (p->num_elements.b[offset] > 0)
+	    {
+	      s_values[l] = p->value.s[offset];
+	      ok[l] = 1;
+	    }
+	  break;
 	case RA_VALUE_TYPE_LONG:
-		ra_value_set_long_array(vh, l_values, num_events);
-		free(l_values);
-		break;
+	  if (p->num_elements.b[offset] > 0)
+	    {
+	      l_values[l] = p->value.l[offset];
+	      ok[l] = 1;
+	    }
+	  break;
 	case RA_VALUE_TYPE_DOUBLE:
-		ra_value_set_double_array(vh, d_values, num_events);
-		free(d_values);
-		break;
+	  if (p->num_elements.b[offset] > 0)
+	    {
+	      d_values[l] = p->value.d[offset];
+	      ok[l] = 1;
+	    }
+	  break;
 	case RA_VALUE_TYPE_CHAR:
-		ra_value_set_string_array_utf8(vh, (const char **)strings, num_events);
-		for (l = 0; l < num_events; l++)
-		{
-			if (strings[l] != NULL)
-				free(strings[l]);
-		}
-		free(strings);
-		break;
+	  if (p->value.c[offset] != NULL)
+	    {
+	      strings[l] =
+		malloc (sizeof (char) * (strlen (p->value.c[offset]) + 1));
+	      strcpy (strings[l], p->value.c[offset]);
+	      ok[l] = 1;
+	    }
+	  break;
 	}
+    }
 
-	return ret;
-} /* ra_prop_get_value_some() */
+  switch (p->value_type)
+    {
+    case RA_VALUE_TYPE_SHORT:
+      ra_value_set_short_array (vh, s_values, num_events);
+      free (s_values);
+      break;
+    case RA_VALUE_TYPE_LONG:
+      ra_value_set_long_array (vh, l_values, num_events);
+      free (l_values);
+      break;
+    case RA_VALUE_TYPE_DOUBLE:
+      ra_value_set_double_array (vh, d_values, num_events);
+      free (d_values);
+      break;
+    case RA_VALUE_TYPE_CHAR:
+      ra_value_set_string_array_utf8 (vh, (const char **) strings,
+				      num_events);
+      for (l = 0; l < num_events; l++)
+	{
+	  if (strings[l] != NULL)
+	    free (strings[l]);
+	}
+      free (strings);
+      break;
+    }
+
+  return ret;
+}				/* ra_prop_get_value_some() */
 
 
 LIBRAAPI int
-ra_prop_get_value_all(prop_handle ph, value_handle id, value_handle ch, value_handle value)
+ra_prop_get_value_all (prop_handle ph, value_handle id, value_handle ch,
+		       value_handle value)
 {
-	int ret;
-	struct eval_property *p = (struct eval_property *)ph;	
-	long num_complete;
-	long *event_id = NULL;
-	long *ch_num = NULL;
-	
-	if (!ph)
-		return -1;
+  int ret;
+  struct eval_property *p = (struct eval_property *) ph;
+  long num_complete;
+  long *event_id = NULL;
+  long *ch_num = NULL;
 
-	_ra_set_error(ph, RA_ERR_NONE, "libRASCH");
+  if (!ph)
+    return -1;
 
-	if (!value)
-	{
-		_ra_set_error(ph, RA_ERR_INFO_MISSING, "libRASCH");
-		return -1;
-	}
+  _ra_set_error (ph, RA_ERR_NONE, "libRASCH");
 
-	if (p->handle_id != RA_HANDLE_EVAL_PROP)
-	{
-		_ra_set_error(ph, RA_ERR_WRONG_HANDLE, "libRASCH");
-		return -1;
-	}
-	if ((p->value_type != RA_VALUE_TYPE_SHORT) &&
-	    (p->value_type != RA_VALUE_TYPE_LONG) &&
-	    (p->value_type != RA_VALUE_TYPE_DOUBLE))
-	{
-		_ra_set_error(ph, RA_ERR_UNSUPPORTED, "libRASCH");
-		return -1;
-	}
+  if (!value)
+    {
+      _ra_set_error (ph, RA_ERR_INFO_MISSING, "libRASCH");
+      return -1;
+    }
 
-	num_complete = p->evclass->num_event * p->num_ch_values;
+  if (p->handle_id != RA_HANDLE_EVAL_PROP)
+    {
+      _ra_set_error (ph, RA_ERR_WRONG_HANDLE, "libRASCH");
+      return -1;
+    }
+  if ((p->value_type != RA_VALUE_TYPE_SHORT) &&
+      (p->value_type != RA_VALUE_TYPE_LONG) &&
+      (p->value_type != RA_VALUE_TYPE_DOUBLE))
+    {
+      _ra_set_error (ph, RA_ERR_UNSUPPORTED, "libRASCH");
+      return -1;
+    }
 
-	/* if no id AND ch values are wanted, skip the step to get them */
-	if ((id != NULL) || (ch != NULL))
-	{
-		event_id = malloc(sizeof(long) * num_complete);
-		ch_num = malloc(sizeof(long) * num_complete);
-	}
-	else
-		event_id = ch_num = NULL;
+  num_complete = p->evclass->num_event * p->num_ch_values;
 
-	switch (p->value_type)
-	{
-	case RA_VALUE_TYPE_SHORT:
-		ret = get_short_events_all(p, value, event_id, ch_num, num_complete);
-		break;
-	case RA_VALUE_TYPE_LONG:
-		ret = get_long_events_all(p, value, event_id, ch_num, num_complete);
-		break;
-	case RA_VALUE_TYPE_DOUBLE:
-		ret = get_double_events_all(p, value, event_id, ch_num, num_complete);
-		break;
-	default:
-		ret = -1;
-		_ra_set_error(ph, RA_ERR_ERROR_INTERNAL, "libRASCH");
-		return -1;
-	}
-	if (id && event_id)
-		ra_value_set_long_array(id, event_id, ra_value_get_num_elem(value));
-	free(event_id);
+  /* if no id AND ch values are wanted, skip the step to get them */
+  if ((id != NULL) || (ch != NULL))
+    {
+      event_id = malloc (sizeof (long) * num_complete);
+      ch_num = malloc (sizeof (long) * num_complete);
+    }
+  else
+    event_id = ch_num = NULL;
 
-	if (ch && ch_num)
-		ra_value_set_long_array(ch, ch_num, ra_value_get_num_elem(value));
-	free(ch_num);
-	
-	return ret;
-} /* ra_prop_get_value_all() */
+  switch (p->value_type)
+    {
+    case RA_VALUE_TYPE_SHORT:
+      ret = get_short_events_all (p, value, event_id, ch_num, num_complete);
+      break;
+    case RA_VALUE_TYPE_LONG:
+      ret = get_long_events_all (p, value, event_id, ch_num, num_complete);
+      break;
+    case RA_VALUE_TYPE_DOUBLE:
+      ret = get_double_events_all (p, value, event_id, ch_num, num_complete);
+      break;
+    default:
+      ret = -1;
+      _ra_set_error (ph, RA_ERR_ERROR_INTERNAL, "libRASCH");
+      return -1;
+    }
+  if (id && event_id)
+    ra_value_set_long_array (id, event_id, ra_value_get_num_elem (value));
+  free (event_id);
+
+  if (ch && ch_num)
+    ra_value_set_long_array (ch, ch_num, ra_value_get_num_elem (value));
+  free (ch_num);
+
+  return ret;
+}				/* ra_prop_get_value_all() */
 
 
 int
-get_short_events_all(struct eval_property *p, value_handle value, long *event_id,
-		     long *ch_num, long num)
+get_short_events_all (struct eval_property *p, value_handle value,
+		      long *event_id, long *ch_num, long num)
 {
-	short *v;
-	unsigned long l, m, curr, offset;
+  short *v;
+  unsigned long l, m, curr, offset;
 
-	v = malloc(sizeof(short) * num);
+  v = malloc (sizeof (short) * num);
 
-	curr = 0;
-	for (l = 0; l < p->evclass->num_event; l++)
+  curr = 0;
+  for (l = 0; l < p->evclass->num_event; l++)
+    {
+      offset = l * p->num_ch_values;
+      for (m = 0; m < p->num_ch_values; m++)
 	{
-		offset = l * p->num_ch_values;
-		for (m = 0; m < p->num_ch_values; m++)
-		{
-			if (p->num_elements.b[offset+m] == 0)
-				continue;
+	  if (p->num_elements.b[offset + m] == 0)
+	    continue;
 
-			v[curr] = p->value.s[offset+m];
-			if (event_id)
-				event_id[curr] = p->evclass->ev[l].id;
-			if (ch_num)
-				ch_num[curr] = p->ch_map[m];
-			curr++;
-		}
+	  v[curr] = p->value.s[offset + m];
+	  if (event_id)
+	    event_id[curr] = p->evclass->ev[l].id;
+	  if (ch_num)
+	    ch_num[curr] = p->ch_map[m];
+	  curr++;
 	}
-	ra_value_set_short_array(value, v, curr);
+    }
+  ra_value_set_short_array (value, v, curr);
 
-	free(v);
+  free (v);
 
-	return 0;
-} /* get_short_events_all() */
+  return 0;
+}				/* get_short_events_all() */
 
 
 int
-get_long_events_all(struct eval_property *p, value_handle value, long *event_id,
-		     long *ch_num, long num)
+get_long_events_all (struct eval_property *p, value_handle value,
+		     long *event_id, long *ch_num, long num)
 {
-	long *v;
-	unsigned long l, m, curr, offset;
+  long *v;
+  unsigned long l, m, curr, offset;
 
-	v = malloc(sizeof(long) * num);
+  v = malloc (sizeof (long) * num);
 
-	curr = 0;
-	for (l = 0; l < p->evclass->num_event; l++)
+  curr = 0;
+  for (l = 0; l < p->evclass->num_event; l++)
+    {
+      offset = l * p->num_ch_values;
+      for (m = 0; m < p->num_ch_values; m++)
 	{
-		offset = l * p->num_ch_values;
-		for (m = 0; m < p->num_ch_values; m++)
-		{
-			if (p->num_elements.b[offset+m] == 0)
-				continue;
+	  if (p->num_elements.b[offset + m] == 0)
+	    continue;
 
-			v[curr] = p->value.l[offset+m];
-			if (event_id)
-				event_id[curr] = p->evclass->ev[l].id;
-			if (ch_num)
-				ch_num[curr] = p->ch_map[m];
-			curr++;
-		}
+	  v[curr] = p->value.l[offset + m];
+	  if (event_id)
+	    event_id[curr] = p->evclass->ev[l].id;
+	  if (ch_num)
+	    ch_num[curr] = p->ch_map[m];
+	  curr++;
 	}
-	ra_value_set_long_array(value, v, curr);
+    }
+  ra_value_set_long_array (value, v, curr);
 
-	free(v);
+  free (v);
 
-	return 0;
-} /* get_long_events_all() */
+  return 0;
+}				/* get_long_events_all() */
 
 
 int
-get_double_events_all(struct eval_property *p, value_handle value, long *event_id,
-		     long *ch_num, long num)
+get_double_events_all (struct eval_property *p, value_handle value,
+		       long *event_id, long *ch_num, long num)
 {
-	double *v;
-	unsigned long l, m, curr, offset;
+  double *v;
+  unsigned long l, m, curr, offset;
 
-	v = malloc(sizeof(double) * num);
+  v = malloc (sizeof (double) * num);
 
-	curr = 0;
-	for (l = 0; l < p->evclass->num_event; l++)
+  curr = 0;
+  for (l = 0; l < p->evclass->num_event; l++)
+    {
+      offset = l * p->num_ch_values;
+      for (m = 0; m < p->num_ch_values; m++)
 	{
-		offset = l * p->num_ch_values;
-		for (m = 0; m < p->num_ch_values; m++)
-		{
-			if (p->num_elements.b[offset+m] == 0)
-				continue;
+	  if (p->num_elements.b[offset + m] == 0)
+	    continue;
 
-			v[curr] = p->value.d[offset+m];
-			if (event_id)
-				event_id[curr] = p->evclass->ev[l].id;
-			if (ch_num)
-				ch_num[curr] = p->ch_map[m];
-			curr++;
-		}
+	  v[curr] = p->value.d[offset + m];
+	  if (event_id)
+	    event_id[curr] = p->evclass->ev[l].id;
+	  if (ch_num)
+	    ch_num[curr] = p->ch_map[m];
+	  curr++;
 	}
-	ra_value_set_double_array(value, v, curr);
+    }
+  ra_value_set_double_array (value, v, curr);
 
-	free(v);
+  free (v);
 
-	return 0;
-} /* get_double_events_all() */
+  return 0;
+}				/* get_double_events_all() */
 
 
 LIBRAAPI int
-ra_prop_get_events(prop_handle ph, value_handle min, value_handle max, long ch, value_handle vh)
+ra_prop_get_events (prop_handle ph, value_handle min, value_handle max,
+		    long ch, value_handle vh)
 {
-	int ret = -1;
-	struct eval_property *p = (struct eval_property *)ph;	
-	long l, m, col, offset;
-	int use_min, use_max;	
-	struct eval_class *cl = p->evclass;
-	long *events, num_events;	
-	short min_sval, max_sval;
-	long min_val, max_val;
-	double min_dval, max_dval;
+  int ret = -1;
+  struct eval_property *p = (struct eval_property *) ph;
+  long l, m, col, offset;
+  int use_min, use_max;
+  struct eval_class *cl = p->evclass;
+  long *events, num_events;
+  short min_sval, max_sval;
+  long min_val, max_val;
+  double min_dval, max_dval;
 
-	if (!ph)
-		return -1;
+  if (!ph)
+    return -1;
 
-	min_sval = max_sval = 0;
-	min_val = max_val = 0;
-	min_dval = max_dval = 0.0;
-	events = NULL;
+  min_sval = max_sval = 0;
+  min_val = max_val = 0;
+  min_dval = max_dval = 0.0;
+  events = NULL;
 
-	_ra_set_error(ph, RA_ERR_NONE, "libRASCH");
-	ra_value_reset(vh);
+  _ra_set_error (ph, RA_ERR_NONE, "libRASCH");
+  ra_value_reset (vh);
 
-	if (p->handle_id != RA_HANDLE_EVAL_PROP)
+  if (p->handle_id != RA_HANDLE_EVAL_PROP)
+    {
+      _ra_set_error (ph, RA_ERR_WRONG_HANDLE, "libRASCH");
+      return -1;
+    }
+
+  use_min = use_max = 0;
+  if (min && ra_value_is_ok (min))
+    use_min = 1;
+  if (max && ra_value_is_ok (max))
+    use_max = 1;
+
+  if ((p->value_type != RA_VALUE_TYPE_LONG)
+      && (p->value_type != RA_VALUE_TYPE_DOUBLE)
+      && (p->value_type != RA_VALUE_TYPE_SHORT))
+    {
+      _ra_set_error (ph, RA_ERR_UNSUPPORTED, "libRASCH");
+      return -1;
+    }
+
+  if (p->value_type == RA_VALUE_TYPE_SHORT)
+    {
+      if (use_min)
+	min_sval = ra_value_get_short (min);
+      if (use_max)
+	max_sval = ra_value_get_short (max);
+    }
+  else if (p->value_type == RA_VALUE_TYPE_LONG)
+    {
+      if (use_min)
+	min_val = ra_value_get_long (min);
+      if (use_max)
+	max_val = ra_value_get_long (max);
+    }
+  else
+    {
+      if (use_min)
+	min_dval = ra_value_get_double (min);
+      if (use_max)
+	max_dval = ra_value_get_double (max);
+    }
+
+  col = -1;
+  for (m = 0; m < (long) p->num_ch_values; m++)
+    {
+      if (p->ch_map[m] == ch)
 	{
-		_ra_set_error(ph, RA_ERR_WRONG_HANDLE, "libRASCH");
-		return -1;
+	  col = m;
+	  break;
 	}
-	
-	use_min = use_max = 0;
-	if (min && ra_value_is_ok(min))
-		use_min = 1;
-	if (max && ra_value_is_ok(max))
-		use_max = 1;
+    }
+  if (col == -1)
+    {
+      _ra_set_error (ph, RA_ERR_OUT_OF_RANGE, "libRASCH");
+      goto error;
+    }
 
-	if ((p->value_type != RA_VALUE_TYPE_LONG) && (p->value_type != RA_VALUE_TYPE_DOUBLE)
-		&& (p->value_type != RA_VALUE_TYPE_SHORT))
+  events = malloc (sizeof (long) * (cl->num_event * p->num_ch_values));
+  num_events = 0;
+  for (l = 0; l < (long) cl->num_event; l++)
+    {
+      offset = (l * p->num_ch_values) + col;
+
+      if (p->value_type == RA_VALUE_TYPE_SHORT)
 	{
-		_ra_set_error(ph, RA_ERR_UNSUPPORTED, "libRASCH");
-		return -1;
+	  if (p->num_elements.b[offset] == 0)
+	    continue;
+	  if (use_min && (p->value.s[offset] < min_sval))
+	    continue;
+	  if (use_max && (p->value.s[offset] > max_sval))
+	    continue;
 	}
-
-	if (p->value_type == RA_VALUE_TYPE_SHORT)
+      else if (p->value_type == RA_VALUE_TYPE_LONG)
 	{
-		if (use_min)
-			min_sval = ra_value_get_short(min);
-		if (use_max)
-			max_sval = ra_value_get_short(max);
+	  if (p->num_elements.b[offset] == 0)
+	    continue;
+	  if (use_min && (p->value.l[offset] < min_val))
+	    continue;
+	  if (use_max && (p->value.l[offset] > max_val))
+	    continue;
 	}
-	else if (p->value_type == RA_VALUE_TYPE_LONG)
+      else
 	{
-		if (use_min)
-			min_val = ra_value_get_long(min);
-		if (use_max)
-			max_val = ra_value_get_long(max);
+	  if (p->num_elements.b[offset] == 0)
+	    continue;
+	  if (use_min && (p->value.d[offset] < min_dval))
+	    continue;
+	  if (use_max && (p->value.d[offset] > max_dval))
+	    continue;
 	}
-	else
-	{
-		if (use_min)
-			min_dval = ra_value_get_double(min);
-		if (use_max)
-			max_dval = ra_value_get_double(max);
-	}
+      num_events++;
+      events[num_events - 1] = cl->ev[l].id;
+    }
 
-	col = -1;
-	for (m = 0; m < (long)p->num_ch_values; m++)
-	{
-		if (p->ch_map[m] == ch)
-		{
-			col = m;
-			break;
-		}
-	}
-	if (col == -1)
-	{
-		_ra_set_error(ph, RA_ERR_OUT_OF_RANGE, "libRASCH");
-		goto error;
-	}
+  ra_value_set_long_array (vh, events, num_events);
 
-	events = malloc(sizeof(long) * (cl->num_event * p->num_ch_values));
-	num_events = 0;
-	for (l = 0; l < (long)cl->num_event; l++)
-	{
-		offset = (l * p->num_ch_values) + col;
+  ret = 0;
 
-		if (p->value_type == RA_VALUE_TYPE_SHORT)
-		{
-			if (p->num_elements.b[offset] == 0)
-				continue;
-			if (use_min && (p->value.s[offset] < min_sval))
-				continue;
-			if (use_max && (p->value.s[offset] > max_sval))
-				continue;
-		}
-		else if (p->value_type == RA_VALUE_TYPE_LONG)
-		{
-			if (p->num_elements.b[offset] == 0)
-				continue;
-			if (use_min && (p->value.l[offset] < min_val))
-				continue;
-			if (use_max && (p->value.l[offset] > max_val))
-				continue;
-		}
-		else
-		{
-			if (p->num_elements.b[offset] == 0)
-				continue;
-			if (use_min && (p->value.d[offset] < min_dval))
-				continue;
-			if (use_max && (p->value.d[offset] > max_dval))
-				continue;
-		}
-		num_events++;
-		events[num_events-1] = cl->ev[l].id;
-	}
+error:
+  if (events)
+    free (events);
 
-	ra_value_set_long_array(vh, events, num_events);
-
-	ret = 0;
-
- error:	
-	if (events)
-		free(events);
-
-	return ret;
-} /* ra_prop_get_events() */
+  return ret;
+}				/* ra_prop_get_events() */
 
 
 /* ------------------------------ event-summary functions ------------------------------ */
 
 
 LIBRAAPI sum_handle
-ra_sum_add(class_handle clh, const char *id, const char *name, const char *desc,
-	   long num_dim, const char **dim_name, const char **dim_unit)
+ra_sum_add (class_handle clh, const char *id, const char *name,
+	    const char *desc, long num_dim, const char **dim_name,
+	    const char **dim_unit)
 {
- 	struct eval_class *c = (struct eval_class *)clh;
- 	value_handle vh = NULL;
- 	struct eval_summary *s = NULL;
-	long l;
+  struct eval_class *c = (struct eval_class *) clh;
+  value_handle vh = NULL;
+  struct eval_summary *s = NULL;
+  long l;
 
- 	if (!clh)
- 		return NULL;
+  if (!clh)
+    return NULL;
 
-	_ra_set_error(clh, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (clh, RA_ERR_NONE, "libRASCH");
 
-	s = calloc(1, sizeof(struct eval_summary));
-	ra_list_add((void **)&(c->summaries), s);
+  s = calloc (1, sizeof (struct eval_summary));
+  ra_list_add ((void **) &(c->summaries), s);
 
-	s->handle_id = RA_HANDLE_EVAL_SUMMARY;
-	strncpy(s->ascii_id, id, MAX_ID_LEN);
-	s->meas = c->meas;
-	s->evclass = c;
+  s->handle_id = RA_HANDLE_EVAL_SUMMARY;
+  strncpy (s->ascii_id, id, MAX_ID_LEN);
+  s->meas = c->meas;
+  s->evclass = c;
 
-	vh = ra_value_malloc();
+  vh = ra_value_malloc ();
 
-	if (name)
+  if (name)
+    {
+      ra_value_set_string (vh, name);
+      if (ra_eval_attribute_set (s, "name", vh) != 0)
+	goto error;
+    }
+  if (desc)
+    {
+      ra_value_set_string (vh, desc);
+      if (ra_eval_attribute_set (s, "description", vh) != 0)
+	goto error;
+    }
+
+  ra_value_free (vh);
+
+  s->num_dim = num_dim;
+  if (dim_unit)
+    s->dim_unit = (char **) calloc (num_dim, sizeof (char *));
+  if (dim_name)
+    s->dim_name = (char **) calloc (num_dim, sizeof (char *));
+
+  for (l = 0; l < num_dim; l++)
+    {
+      if (dim_unit)
 	{
-		ra_value_set_string(vh, name);
-		if (ra_eval_attribute_set(s, "name", vh) != 0)
-			goto error;
+	  s->dim_unit[l] =
+	    (char *) calloc (strlen (dim_unit[l]) + 1, sizeof (char));
+	  strcpy (s->dim_unit[l], dim_unit[l]);
 	}
-	if (desc)
+      if (dim_name)
 	{
-		ra_value_set_string(vh, desc);
-		if (ra_eval_attribute_set(s, "description", vh) != 0)
-			goto error;
+	  s->dim_name[l] =
+	    (char *) calloc (strlen (dim_name[l]) + 1, sizeof (char));
+	  strcpy (s->dim_name[l], dim_name[l]);
 	}
+    }
 
-	ra_value_free(vh);
+  return s;
 
-	s->num_dim = num_dim;
-	if (dim_unit)
-		s->dim_unit = (char **)calloc(num_dim, sizeof(char *));
-	if (dim_name)
-		s->dim_name = (char **)calloc(num_dim, sizeof(char *));
+error:
+  ra_sum_delete (s);
 
-	for (l = 0; l < num_dim; l++)
-	{
-		if (dim_unit)
-		{
-			s->dim_unit[l] = (char *)calloc(strlen(dim_unit[l]) + 1, sizeof(char));
-			strcpy(s->dim_unit[l], dim_unit[l]);
-		}
-		if (dim_name)
-		{
-			s->dim_name[l] = (char *)calloc(strlen(dim_name[l]) + 1, sizeof(char));
-			strcpy(s->dim_name[l], dim_name[l]);
-		}
-	}
-	
-	return s;
+  if (vh)
+    ra_value_free (vh);
 
- error:
-	ra_sum_delete(s);
-
-	if (vh)
-		ra_value_free(vh);
-
-	return NULL;
-} /* ra_sum_add() */
+  return NULL;
+}				/* ra_sum_add() */
 
 
 LIBRAAPI int
-ra_sum_add_ch(sum_handle sh, long ch, long fiducial_offset)
+ra_sum_add_ch (sum_handle sh, long ch, long fiducial_offset)
 {
-	struct eval_summary *s = (struct eval_summary *)sh;
-	struct eval_sum_ch_desc *cd;
+  struct eval_summary *s = (struct eval_summary *) sh;
+  struct eval_sum_ch_desc *cd;
 
-	if (!sh)
-		return -1;
+  if (!sh)
+    return -1;
 
-	_ra_set_error(sh, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (sh, RA_ERR_NONE, "libRASCH");
 
-	s->num_ch++;
-	s->ch_desc = (struct eval_sum_ch_desc *)realloc(s->ch_desc, sizeof(struct eval_sum_ch_desc) * s->num_ch);
-	cd = &(s->ch_desc[s->num_ch - 1]);
+  s->num_ch++;
+  s->ch_desc =
+    (struct eval_sum_ch_desc *) realloc (s->ch_desc,
+					 sizeof (struct eval_sum_ch_desc) *
+					 s->num_ch);
+  cd = &(s->ch_desc[s->num_ch - 1]);
 
-	cd->ch = ch;
-	cd->fiducial_offset = fiducial_offset;
+  cd->ch = ch;
+  cd->fiducial_offset = fiducial_offset;
 
-	s->num_data_elements = s->num_ch * s->num_dim;
+  s->num_data_elements = s->num_ch * s->num_dim;
 
-	return 0;
-} /* ra_sum_add_ch() */
+  return 0;
+}				/* ra_sum_add_ch() */
 
 
 LIBRAAPI int
-ra_sum_delete(sum_handle sh)
+ra_sum_delete (sum_handle sh)
 {
-	unsigned long l;
-	struct eval_summary *s = (struct eval_summary *)sh;
-	struct eval_sum_data *d = s->sum;
+  unsigned long l;
+  struct eval_summary *s = (struct eval_summary *) sh;
+  struct eval_sum_data *d = s->sum;
 
-	if (!sh)
-		return -1;
+  if (!sh)
+    return -1;
 
-	_ra_set_error(sh, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (sh, RA_ERR_NONE, "libRASCH");
 
-	while (d)
-	{
-		ra_sum_del_part(sh, d->id);
-		d = s->sum;
-	}
+  while (d)
+    {
+      ra_sum_del_part (sh, d->id);
+      d = s->sum;
+    }
 
-	if (s->ch_desc)
-		free(s->ch_desc);
+  if (s->ch_desc)
+    free (s->ch_desc);
 
-	for (l = 0; l < s->num_dim; l++)
-	{
-		if (s->dim_name && s->dim_name[l])
-			free(s->dim_name[l]);
-		if (s->dim_unit && s->dim_unit[l])
-			free(s->dim_unit[l]);
-	}
-	if (s->dim_name)
-		free(s->dim_name);
-	if (s->dim_unit)
-		free(s->dim_unit);
+  for (l = 0; l < s->num_dim; l++)
+    {
+      if (s->dim_name && s->dim_name[l])
+	free (s->dim_name[l]);
+      if (s->dim_unit && s->dim_unit[l])
+	free (s->dim_unit[l]);
+    }
+  if (s->dim_name)
+    free (s->dim_name);
+  if (s->dim_unit)
+    free (s->dim_unit);
 
-	ra_list_del((void **)&(s->evclass->summaries), s);
-	free(s);
+  ra_list_del ((void **) &(s->evclass->summaries), s);
+  free (s);
 
-	return 0;
-} /* ra_sum_delete() */
+  return 0;
+}				/* ra_sum_delete() */
 
 
 LIBRAAPI int
-ra_sum_get(class_handle clh, const char *id, value_handle vh)
+ra_sum_get (class_handle clh, const char *id, value_handle vh)
 {
-	struct eval_class *c = (struct eval_class *)clh;
-	struct eval_summary *s;
-	long len, len_use, l;
-	void **vp = NULL;
+  struct eval_class *c = (struct eval_class *) clh;
+  struct eval_summary *s;
+  long len, len_use, l;
+  void **vp = NULL;
 
-	if (!clh)
-		return -1;
+  if (!clh)
+    return -1;
 
-	_ra_set_error(clh, RA_ERR_NONE, "libRASCH");
-	ra_value_reset(vh);
+  _ra_set_error (clh, RA_ERR_NONE, "libRASCH");
+  ra_value_reset (vh);
 
-	s = c->summaries;
+  s = c->summaries;
 
-	if (s == NULL)
-		return 0;
+  if (s == NULL)
+    return 0;
 
-	len = ra_list_len(c->summaries);
-	if (len == 0)
-		return 0;
-	
-	vp = (void **)calloc(len, sizeof(void *));
-	if ((id == NULL) || (id[0] == '\0'))
+  len = ra_list_len (c->summaries);
+  if (len == 0)
+    return 0;
+
+  vp = (void **) calloc (len, sizeof (void *));
+  if ((id == NULL) || (id[0] == '\0'))
+    {
+      for (l = 0; l < len; l++)
 	{
-		for (l = 0; l < len; l++)
-		{
-			vp[l] = (void *)s;
-			s = s->next;
-		}
-		len_use = len;
+	  vp[l] = (void *) s;
+	  s = s->next;
 	}
-	else
+      len_use = len;
+    }
+  else
+    {
+      len_use = 0;
+      for (l = 0; l < len; l++)
 	{
-		len_use = 0;
-		for (l = 0; l < len; l++)
-		{
-			if (strcmp(s->ascii_id, id) == 0)
-			{
-				vp[len_use] = (void *)s;
-				len_use++;
-			}
-		}
+	  if (strcmp (s->ascii_id, id) == 0)
+	    {
+	      vp[len_use] = (void *) s;
+	      len_use++;
+	    }
 	}
+    }
 
-	ra_value_set_voidp_array(vh, (const void **)vp, len_use);
-	
-	free(vp);
-	
-	return 0;
-} /* ra_sum_get() */
+  ra_value_set_voidp_array (vh, (const void **) vp, len_use);
+
+  free (vp);
+
+  return 0;
+}				/* ra_sum_get() */
 
 
 LIBRAAPI long
-ra_sum_add_part(sum_handle sh, long num_events, const long *events_based_on)
+ra_sum_add_part (sum_handle sh, long num_events, const long *events_based_on)
 {
-	unsigned long l;
-	struct eval_summary *s = (struct eval_summary *)sh;
-	struct eval_sum_data *d;
+  unsigned long l;
+  struct eval_summary *s = (struct eval_summary *) sh;
+  struct eval_sum_data *d;
 
-	if (!sh)
-		return -1;
+  if (!sh)
+    return -1;
 
-	_ra_set_error(sh, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (sh, RA_ERR_NONE, "libRASCH");
 
-	d = (struct eval_sum_data *)malloc(sizeof(struct eval_sum_data));
-	ra_list_add((void **)&(s->sum), d);
+  d = (struct eval_sum_data *) malloc (sizeof (struct eval_sum_data));
+  ra_list_add ((void **) &(s->sum), d);
 
-	d->id = s->last_data_id + 1;
-	s->last_data_id = d->id;
+  d->id = s->last_data_id + 1;
+  s->last_data_id = d->id;
 
-	d->num_events = num_events;
-	d->event_ids = (long *)malloc(sizeof(long) * num_events);
-	memcpy(d->event_ids, events_based_on, sizeof(long) * num_events);
+  d->num_events = num_events;
+  d->event_ids = (long *) malloc (sizeof (long) * num_events);
+  memcpy (d->event_ids, events_based_on, sizeof (long) * num_events);
 
-	d->data = (value_handle *)calloc(s->num_data_elements, sizeof(value_handle));
-	for (l = 0; l < s->num_data_elements; l++)
-		d->data[l] = ra_value_malloc();
+  d->data =
+    (value_handle *) calloc (s->num_data_elements, sizeof (value_handle));
+  for (l = 0; l < s->num_data_elements; l++)
+    d->data[l] = ra_value_malloc ();
 
-	return d->id;
-} /* ra_sum_add_part() */
+  return d->id;
+}				/* ra_sum_add_part() */
 
 
 LIBRAAPI int
-ra_sum_del_part(sum_handle sh, long part_id)
+ra_sum_del_part (sum_handle sh, long part_id)
 {
-	unsigned long l;
-	struct eval_summary *s = (struct eval_summary *)sh;
-	struct eval_sum_data *d = s->sum;
+  unsigned long l;
+  struct eval_summary *s = (struct eval_summary *) sh;
+  struct eval_sum_data *d = s->sum;
 
-	if (!sh)
-		return -1;
+  if (!sh)
+    return -1;
 
-	_ra_set_error(sh, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (sh, RA_ERR_NONE, "libRASCH");
 
-	while (d)
-	{
-		if (d->id == part_id)
-			break;
-		d = d->next;
-	}
-	if (d == NULL)
-	{
-		_ra_set_error(sh, RA_ERR_OUT_OF_RANGE, "libRASCH");
-		return -1;
-	}
+  while (d)
+    {
+      if (d->id == part_id)
+	break;
+      d = d->next;
+    }
+  if (d == NULL)
+    {
+      _ra_set_error (sh, RA_ERR_OUT_OF_RANGE, "libRASCH");
+      return -1;
+    }
 
-	if (d->event_ids)
-		free(d->event_ids);
-	d->event_ids = NULL;
+  if (d->event_ids)
+    free (d->event_ids);
+  d->event_ids = NULL;
 
-	if (d->data)
-	{
-		for (l = 0; l < s->num_data_elements; l++)
-			ra_value_free(d->data[l]);
+  if (d->data)
+    {
+      for (l = 0; l < s->num_data_elements; l++)
+	ra_value_free (d->data[l]);
 
-		free(d->data);
-		d->data = NULL;
-	}
+      free (d->data);
+      d->data = NULL;
+    }
 
-	ra_list_del((void **)&(s->sum), d);
-	free(d);
+  ra_list_del ((void **) &(s->sum), d);
+  free (d);
 
-	return 0;
-} /* ra_sum_del_part() */
+  return 0;
+}				/* ra_sum_del_part() */
 
 
 LIBRAAPI int
-ra_sum_get_part_all(sum_handle sh, value_handle vh)
+ra_sum_get_part_all (sum_handle sh, value_handle vh)
 {
-	long *part_id = NULL;
-	unsigned long num, cnt;
-	struct eval_summary *s = (struct eval_summary *)sh;
-	struct eval_sum_data *d = s->sum;
+  long *part_id = NULL;
+  unsigned long num, cnt;
+  struct eval_summary *s = (struct eval_summary *) sh;
+  struct eval_sum_data *d = s->sum;
 
-	if (!sh)
-		return -1;
+  if (!sh)
+    return -1;
 
-	ra_value_reset(vh);
-	_ra_set_error(sh, RA_ERR_NONE, "libRASCH");
+  ra_value_reset (vh);
+  _ra_set_error (sh, RA_ERR_NONE, "libRASCH");
 
-	num = ra_list_len(d);
-	if (num <= 0)
-		return 0;
+  num = ra_list_len (d);
+  if (num <= 0)
+    return 0;
 
-	part_id = malloc(sizeof(long) * num);
+  part_id = malloc (sizeof (long) * num);
 
-	cnt = 0;
-	while (d)
-	{
-		if (cnt >= num)
-			break;
+  cnt = 0;
+  while (d)
+    {
+      if (cnt >= num)
+	break;
 
-		part_id[cnt++] = d->id;
+      part_id[cnt++] = d->id;
 
-		d = d->next;
-	}
+      d = d->next;
+    }
 
-	ra_value_set_long_array(vh, part_id, num);
+  ra_value_set_long_array (vh, part_id, num);
 
-	free(part_id);
+  free (part_id);
 
-	return 0;
-} /* ra_sum_get_part_all() */
+  return 0;
+}				/* ra_sum_get_part_all() */
 
 
 LIBRAAPI int
-ra_sum_set_part_data(sum_handle sh, long part_id, long channel, long dim, value_handle vh)
+ra_sum_set_part_data (sum_handle sh, long part_id, long channel, long dim,
+		      value_handle vh)
 {
-	int ret;
-	long data_idx = -1;
-	struct eval_summary *s = (struct eval_summary *)sh;
-	struct eval_sum_data *d = s->sum;
+  int ret;
+  long data_idx = -1;
+  struct eval_summary *s = (struct eval_summary *) sh;
+  struct eval_sum_data *d = s->sum;
 
-	if (!sh)
-		return -1;
+  if (!sh)
+    return -1;
 
-	_ra_set_error(sh, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (sh, RA_ERR_NONE, "libRASCH");
 
-	data_idx = channel * s->num_dim + dim;
-	if ((data_idx < 0) || (data_idx >= (long)s->num_data_elements))
-	{
-		_ra_set_error(sh, RA_ERR_OUT_OF_RANGE, "libRASCH");
-		return -1;
-	}
+  data_idx = channel * s->num_dim + dim;
+  if ((data_idx < 0) || (data_idx >= (long) s->num_data_elements))
+    {
+      _ra_set_error (sh, RA_ERR_OUT_OF_RANGE, "libRASCH");
+      return -1;
+    }
 
-	while (d)
-	{
-		if (d->id == part_id)
-			break;
-		d = d->next;
-	}
-	if (d == NULL)
-	{
-		_ra_set_error(sh, RA_ERR_OUT_OF_RANGE, "libRASCH");
-		return -1;
-	}
+  while (d)
+    {
+      if (d->id == part_id)
+	break;
+      d = d->next;
+    }
+  if (d == NULL)
+    {
+      _ra_set_error (sh, RA_ERR_OUT_OF_RANGE, "libRASCH");
+      return -1;
+    }
 
-	ret = ra_value_copy(d->data[data_idx], vh);
+  ret = ra_value_copy (d->data[data_idx], vh);
 
-	return ret;
-} /* ra_sum_set_part_data() */
+  return ret;
+}				/* ra_sum_set_part_data() */
 
 
 LIBRAAPI int
-ra_sum_get_part_data(sum_handle sh, long part_id, long channel, long dim, value_handle vh)
+ra_sum_get_part_data (sum_handle sh, long part_id, long channel, long dim,
+		      value_handle vh)
 {
-	int ret;
-	long data_idx = -1;
-	struct eval_summary *s = (struct eval_summary *)sh;
-	struct eval_sum_data *d = s->sum;
+  int ret;
+  long data_idx = -1;
+  struct eval_summary *s = (struct eval_summary *) sh;
+  struct eval_sum_data *d = s->sum;
 
-	if (!sh)
-		return -1;
+  if (!sh)
+    return -1;
 
-	_ra_set_error(sh, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (sh, RA_ERR_NONE, "libRASCH");
 
-	data_idx = channel * s->num_dim + dim;
-	if ((data_idx < 0) || (data_idx >= (long)s->num_data_elements))
-	{
-		_ra_set_error(sh, RA_ERR_OUT_OF_RANGE, "libRASCH");
-		return -1;
-	}
+  data_idx = channel * s->num_dim + dim;
+  if ((data_idx < 0) || (data_idx >= (long) s->num_data_elements))
+    {
+      _ra_set_error (sh, RA_ERR_OUT_OF_RANGE, "libRASCH");
+      return -1;
+    }
 
-	while (d)
-	{
-		if (d->id == part_id)
-			break;
-		d = d->next;
-	}
-	if (d == NULL)
-	{
-		_ra_set_error(sh, RA_ERR_OUT_OF_RANGE, "libRASCH");
-		return -1;
-	}
+  while (d)
+    {
+      if (d->id == part_id)
+	break;
+      d = d->next;
+    }
+  if (d == NULL)
+    {
+      _ra_set_error (sh, RA_ERR_OUT_OF_RANGE, "libRASCH");
+      return -1;
+    }
 
-	ret = ra_value_copy(vh, d->data[data_idx]);
+  ret = ra_value_copy (vh, d->data[data_idx]);
 
-	return ret;
-} /* ra_sum_get_part_data() */
+  return ret;
+}				/* ra_sum_get_part_data() */
 
 
 LIBRAAPI int
-ra_sum_get_part_events(sum_handle sh, long part_id, value_handle vh)
+ra_sum_get_part_events (sum_handle sh, long part_id, value_handle vh)
 {
-	struct eval_summary *s = (struct eval_summary *)sh;
-	struct eval_sum_data *d = s->sum;
+  struct eval_summary *s = (struct eval_summary *) sh;
+  struct eval_sum_data *d = s->sum;
 
-	if (!sh)
-		return -1;
+  if (!sh)
+    return -1;
 
-	_ra_set_error(sh, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (sh, RA_ERR_NONE, "libRASCH");
 
-	while (d)
-	{
-		if (d->id == part_id)
-			break;
-		d = d->next;
-	}
-	if (d == NULL)
-	{
-		_ra_set_error(sh, RA_ERR_OUT_OF_RANGE, "libRASCH");
-		return -1;
-	}
+  while (d)
+    {
+      if (d->id == part_id)
+	break;
+      d = d->next;
+    }
+  if (d == NULL)
+    {
+      _ra_set_error (sh, RA_ERR_OUT_OF_RANGE, "libRASCH");
+      return -1;
+    }
 
-	ra_value_set_long_array(vh, d->event_ids, d->num_events);
+  ra_value_set_long_array (vh, d->event_ids, d->num_events);
 
-	return 0;
-} /* ra_sum_get_part_events() */
+  return 0;
+}				/* ra_sum_get_part_events() */
 
 
 LIBRAAPI int
-ra_sum_set_part_events(sum_handle sh, long part_id, value_handle vh)
+ra_sum_set_part_events (sum_handle sh, long part_id, value_handle vh)
 {
-	struct eval_summary *s = (struct eval_summary *)sh;
-	struct eval_sum_data *d = s->sum;
+  struct eval_summary *s = (struct eval_summary *) sh;
+  struct eval_sum_data *d = s->sum;
 
-	if (!sh)
-		return -1;
+  if (!sh)
+    return -1;
 
-	_ra_set_error(sh, RA_ERR_NONE, "libRASCH");
+  _ra_set_error (sh, RA_ERR_NONE, "libRASCH");
 
-	if (!ra_value_is_ok(vh))
-	{
-		_ra_set_error(sh, RA_ERR_INFO_MISSING, "libRASCH");
-		return -1;
-	}
+  if (!ra_value_is_ok (vh))
+    {
+      _ra_set_error (sh, RA_ERR_INFO_MISSING, "libRASCH");
+      return -1;
+    }
 
-	while (d)
-	{
-		if (d->id == part_id)
-			break;
-		d = d->next;
-	}
-	if (d == NULL)
-	{
-		_ra_set_error(sh, RA_ERR_OUT_OF_RANGE, "libRASCH");
-		return -1;
-	}
+  while (d)
+    {
+      if (d->id == part_id)
+	break;
+      d = d->next;
+    }
+  if (d == NULL)
+    {
+      _ra_set_error (sh, RA_ERR_OUT_OF_RANGE, "libRASCH");
+      return -1;
+    }
 
-	if (d->event_ids)
-	{
-		free(d->event_ids);
-		d->event_ids = NULL;
-	}
+  if (d->event_ids)
+    {
+      free (d->event_ids);
+      d->event_ids = NULL;
+    }
 
-	d->num_events = ra_value_get_num_elem(vh);
-	if (d->num_events > 0)
-	{
-		d->event_ids = malloc(sizeof(long) * d->num_events);
-		memcpy(d->event_ids, ra_value_get_long_array(vh), sizeof(long) * d->num_events);
-	}
+  d->num_events = ra_value_get_num_elem (vh);
+  if (d->num_events > 0)
+    {
+      d->event_ids = malloc (sizeof (long) * d->num_events);
+      memcpy (d->event_ids, ra_value_get_long_array (vh),
+	      sizeof (long) * d->num_events);
+    }
 
-	return 0;
-} /* ra_sum_set_part_events() */
+  return 0;
+}				/* ra_sum_set_part_events() */

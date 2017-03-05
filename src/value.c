@@ -33,7 +33,7 @@
 #include <pl_general.h>
 
 
-void free_ra_value_mem(struct ra_value *v);
+void free_ra_value_mem (struct ra_value *v);
 
 
 /**
@@ -42,17 +42,17 @@ void free_ra_value_mem(struct ra_value *v);
  * Returns a initialzed value-handle.
  */
 LIBRAAPI value_handle
-ra_value_malloc()
+ra_value_malloc ()
 {
-	struct ra_value *v;
+  struct ra_value *v;
 
-	v = malloc(sizeof(struct ra_value));
-	memset(v, 0, sizeof(struct ra_value));
+  v = malloc (sizeof (struct ra_value));
+  memset (v, 0, sizeof (struct ra_value));
 
-	v->handle_id = RA_HANDLE_VALUE;
+  v->handle_id = RA_HANDLE_VALUE;
 
-	return (value_handle)v;
-} /* ra_value_malloc() */
+  return (value_handle) v;
+}				/* ra_value_malloc() */
 
 
 /**
@@ -62,16 +62,16 @@ ra_value_malloc()
  * Frees the memory asocciated with vh.
  */
 LIBRAAPI void
-ra_value_free(value_handle vh)
+ra_value_free (value_handle vh)
 {
-	struct ra_value *v = (struct ra_value *)vh;
+  struct ra_value *v = (struct ra_value *) vh;
 
-	if (!v || !valid_value_handle(vh, __LINE__))
-		return;
+  if (!v || !valid_value_handle (vh, __LINE__))
+    return;
 
-	free_ra_value_mem(v);
-	free(v);
-} /* ra_value_free() */
+  free_ra_value_mem (v);
+  free (v);
+}				/* ra_value_free() */
 
 
 /**
@@ -82,24 +82,24 @@ ra_value_free(value_handle vh)
  * another handle, assert(0) is called which stops the program.
  */
 int
-valid_value_handle(value_handle vh, int line_num)
+valid_value_handle (value_handle vh, int line_num)
 {
-	int ok = 1;
-	struct ra_value *v = (struct ra_value *)vh;
-	if (!v)
-		return ok;
+  int ok = 1;
+  struct ra_value *v = (struct ra_value *) vh;
+  if (!v)
+    return ok;
 
-	if (v->handle_id != RA_HANDLE_VALUE)
-		ok = 0;
+  if (v->handle_id != RA_HANDLE_VALUE)
+    ok = 0;
 
-	if (!ok)		/* TODO: add condition to print only when LIBRASCH_DEBUG is set */
-	{
-		fprintf(stderr, "called from line %d\n", line_num);
-		assert(0);
-	}
+  if (!ok)			/* TODO: add condition to print only when LIBRASCH_DEBUG is set */
+    {
+      fprintf (stderr, "called from line %d\n", line_num);
+      assert (0);
+    }
 
-	return ok;
-} /* valid_value_handle() */
+  return ok;
+}				/* valid_value_handle() */
 
 
 /**
@@ -109,14 +109,14 @@ valid_value_handle(value_handle vh, int line_num)
  * Reset value-handle vh.
  */
 LIBRAAPI void
-ra_value_reset(value_handle vh)
+ra_value_reset (value_handle vh)
 {
-	struct ra_value *v = (struct ra_value *)vh;
-	if (!v || !valid_value_handle(vh, __LINE__))
-		return;
+  struct ra_value *v = (struct ra_value *) vh;
+  if (!v || !valid_value_handle (vh, __LINE__))
+    return;
 
-	free_ra_value_mem(v);
-} /* ra_value_reset() */
+  free_ra_value_mem (v);
+}				/* ra_value_reset() */
 
 
 /**
@@ -127,14 +127,14 @@ ra_value_reset(value_handle vh)
  * for the meaning of the returned value (RA_VALUE_TYPE_*).
  */
 LIBRAAPI long
-ra_value_get_type(value_handle vh)
+ra_value_get_type (value_handle vh)
 {
-	struct ra_value *v = (struct ra_value *)vh;
-	if (!v || !valid_value_handle(vh, __LINE__))
-		return RA_VALUE_TYPE_NONE;
+  struct ra_value *v = (struct ra_value *) vh;
+  if (!v || !valid_value_handle (vh, __LINE__))
+    return RA_VALUE_TYPE_NONE;
 
-	return v->utype;
-} /* ra_value_get_type() */
+  return v->utype;
+}				/* ra_value_get_type() */
 
 
 /**
@@ -144,14 +144,14 @@ ra_value_get_type(value_handle vh)
  * Returns '1' if value stored in vh is valid, '0' if not.
  */
 LIBRAAPI int
-ra_value_is_ok(value_handle vh)
+ra_value_is_ok (value_handle vh)
 {
-	struct ra_value *v = (struct ra_value *)vh;
-	if (!v || !valid_value_handle(vh, __LINE__))
-		return 0;
+  struct ra_value *v = (struct ra_value *) vh;
+  if (!v || !valid_value_handle (vh, __LINE__))
+    return 0;
 
-	return v->value_is_valid;
-} /* ra_value_is_ok() */
+  return v->value_is_valid;
+}				/* ra_value_is_ok() */
 
 
 /**
@@ -162,14 +162,14 @@ ra_value_is_ok(value_handle vh)
  * is returned.
  */
 LIBRAAPI unsigned long
-ra_value_get_num_elem(value_handle vh)
+ra_value_get_num_elem (value_handle vh)
 {
-	struct ra_value *v = (struct ra_value *)vh;
-	if (!v || !valid_value_handle(vh, __LINE__) || !v->value_is_valid)
-		return 0;
+  struct ra_value *v = (struct ra_value *) vh;
+  if (!v || !valid_value_handle (vh, __LINE__) || !v->value_is_valid)
+    return 0;
 
-	return v->num_values;
-} /* ra_value_get_num_elem() */
+  return v->num_values;
+}				/* ra_value_get_num_elem() */
 
 
 /**
@@ -180,14 +180,14 @@ ra_value_get_num_elem(value_handle vh)
  * for the meaning of info-id (RA_INFO_*).
  */
 LIBRAAPI long
-ra_value_get_info(value_handle vh)
+ra_value_get_info (value_handle vh)
 {
-	struct ra_value *v = (struct ra_value *)vh;
-	if (!v || !valid_value_handle(vh, __LINE__))
-		return RA_INFO_NONE;
+  struct ra_value *v = (struct ra_value *) vh;
+  if (!v || !valid_value_handle (vh, __LINE__))
+    return RA_INFO_NONE;
 
-	return v->id;
-} /* ra_value_get_info() */
+  return v->id;
+}				/* ra_value_get_info() */
 
 
 /**
@@ -199,18 +199,18 @@ ra_value_get_info(value_handle vh)
  * for the meaning of info-id (RA_INFO_*).
  */
 LIBRAAPI int
-ra_value_set_info(value_handle vh, long id)
+ra_value_set_info (value_handle vh, long id)
 {
-	struct ra_value *v = (struct ra_value *)vh;
-	if (!v || !valid_value_handle(vh, __LINE__))
-		return RA_ERR_WRONG_HANDLE;
+  struct ra_value *v = (struct ra_value *) vh;
+  if (!v || !valid_value_handle (vh, __LINE__))
+    return RA_ERR_WRONG_HANDLE;
 
-	if (get_meta_info(id) == NULL)
-		return RA_ERR_OUT_OF_RANGE;
-	v->id = id;
+  if (get_meta_info (id) == NULL)
+    return RA_ERR_OUT_OF_RANGE;
+  v->id = id;
 
-	return RA_ERR_NONE;
-} /* ra_value_set_info() */
+  return RA_ERR_NONE;
+}				/* ra_value_set_info() */
 
 
 /**
@@ -221,16 +221,16 @@ ra_value_set_info(value_handle vh, long id)
  * The pointer is valid until vh is free'd or a new info was retrived.
  */
 LIBRAAPI const char *
-ra_value_get_name(value_handle vh)
+ra_value_get_name (value_handle vh)
 {
-	struct ra_value *v = (struct ra_value *)vh;
-	if (!v || !valid_value_handle(vh, __LINE__))
-		return NULL;
+  struct ra_value *v = (struct ra_value *) vh;
+  if (!v || !valid_value_handle (vh, __LINE__))
+    return NULL;
 
-	utf8_to_local(v->name, v->name_locale, RA_VALUE_NAME_MAX);
+  utf8_to_local (v->name, v->name_locale, RA_VALUE_NAME_MAX);
 
-	return v->name_locale;
-} /* ra_value_get_name() */
+  return v->name_locale;
+}				/* ra_value_get_name() */
 
 
 /**
@@ -241,16 +241,16 @@ ra_value_get_name(value_handle vh)
  * The pointer is valid until vh is free'd or a new info was retrived.
  */
 LIBRAAPI const char *
-ra_value_get_desc(value_handle vh)
+ra_value_get_desc (value_handle vh)
 {
-	struct ra_value *v = (struct ra_value *)vh;
-	if (!v || !valid_value_handle(vh, __LINE__))
-		return NULL;
+  struct ra_value *v = (struct ra_value *) vh;
+  if (!v || !valid_value_handle (vh, __LINE__))
+    return NULL;
 
-	utf8_to_local(v->desc, v->desc_locale, RA_VALUE_DESC_MAX);
+  utf8_to_local (v->desc, v->desc_locale, RA_VALUE_DESC_MAX);
 
-	return v->desc_locale;
-} /* ra_value_get_desc() */
+  return v->desc_locale;
+}				/* ra_value_get_desc() */
 
 
 /**
@@ -261,14 +261,14 @@ ra_value_get_desc(value_handle vh)
  * can be modified in the measurement file(s).
  */
 LIBRAAPI int
-ra_value_info_modifiable(value_handle vh)
+ra_value_info_modifiable (value_handle vh)
 {
-	struct ra_value *v = (struct ra_value *)vh;
-	if (!v || !valid_value_handle(vh, __LINE__))
-		return 0;
+  struct ra_value *v = (struct ra_value *) vh;
+  if (!v || !valid_value_handle (vh, __LINE__))
+    return 0;
 
-	return v->can_be_changed;
-} /* ra_value_info_modifiable() */
+  return v->can_be_changed;
+}				/* ra_value_info_modifiable() */
 
 
 /**
@@ -280,14 +280,14 @@ ra_value_info_modifiable(value_handle vh)
  * can be modified in the measurement file(s).
  */
 LIBRAAPI void
-ra_value_info_set_modifiable(value_handle vh, int can_be_modified)
+ra_value_info_set_modifiable (value_handle vh, int can_be_modified)
 {
-	struct ra_value *v = (struct ra_value *)vh;
-	if (!v || !valid_value_handle(vh, __LINE__))
-		return;
+  struct ra_value *v = (struct ra_value *) vh;
+  if (!v || !valid_value_handle (vh, __LINE__))
+    return;
 
-	v->can_be_changed = can_be_modified;
-} /* ra_value_info_set_modifiable() */
+  v->can_be_changed = can_be_modified;
+}				/* ra_value_info_set_modifiable() */
 
 
 /**
@@ -300,16 +300,16 @@ ra_value_info_set_modifiable(value_handle vh, int can_be_modified)
  * is also used when processing results are retrived.
  */
 LIBRAAPI int
-ra_value_set_number(value_handle vh, long number)
+ra_value_set_number (value_handle vh, long number)
 {
-	struct ra_value *v = (struct ra_value *)vh;
-	if (!v || !valid_value_handle(vh, __LINE__))
-		return -1;
+  struct ra_value *v = (struct ra_value *) vh;
+  if (!v || !valid_value_handle (vh, __LINE__))
+    return -1;
 
-	v->number = number;
+  v->number = number;
 
-	return 0;
-} /* ra_value_set_number() */
+  return 0;
+}				/* ra_value_set_number() */
 
 
 /**
@@ -319,15 +319,15 @@ ra_value_set_number(value_handle vh, long number)
  * Returns the number number set in the value-handle vh.
  */
 LIBRAAPI long
-ra_value_get_number(value_handle vh)
+ra_value_get_number (value_handle vh)
 {
-	struct ra_value *v = (struct ra_value *)vh;
+  struct ra_value *v = (struct ra_value *) vh;
 
-	if (!v || !valid_value_handle(vh, __LINE__))
-		return 0;
+  if (!v || !valid_value_handle (vh, __LINE__))
+    return 0;
 
-	return v->number;
-} /* ra_value_get_number() */
+  return v->number;
+}				/* ra_value_get_number() */
 
 
 /**
@@ -341,33 +341,33 @@ ra_value_get_number(value_handle vh)
  * plugin, most of the times a name and description is available.
  */
 int
-set_meta_info(value_handle vh, const char *name, const char *desc, int id)
+set_meta_info (value_handle vh, const char *name, const char *desc, int id)
 {
-	struct ra_value *v = (struct ra_value *)vh;
-	if (!v || !valid_value_handle(vh, __LINE__))
-		return -1;
+  struct ra_value *v = (struct ra_value *) vh;
+  if (!v || !valid_value_handle (vh, __LINE__))
+    return -1;
 
-	v->can_be_changed = 0;
-	if (name && (name[0] != '\0'))
-	{
-		strncpy(v->name, gettext(name), RA_VALUE_NAME_MAX-1);
-		v->name[RA_VALUE_NAME_MAX-1] = '\0';
-	}
-	else
-		v->name[0] = '\0';
+  v->can_be_changed = 0;
+  if (name && (name[0] != '\0'))
+    {
+      strncpy (v->name, gettext (name), RA_VALUE_NAME_MAX - 1);
+      v->name[RA_VALUE_NAME_MAX - 1] = '\0';
+    }
+  else
+    v->name[0] = '\0';
 
-	if (desc && (desc[0] != '\0'))
-	{
-		strncpy(v->desc, gettext(desc), RA_VALUE_DESC_MAX-1);
-		v->desc[RA_VALUE_DESC_MAX-1] = '\0';
-	}
-	else
-		v->desc[0] = '\0';
+  if (desc && (desc[0] != '\0'))
+    {
+      strncpy (v->desc, gettext (desc), RA_VALUE_DESC_MAX - 1);
+      v->desc[RA_VALUE_DESC_MAX - 1] = '\0';
+    }
+  else
+    v->desc[0] = '\0';
 
-	v->id = id;
+  v->id = id;
 
-	return 0;
-} /* set_meta_info() */
+  return 0;
+}				/* set_meta_info() */
 
 
 /**
@@ -378,19 +378,19 @@ set_meta_info(value_handle vh, const char *name, const char *desc, int id)
  * This function set the value in vh.
  */
 LIBRAAPI void
-ra_value_set_short(value_handle vh, const short value)
+ra_value_set_short (value_handle vh, const short value)
 {
-	struct ra_value *v = (struct ra_value *)vh;
+  struct ra_value *v = (struct ra_value *) vh;
 
-	if (!v || !valid_value_handle(vh, __LINE__))
-		return;
+  if (!v || !valid_value_handle (vh, __LINE__))
+    return;
 
-	free_ra_value_mem(v);
-	v->value.s = value;
-	v->utype = RA_VALUE_TYPE_SHORT;
-	v->value_is_valid = 1;
-	v->num_values = 1;
-} /* ra_value_set_short() */
+  free_ra_value_mem (v);
+  v->value.s = value;
+  v->utype = RA_VALUE_TYPE_SHORT;
+  v->value_is_valid = 1;
+  v->num_values = 1;
+}				/* ra_value_set_short() */
 
 
 /**
@@ -401,19 +401,19 @@ ra_value_set_short(value_handle vh, const short value)
  * This function set the value in vh.
  */
 LIBRAAPI void
-ra_value_set_long(value_handle vh, const long value)
+ra_value_set_long (value_handle vh, const long value)
 {
-	struct ra_value *v = (struct ra_value *)vh;
+  struct ra_value *v = (struct ra_value *) vh;
 
-	if (!v || !valid_value_handle(vh, __LINE__))
-		return;
+  if (!v || !valid_value_handle (vh, __LINE__))
+    return;
 
-	free_ra_value_mem(v);
-	v->value.l = value;
-	v->utype = RA_VALUE_TYPE_LONG;
-	v->value_is_valid = 1;
-	v->num_values = 1;
-} /* ra_value_set_long() */
+  free_ra_value_mem (v);
+  v->value.l = value;
+  v->utype = RA_VALUE_TYPE_LONG;
+  v->value_is_valid = 1;
+  v->num_values = 1;
+}				/* ra_value_set_long() */
 
 
 /**
@@ -424,19 +424,19 @@ ra_value_set_long(value_handle vh, const long value)
  * This function set the value in vh.
  */
 LIBRAAPI void
-ra_value_set_double(value_handle vh, const double value)
+ra_value_set_double (value_handle vh, const double value)
 {
-	struct ra_value *v = (struct ra_value *)vh;
+  struct ra_value *v = (struct ra_value *) vh;
 
-	if (!v || !valid_value_handle(vh, __LINE__))
-		return;
+  if (!v || !valid_value_handle (vh, __LINE__))
+    return;
 
-	free_ra_value_mem(v);
-	v->value.d = value;
-	v->utype = RA_VALUE_TYPE_DOUBLE;
-	v->value_is_valid = 1;
-	v->num_values = 1;
-} /* ra_value_set_double() */
+  free_ra_value_mem (v);
+  v->value.d = value;
+  v->utype = RA_VALUE_TYPE_DOUBLE;
+  v->value_is_valid = 1;
+  v->num_values = 1;
+}				/* ra_value_set_double() */
 
 
 /**
@@ -447,45 +447,45 @@ ra_value_set_double(value_handle vh, const double value)
  * This function set the string (`\\0`-ended char *) in vh.
  */
 LIBRAAPI void
-ra_value_set_string(value_handle vh, const char *string)
+ra_value_set_string (value_handle vh, const char *string)
 {
-	struct ra_value *v = (struct ra_value *)vh;
-	char *conv = NULL;
-	size_t len;
+  struct ra_value *v = (struct ra_value *) vh;
+  char *conv = NULL;
+  size_t len;
 
-	if (!string || !v || !valid_value_handle(vh, __LINE__))
-		return;
+  if (!string || !v || !valid_value_handle (vh, __LINE__))
+    return;
 
-	free_ra_value_mem(v);
+  free_ra_value_mem (v);
 
-	v->value_locale.c = ra_alloc_mem(strlen(string) + 1);
-	memset(v->value_locale.c, '\0', strlen(string)+1);
-	if (v->value_locale.c != NULL)
-		strncpy(v->value_locale.c, string, strlen(string));
+  v->value_locale.c = ra_alloc_mem (strlen (string) + 1);
+  memset (v->value_locale.c, '\0', strlen (string) + 1);
+  if (v->value_locale.c != NULL)
+    strncpy (v->value_locale.c, string, strlen (string));
 
-	/* now convert it to UTF-8 and store it */
-	if (strlen(string) > 0)
-	{
-		len = strlen(string) * 2;
-		conv = calloc(len, 1);
-		local_to_utf8(string, conv, len);
-		len = strlen(conv);
-		v->value.c = ra_alloc_mem(len + 1);
-		memset(v->value.c, '\0', len+1);
-		if (v->value.c != NULL)
-			strncpy(v->value.c, conv, len);
-		free(conv);
-	}
-	else
-	{
-		v->value.c = ra_alloc_mem(1);
-		v->value.c[0] = '\0';
-	}
+  /* now convert it to UTF-8 and store it */
+  if (strlen (string) > 0)
+    {
+      len = strlen (string) * 2;
+      conv = calloc (len, 1);
+      local_to_utf8 (string, conv, len);
+      len = strlen (conv);
+      v->value.c = ra_alloc_mem (len + 1);
+      memset (v->value.c, '\0', len + 1);
+      if (v->value.c != NULL)
+	strncpy (v->value.c, conv, len);
+      free (conv);
+    }
+  else
+    {
+      v->value.c = ra_alloc_mem (1);
+      v->value.c[0] = '\0';
+    }
 
-	v->utype = RA_VALUE_TYPE_CHAR;
-	v->value_is_valid = 1;
-	v->num_values = 1;
-} /* ra_value_set_string() */
+  v->utype = RA_VALUE_TYPE_CHAR;
+  v->value_is_valid = 1;
+  v->num_values = 1;
+}				/* ra_value_set_string() */
 
 
 /**
@@ -496,45 +496,45 @@ ra_value_set_string(value_handle vh, const char *string)
  * This function set the string (`\\0`-ended char *) in vh.
  */
 LIBRAAPI void
-ra_value_set_string_utf8(value_handle vh, const char *string)
+ra_value_set_string_utf8 (value_handle vh, const char *string)
 {
-	struct ra_value *v = (struct ra_value *)vh;
-	char *conv = NULL;
-	size_t len;
+  struct ra_value *v = (struct ra_value *) vh;
+  char *conv = NULL;
+  size_t len;
 
-	if (!string || !v || !valid_value_handle(vh, __LINE__))
-		return;
+  if (!string || !v || !valid_value_handle (vh, __LINE__))
+    return;
 
-	free_ra_value_mem(v);
+  free_ra_value_mem (v);
 
-	v->value.c = ra_alloc_mem(strlen(string) + 1);
-	memset(v->value.c, '\0', strlen(string)+1);
-	if (v->value.c != NULL)
-		strcpy(v->value.c, string);
+  v->value.c = ra_alloc_mem (strlen (string) + 1);
+  memset (v->value.c, '\0', strlen (string) + 1);
+  if (v->value.c != NULL)
+    strcpy (v->value.c, string);
 
-	/* now convert it to locale setting and store it */
-	if (strlen(string) > 0)
-	{
-		len = strlen(string) * 2;
-		conv = calloc(len, 1);
-		utf8_to_local(string, conv, len);
-		len = strlen(conv);
-		v->value_locale.c = ra_alloc_mem(len + 1);
-		memset(v->value_locale.c, '\0', len+1);
-		if (v->value_locale.c != NULL)
-			strcpy(v->value_locale.c, conv);
-		free(conv);
-	}
-	else
-	{
-		v->value_locale.c = ra_alloc_mem(1);
-		v->value_locale.c[0] = '\0';
-	}
+  /* now convert it to locale setting and store it */
+  if (strlen (string) > 0)
+    {
+      len = strlen (string) * 2;
+      conv = calloc (len, 1);
+      utf8_to_local (string, conv, len);
+      len = strlen (conv);
+      v->value_locale.c = ra_alloc_mem (len + 1);
+      memset (v->value_locale.c, '\0', len + 1);
+      if (v->value_locale.c != NULL)
+	strcpy (v->value_locale.c, conv);
+      free (conv);
+    }
+  else
+    {
+      v->value_locale.c = ra_alloc_mem (1);
+      v->value_locale.c[0] = '\0';
+    }
 
-	v->utype = RA_VALUE_TYPE_CHAR;
-	v->value_is_valid = 1;
-	v->num_values = 1;
-} /* ra_value_set_string_utf8() */
+  v->utype = RA_VALUE_TYPE_CHAR;
+  v->value_is_valid = 1;
+  v->num_values = 1;
+}				/* ra_value_set_string_utf8() */
 
 
 /**
@@ -545,19 +545,19 @@ ra_value_set_string_utf8(value_handle vh, const char *string)
  * This function set the value in vh.
  */
 LIBRAAPI void
-ra_value_set_voidp(value_handle vh, const void *value)
+ra_value_set_voidp (value_handle vh, const void *value)
 {
-	struct ra_value *v = (struct ra_value *)vh;
+  struct ra_value *v = (struct ra_value *) vh;
 
-	if (!v || !valid_value_handle(vh, __LINE__))
-		return;
+  if (!v || !valid_value_handle (vh, __LINE__))
+    return;
 
-	free_ra_value_mem(v);
-	v->value.vp = (void *)value;
-	v->utype = RA_VALUE_TYPE_VOIDP;
-	v->value_is_valid = 1;
-	v->num_values = 1;
-} /* ra_value_set_voidp() */
+  free_ra_value_mem (v);
+  v->value.vp = (void *) value;
+  v->utype = RA_VALUE_TYPE_VOIDP;
+  v->value_is_valid = 1;
+  v->num_values = 1;
+}				/* ra_value_set_voidp() */
 
 
 /**
@@ -569,26 +569,27 @@ ra_value_set_voidp(value_handle vh, const void *value)
  * This function set the short array array with num elements in vh.
  */
 LIBRAAPI void
-ra_value_set_short_array(value_handle vh, const short *array, unsigned long num)
+ra_value_set_short_array (value_handle vh, const short *array,
+			  unsigned long num)
 {
-	struct ra_value *v = (struct ra_value *)vh;
-	size_t size;
+  struct ra_value *v = (struct ra_value *) vh;
+  size_t size;
 
-	if (!v || !array || !valid_value_handle(vh, __LINE__))
-		return;
+  if (!v || !array || !valid_value_handle (vh, __LINE__))
+    return;
 
-	free_ra_value_mem(v);
+  free_ra_value_mem (v);
 
-	size = sizeof(short) * num;
-	v->value.sp = ra_alloc_mem(size);
-	if (v->value.sp)
-	{
-		memcpy(v->value.sp, array, size);
-		v->utype = RA_VALUE_TYPE_SHORT_ARRAY;
-		v->num_values = num;
-	}
-	v->value_is_valid = 1;
-} /* ra_value_set_short_array() */
+  size = sizeof (short) * num;
+  v->value.sp = ra_alloc_mem (size);
+  if (v->value.sp)
+    {
+      memcpy (v->value.sp, array, size);
+      v->utype = RA_VALUE_TYPE_SHORT_ARRAY;
+      v->num_values = num;
+    }
+  v->value_is_valid = 1;
+}				/* ra_value_set_short_array() */
 
 
 /**
@@ -600,26 +601,27 @@ ra_value_set_short_array(value_handle vh, const short *array, unsigned long num)
  * This function set the long array array with num elements in vh.
  */
 LIBRAAPI void
-ra_value_set_long_array(value_handle vh, const long *array, unsigned long num)
+ra_value_set_long_array (value_handle vh, const long *array,
+			 unsigned long num)
 {
-	struct ra_value *v = (struct ra_value *)vh;
-	size_t size;
+  struct ra_value *v = (struct ra_value *) vh;
+  size_t size;
 
-	if (!v || !array || !valid_value_handle(vh, __LINE__))
-		return;
+  if (!v || !array || !valid_value_handle (vh, __LINE__))
+    return;
 
-	free_ra_value_mem(v);
+  free_ra_value_mem (v);
 
-	size = sizeof(long) * num;
-	v->value.lp = ra_alloc_mem(size);
-	if (v->value.lp)
-	{
-		memcpy(v->value.lp, array, size);
-		v->utype = RA_VALUE_TYPE_LONG_ARRAY;
-		v->num_values = num;
-	}
-	v->value_is_valid = 1;
-} /* ra_value_set_long_array() */
+  size = sizeof (long) * num;
+  v->value.lp = ra_alloc_mem (size);
+  if (v->value.lp)
+    {
+      memcpy (v->value.lp, array, size);
+      v->utype = RA_VALUE_TYPE_LONG_ARRAY;
+      v->num_values = num;
+    }
+  v->value_is_valid = 1;
+}				/* ra_value_set_long_array() */
 
 
 /**
@@ -631,26 +633,27 @@ ra_value_set_long_array(value_handle vh, const long *array, unsigned long num)
  * This function set the double array array with num elements in vh.
  */
 LIBRAAPI void
-ra_value_set_double_array(value_handle vh, const double *array, unsigned long num)
+ra_value_set_double_array (value_handle vh, const double *array,
+			   unsigned long num)
 {
-	struct ra_value *v = (struct ra_value *)vh;
-	size_t size;
+  struct ra_value *v = (struct ra_value *) vh;
+  size_t size;
 
-	if (!v || !array || !valid_value_handle(vh, __LINE__))
-		return;
+  if (!v || !array || !valid_value_handle (vh, __LINE__))
+    return;
 
-	free_ra_value_mem(v);
+  free_ra_value_mem (v);
 
-	size = sizeof(double) * num;
-	v->value.dp = ra_alloc_mem(size);
-	if (v->value.dp)
-	{
-		memcpy(v->value.dp, array, size);
-		v->utype = RA_VALUE_TYPE_DOUBLE_ARRAY;
-		v->num_values = num;
-	}
-	v->value_is_valid = 1;
-} /* ra_value_set_double_array() */
+  size = sizeof (double) * num;
+  v->value.dp = ra_alloc_mem (size);
+  if (v->value.dp)
+    {
+      memcpy (v->value.dp, array, size);
+      v->utype = RA_VALUE_TYPE_DOUBLE_ARRAY;
+      v->num_values = num;
+    }
+  v->value_is_valid = 1;
+}				/* ra_value_set_double_array() */
 
 
 /**
@@ -662,63 +665,64 @@ ra_value_set_double_array(value_handle vh, const double *array, unsigned long nu
  * This function set the string-array array with num elements in vh. 
  */
 LIBRAAPI void
-ra_value_set_string_array(value_handle vh, const char **array, unsigned long num)
+ra_value_set_string_array (value_handle vh, const char **array,
+			   unsigned long num)
 {
-	struct ra_value *v = (struct ra_value *)vh;
-	size_t size;
-	unsigned long l;
+  struct ra_value *v = (struct ra_value *) vh;
+  size_t size;
+  unsigned long l;
 
-	if (!v || !array || !valid_value_handle(vh, __LINE__))
-		return;
+  if (!v || !array || !valid_value_handle (vh, __LINE__))
+    return;
 
-	free_ra_value_mem(v);
+  free_ra_value_mem (v);
 
-	size = sizeof(char *) * num;
-	v->value_locale.cp = ra_alloc_mem(size);
-	if (v->value_locale.cp)
+  size = sizeof (char *) * num;
+  v->value_locale.cp = ra_alloc_mem (size);
+  if (v->value_locale.cp)
+    {
+      for (l = 0; l < num; l++)
 	{
-		for (l = 0; l < num; l++)
-		{
-			v->value_locale.cp[l] = ra_alloc_mem(strlen(array[l]) + 1);
-			memset(v->value_locale.cp[l], '\0', strlen(array[l])+1);
-			if (v->value_locale.cp[l])
-				memcpy(v->value_locale.cp[l], array[l], strlen(array[l]) + 1);
-		}
+	  v->value_locale.cp[l] = ra_alloc_mem (strlen (array[l]) + 1);
+	  memset (v->value_locale.cp[l], '\0', strlen (array[l]) + 1);
+	  if (v->value_locale.cp[l])
+	    memcpy (v->value_locale.cp[l], array[l], strlen (array[l]) + 1);
 	}
+    }
 
-	/* convert all strings to UTF-8 encoding and store them */
-	v->value.cp = ra_alloc_mem(size);
-	if (v->value.cp)
+  /* convert all strings to UTF-8 encoding and store them */
+  v->value.cp = ra_alloc_mem (size);
+  if (v->value.cp)
+    {
+      size_t len;
+      char *conv = NULL;
+
+      for (l = 0; l < num; l++)
 	{
-		size_t len;
-		char *conv = NULL;
-
-		for (l = 0; l < num; l++)
-		{
-			if (strlen(array[l]) > 0)
-			{
-				len = strlen(array[l]) * 2;
-				conv = calloc(len, 1);
-				local_to_utf8(array[l], conv, len);
-				len = strlen(conv);
-				v->value.cp[l] = ra_alloc_mem(len + 1);
-				memset(v->value.cp[l], '\0', len+1);
-				if (v->value.cp[l])
-					memcpy(v->value.cp[l], conv, len + 1);
-				free(conv);
-			}
-			else
-			{
-				v->value.cp[l] = ra_alloc_mem(1);
-				v->value.cp[l][0] = '\0';
-			}
-		}
+	  if (strlen (array[l]) > 0)
+	    {
+	      len = strlen (array[l]) * 2;
+	      conv = calloc (len, 1);
+	      local_to_utf8 (array[l], conv, len);
+	      len = strlen (conv);
+	      v->value.cp[l] = ra_alloc_mem (len + 1);
+	      memset (v->value.cp[l], '\0', len + 1);
+	      if (v->value.cp[l])
+		memcpy (v->value.cp[l], conv, len + 1);
+	      free (conv);
+	    }
+	  else
+	    {
+	      v->value.cp[l] = ra_alloc_mem (1);
+	      v->value.cp[l][0] = '\0';
+	    }
 	}
+    }
 
-	v->utype = RA_VALUE_TYPE_CHAR_ARRAY;
-	v->num_values = num;
-	v->value_is_valid = 1;
-} /* ra_value_set_string_array() */
+  v->utype = RA_VALUE_TYPE_CHAR_ARRAY;
+  v->num_values = num;
+  v->value_is_valid = 1;
+}				/* ra_value_set_string_array() */
 
 
 /**
@@ -731,63 +735,64 @@ ra_value_set_string_array(value_handle vh, const char **array, unsigned long num
  * strings in 'array' are expected to be UTF-8 encoded.
  */
 LIBRAAPI void
-ra_value_set_string_array_utf8(value_handle vh, const char **array, unsigned long num)
+ra_value_set_string_array_utf8 (value_handle vh, const char **array,
+				unsigned long num)
 {
-	struct ra_value *v = (struct ra_value *)vh;
-	size_t size;
-	unsigned long l;
+  struct ra_value *v = (struct ra_value *) vh;
+  size_t size;
+  unsigned long l;
 
-	if (!v || !array || !valid_value_handle(vh, __LINE__))
-		return;
+  if (!v || !array || !valid_value_handle (vh, __LINE__))
+    return;
 
-	free_ra_value_mem(v);
+  free_ra_value_mem (v);
 
-	size = sizeof(char *) * num;
-	v->value.cp = ra_alloc_mem(size);
-	if (v->value.cp)
+  size = sizeof (char *) * num;
+  v->value.cp = ra_alloc_mem (size);
+  if (v->value.cp)
+    {
+      for (l = 0; l < num; l++)
 	{
-		for (l = 0; l < num; l++)
-		{
-			v->value.cp[l] = ra_alloc_mem(strlen(array[l]) + 1);
-			memset(v->value.cp[l], '\0', strlen(array[l])+1);
-			if (v->value.cp[l])
-				memcpy(v->value.cp[l], array[l], strlen(array[l]) + 1);
-		}
+	  v->value.cp[l] = ra_alloc_mem (strlen (array[l]) + 1);
+	  memset (v->value.cp[l], '\0', strlen (array[l]) + 1);
+	  if (v->value.cp[l])
+	    memcpy (v->value.cp[l], array[l], strlen (array[l]) + 1);
 	}
+    }
 
-	/* convert all strings to current used encoding scheme and store them */
-	v->value_locale.cp = ra_alloc_mem(size);
-	if (v->value_locale.cp)
+  /* convert all strings to current used encoding scheme and store them */
+  v->value_locale.cp = ra_alloc_mem (size);
+  if (v->value_locale.cp)
+    {
+      size_t len;
+      char *conv = NULL;
+
+      for (l = 0; l < num; l++)
 	{
-		size_t len;
-		char *conv = NULL;
-
-		for (l = 0; l < num; l++)
-		{
-			if (strlen(array[l]) > 0)
-			{
-				len = strlen(array[l]) * 2;
-				conv = calloc(len, 1);
-				utf8_to_local(array[l], conv, len);
-				len = strlen(conv);
-				v->value_locale.cp[l] = ra_alloc_mem(len + 1);
-				memset(v->value_locale.cp[l], '\0', len+1);
-				if (v->value_locale.cp[l])
-					memcpy(v->value_locale.cp[l], conv, len + 1);
-				free(conv);
-			}
-			else
-			{
-				v->value_locale.cp[l] = ra_alloc_mem(1);
-				v->value_locale.cp[l][0] = '\0';
-			}
-		}
+	  if (strlen (array[l]) > 0)
+	    {
+	      len = strlen (array[l]) * 2;
+	      conv = calloc (len, 1);
+	      utf8_to_local (array[l], conv, len);
+	      len = strlen (conv);
+	      v->value_locale.cp[l] = ra_alloc_mem (len + 1);
+	      memset (v->value_locale.cp[l], '\0', len + 1);
+	      if (v->value_locale.cp[l])
+		memcpy (v->value_locale.cp[l], conv, len + 1);
+	      free (conv);
+	    }
+	  else
+	    {
+	      v->value_locale.cp[l] = ra_alloc_mem (1);
+	      v->value_locale.cp[l][0] = '\0';
+	    }
 	}
+    }
 
-	v->utype = RA_VALUE_TYPE_CHAR_ARRAY;
-	v->num_values = num;
-	v->value_is_valid = 1;
-} /* ra_value_set_string_array_utf8() */
+  v->utype = RA_VALUE_TYPE_CHAR_ARRAY;
+  v->num_values = num;
+  v->value_is_valid = 1;
+}				/* ra_value_set_string_array_utf8() */
 
 
 /**
@@ -799,26 +804,27 @@ ra_value_set_string_array_utf8(value_handle vh, const char **array, unsigned lon
  * This function set the long array array with num elements in vh.
  */
 LIBRAAPI void
-ra_value_set_voidp_array(value_handle vh, const void **array, unsigned long num)
+ra_value_set_voidp_array (value_handle vh, const void **array,
+			  unsigned long num)
 {
-	struct ra_value *v = (struct ra_value *)vh;
-	size_t size;
+  struct ra_value *v = (struct ra_value *) vh;
+  size_t size;
 
-	if (!v || !array || !valid_value_handle(vh, __LINE__))
-		return;
+  if (!v || !array || !valid_value_handle (vh, __LINE__))
+    return;
 
-	free_ra_value_mem(v);
+  free_ra_value_mem (v);
 
-	size = sizeof(void *) * num;
-	v->value.vpp = ra_alloc_mem(size);
-	if (v->value.vpp)
-	{
-		memcpy(v->value.vpp, array, size);
-		v->utype = RA_VALUE_TYPE_VOIDP_ARRAY;
-		v->num_values = num;
-	}
-	v->value_is_valid = 1;
-} /* ra_value_set_voidp_array() */
+  size = sizeof (void *) * num;
+  v->value.vpp = ra_alloc_mem (size);
+  if (v->value.vpp)
+    {
+      memcpy (v->value.vpp, array, size);
+      v->utype = RA_VALUE_TYPE_VOIDP_ARRAY;
+      v->num_values = num;
+    }
+  v->value_is_valid = 1;
+}				/* ra_value_set_voidp_array() */
 
 
 /**
@@ -830,29 +836,30 @@ ra_value_set_voidp_array(value_handle vh, const void **array, unsigned long num)
  * This function set the value-handle array 'array' with num elements in vh.
  */
 LIBRAAPI void
-ra_value_set_vh_array(value_handle vh, const value_handle *array, unsigned long num)
+ra_value_set_vh_array (value_handle vh, const value_handle * array,
+		       unsigned long num)
 {
-	struct ra_value *v = (struct ra_value *)vh;
-	unsigned long l;
+  struct ra_value *v = (struct ra_value *) vh;
+  unsigned long l;
 
-	if (!v || !array || !valid_value_handle(vh, __LINE__))
-		return;
+  if (!v || !array || !valid_value_handle (vh, __LINE__))
+    return;
 
-	free_ra_value_mem(v);
+  free_ra_value_mem (v);
 
-	v->value.vhp = ra_alloc_mem(sizeof(value_handle) * num);
-	if (v->value.vhp)
+  v->value.vhp = ra_alloc_mem (sizeof (value_handle) * num);
+  if (v->value.vhp)
+    {
+      for (l = 0; l < num; l++)
 	{
-		for (l = 0; l < num; l++)
-		{
-			v->value.vhp[l] = ra_value_malloc();
-			ra_value_copy(v->value.vhp[l], array[l]);
-		}
-		v->utype = RA_VALUE_TYPE_VH_ARRAY;
-		v->num_values = num;
+	  v->value.vhp[l] = ra_value_malloc ();
+	  ra_value_copy (v->value.vhp[l], array[l]);
 	}
-	v->value_is_valid = 1;
-} /* ra_value_set_vh_array() */
+      v->utype = RA_VALUE_TYPE_VH_ARRAY;
+      v->num_values = num;
+    }
+  v->value_is_valid = 1;
+}				/* ra_value_set_vh_array() */
 
 
 /**
@@ -862,29 +869,29 @@ ra_value_set_vh_array(value_handle vh, const value_handle *array, unsigned long 
  * This function returns the short value set in vh.
  */
 LIBRAAPI short
-ra_value_get_short(value_handle vh)
+ra_value_get_short (value_handle vh)
 {
-	short ret = 0;
-	struct ra_value *v = (struct ra_value *)vh;
+  short ret = 0;
+  struct ra_value *v = (struct ra_value *) vh;
 
-	if (!v || !(v->value_is_valid) || !valid_value_handle(vh, __LINE__))
-		return ret;
+  if (!v || !(v->value_is_valid) || !valid_value_handle (vh, __LINE__))
+    return ret;
 
-	switch (v->utype)
-	{
-	case RA_VALUE_TYPE_SHORT:
-		ret = v->value.s;
-		break;
-	case RA_VALUE_TYPE_LONG:
-		ret = (short)(v->value.l);
-		break;
-	case RA_VALUE_TYPE_DOUBLE:
-		ret = (short)(v->value.d);
-		break;
-	}
+  switch (v->utype)
+    {
+    case RA_VALUE_TYPE_SHORT:
+      ret = v->value.s;
+      break;
+    case RA_VALUE_TYPE_LONG:
+      ret = (short) (v->value.l);
+      break;
+    case RA_VALUE_TYPE_DOUBLE:
+      ret = (short) (v->value.d);
+      break;
+    }
 
-	return ret;
-} /* ra_value_get_short() */
+  return ret;
+}				/* ra_value_get_short() */
 
 
 /**
@@ -894,29 +901,29 @@ ra_value_get_short(value_handle vh)
  * This function returns the long value set in vh.
  */
 LIBRAAPI long
-ra_value_get_long(value_handle vh)
+ra_value_get_long (value_handle vh)
 {
-	long ret = 0;
-	struct ra_value *v = (struct ra_value *)vh;
+  long ret = 0;
+  struct ra_value *v = (struct ra_value *) vh;
 
-	if (!v || !(v->value_is_valid) || !valid_value_handle(vh, __LINE__))
-		return ret;
+  if (!v || !(v->value_is_valid) || !valid_value_handle (vh, __LINE__))
+    return ret;
 
-	switch (v->utype)
-	{
-	case RA_VALUE_TYPE_SHORT:
-		ret = (long)(v->value.s);
-		break;
-	case RA_VALUE_TYPE_LONG:
-		ret = v->value.l;
-		break;
-	case RA_VALUE_TYPE_DOUBLE:
-		ret = (long)(v->value.d);
-		break;
-	}
+  switch (v->utype)
+    {
+    case RA_VALUE_TYPE_SHORT:
+      ret = (long) (v->value.s);
+      break;
+    case RA_VALUE_TYPE_LONG:
+      ret = v->value.l;
+      break;
+    case RA_VALUE_TYPE_DOUBLE:
+      ret = (long) (v->value.d);
+      break;
+    }
 
-	return ret;
-} /* ra_value_get_long() */
+  return ret;
+}				/* ra_value_get_long() */
 
 
 /**
@@ -926,29 +933,29 @@ ra_value_get_long(value_handle vh)
  * This function returns the double value set in vh.
  */
 LIBRAAPI double
-ra_value_get_double(value_handle vh)
+ra_value_get_double (value_handle vh)
 {
-	double ret = 0.0;
-	struct ra_value *v = (struct ra_value *)vh;
+  double ret = 0.0;
+  struct ra_value *v = (struct ra_value *) vh;
 
-	if (!v || !(v->value_is_valid) || !valid_value_handle(vh, __LINE__))
-		return ret;
+  if (!v || !(v->value_is_valid) || !valid_value_handle (vh, __LINE__))
+    return ret;
 
-	switch (v->utype)
-	{
-	case RA_VALUE_TYPE_SHORT:
-		ret = (double)(v->value.s);
-		break;
-	case RA_VALUE_TYPE_LONG:
-		ret = (double)(v->value.l);
-		break;
-	case RA_VALUE_TYPE_DOUBLE:
-		ret = v->value.d;
-		break;
-	}
+  switch (v->utype)
+    {
+    case RA_VALUE_TYPE_SHORT:
+      ret = (double) (v->value.s);
+      break;
+    case RA_VALUE_TYPE_LONG:
+      ret = (double) (v->value.l);
+      break;
+    case RA_VALUE_TYPE_DOUBLE:
+      ret = v->value.d;
+      break;
+    }
 
-	return ret;
-} /* ra_value_get_double() */
+  return ret;
+}				/* ra_value_get_double() */
 
 
 /**
@@ -960,23 +967,23 @@ ra_value_get_double(value_handle vh)
  * is freed.
  */
 LIBRAAPI const char *
-ra_value_get_string(value_handle vh)
+ra_value_get_string (value_handle vh)
 {
-	const char *ret = NULL;
-	struct ra_value *v = (struct ra_value *)vh;
+  const char *ret = NULL;
+  struct ra_value *v = (struct ra_value *) vh;
 
-	if (!v || !(v->value_is_valid) || !valid_value_handle(vh, __LINE__))
-		return ret;
+  if (!v || !(v->value_is_valid) || !valid_value_handle (vh, __LINE__))
+    return ret;
 
-	switch (v->utype)
-	{
-	case RA_VALUE_TYPE_CHAR:
-		ret = v->value_locale.c;
-		break;
-	}
+  switch (v->utype)
+    {
+    case RA_VALUE_TYPE_CHAR:
+      ret = v->value_locale.c;
+      break;
+    }
 
-	return ret;
-} /* ra_value_get_string() */
+  return ret;
+}				/* ra_value_get_string() */
 
 
 /**
@@ -988,23 +995,23 @@ ra_value_get_string(value_handle vh)
  * in another function or vh is freed.
  */
 LIBRAAPI const char *
-ra_value_get_string_utf8(value_handle vh)
+ra_value_get_string_utf8 (value_handle vh)
 {
-	const char *ret = NULL;
-	struct ra_value *v = (struct ra_value *)vh;
+  const char *ret = NULL;
+  struct ra_value *v = (struct ra_value *) vh;
 
-	if (!v || !(v->value_is_valid) || !valid_value_handle(vh, __LINE__))
-		return ret;
+  if (!v || !(v->value_is_valid) || !valid_value_handle (vh, __LINE__))
+    return ret;
 
-	switch (v->utype)
-	{
-	case RA_VALUE_TYPE_CHAR:
-		ret = v->value.c;
-		break;
-	}
+  switch (v->utype)
+    {
+    case RA_VALUE_TYPE_CHAR:
+      ret = v->value.c;
+      break;
+    }
 
-	return ret;
-} /* ra_value_get_string_utf8() */
+  return ret;
+}				/* ra_value_get_string_utf8() */
 
 
 /**
@@ -1014,23 +1021,23 @@ ra_value_get_string_utf8(value_handle vh)
  * This function returns the void-pointer set in vh.
  */
 LIBRAAPI const void *
-ra_value_get_voidp(value_handle vh)
+ra_value_get_voidp (value_handle vh)
 {
-	void *ret = NULL;
-	struct ra_value *v = (struct ra_value *)vh;
+  void *ret = NULL;
+  struct ra_value *v = (struct ra_value *) vh;
 
-	if (!v || !(v->value_is_valid) || !valid_value_handle(vh, __LINE__))
-		return ret;
+  if (!v || !(v->value_is_valid) || !valid_value_handle (vh, __LINE__))
+    return ret;
 
-	switch (v->utype)
-	{
-	case RA_VALUE_TYPE_VOIDP:
-		ret = v->value.vp;
-		break;
-	}
+  switch (v->utype)
+    {
+    case RA_VALUE_TYPE_VOIDP:
+      ret = v->value.vp;
+      break;
+    }
 
-	return ret;
-} /* ra_value_get_voidp() */
+  return ret;
+}				/* ra_value_get_voidp() */
 
 
 /**
@@ -1043,23 +1050,23 @@ ra_value_get_voidp(value_handle vh)
  * ra_value_get_num_elem().
  */
 LIBRAAPI const short *
-ra_value_get_short_array(value_handle vh)
+ra_value_get_short_array (value_handle vh)
 {
-	const short *ret = NULL;
-	struct ra_value *v = (struct ra_value *)vh;
+  const short *ret = NULL;
+  struct ra_value *v = (struct ra_value *) vh;
 
-	if (!v || !(v->value_is_valid) || !valid_value_handle(vh, __LINE__))
-		return ret;
+  if (!v || !(v->value_is_valid) || !valid_value_handle (vh, __LINE__))
+    return ret;
 
-	switch (v->utype)
-	{
-	case RA_VALUE_TYPE_SHORT_ARRAY:
-		ret = v->value.sp;
-		break;
-	}
+  switch (v->utype)
+    {
+    case RA_VALUE_TYPE_SHORT_ARRAY:
+      ret = v->value.sp;
+      break;
+    }
 
-	return ret;
-} /* ra_value_get_short_array() */
+  return ret;
+}				/* ra_value_get_short_array() */
 
 
 /**
@@ -1072,23 +1079,23 @@ ra_value_get_short_array(value_handle vh)
  * ra_value_get_num_elem().
  */
 LIBRAAPI const long *
-ra_value_get_long_array(value_handle vh)
+ra_value_get_long_array (value_handle vh)
 {
-	const long *ret = NULL;
-	struct ra_value *v = (struct ra_value *)vh;
+  const long *ret = NULL;
+  struct ra_value *v = (struct ra_value *) vh;
 
-	if (!v || !(v->value_is_valid) || !valid_value_handle(vh, __LINE__))
-		return ret;
+  if (!v || !(v->value_is_valid) || !valid_value_handle (vh, __LINE__))
+    return ret;
 
-	switch (v->utype)
-	{
-	case RA_VALUE_TYPE_LONG_ARRAY:
-		ret = v->value.lp;
-		break;
-	}
+  switch (v->utype)
+    {
+    case RA_VALUE_TYPE_LONG_ARRAY:
+      ret = v->value.lp;
+      break;
+    }
 
-	return ret;
-} /* ra_value_get_long_array() */
+  return ret;
+}				/* ra_value_get_long_array() */
 
 
 /**
@@ -1101,23 +1108,23 @@ ra_value_get_long_array(value_handle vh)
  * ra_value_get_num_elem().
  */
 LIBRAAPI const double *
-ra_value_get_double_array(value_handle vh)
+ra_value_get_double_array (value_handle vh)
 {
-	const double *ret = NULL;
-	struct ra_value *v = (struct ra_value *)vh;
+  const double *ret = NULL;
+  struct ra_value *v = (struct ra_value *) vh;
 
-	if (!v || !(v->value_is_valid) || !valid_value_handle(vh, __LINE__))
-		return ret;
+  if (!v || !(v->value_is_valid) || !valid_value_handle (vh, __LINE__))
+    return ret;
 
-	switch (v->utype)
-	{
-	case RA_VALUE_TYPE_DOUBLE_ARRAY:
-		ret = v->value.dp;
-		break;
-	}
+  switch (v->utype)
+    {
+    case RA_VALUE_TYPE_DOUBLE_ARRAY:
+      ret = v->value.dp;
+      break;
+    }
 
-	return ret;
-} /* ra_value_get_double_array() */
+  return ret;
+}				/* ra_value_get_double_array() */
 
 
 /**
@@ -1130,23 +1137,23 @@ ra_value_get_double_array(value_handle vh)
  * ra_value_get_num_elem().
  */
 LIBRAAPI const char **
-ra_value_get_string_array(value_handle vh)
+ra_value_get_string_array (value_handle vh)
 {
-	const char **ret = NULL;
-	struct ra_value *v = (struct ra_value *)vh;
+  const char **ret = NULL;
+  struct ra_value *v = (struct ra_value *) vh;
 
-	if (!v || !(v->value_is_valid) || !valid_value_handle(vh, __LINE__))
-		return ret;
+  if (!v || !(v->value_is_valid) || !valid_value_handle (vh, __LINE__))
+    return ret;
 
-	switch (v->utype)
-	{
-	case RA_VALUE_TYPE_CHAR_ARRAY:
-		ret = (const char **)(v->value_locale.cp);
-		break;
-	}
+  switch (v->utype)
+    {
+    case RA_VALUE_TYPE_CHAR_ARRAY:
+      ret = (const char **) (v->value_locale.cp);
+      break;
+    }
 
-	return ret;
-} /* ra_value_get_string_array() */
+  return ret;
+}				/* ra_value_get_string_array() */
 
 
 /**
@@ -1159,23 +1166,23 @@ ra_value_get_string_array(value_handle vh)
  * ra_value_get_num_elem().
  */
 LIBRAAPI const char **
-ra_value_get_string_array_utf8(value_handle vh)
+ra_value_get_string_array_utf8 (value_handle vh)
 {
-	const char **ret = NULL;
-	struct ra_value *v = (struct ra_value *)vh;
+  const char **ret = NULL;
+  struct ra_value *v = (struct ra_value *) vh;
 
-	if (!v || !(v->value_is_valid) || !valid_value_handle(vh, __LINE__))
-		return ret;
+  if (!v || !(v->value_is_valid) || !valid_value_handle (vh, __LINE__))
+    return ret;
 
-	switch (v->utype)
-	{
-	case RA_VALUE_TYPE_CHAR_ARRAY:
-		ret = (const char **)(v->value.cp);
-		break;
-	}
+  switch (v->utype)
+    {
+    case RA_VALUE_TYPE_CHAR_ARRAY:
+      ret = (const char **) (v->value.cp);
+      break;
+    }
 
-	return ret;
-} /* ra_value_get_string_array_utf8() */
+  return ret;
+}				/* ra_value_get_string_array_utf8() */
 
 
 /**
@@ -1188,23 +1195,23 @@ ra_value_get_string_array_utf8(value_handle vh)
  * ra_value_get_num_elem().
  */
 LIBRAAPI const void **
-ra_value_get_voidp_array(value_handle vh)
+ra_value_get_voidp_array (value_handle vh)
 {
-	const void **ret = NULL;
-	struct ra_value *v = (struct ra_value *)vh;
+  const void **ret = NULL;
+  struct ra_value *v = (struct ra_value *) vh;
 
-	if (!v || !(v->value_is_valid) || !valid_value_handle(vh, __LINE__))
-		return ret;
+  if (!v || !(v->value_is_valid) || !valid_value_handle (vh, __LINE__))
+    return ret;
 
-	switch (v->utype)
-	{
-	case RA_VALUE_TYPE_VOIDP_ARRAY:
-		ret = (const void **)(v->value.vpp);
-		break;
-	}
+  switch (v->utype)
+    {
+    case RA_VALUE_TYPE_VOIDP_ARRAY:
+      ret = (const void **) (v->value.vpp);
+      break;
+    }
 
-	return ret;
-} /* ra_value_get_voidp_array() */
+  return ret;
+}				/* ra_value_get_voidp_array() */
 
 
 /**
@@ -1217,23 +1224,23 @@ ra_value_get_voidp_array(value_handle vh)
  * ra_value_get_num_elem().
  */
 LIBRAAPI const value_handle *
-ra_value_get_vh_array(value_handle vh)
+ra_value_get_vh_array (value_handle vh)
 {
-	const value_handle *ret = NULL;
-	struct ra_value *v = (struct ra_value *)vh;
+  const value_handle *ret = NULL;
+  struct ra_value *v = (struct ra_value *) vh;
 
-	if (!v || !(v->value_is_valid) || !valid_value_handle(vh, __LINE__))
-		return ret;
+  if (!v || !(v->value_is_valid) || !valid_value_handle (vh, __LINE__))
+    return ret;
 
-	switch (v->utype)
-	{
-	case RA_VALUE_TYPE_VH_ARRAY:
-		ret = v->value.vhp;
-		break;
-	}
+  switch (v->utype)
+    {
+    case RA_VALUE_TYPE_VH_ARRAY:
+      ret = v->value.vhp;
+      break;
+    }
 
-	return ret;
-} /* ra_value_get_vh_array() */
+  return ret;
+}				/* ra_value_get_vh_array() */
 
 
 /**
@@ -1245,67 +1252,70 @@ ra_value_get_vh_array(value_handle vh)
  * and the name and description. The remaining fields are not copied.
  */
 LIBRAAPI int
-ra_value_copy(value_handle dest, value_handle src)
+ra_value_copy (value_handle dest, value_handle src)
 {
-	struct ra_value *d = (struct ra_value *)dest;
-	struct ra_value *s = (struct ra_value *)src;
-	int ret = 0;
+  struct ra_value *d = (struct ra_value *) dest;
+  struct ra_value *s = (struct ra_value *) src;
+  int ret = 0;
 
-	if (!d || !s || !valid_value_handle(d, __LINE__) || !valid_value_handle(s, __LINE__))
-		return -1;
+  if (!d || !s || !valid_value_handle (d, __LINE__)
+      || !valid_value_handle (s, __LINE__))
+    return -1;
 
-	free_ra_value_mem(d);
+  free_ra_value_mem (d);
 
-	strncpy(d->name, s->name, RA_VALUE_NAME_MAX);
-	strncpy(d->desc, s->desc, RA_VALUE_DESC_MAX);
-	d->id = s->id;
-	d->can_be_changed = 1;
-	
-	if (!s->value_is_valid)
-		return -1;
+  strncpy (d->name, s->name, RA_VALUE_NAME_MAX);
+  strncpy (d->desc, s->desc, RA_VALUE_DESC_MAX);
+  d->id = s->id;
+  d->can_be_changed = 1;
 
-	switch (s->utype)
-	{
-	case RA_VALUE_TYPE_SHORT:
-		ra_value_set_short(dest, s->value.s);
-		break;
-	case RA_VALUE_TYPE_LONG:
-		ra_value_set_long(dest, s->value.l);
-		break;
-	case RA_VALUE_TYPE_DOUBLE:
-		ra_value_set_double(dest, s->value.d);
-		break;
-	case RA_VALUE_TYPE_CHAR:
-		ra_value_set_string(dest, s->value.c);
-		break;
-	case RA_VALUE_TYPE_VOIDP:
-		ra_value_set_voidp(dest, s->value.vp);
-		break;
-	case RA_VALUE_TYPE_SHORT_ARRAY:
-		ra_value_set_short_array(dest, s->value.sp, s->num_values);
-		break;
-	case RA_VALUE_TYPE_LONG_ARRAY:
-		ra_value_set_long_array(dest, s->value.lp, s->num_values);
-		break;
-	case RA_VALUE_TYPE_DOUBLE_ARRAY:
-		ra_value_set_double_array(dest, s->value.dp, s->num_values);
-		break;
-	case RA_VALUE_TYPE_CHAR_ARRAY:
-		ra_value_set_string_array(dest, (const char **)(s->value.cp), s->num_values);
-		break;
-	case RA_VALUE_TYPE_VOIDP_ARRAY:
-		ra_value_set_voidp_array(dest, (const void **)(s->value.vpp), s->num_values);
-		break;
-	case RA_VALUE_TYPE_VH_ARRAY:
-		ra_value_set_vh_array(dest, s->value.vhp, s->num_values);
-		break;
-	default:
-		ret = -1;
-		break;
-	}
+  if (!s->value_is_valid)
+    return -1;
 
-	return ret;
-} /* ra_value_copy() */
+  switch (s->utype)
+    {
+    case RA_VALUE_TYPE_SHORT:
+      ra_value_set_short (dest, s->value.s);
+      break;
+    case RA_VALUE_TYPE_LONG:
+      ra_value_set_long (dest, s->value.l);
+      break;
+    case RA_VALUE_TYPE_DOUBLE:
+      ra_value_set_double (dest, s->value.d);
+      break;
+    case RA_VALUE_TYPE_CHAR:
+      ra_value_set_string (dest, s->value.c);
+      break;
+    case RA_VALUE_TYPE_VOIDP:
+      ra_value_set_voidp (dest, s->value.vp);
+      break;
+    case RA_VALUE_TYPE_SHORT_ARRAY:
+      ra_value_set_short_array (dest, s->value.sp, s->num_values);
+      break;
+    case RA_VALUE_TYPE_LONG_ARRAY:
+      ra_value_set_long_array (dest, s->value.lp, s->num_values);
+      break;
+    case RA_VALUE_TYPE_DOUBLE_ARRAY:
+      ra_value_set_double_array (dest, s->value.dp, s->num_values);
+      break;
+    case RA_VALUE_TYPE_CHAR_ARRAY:
+      ra_value_set_string_array (dest, (const char **) (s->value.cp),
+				 s->num_values);
+      break;
+    case RA_VALUE_TYPE_VOIDP_ARRAY:
+      ra_value_set_voidp_array (dest, (const void **) (s->value.vpp),
+				s->num_values);
+      break;
+    case RA_VALUE_TYPE_VH_ARRAY:
+      ra_value_set_vh_array (dest, s->value.vhp, s->num_values);
+      break;
+    default:
+      ret = -1;
+      break;
+    }
+
+  return ret;
+}				/* ra_value_copy() */
 
 
 /**
@@ -1321,70 +1331,72 @@ ra_value_copy(value_handle dest, value_handle src)
  * value-handle.
  */
 LIBRAAPI int
-ra_value_get_single_elem(value_handle dest, value_handle src, size_t elem_num)
+ra_value_get_single_elem (value_handle dest, value_handle src,
+			  size_t elem_num)
 {
-	struct ra_value *d = (struct ra_value *)dest;
-	struct ra_value *s = (struct ra_value *)src;
-	int ret = 0;
+  struct ra_value *d = (struct ra_value *) dest;
+  struct ra_value *s = (struct ra_value *) src;
+  int ret = 0;
 
-	if (!d || !s || !valid_value_handle(d, __LINE__) || !valid_value_handle(s, __LINE__) || (elem_num < 0))
-		return -1;
+  if (!d || !s || !valid_value_handle (d, __LINE__)
+      || !valid_value_handle (s, __LINE__) || (elem_num < 0))
+    return -1;
 
-	if (elem_num >= s->num_values)
-		return -1;
+  if (elem_num >= s->num_values)
+    return -1;
 
-	if (!s->value_is_valid)
-		return -1;
+  if (!s->value_is_valid)
+    return -1;
 
-	free_ra_value_mem(d);
+  free_ra_value_mem (d);
 
-	strncpy(d->name, s->name, RA_VALUE_NAME_MAX);
-	strncpy(d->desc, s->desc, RA_VALUE_DESC_MAX);
-	d->id = s->id;
-	d->can_be_changed = 1;
-	
-	switch (s->utype)
-	{
-	case RA_VALUE_TYPE_SHORT:
-		ra_value_set_short(dest, s->value.s);
-		break;
-	case RA_VALUE_TYPE_LONG:
-		ra_value_set_long(dest, s->value.l);
-		break;
-	case RA_VALUE_TYPE_DOUBLE:
-		ra_value_set_double(dest, s->value.d);
-		break;
-	case RA_VALUE_TYPE_CHAR:
-		ra_value_set_string(dest, s->value.c);
-		break;
-	case RA_VALUE_TYPE_VOIDP:
-		ra_value_set_voidp(dest, s->value.vp);
-		break;
-	case RA_VALUE_TYPE_SHORT_ARRAY:
-		ra_value_set_short(dest, s->value.sp[elem_num]);
-		break;
-	case RA_VALUE_TYPE_LONG_ARRAY:
-		ra_value_set_long(dest, s->value.lp[elem_num]);
-		break;
-	case RA_VALUE_TYPE_DOUBLE_ARRAY:
-		ra_value_set_double(dest, s->value.dp[elem_num]);
-		break;
-	case RA_VALUE_TYPE_CHAR_ARRAY:
-		ra_value_set_string(dest, s->value.cp[elem_num]);
-		break;
-	case RA_VALUE_TYPE_VOIDP_ARRAY:
-		ra_value_set_voidp(dest, s->value.vpp[elem_num]);
-		break;
-	case RA_VALUE_TYPE_VH_ARRAY:
-		ret = ra_value_copy(dest, s->value.vhp[elem_num]);
-		break;
-	default:
-		ret = -1;
-		break;
-	}
+  strncpy (d->name, s->name, RA_VALUE_NAME_MAX);
+  strncpy (d->desc, s->desc, RA_VALUE_DESC_MAX);
+  d->id = s->id;
+  d->can_be_changed = 1;
 
-	return ret;
-} /* ra_value_get_single_elem() */
+  switch (s->utype)
+    {
+    case RA_VALUE_TYPE_SHORT:
+      ra_value_set_short (dest, s->value.s);
+      break;
+    case RA_VALUE_TYPE_LONG:
+      ra_value_set_long (dest, s->value.l);
+      break;
+    case RA_VALUE_TYPE_DOUBLE:
+      ra_value_set_double (dest, s->value.d);
+      break;
+    case RA_VALUE_TYPE_CHAR:
+      ra_value_set_string (dest, s->value.c);
+      break;
+    case RA_VALUE_TYPE_VOIDP:
+      ra_value_set_voidp (dest, s->value.vp);
+      break;
+    case RA_VALUE_TYPE_SHORT_ARRAY:
+      ra_value_set_short (dest, s->value.sp[elem_num]);
+      break;
+    case RA_VALUE_TYPE_LONG_ARRAY:
+      ra_value_set_long (dest, s->value.lp[elem_num]);
+      break;
+    case RA_VALUE_TYPE_DOUBLE_ARRAY:
+      ra_value_set_double (dest, s->value.dp[elem_num]);
+      break;
+    case RA_VALUE_TYPE_CHAR_ARRAY:
+      ra_value_set_string (dest, s->value.cp[elem_num]);
+      break;
+    case RA_VALUE_TYPE_VOIDP_ARRAY:
+      ra_value_set_voidp (dest, s->value.vpp[elem_num]);
+      break;
+    case RA_VALUE_TYPE_VH_ARRAY:
+      ret = ra_value_copy (dest, s->value.vhp[elem_num]);
+      break;
+    default:
+      ret = -1;
+      break;
+    }
+
+  return ret;
+}				/* ra_value_get_single_elem() */
 
 
 /**
@@ -1394,77 +1406,75 @@ ra_value_get_single_elem(value_handle dest, value_handle src, size_t elem_num)
  * Function frees memory allocated for a value-handle.
  */
 void
-free_ra_value_mem(struct ra_value *v)
+free_ra_value_mem (struct ra_value *v)
 {
-	switch (v->utype)
+  switch (v->utype)
+    {
+    case RA_VALUE_TYPE_CHAR:
+      if (v->value.c)
+	ra_free_mem (v->value.c);
+      v->value.c = NULL;
+      if (v->value_locale.c)
+	ra_free_mem (v->value_locale.c);
+      v->value_locale.c = NULL;
+      break;
+    case RA_VALUE_TYPE_SHORT_ARRAY:
+      if (v->value.sp)
+	ra_free_mem (v->value.sp);
+      v->value.sp = NULL;
+      break;
+    case RA_VALUE_TYPE_LONG_ARRAY:
+      if (v->value.lp)
+	ra_free_mem (v->value.lp);
+      v->value.lp = NULL;
+      break;
+    case RA_VALUE_TYPE_DOUBLE_ARRAY:
+      if (v->value.dp)
+	ra_free_mem (v->value.dp);
+      v->value.dp = NULL;
+      break;
+    case RA_VALUE_TYPE_CHAR_ARRAY:
+      if (v->value.cp)
 	{
-	case RA_VALUE_TYPE_CHAR:
-		if (v->value.c)
-			ra_free_mem(v->value.c);
-		v->value.c = NULL;
-		if (v->value_locale.c)
-			ra_free_mem(v->value_locale.c);
-		v->value_locale.c = NULL;
-		break;
-	case RA_VALUE_TYPE_SHORT_ARRAY:
-		if (v->value.sp)
-			ra_free_mem(v->value.sp);
-		v->value.sp = NULL;
-		break;
-	case RA_VALUE_TYPE_LONG_ARRAY:
-		if (v->value.lp)
-			ra_free_mem(v->value.lp);
-		v->value.lp = NULL;
-		break;
-	case RA_VALUE_TYPE_DOUBLE_ARRAY:
-		if (v->value.dp)
-			ra_free_mem(v->value.dp);
-		v->value.dp = NULL;
-		break;
-	case RA_VALUE_TYPE_CHAR_ARRAY:
-		if (v->value.cp)
-		{
-			size_t l;
-			for (l = 0; l < v->num_values; l++)
-			{
-				if (v->value.cp[l])
-					ra_free_mem(v->value.cp[l]);
-			}
-			ra_free_mem(v->value.cp);
-		}
-		v->value.cp = NULL;
-		if (v->value_locale.cp)
-		{
-			size_t l;
-			for (l = 0; l < v->num_values; l++)
-			{
-				if (v->value_locale.cp[l])
-					ra_free_mem(v->value_locale.cp[l]);
-			}
-			ra_free_mem(v->value_locale.cp);
-		}
-		v->value_locale.cp = NULL;
-		break;
-	case RA_VALUE_TYPE_VOIDP_ARRAY:
-		if (v->value.vpp)
-			ra_free_mem(v->value.vpp);
-		v->value.vpp = NULL;
-		break;
-	case RA_VALUE_TYPE_VH_ARRAY:
-		if (v->value.vhp)
-		{
-			size_t l;
-			for (l = 0; l < v->num_values; l++)
-				ra_value_free(v->value.vhp[l]);
-			ra_free_mem(v->value.vhp);
-		}
-		v->value.vhp = NULL;
-		break;
+	  size_t l;
+	  for (l = 0; l < v->num_values; l++)
+	    {
+	      if (v->value.cp[l])
+		ra_free_mem (v->value.cp[l]);
+	    }
+	  ra_free_mem (v->value.cp);
 	}
+      v->value.cp = NULL;
+      if (v->value_locale.cp)
+	{
+	  size_t l;
+	  for (l = 0; l < v->num_values; l++)
+	    {
+	      if (v->value_locale.cp[l])
+		ra_free_mem (v->value_locale.cp[l]);
+	    }
+	  ra_free_mem (v->value_locale.cp);
+	}
+      v->value_locale.cp = NULL;
+      break;
+    case RA_VALUE_TYPE_VOIDP_ARRAY:
+      if (v->value.vpp)
+	ra_free_mem (v->value.vpp);
+      v->value.vpp = NULL;
+      break;
+    case RA_VALUE_TYPE_VH_ARRAY:
+      if (v->value.vhp)
+	{
+	  size_t l;
+	  for (l = 0; l < v->num_values; l++)
+	    ra_value_free (v->value.vhp[l]);
+	  ra_free_mem (v->value.vhp);
+	}
+      v->value.vhp = NULL;
+      break;
+    }
 
-	v->value_is_valid = 0;
-	v->num_values = 0;
-	v->utype = RA_VALUE_TYPE_NONE;
-} /* free_ra_value_mem() */
-
-
+  v->value_is_valid = 0;
+  v->num_values = 0;
+  v->utype = RA_VALUE_TYPE_NONE;
+}				/* free_ra_value_mem() */

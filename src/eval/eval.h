@@ -6,12 +6,13 @@
 
 
 /* ---------- eval.c ---------- */
-int do_transaction_step(any_handle h, const char *command);
+int do_transaction_step (any_handle h, const char *command);
 
-int set_env(struct eval *e);
+int set_env (struct eval *e);
 
-long  get_summary_data_id(sum_handle sh, long sum_elem_key, long channel, long dim);
-int split(const char *string, char *sep, char ***elem, const char *ignore);
-int join(char **elem, int n, char *string, size_t len, char *sep);
+long get_summary_data_id (sum_handle sh, long sum_elem_key, long channel,
+			  long dim);
+int split (const char *string, char *sep, char ***elem, const char *ignore);
+int join (char **elem, int n, char *string, size_t len, char *sep);
 
-#endif  /* EVAL_H */
+#endif /* EVAL_H */

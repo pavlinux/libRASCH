@@ -33,9 +33,9 @@ extern FILE *ra_debug_file;
 #ifdef WIN32
 	/* Using fprintf() and printf() from libintl will crash on Win32.
 	   The reason is maybe using different c-libs. */
-	#undef fprintf
-	#undef printf
-#endif  /* WIN32 */
+#undef fprintf
+#undef printf
+#endif /* WIN32 */
 
 /**
  * \brief load plguins
@@ -45,114 +45,121 @@ extern FILE *ra_debug_file;
  * If a plugin loads successfully, the init-function of the plugin is called.
  */
 int
-read_plugins(struct librasch *ra)
+read_plugins (struct librasch *ra)
 {
-	char mask[MAX_PATH_RA];
-	WIN32_FIND_DATA find;
-	HANDLE h;
-	struct plugin_struct *phead = NULL;
-	struct plugin_struct *pcurr = phead;
+  char mask[MAX_PATH_RA];
+  WIN32_FIND_DATA find;
+  HANDLE h;
+  struct plugin_struct *phead = NULL;
+  struct plugin_struct *pcurr = phead;
 
-	sprintf(mask, "%s\\*.dll", ra->config.plugin_dir);
-	h = FindFirstFile(mask, &find);
-	if (h == INVALID_HANDLE_VALUE)
-		return -1;
+  sprintf (mask, "%s\\*.dll", ra->config.plugin_dir);
+  h = FindFirstFile (mask, &find);
+  if (h == INVALID_HANDLE_VALUE)
+    return -1;
 
-	do
+  do
+    {
+      char path[MAX_PATH_RA];
+      struct plugin_struct *pnew;
+
+      sprintf (path, "%s%c%s", ra->config.plugin_dir, SEPARATOR,
+	       find.cFileName);
+
+      /* check if d_name is not a dir */
+      if (find.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+	continue;
+
+      /* no -> try to load the plugin */
+      pnew = dload_plugin (path);
+      if (!pnew)
 	{
-		char path[MAX_PATH_RA];
-		struct plugin_struct *pnew;
+	  if (ra_debug_file)
+	    fprintf (ra_debug_file, "plugin %25s failed to load\n",
+		     find.cFileName);
+	  continue;
+	}
+      pnew->ra = ra;
 
-		sprintf(path, "%s%c%s", ra->config.plugin_dir, SEPARATOR, find.cFileName);
-
-		/* check if d_name is not a dir */
-		if (find.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
-			continue;
-
-		/* no -> try to load the plugin */
-		pnew = dload_plugin(path);
-		if (!pnew)
-		{
-			if (ra_debug_file)
-				fprintf(ra_debug_file, "plugin %25s failed to load\n", find.cFileName);
-			continue;
-		}
-		pnew->ra = ra;
-
-		if (pcurr)
-		{
-			pcurr->next = pnew;
-			pnew->prev = pcurr;
-			pcurr = pcurr->next;
-		}
-		else
-			phead = pcurr = pnew;
-	} while (FindNextFile(h, &find));
-	FindClose(h);
-	ra->pl_head = phead;
-
-	/* now run init-functions for every plugin */
-	pcurr = phead;
-	while (pcurr)
+      if (pcurr)
 	{
-		int (*init)(struct librasch *, struct plugin_struct *);
-		struct plugin_struct *p;
+	  pcurr->next = pnew;
+	  pnew->prev = pcurr;
+	  pcurr = pcurr->next;
+	}
+      else
+	phead = pcurr = pnew;
+    }
+  while (FindNextFile (h, &find));
+  FindClose (h);
+  ra->pl_head = phead;
 
-		init = (int (*)(struct librasch *, struct plugin_struct *))
-			GetProcAddress(pcurr->dl, INIT_PLUGIN_FUNC);
-		if (!init)
-		{
-			LPVOID lpMsgBuf;
-			FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER |
-				      FORMAT_MESSAGE_FROM_SYSTEM |
-				      FORMAT_MESSAGE_IGNORE_INSERTS,
-				      NULL, GetLastError(),
-				      MAKELANGID(LANG_NEUTRAL,
-						 SUBLANG_DEFAULT), (LPTSTR) & lpMsgBuf, 0, NULL);
+  /* now run init-functions for every plugin */
+  pcurr = phead;
+  while (pcurr)
+    {
+      int (*init) (struct librasch *, struct plugin_struct *);
+      struct plugin_struct *p;
 
-			fprintf(stderr, "%s (%d): %s\n", __FILE__, __LINE__, (LPCTSTR) lpMsgBuf);
-			LocalFree(lpMsgBuf);
-			FreeLibrary(pcurr->dl);
-			if (pcurr->prev)
-				pcurr->prev->next = pcurr->next;
-			if (pcurr == phead)
-				phead = pcurr->next;
-			p = pcurr;
-			pcurr = pcurr->next;
-			free(p);
-			continue;
-		}
+      init = (int (*)(struct librasch *, struct plugin_struct *))
+	GetProcAddress (pcurr->dl, INIT_PLUGIN_FUNC);
+      if (!init)
+	{
+	  LPVOID lpMsgBuf;
+	  FormatMessage (FORMAT_MESSAGE_ALLOCATE_BUFFER |
+			 FORMAT_MESSAGE_FROM_SYSTEM |
+			 FORMAT_MESSAGE_IGNORE_INSERTS,
+			 NULL, GetLastError (),
+			 MAKELANGID (LANG_NEUTRAL,
+				     SUBLANG_DEFAULT), (LPTSTR) & lpMsgBuf, 0,
+			 NULL);
 
-		if ((*init)(ra, pcurr) != 0)
-		{
-			LPVOID lpMsgBuf;
-			FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER |
-				      FORMAT_MESSAGE_FROM_SYSTEM |
-				      FORMAT_MESSAGE_IGNORE_INSERTS,
-				      NULL, GetLastError(),
-				      MAKELANGID(LANG_NEUTRAL,
-						 SUBLANG_DEFAULT), (LPTSTR) & lpMsgBuf, 0, NULL);
-
-			fprintf(stderr, "%s (%d): %s\n", __FILE__, __LINE__, (LPCTSTR) lpMsgBuf);
-			LocalFree(lpMsgBuf);
-			FreeLibrary(pcurr->dl);
-			if (pcurr->prev)
-				pcurr->prev->next = pcurr->next;
-			if (pcurr == phead)
-				phead = pcurr->next;
-			p = pcurr;
-			pcurr = pcurr->next;
-			free(p);
-			continue;
-		}
-
-		pcurr = pcurr->next;
+	  fprintf (stderr, "%s (%d): %s\n", __FILE__, __LINE__,
+		   (LPCTSTR) lpMsgBuf);
+	  LocalFree (lpMsgBuf);
+	  FreeLibrary (pcurr->dl);
+	  if (pcurr->prev)
+	    pcurr->prev->next = pcurr->next;
+	  if (pcurr == phead)
+	    phead = pcurr->next;
+	  p = pcurr;
+	  pcurr = pcurr->next;
+	  free (p);
+	  continue;
 	}
 
-	ra->pl_head = phead;
+      if ((*init) (ra, pcurr) != 0)
+	{
+	  LPVOID lpMsgBuf;
+	  FormatMessage (FORMAT_MESSAGE_ALLOCATE_BUFFER |
+			 FORMAT_MESSAGE_FROM_SYSTEM |
+			 FORMAT_MESSAGE_IGNORE_INSERTS,
+			 NULL, GetLastError (),
+			 MAKELANGID (LANG_NEUTRAL,
+				     SUBLANG_DEFAULT), (LPTSTR) & lpMsgBuf, 0,
+			 NULL);
 
-	return 0;
-} /* read_plugins() */
+	  fprintf (stderr, "%s (%d): %s\n", __FILE__, __LINE__,
+		   (LPCTSTR) lpMsgBuf);
+	  LocalFree (lpMsgBuf);
+	  FreeLibrary (pcurr->dl);
+	  if (pcurr->prev)
+	    pcurr->prev->next = pcurr->next;
+	  if (pcurr == phead)
+	    phead = pcurr->next;
+	  p = pcurr;
+	  pcurr = pcurr->next;
+	  free (p);
+	  continue;
+	}
+
+      pcurr = pcurr->next;
+    }
+
+  ra->pl_head = phead;
+
+  return 0;
+}				/* read_plugins() */
 
 
 /**
@@ -162,89 +169,95 @@ read_plugins(struct librasch *ra)
  * Load a plugin and call 'load_ra_plugin' function in the loaded plugin.
  */
 struct plugin_struct *
-dload_plugin(char *file)
+dload_plugin (char *file)
 {
-	int ret = 0;
-	struct plugin_struct *p;
-	int (*load) (struct plugin_struct *);
+  int ret = 0;
+  struct plugin_struct *p;
+  int (*load) (struct plugin_struct *);
 
-	p = malloc(sizeof(struct plugin_struct));
-	if (!p)
-		return NULL;
-	memset(p, 0, sizeof(struct plugin_struct));
-	p->handle_id = RA_HANDLE_PLUGIN;
+  p = malloc (sizeof (struct plugin_struct));
+  if (!p)
+    return NULL;
+  memset (p, 0, sizeof (struct plugin_struct));
+  p->handle_id = RA_HANDLE_PLUGIN;
 
-	p->dl = LoadLibrary(file);
-	if (!p->dl)
-	{
-		LPVOID lpMsgBuf;
-		FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER |
-			      FORMAT_MESSAGE_FROM_SYSTEM |
-			      FORMAT_MESSAGE_IGNORE_INSERTS, NULL,
-			      GetLastError(), MAKELANGID(LANG_NEUTRAL,
-							 SUBLANG_DEFAULT),
-			      (LPTSTR) & lpMsgBuf, 0, NULL);
+  p->dl = LoadLibrary (file);
+  if (!p->dl)
+    {
+      LPVOID lpMsgBuf;
+      FormatMessage (FORMAT_MESSAGE_ALLOCATE_BUFFER |
+		     FORMAT_MESSAGE_FROM_SYSTEM |
+		     FORMAT_MESSAGE_IGNORE_INSERTS, NULL,
+		     GetLastError (), MAKELANGID (LANG_NEUTRAL,
+						  SUBLANG_DEFAULT),
+		     (LPTSTR) & lpMsgBuf, 0, NULL);
 
-		fprintf(stderr, "%s (%d): %s\n", __FILE__, __LINE__, (LPCTSTR) lpMsgBuf);
-		LocalFree(lpMsgBuf);
-		free(p);
-		return NULL;
-	}
+      fprintf (stderr, "%s (%d): %s\n", __FILE__, __LINE__,
+	       (LPCTSTR) lpMsgBuf);
+      LocalFree (lpMsgBuf);
+      free (p);
+      return NULL;
+    }
 
-	load = (int (*)(struct plugin_struct *)) GetProcAddress(p->dl, LOAD_PLUGIN_FUNC);
-	if (!load)
-	{
-		LPVOID lpMsgBuf;
-		FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER |
-			      FORMAT_MESSAGE_FROM_SYSTEM |
-			      FORMAT_MESSAGE_IGNORE_INSERTS, NULL,
-			      GetLastError(), MAKELANGID(LANG_NEUTRAL,
-							 SUBLANG_DEFAULT),
-			      (LPTSTR) & lpMsgBuf, 0, NULL);
-		fprintf(stderr, "%s (%d): %s\n", __FILE__, __LINE__, (LPCTSTR) lpMsgBuf);
-		LocalFree(lpMsgBuf);
-		FreeLibrary(p->dl);
-		free(p);
-		return NULL;
-	}
+  load =
+    (int (*)(struct plugin_struct *)) GetProcAddress (p->dl,
+						      LOAD_PLUGIN_FUNC);
+  if (!load)
+    {
+      LPVOID lpMsgBuf;
+      FormatMessage (FORMAT_MESSAGE_ALLOCATE_BUFFER |
+		     FORMAT_MESSAGE_FROM_SYSTEM |
+		     FORMAT_MESSAGE_IGNORE_INSERTS, NULL,
+		     GetLastError (), MAKELANGID (LANG_NEUTRAL,
+						  SUBLANG_DEFAULT),
+		     (LPTSTR) & lpMsgBuf, 0, NULL);
+      fprintf (stderr, "%s (%d): %s\n", __FILE__, __LINE__,
+	       (LPCTSTR) lpMsgBuf);
+      LocalFree (lpMsgBuf);
+      FreeLibrary (p->dl);
+      free (p);
+      return NULL;
+    }
 
-	if ((ret = (*load) (p)) != 0)
-	{
-		LPVOID lpMsgBuf;
-		FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER |
-			      FORMAT_MESSAGE_FROM_SYSTEM |
-			      FORMAT_MESSAGE_IGNORE_INSERTS, NULL,
-			      GetLastError(), MAKELANGID(LANG_NEUTRAL,
-							 SUBLANG_DEFAULT),
-			      (LPTSTR) & lpMsgBuf, 0, NULL);
-		fprintf(stderr, "%s (%d): %s\n", __FILE__, __LINE__, (LPCTSTR) lpMsgBuf);
-		LocalFree(lpMsgBuf);
-		FreeLibrary(p->dl);
-		free(p);
-		return NULL;
-	}
+  if ((ret = (*load) (p)) != 0)
+    {
+      LPVOID lpMsgBuf;
+      FormatMessage (FORMAT_MESSAGE_ALLOCATE_BUFFER |
+		     FORMAT_MESSAGE_FROM_SYSTEM |
+		     FORMAT_MESSAGE_IGNORE_INSERTS, NULL,
+		     GetLastError (), MAKELANGID (LANG_NEUTRAL,
+						  SUBLANG_DEFAULT),
+		     (LPTSTR) & lpMsgBuf, 0, NULL);
+      fprintf (stderr, "%s (%d): %s\n", __FILE__, __LINE__,
+	       (LPCTSTR) lpMsgBuf);
+      LocalFree (lpMsgBuf);
+      FreeLibrary (p->dl);
+      free (p);
+      return NULL;
+    }
 
-	if (!is_plugin_ok(p))
-	{
-		LPVOID lpMsgBuf;
-		FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER |
-			      FORMAT_MESSAGE_FROM_SYSTEM |
-			      FORMAT_MESSAGE_IGNORE_INSERTS, NULL,
-			      GetLastError(), MAKELANGID(LANG_NEUTRAL,
-							 SUBLANG_DEFAULT),
-			      (LPTSTR) & lpMsgBuf, 0, NULL);
-		fprintf(stderr, "%s (%d): %s\n", __FILE__, __LINE__, (LPCTSTR) lpMsgBuf);
-		LocalFree(lpMsgBuf);
-		FreeLibrary(p->dl);
-		free(p);
-		return NULL;
-	}
+  if (!is_plugin_ok (p))
+    {
+      LPVOID lpMsgBuf;
+      FormatMessage (FORMAT_MESSAGE_ALLOCATE_BUFFER |
+		     FORMAT_MESSAGE_FROM_SYSTEM |
+		     FORMAT_MESSAGE_IGNORE_INSERTS, NULL,
+		     GetLastError (), MAKELANGID (LANG_NEUTRAL,
+						  SUBLANG_DEFAULT),
+		     (LPTSTR) & lpMsgBuf, 0, NULL);
+      fprintf (stderr, "%s (%d): %s\n", __FILE__, __LINE__,
+	       (LPCTSTR) lpMsgBuf);
+      LocalFree (lpMsgBuf);
+      FreeLibrary (p->dl);
+      free (p);
+      return NULL;
+    }
 
-	strncpy(p->info.file, file, MAX_PATH_RA);
-	p->info.use_plugin = 1;
+  strncpy (p->info.file, file, MAX_PATH_RA);
+  p->info.use_plugin = 1;
 
-	return p;
-} /* dload_plugin() */
+  return p;
+}				/* dload_plugin() */
 
 
 /**
@@ -254,13 +267,13 @@ dload_plugin(char *file)
  * The function checks if a plugin is ok. (Nothing special yet.)
  */
 int
-is_plugin_ok(struct plugin_struct *p)
+is_plugin_ok (struct plugin_struct *p)
 {
-	if (p != NULL)
-		return 1;
-	else
-		return 0;
-} /* is_plugin_ok() */
+  if (p != NULL)
+    return 1;
+  else
+    return 0;
+}				/* is_plugin_ok() */
 
 
 /**
@@ -271,35 +284,37 @@ is_plugin_ok(struct plugin_struct *p)
  * and unloads the plugin.
  */
 void
-close_plugins(struct plugin_struct *p)
+close_plugins (struct plugin_struct *p)
 {
-	struct plugin_struct *next;
-	void (*close_func) ();
+  struct plugin_struct *next;
+  void (*close_func) ();
 
-	while (p)
+  while (p)
+    {
+      if (p->info.res)
+	ra_free_mem (p->info.res);
+      if (p->info.opt)
+	ra_free_mem (p->info.opt);
+
+      close_func = (void (*)()) GetProcAddress (p->dl, FINI_PLUGIN_FUNC);
+      if (close_func)
+	(*close_func) ();
+      if (FreeLibrary (p->dl) == 0)
 	{
-		if (p->info.res)
-			ra_free_mem(p->info.res);
-		if (p->info.opt)
-			ra_free_mem(p->info.opt);
-
-		close_func = (void (*)()) GetProcAddress(p->dl, FINI_PLUGIN_FUNC);
-		if (close_func)
-			(*close_func) ();
-		if (FreeLibrary(p->dl) == 0)
-		{
-			LPVOID lpMsgBuf;
-			FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER |
-							FORMAT_MESSAGE_FROM_SYSTEM |
-							FORMAT_MESSAGE_IGNORE_INSERTS, NULL,
-							GetLastError(), MAKELANGID(LANG_NEUTRAL,
-							SUBLANG_DEFAULT), (LPTSTR) & lpMsgBuf, 0, NULL);
-			fprintf(stderr, "%s (%d): %s\n", __FILE__, __LINE__, (LPCTSTR) lpMsgBuf);
-			LocalFree(lpMsgBuf);
-		}
-
-		next = p->next;
-		free(p);
-		p = next;
+	  LPVOID lpMsgBuf;
+	  FormatMessage (FORMAT_MESSAGE_ALLOCATE_BUFFER |
+			 FORMAT_MESSAGE_FROM_SYSTEM |
+			 FORMAT_MESSAGE_IGNORE_INSERTS, NULL,
+			 GetLastError (), MAKELANGID (LANG_NEUTRAL,
+						      SUBLANG_DEFAULT),
+			 (LPTSTR) & lpMsgBuf, 0, NULL);
+	  fprintf (stderr, "%s (%d): %s\n", __FILE__, __LINE__,
+		   (LPCTSTR) lpMsgBuf);
+	  LocalFree (lpMsgBuf);
 	}
-} /* close_plugins() */
+
+      next = p->next;
+      free (p);
+      p = next;
+    }
+}				/* close_plugins() */

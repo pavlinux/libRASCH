@@ -31,42 +31,42 @@
  * This function adds 'item' to the linked list identified by 'head' (head of list).
  */
 int
-ra_list_add(void **head, void *item)
+ra_list_add (void **head, void *item)
 {
-	struct linked_list *h;
-	struct linked_list *i;
+  struct linked_list *h;
+  struct linked_list *i;
 
-	if ((head == NULL) || (item == NULL))
-		return -1;
+  if ((head == NULL) || (item == NULL))
+    return -1;
 
-	h = (struct linked_list *) *head;
-	i = (struct linked_list *) item;
+  h = (struct linked_list *) *head;
+  i = (struct linked_list *) item;
 
-	if (h == NULL)
+  if (h == NULL)
+    {
+      i->next = i->prev = NULL;
+      *head = item;
+
+      return 0;
+    }
+
+  do
+    {
+      if (h->next == NULL)
 	{
-		i->next = i->prev = NULL;
-		*head = item;
+	  h->next = i;
+	  i->prev = h;
+	  i->next = NULL;
 
-		return 0;
+	  return 0;
 	}
 
-	do
-	{
-		if (h->next == NULL)
-		{
-			h->next = i;
-			i->prev = h;
-			i->next = NULL;
+      h = h->next;
+    }
+  while (h != NULL);
 
-			return 0;
-		}
-
-		h = h->next;
-	}
-	while (h != NULL);
-
-	return -1;		/* if func. comes here, something went wrong */
-} /* ra_list_add() */
+  return -1;			/* if func. comes here, something went wrong */
+}				/* ra_list_add() */
 
 
 /**
@@ -79,39 +79,39 @@ ra_list_add(void **head, void *item)
  * The item will come directly after 'prev'.
  */
 int
-ra_list_insert(void **head, void *prev, void *item)
+ra_list_insert (void **head, void *prev, void *item)
 {
-	struct linked_list *h;
-	struct linked_list *p;
-	struct linked_list *i;
+  struct linked_list *h;
+  struct linked_list *p;
+  struct linked_list *i;
 
-	h = (struct linked_list *) *head;
-	p = (struct linked_list *) prev;
-	i = (struct linked_list *) item;
+  h = (struct linked_list *) *head;
+  p = (struct linked_list *) prev;
+  i = (struct linked_list *) item;
 
-	if ((head == NULL) || (*head == NULL) || (i == NULL))
-		return -1;
+  if ((head == NULL) || (*head == NULL) || (i == NULL))
+    return -1;
 
-	if (p == NULL)
-	{
-		i->next = h;
-		i->prev = NULL;
-		h->prev = i;
-		*head = item;
-	}
-	else
-	{
-		i->next = p->next;
-		i->prev = p;
+  if (p == NULL)
+    {
+      i->next = h;
+      i->prev = NULL;
+      h->prev = i;
+      *head = item;
+    }
+  else
+    {
+      i->next = p->next;
+      i->prev = p;
 
-		p->next = i;
+      p->next = i;
 
-		if (i->next != NULL)
-			i->next->prev = item;
-	}
+      if (i->next != NULL)
+	i->next->prev = item;
+    }
 
-	return 0;
-} /* ra_list_insert() */
+  return 0;
+}				/* ra_list_insert() */
 
 
 /**
@@ -122,49 +122,49 @@ ra_list_insert(void **head, void *prev, void *item)
  * This function deletes 'item' from a linked list (identified by 'head').
  */
 int
-ra_list_del(void **head, void *item)
+ra_list_del (void **head, void *item)
 {
-	struct linked_list *h;
-	struct linked_list *i;
+  struct linked_list *h;
+  struct linked_list *i;
 
-	if ((head == NULL) || (*head == NULL) || (item == NULL))
-		return -1;
+  if ((head == NULL) || (*head == NULL) || (item == NULL))
+    return -1;
 
-	h = (struct linked_list *) *head;
-	i = (struct linked_list *) item;
+  h = (struct linked_list *) *head;
+  i = (struct linked_list *) item;
 
-	if (h == i)
-	{
-		*head = h->next;
-		if (h->next != NULL)
-			h->next->prev = NULL;
-	}
-	else
-	{
-		i->prev->next = i->next;
-		if (i->next != NULL)
-			i->next->prev = i->prev;
-	}
+  if (h == i)
+    {
+      *head = h->next;
+      if (h->next != NULL)
+	h->next->prev = NULL;
+    }
+  else
+    {
+      i->prev->next = i->next;
+      if (i->next != NULL)
+	i->next->prev = i->prev;
+    }
 
-	return 0;
-} /* ra_list_del() */
+  return 0;
+}				/* ra_list_del() */
 
 
 int
-ra_list_len(void *head)
+ra_list_len (void *head)
 {
-	struct linked_list *h = (struct linked_list *)head;
-	int cnt;
+  struct linked_list *h = (struct linked_list *) head;
+  int cnt;
 
-	cnt = 0;
-	if (h == NULL)
-		return cnt;
+  cnt = 0;
+  if (h == NULL)
+    return cnt;
 
-	while (h)
-	{
-		cnt++;
-		h = h->next;
-	}
+  while (h)
+    {
+      cnt++;
+      h = h->next;
+    }
 
-	return cnt;
-} /* ra_list_len() */
+  return cnt;
+}				/* ra_list_len() */

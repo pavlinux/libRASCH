@@ -43,9 +43,9 @@
 #ifdef WIN32
 	/* Using fprintf() and printf() from libintl will crash on Win32.
 	   The reason is maybe using different c-libs. */
-	#undef fprintf
-	#undef printf
-#endif  /* WIN32 */
+#undef fprintf
+#undef printf
+#endif /* WIN32 */
 
 
 /**
@@ -80,58 +80,58 @@ FILE *ra_debug_file = NULL;
  * Init libRASCH, read config-file and init plugins; returns ra_handle.
  */
 LIBRAAPI ra_handle
-ra_lib_init(void)
+ra_lib_init (void)
 {
-	int ret = 0;
-	struct librasch *ra;
-	char *debug_fn;
+  int ret = 0;
+  struct librasch *ra;
+  char *debug_fn;
 
-	if (getenv("LIBRASCH_DEBUG"))
-		ra_print_debug_infos = atoi(getenv("LIBRASCH_DEBUG"));
-	else
-		ra_print_debug_infos = 0;
-	if (getenv("LIBRASCH_DEBUG_FILE"))
-	{
-		debug_fn = getenv("LIBRASCH_DEBUG_FILE");
-		ra_debug_file = fopen(debug_fn, "w");
-	}
-	else
-		ra_debug_file = NULL;
-	ra_in_error = 0;
+  if (getenv ("LIBRASCH_DEBUG"))
+    ra_print_debug_infos = atoi (getenv ("LIBRASCH_DEBUG"));
+  else
+    ra_print_debug_infos = 0;
+  if (getenv ("LIBRASCH_DEBUG_FILE"))
+    {
+      debug_fn = getenv ("LIBRASCH_DEBUG_FILE");
+      ra_debug_file = fopen (debug_fn, "w");
+    }
+  else
+    ra_debug_file = NULL;
+  ra_in_error = 0;
 
-	set_endian_type();  /* set global variable ra_endian_type */
+  set_endian_type ();		/* set global variable ra_endian_type */
 
-	ra = malloc(sizeof(*ra));
-	if (ra == NULL)
-		return NULL;
-	memset(ra, 0, sizeof(*ra));
-	ra->handle_id = RA_HANDLE_LIB;
-	_ra_set_error(ra, RA_ERR_NONE, "libRASCH");
+  ra = malloc (sizeof (*ra));
+  if (ra == NULL)
+    return NULL;
+  memset (ra, 0, sizeof (*ra));
+  ra->handle_id = RA_HANDLE_LIB;
+  _ra_set_error (ra, RA_ERR_NONE, "libRASCH");
 
-	ra->hf.get_plugin = get_plugin_by_name;
-	if ((ret = read_config(ra)) != 0)
-	{
-		if (ret == -1)
-			_ra_set_error(ra, RA_WARN_NO_CONFIG_FILE, "libRASCH");
-		else
-			_ra_set_error(ra, RA_ERR_READ_CONFIG, "libRASCH");
-		return (ra_handle)ra;
-	}
+  ra->hf.get_plugin = get_plugin_by_name;
+  if ((ret = read_config (ra)) != 0)
+    {
+      if (ret == -1)
+	_ra_set_error (ra, RA_WARN_NO_CONFIG_FILE, "libRASCH");
+      else
+	_ra_set_error (ra, RA_ERR_READ_CONFIG, "libRASCH");
+      return (ra_handle) ra;
+    }
 
-	/* set global variable ra_i18n_codeset;
-	   do it after reading the config because on Win32, the
-	   place of the translation will be set when installing libRASCH */
-	init_i18n(ra);
+  /* set global variable ra_i18n_codeset;
+     do it after reading the config because on Win32, the
+     place of the translation will be set when installing libRASCH */
+  init_i18n (ra);
 
-	close_plugins(ra->pl_head);
-	if (read_plugins(ra) != 0)
-	{
-		_ra_set_error(ra, RA_ERR_LOAD_PLUGINS, "libRASCH");
-		return (ra_handle)ra;
-	}
+  close_plugins (ra->pl_head);
+  if (read_plugins (ra) != 0)
+    {
+      _ra_set_error (ra, RA_ERR_LOAD_PLUGINS, "libRASCH");
+      return (ra_handle) ra;
+    }
 
-	return (ra_handle)ra;
-} /* ra_lib_init() */
+  return (ra_handle) ra;
+}				/* ra_lib_init() */
 
 
 /**
@@ -141,19 +141,19 @@ ra_lib_init(void)
  * global variable 'ra_endian_type' accordingly.
  */
 void
-set_endian_type()
+set_endian_type ()
 {
-	short s;
-	char *t;
+  short s;
+  char *t;
 
-	s = 'U'*256 + 'N';
+  s = 'U' * 256 + 'N';
 
-	t = (char *)&s;
-	if (*t == 'N')
-		ra_endian_type = RA_LITTLE_ENDIAN;
-	else
-		ra_endian_type = RA_BIG_ENDIAN;
-} /* set_endian_type() */
+  t = (char *) &s;
+  if (*t == 'N')
+    ra_endian_type = RA_LITTLE_ENDIAN;
+  else
+    ra_endian_type = RA_BIG_ENDIAN;
+}				/* set_endian_type() */
 
 
 /**
@@ -166,39 +166,40 @@ set_endian_type()
  * - ra_i18n_codeset: the name of the current codeset ("" if locale is not working)
  */
 void
-init_i18n(struct librasch *ra)
+init_i18n (struct librasch *ra)
 {
-	const char *l = NULL;
+  const char *l = NULL;
 
-	/* when in debug mode, do not set language so messages are not translated */
-	if (ra_print_debug_infos)
-		return;
+  /* when in debug mode, do not set language so messages are not translated */
+  if (ra_print_debug_infos)
+    return;
 
-	l = setlocale(LC_ALL, "");
-	if(l)
+  l = setlocale (LC_ALL, "");
+  if (l)
+    {
+      char *p = NULL;
+      char *buf;
+
+      buf = malloc (strlen (l) + 1);
+      strcpy (buf, l);
+      p = strrchr (buf, '.');
+      if (p)
 	{
-		char *p = NULL;
-		char *buf;
-		
-		buf = malloc(strlen(l)+1);
-		strcpy(buf, l);
-		p = strrchr(buf, '.');
-		if (p)
-		{
-			/* when the charset startes with a number, then add 'CP' so iconv
-			   understand the charset */
-			if ((*(p+1) >= '0') && (*(p+1) <= '9') && (strlen(p+1) < (MAX_I18N_LEN-3)))
-				sprintf(ra_i18n_codeset, "CP%s", p+1);
-			else
-				strncpy(ra_i18n_codeset, p+1, MAX_I18N_LEN);
-		}
-		else
-			ra_i18n_codeset[0] = '\0';
-		free(buf);
+	  /* when the charset startes with a number, then add 'CP' so iconv
+	     understand the charset */
+	  if ((*(p + 1) >= '0') && (*(p + 1) <= '9')
+	      && (strlen (p + 1) < (MAX_I18N_LEN - 3)))
+	    sprintf (ra_i18n_codeset, "CP%s", p + 1);
+	  else
+	    strncpy (ra_i18n_codeset, p + 1, MAX_I18N_LEN);
 	}
-	bindtextdomain(PACKAGE, ra->config.po_dir);
-	textdomain(PACKAGE);
-} /* init_i18n() */
+      else
+	ra_i18n_codeset[0] = '\0';
+      free (buf);
+    }
+  bindtextdomain (PACKAGE, ra->config.po_dir);
+  textdomain (PACKAGE);
+}				/* init_i18n() */
 
 
 /**
@@ -207,10 +208,10 @@ init_i18n(struct librasch *ra)
  * This function returns the endian type for the running system.
  */
 LIBRAAPI int
-get_endian_type()
+get_endian_type ()
 {
-	return ra_endian_type;
-} /* get_endian_type() */
+  return ra_endian_type;
+}				/* get_endian_type() */
 
 
 /**
@@ -224,92 +225,98 @@ get_endian_type()
  * config-file was found, '-2' will be returned.
  */
 int
-read_config(struct librasch *ra)
+read_config (struct librasch *ra)
 {
-	char fn[MAX_PATH_RA];
-	xmlDocPtr doc;
-	xmlNodePtr node;
-	xmlChar *c;
-	int config_found;
+  char fn[MAX_PATH_RA];
+  xmlDocPtr doc;
+  xmlNodePtr node;
+  xmlChar *c;
+  int config_found;
 
-	/* set configuration to values which work when no config-file is found */
-	init_config(&(ra->config));
+  /* set configuration to values which work when no config-file is found */
+  init_config (&(ra->config));
 
-	/* first look for configuration file */
-	config_found = find_config_file(fn);
+  /* first look for configuration file */
+  config_found = find_config_file (fn);
 
 #ifdef WIN32
-	/* If no config-file was found and we are running at a Win32 system,
-	   we look at the Registry for config information. */
-	if ((config_found == 0) && read_win32_registry(ra) == 0)
-		return 0;
+  /* If no config-file was found and we are running at a Win32 system,
+     we look at the Registry for config information. */
+  if ((config_found == 0) && read_win32_registry (ra) == 0)
+    return 0;
 #endif
 
-	/* no config -> go back and use default settings (all further needed
-	   files are in the current working directory) */
-	if (config_found == 0)
-		return -1;
+  /* no config -> go back and use default settings (all further needed
+     files are in the current working directory) */
+  if (config_found == 0)
+    return -1;
 
-	if (ra_print_debug_infos)
-		fprintf(stderr, gettext("config-file: %s\n"), fn);
-	if ((doc = xmlParseFile(fn)) == NULL)
-		return -2;
-	if (!doc->children || (xmlStrcmp(doc->children->name, (xmlChar *)"librasch-config") != 0))
-	{
-		xmlFreeDoc(doc);
-		return -2;
-	}
+  if (ra_print_debug_infos)
+    fprintf (stderr, gettext ("config-file: %s\n"), fn);
+  if ((doc = xmlParseFile (fn)) == NULL)
+    return -2;
+  if (!doc->children
+      || (xmlStrcmp (doc->children->name, (xmlChar *) "librasch-config") !=
+	  0))
+    {
+      xmlFreeDoc (doc);
+      return -2;
+    }
 
-	/* TODO: think about config structure */
-	node = doc->children->children;
-	while (node)
-	{
+  /* TODO: think about config structure */
+  node = doc->children->children;
+  while (node)
+    {
 #ifdef _DEBUG			/* only needed for Win32 to handle debug-build plugins */
-		if (xmlStrcmp(node->name, (xmlChar *)"plugin-path-debug") == 0)
+      if (xmlStrcmp (node->name, (xmlChar *) "plugin-path-debug") == 0)
 #else
-		if (xmlStrcmp(node->name, (xmlChar *)"plugin-path") == 0)
+      if (xmlStrcmp (node->name, (xmlChar *) "plugin-path") == 0)
 #endif /* _DEBUG */
-		{
-			c = xmlNodeGetContent(node);
-			if (c != NULL)
-			{
-				strncpy(ra->config.plugin_dir, (const char *)c, EVAL_MAX_NAME);
-				if (ra_print_debug_infos)
-					fprintf(stderr, gettext("config plugin-dir: %s\n"), c);
-				xmlFree(c);
-			}
-		}
-		else if (xmlStrcmp(node->name, (xmlChar *)"po-path") == 0)
-		{
-			c = xmlNodeGetContent(node);
-			if (c != NULL)
-			{
-				strncpy(ra->config.po_dir, (const char *)c, EVAL_MAX_NAME);
-				if (ra_print_debug_infos)
-					fprintf(stderr, gettext("po-dir: %s\n"), ra->config.po_dir);
-				xmlFree(c);
-			}
-		}
-		else if (xmlStrcmp(node->name, (xmlChar *)"ch-map") == 0)
-		{
-			c = xmlNodeGetContent(node);
-			if (c != NULL)
-			{
-				int ret;
-
-				ret = find_ch_map_entry((char *)c, &(ra->config.ch_map_system), &(ra->config.num_ch_map_system));
-				if (ra_print_debug_infos)
-					fprintf(stderr, gettext("ch-map: %s -> %s\n"), c, (ret == 0 ? "ok" : "not ok"));
-				xmlFree(c);
-			}
-		}
-		node = node->next;
+	{
+	  c = xmlNodeGetContent (node);
+	  if (c != NULL)
+	    {
+	      strncpy (ra->config.plugin_dir, (const char *) c,
+		       EVAL_MAX_NAME);
+	      if (ra_print_debug_infos)
+		fprintf (stderr, gettext ("config plugin-dir: %s\n"), c);
+	      xmlFree (c);
+	    }
 	}
+      else if (xmlStrcmp (node->name, (xmlChar *) "po-path") == 0)
+	{
+	  c = xmlNodeGetContent (node);
+	  if (c != NULL)
+	    {
+	      strncpy (ra->config.po_dir, (const char *) c, EVAL_MAX_NAME);
+	      if (ra_print_debug_infos)
+		fprintf (stderr, gettext ("po-dir: %s\n"), ra->config.po_dir);
+	      xmlFree (c);
+	    }
+	}
+      else if (xmlStrcmp (node->name, (xmlChar *) "ch-map") == 0)
+	{
+	  c = xmlNodeGetContent (node);
+	  if (c != NULL)
+	    {
+	      int ret;
 
-	xmlFreeDoc(doc);
+	      ret =
+		find_ch_map_entry ((char *) c, &(ra->config.ch_map_system),
+				   &(ra->config.num_ch_map_system));
+	      if (ra_print_debug_infos)
+		fprintf (stderr, gettext ("ch-map: %s -> %s\n"), c,
+			 (ret == 0 ? "ok" : "not ok"));
+	      xmlFree (c);
+	    }
+	}
+      node = node->next;
+    }
 
-	return 0;
-} /* read_config() */
+  xmlFreeDoc (doc);
+
+  return 0;
+}				/* read_config() */
 
 
 /**
@@ -320,18 +327,18 @@ read_config(struct librasch *ra)
  * when no config-file is found.
  */
 void
-init_config(struct config_info *conf)
+init_config (struct config_info *conf)
 {
-	char curr_dir[MAX_PATH_RA];
+  char curr_dir[MAX_PATH_RA];
 
-	sprintf(curr_dir, ".%c", SEPARATOR);
-	strcpy(conf->plugin_dir, curr_dir);
+  sprintf (curr_dir, ".%c", SEPARATOR);
+  strcpy (conf->plugin_dir, curr_dir);
 
-	strncpy(conf->po_dir, LOCALEDIR, MAX_PATH_RA);
+  strncpy (conf->po_dir, LOCALEDIR, MAX_PATH_RA);
 
-	conf->num_ch_map_system = 0;
-	conf->ch_map_system = NULL;
-} /* init_config() */
+  conf->num_ch_map_system = 0;
+  conf->ch_map_system = NULL;
+}				/* init_config() */
 
 
 /**
@@ -343,55 +350,67 @@ init_config(struct config_info *conf)
  */
 #ifdef WIN32
 int
-read_win32_registry(struct librasch *ra)
+read_win32_registry (struct librasch *ra)
 {
-	int ret = -1;
-	HKEY key;
-	DWORD size, type;
-	char line[MAX_PATH_RA];	
-	char key_string[MAX_PATH_RA];
-	int i, num_ch_map_lines;
+  int ret = -1;
+  HKEY key;
+  DWORD size, type;
+  char line[MAX_PATH_RA];
+  char key_string[MAX_PATH_RA];
+  int i, num_ch_map_lines;
 
-	/* Check that libRASCH is installed */
-	if (RegOpenKeyEx(HKEY_LOCAL_MACHINE, "Software\\libRASCH", 0, KEY_READ, &key) != ERROR_SUCCESS)
-		return -1;
+  /* Check that libRASCH is installed */
+  if (RegOpenKeyEx
+      (HKEY_LOCAL_MACHINE, "Software\\libRASCH", 0, KEY_READ,
+       &key) != ERROR_SUCCESS)
+    return -1;
 
-	size = MAX_PATH_RA;
-	type = REG_SZ;
+  size = MAX_PATH_RA;
+  type = REG_SZ;
 #ifdef _DEBUG
-	if (RegQueryValueEx(key, "plugin_path_debug", 0, &type, (LPBYTE)(ra->config.plugin_dir), &size) == ERROR_SUCCESS)
-		ret = 0;
+  if (RegQueryValueEx
+      (key, "plugin_path_debug", 0, &type, (LPBYTE) (ra->config.plugin_dir),
+       &size) == ERROR_SUCCESS)
+    ret = 0;
 #else
-	if (RegQueryValueEx(key, "plugin_path", 0, &type, (LPBYTE)(ra->config.plugin_dir), &size) == ERROR_SUCCESS)
-		ret = 0;
-#endif  /* _DEBUG */
+  if (RegQueryValueEx
+      (key, "plugin_path", 0, &type, (LPBYTE) (ra->config.plugin_dir),
+       &size) == ERROR_SUCCESS)
+    ret = 0;
+#endif /* _DEBUG */
 
-	if (RegQueryValueEx(key, "po_path", 0, &type, (LPBYTE)(ra->config.po_dir), &size) == ERROR_SUCCESS)
-		ret = 0;
+  if (RegQueryValueEx
+      (key, "po_path", 0, &type, (LPBYTE) (ra->config.po_dir),
+       &size) == ERROR_SUCCESS)
+    ret = 0;
 
-	num_ch_map_lines = 0;
-	if (RegQueryValueEx(key, "num_ch_map", 0, &type, (LPBYTE)line, &size) == ERROR_SUCCESS)
-	{
-		num_ch_map_lines = atoi(line);
-		ret = 0;
-	}
-	for (i = 0; i < num_ch_map_lines; i++)
-	{
-		sprintf(key_string, "ch_map_%d", i+1);
-		if (RegQueryValueEx(key, key_string, 0, &type, (LPBYTE)line, &size) == ERROR_SUCCESS)
-			ret = find_ch_map_entry(line, &(ra->config.ch_map_system), &(ra->config.num_ch_map_system));
+  num_ch_map_lines = 0;
+  if (RegQueryValueEx (key, "num_ch_map", 0, &type, (LPBYTE) line, &size) ==
+      ERROR_SUCCESS)
+    {
+      num_ch_map_lines = atoi (line);
+      ret = 0;
+    }
+  for (i = 0; i < num_ch_map_lines; i++)
+    {
+      sprintf (key_string, "ch_map_%d", i + 1);
+      if (RegQueryValueEx (key, key_string, 0, &type, (LPBYTE) line, &size) ==
+	  ERROR_SUCCESS)
+	ret =
+	  find_ch_map_entry (line, &(ra->config.ch_map_system),
+			     &(ra->config.num_ch_map_system));
 
-		/* set return value to '0' so a non-matching ch-map does not
-		   results in a failure to init libRASCH 
-		   (TODO: decide how to handle ch-map finding failure) */
-		ret = 0;
-	}
+      /* set return value to '0' so a non-matching ch-map does not
+         results in a failure to init libRASCH 
+         (TODO: decide how to handle ch-map finding failure) */
+      ret = 0;
+    }
 
-	RegCloseKey(key);
+  RegCloseKey (key);
 
-	return ret;
-} /* read_win32_registry() */
-#endif  /* WIN32 */
+  return ret;
+}				/* read_win32_registry() */
+#endif /* WIN32 */
 
 
 /**
@@ -404,45 +423,45 @@ read_win32_registry(struct librasch *ra)
  * searched also.
  */
 int
-find_config_file(char *fn)
+find_config_file (char *fn)
 {
-	FILE *fp = NULL;
-	int found = 0;
+  FILE *fp = NULL;
+  int found = 0;
 
-	/* first check current-dir */
-	sprintf(fn, ".%clibrasch.conf", SEPARATOR);
+  /* first check current-dir */
+  sprintf (fn, ".%clibrasch.conf", SEPARATOR);
 
-	fp = fopen(fn, "r");
+  fp = fopen (fn, "r");
 #ifdef LINUX
-	if (!fp)
-	{
-		/* if not found in the current directory then check on Linux first
-		   the HOME directory */
-		sprintf(fn, "%s/librasch.conf", getenv("HOME"));
-		fp = fopen(fn, "r");
-		
-	}
-#endif  /* LINUX */
-	if (!fp)
-	{
-		/* now check /etc under LINUX resp. system-dir under Windows */
+  if (!fp)
+    {
+      /* if not found in the current directory then check on Linux first
+         the HOME directory */
+      sprintf (fn, "%s/librasch.conf", getenv ("HOME"));
+      fp = fopen (fn, "r");
+
+    }
+#endif /* LINUX */
+  if (!fp)
+    {
+      /* now check /etc under LINUX resp. system-dir under Windows */
 #ifdef LINUX
-		sprintf(fn, "/etc/librasch.conf");
+      sprintf (fn, "/etc/librasch.conf");
 #else /* WINDOWS */
-		GetWindowsDirectory(fn, MAX_PATH_RA);
-		strcat(fn, "\\librasch.conf");
+      GetWindowsDirectory (fn, MAX_PATH_RA);
+      strcat (fn, "\\librasch.conf");
 #endif
-		fp = fopen(fn, "r");
-	}
+      fp = fopen (fn, "r");
+    }
 
-	if (fp)
-	{
-		found = 1;
-		fclose(fp);
-	}
+  if (fp)
+    {
+      found = 1;
+      fclose (fp);
+    }
 
-	return found;
-} /* find_config_file() */
+  return found;
+}				/* find_config_file() */
 
 
 /**
@@ -452,26 +471,26 @@ find_config_file(char *fn)
  * Close libRASCH, close plugins and frees all allocated memory.
  */
 LIBRAAPI void
-ra_lib_close(ra_handle h)
+ra_lib_close (ra_handle h)
 {
-	struct librasch *ra = (struct librasch *)h;
+  struct librasch *ra = (struct librasch *) h;
 
-	close_plugins(ra->pl_head);
+  close_plugins (ra->pl_head);
 
-	if (ra->error_from)
-	{
-		free(ra->error_from);
-		ra->error_from = NULL;
-	}
+  if (ra->error_from)
+    {
+      free (ra->error_from);
+      ra->error_from = NULL;
+    }
 
-	if (ra->config.ch_map_system)
-		free_ch_map(&(ra->config.ch_map_system), ra->config.num_ch_map_system);
+  if (ra->config.ch_map_system)
+    free_ch_map (&(ra->config.ch_map_system), ra->config.num_ch_map_system);
 
-	if (ra_debug_file)
-		fclose(ra_debug_file);
+  if (ra_debug_file)
+    fclose (ra_debug_file);
 
-	free(ra);
-} /* ra_lib_close() */
+  free (ra);
+}				/* ra_lib_close() */
 
 
 /**
@@ -487,46 +506,46 @@ ra_lib_close(ra_handle h)
  * returned in text.
  */
 LIBRAAPI long
-ra_lib_get_error(ra_handle h, char *text, size_t len)
+ra_lib_get_error (ra_handle h, char *text, size_t len)
 {
-	struct librasch *ra = (struct librasch *)h;
+  struct librasch *ra = (struct librasch *) h;
 
-	if (!h || (ra->error_number == 0))
-		return 0;
+  if (!h || (ra->error_number == 0))
+    return 0;
 
-	if (text && len > 0)
+  if (text && len > 0)
+    {
+      char *t;
+      size_t len_use;
+
+      if (ra->error_from)
+	len_use = len - strlen (ra->error_from) - 2;
+      else
+	len_use = len;
+
+      if (len_use <= 0)
 	{
-		char *t;
-		size_t len_use;
-
-		if (ra->error_from)
-			len_use = len - strlen(ra->error_from) - 2;
-		else
-			len_use = len;
-		
-		if (len_use <= 0)
-		{
-			strncpy(text, ra->error_from, len);
-			text[len-1] = '\0';
-			return ra->error_number;
-		}
-		
-		t = malloc(len_use);
-
-		get_error_text(ra->error_number, t, len_use);
-
-		if (ra->error_from)
-			sprintf(text, "%s: %s", ra->error_from, t);
-		else
-			strcpy(text, t);
-
-		free(t);
-
-		utf8_to_local_inplace(text, len);
+	  strncpy (text, ra->error_from, len);
+	  text[len - 1] = '\0';
+	  return ra->error_number;
 	}
 
-	return ra->error_number;
-} /* ra_lib_get_error() */
+      t = malloc (len_use);
+
+      get_error_text (ra->error_number, t, len_use);
+
+      if (ra->error_from)
+	sprintf (text, "%s: %s", ra->error_from, t);
+      else
+	strcpy (text, t);
+
+      free (t);
+
+      utf8_to_local_inplace (text, len);
+    }
+
+  return ra->error_number;
+}				/* ra_lib_get_error() */
 
 
 /**
@@ -539,42 +558,45 @@ ra_lib_get_error(ra_handle h, char *text, size_t len)
  */
 #ifdef WIN32
 void
-get_error_text(long err, char *text, size_t len)
+get_error_text (long err, char *text, size_t len)
 {
-	text[0] = '\0';
+  text[0] = '\0';
 
-	if (err > 0)
-		get_error_text_ra(err, text, len);
-	else
+  if (err > 0)
+    get_error_text_ra (err, text, len);
+  else
+    {
+      LPVOID msg_buf;
+
+      if (!FormatMessage
+	  (FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM |
+	   FORMAT_MESSAGE_IGNORE_INSERTS, NULL, -err,
+	   MAKELANGID (LANG_NEUTRAL, SUBLANG_DEFAULT), (LPTSTR) & msg_buf, 0,
+	   NULL))
 	{
-		LPVOID msg_buf;
-
-		if (!FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
-				   NULL, -err, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), (LPTSTR) &msg_buf, 0, NULL))
-		{
-			return;
-		}
-
-		strncpy(text, (LPCTSTR)msg_buf, len);
-		LocalFree(msg_buf);
+	  return;
 	}
-} /* get_error_text() */
+
+      strncpy (text, (LPCTSTR) msg_buf, len);
+      LocalFree (msg_buf);
+    }
+}				/* get_error_text() */
 #endif /* WIN32 */
 
 
 #ifdef LINUX
 void
-get_error_text(long err, char *text, size_t len)
+get_error_text (long err, char *text, size_t len)
 {
-	text[0] = '\0';
+  text[0] = '\0';
 
-	if (err > 0)
-		get_error_text_ra(err, text, len);
-	else
-		strerror_r(-err, text, len);
-} /* get_error_text() */
+  if (err > 0)
+    get_error_text_ra (err, text, len);
+  else
+    strerror_r (-err, text, len);
+}				/* get_error_text() */
 #endif /* LINUX
- */
+        */
 
 /**
  * \brief returns error-string for libRASCH errors
@@ -585,26 +607,26 @@ get_error_text(long err, char *text, size_t len)
  * Function gets error-string for libRASCH error numbers.
  */
 void
-get_error_text_ra(long err, char *text, size_t len)
+get_error_text_ra (long err, char *text, size_t len)
 {
-	const char *c;
+  const char *c;
 
-	if (err <= 0)
-		return;
+  if (err <= 0)
+    return;
 
-	if (err <= ra_num_error_text)
-	{
-		c = ra_error_text[err-1];
+  if (err <= ra_num_error_text)
+    {
+      c = ra_error_text[err - 1];
 
-		strncpy(text, (c[0]=='\0' ? "" : gettext(c)), len);
-	}
-	else if ((err > RA_WARNING) && ((err - RA_WARNING) <= ra_num_warning_text))
-	{
-		c = ra_warning_text[err - RA_WARNING - 1];
+      strncpy (text, (c[0] == '\0' ? "" : gettext (c)), len);
+    }
+  else if ((err > RA_WARNING) && ((err - RA_WARNING) <= ra_num_warning_text))
+    {
+      c = ra_warning_text[err - RA_WARNING - 1];
 
-		strncpy(text, (c[0]=='\0' ? "" : gettext(c)), len);
-	}
-} /* get_error_text_ra() */
+      strncpy (text, (c[0] == '\0' ? "" : gettext (c)), len);
+    }
+}				/* get_error_text_ra() */
 
 
 /**
@@ -620,87 +642,91 @@ get_error_text_ra(long err, char *text, size_t len)
  * core and from the plugins. This function should _not_ be called from the user-space.
  */
 LIBRAAPI void
-_ra_set_error_int(any_handle h, long error, const char *error_from, const char *file, int line)
+_ra_set_error_int (any_handle h, long error, const char *error_from,
+		   const char *file, int line)
 {
-	struct librasch *ra;
+  struct librasch *ra;
 
-	if (ra_print_debug_infos >= 2)
+  if (ra_print_debug_infos >= 2)
+    {
+      fprintf (stderr, "set-error called from %s (%s:%d) for %p\n",
+	       error_from, file, line, h);
+    }
+
+  if (ra_in_error)
+    {
+      fprintf (stderr,
+	       gettext
+	       ("circular set_error-calling, this should NOT happen\n"));
+      fprintf (stderr, "called from %s (%s:%d)\n", error_from, file, line);
+      ra_in_error = 0;
+      return;
+    }
+
+  ra_in_error = 1;
+
+  if (!h)
+    return;
+
+  /* get pointer to struct librasch */
+  ra = (struct librasch *) ra_lib_handle_from_any_handle (h);
+  if (!ra)
+    {
+      ra_in_error = 0;
+      return;
+    }
+
+  if (ra->error_from)
+    {
+      free (ra->error_from);
+      ra->error_from = NULL;
+    }
+  if (error_from || file)
+    {
+      ra->error_from = malloc (strlen (error_from) + strlen (file) + 4 + 10);
+      ra->error_from[0] = '\0';
+      if (error_from)
+	strcat (ra->error_from, error_from);
+      if (file)
 	{
-		fprintf(stderr, "set-error called from %s (%s:%d) for %p\n", error_from, file, line, h);
+	  char t[20];
+
+	  if (error_from)
+	    strcat (ra->error_from, " (");
+	  strcat (ra->error_from, file);
+
+	  sprintf (t, ":%d", line);
+	  strcat (ra->error_from, t);
+	  if (error_from)
+	    strcat (ra->error_from, ")");
 	}
+    }
 
-	if (ra_in_error)
-	{
-		fprintf(stderr, gettext("circular set_error-calling, this should NOT happen\n"));
-		fprintf(stderr, "called from %s (%s:%d)\n", error_from, file, line);
-		ra_in_error = 0;
-		return;
-	}
-
-	ra_in_error = 1;
-
-	if (!h)
-		return;
-
-	/* get pointer to struct librasch */
-	ra = (struct librasch *)ra_lib_handle_from_any_handle(h);
-	if (!ra)
-	{
-		ra_in_error = 0;
-		return;
-	}
-
-	if (ra->error_from)
-	{
-		free(ra->error_from);
-		ra->error_from = NULL;
-	}
-	if (error_from || file)
-	{
-		ra->error_from = malloc(strlen(error_from)+strlen(file)+4+10);
-		ra->error_from[0] = '\0';
-		if (error_from)
-			strcat(ra->error_from, error_from);
-		if (file)
-		{
-			char t[20];
-
-			if (error_from)
-				strcat(ra->error_from, " (");
-			strcat(ra->error_from, file);
-
-			sprintf(t, ":%d", line);
-			strcat(ra->error_from, t);
-			if (error_from)
-				strcat(ra->error_from, ")");
-		}
-	}
-
-	/* if error == 0 -> os error */
-	if (error == 0)
-	{
+  /* if error == 0 -> os error */
+  if (error == 0)
+    {
 #ifdef LINUX
-		ra->error_number = -errno;
+      ra->error_number = -errno;
 #endif
 #ifdef WIN32
-		ra->error_number = GetLastError();
-		ra->error_number = -ra->error_number;
+      ra->error_number = GetLastError ();
+      ra->error_number = -ra->error_number;
 #endif
-	}
-	else
-		ra->error_number = error;
+    }
+  else
+    ra->error_number = error;
 
-	if (ra_print_debug_infos && (ra->error_number != RA_ERR_NONE))
-	{
-		char t[1000];
-		long err_num;
+  if (ra_print_debug_infos && (ra->error_number != RA_ERR_NONE))
+    {
+      char t[1000];
+      long err_num;
 
-		err_num = ra_lib_get_error(ra, t, 1000);
-		fprintf(stderr, "%s:%d - %s (%ld)\n", file, line, t, err_num);
-	}
-	
-	ra_in_error = 0;
-} /* _ra_set_error() */
+      err_num = ra_lib_get_error (ra, t, 1000);
+      fprintf (stderr, "%s:%d - %s (%ld)\n", file, line, t, err_num);
+    }
+
+  ra_in_error = 0;
+}				/* _ra_set_error() */
 
 
 /**
@@ -710,43 +736,43 @@ _ra_set_error_int(any_handle h, long error, const char *error_from, const char *
  * Returns handle of libRASCH instance from any handle.
  */
 LIBRAAPI ra_handle
-ra_lib_handle_from_any_handle(any_handle h)
+ra_lib_handle_from_any_handle (any_handle h)
 {
-	unsigned short type = *((unsigned short *)h);
-	struct ra_meas *meas;
-	ra_handle ra = NULL;
+  unsigned short type = *((unsigned short *) h);
+  struct ra_meas *meas;
+  ra_handle ra = NULL;
 
-	switch (type)
-	{
-	case RA_HANDLE_LIB:
-		ra = h;
-		break;
-	case RA_HANDLE_MEAS:
-	case RA_HANDLE_REC:
-	case RA_HANDLE_EVAL:
-	case RA_HANDLE_EVAL_CLASS:
-	case RA_HANDLE_EVAL_PROP:
-	case RA_HANDLE_EVAL_SUMMARY:
-		meas = ra_meas_handle_from_any_handle(h);
-		if (meas)
-			ra = meas->ra;
-		break;
-	case RA_HANDLE_PLUGIN:
-		ra = ((struct plugin_struct *)h)->ra;
-		break;
-	case RA_HANDLE_PROC:
-		ra = ((struct proc_info *)h)->ra;
-		break;
-	case RA_HANDLE_VIEW:
-		ra = ((struct view_info *)h)->ra;
-		break;
-	case RA_HANDLE_FIND:
-	default:
-		break;
-	}
+  switch (type)
+    {
+    case RA_HANDLE_LIB:
+      ra = h;
+      break;
+    case RA_HANDLE_MEAS:
+    case RA_HANDLE_REC:
+    case RA_HANDLE_EVAL:
+    case RA_HANDLE_EVAL_CLASS:
+    case RA_HANDLE_EVAL_PROP:
+    case RA_HANDLE_EVAL_SUMMARY:
+      meas = ra_meas_handle_from_any_handle (h);
+      if (meas)
+	ra = meas->ra;
+      break;
+    case RA_HANDLE_PLUGIN:
+      ra = ((struct plugin_struct *) h)->ra;
+      break;
+    case RA_HANDLE_PROC:
+      ra = ((struct proc_info *) h)->ra;
+      break;
+    case RA_HANDLE_VIEW:
+      ra = ((struct view_info *) h)->ra;
+      break;
+    case RA_HANDLE_FIND:
+    default:
+      break;
+    }
 
-	return ra;
-} /* ra_lib_handle_from_any_handle() */
+  return ra;
+}				/* ra_lib_handle_from_any_handle() */
 
 
 /**
@@ -756,51 +782,51 @@ ra_lib_handle_from_any_handle(any_handle h)
  * Returns measurement-handle.
  */
 LIBRAAPI meas_handle
-ra_meas_handle_from_any_handle(any_handle h)
+ra_meas_handle_from_any_handle (any_handle h)
 {
-	unsigned short type = *((unsigned short *)h);
-	struct ra_rec *rec;
-	struct eval *eval;
-	struct eval_class *cl;
-	struct eval_property *prop;
-	struct eval_summary *sum;
-	meas_handle mh = NULL;
+  unsigned short type = *((unsigned short *) h);
+  struct ra_rec *rec;
+  struct eval *eval;
+  struct eval_class *cl;
+  struct eval_property *prop;
+  struct eval_summary *sum;
+  meas_handle mh = NULL;
 
-	if (h == NULL)
-		return NULL;
+  if (h == NULL)
+    return NULL;
 
-	switch (type)
-	{
-	case RA_HANDLE_MEAS:
-		mh = h;
-		break;
-	case RA_HANDLE_REC:
-		rec = (struct ra_rec *)h;
-		mh = rec->meas;
-		break;
-	case RA_HANDLE_EVAL:
-		eval = (struct eval *)h;
-		mh = eval->meas;
-		break;
-	case RA_HANDLE_EVAL_CLASS:
-		cl = (struct eval_class *)h;
-		mh = cl->meas;
-		break;
-	case RA_HANDLE_EVAL_PROP:
-		prop = (struct eval_property *)h;
-		mh = prop->meas;
-		break;
-	case RA_HANDLE_EVAL_SUMMARY:
-		sum = (struct eval_summary *)h;
-		mh = sum->meas;
-		break;
-	default:
-		_ra_set_error(h, RA_ERR_UNKNOWN_HANDLE, "libRASCH");
-		break;
-	}
+  switch (type)
+    {
+    case RA_HANDLE_MEAS:
+      mh = h;
+      break;
+    case RA_HANDLE_REC:
+      rec = (struct ra_rec *) h;
+      mh = rec->meas;
+      break;
+    case RA_HANDLE_EVAL:
+      eval = (struct eval *) h;
+      mh = eval->meas;
+      break;
+    case RA_HANDLE_EVAL_CLASS:
+      cl = (struct eval_class *) h;
+      mh = cl->meas;
+      break;
+    case RA_HANDLE_EVAL_PROP:
+      prop = (struct eval_property *) h;
+      mh = prop->meas;
+      break;
+    case RA_HANDLE_EVAL_SUMMARY:
+      sum = (struct eval_summary *) h;
+      mh = sum->meas;
+      break;
+    default:
+      _ra_set_error (h, RA_ERR_UNKNOWN_HANDLE, "libRASCH");
+      break;
+    }
 
-	return mh;
-} /* ra_meas_handle_from_any_handle() */
+  return mh;
+}				/* ra_meas_handle_from_any_handle() */
 
 
 /**
@@ -812,21 +838,21 @@ ra_meas_handle_from_any_handle(any_handle h)
  * Use or do not use plugin.
  */
 LIBRAAPI int
-ra_lib_use_plugin(ra_handle h, int plugin_index, int use_it)
+ra_lib_use_plugin (ra_handle h, int plugin_index, int use_it)
 {
-	struct librasch *ra = (struct librasch *)h;
-	struct plugin_struct *p = get_plugin(ra, plugin_index);
+  struct librasch *ra = (struct librasch *) h;
+  struct plugin_struct *p = get_plugin (ra, plugin_index);
 
-	if (!p)
-	{
-		_ra_set_error(h, RA_ERR_UNKNOWN_PLUGIN, "libRASCH");
-		return -1;
-	}
+  if (!p)
+    {
+      _ra_set_error (h, RA_ERR_UNKNOWN_PLUGIN, "libRASCH");
+      return -1;
+    }
 
-	p->info.use_plugin = use_it;
+  p->info.use_plugin = use_it;
 
-	return 0;
-} /* ra_lib_use_plugin() */
+  return 0;
+}				/* ra_lib_use_plugin() */
 
 
 /**
@@ -837,16 +863,16 @@ ra_lib_use_plugin(ra_handle h, int plugin_index, int use_it)
  * Function returns the plugin-handle for the plugin #number (zero based).
  */
 struct plugin_struct *
-get_plugin(struct librasch *ra, int number)
+get_plugin (struct librasch *ra, int number)
 {
-	struct plugin_struct *p = ra->pl_head;
-	int cnt = number;
+  struct plugin_struct *p = ra->pl_head;
+  int cnt = number;
 
-	while (p && cnt--)
-		p = p->next;
+  while (p && cnt--)
+    p = p->next;
 
-	return p;
-} /* get_plugin() */
+  return p;
+}				/* get_plugin() */
 
 
 /**
@@ -857,13 +883,13 @@ get_plugin(struct librasch *ra, int number)
  * Function returns the plugin-handle for the plugin with the name 'name'.
  */
 struct plugin_struct *
-get_plugin_by_name(struct librasch *ra, const char *name)
+get_plugin_by_name (struct librasch *ra, const char *name)
 {
-	struct plugin_struct *p = ra->pl_head;
-	while (p && (strcmp(p->info.name, name) != 0))
-		p = p->next;
-	return p;
-} /* get_plugin_by_name() */
+  struct plugin_struct *p = ra->pl_head;
+  while (p && (strcmp (p->info.name, name) != 0))
+    p = p->next;
+  return p;
+}				/* get_plugin_by_name() */
 
 
 /**
@@ -875,19 +901,19 @@ get_plugin_by_name(struct librasch *ra, const char *name)
  * Returns the plugin-handle for plugin #plugin_num.
  */
 LIBRAAPI plugin_handle
-ra_plugin_get_by_num(ra_handle h, int plugin_num, int search_all)
+ra_plugin_get_by_num (ra_handle h, int plugin_num, int search_all)
 {
-	struct librasch *ra = (struct librasch *)h;
-	struct plugin_struct *p = get_plugin(ra, plugin_num);
+  struct librasch *ra = (struct librasch *) h;
+  struct plugin_struct *p = get_plugin (ra, plugin_num);
 
-	if (p && !search_all && !p->info.use_plugin)
-	{
-		_ra_set_error(h, RA_ERR_UNKNOWN_PLUGIN, "libRASCH");
-		p = NULL;
-	}
+  if (p && !search_all && !p->info.use_plugin)
+    {
+      _ra_set_error (h, RA_ERR_UNKNOWN_PLUGIN, "libRASCH");
+      p = NULL;
+    }
 
-	return p;
-} /* ra_plugin_get_by_num() */
+  return p;
+}				/* ra_plugin_get_by_num() */
 
 
 /**
@@ -899,31 +925,31 @@ ra_plugin_get_by_num(ra_handle h, int plugin_num, int search_all)
  * Returns the plugin-handle for plugin with name name.
  */
 LIBRAAPI plugin_handle
-ra_plugin_get_by_name(ra_handle h, const char *name, int search_all)
+ra_plugin_get_by_name (ra_handle h, const char *name, int search_all)
 {
-	struct librasch *ra = (struct librasch *)h;
-	struct plugin_struct *p = NULL;
-	char *name_utf8;
+  struct librasch *ra = (struct librasch *) h;
+  struct plugin_struct *p = NULL;
+  char *name_utf8;
 
-	if (!h)
-	{
-		_ra_set_error(h, RA_ERR_ERROR_INTERNAL, "libRASCH");
-		return NULL;
-	}
+  if (!h)
+    {
+      _ra_set_error (h, RA_ERR_ERROR_INTERNAL, "libRASCH");
+      return NULL;
+    }
 
-	name_utf8 = malloc(strlen(name) * 2);
-	local_to_utf8(name, name_utf8, strlen(name) * 2);
-	p = get_plugin_by_name(ra, name_utf8);
-	free(name_utf8);
+  name_utf8 = malloc (strlen (name) * 2);
+  local_to_utf8 (name, name_utf8, strlen (name) * 2);
+  p = get_plugin_by_name (ra, name_utf8);
+  free (name_utf8);
 
-	if (p && !search_all && !p->info.use_plugin)
-	{
-		_ra_set_error(h, RA_ERR_UNKNOWN_PLUGIN, "libRASCH");
-		p = NULL;
-	}
+  if (p && !search_all && !p->info.use_plugin)
+    {
+      _ra_set_error (h, RA_ERR_UNKNOWN_PLUGIN, "libRASCH");
+      p = NULL;
+    }
 
-	return p;
-} /* ra_plugin_get_by_name() */
+  return p;
+}				/* ra_plugin_get_by_name() */
 
 
 /**
@@ -936,52 +962,52 @@ ra_plugin_get_by_name(ra_handle h, const char *name, int search_all)
  * ra_find_handle will be returned and the infos about the measurement is in mfs.
  */
 LIBRAAPI ra_find_handle
-ra_meas_find_first(ra_handle h, const char *dir, struct ra_find_struct *rfs)
+ra_meas_find_first (ra_handle h, const char *dir, struct ra_find_struct * rfs)
 {
-	char *dir_utf8;
-	struct plugin_struct *p = ((struct librasch *)h)->pl_head;
-	struct find_meas *f = calloc(1, sizeof(struct find_meas));
-	f->handle_id = RA_HANDLE_FIND;
+  char *dir_utf8;
+  struct plugin_struct *p = ((struct librasch *) h)->pl_head;
+  struct find_meas *f = calloc (1, sizeof (struct find_meas));
+  f->handle_id = RA_HANDLE_FIND;
 
-	dir_utf8 = malloc(strlen(dir) * 2);
-	local_to_utf8(dir, dir_utf8, strlen(dir) * 2);
+  dir_utf8 = malloc (strlen (dir) * 2);
+  local_to_utf8 (dir, dir_utf8, strlen (dir) * 2);
 
-	while (p)
+  while (p)
+    {
+      /* use plugin and (find_meas() is assigned) ? */
+      if (!p->info.use_plugin || !p->access.find_meas)
 	{
-		/* use plugin and (find_meas() is assigned) ? */
-		if (!p->info.use_plugin || !p->access.find_meas)
-		{
-			p = p->next;
-			continue;
-		}
-
-		/* look for signals handled by current plugin in dir */
-		(*p->access.find_meas) (dir_utf8, f);
-
-		/* next plugin */
-		p = p->next;
+	  p = p->next;
+	  continue;
 	}
 
-	free(dir_utf8);
+      /* look for signals handled by current plugin in dir */
+      (*p->access.find_meas) (dir_utf8, f);
 
-	if (f->num <= 0)
-	{
-		free(f);
-		f = NULL;
-	}
-	else
-	{
-		strcpy(rfs->name, f->names[f->curr]);
-		utf8_to_local_inplace(rfs->name, MAX_PATH_RA);
+      /* next plugin */
+      p = p->next;
+    }
 
-		strcpy(rfs->plugin, f->plugins[f->curr]);
-		utf8_to_local_inplace(rfs->plugin, RA_VALUE_NAME_MAX);
+  free (dir_utf8);
 
-		f->curr++;
-	}
+  if (f->num <= 0)
+    {
+      free (f);
+      f = NULL;
+    }
+  else
+    {
+      strcpy (rfs->name, f->names[f->curr]);
+      utf8_to_local_inplace (rfs->name, MAX_PATH_RA);
 
-	return (ra_find_handle) f;
-} /* ra_meas_find_first() */
+      strcpy (rfs->plugin, f->plugins[f->curr]);
+      utf8_to_local_inplace (rfs->plugin, RA_VALUE_NAME_MAX);
+
+      f->curr++;
+    }
+
+  return (ra_find_handle) f;
+}				/* ra_meas_find_first() */
 
 
 /**
@@ -993,24 +1019,24 @@ ra_meas_find_first(ra_handle h, const char *dir, struct ra_find_struct *rfs)
  * are no more measurements searched with ra_meas_find_first().
  */
 LIBRAAPI int
-ra_meas_find_next(ra_find_handle h, struct ra_find_struct *rfs)
+ra_meas_find_next (ra_find_handle h, struct ra_find_struct *rfs)
 {
-	struct find_meas *f = (struct find_meas *)h;
-	f->handle_id = RA_HANDLE_FIND;
+  struct find_meas *f = (struct find_meas *) h;
+  f->handle_id = RA_HANDLE_FIND;
 
-	if (!f || (f->curr >= f->num))
-		return 0;
+  if (!f || (f->curr >= f->num))
+    return 0;
 
-	strcpy(rfs->name, f->names[f->curr]);
-	utf8_to_local_inplace(rfs->name, MAX_PATH_RA);
+  strcpy (rfs->name, f->names[f->curr]);
+  utf8_to_local_inplace (rfs->name, MAX_PATH_RA);
 
-	strcpy(rfs->plugin, f->plugins[f->curr]);
-	utf8_to_local_inplace(rfs->plugin, RA_VALUE_NAME_MAX);
+  strcpy (rfs->plugin, f->plugins[f->curr]);
+  utf8_to_local_inplace (rfs->plugin, RA_VALUE_NAME_MAX);
 
-	f->curr++;
+  f->curr++;
 
-	return 1;
-} /* ra_meas_find_next() */
+  return 1;
+}				/* ra_meas_find_next() */
 
 
 /**
@@ -1021,35 +1047,35 @@ ra_meas_find_next(ra_find_handle h, struct ra_find_struct *rfs)
  * the ra_find_handle h returned from ra_meas_find_first() will no be longer used.
  */
 LIBRAAPI void
-ra_meas_close_find(ra_find_handle h)
+ra_meas_close_find (ra_find_handle h)
 {
-	int i;
-	struct find_meas *f = (struct find_meas *)h;
+  int i;
+  struct find_meas *f = (struct find_meas *) h;
 
-	if (f == NULL)
-		return;
+  if (f == NULL)
+    return;
 
-	if (f->names != NULL)
+  if (f->names != NULL)
+    {
+      for (i = 0; i < f->num; i++)
 	{
-		for (i = 0; i < f->num; i++)
-		{
-			if (f->names[i] != NULL)
-				ra_free_mem(f->names[i]);
-		}
-		ra_free_mem(f->names);
+	  if (f->names[i] != NULL)
+	    ra_free_mem (f->names[i]);
 	}
+      ra_free_mem (f->names);
+    }
 
-	if (f->plugins != NULL)
+  if (f->plugins != NULL)
+    {
+      for (i = 0; i < f->num; i++)
 	{
-		for (i = 0; i < f->num; i++)
-		{
-			if (f->plugins[i] != NULL)
-				ra_free_mem(f->plugins[i]);
-		}
-		ra_free_mem(f->plugins);
+	  if (f->plugins[i] != NULL)
+	    ra_free_mem (f->plugins[i]);
 	}
-	free(f);
-} /* ra_meas_close_find() */
+      ra_free_mem (f->plugins);
+    }
+  free (f);
+}				/* ra_meas_close_find() */
 
 
 /**
@@ -1065,94 +1091,94 @@ ra_meas_close_find(ra_find_handle h)
  * but not about the evaluation. Getting the evaluation infos can be "very" time consuming.
  */
 LIBRAAPI meas_handle
-ra_meas_open(ra_handle h, const char *file, const char *eval_file, int fast)
+ra_meas_open (ra_handle h, const char *file, const char *eval_file, int fast)
 {
-	struct librasch *ra = (struct librasch *)h;
-	struct plugin_struct *p;
-	meas_handle mh = NULL;
-	struct ra_meas *meas = NULL;
-	char file_use[MAX_PATH_RA];
-	char *file_utf8;
-	char *eval_file_utf8 = NULL;
-	size_t len;
+  struct librasch *ra = (struct librasch *) h;
+  struct plugin_struct *p;
+  meas_handle mh = NULL;
+  struct ra_meas *meas = NULL;
+  char file_use[MAX_PATH_RA];
+  char *file_utf8;
+  char *eval_file_utf8 = NULL;
+  size_t len;
 
-	if (!ra)
-		return NULL;
+  if (!ra)
+    return NULL;
 
-	p = ra->pl_head;
+  p = ra->pl_head;
 
-	len = strlen(file);
-	if (len == 0)
+  len = strlen (file);
+  if (len == 0)
+    {
+      _ra_set_error (ra, RA_ERR_INFO_MISSING, "libRASCH");
+      return NULL;
+    }
+
+  strncpy (file_use, file, MAX_PATH_RA);
+  if (file_use[len - 1] == SEPARATOR)
+    file_use[len - 1] = '\0';
+  file_utf8 = malloc (len * 2);
+  local_to_utf8 (file_use, file_utf8, strlen (file) * 2);
+  if ((eval_file != NULL) && (eval_file[0] != '\0'))
+    {
+      eval_file_utf8 = malloc (strlen (eval_file) * 2);
+      local_to_utf8 (eval_file, eval_file_utf8, strlen (eval_file) * 2);
+    }
+
+  while (p)
+    {
+      /* use plugin and (open_meas() is assigned) ? */
+      if (!p->info.use_plugin || !p->access.open_meas
+	  || !p->access.check_meas)
 	{
-		_ra_set_error(ra, RA_ERR_INFO_MISSING, "libRASCH");		
-		return NULL;
+	  p = p->next;
+	  continue;
 	}
 
-	strncpy(file_use, file, MAX_PATH_RA);
- 	if (file_use[len-1] == SEPARATOR)
-		file_use[len-1] = '\0';
-	file_utf8 = malloc(len * 2);
-	local_to_utf8(file_use, file_utf8, strlen(file) * 2);
-	if ((eval_file != NULL) && (eval_file[0] != '\0'))
+      /* check if current plugin supports file */
+      if ((*p->access.check_meas) (file_utf8))
 	{
-		eval_file_utf8 = malloc(strlen(eval_file) * 2);
-		local_to_utf8(eval_file, eval_file_utf8, strlen(eval_file) * 2);
-	}
+	  /* yes, correct plugin -> open it */
+	  mh = (*p->access.open_meas) (h, file_utf8, fast);
+	  if (mh)
+	    {
+	      meas = (struct ra_meas *) mh;
+	      meas->handle_id = RA_HANDLE_MEAS;
 
-	while (p)
-	{
-		/* use plugin and (open_meas() is assigned) ? */
-		if (!p->info.use_plugin || !p->access.open_meas
-		    || !p->access.check_meas)
+	      /* save pointer to overall ra struct */
+	      meas->ra = h;
+	      /* and save pointer to handling plugin */
+	      meas->p = p;
+	      /* get max. samplerate and calc channel scaling factors */
+	      calc_x_scales (meas);
+	      /* read evaluation */
+	      /* store given evaluation filename */
+	      if ((eval_file != NULL) && (eval_file[0] != '\0'))
+		strncpy (meas->eval.filename, eval_file_utf8, MAX_PATH_RA);
+	      else
+		meas->eval.filename[0] = '\0';
+
+	      if (!fast)
 		{
-			p = p->next;
-			continue;
+		  load_eval (mh, eval_file_utf8);	/* first load eval (if avail.) */
+		  read_evaluation (mh);	/* then read original (if not alread in eval) */
 		}
 
-		/* check if current plugin supports file */
-		if ((*p->access.check_meas)(file_utf8))
-		{
-			/* yes, correct plugin -> open it */
-			mh = (*p->access.open_meas)(h, file_utf8, fast);
-			if (mh)
-			{
-				meas = (struct ra_meas *)mh;
-				meas->handle_id = RA_HANDLE_MEAS;
-
-				/* save pointer to overall ra struct */
-				meas->ra = h;
-				/* and save pointer to handling plugin */
-				meas->p = p;
-				/* get max. samplerate and calc channel scaling factors */
-				calc_x_scales(meas);
-				/* read evaluation */
-				/* store given evaluation filename */
-				if ((eval_file != NULL) && (eval_file[0] != '\0'))
-					strncpy(meas->eval.filename, eval_file_utf8, MAX_PATH_RA);
-				else
-					meas->eval.filename[0] = '\0';
-				
-				if (!fast)
-				{
-					load_eval(mh, eval_file_utf8);	/* first load eval (if avail.) */
-					read_evaluation(mh);	/* then read original (if not alread in eval) */
-				}
-
-				break;
-			}
-		}
-
-		/* try next plugin */
-		p = p->next;
+	      break;
+	    }
 	}
-	free(file_utf8);
-	free(eval_file_utf8);
 
-	if (meas == NULL)
-		_ra_set_error(ra, RA_ERR_UNSUP_FORMAT, "libRASCH");
+      /* try next plugin */
+      p = p->next;
+    }
+  free (file_utf8);
+  free (eval_file_utf8);
 
-	return meas;
-} /* ra_meas_open() */
+  if (meas == NULL)
+    _ra_set_error (ra, RA_ERR_UNSUP_FORMAT, "libRASCH");
+
+  return meas;
+}				/* ra_meas_open() */
 
 
 /**
@@ -1163,47 +1189,47 @@ ra_meas_open(ra_handle h, const char *file, const char *eval_file, int fast)
  * recording channel the scaling factor to the max. samplerate.
  */
 int
-calc_x_scales(struct ra_meas *meas)
+calc_x_scales (struct ra_meas *meas)
 {
-	value_handle vh;
-	rec_handle rh;
-	int i;
-	
-	vh = ra_value_malloc();
-	rh = ra_rec_get_first(meas, 0);
+  value_handle vh;
+  rec_handle rh;
+  int i;
 
-	if (ra_info_get(rh, RA_INFO_REC_GEN_NUM_CHANNEL_L, vh) == 0)
-		meas->num_ch = ra_value_get_long(vh);
+  vh = ra_value_malloc ();
+  rh = ra_rec_get_first (meas, 0);
 
-	if (meas->num_ch <= 0)
-	{
-		meas->max_samplerate = 1.0;
-		ra_value_free(vh);
+  if (ra_info_get (rh, RA_INFO_REC_GEN_NUM_CHANNEL_L, vh) == 0)
+    meas->num_ch = ra_value_get_long (vh);
 
-		return 0;
-	}
+  if (meas->num_ch <= 0)
+    {
+      meas->max_samplerate = 1.0;
+      ra_value_free (vh);
 
-	meas->x_scale = malloc(sizeof(double) * meas->num_ch);
-	memset(meas->x_scale, 0, sizeof(double) * meas->num_ch);
+      return 0;
+    }
 
-	meas->max_samplerate = 0.0;
-	for (i = 0; i < meas->num_ch; i++)
-	{
-		ra_value_set_number(vh, i);
-		if (ra_info_get(rh, RA_INFO_REC_CH_SAMPLERATE_D, vh) != 0)
-			continue;
+  meas->x_scale = malloc (sizeof (double) * meas->num_ch);
+  memset (meas->x_scale, 0, sizeof (double) * meas->num_ch);
 
-		meas->x_scale[i] = ra_value_get_double(vh);
-		if (meas->max_samplerate < meas->x_scale[i])
-			meas->max_samplerate = meas->x_scale[i];
-	}
-	ra_value_free(vh);
+  meas->max_samplerate = 0.0;
+  for (i = 0; i < meas->num_ch; i++)
+    {
+      ra_value_set_number (vh, i);
+      if (ra_info_get (rh, RA_INFO_REC_CH_SAMPLERATE_D, vh) != 0)
+	continue;
 
-	for (i = 0; i < meas->num_ch; i++)
-		meas->x_scale[i] /= meas->max_samplerate;
+      meas->x_scale[i] = ra_value_get_double (vh);
+      if (meas->max_samplerate < meas->x_scale[i])
+	meas->max_samplerate = meas->x_scale[i];
+    }
+  ra_value_free (vh);
 
-	return 0;
-} /* calc_x_scales() */
+  for (i = 0; i < meas->num_ch; i++)
+    meas->x_scale[i] /= meas->max_samplerate;
+
+  return 0;
+}				/* calc_x_scales() */
 
 
 /**
@@ -1218,54 +1244,54 @@ calc_x_scales(struct ra_meas *meas)
  * Not full implemented. !!!
  */
 LIBRAAPI meas_handle
-ra_meas_new(ra_handle h, const char *dir, const char *name)
+ra_meas_new (ra_handle h, const char *dir, const char *name)
 {
-	struct librasch *ra = (struct librasch *)h;
-	plugin_handle pl;
-	struct plugin_struct *p;
-	meas_handle mh = NULL;
-	struct ra_meas *meas = NULL;
-	char *dir_utf8;
-	char *name_utf8;
+  struct librasch *ra = (struct librasch *) h;
+  plugin_handle pl;
+  struct plugin_struct *p;
+  meas_handle mh = NULL;
+  struct ra_meas *meas = NULL;
+  char *dir_utf8;
+  char *name_utf8;
 
-	/* measurement will be handled by rasch-file plugin */
-	pl = ra_plugin_get_by_name(h, "rasch-file", 0);
-	if (!pl)
-		return NULL;
-	p = (struct plugin_struct *)pl;
+  /* measurement will be handled by rasch-file plugin */
+  pl = ra_plugin_get_by_name (h, "rasch-file", 0);
+  if (!pl)
+    return NULL;
+  p = (struct plugin_struct *) pl;
 
-	/* to be sure, check that new_meas() function exists in ra-raw plugin */
-	if (!p->access.new_meas)
-	{
-		_ra_set_error(h, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
-		return NULL;
-	}
+  /* to be sure, check that new_meas() function exists in ra-raw plugin */
+  if (!p->access.new_meas)
+    {
+      _ra_set_error (h, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
+      return NULL;
+    }
 
-	dir_utf8 = malloc(strlen(dir) * 2);
-	local_to_utf8(dir, dir_utf8, strlen(dir) * 2);
-	name_utf8 = malloc(strlen(name) * 2);
-	local_to_utf8(name, name_utf8, strlen(name) * 2);
+  dir_utf8 = malloc (strlen (dir) * 2);
+  local_to_utf8 (dir, dir_utf8, strlen (dir) * 2);
+  name_utf8 = malloc (strlen (name) * 2);
+  local_to_utf8 (name, name_utf8, strlen (name) * 2);
 
-	mh = (*p->access.new_meas)(dir_utf8, name_utf8);
-	if (!mh)
-		goto error;
+  mh = (*p->access.new_meas) (dir_utf8, name_utf8);
+  if (!mh)
+    goto error;
 
-	/* create measurement and set needed info */
-	meas = (struct ra_meas *)mh;
-	meas->handle_id = RA_HANDLE_MEAS;
-	/* save pointer to overall lib struct */
-	meas->ra = ra;
-	/* and save pointer to handling plugin */
-	meas->p = p;
-	/* get max. samplerate and calc channel scaling factors */
-	calc_x_scales(meas);
+  /* create measurement and set needed info */
+  meas = (struct ra_meas *) mh;
+  meas->handle_id = RA_HANDLE_MEAS;
+  /* save pointer to overall lib struct */
+  meas->ra = ra;
+  /* and save pointer to handling plugin */
+  meas->p = p;
+  /* get max. samplerate and calc channel scaling factors */
+  calc_x_scales (meas);
 
- error:	
-	free(dir_utf8);
-	free(name_utf8);
+error:
+  free (dir_utf8);
+  free (name_utf8);
 
-	return meas;
-} /* ra_meas_new() */
+  return meas;
+}				/* ra_meas_new() */
 
 
 
@@ -1278,26 +1304,26 @@ ra_meas_new(ra_handle h, const char *dir, const char *name)
  * Not full implemented. !!!
  */
 LIBRAAPI int
-ra_meas_save(meas_handle mh)
+ra_meas_save (meas_handle mh)
 {
-        /* (TODO: think about how to implement one save function (for measurement and evaluation))*/
-	int ret = -1;
-	unsigned short type = *((unsigned short *)mh);
-	
-	if (type == RA_HANDLE_MEAS) /* to be sure that correct handle is used */
-	{
-		struct plugin_struct *p = ((struct ra_meas *)mh)->p;
+  /* (TODO: think about how to implement one save function (for measurement and evaluation)) */
+  int ret = -1;
+  unsigned short type = *((unsigned short *) mh);
 
-		if (p->access.save_meas)
-			ret = (*p->access.save_meas)(mh);
-		else
-			_ra_set_error(mh, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
-	}
-	else
-		_ra_set_error(mh, RA_ERR_WRONG_HANDLE, "libRASCH");
+  if (type == RA_HANDLE_MEAS)	/* to be sure that correct handle is used */
+    {
+      struct plugin_struct *p = ((struct ra_meas *) mh)->p;
 
-	return ret;
-} /* ra_meas_save() */
+      if (p->access.save_meas)
+	ret = (*p->access.save_meas) (mh);
+      else
+	_ra_set_error (mh, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
+    }
+  else
+    _ra_set_error (mh, RA_ERR_WRONG_HANDLE, "libRASCH");
+
+  return ret;
+}				/* ra_meas_save() */
 
 
 /**
@@ -1307,35 +1333,35 @@ ra_meas_save(meas_handle mh)
  * Close a measurement.
  */
 LIBRAAPI void
-ra_meas_close(meas_handle mh)
+ra_meas_close (meas_handle mh)
 {
-	long l;
-	struct ra_meas *meas = (struct ra_meas *) mh;
-	struct plugin_struct *p = NULL;
-	
-	if (!mh)
-		return;
-	p = meas->p;
+  long l;
+  struct ra_meas *meas = (struct ra_meas *) mh;
+  struct plugin_struct *p = NULL;
 
-	free_eval_infos(&(meas->eval));
+  if (!mh)
+    return;
+  p = meas->p;
 
-	/* is close_meas() assigned ? */
-	if (p->access.close_meas)
-		(*p->access.close_meas) (mh);
+  free_eval_infos (&(meas->eval));
 
-	if (meas->sessions)
-	{
-		for (l = 0; l < meas->num_sessions; l++)
-			free_session_rec(meas->sessions[l].root_rec);
-		ra_free_mem(meas->sessions);
-		meas->num_sessions = 0;
-	}
+  /* is close_meas() assigned ? */
+  if (p->access.close_meas)
+    (*p->access.close_meas) (mh);
 
-	if (meas->x_scale)
-		free(meas->x_scale);
+  if (meas->sessions)
+    {
+      for (l = 0; l < meas->num_sessions; l++)
+	free_session_rec (meas->sessions[l].root_rec);
+      ra_free_mem (meas->sessions);
+      meas->num_sessions = 0;
+    }
 
-	ra_free_mem(meas);
-} /* ra_meas_close() */
+  if (meas->x_scale)
+    free (meas->x_scale);
+
+  ra_free_mem (meas);
+}				/* ra_meas_close() */
 
 
 /**
@@ -1348,51 +1374,52 @@ ra_meas_close(meas_handle mh)
  * in vh. For usage of the function please see user-manual.
  */
 LIBRAAPI int
-ra_info_get(any_handle h, int id, value_handle vh)
+ra_info_get (any_handle h, int id, value_handle vh)
 {
-	unsigned short type;
-	struct plugin_struct *p;
+  unsigned short type;
+  struct plugin_struct *p;
 
-	/* in-validate value so in case of error 'vh' has no value */
-	ra_value_reset(vh);
+  /* in-validate value so in case of error 'vh' has no value */
+  ra_value_reset (vh);
 
-	if (!h || (id < 0) || !vh)
-		return -1;
+  if (!h || (id < 0) || !vh)
+    return -1;
 
-	if (check_handle_type(h, id) != 0)
-		return -1;
+  if (check_handle_type (h, id) != 0)
+    return -1;
 
-	type = *((unsigned short *)h);
+  type = *((unsigned short *) h);
 
-	if (type == RA_HANDLE_LIB)
-		return get_lib_info((ra_handle)h, id, vh);
+  if (type == RA_HANDLE_LIB)
+    return get_lib_info ((ra_handle) h, id, vh);
 
-	if (type == RA_HANDLE_PLUGIN)
-		return get_plugin_info((plugin_handle)h, id, vh);
+  if (type == RA_HANDLE_PLUGIN)
+    return get_plugin_info ((plugin_handle) h, id, vh);
 
-	if ((type == RA_HANDLE_MEAS) && (id > RA_INFO_MEASUREMENT_START) && (id < RA_INFO_MEASUREMENT_END))
-		return get_meas_general_info((meas_handle)h, id, vh);
+  if ((type == RA_HANDLE_MEAS) && (id > RA_INFO_MEASUREMENT_START)
+      && (id < RA_INFO_MEASUREMENT_END))
+    return get_meas_general_info ((meas_handle) h, id, vh);
 
-	if ((id > RA_INFO_EVALUATION) && (id < RA_INFO_EVALUATION_END))
-		return eval_get_info(h, id, vh);
+  if ((id > RA_INFO_EVALUATION) && (id < RA_INFO_EVALUATION_END))
+    return eval_get_info (h, id, vh);
 
-	if ((id > RA_INFO_SESSION_START) && (id < RA_INFO_SESSION_END))
-		return get_session_info(h, id, vh);
+  if ((id > RA_INFO_SESSION_START) && (id < RA_INFO_SESSION_END))
+    return get_session_info (h, id, vh);
 
-	if ((id > RA_INFO_PROCESSING_START) && (id < RA_INFO_PROCESSING_END))
-		return get_proc_info(h, id, vh);
+  if ((id > RA_INFO_PROCESSING_START) && (id < RA_INFO_PROCESSING_END))
+    return get_proc_info (h, id, vh);
 
-	p = get_plugin_from_handle(h);
-	if (!p)
-		return -1;
+  p = get_plugin_from_handle (h);
+  if (!p)
+    return -1;
 
-	if (p->access.get_info_id)
-		return (*p->access.get_info_id)(h, id, vh);
-	else
-		_ra_set_error(h, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
+  if (p->access.get_info_id)
+    return (*p->access.get_info_id) (h, id, vh);
+  else
+    _ra_set_error (h, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
 
-	return -1;
-} /* ra_info_get() */
+  return -1;
+}				/* ra_info_get() */
 
 
 /**
@@ -1403,63 +1430,63 @@ ra_info_get(any_handle h, int id, value_handle vh)
  * Function checks if the type handle 'h' is correct for the info-id 'id'.
  */
 int
-check_handle_type(any_handle h, int id)
+check_handle_type (any_handle h, int id)
 {
-	int ret = -1;
-	unsigned short type = *((unsigned short *)h);
+  int ret = -1;
+  unsigned short type = *((unsigned short *) h);
 
-	switch (type)
-	{
-	case RA_HANDLE_LIB:
-		if ((id > RA_INFO_LIB_START) && (id < RA_INFO_LIB_END))
-			ret = 0;
-		break;
-	case RA_HANDLE_MEAS:
-		if ((id > RA_INFO_MEASUREMENT_START) && (id < RA_INFO_OBJECT_END))
-			ret = 0;
-		break;
-	case RA_HANDLE_REC:
-		if ((id > RA_INFO_RECORDING_START) && (id < RA_INFO_RECORDING_END))
-			ret = 0;
-		break;
-	case RA_HANDLE_FIND:
-		if ((id > RA_INFO_MEASUREMENT_START) && (id < RA_INFO_OBJECT_END))
-			ret = 0;
-		break;
-	case RA_HANDLE_EVAL:
-		if ((id > RA_INFO_EVAL_START) && (id < RA_INFO_EVAL_END))
-			ret = 0;
-		break;
-	case RA_HANDLE_EVAL_CLASS:
-		if ((id > RA_INFO_CLASS_START) && (id < RA_INFO_CLASS_END))
-			ret = 0;
-		break;
-	case RA_HANDLE_EVAL_PROP:
-		if ((id > RA_INFO_PROP_START) && (id < RA_INFO_PROP_END))
-			ret = 0;
-		break;
-	case RA_HANDLE_EVAL_SUMMARY:
-		if ((id > RA_INFO_SUM_START) && (id < RA_INFO_SUM_END))
-			ret = 0;
-		break;
-	case RA_HANDLE_PLUGIN:
-		if ((id > RA_INFO_PLUGIN_START) && (id < RA_INFO_PLUGIN_END))
-			ret = 0;
-		break;
-	case RA_HANDLE_PROC:
-		if ((id > RA_INFO_PROCESSING_START) && (id < RA_INFO_PROCESSING_END))
-			ret = 0;
-		break;
-	case RA_HANDLE_VIEW:
-		_ra_set_error(h, RA_ERR_UNSUPPORTED, "libRASCH");
-		break;
-	default:
-		_ra_set_error(h, RA_ERR_UNKNOWN_HANDLE, "libRASCH");
-		break;
-	}
+  switch (type)
+    {
+    case RA_HANDLE_LIB:
+      if ((id > RA_INFO_LIB_START) && (id < RA_INFO_LIB_END))
+	ret = 0;
+      break;
+    case RA_HANDLE_MEAS:
+      if ((id > RA_INFO_MEASUREMENT_START) && (id < RA_INFO_OBJECT_END))
+	ret = 0;
+      break;
+    case RA_HANDLE_REC:
+      if ((id > RA_INFO_RECORDING_START) && (id < RA_INFO_RECORDING_END))
+	ret = 0;
+      break;
+    case RA_HANDLE_FIND:
+      if ((id > RA_INFO_MEASUREMENT_START) && (id < RA_INFO_OBJECT_END))
+	ret = 0;
+      break;
+    case RA_HANDLE_EVAL:
+      if ((id > RA_INFO_EVAL_START) && (id < RA_INFO_EVAL_END))
+	ret = 0;
+      break;
+    case RA_HANDLE_EVAL_CLASS:
+      if ((id > RA_INFO_CLASS_START) && (id < RA_INFO_CLASS_END))
+	ret = 0;
+      break;
+    case RA_HANDLE_EVAL_PROP:
+      if ((id > RA_INFO_PROP_START) && (id < RA_INFO_PROP_END))
+	ret = 0;
+      break;
+    case RA_HANDLE_EVAL_SUMMARY:
+      if ((id > RA_INFO_SUM_START) && (id < RA_INFO_SUM_END))
+	ret = 0;
+      break;
+    case RA_HANDLE_PLUGIN:
+      if ((id > RA_INFO_PLUGIN_START) && (id < RA_INFO_PLUGIN_END))
+	ret = 0;
+      break;
+    case RA_HANDLE_PROC:
+      if ((id > RA_INFO_PROCESSING_START) && (id < RA_INFO_PROCESSING_END))
+	ret = 0;
+      break;
+    case RA_HANDLE_VIEW:
+      _ra_set_error (h, RA_ERR_UNSUPPORTED, "libRASCH");
+      break;
+    default:
+      _ra_set_error (h, RA_ERR_UNKNOWN_HANDLE, "libRASCH");
+      break;
+    }
 
-	return ret;
-} /* check_handle_type() */
+  return ret;
+}				/* check_handle_type() */
 
 
 /**
@@ -1471,48 +1498,50 @@ check_handle_type(any_handle h, int id)
  * Function returns informations about the library core.
  */
 int
-get_lib_info(ra_handle ra, int id, value_handle vh)
+get_lib_info (ra_handle ra, int id, value_handle vh)
 {
-	int ret = 0;
-	long cnt;
-	struct plugin_struct *p;
-	struct meta_info *meta_inf;
-	char t[1000];
+  int ret = 0;
+  long cnt;
+  struct plugin_struct *p;
+  struct meta_info *meta_inf;
+  char t[1000];
 
-	/* get infos about asked measurement info */
-	meta_inf = get_meta_info(id);
+  /* get infos about asked measurement info */
+  meta_inf = get_meta_info (id);
 
-	if (!ra || !meta_inf || (id <= RA_INFO_LIB_START) || (id >= RA_INFO_LIB_END))
+  if (!ra || !meta_inf || (id <= RA_INFO_LIB_START)
+      || (id >= RA_INFO_LIB_END))
+    {
+      _ra_set_error (ra, RA_ERR_UNKNOWN_INFO, "libRASCH");
+      return -1;
+    }
+  set_meta_info (vh, meta_inf->name, meta_inf->desc, meta_inf->id);
+
+  switch (id)
+    {
+    case RA_INFO_NUM_PLUGINS_L:
+      p = ((struct librasch *) ra)->pl_head;
+      cnt = 0;
+      while (p)
 	{
-		_ra_set_error(ra, RA_ERR_UNKNOWN_INFO, "libRASCH");
-		return -1;
+	  cnt++;
+	  p = p->next;
 	}
-	set_meta_info(vh, meta_inf->name, meta_inf->desc, meta_inf->id);
+      ra_value_set_long (vh, cnt);
+      break;
+    case RA_INFO_VERSION_C:
+      sprintf (t, "%d.%d.%d%s", LIBRASCH_MAJ_VERSION, LIBRASCH_MIN_VERSION,
+	       LIBRASCH_PATCH_LEVEL, LIBRASCH_EXTRA_VERSION);
+      ra_value_set_string_utf8 (vh, t);
+      break;
+    default:
+      _ra_set_error (ra, RA_ERR_UNKNOWN_INFO, "libRASCH");
+      ret = -1;
+      break;
+    }
 
-	switch (id)
-	{
-	case RA_INFO_NUM_PLUGINS_L:
-		p = ((struct librasch *)ra)->pl_head;
-		cnt = 0;
-		while (p)
-		{
-			cnt++;
-			p = p->next;
-		}
-		ra_value_set_long(vh, cnt);
-		break;
-	case RA_INFO_VERSION_C:
-		sprintf(t, "%d.%d.%d%s", LIBRASCH_MAJ_VERSION, LIBRASCH_MIN_VERSION, LIBRASCH_PATCH_LEVEL, LIBRASCH_EXTRA_VERSION);
-		ra_value_set_string_utf8(vh, t);
-		break;
-	default:
-		_ra_set_error(ra, RA_ERR_UNKNOWN_INFO, "libRASCH");
-		ret = -1;
-		break;
-	}
-
-	return ret;
-} /* get_lib_info() */
+  return ret;
+}				/* get_lib_info() */
 
 
 /**
@@ -1524,122 +1553,129 @@ get_lib_info(ra_handle ra, int id, value_handle vh)
  * Function returns informations about library plugins.
  */
 int
-get_plugin_info(plugin_handle pl, int id, value_handle vh)
+get_plugin_info (plugin_handle pl, int id, value_handle vh)
 {
-	int ret = 0;
-	struct ra_value *v = (struct ra_value *)vh;
-	struct plugin_struct *p = (struct plugin_struct *)pl;
-	struct meta_info *meta_inf;
-	const char *c;
+  int ret = 0;
+  struct ra_value *v = (struct ra_value *) vh;
+  struct plugin_struct *p = (struct plugin_struct *) pl;
+  struct meta_info *meta_inf;
+  const char *c;
 
-	/* get infos about asked measurement info */
-	meta_inf = get_meta_info(id);
+  /* get infos about asked measurement info */
+  meta_inf = get_meta_info (id);
 
-	if (!pl || !meta_inf || (id <= RA_INFO_PLUGIN_START) || (id >= RA_INFO_PLUGIN_END))
-	{
-		_ra_set_error(pl, RA_ERR_UNKNOWN_INFO, "libRASCH");
-		return -1;
-	}
+  if (!pl || !meta_inf || (id <= RA_INFO_PLUGIN_START)
+      || (id >= RA_INFO_PLUGIN_END))
+    {
+      _ra_set_error (pl, RA_ERR_UNKNOWN_INFO, "libRASCH");
+      return -1;
+    }
 
-	if (((id >= RA_INFO_PL_RES_NAME_C) && (id <= RA_INFO_PL_RES_DEFAULT_L))
-	    && ((v->number < 0) || (v->number >= p->info.num_results)))
-	{
-		_ra_set_error(pl, RA_ERR_UNKNOWN_INFO, "libRASCH");
-		return -1;
-	}
+  if (((id >= RA_INFO_PL_RES_NAME_C) && (id <= RA_INFO_PL_RES_DEFAULT_L))
+      && ((v->number < 0) || (v->number >= p->info.num_results)))
+    {
+      _ra_set_error (pl, RA_ERR_UNKNOWN_INFO, "libRASCH");
+      return -1;
+    }
 
-	if (((id >= RA_INFO_PL_OPT_NAME_C) && (id <= RA_INFO_PL_OPT_TYPE_L))
-	    && ((v->number < 0) || (v->number >= p->info.num_options)))
-	{
-		_ra_set_error(pl, RA_ERR_UNKNOWN_INFO, "libRASCH");
-		return -1;
-	}
+  if (((id >= RA_INFO_PL_OPT_NAME_C) && (id <= RA_INFO_PL_OPT_TYPE_L))
+      && ((v->number < 0) || (v->number >= p->info.num_options)))
+    {
+      _ra_set_error (pl, RA_ERR_UNKNOWN_INFO, "libRASCH");
+      return -1;
+    }
 
-	/* internal checks */
-	if (((id >= RA_INFO_PL_RES_NAME_C) && (id <= RA_INFO_PL_RES_DEFAULT_L)) && (p->info.res == NULL))
-	{
-		fprintf(stderr, gettext("critical error - get_plugin_info() in ra.c:\n"
-					"tried to get result-infos but mem was not set\nplugin used: %s\n"), p->info.name);
-		exit(-1);
+  /* internal checks */
+  if (((id >= RA_INFO_PL_RES_NAME_C) && (id <= RA_INFO_PL_RES_DEFAULT_L))
+      && (p->info.res == NULL))
+    {
+      fprintf (stderr,
+	       gettext ("critical error - get_plugin_info() in ra.c:\n"
+			"tried to get result-infos but mem was not set\nplugin used: %s\n"),
+	       p->info.name);
+      exit (-1);
 /*		_ra_set_error(pl, RA_ERR_INTERNAL_PLUGIN_ERROR, "libRASCH");
 		return -1; */
-	}
-	if (((id >= RA_INFO_PL_OPT_NAME_C) && (id <= RA_INFO_PL_OPT_TYPE_L)) && (p->info.opt == NULL))
-	{
-		fprintf(stderr, gettext("critical error - get_plugin_info() in ra.c:\n"
-					"tried to get option-infos but mem was not set\nplugin used: %s\n"), p->info.name);
-		exit(-1);
+    }
+  if (((id >= RA_INFO_PL_OPT_NAME_C) && (id <= RA_INFO_PL_OPT_TYPE_L))
+      && (p->info.opt == NULL))
+    {
+      fprintf (stderr,
+	       gettext ("critical error - get_plugin_info() in ra.c:\n"
+			"tried to get option-infos but mem was not set\nplugin used: %s\n"),
+	       p->info.name);
+      exit (-1);
 /*		_ra_set_error(pl, RA_ERR_INTERNAL_PLUGIN_ERROR, "libRASCH");
 		return -1; */
-	}
+    }
 
-	set_meta_info(vh, meta_inf->name, meta_inf->desc, meta_inf->id);
+  set_meta_info (vh, meta_inf->name, meta_inf->desc, meta_inf->id);
 
-	switch (id)
-	{
-	case RA_INFO_PL_NAME_C:
-		ra_value_set_string_utf8(vh, p->info.name);
-		break;
-	case RA_INFO_PL_DESC_C:
-		ra_value_set_string_utf8(vh, p->info.desc);
-		break;
-	case RA_INFO_PL_FILE_C:
-		ra_value_set_string_utf8(vh, p->info.file);
-		break;
-	case RA_INFO_PL_USE_IT_L:
-		ra_value_set_long(vh, p->info.use_plugin);
-		break;
-	case RA_INFO_PL_TYPE_L:
-		ra_value_set_long(vh, p->info.type);
-		break;
-	case RA_INFO_PL_VERSION_C:
-		ra_value_set_string_utf8(vh, p->info.version);
-		break;
-	case RA_INFO_PL_BUILD_TS_C:
-		ra_value_set_string_utf8(vh, p->info.build_ts);
-		break;
-	case RA_INFO_PL_LICENSE_L:
-		ra_value_set_long(vh, p->info.license);
-		break;
-	case RA_INFO_PL_NUM_OPTIONS_L:
-		ra_value_set_long(vh, p->info.num_options);
-		break;
-	case RA_INFO_PL_OPT_NAME_C:
-		c = p->info.opt[v->number].name;
-		ra_value_set_string_utf8(vh, (c[0]=='\0' ? "" : gettext(c)));
-		break;
-	case RA_INFO_PL_OPT_DESC_C:
-		c = p->info.opt[v->number].desc;
-		ra_value_set_string_utf8(vh, (c[0]=='\0' ? "" : gettext(c)));
-		break;
-	case RA_INFO_PL_OPT_TYPE_L:
-		ra_value_set_long(vh, p->info.opt[v->number].type);
-		break;
-	case RA_INFO_PL_NUM_RESULTS_L:
-		ra_value_set_long(vh, p->info.num_results);
-		break;
-	case RA_INFO_PL_RES_NAME_C:
-		c = p->info.res[v->number].name;
-		ra_value_set_string_utf8(vh, (c[0]=='\0' ? "" : gettext(c)));
-		break;
-	case RA_INFO_PL_RES_DESC_C:
-		c = p->info.res[v->number].desc;
-		ra_value_set_string_utf8(vh, (c[0]=='\0' ? "" : gettext(c)));
-		break;
-	case RA_INFO_PL_RES_TYPE_L:
-		ra_value_set_long(vh, p->info.res[v->number].type);
-		break;
-	case RA_INFO_PL_RES_DEFAULT_L:
-		ra_value_set_long(vh, p->info.res[v->number].def);
-		break;
-	default:
-		_ra_set_error(pl, RA_ERR_UNKNOWN_INFO, "libRASCH");
-		ret = -1;
-		break;
-	}
+  switch (id)
+    {
+    case RA_INFO_PL_NAME_C:
+      ra_value_set_string_utf8 (vh, p->info.name);
+      break;
+    case RA_INFO_PL_DESC_C:
+      ra_value_set_string_utf8 (vh, p->info.desc);
+      break;
+    case RA_INFO_PL_FILE_C:
+      ra_value_set_string_utf8 (vh, p->info.file);
+      break;
+    case RA_INFO_PL_USE_IT_L:
+      ra_value_set_long (vh, p->info.use_plugin);
+      break;
+    case RA_INFO_PL_TYPE_L:
+      ra_value_set_long (vh, p->info.type);
+      break;
+    case RA_INFO_PL_VERSION_C:
+      ra_value_set_string_utf8 (vh, p->info.version);
+      break;
+    case RA_INFO_PL_BUILD_TS_C:
+      ra_value_set_string_utf8 (vh, p->info.build_ts);
+      break;
+    case RA_INFO_PL_LICENSE_L:
+      ra_value_set_long (vh, p->info.license);
+      break;
+    case RA_INFO_PL_NUM_OPTIONS_L:
+      ra_value_set_long (vh, p->info.num_options);
+      break;
+    case RA_INFO_PL_OPT_NAME_C:
+      c = p->info.opt[v->number].name;
+      ra_value_set_string_utf8 (vh, (c[0] == '\0' ? "" : gettext (c)));
+      break;
+    case RA_INFO_PL_OPT_DESC_C:
+      c = p->info.opt[v->number].desc;
+      ra_value_set_string_utf8 (vh, (c[0] == '\0' ? "" : gettext (c)));
+      break;
+    case RA_INFO_PL_OPT_TYPE_L:
+      ra_value_set_long (vh, p->info.opt[v->number].type);
+      break;
+    case RA_INFO_PL_NUM_RESULTS_L:
+      ra_value_set_long (vh, p->info.num_results);
+      break;
+    case RA_INFO_PL_RES_NAME_C:
+      c = p->info.res[v->number].name;
+      ra_value_set_string_utf8 (vh, (c[0] == '\0' ? "" : gettext (c)));
+      break;
+    case RA_INFO_PL_RES_DESC_C:
+      c = p->info.res[v->number].desc;
+      ra_value_set_string_utf8 (vh, (c[0] == '\0' ? "" : gettext (c)));
+      break;
+    case RA_INFO_PL_RES_TYPE_L:
+      ra_value_set_long (vh, p->info.res[v->number].type);
+      break;
+    case RA_INFO_PL_RES_DEFAULT_L:
+      ra_value_set_long (vh, p->info.res[v->number].def);
+      break;
+    default:
+      _ra_set_error (pl, RA_ERR_UNKNOWN_INFO, "libRASCH");
+      ret = -1;
+      break;
+    }
 
-	return ret;
-} /* get_plugin_info() */
+  return ret;
+}				/* get_plugin_info() */
 
 
 /**
@@ -1651,52 +1687,53 @@ get_plugin_info(plugin_handle pl, int id, value_handle vh)
  * Function returns informations about a measurement.
  */
 int
-get_meas_general_info(meas_handle mh, int id, value_handle vh)
+get_meas_general_info (meas_handle mh, int id, value_handle vh)
 {
-	int ret = 0;
-	struct ra_meas *meas = (struct ra_meas *)mh;
-	struct ra_value *v = (struct ra_value *)vh;
-	struct meta_info *meta_inf;
+  int ret = 0;
+  struct ra_meas *meas = (struct ra_meas *) mh;
+  struct ra_value *v = (struct ra_value *) vh;
+  struct meta_info *meta_inf;
 
-	/* get infos about asked measurement info */
-	meta_inf = get_meta_info(id);
+  /* get infos about asked measurement info */
+  meta_inf = get_meta_info (id);
 
-	if (!meas || !meta_inf || (id <= RA_INFO_MEASUREMENT_START) || (id >= RA_INFO_MEASUREMENT_END))
+  if (!meas || !meta_inf || (id <= RA_INFO_MEASUREMENT_START)
+      || (id >= RA_INFO_MEASUREMENT_END))
+    {
+      _ra_set_error (mh, RA_ERR_UNKNOWN_INFO, "libRASCH");
+      return -1;
+    }
+
+  set_meta_info (vh, meta_inf->name, meta_inf->desc, meta_inf->id);
+
+  if (id == RA_INFO_NUM_SESSIONS_L)
+    ra_value_set_long (vh, meas->num_sessions);
+  else if (id == RA_INFO_MAX_SAMPLERATE_D)
+    ra_value_set_double (vh, meas->max_samplerate);
+  else if (id == RA_INFO_CH_XSCALE_D)
+    {
+      if (v->number >= meas->num_ch)
 	{
-		_ra_set_error(mh, RA_ERR_UNKNOWN_INFO, "libRASCH");
-		return -1;
+	  _ra_set_error (mh, RA_ERR_OUT_OF_RANGE, "libRASCH");
+	  return -1;
 	}
 
-	set_meta_info(vh, meta_inf->name, meta_inf->desc, meta_inf->id);
+      ra_value_set_double (vh, meas->x_scale[v->number]);
+    }
+  else
+    {
+      struct plugin_struct *p = get_plugin_from_handle (mh);
+      if (!p)
+	return -1;
 
-	if (id == RA_INFO_NUM_SESSIONS_L)
-		ra_value_set_long(vh, meas->num_sessions);
-	else if (id == RA_INFO_MAX_SAMPLERATE_D)
-		ra_value_set_double(vh, meas->max_samplerate);
-	else if (id == RA_INFO_CH_XSCALE_D)
-	{
-		if (v->number >= meas->num_ch)
-		{
-			_ra_set_error(mh, RA_ERR_OUT_OF_RANGE, "libRASCH");
-			return -1;
-		}
+      if (p->access.get_info_id)
+	ret = (*p->access.get_info_id) (mh, id, vh);
+      else
+	_ra_set_error (mh, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
+    }
 
-		ra_value_set_double(vh, meas->x_scale[v->number]);
-	}
-	else
-	{
-		struct plugin_struct *p = get_plugin_from_handle(mh);
-		if (!p)
-			return -1;
-
-		if (p->access.get_info_id)
-			ret = (*p->access.get_info_id)(mh, id, vh);
-		else
-			_ra_set_error(mh, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
-	}
-
-	return ret;
-}  /* get_meas_general_info() */
+  return ret;
+}				/* get_meas_general_info() */
 
 
 /**
@@ -1708,37 +1745,37 @@ get_meas_general_info(meas_handle mh, int id, value_handle vh)
  * Function returns informations about a measurement session.
  */
 int
-get_session_info(any_handle h, int id, value_handle vh)
+get_session_info (any_handle h, int id, value_handle vh)
 {
-	int ret = 0;
-	struct ra_meas * meas;
-	struct ra_value *v = (struct ra_value *)vh;
+  int ret = 0;
+  struct ra_meas *meas;
+  struct ra_value *v = (struct ra_value *) vh;
 
-	if ((id <= RA_INFO_SESSION_START) || (id >= RA_INFO_SESSION_END))
-		return -1;
+  if ((id <= RA_INFO_SESSION_START) || (id >= RA_INFO_SESSION_END))
+    return -1;
 
-	meas = (struct ra_meas *)ra_meas_handle_from_any_handle(h);
-	if (!meas)
-		return -1;
+  meas = (struct ra_meas *) ra_meas_handle_from_any_handle (h);
+  if (!meas)
+    return -1;
 
-	if (v->number >= meas->num_sessions)
-		return -1;
+  if (v->number >= meas->num_sessions)
+    return -1;
 
-	switch (id)
-	{
-	case RA_INFO_SES_NAME_C:
-		ra_value_set_string_utf8(vh, meas->sessions[v->number].name);
-		break;
-	case RA_INFO_SES_DESC_C:
-		ra_value_set_string_utf8(vh, meas->sessions[v->number].desc);
-		break;
-	default:
-		ret = -1;
-		break;
-	}
+  switch (id)
+    {
+    case RA_INFO_SES_NAME_C:
+      ra_value_set_string_utf8 (vh, meas->sessions[v->number].name);
+      break;
+    case RA_INFO_SES_DESC_C:
+      ra_value_set_string_utf8 (vh, meas->sessions[v->number].desc);
+      break;
+    default:
+      ret = -1;
+      break;
+    }
 
-	return ret;
-} /* get_session_info() */
+  return ret;
+}				/* get_session_info() */
 
 
 /**
@@ -1750,33 +1787,33 @@ get_session_info(any_handle h, int id, value_handle vh)
  * Function returns informations about processing results
  */
 int
-get_proc_info(any_handle h, int id, value_handle vh)
+get_proc_info (any_handle h, int id, value_handle vh)
 {
-	int ret = 0;
-	struct proc_info *proc;
+  int ret = 0;
+  struct proc_info *proc;
 
-	if ((id <= RA_INFO_PROCESSING_START) || (id >= RA_INFO_PROCESSING_END))
-		return -1;
+  if ((id <= RA_INFO_PROCESSING_START) || (id >= RA_INFO_PROCESSING_END))
+    return -1;
 
-	proc = (struct proc_info *)h;
-	if (!proc)
-		return -1;
+  proc = (struct proc_info *) h;
+  if (!proc)
+    return -1;
 
-	switch (id)
-	{
-	case RA_INFO_PROC_NUM_RES_SETS_L:
-		ra_value_set_long(vh, proc->num_result_sets);
-		break;
-	case RA_INFO_PROC_NUM_RES_L:
-		ra_value_set_long(vh, proc->num_results);
-		break;
-	default:
-		ret = -1;
-		break;
-	}
+  switch (id)
+    {
+    case RA_INFO_PROC_NUM_RES_SETS_L:
+      ra_value_set_long (vh, proc->num_result_sets);
+      break;
+    case RA_INFO_PROC_NUM_RES_L:
+      ra_value_set_long (vh, proc->num_results);
+      break;
+    default:
+      ret = -1;
+      break;
+    }
 
-	return ret;
-} /* get_proc_info() */
+  return ret;
+}				/* get_proc_info() */
 
 
 /**
@@ -1786,38 +1823,38 @@ get_proc_info(any_handle h, int id, value_handle vh)
  * Function returns plugin-handle which is associated with the handle 'h'.
  */
 struct plugin_struct *
-get_plugin_from_handle(any_handle h)
+get_plugin_from_handle (any_handle h)
 {
-	struct plugin_struct *p = NULL;
-	unsigned short type = *((unsigned short *)h);
+  struct plugin_struct *p = NULL;
+  unsigned short type = *((unsigned short *) h);
 
-	switch (type)
-	{
-	case RA_HANDLE_MEAS:
-		p = ((struct ra_meas *)h)->p;
-		break;
-	case RA_HANDLE_REC:
-		p = ((struct ra_rec *)h)->meas->p;
-		break;
-	case RA_HANDLE_EVAL:
-		p = ((struct eval *)h)->meas->p;
-		break;
-	case RA_HANDLE_EVAL_CLASS:
-		p = ((struct eval_class *)h)->meas->p;
-		break;
-	case RA_HANDLE_EVAL_PROP:
-		p = ((struct eval_property *)h)->meas->p;
-		break;
-	case RA_HANDLE_EVAL_SUMMARY:
-		p = ((struct eval_summary *)h)->meas->p;
-		break;
-	}
+  switch (type)
+    {
+    case RA_HANDLE_MEAS:
+      p = ((struct ra_meas *) h)->p;
+      break;
+    case RA_HANDLE_REC:
+      p = ((struct ra_rec *) h)->meas->p;
+      break;
+    case RA_HANDLE_EVAL:
+      p = ((struct eval *) h)->meas->p;
+      break;
+    case RA_HANDLE_EVAL_CLASS:
+      p = ((struct eval_class *) h)->meas->p;
+      break;
+    case RA_HANDLE_EVAL_PROP:
+      p = ((struct eval_property *) h)->meas->p;
+      break;
+    case RA_HANDLE_EVAL_SUMMARY:
+      p = ((struct eval_summary *) h)->meas->p;
+      break;
+    }
 
-	if (!p)
-		_ra_set_error(h, RA_ERR_ERROR, "libRASCH");
+  if (!p)
+    _ra_set_error (h, RA_ERR_ERROR, "libRASCH");
 
-	return p;
-} /* get_plugin_from_handle() */
+  return p;
+}				/* get_plugin_from_handle() */
 
 
 /**
@@ -1830,23 +1867,23 @@ get_plugin_from_handle(any_handle h)
  * in vh. For usage of the function please see user-manual.
  */
 LIBRAAPI int
-ra_info_get_by_name(any_handle h, const char *name, value_handle vh)
+ra_info_get_by_name (any_handle h, const char *name, value_handle vh)
 {
-	char *name_utf8;
-	
-	name_utf8 = malloc(strlen(name) * 2);
-	local_to_utf8(name, name_utf8, strlen(name) * 2);
+  char *name_utf8;
 
-	if (find_ra_info_by_name(vh, name_utf8) != 0)
-	{
-		_ra_set_error(h, RA_ERR_UNKNOWN_INFO, "libRASCH");		
-		return -1;
-	}
+  name_utf8 = malloc (strlen (name) * 2);
+  local_to_utf8 (name, name_utf8, strlen (name) * 2);
 
-	free(name_utf8);
+  if (find_ra_info_by_name (vh, name_utf8) != 0)
+    {
+      _ra_set_error (h, RA_ERR_UNKNOWN_INFO, "libRASCH");
+      return -1;
+    }
 
-	return ra_info_get(h, ra_value_get_info(vh), vh);
-} /* ra_info_get_by_name() */
+  free (name_utf8);
+
+  return ra_info_get (h, ra_value_get_info (vh), vh);
+}				/* ra_info_get_by_name() */
 
 
 /**
@@ -1860,30 +1897,30 @@ ra_info_get_by_name(any_handle h, const char *name, value_handle vh)
  * in vh. For usage of the function please see user-manual.
  */
 LIBRAAPI int
-ra_info_get_by_idx(any_handle h, int info_type, int idx, value_handle vh)
+ra_info_get_by_idx (any_handle h, int info_type, int idx, value_handle vh)
 {
-	struct plugin_struct *p;
+  struct plugin_struct *p;
 
-	/* in-validate value so in case of error 'vh' has no value */
-	ra_value_reset(vh);
+  /* in-validate value so in case of error 'vh' has no value */
+  ra_value_reset (vh);
 
-	if ((h == NULL) || (idx < 0) || (vh == NULL))
-	{
-		_ra_set_error(h, RA_ERR_UNKNOWN_INFO, "libRASCH");
-		return -1;
-	}
+  if ((h == NULL) || (idx < 0) || (vh == NULL))
+    {
+      _ra_set_error (h, RA_ERR_UNKNOWN_INFO, "libRASCH");
+      return -1;
+    }
 
-	p = get_plugin_from_handle(h);
-	if (!p)
-		return -1;
+  p = get_plugin_from_handle (h);
+  if (!p)
+    return -1;
 
-	if (p->access.get_info_idx)
-		return (*p->access.get_info_idx)(h, info_type, idx, vh);
-	else
-		_ra_set_error(h, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
+  if (p->access.get_info_idx)
+    return (*p->access.get_info_idx) (h, info_type, idx, vh);
+  else
+    _ra_set_error (h, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
 
-	return -1;
-} /* ra_info_get_by_idx() */
+  return -1;
+}				/* ra_info_get_by_idx() */
 
 
 /**
@@ -1897,75 +1934,75 @@ ra_info_get_by_idx(any_handle h, int info_type, int idx, value_handle vh)
  * eval-desc etc.) can be set with this function also.
  */
 LIBRAAPI int
-ra_info_set(any_handle h, int id, value_handle vh)
+ra_info_set (any_handle h, int id, value_handle vh)
 {
-	unsigned short type;
-	struct plugin_struct *p;
-	int id_use;
-	struct meta_info *meta_inf;
+  unsigned short type;
+  struct plugin_struct *p;
+  int id_use;
+  struct meta_info *meta_inf;
 
-	if (!h || !vh)
-		return -1;
-	if (id == -1)
-		id_use = ra_value_get_info(vh);
-	else
-		id_use = id;
+  if (!h || !vh)
+    return -1;
+  if (id == -1)
+    id_use = ra_value_get_info (vh);
+  else
+    id_use = id;
 
-	if ((id_use < 0) || (check_handle_type(h, id_use) != 0))
-	{
-		_ra_set_error(h, RA_ERR_OUT_OF_RANGE, "libRASCH");
-		return -1;
-	}
+  if ((id_use < 0) || (check_handle_type (h, id_use) != 0))
+    {
+      _ra_set_error (h, RA_ERR_OUT_OF_RANGE, "libRASCH");
+      return -1;
+    }
 
-	type = *((unsigned short *)h);
-	if ((type != RA_HANDLE_MEAS) && (type != RA_HANDLE_REC))
-	{
-		_ra_set_error(h, RA_ERR_UNSUPPORTED, "libRASCH");
-		return -1;
-	}
+  type = *((unsigned short *) h);
+  if ((type != RA_HANDLE_MEAS) && (type != RA_HANDLE_REC))
+    {
+      _ra_set_error (h, RA_ERR_UNSUPPORTED, "libRASCH");
+      return -1;
+    }
 
-	p = get_plugin_from_handle(h);
-	if (!p)
-	{
-		_ra_set_error(h, RA_ERR_UNKNOWN_PLUGIN, "libRASCH");
-		return -1;
-	}
+  p = get_plugin_from_handle (h);
+  if (!p)
+    {
+      _ra_set_error (h, RA_ERR_UNKNOWN_PLUGIN, "libRASCH");
+      return -1;
+    }
 
-	/* get infos about asked measurement info */
-	meta_inf = get_meta_info(id_use);
-	if (meta_inf == NULL)
-	{
-		_ra_set_error(h, RA_ERR_UNKNOWN_INFO, "libRASCH");
-		return -1;
-	}
+  /* get infos about asked measurement info */
+  meta_inf = get_meta_info (id_use);
+  if (meta_inf == NULL)
+    {
+      _ra_set_error (h, RA_ERR_UNKNOWN_INFO, "libRASCH");
+      return -1;
+    }
 
-	set_meta_info(vh, meta_inf->name, meta_inf->desc, meta_inf->id);
+  set_meta_info (vh, meta_inf->name, meta_inf->desc, meta_inf->id);
 
-	if (p->access.set_info)
-		return (*p->access.set_info)(h, id, vh);
-	else
-		_ra_set_error(h, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
+  if (p->access.set_info)
+    return (*p->access.set_info) (h, id, vh);
+  else
+    _ra_set_error (h, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
 
-	return -1;
-} /* ra_info_set() */
+  return -1;
+}				/* ra_info_set() */
 
 
 LIBRAAPI int
-ra_info_set_by_name(any_handle h, const char *name, value_handle vh)
+ra_info_set_by_name (any_handle h, const char *name, value_handle vh)
 {
-	char *name_utf8;
-	
-	name_utf8 = malloc(strlen(name) * 2);
-	local_to_utf8(name, name_utf8, strlen(name) * 2);
+  char *name_utf8;
 
-	if (find_ra_info_by_name(vh, name_utf8) != 0)
-	{
-		_ra_set_error(h, RA_ERR_UNKNOWN_INFO, "libRASCH");		
-		return -1;
-	}
+  name_utf8 = malloc (strlen (name) * 2);
+  local_to_utf8 (name, name_utf8, strlen (name) * 2);
 
-	return ra_info_set(h, ra_value_get_info(vh), vh);
-} /* ra_info_set_by_name() */
+  if (find_ra_info_by_name (vh, name_utf8) != 0)
+    {
+      _ra_set_error (h, RA_ERR_UNKNOWN_INFO, "libRASCH");
+      return -1;
+    }
+
+  return ra_info_set (h, ra_value_get_info (vh), vh);
+}				/* ra_info_set_by_name() */
 
 
 /**
@@ -1976,18 +2013,18 @@ ra_info_set_by_name(any_handle h, const char *name, value_handle vh)
  * Returns the first recording-handle of session session. 
  */
 LIBRAAPI rec_handle
-ra_rec_get_first(meas_handle mh, long session)
+ra_rec_get_first (meas_handle mh, long session)
 {
-	struct ra_meas *meas = (struct ra_meas *) mh;
+  struct ra_meas *meas = (struct ra_meas *) mh;
 
-	if (!meas || (session < 0) || (session > meas->num_sessions))
-	{
-		_ra_set_error(mh, RA_ERR_OUT_OF_RANGE, "libRASCH");
-		return NULL;
-	}
+  if (!meas || (session < 0) || (session > meas->num_sessions))
+    {
+      _ra_set_error (mh, RA_ERR_OUT_OF_RANGE, "libRASCH");
+      return NULL;
+    }
 
-	return meas->sessions[session].root_rec;
-} /* ra_rec_get_first() */
+  return meas->sessions[session].root_rec;
+}				/* ra_rec_get_first() */
 
 
 /**
@@ -1997,11 +2034,11 @@ ra_rec_get_first(meas_handle mh, long session)
  * Returns the next recording which follows recording rh.
  */
 LIBRAAPI rec_handle
-ra_rec_get_next(rec_handle rh)
+ra_rec_get_next (rec_handle rh)
 {
-        /* TODO: think about if "follows" is correct and insert link to user-manual (if written) */
-	return ((struct ra_rec *) rh)->next;
-} /* ra_rec_get_next() */
+  /* TODO: think about if "follows" is correct and insert link to user-manual (if written) */
+  return ((struct ra_rec *) rh)->next;
+}				/* ra_rec_get_next() */
 
 
 /**
@@ -2011,10 +2048,10 @@ ra_rec_get_next(rec_handle rh)
  * Returns the first child-recording of recording rh.
  */
 LIBRAAPI rec_handle
-ra_rec_get_first_child(rec_handle rh)
+ra_rec_get_first_child (rec_handle rh)
 {
-	return ((struct ra_rec *) rh)->child;
-} /* ra_rec_get_first_child() */
+  return ((struct ra_rec *) rh)->child;
+}				/* ra_rec_get_first_child() */
 
 
 /**
@@ -2028,28 +2065,28 @@ ra_rec_get_first_child(rec_handle rh)
  * Not implemented yet. !!!
  */
 LIBRAAPI rec_handle
-ra_rec_add(meas_handle mh, rec_handle parent)
+ra_rec_add (meas_handle mh, rec_handle parent)
 {
-	struct ra_meas *meas;
-	struct plugin_struct *p;
+  struct ra_meas *meas;
+  struct plugin_struct *p;
 
-	meas = (struct ra_meas *)mh;
-	if (!meas)
-		return 0;
-	p = meas->p;
-	if (!p)
-	{
-		_ra_set_error(mh, RA_ERR_ERROR, "libRASCH");
-		return NULL;
-	}
+  meas = (struct ra_meas *) mh;
+  if (!meas)
+    return 0;
+  p = meas->p;
+  if (!p)
+    {
+      _ra_set_error (mh, RA_ERR_ERROR, "libRASCH");
+      return NULL;
+    }
 
-	if (p->access.rec_add)
-		return (*p->access.rec_add)(meas, parent);
-	else
-		_ra_set_error(mh, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
+  if (p->access.rec_add)
+    return (*p->access.rec_add) (meas, parent);
+  else
+    _ra_set_error (mh, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
 
-	return NULL;
-} /* ra_rec_add() */
+  return NULL;
+}				/* ra_rec_add() */
 
 
 /**
@@ -2061,28 +2098,28 @@ ra_rec_add(meas_handle mh, rec_handle parent)
  * Not implemented yet. !!!
  */
 LIBRAAPI int
-ra_dev_add(rec_handle rh)
+ra_dev_add (rec_handle rh)
 {
-	struct ra_meas *meas;
-	struct plugin_struct *p;
+  struct ra_meas *meas;
+  struct plugin_struct *p;
 
-	meas = (struct ra_meas *)ra_meas_handle_from_any_handle(rh);
-	if (!meas)
-		return 0;
-	p = meas->p;
-	if (!p)
-	{
-		_ra_set_error(rh, RA_ERR_ERROR, "libRASCH");
-		return -1;
-	}
+  meas = (struct ra_meas *) ra_meas_handle_from_any_handle (rh);
+  if (!meas)
+    return 0;
+  p = meas->p;
+  if (!p)
+    {
+      _ra_set_error (rh, RA_ERR_ERROR, "libRASCH");
+      return -1;
+    }
 
-	if (p->access.dev_add)
-		return (*p->access.dev_add)(rh);
-	else
-		_ra_set_error(rh, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
+  if (p->access.dev_add)
+    return (*p->access.dev_add) (rh);
+  else
+    _ra_set_error (rh, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
 
-	return -1;
-} /* ra_dev_add() */
+  return -1;
+}				/* ra_dev_add() */
 
 
 /**
@@ -2094,28 +2131,28 @@ ra_dev_add(rec_handle rh)
  * Not implemented yet. !!!
  */
 LIBRAAPI int
-ra_ch_add(rec_handle rh)
+ra_ch_add (rec_handle rh)
 {
-	struct ra_meas *meas;
-	struct plugin_struct *p;
+  struct ra_meas *meas;
+  struct plugin_struct *p;
 
-	meas = (struct ra_meas *)ra_meas_handle_from_any_handle(rh);
-	if (!meas)
-		return 0;
-	p = meas->p;
-	if (!p)
-	{
-		_ra_set_error(rh, RA_ERR_ERROR, "libRASCH");
-		return -1;
-	}
+  meas = (struct ra_meas *) ra_meas_handle_from_any_handle (rh);
+  if (!meas)
+    return 0;
+  p = meas->p;
+  if (!p)
+    {
+      _ra_set_error (rh, RA_ERR_ERROR, "libRASCH");
+      return -1;
+    }
 
-	if (p->access.ch_add)
-		return (*p->access.ch_add)(rh);
-	else
-		_ra_set_error(rh, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
+  if (p->access.ch_add)
+    return (*p->access.ch_add) (rh);
+  else
+    _ra_set_error (rh, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
 
-	return -1;
-} /* ra_ch_add() */
+  return -1;
+}				/* ra_ch_add() */
 
 
 /**
@@ -2128,28 +2165,28 @@ ra_ch_add(rec_handle rh)
  * Not implemented yet. !!!
  */
 LIBRAAPI int
-ra_session_new(meas_handle mh)
+ra_session_new (meas_handle mh)
 {
-	struct ra_meas *meas;
-	struct plugin_struct *p;
+  struct ra_meas *meas;
+  struct plugin_struct *p;
 
-	meas = (struct ra_meas *)mh;
-	if (!meas)
-		return 0;
-	p = meas->p;
-	if (!p)
-	{
-		_ra_set_error(mh, RA_ERR_ERROR, "libRASCH");
-		return -1;
-	}
+  meas = (struct ra_meas *) mh;
+  if (!meas)
+    return 0;
+  p = meas->p;
+  if (!p)
+    {
+      _ra_set_error (mh, RA_ERR_ERROR, "libRASCH");
+      return -1;
+    }
 
-	if (p->access.session_new)
-		return (*p->access.session_new)(mh);
-	else
-		_ra_set_error(mh, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
+  if (p->access.session_new)
+    return (*p->access.session_new) (mh);
+  else
+    _ra_set_error (mh, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
 
-	return -1;
-} /* ra_session_new() */
+  return -1;
+}				/* ra_session_new() */
 
 
 /**
@@ -2163,28 +2200,28 @@ ra_session_new(meas_handle mh)
  * Not implemented yet. !!!
  */
 LIBRAAPI size_t
-ra_raw_add(meas_handle mh, unsigned int ch, value_handle vh)
+ra_raw_add (meas_handle mh, unsigned int ch, value_handle vh)
 {
-	struct ra_meas *meas;
-	struct plugin_struct *p;
+  struct ra_meas *meas;
+  struct plugin_struct *p;
 
-	meas = (struct ra_meas *)mh;
-	if (!meas)
-		return 0;
-	p = meas->p;
-	if (!p)
-	{
-		_ra_set_error(mh, RA_ERR_ERROR, "libRASCH");
-		return 0;
-	}
+  meas = (struct ra_meas *) mh;
+  if (!meas)
+    return 0;
+  p = meas->p;
+  if (!p)
+    {
+      _ra_set_error (mh, RA_ERR_ERROR, "libRASCH");
+      return 0;
+    }
 
-	if (p->access.add_raw)
-		return (*p->access.add_raw)(mh, ch, vh);
-	else
-		_ra_set_error(mh, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
+  if (p->access.add_raw)
+    return (*p->access.add_raw) (mh, ch, vh);
+  else
+    _ra_set_error (mh, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
 
-	return 0;
-} /* ra_raw_add() */
+  return 0;
+}				/* ra_raw_add() */
 
 
 /**
@@ -2205,28 +2242,30 @@ ra_raw_add(meas_handle mh, unsigned int ch, value_handle vh)
  * 4 bytes, the buffer is not needed.
  */
 LIBRAAPI size_t
-ra_raw_get(rec_handle rh, unsigned int ch, size_t start, size_t num_data, DWORD *data, DWORD *data_high)
+ra_raw_get (rec_handle rh, unsigned int ch, size_t start, size_t num_data,
+	    DWORD * data, DWORD * data_high)
 {
-	struct ra_meas *meas;
-	struct plugin_struct *p;
+  struct ra_meas *meas;
+  struct plugin_struct *p;
 
-	meas = (struct ra_meas *)ra_meas_handle_from_any_handle(rh);
-	if (!meas)
-		return 0;
-	p = meas->p;
-	if (!p)
-	{
-		_ra_set_error(rh, RA_ERR_ERROR, "libRASCH");
-		return 0;
-	}
+  meas = (struct ra_meas *) ra_meas_handle_from_any_handle (rh);
+  if (!meas)
+    return 0;
+  p = meas->p;
+  if (!p)
+    {
+      _ra_set_error (rh, RA_ERR_ERROR, "libRASCH");
+      return 0;
+    }
 
-	if (p->access.get_raw)
-		return (*p->access.get_raw) (meas, rh, ch, start, num_data, data, data_high);
-	else
-		_ra_set_error(rh, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
-	
-	return -0;
-} /* ra_raw_get() */
+  if (p->access.get_raw)
+    return (*p->access.get_raw) (meas, rh, ch, start, num_data, data,
+				 data_high);
+  else
+    _ra_set_error (rh, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
+
+  return -0;
+}				/* ra_raw_get() */
 
 
 
@@ -2245,28 +2284,29 @@ ra_raw_get(rec_handle rh, unsigned int ch, size_t start, size_t num_data, DWORD 
  * channel.
  */
 LIBRAAPI size_t
-ra_raw_get_unit(rec_handle rh, unsigned int ch, size_t start, size_t num_data, double *data)
+ra_raw_get_unit (rec_handle rh, unsigned int ch, size_t start,
+		 size_t num_data, double *data)
 {
-	struct ra_meas *meas;
-	struct plugin_struct *p;
+  struct ra_meas *meas;
+  struct plugin_struct *p;
 
-	meas = (struct ra_meas *)ra_meas_handle_from_any_handle(rh);
-	if (!meas)
-		return 0;
-	p = meas->p;
-	if (!p)
-	{
-		_ra_set_error(rh, RA_ERR_ERROR, "libRASCH");
-		return 0;
-	}
+  meas = (struct ra_meas *) ra_meas_handle_from_any_handle (rh);
+  if (!meas)
+    return 0;
+  p = meas->p;
+  if (!p)
+    {
+      _ra_set_error (rh, RA_ERR_ERROR, "libRASCH");
+      return 0;
+    }
 
-	if (p->access.get_raw_unit)
-		return (*p->access.get_raw_unit) (meas, rh, ch, start, num_data, data);
-	else
-		_ra_set_error(rh, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
+  if (p->access.get_raw_unit)
+    return (*p->access.get_raw_unit) (meas, rh, ch, start, num_data, data);
+  else
+    _ra_set_error (rh, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
 
-	return 0;
-} /* ra_raw_get_unit() */
+  return 0;
+}				/* ra_raw_get_unit() */
 
 
 /**
@@ -2280,23 +2320,23 @@ ra_raw_get_unit(rec_handle rh, unsigned int ch, size_t start, size_t num_data, d
  * what type/information is needed, please see the plugin specific documentation.
  */
 LIBRAAPI int
-ra_gui_call(any_handle h, plugin_handle pl)
+ra_gui_call (any_handle h, plugin_handle pl)
 {
-	struct plugin_struct *p = pl;
+  struct plugin_struct *p = pl;
 
-	if (!p)
-	{
-		_ra_set_error(h, RA_ERR_ERROR, "libRASCH");
-		return -1;
-	}
+  if (!p)
+    {
+      _ra_set_error (h, RA_ERR_ERROR, "libRASCH");
+      return -1;
+    }
 
-	if (p->call_gui)
-		return (*p->call_gui)(h);
-	else
-		_ra_set_error(h, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
+  if (p->call_gui)
+    return (*p->call_gui) (h);
+  else
+    _ra_set_error (h, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
 
-	return -1;
-} /* ra_gui_call() */
+  return -1;
+}				/* ra_gui_call() */
 
 
 /**
@@ -2307,29 +2347,30 @@ ra_gui_call(any_handle h, plugin_handle pl)
  * returned initialized.
  */
 LIBRAAPI proc_handle
-ra_proc_get(meas_handle mh, plugin_handle pl, void (*callback) (const char *, int ))
+ra_proc_get (meas_handle mh, plugin_handle pl,
+	     void (*callback) (const char *, int))
 {
-	struct plugin_struct *p = pl;
+  struct plugin_struct *p = pl;
 
-	if (!p)
-		return NULL;
+  if (!p)
+    return NULL;
 
-	if (p->proc.get_proc_handle)
+  if (p->proc.get_proc_handle)
+    {
+      struct proc_info *proc = (*p->proc.get_proc_handle) (pl);
+      if (proc)
 	{
-		struct proc_info *proc = (*p->proc.get_proc_handle)(pl);
-		if (proc)
-		{
-			proc->ra = p->ra;
-			proc->mh = mh;
-			proc->callback = callback;
-		}
-		return (proc_handle)proc;
+	  proc->ra = p->ra;
+	  proc->mh = mh;
+	  proc->callback = callback;
 	}
-	else
-		_ra_set_error(pl, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
+      return (proc_handle) proc;
+    }
+  else
+    _ra_set_error (pl, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
 
-	return NULL;
-} /* ra_proc_get() */
+  return NULL;
+}				/* ra_proc_get() */
 
 
 /**
@@ -2339,26 +2380,26 @@ ra_proc_get(meas_handle mh, plugin_handle pl, void (*callback) (const char *, in
  * This function frees a processing-handle and all associated memory.
  */
 LIBRAAPI void
-ra_proc_free(proc_handle proc)
+ra_proc_free (proc_handle proc)
 {
-	struct proc_info *pi = proc;
-	struct plugin_struct *p;
+  struct proc_info *pi = proc;
+  struct plugin_struct *p;
 
-	if (!pi || !pi->plugin)
-	{
-		_ra_set_error(proc, RA_ERR_ERROR, "libRASCH");
-		return;
-	}
+  if (!pi || !pi->plugin)
+    {
+      _ra_set_error (proc, RA_ERR_ERROR, "libRASCH");
+      return;
+    }
 
-	p = pi->plugin;
-	if (!p)
-		return;
+  p = pi->plugin;
+  if (!p)
+    return;
 
-	if (p->proc.free_proc_handle)
-		(*p->proc.free_proc_handle)(proc);
-	else
-		_ra_set_error(proc, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
-} /* ra_proc_free() */
+  if (p->proc.free_proc_handle)
+    (*p->proc.free_proc_handle) (proc);
+  else
+    _ra_set_error (proc, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
+}				/* ra_proc_free() */
 
 
 /**
@@ -2369,55 +2410,55 @@ ra_proc_free(proc_handle proc)
  * what information in proc is needed, please see the plugin specific documentation.
  */
 LIBRAAPI int
-ra_proc_do(proc_handle proc)
+ra_proc_do (proc_handle proc)
 {
-	struct proc_info *pi = proc;
-	struct plugin_struct *p;
+  struct proc_info *pi = proc;
+  struct plugin_struct *p;
 
-	if (!pi || !pi->mh || !pi->plugin)
-	{
-		_ra_set_error(proc, RA_ERR_ERROR, "libRASCH");
-		return -1;
-	}
+  if (!pi || !pi->mh || !pi->plugin)
+    {
+      _ra_set_error (proc, RA_ERR_ERROR, "libRASCH");
+      return -1;
+    }
 
-	p = pi->plugin;
+  p = pi->plugin;
 
-	if (p->proc.do_processing)
-		return (*p->proc.do_processing)(proc);
-	else
-		_ra_set_error(proc, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
+  if (p->proc.do_processing)
+    return (*p->proc.do_processing) (proc);
+  else
+    _ra_set_error (proc, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
 
-	return -1;
-} /* ra_proc_do() */
+  return -1;
+}				/* ra_proc_do() */
 
 
 LIBRAAPI long
-ra_proc_get_result_idx(proc_handle proc, const char *res_ascii_id)
+ra_proc_get_result_idx (proc_handle proc, const char *res_ascii_id)
 {
-	long l, res_idx;
-	struct proc_info *pi = proc;
-	struct plugin_struct *pl;
+  long l, res_idx;
+  struct proc_info *pi = proc;
+  struct plugin_struct *pl;
 
-	if (!res_ascii_id || (res_ascii_id[0] == '\0') || !pi || !pi->plugin)
+  if (!res_ascii_id || (res_ascii_id[0] == '\0') || !pi || !pi->plugin)
+    {
+      _ra_set_error (proc, RA_ERR_ERROR, "libRASCH");
+      return -1;
+    }
+
+  pl = (struct plugin_struct *) pi->plugin;
+
+  res_idx = -1;
+  for (l = 0; l < pl->info.num_results; l++)
+    {
+      if (RA_STRICMP (pl->info.res[l].name, res_ascii_id) == 0)
 	{
-		_ra_set_error(proc, RA_ERR_ERROR, "libRASCH");
-		return -1;
+	  res_idx = l;
+	  break;
 	}
+    }
 
-	pl = (struct plugin_struct *)pi->plugin;
-	
-	res_idx = -1;
-	for (l = 0; l < pl->info.num_results; l++)
-	{
-		if (RA_STRICMP(pl->info.res[l].name, res_ascii_id) == 0)
-		{
-			res_idx = l;
-			break;
-		}
-	}
-
-	return res_idx;
-} /* ra_proc_get_result_idx() */
+  return res_idx;
+}				/* ra_proc_get_result_idx() */
 
 
 /**
@@ -2430,136 +2471,139 @@ ra_proc_get_result_idx(proc_handle proc, const char *res_ascii_id)
  * This function returns in vh one result from a processing perfomed with ra_proc_do.
  */
 LIBRAAPI int
-ra_proc_get_result(proc_handle proc, long res_num, long res_set, value_handle vh)
+ra_proc_get_result (proc_handle proc, long res_num, long res_set,
+		    value_handle vh)
 {
-	int ret;
-	struct proc_info *pi = proc;
-	struct plugin_struct *pl;
-	value_handle *res;
+  int ret;
+  struct proc_info *pi = proc;
+  struct plugin_struct *pl;
+  value_handle *res;
 
-	/* in-validate value so in case of error 'vh' has no value */
-	ra_value_reset(vh);
+  /* in-validate value so in case of error 'vh' has no value */
+  ra_value_reset (vh);
 
-	if (!pi || !pi->plugin)
-	{
-		_ra_set_error(proc, RA_ERR_ERROR, "libRASCH");
-		return -1;
-	}
+  if (!pi || !pi->plugin)
+    {
+      _ra_set_error (proc, RA_ERR_ERROR, "libRASCH");
+      return -1;
+    }
 
-	pl = (struct plugin_struct *)pi->plugin;
+  pl = (struct plugin_struct *) pi->plugin;
 
-	if ((res_num < 0) || (res_num >= pi->num_results) || (pi->results == NULL)
-	    || (res_set < 0) || (res_set >= pi->num_result_sets))
-	{
-		char t[RA_VALUE_NAME_MAX];
+  if ((res_num < 0) || (res_num >= pi->num_results) || (pi->results == NULL)
+      || (res_set < 0) || (res_set >= pi->num_result_sets))
+    {
+      char t[RA_VALUE_NAME_MAX];
 #ifdef WIN32
-		_snprintf(t, RA_VALUE_NAME_MAX-1, "%s-%s", gettext("plugin"), pl->info.name);
+      _snprintf (t, RA_VALUE_NAME_MAX - 1, "%s-%s", gettext ("plugin"),
+		 pl->info.name);
 #else
-		snprintf(t, RA_VALUE_NAME_MAX-1, "%s-%s", gettext("plugin"), pl->info.name);
-#endif  /* WIN32 */
-		_ra_set_error(proc, RA_ERR_OUT_OF_RANGE, t);
-		return -1;
-	}
+      snprintf (t, RA_VALUE_NAME_MAX - 1, "%s-%s", gettext ("plugin"),
+		pl->info.name);
+#endif /* WIN32 */
+      _ra_set_error (proc, RA_ERR_OUT_OF_RANGE, t);
+      return -1;
+    }
 
-	res = pi->results;
-	ret = ra_value_copy(vh, res[res_num + (res_set * pi->num_results)]);
+  res = pi->results;
+  ret = ra_value_copy (vh, res[res_num + (res_set * pi->num_results)]);
 
-	return ret;
-} /* ra_proc_get_result() */
+  return ret;
+}				/* ra_proc_get_result() */
 
 
 LIBRAAPI view_handle
-ra_view_get(meas_handle mh, plugin_handle pl, void *parent)
+ra_view_get (meas_handle mh, plugin_handle pl, void *parent)
 {
-	struct plugin_struct *p = pl;
+  struct plugin_struct *p = pl;
 
-	if (!p)
-		return NULL;
+  if (!p)
+    return NULL;
 
-	if (p->view.get_view_handle)
+  if (p->view.get_view_handle)
+    {
+      struct view_info *vi = (*p->view.get_view_handle) (pl);
+      if (vi)
 	{
-		struct view_info *vi = (*p->view.get_view_handle)(pl);
-		if (vi)
-		{
-			vi->ra = p->ra;
-			vi->mh = mh;
-			vi->parent = parent;
-		}
-		return (view_handle)vi;
+	  vi->ra = p->ra;
+	  vi->mh = mh;
+	  vi->parent = parent;
 	}
-	else
-		_ra_set_error(pl, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
+      return (view_handle) vi;
+    }
+  else
+    _ra_set_error (pl, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
 
-	return NULL;
-} /* ra_view_get() */
+  return NULL;
+}				/* ra_view_get() */
 
 
 LIBRAAPI void
-ra_view_free(view_handle vih)
+ra_view_free (view_handle vih)
 {
-	struct view_info *vi = vih;
-	struct plugin_struct *p;
+  struct view_info *vi = vih;
+  struct plugin_struct *p;
 
-	if (!vi || !vi->plugin)
-	{
-		_ra_set_error(vih, RA_ERR_ERROR, "libRASCH");
-		return;
-	}
+  if (!vi || !vi->plugin)
+    {
+      _ra_set_error (vih, RA_ERR_ERROR, "libRASCH");
+      return;
+    }
 
-	p = vi->plugin;
-	if (!p)
-		return;
+  p = vi->plugin;
+  if (!p)
+    return;
 
-	if (p->view.free_view_handle)
-		(*p->view.free_view_handle)(vih);
-	else
-		_ra_set_error(vih, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
-} /* ra_view_free() */
+  if (p->view.free_view_handle)
+    (*p->view.free_view_handle) (vih);
+  else
+    _ra_set_error (vih, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
+}				/* ra_view_free() */
 
 
 LIBRAAPI int
-ra_view_create(view_handle vih)
+ra_view_create (view_handle vih)
 {
-	struct view_info *vi = vih;
-	struct plugin_struct *p;
+  struct view_info *vi = vih;
+  struct plugin_struct *p;
 
-	if (!vi || !vi->plugin)
-	{
-		_ra_set_error(vih, RA_ERR_ERROR, "libRASCH");
-		return -1;
-	}
+  if (!vi || !vi->plugin)
+    {
+      _ra_set_error (vih, RA_ERR_ERROR, "libRASCH");
+      return -1;
+    }
 
-	p = vi->plugin;
-	vi->ra = p->ra;
+  p = vi->plugin;
+  vi->ra = p->ra;
 
-	if (p->view.create_view)
-		return (*p->view.create_view)(vih);
-	else
-		_ra_set_error(vih, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
-	
-	return -1;
-} /* ra_view_create() */
+  if (p->view.create_view)
+    return (*p->view.create_view) (vih);
+  else
+    _ra_set_error (vih, RA_ERR_PL_API_NOT_AVAIL, "libRASCH");
+
+  return -1;
+}				/* ra_view_create() */
 
 
 LIBRAAPI void *
-ra_view_get_window(view_handle vih, int win_number)
+ra_view_get_window (view_handle vih, int win_number)
 {
-	struct view_info *vi = vih;
+  struct view_info *vi = vih;
 
-	if (!vi)
-	{
-		_ra_set_error(vih, RA_ERR_ERROR, "libRASCH");
-		return NULL;
-	}
+  if (!vi)
+    {
+      _ra_set_error (vih, RA_ERR_ERROR, "libRASCH");
+      return NULL;
+    }
 
-	if (win_number >= vi->num_views)
-	{
-		_ra_set_error(vih, RA_ERR_OUT_OF_RANGE, "libRASCH");
-		return NULL;
-	}
+  if (win_number >= vi->num_views)
+    {
+      _ra_set_error (vih, RA_ERR_OUT_OF_RANGE, "libRASCH");
+      return NULL;
+    }
 
-	return vi->views[win_number];
-} /* ra_view_get_window() */
+  return vi->views[win_number];
+}				/* ra_view_get_window() */
 
 
 /**
@@ -2573,63 +2617,64 @@ ra_view_get_window(view_handle vih, int win_number)
  * process-handle) are supported.
  */
 LIBRAAPI int
-ra_lib_get_option(any_handle h, const char *opt_name, value_handle vh)
+ra_lib_get_option (any_handle h, const char *opt_name, value_handle vh)
 {
-	int ret = -1;
-	unsigned short type = *((unsigned short *)h);
-	char *opt_name_utf8;
+  int ret = -1;
+  unsigned short type = *((unsigned short *) h);
+  char *opt_name_utf8;
 
-	/* in-validate value so in case of error 'vh' has no value */
-	ra_value_reset(vh);
+  /* in-validate value so in case of error 'vh' has no value */
+  ra_value_reset (vh);
 
-	if (!h)
-		return ret;
+  if (!h)
+    return ret;
 
-	opt_name_utf8 = malloc(strlen(opt_name) * 2);
-	local_to_utf8(opt_name, opt_name_utf8, strlen(opt_name) * 2);
+  opt_name_utf8 = malloc (strlen (opt_name) * 2);
+  local_to_utf8 (opt_name, opt_name_utf8, strlen (opt_name) * 2);
 
-	/* up to now only options for process-plugins are supported */
-	if (type == RA_HANDLE_PROC)
+  /* up to now only options for process-plugins are supported */
+  if (type == RA_HANDLE_PROC)
+    {
+      struct proc_info *pi;
+      struct plugin_struct *pl;
+      struct ra_option_infos *opt_infos;
+      int opt_idx;
+      long num_offset = 0;
+
+      pi = (struct proc_info *) h;
+      pl = (struct plugin_struct *) pi->plugin;
+
+      opt_infos = (struct ra_option_infos *) pl->info.opt;
+      opt_idx = find_option (opt_name_utf8, opt_infos, pl->info.num_options);
+      if (opt_idx < 0)
 	{
-		struct proc_info *pi;
-		struct plugin_struct *pl;
-		struct ra_option_infos *opt_infos;
-		int opt_idx;
-		long num_offset = 0;
-
-		pi = (struct proc_info *)h;
-		pl = (struct plugin_struct *)pi->plugin;
-
-		opt_infos = (struct ra_option_infos *)pl->info.opt;
-		opt_idx = find_option(opt_name_utf8, opt_infos, pl->info.num_options);
-		if (opt_idx < 0)
-		{
-			_ra_set_error(h, RA_ERR_OPTION_UNKNOWN, "libRASCH");
-			free(opt_name_utf8);
-			return ret;
-		}
-		
-		if (opt_infos[opt_idx].num_offset != 0)
-			num_offset = opt_infos[opt_idx+opt_infos[opt_idx].num_offset].offset;
-
-		if ((opt_infos[opt_idx].offset < 0) || (num_offset < 0))
-		{
-			_ra_set_error(h, RA_ERR_OPTION_NO_OFFSET, "libRASCH");
-			free(opt_name_utf8);
-			return ret;
-		}
-
-		ret = get_option(pi->options, &(opt_infos[opt_idx]), vh, num_offset);
-		if (ret != 0)
-			_ra_set_error(h, RA_ERR_ERROR, "libRASCH");
+	  _ra_set_error (h, RA_ERR_OPTION_UNKNOWN, "libRASCH");
+	  free (opt_name_utf8);
+	  return ret;
 	}
-	else
-		_ra_set_error(h, RA_ERR_UNSUPPORTED, "libRASCH");
 
-	free(opt_name_utf8);
+      if (opt_infos[opt_idx].num_offset != 0)
+	num_offset =
+	  opt_infos[opt_idx + opt_infos[opt_idx].num_offset].offset;
 
-	return ret;
-} /* ra_lib_get_option() */
+      if ((opt_infos[opt_idx].offset < 0) || (num_offset < 0))
+	{
+	  _ra_set_error (h, RA_ERR_OPTION_NO_OFFSET, "libRASCH");
+	  free (opt_name_utf8);
+	  return ret;
+	}
+
+      ret = get_option (pi->options, &(opt_infos[opt_idx]), vh, num_offset);
+      if (ret != 0)
+	_ra_set_error (h, RA_ERR_ERROR, "libRASCH");
+    }
+  else
+    _ra_set_error (h, RA_ERR_UNSUPPORTED, "libRASCH");
+
+  free (opt_name_utf8);
+
+  return ret;
+}				/* ra_lib_get_option() */
 
 
 /**
@@ -2641,21 +2686,21 @@ ra_lib_get_option(any_handle h, const char *opt_name, value_handle vh)
  * Functions looks in the array 'infos' for the option named 'name'.
  */
 int
-find_option(const char *name, struct ra_option_infos *infos, int num_opt)
+find_option (const char *name, struct ra_option_infos *infos, int num_opt)
 {
-	int i, idx = -1;
+  int i, idx = -1;
 
-	for (i = 0; i < num_opt; i++)
+  for (i = 0; i < num_opt; i++)
+    {
+      if (strcmp (name, infos[i].name) == 0)
 	{
-		if (strcmp(name, infos[i].name) == 0)
-		{
-			idx = i;
-			break;
-		}
+	  idx = i;
+	  break;
 	}
+    }
 
-	return idx;
-} /* find_option() */
+  return idx;
+}				/* find_option() */
 
 
 /**
@@ -2668,49 +2713,53 @@ find_option(const char *name, struct ra_option_infos *infos, int num_opt)
  * Function returns the value for the option in 'vh'.
  */
 int
-get_option(void *options, struct ra_option_infos *opt_info, value_handle vh, long num_offset)
+get_option (void *options, struct ra_option_infos *opt_info, value_handle vh,
+	    long num_offset)
 {
-	int ret = 0;
-	unsigned char *struct_pos, *struct_pos_num;
+  int ret = 0;
+  unsigned char *struct_pos, *struct_pos_num;
 
-	set_meta_info(vh, opt_info->name, opt_info->desc, RA_INFO_NONE);
-	
-	struct_pos = (unsigned char *)options + opt_info->offset;
-	struct_pos_num = (unsigned char *)options + num_offset;
+  set_meta_info (vh, opt_info->name, opt_info->desc, RA_INFO_NONE);
 
-	switch (opt_info->type)
-	{
-	case RA_VALUE_TYPE_SHORT:
-		ra_value_set_short(vh, *((short *)struct_pos));
-		break;
-	case RA_VALUE_TYPE_LONG:
-		ra_value_set_long(vh, *((long *)struct_pos));
-		break;
-	case RA_VALUE_TYPE_DOUBLE:
-		ra_value_set_double(vh, *((double *)struct_pos));
-		break;
-	case RA_VALUE_TYPE_CHAR:
-		ra_value_set_string_utf8(vh, *((char **)struct_pos));
-		break;
-	case RA_VALUE_TYPE_SHORT_ARRAY:
-		ra_value_set_short_array(vh, (short *)struct_pos, *((short *)struct_pos_num));
-		break;
-	case RA_VALUE_TYPE_LONG_ARRAY:
-		ra_value_set_long_array(vh, (long *)struct_pos, *((long *)struct_pos_num));
-		break;
-	case RA_VALUE_TYPE_DOUBLE_ARRAY:
-		ra_value_set_double_array(vh, (double *)struct_pos, *((long *)struct_pos_num));
-		break;
-	case RA_VALUE_TYPE_CHAR_ARRAY:
-		/* TODO: add functionality */
-		break;
-	default:
-		ret = -1;
-		break;
-	}
+  struct_pos = (unsigned char *) options + opt_info->offset;
+  struct_pos_num = (unsigned char *) options + num_offset;
 
-	return ret;
-} /* get_option() */
+  switch (opt_info->type)
+    {
+    case RA_VALUE_TYPE_SHORT:
+      ra_value_set_short (vh, *((short *) struct_pos));
+      break;
+    case RA_VALUE_TYPE_LONG:
+      ra_value_set_long (vh, *((long *) struct_pos));
+      break;
+    case RA_VALUE_TYPE_DOUBLE:
+      ra_value_set_double (vh, *((double *) struct_pos));
+      break;
+    case RA_VALUE_TYPE_CHAR:
+      ra_value_set_string_utf8 (vh, *((char **) struct_pos));
+      break;
+    case RA_VALUE_TYPE_SHORT_ARRAY:
+      ra_value_set_short_array (vh, (short *) struct_pos,
+				*((short *) struct_pos_num));
+      break;
+    case RA_VALUE_TYPE_LONG_ARRAY:
+      ra_value_set_long_array (vh, (long *) struct_pos,
+			       *((long *) struct_pos_num));
+      break;
+    case RA_VALUE_TYPE_DOUBLE_ARRAY:
+      ra_value_set_double_array (vh, (double *) struct_pos,
+				 *((long *) struct_pos_num));
+      break;
+    case RA_VALUE_TYPE_CHAR_ARRAY:
+      /* TODO: add functionality */
+      break;
+    default:
+      ret = -1;
+      break;
+    }
+
+  return ret;
+}				/* get_option() */
 
 
 /**
@@ -2724,91 +2773,93 @@ get_option(void *options, struct ra_option_infos *opt_info, value_handle vh, lon
  * process-handle) are supported.
  */
 LIBRAAPI int
-ra_lib_set_option(any_handle h, const char *opt_name, value_handle vh)
+ra_lib_set_option (any_handle h, const char *opt_name, value_handle vh)
 {
-	int ret = -1;
-	unsigned short type = *((unsigned short *)h);
-	char *opt_name_utf8;
+  int ret = -1;
+  unsigned short type = *((unsigned short *) h);
+  char *opt_name_utf8;
 
-	opt_name_utf8 = malloc(strlen(opt_name) * 2);
-	local_to_utf8(opt_name, opt_name_utf8, strlen(opt_name) * 2);
+  opt_name_utf8 = malloc (strlen (opt_name) * 2);
+  local_to_utf8 (opt_name, opt_name_utf8, strlen (opt_name) * 2);
 
-	/* up to now only options for process- and view-plugins are supported */
-	if (type == RA_HANDLE_PROC)
+  /* up to now only options for process- and view-plugins are supported */
+  if (type == RA_HANDLE_PROC)
+    {
+      struct proc_info *pi;
+      struct plugin_struct *pl;
+      struct ra_option_infos *opt_infos;
+      int opt_idx;
+      long num_offset = 0;
+
+      pi = (struct proc_info *) h;
+      pl = (struct plugin_struct *) pi->plugin;
+
+      opt_infos = (struct ra_option_infos *) pl->info.opt;
+      opt_idx = find_option (opt_name_utf8, opt_infos, pl->info.num_options);
+      if (opt_idx < 0)
 	{
-		struct proc_info *pi;
-		struct plugin_struct *pl;
-		struct ra_option_infos *opt_infos;
-		int opt_idx;
-		long num_offset = 0;
-
-		pi = (struct proc_info *)h;
-		pl = (struct plugin_struct *)pi->plugin;
-
-		opt_infos = (struct ra_option_infos *)pl->info.opt;
-		opt_idx = find_option(opt_name_utf8, opt_infos, pl->info.num_options);
-		if (opt_idx < 0)
-		{
-			_ra_set_error(h, RA_ERR_OPTION_UNKNOWN, "libRASCH");
-			free(opt_name_utf8);
-			return ret;
-		}
-
-		if (opt_infos[opt_idx].num_offset != 0)
-			num_offset = opt_infos[opt_idx+opt_infos[opt_idx].num_offset].offset;
-
-		if ((opt_infos[opt_idx].offset < 0) || (num_offset < 0))
-		{
-			_ra_set_error(h, RA_ERR_OPTION_NO_OFFSET, "libRASCH");
-			free(opt_name_utf8);
-			return ret;
-		}
-
-		ret = set_option(pi->options, &(opt_infos[opt_idx]), vh, num_offset);
-		if (ret != 0)
-			_ra_set_error(h, RA_ERR_ERROR, "libRASCH");
+	  _ra_set_error (h, RA_ERR_OPTION_UNKNOWN, "libRASCH");
+	  free (opt_name_utf8);
+	  return ret;
 	}
-	else if (type == RA_HANDLE_VIEW)
+
+      if (opt_infos[opt_idx].num_offset != 0)
+	num_offset =
+	  opt_infos[opt_idx + opt_infos[opt_idx].num_offset].offset;
+
+      if ((opt_infos[opt_idx].offset < 0) || (num_offset < 0))
 	{
-		struct view_info *vi;
-		struct plugin_struct *pl;
-		struct ra_option_infos *opt_infos;
-		int opt_idx;
-		long num_offset = 0;
-
-		vi = (struct view_info *)h;
-		pl = (struct plugin_struct *)vi->plugin;
-
-		opt_infos = (struct ra_option_infos *)pl->info.opt;
-		opt_idx = find_option(opt_name_utf8, opt_infos, pl->info.num_options);
-		if (opt_idx < 0)
-		{
-			_ra_set_error(h, RA_ERR_OPTION_UNKNOWN, "libRASCH");
-			free(opt_name_utf8);
-			return ret;
-		}
-
-		if (opt_infos[opt_idx].num_offset != 0)
-			num_offset = opt_infos[opt_idx+opt_infos[opt_idx].num_offset].offset;
-
-		if ((opt_infos[opt_idx].offset < 0) || (num_offset < 0))
-		{
-			_ra_set_error(h, RA_ERR_OPTION_NO_OFFSET, "libRASCH");
-			free(opt_name_utf8);
-			return ret;
-		}
-
-		ret = set_option(vi->options, &(opt_infos[opt_idx]), vh, num_offset);
-		if (ret != 0)
-			_ra_set_error(h, RA_ERR_ERROR, "libRASCH");
+	  _ra_set_error (h, RA_ERR_OPTION_NO_OFFSET, "libRASCH");
+	  free (opt_name_utf8);
+	  return ret;
 	}
-	else
-		_ra_set_error(h, RA_ERR_UNSUPPORTED, "libRASCH");
 
-	free(opt_name_utf8);
+      ret = set_option (pi->options, &(opt_infos[opt_idx]), vh, num_offset);
+      if (ret != 0)
+	_ra_set_error (h, RA_ERR_ERROR, "libRASCH");
+    }
+  else if (type == RA_HANDLE_VIEW)
+    {
+      struct view_info *vi;
+      struct plugin_struct *pl;
+      struct ra_option_infos *opt_infos;
+      int opt_idx;
+      long num_offset = 0;
 
-	return ret;
-} /* ra_lib_set_option() */
+      vi = (struct view_info *) h;
+      pl = (struct plugin_struct *) vi->plugin;
+
+      opt_infos = (struct ra_option_infos *) pl->info.opt;
+      opt_idx = find_option (opt_name_utf8, opt_infos, pl->info.num_options);
+      if (opt_idx < 0)
+	{
+	  _ra_set_error (h, RA_ERR_OPTION_UNKNOWN, "libRASCH");
+	  free (opt_name_utf8);
+	  return ret;
+	}
+
+      if (opt_infos[opt_idx].num_offset != 0)
+	num_offset =
+	  opt_infos[opt_idx + opt_infos[opt_idx].num_offset].offset;
+
+      if ((opt_infos[opt_idx].offset < 0) || (num_offset < 0))
+	{
+	  _ra_set_error (h, RA_ERR_OPTION_NO_OFFSET, "libRASCH");
+	  free (opt_name_utf8);
+	  return ret;
+	}
+
+      ret = set_option (vi->options, &(opt_infos[opt_idx]), vh, num_offset);
+      if (ret != 0)
+	_ra_set_error (h, RA_ERR_ERROR, "libRASCH");
+    }
+  else
+    _ra_set_error (h, RA_ERR_UNSUPPORTED, "libRASCH");
+
+  free (opt_name_utf8);
+
+  return ret;
+}				/* ra_lib_set_option() */
 
 
 /**
@@ -2821,94 +2872,95 @@ ra_lib_set_option(any_handle h, const char *opt_name, value_handle vh)
  * Function set the value for the option given in 'vh'.
  */
 int
-set_option(void *options, struct ra_option_infos *opt_info, value_handle vh, long num_offset)
+set_option (void *options, struct ra_option_infos *opt_info, value_handle vh,
+	    long num_offset)
 {
-	int ret = 0;
-	unsigned char *struct_pos, *struct_pos_num;
-	long n_elem;
-	char **c_arr;
-	const char *c_temp;
-	short **s_arr;
-	const short *s_temp;
-	long **l_arr;
-	const long *l_temp;
-	double **d_arr;
-	const double *d_temp;
-	void **vp_arr;
-	const void *vp_temp;
+  int ret = 0;
+  unsigned char *struct_pos, *struct_pos_num;
+  long n_elem;
+  char **c_arr;
+  const char *c_temp;
+  short **s_arr;
+  const short *s_temp;
+  long **l_arr;
+  const long *l_temp;
+  double **d_arr;
+  const double *d_temp;
+  void **vp_arr;
+  const void *vp_temp;
 
-	struct_pos = (unsigned char *)options + opt_info->offset;
-	struct_pos_num = (unsigned char *)options + num_offset;
+  struct_pos = (unsigned char *) options + opt_info->offset;
+  struct_pos_num = (unsigned char *) options + num_offset;
 
-	n_elem = ra_value_get_num_elem(vh);
-	switch (opt_info->type)
-	{
-	case RA_VALUE_TYPE_SHORT:
-		*((short *)struct_pos) = ra_value_get_short(vh);
-		break;
-	case RA_VALUE_TYPE_LONG:
-		*((long *)struct_pos) = ra_value_get_long(vh);
-		break;
-	case RA_VALUE_TYPE_DOUBLE:
-		*((double *)struct_pos) = ra_value_get_double(vh);
-		break;
-	case RA_VALUE_TYPE_CHAR:
-		c_arr = (char **)struct_pos;
-		if (*c_arr)
-			ra_free_mem(*c_arr);
-		c_temp = ra_value_get_string_utf8(vh);
-		*c_arr = ra_alloc_mem(strlen(c_temp) + 1);
-		strcpy(*c_arr, c_temp);
-		break;
-	case RA_VALUE_TYPE_VOIDP:
-		*((void **)struct_pos) = (void *)ra_value_get_voidp(vh);
-		break;
-	case RA_VALUE_TYPE_SHORT_ARRAY:
-		s_arr = (short **)struct_pos;
-		if (*s_arr)
-			ra_free_mem(*s_arr);
-		*s_arr = ra_alloc_mem(sizeof(short) * n_elem);
-		s_temp = ra_value_get_short_array(vh);
-		memcpy(*s_arr, s_temp, sizeof(short) * n_elem);
-		*((short *)struct_pos_num) = (short)n_elem;
-		break;
-	case RA_VALUE_TYPE_LONG_ARRAY:
-		l_arr = (long **)struct_pos;
-		if (*l_arr)
-			ra_free_mem(*l_arr);
-		*l_arr = ra_alloc_mem(sizeof(long) * n_elem);
-		l_temp = ra_value_get_long_array(vh);
-		memcpy(*l_arr, l_temp, sizeof(long) * n_elem);
-		*((long *)struct_pos_num) = n_elem;
-		break;
-	case RA_VALUE_TYPE_DOUBLE_ARRAY:
-		d_arr = (double **)struct_pos;
-		if (*d_arr)
-			ra_free_mem(*d_arr);
-		*d_arr = ra_alloc_mem(sizeof(double) * n_elem);
-		d_temp = ra_value_get_double_array(vh);
-		memcpy(*d_arr, d_temp, sizeof(double) * n_elem);
-		*((long *)struct_pos_num) = n_elem;
-		break;
-	case RA_VALUE_TYPE_CHAR_ARRAY:
-		/* TODO: implement functionality */
-		break;
-	case RA_VALUE_TYPE_VOIDP_ARRAY:
-		vp_arr = (void **)struct_pos;
-		if (*vp_arr)
-			ra_free_mem(*vp_arr);
-		*vp_arr = ra_alloc_mem(sizeof(void *) * n_elem);
-		vp_temp = ra_value_get_voidp_array(vh);
-		memcpy(*vp_arr, vp_temp, sizeof(void *) * n_elem);
-		*((long *)struct_pos_num) = n_elem;
-		break;
-	default:
-		ret = -1;
-		break;
-	}
+  n_elem = ra_value_get_num_elem (vh);
+  switch (opt_info->type)
+    {
+    case RA_VALUE_TYPE_SHORT:
+      *((short *) struct_pos) = ra_value_get_short (vh);
+      break;
+    case RA_VALUE_TYPE_LONG:
+      *((long *) struct_pos) = ra_value_get_long (vh);
+      break;
+    case RA_VALUE_TYPE_DOUBLE:
+      *((double *) struct_pos) = ra_value_get_double (vh);
+      break;
+    case RA_VALUE_TYPE_CHAR:
+      c_arr = (char **) struct_pos;
+      if (*c_arr)
+	ra_free_mem (*c_arr);
+      c_temp = ra_value_get_string_utf8 (vh);
+      *c_arr = ra_alloc_mem (strlen (c_temp) + 1);
+      strcpy (*c_arr, c_temp);
+      break;
+    case RA_VALUE_TYPE_VOIDP:
+      *((void **) struct_pos) = (void *) ra_value_get_voidp (vh);
+      break;
+    case RA_VALUE_TYPE_SHORT_ARRAY:
+      s_arr = (short **) struct_pos;
+      if (*s_arr)
+	ra_free_mem (*s_arr);
+      *s_arr = ra_alloc_mem (sizeof (short) * n_elem);
+      s_temp = ra_value_get_short_array (vh);
+      memcpy (*s_arr, s_temp, sizeof (short) * n_elem);
+      *((short *) struct_pos_num) = (short) n_elem;
+      break;
+    case RA_VALUE_TYPE_LONG_ARRAY:
+      l_arr = (long **) struct_pos;
+      if (*l_arr)
+	ra_free_mem (*l_arr);
+      *l_arr = ra_alloc_mem (sizeof (long) * n_elem);
+      l_temp = ra_value_get_long_array (vh);
+      memcpy (*l_arr, l_temp, sizeof (long) * n_elem);
+      *((long *) struct_pos_num) = n_elem;
+      break;
+    case RA_VALUE_TYPE_DOUBLE_ARRAY:
+      d_arr = (double **) struct_pos;
+      if (*d_arr)
+	ra_free_mem (*d_arr);
+      *d_arr = ra_alloc_mem (sizeof (double) * n_elem);
+      d_temp = ra_value_get_double_array (vh);
+      memcpy (*d_arr, d_temp, sizeof (double) * n_elem);
+      *((long *) struct_pos_num) = n_elem;
+      break;
+    case RA_VALUE_TYPE_CHAR_ARRAY:
+      /* TODO: implement functionality */
+      break;
+    case RA_VALUE_TYPE_VOIDP_ARRAY:
+      vp_arr = (void **) struct_pos;
+      if (*vp_arr)
+	ra_free_mem (*vp_arr);
+      *vp_arr = ra_alloc_mem (sizeof (void *) * n_elem);
+      vp_temp = ra_value_get_voidp_array (vh);
+      memcpy (*vp_arr, vp_temp, sizeof (void *) * n_elem);
+      *((long *) struct_pos_num) = n_elem;
+      break;
+    default:
+      ret = -1;
+      break;
+    }
 
-	return ret;
-} /* set_option() */
+  return ret;
+}				/* set_option() */
 
 
 /**
@@ -2922,13 +2974,13 @@ set_option(void *options, struct ra_option_infos *opt_info, value_handle vh, lon
  * Function _not_ completely tested. Use at your own risk.
  */
 LIBRAAPI int
-ra_meas_copy(meas_handle mh, const char *dest_dir)
+ra_meas_copy (meas_handle mh, const char *dest_dir)
 {
-	char dir_utf8[MAX_PATH_RA];
-	local_to_utf8(dest_dir, dir_utf8, MAX_PATH_RA);
+  char dir_utf8[MAX_PATH_RA];
+  local_to_utf8 (dest_dir, dir_utf8, MAX_PATH_RA);
 
-	return copy_move_meas(mh, dir_utf8, 1);
-} /* ra_meas_copy() */
+  return copy_move_meas (mh, dir_utf8, 1);
+}				/* ra_meas_copy() */
 
 
 /**
@@ -2944,50 +2996,50 @@ ra_meas_copy(meas_handle mh, const char *dest_dir)
  * Function _not_ completely tested. Use at your own risk.
  */
 LIBRAAPI meas_handle
-ra_meas_move(meas_handle mh, const char *dest_dir)
+ra_meas_move (meas_handle mh, const char *dest_dir)
 {
-	int ret;
-	struct ra_meas *meas = (struct ra_meas *)mh;
-	meas_handle mh_moved = mh;
-	ra_handle ra;
-	value_handle vh;
-	const char *fn;
-	char moved_meas[MAX_PATH_RA];
-	char eval_filename[MAX_PATH_RA];
-	char *p;	
-	char dir_utf8[MAX_PATH_RA];
+  int ret;
+  struct ra_meas *meas = (struct ra_meas *) mh;
+  meas_handle mh_moved = mh;
+  ra_handle ra;
+  value_handle vh;
+  const char *fn;
+  char moved_meas[MAX_PATH_RA];
+  char eval_filename[MAX_PATH_RA];
+  char *p;
+  char dir_utf8[MAX_PATH_RA];
 
-	/* save name of evaluation file */
-	strncpy(eval_filename, meas->eval.filename, MAX_PATH_RA);
+  /* save name of evaluation file */
+  strncpy (eval_filename, meas->eval.filename, MAX_PATH_RA);
 
-	/* get infos so I'm able to open moved measuerment */
-	ra = ra_lib_handle_from_any_handle(mh);
-	vh = ra_value_malloc();
-	ra_info_get(mh, RA_INFO_PATH_C, vh);
-	fn = ra_value_get_string(vh);
+  /* get infos so I'm able to open moved measuerment */
+  ra = ra_lib_handle_from_any_handle (mh);
+  vh = ra_value_malloc ();
+  ra_info_get (mh, RA_INFO_PATH_C, vh);
+  fn = ra_value_get_string (vh);
 
-	p = strrchr(fn, SEPARATOR);
-	if (p)
-		sprintf(moved_meas, "%s%c%s", dest_dir, SEPARATOR, p+1);
-	else
-		sprintf(moved_meas, "%s%c%s", dest_dir, SEPARATOR, fn);
+  p = strrchr (fn, SEPARATOR);
+  if (p)
+    sprintf (moved_meas, "%s%c%s", dest_dir, SEPARATOR, p + 1);
+  else
+    sprintf (moved_meas, "%s%c%s", dest_dir, SEPARATOR, fn);
 
-	ra_value_free(vh);
+  ra_value_free (vh);
 
-	local_to_utf8(dest_dir, dir_utf8, MAX_PATH_RA);
+  local_to_utf8 (dest_dir, dir_utf8, MAX_PATH_RA);
 
-	/* move measurement */
-	ret = copy_move_meas(mh, dir_utf8, 0);
+  /* move measurement */
+  ret = copy_move_meas (mh, dir_utf8, 0);
 
-	/* open moved measurement */
-	if (ret == 0)
-	{
-		ra_meas_close(mh);
-		mh_moved = ra_meas_open(ra, moved_meas, eval_filename, 0);
-	}
+  /* open moved measurement */
+  if (ret == 0)
+    {
+      ra_meas_close (mh);
+      mh_moved = ra_meas_open (ra, moved_meas, eval_filename, 0);
+    }
 
-	return mh_moved;
-} /* ra_meas_move() */
+  return mh_moved;
+}				/* ra_meas_move() */
 
 
 /**
@@ -2999,90 +3051,90 @@ ra_meas_move(meas_handle mh, const char *dest_dir)
  * Function copy or move a measurement.
  */
 int
-copy_move_meas(meas_handle mh, const char *dest_dir, int copy)
+copy_move_meas (meas_handle mh, const char *dest_dir, int copy)
 {
-	int ret = 0;
-	value_handle vh;
-	const char *fn, **files;
-	char dir[MAX_PATH_RA], dir_save[MAX_PATH_RA];
-	long l, n_elem, is_dir;
+  int ret = 0;
+  value_handle vh;
+  const char *fn, **files;
+  char dir[MAX_PATH_RA], dir_save[MAX_PATH_RA];
+  long l, n_elem, is_dir;
 
-	vh = ra_value_malloc();
+  vh = ra_value_malloc ();
 
-	dir_save[0] = '\0';
+  dir_save[0] = '\0';
 
-	/* first check if dir */
-	if (ra_info_get(mh, RA_INFO_DIR_L, vh) != 0)
+  /* first check if dir */
+  if (ra_info_get (mh, RA_INFO_DIR_L, vh) != 0)
+    {
+      ra_value_free (vh);
+      return -1;
+    }
+  is_dir = ra_value_get_long (vh);
+  if (is_dir)
+    {
+      /* yes, measurement is in a directory -> create dir */
+      char *p = NULL;
+      char temp[MAX_PATH_RA];
+
+      /* build directory name */
+      if (ra_info_get (mh, RA_INFO_PATH_C, vh) != 0)
 	{
-		ra_value_free(vh);
-		return -1;
+	  ra_value_free (vh);
+	  return -1;
 	}
-	is_dir = ra_value_get_long(vh);
-	if (is_dir)
+      fn = ra_value_get_string (vh);
+      strncpy (dir_save, fn, MAX_PATH_RA);
+      strncpy (temp, fn, MAX_PATH_RA);
+      p = strrchr (temp, SEPARATOR);
+      if (p)
 	{
-		/* yes, measurement is in a directory -> create dir */
-		char *p = NULL;
-		char temp[MAX_PATH_RA];
-
-		/* build directory name */
-		if (ra_info_get(mh, RA_INFO_PATH_C, vh) != 0)
-		{
-			ra_value_free(vh);
-			return -1;
-		}
-		fn = ra_value_get_string(vh);
-		strncpy(dir_save, fn, MAX_PATH_RA);
-		strncpy(temp, fn, MAX_PATH_RA);
-		p = strrchr(temp, SEPARATOR);
-		if (p)
-		{
-			*p = '\0';
-			p++;
-		}
-		else
-			p = temp;
-
-		sprintf(dir, "%s%c%s", dest_dir, SEPARATOR, p);
-		
-		/* make it */
-		ret = make_dir(dir);
-		if (ret != 0)
-		{
-			ra_value_free(vh);
-			return ret;
-		}
+	  *p = '\0';
+	  p++;
 	}
-	else
-		strncpy(dir, dest_dir, MAX_PATH_RA);
+      else
+	p = temp;
 
-	if (ra_info_get(mh, RA_INFO_FILES_CA, vh) != 0)
+      sprintf (dir, "%s%c%s", dest_dir, SEPARATOR, p);
+
+      /* make it */
+      ret = make_dir (dir);
+      if (ret != 0)
 	{
-		ra_value_free(vh);
-		return -1;
+	  ra_value_free (vh);
+	  return ret;
 	}
+    }
+  else
+    strncpy (dir, dest_dir, MAX_PATH_RA);
 
-	files = ra_value_get_string_array(vh);
-	if (!files)
-	{
-		ra_value_free(vh);
-		return -1;
-	}
+  if (ra_info_get (mh, RA_INFO_FILES_CA, vh) != 0)
+    {
+      ra_value_free (vh);
+      return -1;
+    }
 
-	n_elem = ra_value_get_num_elem(vh);
-	for (l = 0; l < n_elem; l++)
-	{
-		ret = copy_move_file(files[l], dir, copy);
-		if (ret != 0)
-			break;
-	}
+  files = ra_value_get_string_array (vh);
+  if (!files)
+    {
+      ra_value_free (vh);
+      return -1;
+    }
 
-	ra_value_free(vh);
+  n_elem = ra_value_get_num_elem (vh);
+  for (l = 0; l < n_elem; l++)
+    {
+      ret = copy_move_file (files[l], dir, copy);
+      if (ret != 0)
+	break;
+    }
 
-	if (dir_save[0] && !copy)
-		delete_file(dir_save);
+  ra_value_free (vh);
 
-	return ret;
-} /* copy_move_meas() */
+  if (dir_save[0] && !copy)
+    delete_file (dir_save);
+
+  return ret;
+}				/* copy_move_meas() */
 
 
 /**
@@ -3097,66 +3149,66 @@ copy_move_meas(meas_handle mh, const char *dest_dir, int copy)
  * Function _not_ completely tested. Use at your own risk.
  */
 LIBRAAPI int
-ra_meas_delete(meas_handle mh)
+ra_meas_delete (meas_handle mh)
 {
-	value_handle vh;
-	int ret = 0;
-	char dir[MAX_PATH_RA];
-	long l, n_elem;
-	const char **files;
+  value_handle vh;
+  int ret = 0;
+  char dir[MAX_PATH_RA];
+  long l, n_elem;
+  const char **files;
 
-	vh = ra_value_malloc();
+  vh = ra_value_malloc ();
 
-	/* check if dir */
-	dir[0] = '\0';
-	if (ra_info_get(mh, RA_INFO_DIR_L, vh) != 0)
+  /* check if dir */
+  dir[0] = '\0';
+  if (ra_info_get (mh, RA_INFO_DIR_L, vh) != 0)
+    {
+      ra_value_free (vh);
+      return -1;
+    }
+  if (ra_value_get_long (vh))
+    {
+      /* yes, measurement is in a directory -> save dir-name */
+      if (ra_info_get (mh, RA_INFO_PATH_C, vh) != 0)
 	{
-		ra_value_free(vh);
-		return -1;
+	  ra_value_free (vh);
+	  return -1;
+
+
 	}
-	if (ra_value_get_long(vh))
-	{
-		/* yes, measurement is in a directory -> save dir-name */
-		if (ra_info_get(mh, RA_INFO_PATH_C, vh) != 0)
-		{
-			ra_value_free(vh);
-			return -1;
+      strncpy (dir, ra_value_get_string (vh), MAX_PATH_RA);
+    }
 
+  /* get files of measurement */
+  if (ra_info_get (mh, RA_INFO_FILES_CA, vh) != 0)
+    {
+      ra_value_free (vh);
+      return -1;
+    }
 
-		}
-		strncpy(dir, ra_value_get_string(vh), MAX_PATH_RA);
-	}
+  /* close measurement */
+  ra_meas_close (mh);
 
-	/* get files of measurement */
-	if (ra_info_get(mh, RA_INFO_FILES_CA, vh) != 0)
-	{
-		ra_value_free(vh);
-		return -1;
-	}
+  /* delete files */
+  files = ra_value_get_string_array (vh);
+  if (!files)
+    {
+      ra_value_free (vh);
+      return -1;
+    }
 
-	/* close measurement */
-	ra_meas_close(mh);
+  n_elem = ra_value_get_num_elem (vh);
+  for (l = 0; l < n_elem; l++)
+    {
+      ret = delete_file (files[l]);
+      if (ret != 0)
+	break;
+    }
+  ra_value_free (vh);
 
-	/* delete files */
-	files = ra_value_get_string_array(vh);
-	if (!files)
-	{
-		ra_value_free(vh);
-		return -1;
-	}
+  /* if measurement in dir -> remove dir */
+  if (dir[0])
+    delete_file (dir);
 
-	n_elem = ra_value_get_num_elem(vh);
-	for (l = 0; l < n_elem; l++)
-	{
-		ret = delete_file(files[l]);
-		if (ret != 0)
-			break;
-	}
-	ra_value_free(vh);
-
-	/* if measurement in dir -> remove dir */
-	if (dir[0])
-		delete_file(dir);
-
-	return ret;
-} /* ra_meas_delete() */
+  return ret;
+}				/* ra_meas_delete() */
