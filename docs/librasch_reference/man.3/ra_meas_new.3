@@ -1,0 +1,21 @@
+.TH "ra_meas_new" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_meas_new \- creates a new measurement
+.SH SYNOPSIS
+.B "LIBRAAPI meas_handle" ra_meas_new
+.BI "(ra_handle " h ","
+.BI "const char * " dir ","
+.BI "const char * " name ");"
+.SH ARGUMENTS
+.IP "h" 12
+ handle to libRASCH
+.IP "dir" 12
+ directory where the measurement-files should be stored
+.IP "name" 12
+ name of the measurement
+.SH "DESCRIPTION"
+Creates a new measurement with the name name in the directory dir. The function returns the handle to the measurement. The measurement will be stored using the libRASCH file-format. Not full implemented. !!!
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

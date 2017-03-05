@@ -1,0 +1,6 @@
+Delete the evaluation 'eval_handle'.
+    Input parameters:
+    eval_handle
+
+  Output parameters:
+    ok

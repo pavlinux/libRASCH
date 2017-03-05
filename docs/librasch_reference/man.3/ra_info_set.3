@@ -1,0 +1,21 @@
+.TH "ra_info_set" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_info_set \- set info
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_info_set
+.BI "(any_handle " h ","
+.BI "int " id ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "h" 12
+ handle
+.IP "id" 12
+ info id
+.IP "vh" 12
+ value_handle with the info
+.SH "DESCRIPTION"
+Set info 'id' with the data found in 'vh'. At the moment only some measurement and recording infos can be set. In the future, other infos (e.g. eval-name, eval-desc etc.) can be set with this function also.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

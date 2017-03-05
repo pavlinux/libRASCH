@@ -1,0 +1,4 @@
+########## distribution specific settings ##########
+VERSION = 0.8.31
+MAJ_VERSION = 0
+

@@ -1,0 +1,81 @@
+<section id="tut-open-meas"><title>Access Measurements</title>
+<para>
+The example will show how to open a measurement and how to get some
+information from a measurement. We will perform the following steps:
+<itemizedlist mark=bullet>
+<listitem><para>open a measurement</para></listitem>
+<listitem><para>get the number of sessions and the maximum samplerate</para></listitem>
+<listitem><para>print all available infos about the measurement object
+(in this example it is a patient)</para></listitem>
+</itemizedlist>
+</para>
+
+<programlistingco>
+<areaspec>
+<areaset id="open-meas-c.const" coords="">
+<area id="open-meas-c.open"  units="LineColumn" coords="33 48">
+</areaset>
+<area id="open-meas-c.info"  units="LineColumn" coords="56 62">
+<area id="open-meas-c.info-idx"  units="LineColumn" coords="63 62">
+<area id="open-meas-c.info-type"  units="LineColumn" coords="66 44">
+</areaspec>
+<programlisting>
+&open-meas.c;
+</programlisting>
+<calloutlist>
+<callout arearefs="open-meas-c.open">
+<para>
+ra_open_meas() opens a measurement. The user do not need to specify
+the format in which the measurement was saved, libRASCH selects the
+access plugin which can handle the format. If no access plugin can
+handle the measurement, the function fails. The third parameter (here
+it is set to '0') controls if a fast-open should be done (set to
+'1'). When a fast-open is selected, some "time-consuming"
+initialization is skipped and only the object informations and some
+basic recording informations (e.g. recording date) are
+available. <footnote><para>Some access plugins do not differ between
+fast and normal open. But it is recommended, when writing access
+plugins, to skip time consuming tasks when fast-open was
+selected. This decreases the time needed to list all measurements in a
+directory.</para></footnote>
+</para>
+</callout>
+</calloutlist>
+<calloutlist>
+<callout arearefs="open-meas-c.info">
+<para>
+With this call, the number of available measurement objects is
+returned. In the following loop, we will get all available
+informations about the measurement object.
+</para>
+</callout>
+</calloutlist>
+<calloutlist>
+<callout arearefs="open-meas-c.info-idx">
+<para>
+With the function ra_info_get_by_idx() we select the information we
+want by a number. Because we do not know which number is which
+information, this function is only useful to display all available
+data in a list.
+</para>
+</callout>
+</calloutlist>
+<calloutlist>
+<callout arearefs="open-meas-c.info-type">
+<para>
+Because we do not know which information is returned, we do not know
+the type of the information. Therefore we have to get the type of the
+information so we use the correct way to display the information.
+</para>
+</callout>
+</calloutlist>
+</programlistingco>
+
+<para>
+The output of the above example for the measurement '100s'
+is shown here:
+</para>
+<programlisting>
+&open-meas.c.out;
+</programlisting>
+</section>

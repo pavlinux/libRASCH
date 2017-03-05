@@ -1,0 +1,8 @@
+Returns the first recording-handle for session number
+'session_number'.
+  Input parameters:
+    meas_handle
+    session_number
+
+  Output parameters:
+    rec_handle

@@ -1,0 +1,10 @@
+<SOFTPKG NAME="RASCH" VERSION="0,8,21,0">
+    <TITLE>RASCH</TITLE>
+    <ABSTRACT>object orientated Perl-interface for libRASCH</ABSTRACT>
+    <AUTHOR>Raphael Schneider &lt;librasch@gmail.com&gt;</AUTHOR>
+    <IMPLEMENTATION>
+        <OS NAME="MSWin32" />
+        <ARCHITECTURE NAME="MSWin32-x86-multi-thread-5.8" />
+        <CODEBASE HREF="RASCH.tar.gz" />
+    </IMPLEMENTATION>
+</SOFTPKG>

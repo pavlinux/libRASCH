@@ -1,0 +1,270 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Get Sample Data</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="User Manual for libRASCH-0.7.2"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="A Tutorial"
+HREF="tutorial.html"><LINK
+REL="PREVIOUS"
+TITLE="Access Recordings"
+HREF="tut_handle_recs.html"><LINK
+REL="NEXT"
+TITLE="Access Evaluations"
+HREF="tut_handle_eval.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="SECTION"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>User Manual for libRASCH-0.7.2</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="tut_handle_recs.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. A Tutorial</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="tut_handle_eval.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="TUT_GET_RAW"
+>Get Sample Data</A
+></H1
+><P
+>The example will show how to get the root recording and some
+information about it. We will perform the following steps:
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>get root recording</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>get some general informations about the recording</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>get some infos about all used recording devices</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>get some infos about all recorded channels</P
+></LI
+></UL
+></P
+><P
+>When more than one recording device was used, the root recording
+provides access to the channels as if they were recorded with one
+device.</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>rasch@rasch:~&#62; octave
+GNU Octave, version 2.1.50 (i686-pc-linux-gnu).
+...
+
+octave:1&#62; ra=ra_lib_init
+ra = 145017272
+octave:2&#62; meas=ra_meas_open(ra, '/home/rasch/ecgs/AT011030_rdi.ART', 0)
+meas = 145244336
+octave:3&#62; rec=ra_rec_get_first(meas, 0)
+rec = 145421120
+octave:4&#62; num_ch=ra_rec_get_info(rec, 'rec_num_channel')
+num_ch = 5
+octave:5&#62; ch_all=[];
+octave:6&#62; for i=0:(num_ch-1)
+&#62; ch=ra_raw_get(rec, i, 0, 10000); <A
+NAME="GET_RAW_M.GET_DATA"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>
+&#62; ch_all=[ch_all ch'];
+&#62; endfor
+octave:7&#62; whos ch_all
+
+*** local user variables:
+
+prot  type                       rows   cols  name
+====  ====                       ====   ====  ====
+ rwd  matrix                    10000      5  ch_all
+
+octave:8&#62; samplerate=ra_ch_get_info(rec, 0, 'ch_samplerate')
+samplerate = 1600
+octave:9&#62; x=0:9999;
+octave:10&#62; x = x / samplerate;
+octave:11&#62; figure(0); plot(x, ch_all(:,1));
+octave:12&#62; figure(1); plot(x, ch_all(:,2));
+octave:13&#62; figure(2); plot(x, ch_all(:,3));
+octave:14&#62; figure(3); plot(x, ch_all(:,4));
+octave:15&#62; figure(4); plot(x, ch_all(:,5));
+octave:16&#62;&#13;</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tut_get_raw.html#GET_RAW_M.GET_DATA"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+>Returns 10,000 samples for channels 0..4, starting with sample 0 in
+each channel.</DD
+></DL
+></DIV
+><P
+><A
+HREF="tut_get_raw.html#GET-RAW-FIG"
+>Figure 3-1</A
+> shows a screenshot of Octave after
+performing the above steps. Each plot window on the right side shows a
+recording channel. The x-axis is in seconds.</P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="GET-RAW-FIG"
+></A
+><P
+><B
+>Figure 3-1. Screenshot after performing the commands in Octave as shown in the
+Octave session above (and on the left side in the screenshot).</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/get_raw_octave2.png"></P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="tut_handle_recs.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="tut_handle_eval.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Access Recordings</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="tutorial.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Access Evaluations</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

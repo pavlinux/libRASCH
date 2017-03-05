@@ -1,0 +1,21 @@
+.TH "ra_prop_get_ch" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_prop_get_ch \- returns the channels for which data is available
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_prop_get_ch
+.BI "(prop_handle " ph ","
+.BI "long " event_id ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "ph" 12
+ event-property handle
+.IP "event_id" 12
+ event-id
+.IP "vh" 12
+ ra-value receiving the channel-list
+.SH "DESCRIPTION"
+The function return in 'vh' the list of channels where values are available for event-id 'event_id' and event-property 'ph'.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

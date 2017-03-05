@@ -1,0 +1,1481 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Tutorial for RASCHlab-0.3.0</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"></HEAD
+><BODY
+CLASS="BOOK"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="BOOK"
+><A
+NAME="AEN1"
+></A
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="TITLE"
+><A
+NAME="AEN1"
+>Tutorial for RASCHlab-0.3.0</A
+></H1
+><H3
+CLASS="AUTHOR"
+><A
+NAME="AEN4"
+></A
+>Raphael Schneider</H3
+><P
+CLASS="COPYRIGHT"
+>Copyright &copy; 2004 Raphael Schneider</P
+><HR></DIV
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>1. <A
+HREF="#INTRODUCTION"
+>Introduction</A
+></DT
+><DT
+>2. <A
+HREF="#TERM"
+>Terminology</A
+></DT
+><DT
+>3. <A
+HREF="#INSTALL"
+>Installation</A
+></DT
+><DT
+>4. <A
+HREF="#OPEN-SIGNAL"
+>Open a Signal</A
+></DT
+><DT
+>5. <A
+HREF="#PROCESS-SIGNAL"
+>Process a Signal</A
+></DT
+><DT
+>6. <A
+HREF="#NAVIGATION"
+>Navigation</A
+></DT
+><DD
+><DL
+><DT
+>6.1. <A
+HREF="#AEN142"
+>Navigation in the signal window</A
+></DT
+><DT
+>6.2. <A
+HREF="#AEN161"
+>Selections</A
+></DT
+><DT
+>6.3. <A
+HREF="#AEN188"
+>Inter Plugin Communication</A
+></DT
+></DL
+></DD
+><DT
+>7. <A
+HREF="#COMMENTS"
+>Signal Comments</A
+></DT
+><DT
+>8. <A
+HREF="#SETTINGS"
+>Change Settings</A
+></DT
+><DT
+>9. <A
+HREF="#EDIT"
+>View-Plugin specific controls</A
+></DT
+><DD
+><DL
+><DT
+>9.1. <A
+HREF="#RASCHLAB-ECG-VIEW-DESC"
+>ECG View-Plugin</A
+></DT
+><DT
+>9.2. <A
+HREF="#RASCHLAB-ABP-VIEW-DESC"
+>Blood Pressure View-Plugin</A
+></DT
+></DL
+></DD
+><DT
+>10. <A
+HREF="#INFOS"
+>Information Dialog Boxes</A
+></DT
+></DL
+></DIV
+><DIV
+CLASS="LOT"
+><DL
+CLASS="LOT"
+><DT
+><B
+>List of Figures</B
+></DT
+><DT
+>4-1. <A
+HREF="#RASCHLAB-SIG-SEL-FIG"
+>Signal selection dialog box.</A
+></DT
+><DT
+>4-2. <A
+HREF="#RASCHLAB-PLAIN-ECG-FIG"
+>Screen shot of RASCHlab showing the ECG 100s.</A
+></DT
+><DT
+>5-1. <A
+HREF="#RASCHLAB-SEL-DETECT-CH-FIG"
+>Channel selection dialog box.</A
+></DT
+><DT
+>5-2. <A
+HREF="#RASCHLAB-SEL-DETECT-CH-2-FIG"
+>Channel selection dialog box after selecting the channels.</A
+></DT
+><DT
+>5-3. <A
+HREF="#RASCHLAB-ECG-WITH-ANNOT-FIG"
+>ECG after beat detection performed.</A
+></DT
+><DT
+>6-1. <A
+HREF="#RASCHLAB-MORE-SIGS-FIG"
+>Screen shot of a measurement with different kind of signal types.</A
+></DT
+><DT
+>6-2. <A
+HREF="#RASCHLAB-CONTEXT-MENU-FIG"
+>Context menu for the selection of beat types (e.g. normal beats,
+ventricular beats).</A
+></DT
+><DT
+>6-3. <A
+HREF="#RASCHLAB-CONTEXT-MENU-2-FIG"
+>Context menu for the selection of beats belonging to a specific template.</A
+></DT
+><DT
+>6-4. <A
+HREF="#RASCHLAB-SEL-TACHO-POS-FIG"
+>Select position in tachogram.</A
+></DT
+><DT
+>6-5. <A
+HREF="#RASCHLAB-SEL-TEMPLATE-FIG"
+>Select beats belonging to a specific template in the template window.</A
+></DT
+><DT
+>7-1. <A
+HREF="#RASCHLAB-ADD-COMMENT-FIG"
+>Add a comment.</A
+></DT
+><DT
+>7-2. <A
+HREF="#RASCHLAB-WITH-COMMENT-FIG"
+>Screen shot of the signal showing four comments.</A
+></DT
+><DT
+>8-1. <A
+HREF="#RASCHLAB-GENERAL-OPTIONS-FIG"
+>Dialog box to set general options.</A
+></DT
+><DT
+>8-2. <A
+HREF="#RASCHLAB-CHANNEL-OPTIONS-FIG"
+>Dialog box to set channel specific options.</A
+></DT
+><DT
+>10-1. <A
+HREF="#RASCHLAB-PLUGIN-DLG-FIG"
+>Dialog box for libRASCH plugin management.</A
+></DT
+><DT
+>10-2. <A
+HREF="#RASCHLAB-EVAL-DLG-FIG"
+>Dialog box for evaluation management.</A
+></DT
+><DT
+>10-3. <A
+HREF="#RASCHLAB-EVPROP-DLG-FIG"
+>Dialog box showing the event-properties stored in an evaluation.</A
+></DT
+></DL
+></DIV
+><DIV
+CLASS="CHAPTER"
+><HR><H1
+><A
+NAME="INTRODUCTION"
+></A
+>Chapter 1. Introduction</H1
+><P
+>RASCHlab is a program based on libRASCH (http://www.librasch.org), which allows the user to
+access time-series data. Additionally the user can process the signals
+(e.g. perform a beat detection in ECG's) and perform calculations
+based on the signals (e.g. calculate heart rate variability parameters
+from an ECG).</P
+><P
+>The program provides access to different file formats (e.g. EDF(+),
+MIT/AHA) and displays the informations which are included in a
+signal. For example comments/annotations in an EDF+ file is shown and
+the user can edit a comment or add a new one. Or when ECG's contain
+informations about the position and types of the heart beats, RASCHlab
+will show the positions and the user can edit/delete/insert the
+beat positions.</P
+><P
+>This tutorial will show you the fundamental usage of RASCHlab. All
+examples are shown on ECG's but generally it can be used for every
+kind of signal.</P
+><P
+>At the moment libRASCH (the basis of RASCHlab)
+supports best signals used in cardiology (e.g. ECG, continuous blood
+pressure) by special plugins for displaying and processing these
+signals. If you have experience with signal processing in other fields
+and some ideas what would be nice to have in libRASCH/RASCHlab, please
+send me an email (rasch@med1.med.tum.de) with your ideas and/or source
+code.</P
+></DIV
+><DIV
+CLASS="CHAPTER"
+><HR><H1
+><A
+NAME="TERM"
+></A
+>Chapter 2. Terminology</H1
+><P
+>This section gives a short descritpion of the terminology
+used in this tutorial.</P
+><P
+>&#13;<P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>Measurement</DT
+><DD
+><P
+>A measurement is the topmost object in libRASCH. Measurements
+consists of one or more sessions, information about the measurement
+object (e.g. name, forename and birthday if the measurement object is
+a person) and zero or more evaluations.</P
+></DD
+><DT
+>Session</DT
+><DD
+><P
+>A Session is a recording for a specific time interval without any
+interruptions during this time interval. In a measurement can be more
+than one session, but the layout of the recording (see below)
+must not be changed.</P
+></DD
+><DT
+>Recording</DT
+><DD
+><P
+>A recording contains the measured data (e.g. ECG leads V1-V6). A
+recording has one or more channels or two or more
+sub-recordings. Sub-recordings are used if more than one
+recording device is used. For example when one Analog/Digital
+converter-system records
+3 ECG leads and one bloodpressure channel and another system
+records 12 EEG leads, the measurement consists of one top
+recording with two sub-recordings. The first sub-recording
+contains 4 channels (3 ECG and 1 bloodpressure channel) and the second
+sub-recording contains 12 channels (12 EEG channels). </P
+></DD
+><DT
+><A
+NAME="EVALUATION"
+></A
+>Evaluation</DT
+><DD
+><P
+>The results of an analysis (e.g. positions of heart beats in an ECG)
+are stored in an evaluation. An evaluation contains zero or more
+discrete events (e.g. 'occurence of a heart beat') and/or zero or
+more continous events (e.g. 'recording period with noise'). In
+measurements handled by libRASCH, more than one evaluation can be
+available.</P
+><P
+>When an evaluation is added to the measurement by the original
+recording system (e.g. the evaluation performed by commercial
+long-term ECG systems), then this evaluation is called the
+<SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>original</I
+></SPAN
+> evaluation.</P
+><P
+>If only one evaluation is available, it is no problem to choose an
+evaluation when the user wants to process the evaluation. When more
+than one evaluation is stored in a measurement, one of these
+evaluations has to be the <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>default</I
+></SPAN
+>
+evaluation, which is used when no specific evaluation is selected. In
+most cases the last added evaluation is set to the default
+evaluation.</P
+></DD
+><DT
+>Event</DT
+><DD
+><P
+>An event describes the occurence of something in a recording (e.g. a
+heartbeat in an ECG). An event has one or more event-properties.</P
+></DD
+><DT
+>Event-Property</DT
+><DD
+><P
+>An event-property is a specific property of the event (e.g. the position
+of the event, the type of the event). A specific event-property is
+allowed only once in an evaluation, for example there can be not more than one
+'qrs-position' property.</P
+></DD
+><DT
+>Event-Set</DT
+><DD
+><P
+>An event-set describes a group of event-properties. For example the
+event-set 'heartbeat' contains all properties which belongs to a heart
+beat (e.g. position of the heart beat, the RR interval, the type of the
+heart beat, systolic blood pressure).</P
+></DD
+><DT
+>Plugins</DT
+><DD
+><P
+>libRASCH makes heavy use of plugins. Plugins are small "programs" which
+are loaded when libRASCH is initialized. In the plugins the real work is
+done, the library-code "only" coordinates that the correct plugin is used and
+does some other administrative tasks.
+
+In libRASCH three principal types of plugins exist: 
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>access plugins</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>view plugins</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>process plugins</P
+></LI
+></UL
+></P
+></DD
+><DT
+>Access-Plugin</DT
+><DD
+><P
+>Access plugins handle the access to measurement files. They hide
+the differences of the various types of formats and offer
+an consistent interface to the measurements<A
+NAME="AEN70"
+HREF="#FTN.AEN70"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+>.</P
+></DD
+><DT
+>Process-Plugin</DT
+><DD
+><P
+>Process plugins perform a specifc task on the measurement (e.g. the
+HRV-plugin calculates the Heart-Rate Variability parameters for an
+ECG or the detect plugin performs a simple beat detection in ECG's).</P
+></DD
+><DT
+>View-Plugin</DT
+><DD
+><P
+>View plugins allow to display the measurements on the screen. At the
+moment the following GUI's are supported:
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>Qt from Trolltech (for Linux)</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>MFC from Microsoft (for Windows)</P
+></LI
+></UL
+></P
+></DD
+></DL
+></DIV
+>&#13;</P
+></DIV
+><DIV
+CLASS="CHAPTER"
+><HR><H1
+><A
+NAME="INSTALL"
+></A
+>Chapter 3. Installation</H1
+><P
+>Please follow the instructions comming with the libRASCH distribution
+you downloaded.</P
+></DIV
+><DIV
+CLASS="CHAPTER"
+><HR><H1
+><A
+NAME="OPEN-SIGNAL"
+></A
+>Chapter 4. Open a Signal</H1
+><P
+>After starting RASCHlab, an empty workspace is shown. In this
+workspace the signal and other information about the signal will be
+shown. Now the first step will be to open a signal. To do this, select
+the menu entry 'File/Open...' or press the open button on the toolbar
+(an opening folder; the first button from left). This will open the
+signal selection dialog box. <A
+HREF="#RASCHLAB-SIG-SEL-FIG"
+>Figure 4-1</A
+> shows
+the screen shot with the dialog box. The signal selection dialog box
+is similar to the file browser in Windows, on the left side you can
+select the folder. On the right side, the signals in the
+selected folder will be shown. (Only the signals which are supported
+by libRASCH are shown.)</P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="RASCHLAB-SIG-SEL-FIG"
+></A
+><P
+><B
+>Figure 4-1. Signal selection dialog box.</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/raschlab_start_2.png"></P
+></DIV
+></DIV
+><P
+>Now select the folder 'LIBRASCH_ROOT/examples/database' on Linux
+systems and 'LIBRASCH_INSTALL_ROOT\examples\database' on Windows
+systems on the left side<A
+NAME="AEN99"
+HREF="#FTN.AEN99"
+><SPAN
+CLASS="footnote"
+>[2]</SPAN
+></A
+>. After selecting the
+folder, the available signals will be shown. Please select the signal
+named '100s'. This is a short ECG (one minute) from the
+PhysioNet database. To open the signal, you can double click on the 
+signal-name or select the signal by clicking once on the signal-name
+and then click on the OK button. Then the signal will be shown in the
+signal window. <A
+HREF="#RASCHLAB-PLAIN-ECG-FIG"
+>Figure 4-2</A
+>
+shows RASCHlab with the signal window showing the ECG. The signal
+window is a libRASCH view-plugin.</P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="RASCHLAB-PLAIN-ECG-FIG"
+></A
+><P
+><B
+>Figure 4-2. Screen shot of RASCHlab showing the ECG 100s.</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/raschlab_plain_ecg_2.png"></P
+></DIV
+></DIV
+><P
+>In the signal window, all channels of a measurement are shown. When
+the measurement contains more than one type of signal (e.g. ECG and
+arterial blood pressure) then each type of signal will be shown in
+their own signal window (for an example see <A
+HREF="#RASCHLAB-MORE-SIGS-FIG"
+>Figure 6-1</A
+>). To do this, libRASCH has to
+"detect" which signals are stored in a measurement. In general purpose
+file formats (e.g. file formats used by ADC systems), libRASCH tries
+to estimate the signal-type by the channel name. In file formats which
+have a fixed channel/signal-type relation, the signal type is set by
+the plugin supporting the file format.</P
+></DIV
+><DIV
+CLASS="CHAPTER"
+><HR><H1
+><A
+NAME="PROCESS-SIGNAL"
+></A
+>Chapter 5. Process a Signal</H1
+><P
+>After opening the ecg in the previous chapter, we want now to find the
+postions of the beats in the ECG. libRASCH supports this by providing
+a process plugin ('detect-simple') which performs a beat
+detection. Additionally we want to group the found heart beats in
+similar looking groups (templates) and we want to calculate
+some ECG specific values (e.g. the intervals between each heart beat,
+called RR intervals). The later two steps will be done in the
+process plugins 'template' and 'ecg' respectively.</P
+><P
+>In RASCHlab, all the above mentioned steps will be performed when
+selecting the menu entry 'Detect-&#62;Detect'. After selecting the menu entry,
+the channel selection dialog box will be opened (<A
+HREF="#RASCHLAB-SEL-DETECT-CH-FIG"
+>Figure 5-1</A
+>) and the user has to 
+select the channels in which the heart beats should be searched. (At
+the moment all available channels will be selectable, but this will be
+changed in the future, showing only the channels which makes sense.)
+To select the channels, click on the channel-name on the left side and
+then click on the '-&#62;' button. This will move the channel-name to the
+right side. <A
+HREF="#RASCHLAB-SEL-DETECT-CH-2-FIG"
+>Figure 5-2</A
+> shows the
+dialog box after selecting both channels.</P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="RASCHLAB-SEL-DETECT-CH-FIG"
+></A
+><P
+><B
+>Figure 5-1. Channel selection dialog box.</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/raschlab_sel_detect_ch_new.png"></P
+></DIV
+></DIV
+><DIV
+CLASS="FIGURE"
+><A
+NAME="RASCHLAB-SEL-DETECT-CH-2-FIG"
+></A
+><P
+><B
+>Figure 5-2. Channel selection dialog box after selecting the channels.</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/raschlab_sel_detect_ch_new2.png"></P
+></DIV
+></DIV
+><P
+>After selecting the channels, press the 'OK' button. Now the beat
+detection, template grouping and the calculation of the ECG specific
+values will be done. For each processing step, a progress dialog will
+be shown. When all the processing is done, a window with ecg and the found
+beats and a window with the templates will be shown (<A
+HREF="#RASCHLAB-ECG-WITH-ANNOT-FIG"
+>Figure 5-3</A
+>).</P
+><P
+>Note that the detection of heart beats are not limited to file
+formats which are used to store only ECG's. RASCHlab do not care which
+file format was used to store a signal. For example when you have an
+EDF file with ECG and EEG signals, you can perform the beat detection
+the same way as described above. As written above, at the moment the
+user has to be sure to select the correct channel containing an ECG
+recording.</P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="RASCHLAB-ECG-WITH-ANNOT-FIG"
+></A
+><P
+><B
+>Figure 5-3. ECG after beat detection performed.</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/raschlab_ecg_with_annot_2.png"></P
+></DIV
+></DIV
+><P
+>RASCHlab allows you to correct the automatic evaluation of the ECG. A
+description how you can change an evaluation of an ECG is given in <A
+HREF="#RASCHLAB-ECG-VIEW-DESC"
+>Section 9.1</A
+>.</P
+><P
+>Evaluations created with RASCHlab are stored on disk at the same
+position where the signal data is stored. The data is stored in a file
+named using the name of the recording and for the file extension
+'.mte' is used. For example the evaluation created above is stored in the
+file '100s.mte'. The evaluation is stored using XML. The user can
+control with the menu entry 'General-&#62;Save ASCII eval-values' if array
+data (e.g. the positions of the heart beats) is stored as ASCII text
+(menu entry with check mark) or as binary (menu entry without check
+mark). When storing the data as ASCII text, it can be used easily with
+other programs. On the other side, when a lot of events are in an evaluation (e.g. heart
+beats in a 24 hour ECG), loading and saving took a lot of time. For
+this type of signals, the binary format is recommended.</P
+></DIV
+><DIV
+CLASS="CHAPTER"
+><HR><H1
+><A
+NAME="NAVIGATION"
+></A
+>Chapter 6. Navigation</H1
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN142"
+>6.1. Navigation in the signal window</A
+></H2
+><P
+>If there is more than one window in the signal window, then you
+have to select the signal window which should be used. To do this,
+click in the sub-window. Then a black frame in
+the sub-window will be shown and this sub-window has the input
+focus. <A
+HREF="#RASCHLAB-MORE-SIGS-FIG"
+>Figure 6-1</A
+> shows an example of
+a measurement containing three ECG channels, one arterial blood
+pressure channel and one respiration channel. In the example the
+ecg-sub-window has the input focus (shown by the black frame around
+the ecg-sub-window).</P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="RASCHLAB-MORE-SIGS-FIG"
+></A
+><P
+><B
+>Figure 6-1. Screen shot of a measurement with different kind of signal types.</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/raschlab_art_2.png"></P
+></DIV
+></DIV
+><P
+>To browse through the signal, you can use the horizontal slider on the
+bottom of the signal window or you can use the following keys:
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>'cursor left' (&#60;-): 1/10th back in the signal</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>'cursor right' (-&#62;): 1/10th forward in the signal</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>'shift + cursor left' or 'page up': one page back in the signal</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>'shift + cursor right' or 'page down': one page forward in the signal</P
+></LI
+></UL
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H2
+CLASS="SECTION"
+><A
+NAME="AEN161"
+>6.2. Selections</A
+></H2
+><P
+>In the signal-view-plugins, libRASCH supports the concept of
+selections. Selections are a subset of events which have one common
+property. For example you can select all heart beats which belongs
+to the same template (i.e. all heart beats with similar morphology)
+or you can select all ventricular beats. </P
+><P
+>In these selctions, you can step back and forth with the following keys:
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>'space bar': go to the next item in the selection</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>'b': go to the previous item in the selection</P
+></LI
+></UL
+>
+When a selection is "active", then the number of selected events and
+the current position in the selection is shown in the signal view in
+the lower right corner. The figure "12/456" means that you are
+currently at the 12th event from 456 selected events. For example the
+numbers inside the red circle in <A
+HREF="#RASCHLAB-SEL-TEMPLATE-FIG"
+>Figure 6-5</A
+>.</P
+><P
+>Selections are implemented in the signal-specific view
+plugins. Therefore the type of selections will differ from signal to
+signal but the concept will be always the same independent of the
+signal type. (Because at the moment there are not so much signal
+specific view plugins, the examples shown here are all for ECG's.)</P
+><P
+><A
+HREF="#RASCHLAB-CONTEXT-MENU-FIG"
+>Figure 6-2</A
+> shows the context menu which
+pops up when pressing the right mouse button inside an ecg view. The
+main context menu has three entries: (1) General Options, (2) Channel
+Options and (3) ecg. The first two entries are available in all
+view-plugins and will be described in <A
+HREF="#SETTINGS"
+>Chapter 8</A
+>. The
+third entry (ecg) is only available in ecg views. The ecg entry has
+two sub entries: (1) sort and (2) templates. <A
+HREF="#RASCHLAB-CONTEXT-MENU-FIG"
+>Figure 6-2</A
+> shows the sub menu of the sort entry
+and <A
+HREF="#RASCHLAB-CONTEXT-MENU-2-FIG"
+>Figure 6-3</A
+> shows the sub menu of the
+template entry.</P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="RASCHLAB-CONTEXT-MENU-FIG"
+></A
+><P
+><B
+>Figure 6-2. Context menu for the selection of beat types (e.g. normal beats,
+ventricular beats).</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/raschlab_context_menu_2.png"></P
+></DIV
+></DIV
+><DIV
+CLASS="FIGURE"
+><A
+NAME="RASCHLAB-CONTEXT-MENU-2-FIG"
+></A
+><P
+><B
+>Figure 6-3. Context menu for the selection of beats belonging to a specific template.</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/raschlab_context_menu1_2.png"></P
+></DIV
+></DIV
+><P
+>When you are interested in specific beat types (e.g. all ventricular
+beats or all artifacts) then you have to choose the wanted beat type
+from the sort menu. If you are interested in a specific template, then
+you have to choose the template from the template menu. After the
+selection of the selection criteria, the first beat in the selection
+is shown in the signal window. The selection is sorted chronological.</P
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H2
+CLASS="SECTION"
+><A
+NAME="AEN188"
+>6.3. Inter Plugin Communication</A
+></H2
+><P
+>All plugins in libRASCH can communicate with each other. This
+communication allows the selection of a signal position or the
+selection of specific events through view-plugins which are not in the
+signal window. For example, you can select a postion in the tachogram
+by clicking on it and the signal in the signal window will positioned
+to this position. <A
+HREF="#RASCHLAB-SEL-TACHO-POS-FIG"
+>Figure 6-4</A
+> shows an
+example. In the tachogram the short RR Interval (which is followed by
+a longer RR interval) was selected (marked with a vertical bar). In
+the ecg-view, the beat with the short RR interval is shown in the
+middle of the window and is marked also with a vertical bar (the
+cursor).</P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="RASCHLAB-SEL-TACHO-POS-FIG"
+></A
+><P
+><B
+>Figure 6-4. Select position in tachogram.</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/raschlab_sel_tacho_pos_2.png"></P
+></DIV
+></DIV
+><P
+>If you are interested in a specific template, you can select the beats
+belonging to this template as described above. Another way is to
+double click on the wanted template in the template window (<A
+HREF="#RASCHLAB-SEL-TEMPLATE-FIG"
+>Figure 6-5</A
+>). This has the same effect as
+selecting the template from the pop-up menu.</P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="RASCHLAB-SEL-TEMPLATE-FIG"
+></A
+><P
+><B
+>Figure 6-5. Select beats belonging to a specific template in the template window.</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/raschlab_sel_template_2.png"></P
+></DIV
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="CHAPTER"
+><HR><H1
+><A
+NAME="COMMENTS"
+></A
+>Chapter 7. Signal Comments</H1
+><P
+>In RASCHlab comments/annotations to specific time-points or
+time-periods in a signal are supported. When a file format support
+annotations (e.g. EDF+ or MIT/AHA), RASCHlab can handle (edit and/or
+delete) these annotations. Additionally, RASCHlab can add new
+comments. The "RASCHlab" comment can be specific for one channel
+or can hold for all channels.</P
+><P
+>To insert a comment, select the position (click on the wanted
+position in the signal window) or mark an area (click and move the
+mouse while holding the left mouse button down)
+and then press the '.' (period) key. Then the comment dialog box
+opens (see <A
+HREF="#RASCHLAB-ADD-COMMENT-FIG"
+>Figure 7-1</A
+>)
+where the comment can be given. If the comment should be for one
+specific channel, the channel can be selected in the drop-down menu at
+the top of the dialog box. </P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="RASCHLAB-ADD-COMMENT-FIG"
+></A
+><P
+><B
+>Figure 7-1. Add a comment.</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/raschlab_add_comment.png"></P
+></DIV
+></DIV
+><P
+>Additionally to the comment text, you can set indicators. At the
+moment there are two possible indicators, "Noise" and "ignore
+data". These indicators can be used in programs which use libRASCH when
+the evaluation of the measurement is analyzed.</P
+><P
+><A
+HREF="#RASCHLAB-WITH-COMMENT-FIG"
+>Figure 7-2</A
+> shows the ecg with 4
+comments. If a comment describes a period of time, this period is
+marked by a horizontal line with little vertical lines at the
+beginning and at the end. If the comment is for one specifc point in
+time, the position is marked by a small cross.</P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="RASCHLAB-WITH-COMMENT-FIG"
+></A
+><P
+><B
+>Figure 7-2. Screen shot of the signal showing four comments.</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/raschlab_with_comments_2.png"></P
+></DIV
+></DIV
+><P
+>If you want to edit or delete a comment, you only need to double click on
+the comment text. Then the comment dialog box (<A
+HREF="#RASCHLAB-ADD-COMMENT-FIG"
+>Figure 7-1</A
+>)
+appears. Here you can change the text of the comment or delete the
+comment ('Delete' button is on the lower left side in the dialog box).</P
+></DIV
+><DIV
+CLASS="CHAPTER"
+><HR><H1
+><A
+NAME="SETTINGS"
+></A
+>Chapter 8. Change Settings</H1
+><P
+>In RASCHlab you can set different options how the data is shown. The
+options are for all recording channels (<A
+HREF="#RASCHLAB-GENERAL-OPTIONS-FIG"
+>Figure 8-1</A
+>) or for a single channel
+(<A
+HREF="#RASCHLAB-CHANNEL-OPTIONS-FIG"
+>Figure 8-2</A
+>). To open one of the
+both dialog boxes, you have to click with the right mouse button
+inside the view window. Then a popup menu appears and the first entry
+opens the general options dialog box and the second menu entry opens
+the channel options dialog box (see <A
+HREF="#RASCHLAB-CONTEXT-MENU-FIG"
+>Figure 6-2</A
+>).</P
+><P
+>The general options are:
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>'show statusline': show or hide the status line; the
+status line is the line at the bottom of the signal view(s), showing
+informations about the current positions and the current
+selection</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>'show channel info': show or hide the name and the
+unit of the channels on the left side of the signal
+view</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>'show grid': show or hide the grid in the signal
+view</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>'use fixed channel-height': With this option you can
+select if for each channel a fixed height (in pixel) should be
+used. The default behaviour is to give each channel the same space
+depending on the available space. Therefore the space changes when
+the size of the window is changed. When this option is enabled, the space
+for each channel is always the same independent of the current window
+size.</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>'speed [unit]': Here you can set the "writing speed"
+used to draw the recorded data. At the moment the unit is fixed to
+'mm/second'.</P
+></LI
+></UL
+></P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="RASCHLAB-GENERAL-OPTIONS-FIG"
+></A
+><P
+><B
+>Figure 8-1. Dialog box to set general options.</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/raschlab_general_options.png"></P
+></DIV
+></DIV
+><P
+>When drawing a recording channel, two modes are available: (1)
+draw the data centered around a specific niveau and use the given
+resolution to scale the amplitude or (2) scale the data in that way,
+that the min-value corresponds to the lower channel border and the
+max-value corresponds to the upper channel border. When using the
+second mode you have the option to set only the min-value and let the
+max-value be "controlled" by the resolution.</P
+><P
+>The niveau used for mode one is a percentage of the channel
+height. Typically you use 50%, this means the data is centered around
+the middle of the channel.</P
+><P
+>The first mode is used for data which is centered around a specific
+niveau. This is typical for ECG's. The second mode is used for data
+which are normally in a specific range. This mode is used for example
+for continues blood pressure recordings.</P
+><P
+>In the channel options dialog box you have to select first the channel
+for which the options should be set. The channel can be selected in
+the combo-box at the top of the dialog box ('select channel').</P
+><P
+>The channel options are:
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>'Position' - 'centered': draw the data centered around
+a specific niveau (see text above)</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>'Position' - 'min/max': scale the values to given min
+and max values (see text above)</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>'show channel': show or hide a channel</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>'invert channel': if selected, the channel is drawn
+inverted</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>'Resolution': Here you set the amplitude resolution
+used for drawing the channel.</P
+></LI
+></UL
+></P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="RASCHLAB-CHANNEL-OPTIONS-FIG"
+></A
+><P
+><B
+>Figure 8-2. Dialog box to set channel specific options.</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/raschlab_channel_options.png"></P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="CHAPTER"
+><HR><H1
+><A
+NAME="EDIT"
+></A
+>Chapter 9. View-Plugin specific controls</H1
+><P
+>This chapter will give a brief description of each available
+view-plugin and the key-strokes provided by the plugin.</P
+><DIV
+CLASS="SECTION"
+><HR><H2
+CLASS="SECTION"
+><A
+NAME="RASCHLAB-ECG-VIEW-DESC"
+>9.1. ECG View-Plugin</A
+></H2
+><P
+>The ecg view-plugin displays ECG and ECG related information
+(e.g. type of the heart beat, RR interval). The user can edit the
+evaluation of the ECG, he can insert or delete a beat or he can change
+the type of the beat. Additionally he can "create" ECG specific
+selections which can be helpful while inspecting/correcting an automatic
+evaluation.</P
+><P
+>If the user wants to edit a beat, the beat has to be selected first by
+clicking in the area around the position of the beat (marked by the
+beat annoation). The current selected beat is highlighted by a bold
+beat annotation and the cursor (vertical line) is on the postion of
+the beat. After selecting a beat the following actions can be done:
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>'d': delete current selected beat</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>'n': mark current selected beat as normal</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>'v': mark current selected beat as ventricular</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>'x': mark current selected beat as artifact</P
+></LI
+></UL
+></P
+><P
+>If the user wants to insert a beat, the position has to be
+marked by the cursor by clicking at the wanted position. Then use one
+of the following keys to insert a beat:
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>'n': insert a normal beat</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>'v': insert a ventricular beat</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>'x': insert an artifact</P
+></LI
+></UL
+></P
+><P
+>The following ECG specific selections are available (press the key
+while the ecg view has the input focus):
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>'k': select all beats sorted with the shortest RR
+interval first</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>'l': select all beats sorted with the longest RR
+interval first</P
+></LI
+></UL
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H2
+CLASS="SECTION"
+><A
+NAME="RASCHLAB-ABP-VIEW-DESC"
+>9.2. Blood Pressure View-Plugin</A
+></H2
+><P
+>The blood pressure view-plugin displays continuous blood
+pressure signals and blood pressure related informations
+(e.g. systolic and diastolic blood pressure).</P
+><P
+>When the position of a blood pressure measurement point has to be corrected,
+the user have to click on the new position in the blood pressure view
+(the cursor marks the position) and then press one of the
+following keys:
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>'1': the current position is choosen for the diastolic measurement
+point</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>'2': the current position is choosen for the systolic measurement
+point</P
+></LI
+></UL
+></P
+><P
+>The user can change the
+position where the systolic and diastolic blood pressure is measured
+and can mark the blood pressure values as invalid when the pulse wave
+is distorted. To do this, first select the current pulse wave and then
+press the 'x' key. If you want to delete the mark, just press 'x'
+again.</P
+></DIV
+></DIV
+><DIV
+CLASS="CHAPTER"
+><HR><H1
+><A
+NAME="INFOS"
+></A
+>Chapter 10. Information Dialog Boxes</H1
+><P
+>RASCHlab provides the possibility to get informations about the loaded
+libRASCH plugins. To get the plugin info dialog box, select the menu
+entry 'General-&#62;Plugin infos...' and a dialog like the one shown in
+<A
+HREF="#RASCHLAB-PLUGIN-DLG-FIG"
+>Figure 10-1</A
+> opens. In the upper half of
+the dialog, the loaded plugins are shown. The name, type and license
+of each plugin is listed. In the bottom half of the dialog,
+informations about the current select plugin is shown: the name and
+the version of the plugin, a short description,
+the location of the plugin on the system, if the plugin should be used
+and the time stamp when the plugin was build.</P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="RASCHLAB-PLUGIN-DLG-FIG"
+></A
+><P
+><B
+>Figure 10-1. Dialog box for libRASCH plugin management.</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/raschlab_plugin_dlg.png"></P
+></DIV
+></DIV
+><P
+>When you are interested about the evaluations in a measurement, you
+can get informations about them by selecting the menu entry
+'General-&#62;Evaluation infos...'. An evaluation dialog box like the one
+shown in <A
+HREF="#RASCHLAB-EVAL-DLG-FIG"
+>Figure 10-2</A
+> is opened. In the
+upper half, a list of the evaluations in the current openend
+measurement is shown. You can delete the current selected evaluation
+by pressing the 'delete' button right to the list. In the bottom half,
+informations about the current selected evaluation is shown: a short
+description, if this is the default evaluation (see <A
+HREF="#EVALUATION"
+><I
+CLASS="TERM"
+>Evaluation</I
+></A
+> in <A
+HREF="#TERM"
+>Chapter 2</A
+>), if this is the original evalution (again, see
+<A
+HREF="#EVALUATION"
+><I
+CLASS="TERM"
+>Evaluation</I
+></A
+> in <A
+HREF="#TERM"
+>Chapter 2</A
+>), when 
+the evaluation was created, in which program, by which
+user and on which computer it was created and finally when was the last
+modification. The event properties of the current evaluation are
+shown in the event-property dialog box, which opens when the
+'event-prop's' button is pressed.</P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="RASCHLAB-EVAL-DLG-FIG"
+></A
+><P
+><B
+>Figure 10-2. Dialog box for evaluation management.</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/raschlab_eval_dlg.png"></P
+></DIV
+></DIV
+><P
+>The event-properties dialog box (<A
+HREF="#RASCHLAB-EVPROP-DLG-FIG"
+>Figure 10-3</A
+>) lists the event properties of an
+evaluation. In the upper half the available event properties are
+listed. If you (really) want to delete an event property, you can do
+it by pressing the 'delete' button. In the bottom half of the dialog
+box, informations about the current selected event property is shown:
+the name and how many events are stored in the property, a short
+description, the type of the value (e.g. long integer, double, string)
+and what type of event property it is (discrete like heart beats or
+continuous like periods of noise).</P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="RASCHLAB-EVPROP-DLG-FIG"
+></A
+><P
+><B
+>Figure 10-3. Dialog box showing the event-properties stored in an evaluation.</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/raschlab_eval_evprop_dlg.png"></P
+></DIV
+></DIV
+></DIV
+></DIV
+><H3
+CLASS="FOOTNOTES"
+>Notes</H3
+><TABLE
+BORDER="0"
+CLASS="FOOTNOTES"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN70"
+HREF="#AEN70"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>The signal plugins can be compared with device drivers in operating
+systems.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN99"
+HREF="#AEN99"
+><SPAN
+CLASS="footnote"
+>[2]</SPAN
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>LIBRASCH_ROOT is the
+directory of the libRASCH distribution on your system and LIBRASCH_INSTALL_ROOT
+is the directory selected while installing
+libRASCH</P
+></TD
+></TR
+></TABLE
+></BODY
+></HTML
+>

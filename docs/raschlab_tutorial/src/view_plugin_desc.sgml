@@ -1,0 +1,90 @@
+<chapter id="edit"><title>View-Plugin specific controls</title>
+
+<para>
+This chapter will give a brief description of each available
+view-plugin and the key-strokes provided by the plugin.
+</para>
+
+<section id="raschlab-ecg-view-desc"><title>ECG View-Plugin</title>
+
+<para>
+The ecg view-plugin displays ECG and ECG related information
+(e.g. type of the heart beat, RR interval). The user can edit the
+evaluation of the ECG, he can insert or delete a beat or he can change
+the type of the beat. Additionally he can "create" ECG specific
+selections which can be helpful while inspecting/correcting an automatic
+evaluation.
+</para>
+
+<para>
+If the user wants to edit a beat, the beat has to be selected first by
+clicking in the area around the position of the beat (marked by the
+beat annoation). The current selected beat is highlighted by a bold
+beat annotation and the cursor (vertical line) is on the postion of
+the beat. After selecting a beat the following actions can be done:
+<itemizedlist mark=bullet>
+<listitem><para>'d': delete current selected beat</para></listitem>
+<listitem><para>'n': mark current selected beat as normal</para></listitem>
+<listitem><para>'v': mark current selected beat as ventricular</para></listitem>
+<listitem><para>'x': mark current selected beat as artifact</para></listitem>
+</itemizedlist>
+</para>
+
+<para>
+If the user wants to insert a beat, the position has to be
+marked by the cursor by clicking at the wanted position. Then use one
+of the following keys to insert a beat:
+<itemizedlist mark=bullet>
+<listitem><para>'n': insert a normal beat</para></listitem>
+<listitem><para>'v': insert a ventricular beat</para></listitem>
+<listitem><para>'x': insert an artifact</para></listitem>
+</itemizedlist>
+</para>
+
+<para>
+The following ECG specific selections are available (press the key
+while the ecg view has the input focus):
+<itemizedlist mark=bullet>
+<listitem><para>'k': select all beats sorted with the shortest RR
+interval first</para></listitem>
+<listitem><para>'l': select all beats sorted with the longest RR
+interval first</para></listitem>
+</itemizedlist>
+</para>
+
+</section>
+
+
+<section id="raschlab-abp-view-desc"><title>Blood Pressure View-Plugin</title>
+
+<para>
+The blood pressure view-plugin displays continuous blood
+pressure signals and blood pressure related informations
+(e.g. systolic and diastolic blood pressure).
+</para>
+
+<para>
+When the position of a blood pressure measurement point has to be corrected,
+the user have to click on the new position in the blood pressure view
+(the cursor marks the position) and then press one of the
+following keys:
+<itemizedlist mark=bullet>
+<listitem><para>'1': the current position is choosen for the diastolic measurement
+point</para></listitem>
+<listitem><para>'2': the current position is choosen for the systolic measurement
+point</para></listitem>
+</itemizedlist>
+</para>
+
+<para>
+The user can change the
+position where the systolic and diastolic blood pressure is measured
+and can mark the blood pressure values as invalid when the pulse wave
+is distorted. To do this, first select the current pulse wave and then
+press the 'x' key. If you want to delete the mark, just press 'x'
+again.
+</para>
+
+</section>
+
+</chapter>

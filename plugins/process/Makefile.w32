@@ -1,0 +1,26 @@
+all:
+	@cd ap_morphology && $(MAKE) -f ap_morphology.mak
+	@cd calibration && $(MAKE) -f calibration.mak
+	@cd dawes_redman && $(MAKE) -f dawes_redman.mak
+	@cd detect_ctg && $(MAKE) -f detect_ctg.mak
+	@cd detect_ecg && $(MAKE) -f detect_ecg.mak
+	@cd ecg && $(MAKE) -f ecg.mak
+	@cd fiducial_point && $(MAKE) -f fiducial.mak
+	@cd freq_analysis && $(MAKE) -f freq_analysis.mak
+	@cd hrv && $(MAKE) -f hrv.mak
+	@cd ra_template && $(MAKE) -f template.mak
+	@cd respiration && $(MAKE) -f respiration.mak
+
+clean:
+	@cd ap_morphology && $(MAKE) -f ap_morphology.mak clean
+	@cd calibration && $(MAKE) -f calibration.mak clean
+	@cd dawes_redman && $(MAKE) -f dawes_redman.mak clean
+	@cd detect_ctg && $(MAKE) -f detect_ctg.mak clean
+	@cd detect_ecg && $(MAKE) -f detect_ecg.mak clean
+	@cd ecg && $(MAKE) -f ecg.mak clean
+	@cd fiducial_point && $(MAKE) -f fiducial.mak clean
+	@cd freq_analysis && $(MAKE) -f freq_analysis.mak clean
+	@cd hrv && $(MAKE) -f hrv.mak clean
+	@cd ra_template && $(MAKE) -f template.mak clean
+	@cd respiration && $(MAKE) -f respiration.mak clean
+

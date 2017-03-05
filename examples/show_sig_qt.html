@@ -1,0 +1,78 @@
+<table width="100%" cellspacing="0" cellpadding="5">
+ <tr>
+  <td class="heading">
+   <h2 class="headline">Qt-Version of show_sig</h2>
+  </td>
+ </tr>
+ <tr>
+  <td>
+  <p><h2>Sourcecode</h2></p>
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;qapplication.h&gt;
+#include &lt;qwidget.h&gt;
+
+#include &lt;ra.h&gt;
+
+
+int
+main(int argc, char *argv[])
+{
+	/* initialize libRASCH */
+	ra_handle ra = ra_lib_init();
+	if (ra == NULL)
+	{
+		printf(&quot;error initializing libRASCH\n&quot;);
+		return -1;
+	}
+	
+	/* open measurement */
+	meas_handle meas = ra_meas_open(ra, argv[1], 0);
+	if (meas == NULL)
+	{
+		printf(&quot;can't open measurement %s\n&quot;, argv[1]);
+		return -1;
+	}
+
+	plugin_handle pl = ra_plugin_get_by_name(ra, &quot;rasch-view&quot;, 0);
+	if (pl == NULL)
+	{
+		printf(&quot;can't find plugin 'ra-view'\n&quot;);
+		return -1;
+	}
+
+	// create Qt application
+	QApplication a(argc, argv);
+
+	// create view using libRASCH view-plugin 'rasch-view'
+	struct view_info vi;
+	memset(&vi, 0, sizeof(struct view_info));
+	vi.m = ra;
+	vi.mh = meas;
+	vi.rh = ra_rec_get_first(vi.mh, 0);
+	vi.plugin = pl;
+	vi.parent = NULL;
+	vi.name[0] = '\0';
+	vi.num_ch = 0;
+	vi.ch = NULL;
+	if (ra_view_get(&amp;vi) != 0)
+		return -1;
+
+	// view object will be returned in struct view_info.views
+	QWidget *view = (QWidget *)(vi.views[0]);
+	if (!view)
+		return -1;
+
+	// add view (created by libRASCH) to application
+	a.setMainWidget(view);
+	view-&gt;showMaximized();
+
+	return a.exec();
+}  // main()
+</pre>
+<p><h2>Screenshot of the program</h2></p>
+<a href="view_plugin_example_qt.png" target="_blank"><img src="view_plugin_example_qt_small.png" alt="screenshot of the program shown above"/></a>
+
+  </td>
+ </tr>
+</table>

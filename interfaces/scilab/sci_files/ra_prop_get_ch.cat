@@ -1,0 +1,8 @@
+Returns for event 'event-id' a list of channels for which
+values are available.
+  Input parameters:
+    prop_handle
+    id
+
+  Output parameters:
+    ch

@@ -1,0 +1,7 @@
+Returns the handle of the added event-property.
+    Input parameters:
+    class_handle
+    id
+
+  Output parameters:
+    prop_handle

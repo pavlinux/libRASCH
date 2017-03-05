@@ -1,0 +1,207 @@
+<table frame=all><title>List of info-names for library infos  --  ra_lib_get_info</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Info Name</entry><entry>Info Constant</entry><entry>Info Description</entry></row></thead>
+<tbody>
+<row><entry>num_plugins</entry><entry>RA_INFO_NUM_PLUGINS_L</entry><entry>number of plugins</entry></row>
+<row><entry>lib_version</entry><entry>RA_INFO_VERSION_C</entry><entry>version of libRASCH</entry></row>
+</tbody>
+</tgroup></table>
+<table frame=all><title>List of info-names for measurement infos  --  ra_meas_get_info</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Info Name</entry><entry>Info Constant</entry><entry>Info Description</entry></row></thead>
+<tbody>
+<row><entry>num_sessions</entry><entry>RA_INFO_NUM_SESSIONS_L</entry><entry>number of sessions in a measurement</entry></row>
+<row><entry>num_obj_infos</entry><entry>RA_INFO_NUM_OBJ_INFOS_L</entry><entry>number of infos about a measurment object</entry></row>
+<row><entry>num_rec_gen_infos</entry><entry>RA_INFO_NUM_REC_GEN_INFOS_L</entry><entry>number of general infos</entry></row>
+<row><entry>num_rec_dev_infos</entry><entry>RA_INFO_NUM_REC_DEV_INFOS_L</entry><entry>number of infos about a recording device</entry></row>
+<row><entry>num_rec_ch_infos</entry><entry>RA_INFO_NUM_REC_CH_INFOS_L</entry><entry>number of infos about a channel</entry></row>
+<row><entry>num_eval_infos</entry><entry>RA_INFO_NUM_EVAL_INFOS_L</entry><entry>number of infos about an evaluation</entry></row>
+<row><entry>max_samplerate</entry><entry>RA_INFO_MAX_SAMPLERATE_D</entry><entry>maximum samplerate used in the recording</entry></row>
+<row><entry>ch_xscale</entry><entry>RA_INFO_CH_XSCALE_D</entry><entry>position scale-factor for a channel</entry></row>
+<row><entry>meas_size</entry><entry>RA_INFO_SIZE_L</entry><entry>size needed on disc of measurement in Bytes</entry></row>
+<row><entry>meas_file</entry><entry>RA_INFO_FILES_CA</entry><entry>files belonging to measurement</entry></row>
+<row><entry>meas_path</entry><entry>RA_INFO_PATH_C</entry><entry>full path of measurement incl. measurement name</entry></row>
+<row><entry>meas_in_dir</entry><entry>RA_INFO_DIR_L</entry><entry>flag if measurement was saved in directory</entry></row>
+</tbody>
+</tgroup></table>
+<table frame=all><title>List of info-names for measurement-object (person) infos  --  ra_obj_get_info</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Info Name</entry><entry>Info Constant</entry><entry>Info Description</entry></row></thead>
+<tbody>
+<row><entry>person_name</entry><entry>RA_INFO_OBJ_PERSON_NAME_C</entry><entry>last name of the measurement object</entry></row>
+<row><entry>person_forename</entry><entry>RA_INFO_OBJ_PERSON_FORENAME_C</entry><entry>first name of the measurement object</entry></row>
+<row><entry>person_birthday</entry><entry>RA_INFO_OBJ_PERSON_BIRTHDAY_C</entry><entry>birthday of the measurement object</entry></row>
+<row><entry>person_height</entry><entry>RA_INFO_OBJ_PERSON_HEIGHT_L</entry><entry>height of the measurement object</entry></row>
+<row><entry>person_weight</entry><entry>RA_INFO_OBJ_PERSON_WEIGHT_L</entry><entry>weight of the measurement object</entry></row>
+<row><entry>person_street</entry><entry>RA_INFO_OBJ_PERSON_STREET_C</entry><entry>street of the address of the measurement object</entry></row>
+<row><entry>person_city</entry><entry>RA_INFO_OBJ_PERSON_CITY_C</entry><entry>city of the address the measurement object</entry></row>
+<row><entry>person_postalcode</entry><entry>RA_INFO_OBJ_PERSON_POSTALCODE_C</entry><entry>postalcode of the address the measurement object</entry></row>
+<row><entry>person_country</entry><entry>RA_INFO_OBJ_PERSON_COUNTRY_C</entry><entry>country of the address the measurement object</entry></row>
+<row><entry>person_address</entry><entry>RA_INFO_OBJ_PERSON_ADDRESS_C</entry><entry>address the measurement object (sometimes this field contains the whole address)</entry></row>
+<row><entry>person_phone1</entry><entry>RA_INFO_OBJ_PERSON_PHONE1_C</entry><entry>phone-number of the measurement object</entry></row>
+<row><entry>person_phone2</entry><entry>RA_INFO_OBJ_PERSON_PHONE2_C</entry><entry>phone-number 2 of the measurement object</entry></row>
+<row><entry>person_fax</entry><entry>RA_INFO_OBJ_PERSON_FAX_C</entry><entry>fax-number of the measurement object</entry></row>
+<row><entry>person_email</entry><entry>RA_INFO_OBJ_PERSON_EMAIL_C</entry><entry>email-address of the measurement object</entry></row>
+<row><entry>person_website</entry><entry>RA_INFO_OBJ_PERSON_WEBSITE_C</entry><entry>website of the measurement object</entry></row>
+<row><entry>person_comment</entry><entry>RA_INFO_OBJ_PERSON_COMMENT_C</entry><entry>a comment about the measurement object</entry></row>
+</tbody>
+</tgroup></table>
+<table frame=all><title>List of info-names for measurement-object (patient) infos  --  ra_obj_get_info</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Info Name</entry><entry>Info Constant</entry><entry>Info Description</entry></row></thead>
+<tbody>
+<row><entry>patient_id</entry><entry>RA_INFO_OBJ_PATIENT_ID_C</entry><entry>ID of the patient</entry></row>
+<row><entry>patient_reason</entry><entry>RA_INFO_OBJ_PATIENT_REASON_C</entry><entry>reasonf of the recording</entry></row>
+<row><entry>patient_diagnosis</entry><entry>RA_INFO_OBJ_PATIENT_DIAGNOSIS_C</entry><entry>diagnosis</entry></row>
+<row><entry>patient_therapy</entry><entry>RA_INFO_OBJ_PATIENT_THERAPY_C</entry><entry>therapy</entry></row>
+<row><entry>patient_medication</entry><entry>RA_INFO_OBJ_PATIENT_MEDICATION_C</entry><entry>medication of the patient</entry></row>
+<row><entry>patient_hospital</entry><entry>RA_INFO_OBJ_PATIENT_HOSPITAL_C</entry><entry>Hospital where the recording was performed</entry></row>
+<row><entry>patient_department</entry><entry>RA_INFO_OBJ_PATIENT_DEPARTMENT_C</entry><entry>Department where the recording was performed</entry></row>
+<row><entry>patient_doctor</entry><entry>RA_INFO_OBJ_PATIENT_DOCTOR_C</entry><entry>Doctor who analyze the evaluation of the recording</entry></row>
+<row><entry>patient_examiner</entry><entry>RA_INFO_OBJ_PATIENT_EXAMINER_C</entry><entry>Person who evaluate the recording</entry></row>
+<row><entry>preg_num_fetus</entry><entry>RA_INFO_OBJ_PREG_WOMAN_NUM_FETUS_L</entry><entry>number fetus</entry></row>
+<row><entry>preg_gestation_date</entry><entry>RA_INFO_OBJ_PREG_WOMAN_GESTATION_DATE_C</entry><entry>gestation date</entry></row>
+</tbody>
+</tgroup></table>
+<table frame=all><title>List of info-names for recording infos  --  ra_rec_get_info</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Info Name</entry><entry>Info Constant</entry><entry>Info Description</entry></row></thead>
+<tbody>
+<row><entry>rec_type</entry><entry>RA_INFO_REC_GEN_TYPE_L</entry><entry>type of recording (see RA_REC_TYPE_*)</entry></row>
+<row><entry>rec_name</entry><entry>RA_INFO_REC_GEN_NAME_C</entry><entry>name of recording</entry></row>
+<row><entry>rec_desc</entry><entry>RA_INFO_REC_GEN_DESC_C</entry><entry>description of the recording</entry></row>
+<row><entry>rec_comment</entry><entry>RA_INFO_REC_GEN_COMMENT_C</entry><entry>comment about the recording</entry></row>
+<row><entry>rec_time</entry><entry>RA_INFO_REC_GEN_TIME_C</entry><entry>start time of recording (hh:mm:ss)</entry></row>
+<row><entry>rec_date</entry><entry>RA_INFO_REC_GEN_DATE_C</entry><entry>start date of recording (dd.mm.yyyy)</entry></row>
+<row><entry>rec_duration_sec</entry><entry>RA_INFO_REC_GEN_DURATION_SEC_D</entry><entry>duration of the recording in seconds</entry></row>
+<row><entry>rec_number</entry><entry>RA_INFO_REC_GEN_NUMBER_L</entry><entry>number of recording (0: main recording)</entry></row>
+<row><entry>rec_num_sub_rec</entry><entry>RA_INFO_REC_GEN_NUM_SUB_REC_L</entry><entry>number of sub-recordings</entry></row>
+<row><entry>rec_num_devices</entry><entry>RA_INFO_REC_GEN_NUM_DEVICES_L</entry><entry>number of devices used for recording</entry></row>
+<row><entry>rec_num_channel</entry><entry>RA_INFO_REC_GEN_NUM_CHANNEL_L</entry><entry>number of channels</entry></row>
+<row><entry>rec_path</entry><entry>RA_INFO_REC_GEN_PATH_C</entry><entry>full path of recording incl. recording name</entry></row>
+<row><entry>rec_is_directory</entry><entry>RA_INFO_REC_GEN_DIR_L</entry><entry>flag if recording was saved in directory</entry></row>
+<row><entry>rec_mm_per_sec</entry><entry>RA_INFO_REC_GEN_MM_SEC_D</entry><entry>mm per second (hint for displaing signal)</entry></row>
+</tbody>
+</tgroup></table>
+<table frame=all><title>List of info-names for device infos  --  ra_dev_get_info</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Info Name</entry><entry>Info Constant</entry><entry>Info Description</entry></row></thead>
+<tbody>
+<row><entry>dev_hw_name</entry><entry>RA_INFO_REC_DEV_HW_NAME_C</entry><entry>name of the recording device</entry></row>
+<row><entry>dev_hw_manufacturer</entry><entry>RA_INFO_REC_DEV_HW_MANUFACTURER_C</entry><entry>manufacturer of the recording device</entry></row>
+<row><entry>dev_hw_serial_no</entry><entry>RA_INFO_REC_DEV_HW_SERIAL_NO_C</entry><entry>serial-number of the recording device</entry></row>
+<row><entry>dev_hw_version</entry><entry>RA_INFO_REC_DEV_HW_VERSION_C</entry><entry>hardware-version of the recording device</entry></row>
+<row><entry>dev_sw_name</entry><entry>RA_INFO_REC_DEV_SW_NAME_C</entry><entry>software-name of the recording device</entry></row>
+<row><entry>dev_sw_manufacturer</entry><entry>RA_INFO_REC_DEV_SW_MANUFACTURER_C</entry><entry>manufturer of the software of the recording device</entry></row>
+<row><entry>dev_sw_serial_no</entry><entry>RA_INFO_REC_DEV_SW_SERIAL_NO_C</entry><entry>serial-number of the software of the recording device</entry></row>
+<row><entry>dev_sw_version</entry><entry>RA_INFO_REC_DEV_SW_VERSION_C</entry><entry>version of the software of the recording device</entry></row>
+</tbody>
+</tgroup></table>
+<table frame=all><title>List of info-names for channel infos  --  ra_ch_get_info</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Info Name</entry><entry>Info Constant</entry><entry>Info Description</entry></row></thead>
+<tbody>
+<row><entry>ch_name</entry><entry>RA_INFO_REC_CH_NAME_C</entry><entry>name of the channel</entry></row>
+<row><entry>ch_desc</entry><entry>RA_INFO_REC_CH_DESC_C</entry><entry>description of the channel</entry></row>
+<row><entry>ch_num_samples</entry><entry>RA_INFO_REC_CH_NUM_SAMPLES_L</entry><entry>number of samples recorded in the channel</entry></row>
+<row><entry>ch_samplerate</entry><entry>RA_INFO_REC_CH_SAMPLERATE_D</entry><entry>samplerate used in the channel</entry></row>
+<row><entry>ch_num_bits</entry><entry>RA_INFO_REC_CH_NUM_BITS_L</entry><entry>number of bits used for one sample</entry></row>
+<row><entry>ch_amp_res</entry><entry>RA_INFO_REC_CH_AMP_RESOLUTION_D</entry><entry>value in 'bits' representing one unit</entry></row>
+<row><entry>ch_unit</entry><entry>RA_INFO_REC_CH_UNIT_C</entry><entry>unit of the channel</entry></row>
+<row><entry>ch_center_value</entry><entry>RA_INFO_REC_CH_CENTER_VALUE_D</entry><entry>value[unit] signal is centered</entry></row>
+<row><entry>ch_center_sample</entry><entry>RA_INFO_REC_CH_CENTER_SAMPLE_D</entry><entry>center value as sample-value</entry></row>
+<row><entry>ch_min_adc</entry><entry>RA_INFO_REC_CH_MIN_ADC_D</entry><entry>minimum value in ADC amp-levels</entry></row>
+<row><entry>ch_max_adc</entry><entry>RA_INFO_REC_CH_MAX_ADC_D</entry><entry>minimum value in ADC amp-levels</entry></row>
+<row><entry>ch_min_unit</entry><entry>RA_INFO_REC_CH_MIN_UNIT_D</entry><entry>minimum value in units</entry></row>
+<row><entry>ch_max_unit</entry><entry>RA_INFO_REC_CH_MAX_UNIT_D</entry><entry>maximum value in units</entry></row>
+<row><entry>ch_mm_per_unit</entry><entry>RA_INFO_REC_CH_MM_UNIT_D</entry><entry>mm per unit (hint for displaing signal)</entry></row>
+<row><entry>ch_type</entry><entry>RA_INFO_REC_CH_TYPE_L</entry><entry>type of channel (see above RA_CH_TYPE_*)</entry></row>
+</tbody>
+</tgroup></table>
+<table frame=all><title>List of info-names for evaluation infos  --  ra_eval_get_info</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Info Name</entry><entry>Info Constant</entry><entry>Info Description</entry></row></thead>
+<tbody>
+<row><entry>eval_name</entry><entry>RA_INFO_EVAL_NAME_C</entry><entry>name of evaluation (if any)</entry></row>
+<row><entry>eval_desc</entry><entry>RA_INFO_EVAL_DESC_C</entry><entry>comment of evaluation</entry></row>
+<row><entry>eval_add_timestamp</entry><entry>RA_INFO_EVAL_ADD_TS_C</entry><entry>timestamp when eval was added</entry></row>
+<row><entry>eval_modify_timestamp</entry><entry>RA_INFO_EVAL_MODIFY_TS_C</entry><entry>timestamp when eval was last modified</entry></row>
+<row><entry>eval_user</entry><entry>RA_INFO_EVAL_USER_C</entry><entry>user who added eval</entry></row>
+<row><entry>eval_host</entry><entry>RA_INFO_EVAL_HOST_C</entry><entry>machine on which eval was added</entry></row>
+<row><entry>eval_program</entry><entry>RA_INFO_EVAL_PROG_C</entry><entry>program which added eval</entry></row>
+<row><entry>eval_is_original</entry><entry>RA_INFO_EVAL_ORIGINAL_L</entry><entry>evaluation done in recording system</entry></row>
+<row><entry>eval_is_default</entry><entry>RA_INFO_EVAL_DEFAULT_L</entry><entry>evaluation which should be used</entry></row>
+<row><entry>class_id_ascii</entry><entry>RA_INFO_CLASS_ASCII_ID_C</entry><entry>ASCII id of event-class</entry></row>
+<row><entry>class_name</entry><entry>RA_INFO_CLASS_NAME_C</entry><entry>name of event-class</entry></row>
+<row><entry>class_desc</entry><entry>RA_INFO_CLASS_DESC_C</entry><entry>description of event-class</entry></row>
+<row><entry>class_num_events</entry><entry>RA_INFO_CLASS_EV_NUM_L</entry><entry>number of events in event-class</entry></row>
+</tbody>
+</tgroup></table>
+<table frame=all><title>List of info-names for event-property infos  --  ra_prop_get_info</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Info Name</entry><entry>Info Constant</entry><entry>Info Description</entry></row></thead>
+<tbody>
+<row><entry>prop_id_ascii</entry><entry>RA_INFO_PROP_ASCII_ID_C</entry><entry>ASCII id of event-property, must be unique</entry></row>
+<row><entry>prop_value_type</entry><entry>RA_INFO_PROP_VALTYPE_L</entry><entry>type of the event-property values (short, long, double)</entry></row>
+<row><entry>prop_name</entry><entry>RA_INFO_PROP_NAME_C</entry><entry>name of event-property, must be unique</entry></row>
+<row><entry>prop_desc</entry><entry>RA_INFO_PROP_DESC_C</entry><entry>description of event property</entry></row>
+<row><entry>prop_unit</entry><entry>RA_INFO_PROP_UNIT_C</entry><entry>unit of the property</entry></row>
+<row><entry>prop_has_minmax</entry><entry>RA_INFO_PROP_HAS_MINMAX_L</entry><entry>flag if property has min-/max-values</entry></row>
+<row><entry>prop_min</entry><entry>RA_INFO_PROP_MIN_D</entry><entry>normal min-value of the property</entry></row>
+<row><entry>prop_max</entry><entry>RA_INFO_PROP_MAX_D</entry><entry>normal max-value of the property</entry></row>
+<row><entry>prop_ignore_value</entry><entry>RA_INFO_PROP_IGNORE_VALUE_D</entry><entry>ignore value (or undef if no one is available)</entry></row>
+</tbody>
+</tgroup></table>
+<table frame=all><title>List of info-names for event-summary infos  --  not yet implemented</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Info Name</entry><entry>Info Constant</entry><entry>Info Description</entry></row></thead>
+<tbody>
+<row><entry>sum_id_ascii</entry><entry>RA_INFO_SUM_ASCII_ID_C</entry><entry>ASCII id of event-summary, must be unique</entry></row>
+<row><entry>sum_name</entry><entry>RA_INFO_SUM_NAME_C</entry><entry>name of event-summary</entry></row>
+<row><entry>sum_desc</entry><entry>RA_INFO_SUM_DESC_C</entry><entry>description of event-summary</entry></row>
+<row><entry>sum_num_dim</entry><entry>RA_INFO_SUM_NUM_DIM_L</entry><entry></entry></row>
+<row><entry>sum_dim_unit</entry><entry>RA_INFO_SUM_DIM_UNIT_C</entry><entry></entry></row>
+<row><entry>sum_dim_name</entry><entry>RA_INFO_SUM_DIM_NAME_C</entry><entry></entry></row>
+<row><entry>sum_num_ch</entry><entry>RA_INFO_SUM_NUM_CH_L</entry><entry></entry></row>
+<row><entry>sum_ch_num</entry><entry>RA_INFO_SUM_CH_NUM_L</entry><entry></entry></row>
+<row><entry>sum_ch_fiducial</entry><entry>RA_INFO_SUM_CH_FIDUCIAL_L</entry><entry></entry></row>
+</tbody>
+</tgroup></table>
+<table frame=all><title>List of info-names for plugin infos  --  ra_plugin_get_info</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Info Name</entry><entry>Info Constant</entry><entry>Info Description</entry></row></thead>
+<tbody>
+<row><entry>pl_name</entry><entry>RA_INFO_PL_NAME_C</entry><entry>name of plugin, used for identification</entry></row>
+<row><entry>pl_desc</entry><entry>RA_INFO_PL_DESC_C</entry><entry>description of plugin</entry></row>
+<row><entry>pl_file</entry><entry>RA_INFO_PL_FILE_C</entry><entry>filename with path of the plugin</entry></row>
+<row><entry>pl_use_it</entry><entry>RA_INFO_PL_USE_IT_L</entry><entry>flag if plugin shoul be used or not</entry></row>
+<row><entry>pl_type</entry><entry>RA_INFO_PL_TYPE_L</entry><entry>type of plugin</entry></row>
+<row><entry>pl_version</entry><entry>RA_INFO_PL_VERSION_C</entry><entry>version of plugin</entry></row>
+<row><entry>pl_build_ts</entry><entry>RA_INFO_PL_BUILD_TS_C</entry><entry>build timestamp of plugin</entry></row>
+<row><entry>pl_license</entry><entry>RA_INFO_PL_LICENSE_L</entry><entry>license used for plugin</entry></row>
+<row><entry>pl_num_opt</entry><entry>RA_INFO_PL_NUM_OPTIONS_L</entry><entry>number of options in the plugin</entry></row>
+<row><entry>pl_num_results</entry><entry>RA_INFO_PL_NUM_RESULTS_L</entry><entry>number of values returned from plugin</entry></row>
+</tbody>
+</tgroup></table>
+<table frame=all><title>List of info-names for plugin-option infos  --  ra_plugin_get_option_info</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Info Name</entry><entry>Info Constant</entry><entry>Info Description</entry></row></thead>
+<tbody>
+<row><entry>pl_opt_name</entry><entry>RA_INFO_PL_OPT_NAME_C</entry><entry>short name of option</entry></row>
+<row><entry>pl_opt_desc</entry><entry>RA_INFO_PL_OPT_DESC_C</entry><entry>description of option</entry></row>
+<row><entry>pl_opt_type</entry><entry>RA_INFO_PL_OPT_TYPE_L</entry><entry>type of option</entry></row>
+</tbody>
+</tgroup></table>
+<table frame=all><title>List of info-names for plugin-results infos  --  ra_proc_get_result_info</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Info Name</entry><entry>Info Constant</entry><entry>Info Description</entry></row></thead>
+<tbody>
+<row><entry>proc_num_res_sets</entry><entry>RA_INFO_PROC_NUM_RES_SETS_L</entry><entry>number of available result sets</entry></row>
+<row><entry>proc_num_res</entry><entry>RA_INFO_PROC_NUM_RES_L</entry><entry>number of available results per set</entry></row>
+<row><entry>res_name</entry><entry>RA_INFO_PL_RES_NAME_C</entry><entry>short name of result (can be used as table header)</entry></row>
+<row><entry>res_desc</entry><entry>RA_INFO_PL_RES_DESC_C</entry><entry>description of result</entry></row>
+<row><entry>res_default</entry><entry>RA_INFO_PL_RES_DEFAULT_L</entry><entry>flag if result belongs to default-values (=1)</entry></row>
+<row><entry>session_name</entry><entry>RA_INFO_SES_NAME_C</entry><entry>name of the session</entry></row>
+<row><entry>session_desc</entry><entry>RA_INFO_SES_DESC_C</entry><entry>a description of the session</entry></row>
+</tbody>
+</tgroup></table>

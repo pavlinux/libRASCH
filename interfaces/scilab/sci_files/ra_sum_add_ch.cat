@@ -1,0 +1,8 @@
+Add a channel to the event-summary 'sum_handle'.
+    Input parameters:
+    sum_handle
+    ch
+    fid_offset
+
+  Output parameters:
+    OK

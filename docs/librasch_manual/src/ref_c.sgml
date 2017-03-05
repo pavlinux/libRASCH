@@ -1,0 +1,14 @@
+<appendix id="c_interface_ref"><title>Function Reference for C</title>
+<para>
+This appendix list the functions provided by libRASCH for C.
+</para>
+&c_interface_auto;
+</appendix>
+
+<appendix id="c_struct_ref"><title>Structure Reference for C</title>
+<para>
+This appendix list the public structures available for libRASCH in C.
+</para>
+&c_structs_auto;
+</appendix>
+

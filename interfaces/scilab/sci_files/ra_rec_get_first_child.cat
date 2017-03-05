@@ -1,0 +1,7 @@
+Returns the recording-handle which is the first child of
+'rec_handle'. 
+  Input parameters:
+    rec_handle
+
+  Output parameters:
+    rec_handle

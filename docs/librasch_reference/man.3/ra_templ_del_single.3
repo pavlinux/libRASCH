@@ -1,0 +1,21 @@
+.TH "ra_templ_del_single" 3 "January 2005" "libRASCH API (0.7.2)"
+.SH NAME
+ra_templ_del_single \- deletes a template
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_templ_del_single
+.BI "(prop_handle " proph ","
+.BI "int " num ","
+.BI "int " del_templ_events ");"
+.SH ARGUMENTS
+.IP "proph" 12
+ event-property-handle
+.IP "num" 12
+ number of template which should be deleted
+.IP "del_templ_events" 12
+ flag if the events, associated with the template, should be deleted
+.SH "DESCRIPTION"
+This function deletes one template from proph. If del_templ_events is set (!= 0), the events are deleted also.
+.SH "SOURCE FILE"
+template.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

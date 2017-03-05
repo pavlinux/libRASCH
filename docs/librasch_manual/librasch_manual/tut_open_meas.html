@@ -1,0 +1,445 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Access Measurements</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="User Manual for libRASCH-0.7.2"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="A Tutorial"
+HREF="tutorial.html"><LINK
+REL="PREVIOUS"
+TITLE="A Tutorial"
+HREF="tutorial.html"><LINK
+REL="NEXT"
+TITLE="Access Recordings"
+HREF="tut_handle_recs.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="SECTION"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>User Manual for libRASCH-0.7.2</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="tutorial.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. A Tutorial</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="tut_handle_recs.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="TUT_OPEN_MEAS"
+>Access Measurements</A
+></H1
+><P
+>The example will show how to open a measurement and how to get some
+information from a measurement. We will perform the following steps:
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>open a measurement</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>get the number of sessions and the maximum samplerate</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>print all available infos about the measurement object
+(in this example it is a patient)</P
+></LI
+></UL
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>//
+#include &#60;stdio.h&#62;
+#include &#60;ra.h&#62;
+
+int main(int argc, char *argv[])
+{
+    ra_handle ra;
+    value_handle vh;
+    meas_handle meas;
+
+    /* initialize libRASCH */
+    ra = ra_lib_init();
+    if ((ra == NULL)
+        || (ra_lib_get_error(ra, NULL, 0) != RA_ERR_NONE))
+    {
+        if (!ra)
+            printf("error initializing libRASCH\n");
+        else
+        {
+            char err_t[200];
+            long err_num;
+
+            err_num = ra_lib_get_error(ra, err_t, 200);
+            printf("while initializing libRASCH, error #%d "
+                   "occured\n  %s\n", err_num, err_t);
+
+            ra_lib_close(ra);
+        }
+        return -1;
+    }
+
+    /* open measurement */
+    meas = ra_meas_open(ra, argv[1], 0); <A
+NAME="OPEN_MEAS_C.OPEN"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>
+    if (meas == NULL)
+    {
+        char err_t[200];
+        long err_num;
+
+        err_num = ra_lib_get_error(ra, err_t, 200);
+        printf("can't open measurement %s\nerror #%d: %s\n",
+               argv[1], err_num, err_t);
+        ra_lib_close(ra);
+        return -1;
+    }
+
+    /* get some infos */
+    vh = ra_value_malloc();
+    if (ra_info_get(meas, RA_INFO_NUM_SESSIONS_L, vh) == 0)
+        printf("%s (%s): %d\n", ra_value_get_name(vh),
+               ra_value_get_desc(vh), ra_value_get_long(vh));
+    if (ra_info_get(meas, RA_INFO_MAX_SAMPLERATE_D, vh) == 0)
+        printf("%s (%s): %f\n", ra_value_get_name(vh),
+               ra_value_get_desc(vh), ra_value_get_double(vh));
+
+    /* get all measurement-object infos */
+    if (ra_info_get(meas, RA_INFO_NUM_OBJ_INFOS_L, vh) == 0) <A
+NAME="OPEN_MEAS_C.INFO"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+>
+    {
+        long l;
+        long n = ra_value_get_long(vh);
+
+        for (l = 0; l &#60; n; l++)
+        {
+            ra_info_get_by_idx(meas, RA_INFO_OBJECT, l, vh); <A
+NAME="OPEN_MEAS_C.INFO_IDX"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+>
+            printf("%s (%s): ", ra_value_get_name(vh),
+                   ra_value_get_desc(vh));
+            switch (ra_value_get_type(vh)) <A
+NAME="OPEN_MEAS_C.INFO_TYPE"
+><IMG
+SRC="../images/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+>
+            {
+            case RA_VALUE_TYPE_LONG:
+                printf("%d\n", ra_value_get_long(vh));
+                break;
+            case RA_VALUE_TYPE_DOUBLE:
+                printf("%f\n", ra_value_get_double(vh));
+                break;
+            case RA_VALUE_TYPE_CHAR:
+                printf("%s\n", ra_value_get_string(vh));
+                break;
+            default:
+                printf("not supported type\n");
+                break;
+            }
+        }
+    }
+
+    /* close */
+    ra_value_free(vh);
+    ra_meas_close(meas);
+    ra_lib_close(ra);
+
+    return 0;
+}                               /* main() */
+
+//&#13;</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tut_open_meas.html#OPEN_MEAS_C.OPEN"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+>ra_open_meas() opens a measurement. The user do not need to specify
+the format in which the measurement was saved, libRASCH selects the
+access plugin which can handle the format. If no access plugin can
+handle the measurement, the function fails. The third parameter (here
+it is set to '0') controls if a fast-open should be done (set to
+'1'). When a fast-open is selected, some "time-consuming"
+initialization is skipped and only the object informations and some
+basic recording informations (e.g. recording date) are
+available. <A
+NAME="AEN250"
+HREF="#FTN.AEN250"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+></DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tut_open_meas.html#OPEN_MEAS_C.INFO"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+></DT
+><DD
+>With this call, the number of available measurement objects is
+returned. In the following loop, we will get all available
+informations about the measurement object.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tut_open_meas.html#OPEN_MEAS_C.INFO_IDX"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+></DT
+><DD
+>With the function ra_info_get_by_idx() we select the information we
+want by a number. Because we do not know which number is which
+information, this function is only useful to display all available
+data in a list.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tut_open_meas.html#OPEN_MEAS_C.INFO_TYPE"
+><IMG
+SRC="../images/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+></DT
+><DD
+>Because we do not know which information is returned, we do not know
+the type of the information. Therefore we have to get the type of the
+information so we use the correct way to display the information.</DD
+></DL
+></DIV
+><P
+>The output of the above example for the measurement '100s'
+is shown here:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#sessions (): 1
+max. samplerate (maximum samplrate used in measurement):
+360.000000
+ID (Patient-ID): 100s&#13;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+><H3
+CLASS="FOOTNOTES"
+>Notes</H3
+><TABLE
+BORDER="0"
+CLASS="FOOTNOTES"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN250"
+HREF="tut_open_meas.html#AEN250"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>Some access plugins do not differ between
+fast and normal open. But it is recommended, when writing access
+plugins, to skip time consuming tasks when fast-open was
+selected. This decreases the time needed to list all measurements in a
+directory.</P
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="tutorial.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="tut_handle_recs.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>A Tutorial</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="tutorial.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Access Recordings</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

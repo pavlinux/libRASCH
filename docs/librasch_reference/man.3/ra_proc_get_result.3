@@ -1,0 +1,24 @@
+.TH "ra_proc_get_result" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_proc_get_result \- get the processing results
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_proc_get_result
+.BI "(proc_handle " proc ","
+.BI "long " res_num ","
+.BI "long " res_set ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "proc" 12
+ processing-handle
+.IP "res_num" 12
+ number (zero-based index) of the wanted result
+.IP "res_set" 12
+ number (zero-based index) of the wanted result-set
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+This function returns in vh one result from a processing perfomed with ra_proc_do.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

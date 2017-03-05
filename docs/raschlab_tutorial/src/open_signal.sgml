@@ -1,0 +1,73 @@
+<chapter id="open-signal"><title>Open a Signal</title>
+
+<para>
+After starting RASCHlab, an empty workspace is shown. In this
+workspace the signal and other information about the signal will be
+shown. Now the first step will be to open a signal. To do this, select
+the menu entry 'File/Open...' or press the open button on the toolbar
+(an opening folder; the first button from left). This will open the
+signal selection dialog box. <xref linkend="raschlab-sig-sel-fig"> shows
+the screen shot with the dialog box. The signal selection dialog box
+is similar to the file browser in Windows, on the left side you can
+select the folder. On the right side, the signals in the
+selected folder will be shown. (Only the signals which are supported
+by libRASCH are shown.)
+</para>
+
+<figure id="raschlab-sig-sel-fig">
+<title>
+Signal selection dialog box.
+</title>
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="pics/raschlab_start_2.png" scale="50">
+</imageobject>
+</mediaobject>
+</screenshot>
+</figure>
+
+<para>
+Now select the folder 'LIBRASCH_ROOT/examples/database' on Linux
+systems and 'LIBRASCH_INSTALL_ROOT\examples\database' on Windows
+systems on the left side<footnote><para>LIBRASCH_ROOT is the
+directory of the libRASCH distribution on your system and LIBRASCH_INSTALL_ROOT
+is the directory selected while installing
+libRASCH</para></footnote>. After selecting the
+folder, the available signals will be shown. Please select the signal
+named '100s'. This is a short ECG (one minute) from the
+PhysioNet database. To open the signal, you can double click on the 
+signal-name or select the signal by clicking once on the signal-name
+and then click on the OK button. Then the signal will be shown in the
+signal window. <xref linkend="raschlab-plain-ecg-fig">
+shows RASCHlab with the signal window showing the ECG. The signal
+window is a libRASCH view-plugin.
+</para>
+
+<figure id="raschlab-plain-ecg-fig">
+<title>
+Screen shot of RASCHlab showing the ECG 100s.
+</title>
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="pics/raschlab_plain_ecg_2.png" scale="50">
+</imageobject>
+</mediaobject>
+</screenshot>
+</figure>
+
+<para>
+In the signal window, all channels of a measurement are shown. When
+the measurement contains more than one type of signal (e.g. ECG and
+arterial blood pressure) then each type of signal will be shown in
+their own signal window (for an example see <xref
+linkend="raschlab-more-sigs-fig">). To do this, libRASCH has to
+"detect" which signals are stored in a measurement. In general purpose
+file formats (e.g. file formats used by ADC systems), libRASCH tries
+to estimate the signal-type by the channel name. In file formats which
+have a fixed channel/signal-type relation, the signal type is set by
+the plugin supporting the file format.
+</para>
+
+</chapter>

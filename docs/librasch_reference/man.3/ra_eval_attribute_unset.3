@@ -1,0 +1,18 @@
+.TH "ra_eval_attribute_unset" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_eval_attribute_unset \- removes the attribute 'name' in 'h'
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_eval_attribute_unset
+.BI "(any_handle " h ","
+.BI "const char * " id ");"
+.SH ARGUMENTS
+.IP "h" 12
+ an eval-/event-class-/event-prop-handle
+.IP "id" 12
+ ASCII-id of the attribute
+.SH "DESCRIPTION"
+This function removes the attribute 'name'.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

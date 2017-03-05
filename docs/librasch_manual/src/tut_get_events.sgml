@@ -1,0 +1,45 @@
+<section id="tut-get-events"><title>Get Events</title>
+<para>
+The example will show how to get values associated with an event.
+We will perform the following steps:
+<itemizedlist mark=bullet>
+<listitem><para>get RR intervals and the postion of the QRS-complexes</para></listitem>
+<listitem><para>plot the tachogram of the measurement</para></listitem>
+</itemizedlist>
+</para>
+
+<programlistingco>
+<areaspec>
+<areaset id="get-events-m.const" coords="">
+<area id="get-events-m.get-data"  units="LineColumn" coords="13 50">
+</areaset>
+</areaspec>
+<programlisting>
+&get-events.m.out;
+</programlisting>
+<calloutlist>
+<callout arearefs="get-events-m.get-data">
+<para>
+</para>
+</callout>
+</calloutlist>
+</programlistingco>
+
+<para>
+<xref linkend="get-events-fig"> shows a screenshot of Octave after
+performing the above steps. 
+</para>
+
+<figure id="get-events-fig">
+<title>
+Screenshot after performing the commands in Octave as shown in the
+Octave session above (and on the left side in the screenshot).
+</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="pics/get_events_octave2.png" scale="50">
+</imageobject>
+</mediaobject>
+</figure>
+
+</section>

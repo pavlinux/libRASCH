@@ -1,0 +1,15 @@
+.TH "ra_value_get_type" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_get_type \- return value-type
+.SH SYNOPSIS
+.B "LIBRAAPI long" ra_value_get_type
+.BI "(value_handle " vh ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+Return the type of the value stored in vh. Check in ra_defines.h for the meaning of the returned value (RA_VALUE_TYPE_*).
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

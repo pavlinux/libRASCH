@@ -1,0 +1,234 @@
+<appendix id="all-examples"><title>Examples for all supported lanuages/systems</title>
+<para>
+This appendix shows the examples presented in <xref linkend="tutorial"> for
+all supported languages/systems.
+</para>
+
+<section><title>Init libRASCH</title>
+<section><title>C Version</title>
+<para><programlisting>
+&init-lib.c;
+</programlisting></para>
+<para><programlisting>
+&init-lib.c.out;
+</programlisting></para>
+</section>
+
+<section><title>Perl Version</title>
+<para><programlisting>
+&init-lib.pl;
+</programlisting></para>
+<para><programlisting>
+&init-lib.pl.out;
+</programlisting></para>
+</section>
+
+<section><title>Python Version</title>
+<para><programlisting>
+&init-lib.py;
+</programlisting></para>
+<para><programlisting>
+&init-lib.py.out;
+</programlisting></para>
+</section>
+
+<section><title>Matlab/Octave Version</title>
+<para><programlisting>
+&init-lib.m.out;
+</programlisting></para>
+</section>
+</section>
+
+<section><title>Open measurement</title>
+<section><title>C Version</title>
+<para><programlisting>
+&open-meas.c;
+</programlisting></para>
+<para><programlisting>
+&open-meas.c.out;
+</programlisting></para>
+</section>
+
+<section><title>Perl Version</title>
+<para><programlisting>
+&open-meas.pl;
+</programlisting></para>
+<para><programlisting>
+&open-meas.pl.out;
+</programlisting></para>
+</section>
+
+<section><title>Python Version</title>
+<para><programlisting>
+&open-meas.py;
+</programlisting></para>
+<para><programlisting>
+&open-meas.py.out;
+</programlisting></para>
+</section>
+
+<section><title>Matlab/Octave Version</title>
+<para><programlisting>
+&open-meas.m.out;
+</programlisting></para>
+</section>
+</section>
+
+<section><title>Handle recordings</title>
+<section><title>C Version</title>
+<para><programlisting>
+&handle-recs.c;
+</programlisting></para>
+<para><programlisting>
+&handle-recs.c.out;
+</programlisting></para>
+</section>
+
+<section><title>Perl Version</title>
+<para><programlisting>
+&handle-recs.pl;
+</programlisting></para>
+<para><programlisting>
+&handle-recs.pl.out;
+</programlisting></para>
+</section>
+
+<section><title>Python Version</title>
+<para><programlisting>
+&handle-recs.py;
+</programlisting></para>
+<para><programlisting>
+&handle-recs.py.out;
+</programlisting></para>
+</section>
+
+<section><title>Matlab/Octave Version</title>
+<para><programlisting>
+&handle-recs.m.out;
+</programlisting></para>
+</section>
+</section>
+
+<section><title>Access raw data</title>
+<section><title>C Version</title>
+<para><programlisting>
+&get-raw.c;
+</programlisting></para>
+</section>
+
+<section><title>Perl Version</title>
+<para><programlisting>
+&get-raw.pl;
+</programlisting></para>
+</section>
+
+<section><title>Python Version</title>
+<para><programlisting>
+&get-raw.py;
+</programlisting></para>
+</section>
+
+<section><title>Matlab/Octave Version</title>
+<para><programlisting>
+&get-raw.m.out;
+</programlisting></para>
+</section>
+</section>
+
+<section><title>Access evaluation</title>
+<section><title>C Version</title>
+<para><programlisting>
+&handle-eval.c;
+</programlisting></para>
+<para><programlisting>
+&handle-eval.c.out;
+</programlisting></para>
+</section>
+
+<section><title>Perl Version</title>
+<para><programlisting>
+&handle-eval.pl;
+</programlisting></para>
+<para><programlisting>
+&handle-eval.pl.out;
+</programlisting></para>
+</section>
+
+<section><title>Python Version</title>
+<para><programlisting>
+&handle-eval.py;
+</programlisting></para>
+<para><programlisting>
+&handle-eval.py.out;
+</programlisting></para>
+</section>
+
+<section><title>Matlab/Octave Version</title>
+<para><programlisting>
+&handle-eval.m.out;
+</programlisting></para>
+</section>
+</section>
+
+<section><title>Access events</title>
+<section><title>C Version</title>
+<para><programlisting>
+&get-events.c;
+</programlisting></para>
+</section>
+
+<section><title>Perl Version</title>
+<para><programlisting>
+&get-events.pl;
+</programlisting></para>
+</section>
+
+<section><title>Python Version</title>
+<para><programlisting>
+&get-events.py;
+</programlisting></para>
+</section>
+
+<section><title>Matlab/Octave Version</title>
+<para><programlisting>
+&get-events.m.out;
+</programlisting></para>
+</section>
+</section>
+
+<section><title>Use process-plugin</title>
+<section><title>C Version</title>
+<para><programlisting>
+&process.c;
+</programlisting></para>
+<para><programlisting>
+&process.c.out;
+</programlisting></para>
+</section>
+
+<section><title>Perl Version</title>
+<para><programlisting>
+&process.pl;
+</programlisting></para>
+<para><programlisting>
+&process.pl.out;
+</programlisting></para>
+</section>
+
+<section><title>Python Version</title>
+<para><programlisting>
+&process.py;
+</programlisting></para>
+<para><programlisting>
+&process.py.out;
+</programlisting></para>
+</section>
+
+<section><title>Matlab/Octave Version</title>
+<para><programlisting>
+&process.m.out;
+</programlisting></para>
+</section>
+</section>
+</appendix>
+

@@ -1,0 +1,256 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Get Events</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="User Manual for libRASCH-0.7.2"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="A Tutorial"
+HREF="tutorial.html"><LINK
+REL="PREVIOUS"
+TITLE="Access Evaluations"
+HREF="tut_handle_eval.html"><LINK
+REL="NEXT"
+TITLE="Usage of process-plugins"
+HREF="tut_process.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="SECTION"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>User Manual for libRASCH-0.7.2</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="tut_handle_eval.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. A Tutorial</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="tut_process.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="TUT_GET_EVENTS"
+>Get Events</A
+></H1
+><P
+>The example will show how to get values associated with an event.
+We will perform the following steps:
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>get RR intervals and the postion of the QRS-complexes</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>plot the tachogram of the measurement</P
+></LI
+></UL
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>rasch@rasch:~&#62; octave
+GNU Octave, version 2.1.50 (i686-pc-linux-gnu).
+...
+
+octave:1&#62; ra=ra_lib_init
+ra = 145018424
+octave:2&#62; meas=ra_meas_open(ra, '/home/rasch/ecgs/AT011030_rdi.ART', 0)
+meas = 145245184
+octave:3&#62; eva=ra_eval_get_def(meas)
+eva = 145612904
+octave:4&#62; prop_rri=ra_prop_get_by_name(eva, 'rri')
+prop_rri = 145667632
+octave:5&#62; rri=ra_ev_get_values(prop_rri, 0, -1); <A
+NAME="GET_EVENTS_M.GET_DATA"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>
+octave:6&#62; whos rri
+
+*** local user variables:
+
+prot  type                       rows   cols  name
+====  ====                       ====   ====  ====
+ rwd  matrix                        1   1807  rri
+
+octave:7&#62; prop_qrs=ra_prop_get_by_name(eva, 'qrs-pos')
+prop_qrs = 145613912
+octave:8&#62; qrs_pos=ra_ev_get_values(prop_qrs, 0, -1);
+octave:9&#62; whos qrs_pos
+
+*** local user variables:
+
+prot  type                       rows   cols  name
+====  ====                       ====   ====  ====
+ rwd  matrix                        1   1807  qrs_pos
+
+octave:10&#62; samplerate=ra_meas_get_info(meas, 'max_samplerate')
+samplerate = 1600
+octave:11&#62; x=(qrs_pos/samplerate) / 60;
+octave:12&#62; plot(x, rri)
+octave:13&#62;&#13;</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tut_get_events.html#GET_EVENTS_M.GET_DATA"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+></DD
+></DL
+></DIV
+><P
+><A
+HREF="tut_get_events.html#GET-EVENTS-FIG"
+>Figure 3-2</A
+> shows a screenshot of Octave after
+performing the above steps. </P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="GET-EVENTS-FIG"
+></A
+><P
+><B
+>Figure 3-2. Screenshot after performing the commands in Octave as shown in the
+Octave session above (and on the left side in the screenshot).</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/get_events_octave2.png"></P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="tut_handle_eval.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="tut_process.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Access Evaluations</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="tutorial.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Usage of process-plugins</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

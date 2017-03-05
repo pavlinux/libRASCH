@@ -1,0 +1,20 @@
+<chapter id="tutorial"><title>A Tutorial</title>
+
+<para>
+The handling of evaluations will be changed in the next version of
+libRASCH. Because we are working already on it, the sections about
+evaluations, event-sets and event-propertiey may not work with the
+current version (0.7.0). If you have any questions about the changes,
+please send them to the mailing list.
+</para>
+
+
+&tut-init-lib;
+&tut-open-meas;
+&tut-handle-recs;
+&tut-get-raw;
+&tut-handle-eval;
+&tut-get-events;
+&tut-process;
+
+</chapter>

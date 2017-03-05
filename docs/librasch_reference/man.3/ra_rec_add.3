@@ -1,0 +1,18 @@
+.TH "ra_rec_add" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_rec_add \- add a recording
+.SH SYNOPSIS
+.B "LIBRAAPI rec_handle" ra_rec_add
+.BI "(meas_handle " mh ","
+.BI "rec_handle " parent ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ handle of the measurement
+.IP "parent" 12
+ handle of the parent recording (or NULL)
+.SH "DESCRIPTION"
+Adds a recording to a measurement. The recording will be a child-recording of the parent-recording parent. The recording-handle will be returned. Not implemented yet. !!!
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

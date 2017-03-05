@@ -1,0 +1,24 @@
+.TH "ra_templ_add" 3 "January 2005" "libRASCH API (0.7.2)"
+.SH NAME
+ra_templ_add \- adds a template
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_templ_add
+.BI "(prop_handle " proph ","
+.BI "int " num_ch ","
+.BI "int * " ch ","
+.BI "int * " templ_size ");"
+.SH ARGUMENTS
+.IP "proph" 12
+ event-property-handle
+.IP "num_ch" 12
+ number of channels of the template
+.IP "ch" 12
+ channels used for the template
+.IP "templ_size" 12
+ size of the template for each channel
+.SH "DESCRIPTION"
+This function set the basic template-information in proph.
+.SH "SOURCE FILE"
+template.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

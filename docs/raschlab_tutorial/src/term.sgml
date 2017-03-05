@@ -1,0 +1,165 @@
+<chapter id="term"><title>Terminology</title>
+
+<para>
+This section gives a short descritpion of the terminology
+used in this tutorial.
+<para>
+
+<variablelist>
+<varlistentry><term>Measurement</term>
+<listitem>
+<para>
+A measurement is the topmost object in libRASCH. Measurements
+consists of one or more sessions, information about the measurement
+object (e.g. name, forename and birthday if the measurement object is
+a person) and zero or more evaluations.
+</para>
+</listitem>
+</varlistentry>
+
+
+<varlistentry><term>Session</term>
+<listitem>
+<para>
+A Session is a recording for a specific time interval without any
+interruptions during this time interval. In a measurement can be more
+than one session, but the layout of the recording (see below)
+must not be changed.
+</para>
+</listitem>
+</varlistentry>
+
+
+<varlistentry><term>Recording</term>
+<listitem>
+<para>
+A recording contains the measured data (e.g. ECG leads V1-V6). A
+recording has one or more channels or two or more
+sub-recordings. Sub-recordings are used if more than one
+recording device is used. For example when one Analog/Digital
+converter-system records
+3 ECG leads and one bloodpressure channel and another system
+records 12 EEG leads, the measurement consists of one top
+recording with two sub-recordings. The first sub-recording
+contains 4 channels (3 ECG and 1 bloodpressure channel) and the second
+sub-recording contains 12 channels (12 EEG channels). 
+</para>
+</listitem>
+</varlistentry>
+
+
+<varlistentry id="evaluation"><term>Evaluation</term>
+<listitem>
+<para>
+The results of an analysis (e.g. positions of heart beats in an ECG)
+are stored in an evaluation. An evaluation contains zero or more
+discrete events (e.g. 'occurence of a heart beat') and/or zero or
+more continous events (e.g. 'recording period with noise'). In
+measurements handled by libRASCH, more than one evaluation can be
+available.
+</para>
+<para>
+When an evaluation is added to the measurement by the original
+recording system (e.g. the evaluation performed by commercial
+long-term ECG systems), then this evaluation is called the
+<emphasis>original</emphasis> evaluation.
+</para>
+<para>
+If only one evaluation is available, it is no problem to choose an
+evaluation when the user wants to process the evaluation. When more
+than one evaluation is stored in a measurement, one of these
+evaluations has to be the <emphasis>default</emphasis>
+evaluation, which is used when no specific evaluation is selected. In
+most cases the last added evaluation is set to the default
+evaluation.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term>Event</term>
+<listitem>
+<para>
+An event describes the occurence of something in a recording (e.g. a
+heartbeat in an ECG). An event has one or more event-properties.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term>Event-Property</term>
+<listitem>
+<para>
+An event-property is a specific property of the event (e.g. the position
+of the event, the type of the event). A specific event-property is
+allowed only once in an evaluation, for example there can be not more than one
+'qrs-position' property.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term>Event-Set</term>
+<listitem>
+<para>
+An event-set describes a group of event-properties. For example the
+event-set 'heartbeat' contains all properties which belongs to a heart
+beat (e.g. position of the heart beat, the RR interval, the type of the
+heart beat, systolic blood pressure).
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term>Plugins</term>
+<listitem>
+<para>
+libRASCH makes heavy use of plugins. Plugins are small "programs" which
+are loaded when libRASCH is initialized. In the plugins the real work is
+done, the library-code "only" coordinates that the correct plugin is used and
+does some other administrative tasks.
+
+In libRASCH three principal types of plugins exist: 
+<itemizedlist mark=bullet>
+<listitem><para>access plugins</para></listitem>
+<listitem><para>view plugins</para></listitem>
+<listitem><para>process plugins</para></listitem>
+</itemizedlist>
+</para>
+
+<varlistentry><term>Access-Plugin</term>
+<listitem>
+<para>
+Access plugins handle the access to measurement files. They hide
+the differences of the various types of formats and offer
+an consistent interface to the measurements<footnote>
+<para>
+The signal plugins can be compared with device drivers in operating
+systems.
+</para></footnote>.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term>Process-Plugin</term>
+<listitem>
+<para>
+Process plugins perform a specifc task on the measurement (e.g. the
+HRV-plugin calculates the Heart-Rate Variability parameters for an
+ECG or the detect plugin performs a simple beat detection in ECG's).
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term>View-Plugin</term>
+<listitem>
+<para>
+View plugins allow to display the measurements on the screen. At the
+moment the following GUI's are supported:
+<itemizedlist mark=bullet>
+<listitem><para>Qt from Trolltech (for Linux)</para></listitem>
+<listitem><para>MFC from Microsoft (for Windows)</para></listitem>
+</itemizedlist>
+</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</chapter>

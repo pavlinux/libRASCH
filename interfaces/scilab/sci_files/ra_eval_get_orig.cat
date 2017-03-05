@@ -1,0 +1,8 @@
+Returns the evaluation-handle from the evaluation
+performed from the "orginial" recording system. Returns '0' if there
+is not an original evaluation.
+  Input parameters:
+    meas_handle
+
+  Output parameters:
+    eval_handle

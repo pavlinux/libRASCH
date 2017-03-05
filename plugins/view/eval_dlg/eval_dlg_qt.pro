@@ -1,0 +1,10 @@
+TEMPLATE = lib
+VERSION = 0.1.0
+CONFIG = qt dll warn_on debug
+SOURCES = qt_plugin_dlg.cpp
+HEADERS = 
+TARGET = mtk_ui_qt
+DESTDIR = ../libs
+INCLUDEPATH = /home/rasch/src/libmtk/include /usr/lib/qt2/include
+DEPENDPATH = /home/rasch/src/libmtk/include
+unix:LIBS = -L/home/rasch/src/libmtk -lmtk

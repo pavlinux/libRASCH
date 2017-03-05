@@ -1,0 +1,28 @@
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.2//EN" [
+<!ENTITY c_interface_ref SYSTEM "ref_c.sgml">
+<!ENTITY c_interface_auto SYSTEM "../API.sgml">
+<!ENTITY c_structs_auto SYSTEM "../structs.sgml">
+<!ENTITY perl_interface_ref SYSTEM "ref_perl.sgml">
+<!ENTITY perl_interface_auto SYSTEM "dummy.sgml">
+<!ENTITY python_interface_ref SYSTEM "ref_python.sgml">
+<!ENTITY python_interface_auto SYSTEM "dummy.sgml">
+<!ENTITY mat_oct_interface_ref SYSTEM "ref_mat_oct.sgml">
+<!ENTITY mat_oct_interface_auto SYSTEM "dummy.sgml">
+<!ENTITY infos SYSTEM "infos.sgml">
+<!ENTITY infos_auto SYSTEM "../infos_tab.sgml">
+]>
+<book><title>Reference Manual for libRASCH-0.6.0pre2</title>
+<bookinfo>
+    <author><firstname>Raphael</firstname><surname>Schneider</surname></author>
+    <edition>libRASCH Reference Manual Version 0.1.0</edition>
+    <pubdate>2004</pubdate>
+    <copyright><year>2004</year>
+      <holder>Raphael Schneider</holder>
+    </copyright>
+</bookinfo>
+&c_interface_ref;
+&perl_interface_ref;
+&python_interface_ref;
+&mat_oct_interface_ref;
+&infos;
+</book>

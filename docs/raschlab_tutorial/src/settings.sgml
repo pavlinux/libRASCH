@@ -1,0 +1,106 @@
+<chapter id="settings"><title>Change Settings</title>
+
+<para>
+In RASCHlab you can set different options how the data is shown. The
+options are for all recording channels (<xref
+linkend="raschlab-general-options-fig">) or for a single channel
+(<xref linkend="raschlab-channel-options-fig">). To open one of the
+both dialog boxes, you have to click with the right mouse button
+inside the view window. Then a popup menu appears and the first entry
+opens the general options dialog box and the second menu entry opens
+the channel options dialog box (see <xref
+linkend="raschlab-context-menu-fig">).
+</para>
+
+<para>
+The general options are:
+<itemizedlist mark=bullet>
+<listitem><para>'show statusline': show or hide the status line; the
+status line is the line at the bottom of the signal view(s), showing
+informations about the current positions and the current
+selection</para></listitem>
+<listitem><para>'show channel info': show or hide the name and the
+unit of the channels on the left side of the signal
+view</para></listitem>
+<listitem><para>'show grid': show or hide the grid in the signal
+view</para></listitem>
+<listitem><para>'use fixed channel-height': With this option you can
+select if for each channel a fixed height (in pixel) should be
+used. The default behaviour is to give each channel the same space
+depending on the available space. Therefore the space changes when
+the size of the window is changed. When this option is enabled, the space
+for each channel is always the same independent of the current window
+size.</para></listitem>
+<listitem><para>'speed [unit]': Here you can set the "writing speed"
+used to draw the recorded data. At the moment the unit is fixed to
+'mm/second'.</para></listitem>
+</itemizedlist>
+</para>
+
+<figure id="raschlab-general-options-fig">
+<title>
+Dialog box to set general options.
+</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="pics/raschlab_general_options.png" scale="50">
+</imageobject>
+</mediaobject>
+</figure>
+
+<para>
+When drawing a recording channel, two modes are available: (1)
+draw the data centered around a specific niveau and use the given
+resolution to scale the amplitude or (2) scale the data in that way,
+that the min-value corresponds to the lower channel border and the
+max-value corresponds to the upper channel border. When using the
+second mode you have the option to set only the min-value and let the
+max-value be "controlled" by the resolution.
+</para>
+
+<para>
+The niveau used for mode one is a percentage of the channel
+height. Typically you use 50%, this means the data is centered around
+the middle of the channel.
+</para>
+
+<para>
+The first mode is used for data which is centered around a specific
+niveau. This is typical for ECG's. The second mode is used for data
+which are normally in a specific range. This mode is used for example
+for continues blood pressure recordings.
+</para>
+
+<para>
+In the channel options dialog box you have to select first the channel
+for which the options should be set. The channel can be selected in
+the combo-box at the top of the dialog box ('select channel').
+</para>
+
+<para>
+The channel options are:
+<itemizedlist mark=bullet>
+<listitem><para>'Position' - 'centered': draw the data centered around
+a specific niveau (see text above)</para></listitem>
+<listitem><para>'Position' - 'min/max': scale the values to given min
+and max values (see text above)</para></listitem>
+<listitem><para>'show channel': show or hide a channel</para></listitem>
+<listitem><para>'invert channel': if selected, the channel is drawn
+inverted</para></listitem>
+<listitem><para>'Resolution': Here you set the amplitude resolution
+used for drawing the channel.</para></listitem>
+</itemizedlist>
+</para>
+
+<figure id="raschlab-channel-options-fig">
+<title>
+Dialog box to set channel specific options.
+</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="pics/raschlab_channel_options.png" scale="50">
+</imageobject>
+</mediaobject>
+</figure>
+
+</chapter>

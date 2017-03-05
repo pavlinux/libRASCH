@@ -1,0 +1,7 @@
+Returns the evaluation-set-handle which is associated
+the event-property 'evprop-handle'.
+  Input parameters:
+    prop_handle
+
+  Output parameters:
+    evset_handle

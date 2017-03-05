@@ -1,0 +1,56 @@
+<section id="tut-get-raw"><title>Get Sample Data</title>
+<para>
+The example will show how to get the root recording and some
+information about it. We will perform the following steps:
+<itemizedlist mark=bullet>
+<listitem><para>get root recording</para></listitem>
+<listitem><para>get some general informations about the recording</para></listitem>
+<listitem><para>get some infos about all used recording devices</para></listitem>
+<listitem><para>get some infos about all recorded channels</para></listitem>
+</itemizedlist>
+</para>
+
+<para>
+When more than one recording device was used, the root recording
+provides access to the channels as if they were recorded with one
+device.
+</para>
+
+<programlistingco>
+<areaspec>
+<areaset id="get-raw-m.const" coords="">
+<area id="get-raw-m.get-data"  units="LineColumn" coords="15 36">
+</areaset>
+</areaspec>
+<programlisting>
+&get-raw.m.out;
+</programlisting>
+<calloutlist>
+<callout arearefs="get-raw-m.get-data">
+<para>
+Returns 10,000 samples for channels 0..4, starting with sample 0 in
+each channel.
+</para>
+</callout>
+</calloutlist>
+</programlistingco>
+
+<para>
+<xref linkend="get-raw-fig"> shows a screenshot of Octave after
+performing the above steps. Each plot window on the right side shows a
+recording channel. The x-axis is in seconds.
+</para>
+
+<figure id="get-raw-fig">
+<title>
+Screenshot after performing the commands in Octave as shown in the
+Octave session above (and on the left side in the screenshot).
+</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="pics/get_raw_octave2.png" scale="50">
+</imageobject>
+</mediaobject>
+</figure>
+
+</section>

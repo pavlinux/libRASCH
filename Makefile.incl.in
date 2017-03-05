@@ -1,0 +1,61 @@
+########## Makefile.incl.in ##########
+# set options when Makefile is NOT called from the root-dir of the project
+ifndef BE_VERBOSE
+  BE_VERBOSE = 0
+  export BE_VERBOSE
+endif
+ifndef BUILD_RELEASE
+  BUILD_RELEASE = 0
+  export BUILD_RELEASE
+endif
+
+# output-commands used while building libRASCH
+quiet_cmd_c = CC $(RELDIR)/$@
+cmd_c       = $(CC) $(CFLAGS) -c -o $@ $<
+quiet_cmd_ld = LD $(RELDIR)/$@
+cmd_ld       = $(LD) $(LDFLAGS) -c -o $@ $<
+quiet_cmd_moc = MOC $(RELDIR)/$@
+cmd_moc       = $(MOC) -o $@ $<
+quiet_cmd_uic = UIC $(RELDIR)/$@
+cmd_uic       = $(UIC) -o $@ $<
+
+#
+# Beautify output
+# (ideas and some code from the Linux Makefile coming with SuSE 9.1)
+#
+ifeq ($(BE_VERBOSE),1)
+  QUIET =
+  Q =
+  QS =
+else
+  QUIET=quiet_
+  Q = @
+  QS = -s
+endif
+
+CMD_COMPILE = cmd_c
+CMD_LINK = cmd_ld
+CMD_MOC = cmd_moc
+CMD_UIC = cmd_uic
+INDENT = '  '
+
+# set general CFLAGS
+CC = gcc
+CXX = g++
+CFLAGS += -c -Wall -DLINUX $(XML2_CFLAGS) -I$(LIBRASCH_HOME)/include -pedantic -Wno-long-long -fPIC
+ifeq ($(BUILD_RELEASE), 0)
+  CFLAGS += -g
+endif
+CXXFLAGS +=  $(CFLAGS) -Wno-non-virtual-dtor
+CXXFLAGS_QT += $(CXXFLAGS) $(QT_CFLAGS)
+
+# set general link-flags
+LD = gcc
+LD_CXX = g++
+LDFLAGS += $(XML2_LIBS)
+LDFLAGS_QT = $(LDFLAGS) $(QT_LIBS)
+ifeq ($(BUILD_RELEASE), 0)
+  LDFLAGS += -g
+endif
+LDFLAGS_PL = $(LDFLAGS) --shared -L$(LIBRASCH_HOME) -lrasch
+

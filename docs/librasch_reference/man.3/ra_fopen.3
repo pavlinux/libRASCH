@@ -1,0 +1,21 @@
+.TH "ra_fopen" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_fopen \- opens a file
+.SH SYNOPSIS
+.B "FILE *" ra_fopen
+.BI "(const char * " fn ","
+.BI "const char * " mode ","
+.BI "int " dir_based ");"
+.SH ARGUMENTS
+.IP "fn" 12
+ filename
+.IP "mode" 12
+ the fopen file-open mode characters
+.IP "dir_based" 12
+ flag if measurement-files are stored in a directory (=1) or not (!=1)
+.SH "DESCRIPTION"
+The function tries different case combinations to open the file if the given filename can not be found.
+.SH "SOURCE FILE"
+ra_file.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

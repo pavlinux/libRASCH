@@ -1,0 +1,7 @@
+Delete the event with the id 'event_id'.
+    Input parameters:
+    class_handle
+    event_id
+
+  Output parameters:
+    OK

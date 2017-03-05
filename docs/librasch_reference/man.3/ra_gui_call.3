@@ -1,0 +1,18 @@
+.TH "ra_gui_call" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_gui_call \- shows GUI-element of a plugin (if avail.)
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_gui_call
+.BI "(any_handle " h ","
+.BI "plugin_handle " pl ");"
+.SH ARGUMENTS
+.IP "h" 12
+ processing-handle or view-handle
+.IP "pl" 12
+ plugin-handle
+.SH "DESCRIPTION"
+If the plugin pl provides a GUI-element, this function shows this GUI-element and transfer control to it. The h variable contains some information, needed by the plugin. For more information if a plugin provides a GUI-element and what type/information is needed, please see the plugin specific documentation.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

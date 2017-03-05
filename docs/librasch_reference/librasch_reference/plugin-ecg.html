@@ -1,0 +1,1017 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>ecg</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="Reference Manual for libRASCH-0.7.2"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Process Plugins"
+HREF="process-plugins.html"><LINK
+REL="PREVIOUS"
+TITLE="detect-simple"
+HREF="plugin-detect-simple.html"><LINK
+REL="NEXT"
+TITLE="fiducial-point"
+HREF="plugin-fiducial-point.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="REFENTRY"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Reference Manual for libRASCH-0.7.2</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="plugin-detect-simple.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="plugin-fiducial-point.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="PLUGIN-ECG"
+></A
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ecg</SPAN
+></SPAN
+></H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN5765"
+></A
+><H2
+>Name</H2
+>ecg&nbsp;--&nbsp;perform ecg specific actions after reading original evaluation or doing detect using libRASCH</DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5768"
+></A
+><H2
+>Description</H2
+><P
+> The plugin performs a finer classification of the qrs-complexes of an ecg, using from a previous evaluation only the information of the general annotation of a beat (coming from atrium, from ventricle, paced beat or artifact).  Using this plugin allows to have in libRASCH a consistent sub-classification (eg premature normal beat) independent of the original evaluation system used.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5771"
+></A
+><H2
+>Options</H2
+><DIV
+CLASS="TABLE"
+><A
+NAME="AEN5773"
+></A
+><P
+><B
+>Table 8-1. List of options for plugin ecg</B
+></P
+><TABLE
+BORDER="1"
+FRAME="border"
+RULES="all"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>Name</TH
+><TH
+>Description</TH
+><TH
+>type</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>num_ref_rri</TD
+><TD
+>number rri used for calculation of reference-value</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>ref_normal_percent</TD
+><TD
+>percent within the previous rri will be uses as reference-value</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>normal_percent</TD
+><TD
+>max. tolerance for being a normal rri in percent</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>normal_pre_percent</TD
+><TD
+>&nbsp;</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>normal_late_percent</TD
+><TD
+>&nbsp;</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>max_abs_difference</TD
+><TD
+>&nbsp;</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>vpc_pre_percent</TD
+><TD
+>max. percent of ref-value to be premature vpc</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>vpc_late_percent</TD
+><TD
+>min. percent of ref-value to be a 'real' compensatory pause</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>min_interp_vpc_percent</TD
+><TD
+>&nbsp;</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>max_interp_vpc_percent</TD
+><TD
+>&nbsp;</TD
+><TD
+>long</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5822"
+></A
+><H2
+>Results</H2
+><DIV
+CLASS="TABLE"
+><A
+NAME="AEN5824"
+></A
+><P
+><B
+>Table 8-2. List of results of plugin ecg</B
+></P
+><TABLE
+BORDER="1"
+FRAME="border"
+RULES="all"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>Name</TH
+><TH
+>Description</TH
+><TH
+>type</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>NUM_ALL</TD
+><TD
+>number of all QRS complexes</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>NUM_UNKNOWN</TD
+><TD
+>number of un-classified QRS complexes</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_UNKNOWN</TD
+><TD
+>event indeces of un-classified QRS complexes</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>NUM_SINUS</TD
+><TD
+>number of sinus beats</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_SINUS</TD
+><TD
+>event indeces of sinus beats</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>NUM_NORMAL</TD
+><TD
+>number of normal sinus-beats</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_NORMAL</TD
+><TD
+>event indeces of normal sinus-beats</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>NUM_SVPC</TD
+><TD
+>number of SVPCs</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_SVPC</TD
+><TD
+>event indeces of SVPCs</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>NUM_SINUS_VPC</TD
+><TD
+>number of premature sinus-beats which following beats come late (perhaps VENT?)</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_SINUS_VPC</TD
+><TD
+>event indeces of premature sinus-beats which following beats come late (perhaps VENT?)</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>NUM_PAUSE</TD
+><TD
+>number of pause</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_PAUSE</TD
+><TD
+>event indeces of pause</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>NUM_VENT</TD
+><TD
+>number of VPCs</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_VENT</TD
+><TD
+>event indeces of VPCs</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>NUM_VENT_SINGLE</TD
+><TD
+>number of single VPCs</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_VENT_SINGLE</TD
+><TD
+>event indeces of single VPCs</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>NUM_VENT_SINGLE_PREM</TD
+><TD
+>number of VPCs which are premature</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_VENT_SINGLE_PREM</TD
+><TD
+>event indeces of VPCs which are premature</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>NUM_VENT_SINGLE_PREM_COMP</TD
+><TD
+>number of VPCs which are premature and have a compensatory pause</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_VENT_SINGLE_PREM_COMP</TD
+><TD
+>event indeces of VPCs which are premature and have a compensatory pause</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>NUM_INTERP</TD
+><TD
+>number of interpolated VPCs</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_INTERP</TD
+><TD
+>event indeces of interpolated VPCs</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>NUM_ESACPE</TD
+><TD
+>number of escape beats</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_ESCAPE</TD
+><TD
+>event indeces of escape beats</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>NUM_PACED</TD
+><TD
+>number of paced beats</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_PACED</TD
+><TD
+>event indeces of paced beats</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>NUM_ARTIFACT</TD
+><TD
+>number of artifacts</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_ARTIFACT</TD
+><TD
+>event indeces of artifacts</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>NUM_ARTIFACT_TYPE1</TD
+><TD
+>number of automatic detected artifacts: rri is lower than the minimal allowed rri</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_ARTIFACT_TYPE1</TD
+><TD
+>event indeces of automatic detected artifacts: rri is lower than the minimal allowed rri</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>NUM_ARTIFACT_TYPE2</TD
+><TD
+>number of automatic detected artifacts: perhaps detected T-wave</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_ARTIFACT_TYPE2</TD
+><TD
+>event indeces of automatic detected artifacts: perhaps detected T-wave</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>NUM_ARTIFACT_TYPE3</TD
+><TD
+>number of automatic detected artifacts: perhaps overlooked beat after a VPC</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_ARTIFACT_TYPE3</TD
+><TD
+>event indeces of automatic detected artifacts: perhaps overlooked beat after a VPC</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>MIN_HR</TD
+><TD
+>min. heart rate</TD
+><TD
+>double</TD
+></TR
+><TR
+><TD
+>IDX_MIN_HR</TD
+><TD
+>start event index of min. heart rate</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>MAX_HR</TD
+><TD
+>max. heart rate</TD
+><TD
+>double</TD
+></TR
+><TR
+><TD
+>IDX_MAX_HR</TD
+><TD
+>start event index of max. heart rate</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>MEAN_HR</TD
+><TD
+>mean heart rate</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>NUM_BRADY</TD
+><TD
+>number of bradycardia</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_BRADY</TD
+><TD
+>start event indeces of the bradicardia</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>LEN_BRADY</TD
+><TD
+>length (#rri's) of the bradicardia</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>HR_BRADY</TD
+><TD
+>heart rate of the bradicardia</TD
+><TD
+>double array</TD
+></TR
+><TR
+><TD
+>NUM_TACHY</TD
+><TD
+>number of tachycardia</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_TACHY</TD
+><TD
+>start event indeces of the tachycardia</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>LEN_TACHY</TD
+><TD
+>length (#rri's) of the tachycardia</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>HR_TACHY</TD
+><TD
+>heart rate of the tachycardia</TD
+><TD
+>double array</TD
+></TR
+><TR
+><TD
+>NUM_SSALVO</TD
+><TD
+>number of supraventricular salvos</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_SSALVO</TD
+><TD
+>start event indeces of supraventricular salvos</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>LEN_SSALVO</TD
+><TD
+>length of supraventricular salvos</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>HR_SSALVO</TD
+><TD
+>heart rate of supraventricular salvos</TD
+><TD
+>double</TD
+></TR
+><TR
+><TD
+>NUM_SVT</TD
+><TD
+>number of supraventricular tachycardia</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_SVT</TD
+><TD
+>start event indeces of supraventricular tachycardia</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>LEN_SVT</TD
+><TD
+>length of supraventricular tachycardia</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>HR_SVT</TD
+><TD
+>heart rate of supraventricular tachycardia</TD
+><TD
+>double</TD
+></TR
+><TR
+><TD
+>NUM_SSALVO_SVT</TD
+><TD
+>number of supraventricular salvos/SVT's</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_SSALVO_SVT</TD
+><TD
+>start event indeces of supraventricular salvos/SVT's</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>LEN_SSALVO_SVT</TD
+><TD
+>length of supraventricular salvos/SVT's</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>HR_SSALVO_SVT</TD
+><TD
+>heart rate of supraventricular salvos/SVT's</TD
+><TD
+>double</TD
+></TR
+><TR
+><TD
+>NUM_IVR</TD
+><TD
+>number of ideoventricular rhythms</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_IVR</TD
+><TD
+>start event indeces of ideoventricular rhythms</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>LEN_IVR</TD
+><TD
+>length (#rri's) of ideoventricular rhythms</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>HR_IVR</TD
+><TD
+>heart rate of ideoventricular rhythms</TD
+><TD
+>double array</TD
+></TR
+><TR
+><TD
+>NUM_COUPLET</TD
+><TD
+>number of couplets</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_COUPLET</TD
+><TD
+>event indeces of couplets</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>NUM_BIGEMINY</TD
+><TD
+>number of bigeminy</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_BIGEMINY</TD
+><TD
+>start event indeces of the bigeminy</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>LEN_BIGEMINY</TD
+><TD
+>length (#rri's) of the bigeminy</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>NUM_TRIGEMINY</TD
+><TD
+>number of trigeminy</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_TRIGEMINY</TD
+><TD
+>start event indeces of the trigeminy</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>LEN_TRIGEMINY</TD
+><TD
+>length (#rri's) of the trigeminy</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>NUM_SALVO</TD
+><TD
+>number of salvos</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_SALVO</TD
+><TD
+>start event indeces of the salvos</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>LEN_SALVO</TD
+><TD
+>length (#rri's) of the salvos</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>HR_SALVO</TD
+><TD
+>heart rate of the salvos</TD
+><TD
+>double</TD
+></TR
+><TR
+><TD
+>NUM_VT</TD
+><TD
+>number of VTs</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_VT</TD
+><TD
+>start event indeces of VTs</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>LEN_VT</TD
+><TD
+>length (#rri's) of the VTs</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>HR_VT</TD
+><TD
+>heart rate of the VTs</TD
+><TD
+>double</TD
+></TR
+><TR
+><TD
+>NUM_SALVO_VT</TD
+><TD
+>number of salvos/VTs</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>IDX_SALVO_VT</TD
+><TD
+>start event indeces of the salvos/VTs</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>LEN_SALVO_VT</TD
+><TD
+>length (#rri's) of the salvos/VTs</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>HR_SALVO_VT</TD
+><TD
+>heart rate of the salvos/VTs</TD
+><TD
+>double</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN6169"
+></A
+><H2
+>Version</H2
+><P
+>0.3.0</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN6172"
+></A
+><H2
+>Author(s)</H2
+><P
+>Raphael Schneider (rasch@med1.med.tum.de)</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="plugin-detect-simple.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="plugin-fiducial-point.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>detect-simple</SPAN
+></SPAN
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="process-plugins.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>fiducial-point</SPAN
+></SPAN
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

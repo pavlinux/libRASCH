@@ -1,0 +1,39 @@
+RASCHlab Version 0.2.3
+======================
+
+Topics handled here:
+* General
+* License
+* Documentation
+
+For installation instructions, see file INSTALL.
+
+-----------------------------------------------------------------------
+
+General
+-------
+
+RASCHlab is a program based on libRASCH. RASCHlab allows to open, view
+and process measurements.
+
+More information can be found at the libRASCH-website at
+                     www.librasch.org
+
+-----------------------------------------------------------------------
+
+License
+-------
+
+libRASCH is published under the GNU General Public License
+Version 2.
+
+Also note that the only valid version of the GPL as far as RASCHlab
+is concerned is version 2 of the GPL (from June 1991), not
+any later versions, unless explicitly otherwise stated.
+
+-----------------------------------------------------------------------
+
+DOCUMENTATION
+-------------
+
+Nothing yet.

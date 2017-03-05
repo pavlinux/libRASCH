@@ -1,0 +1,1061 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>A Tutorial</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="User Manual for libRASCH-0.7.2"
+HREF="book1.html"><LINK
+REL="PREVIOUS"
+TITLE="Terminology"
+HREF="terminology.html"><LINK
+REL="NEXT"
+TITLE="Access Measurements"
+HREF="tut_open_meas.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="CHAPTER"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>User Manual for libRASCH-0.7.2</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="terminology.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="tut_open_meas.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="TUTORIAL"
+></A
+>Chapter 3. A Tutorial</H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="tutorial.html#TUT_INIT_LIB"
+>Initialize libRASCH and Basic Usage</A
+></DT
+><DT
+><A
+HREF="tut_open_meas.html"
+>Access Measurements</A
+></DT
+><DT
+><A
+HREF="tut_handle_recs.html"
+>Access Recordings</A
+></DT
+><DT
+><A
+HREF="tut_get_raw.html"
+>Get Sample Data</A
+></DT
+><DT
+><A
+HREF="tut_handle_eval.html"
+>Access Evaluations</A
+></DT
+><DT
+><A
+HREF="tut_get_events.html"
+>Get Events</A
+></DT
+><DT
+><A
+HREF="tut_process.html"
+>Usage of process-plugins</A
+></DT
+></DL
+></DIV
+><P
+>The handling of evaluations will be changed in the next version of
+libRASCH. Because we are working already on it, the sections about
+evaluations, event-sets and event-propertiey may not work with the
+current version (0.7.0). If you have any questions about the changes,
+please send them to the mailing list.</P
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="TUT_INIT_LIB"
+>Initialize libRASCH and Basic Usage</A
+></H1
+><P
+>This section will show you how to start using libRASCH. We will
+initialize the library and get some information about it.</P
+><P
+>So let's start with the first example. We will perform the following
+steps:
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>init libRASCH</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>get number of plugins</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>find all measurements in a directory</P
+></LI
+></UL
+></P
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="INIT_LIB_C"
+>C Version</A
+></H2
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>//
+#include &#60;stdio.h&#62;
+#include &#60;ra.h&#62; <A
+NAME="INIT_LIB_C.INCLUDE"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>
+
+int main(int argc, char *argv[])
+{
+    ra_handle ra;
+    value_handle vh;
+    ra_find_handle f;
+    struct ra_find_struct fs;
+
+    /* initialize libRASCH */
+    ra = ra_lib_init(); <A
+NAME="INIT_LIB_C.INIT"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+>
+
+    /* check if init was successful */
+    if ((ra == NULL)
+        || (ra_lib_get_error(ra, NULL, 0) != RA_ERR_NONE)) <A
+NAME="INIT_LIB_C.ERROR"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+>
+    {
+        if (!ra)
+            printf("error initializing libRASCH\n");
+        else
+        {
+            char err_t[200];
+            long err_num;
+
+            err_num = ra_lib_get_error(ra, err_t, 200);
+            printf("while initializing libRASCH, error #%d "
+                   "occured\n  %s\n", err_num, err_t);
+
+            ra_lib_close(ra);
+        }
+        return -1;
+    }
+
+    /* get some infos */
+    vh = ra_value_malloc(); <A
+NAME="INIT_LIB_C.INFO_START"
+><IMG
+SRC="../images/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+>
+    if (ra_info_get(ra, RA_INFO_NUM_PLUGINS_L, vh) == 0) <A
+NAME="INIT_LIB_C.INFO_GET"
+><IMG
+SRC="../images/callouts/5.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(5)"></A
+>
+    {
+        printf("%s (%s): %d\n", ra_value_get_name(vh),
+               ra_value_get_desc(vh), ra_value_get_long(vh));
+    }
+    ra_value_free(vh); <A
+NAME="INIT_LIB_C.INFO_CLOSE"
+><IMG
+SRC="../images/callouts/6.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(6)"></A
+>
+
+    /* find all measurements in a directory */
+    f = ra_meas_find_first(ra, argv[1], &#38;fs); <A
+NAME="INIT_LIB_C.FIND_START"
+><IMG
+SRC="../images/callouts/7.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(7)"></A
+>
+    if (f)
+    {
+        int cnt = 1;
+
+        printf("measurements found in %s:\n", argv[1]);
+        do
+        {
+            printf("  %2d: %s\n", cnt, fs.name);
+            cnt++;
+        }
+        while (ra_meas_find_next(f, &#38;fs)); <A
+NAME="INIT_LIB_C.FIND_NEXT"
+><IMG
+SRC="../images/callouts/8.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(8)"></A
+>
+
+        ra_meas_close_find(f); <A
+NAME="INIT_LIB_C.FIND_CLOSE"
+><IMG
+SRC="../images/callouts/9.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(9)"></A
+>
+    }
+
+    /* close libRASCH */
+    ra_lib_close(ra); <A
+NAME="INIT_LIB_C.CLOSE"
+><IMG
+SRC="../images/callouts/10.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(10)"></A
+>
+
+    return 0;
+}                               /* main() */
+
+//&#13;</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_C.INCLUDE"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+>To use libRASCH, the header-file ra.h must be included. In this
+example the include-directory of libRASCH is in the INCLUDE path of
+the C compiler. In ra.h you will find all function prototypes of the
+API of libRASCH. ra.h includes the header-file ra_defines.h, there you
+will find all define's and structure's needed for the libRASCH API.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_C.INIT"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+></DT
+><DD
+>ra_lib_init() initialize libRASCH. The function returns
+an ra_handle. </DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_C.ERROR"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+></DT
+><DD
+>ra_lib_get_error() returns the last error occured in
+libRASCH. To check if the initialization was successful, check that no
+error occured. If an error occured, a short description of the error
+can be retrieved with the function ra_lib_get_error().</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_C.INFO_START"
+><IMG
+SRC="../images/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+></DT
+><DD
+>ra_value_malloc() returns an value object. This object will be used in
+libRASCH to handle data. To set/get the data and to get informations
+about the stored data, API functions in libRASCH are available. The
+functions start with 'ra_value_*'.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_C.INFO_GET"
+><IMG
+SRC="../images/callouts/5.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(5)"></A
+></DT
+><DD
+>ra_info_get() returns information about libRASCH and all objects
+handled by libRASCH. RA_INFO_NUM_PLUGINS_L asks libRASCH for the the
+number of loaded plugins. The last character of the info-id ('L')
+indicates that the returned value will be a long-value. Therefore the
+number of plugins will be returned by using the function
+ra_value_get_long(). (See the descriptions of the ra_value_* functions
+in the reference manual what else can be done with an value object.)</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_C.INFO_CLOSE"
+><IMG
+SRC="../images/callouts/6.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(6)"></A
+></DT
+><DD
+>ra_value_free() frees the memory associated with the value object
+allocated above.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_C.FIND_START"
+><IMG
+SRC="../images/callouts/7.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(7)"></A
+></DT
+><DD
+>ra_meas_find_first() returns a valid handle (not
+NULL) if at least one supported measurement (this means that at least
+one measurement in the directory can be handled with one of the loaded
+access-plugins). The information about the found measurement will be
+set in the ra_find_struct (for definition of structure see
+ra_defines.h).</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_C.FIND_NEXT"
+><IMG
+SRC="../images/callouts/8.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(8)"></A
+></DT
+><DD
+>ra_meas_find_next() returns true (!= 0) if another
+measurement is available. Again, the info about the measurement will
+be in the ra_find_struct. This function iterates over all found
+measurements.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_C.FIND_CLOSE"
+><IMG
+SRC="../images/callouts/9.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(9)"></A
+></DT
+><DD
+>ra_meas_close_find() frees all memory allocated during
+ra_meas_find_first() and ra_meas_find_next().</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_C.CLOSE"
+><IMG
+SRC="../images/callouts/10.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(10)"></A
+></DT
+><DD
+>ra_lib_close() unloads all plugins and frees all
+allocated memory.</DD
+></DL
+></DIV
+><P
+>Running the example in the examples directory with the command 
+<B
+CLASS="COMMAND"
+>init_lib ./database</B
+> produced the following output.</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#plugins (): 28
+measurements found in ./database:
+   1: ./database/JesusOlivan2003-12-EMG2.edf
+   2: ./database/100s.hea&#13;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="INIT_LIB_PL"
+>Perl Version</A
+></H2
+><P
+>The Perl script shown below produces exactly the same
+output as the C version, therefore the output is not shown.</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+use strict;
+use RASCH; <A
+NAME="INIT_LIB_PL.USE"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>
+
+# initialize libRASCH
+my $ra = new RASCH or die "error initializing libRASCH\n"; <A
+NAME="INIT_LIB_PL.INIT"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+>
+my ($err_num, $err_text) = $ra-&#62;get_error ();
+if ($err_num != 1)
+{
+    print "while initializing libRASCH, error # $err_num " .
+        "occured:\n $err_text\n";
+    exit -1;
+}
+
+# get some infos
+my ($value, $name, $desc) = $ra-&#62;get_info (info =&#62;'num_plugins'); <A
+NAME="INIT_LIB_PL.INFO"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+>
+if ($value)
+{
+    print "$name ($desc): $value\n";
+}
+
+# find all measurements in a directory
+my $meas = $ra-&#62;find_meas($ARGV[0]);     <A
+NAME="INIT_LIB_PL.FIND"
+><IMG
+SRC="../images/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+>
+print "measurements found in $ARGV[0]:\n";
+my $cnt = 1;
+for (@$meas)
+{
+    print "$cnt: $_-&#62;filename()\n";
+    $cnt++;
+}
+
+# ra_close() will be called when $ra is being destroyed
+
+exit 0;
+#&#13;</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_PL.USE"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+>After installing the Perl support for libRASCH, the package RASCH.pm
+is available.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_PL.INIT"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+></DT
+><DD
+>Create a new RASCH object.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_PL.INFO"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+></DT
+><DD
+>The function get_info() returns an array including (1) the value, (2)
+the name and (3) a short description of the wanted information.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_PL.FIND"
+><IMG
+SRC="../images/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+></DT
+><DD
+>get_all_meas() returns an array with all the measurements found.</DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="INIT_LIB_PY"
+>Python Version</A
+></H2
+><P
+>The Python script shown below produces exactly the same
+output as the C and Perl version, therefore the output is not shown.</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+import sys
+from RASCH import * <A
+NAME="INIT_LIB_PY.USE"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>
+
+# initialize libRASCH
+ra = RASCH() <A
+NAME="INIT_LIB_PY.INIT"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+>
+if not ra:
+    print "can't initialize libRASCH"
+    sys.exit()
+[err_num, err_text] = ra.get_error()
+if err_num != 1:
+    print "while initializing libRASCH, error #%d occured:\n " \
+          "%s\n" % err_num, err_text
+    sys.exit()
+    
+# get some infos
+[value, name, desc] = ra.get_info(info='num_plugins') <A
+NAME="INIT_LIB_PY.INFO"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+>
+if (value):
+    print name, "("+desc+"):", value
+
+# find all measurements in a directory
+meas = ra.get_all_meas(sys.argv[1]) <A
+NAME="INIT_LIB_PY.FIND"
+><IMG
+SRC="../images/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+>
+print "measurements found in " + sys.argv[1] + ":\n"
+cnt = 1
+for item in meas:
+    print "%d: %s" % (cnt, item)
+    cnt = cnt + 1
+
+#&#13;</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_PY.USE"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+>After installing the Python support for libRASCH, the module 'RASCH'
+is available.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_PY.INIT"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+></DT
+><DD
+>Create a new RASCH object.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_PY.INFO"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+></DT
+><DD
+>The function get_info() returns an array including (1) the value, (2)
+the name and (3) a short description of the wanted information.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_PY.FIND"
+><IMG
+SRC="../images/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+></DT
+><DD
+>get_all_meas() returns an array with all the measurements found.</DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="INIT_LIB_MAT"
+>Matlab/Octave Version</A
+></H2
+><P
+>Here an Octave session using the libRASCH support is shown. The same
+tasks are performed as in the previous examples. Most of the functions
+have in Matlab and Octave the same behaviour. Differences are listed
+in the function reference section for Matlab and Octave.</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>rasch@rasch:~&#62; octave
+GNU Octave, version 2.1.50 (i686-pc-linux-gnu).
+...
+
+octave:1&#62; ra=ra_lib_init <A
+NAME="INIT_LIB_M.INIT"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>
+ra = 145016336
+octave:2&#62; [err_num, err_text]=ra_lib_get_error(ra)
+err_num = 1
+err_text = libRASCH: no error
+octave:3&#62; [value, name, desc]=ra_lib_get_info(ra, 'num_plugins') <A
+NAME="INIT_LIB_M.INFO"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+>
+value = 25
+name = #plugins
+desc =
+octave:4&#62; meas=ra_meas_find(ra, './database') <A
+NAME="INIT_LIB_M.FIND"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+>
+meas =
+{
+  [1,1] = ./database/JesusOlivan2003-12-EMG2.edf
+  [2,1] = ./database/100s.hea
+}
+octave:5&#62;&#13;</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_M.INIT"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+>Initialize libRASCH. If function call is successfull, a value not 0
+will be returned.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_M.INFO"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+></DT
+><DD
+>The function returns an array including (1) the value, (2)
+the name and (3) a short description of the wanted information.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_M.FIND"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+></DT
+><DD
+>The function returns a cell-array with all the measurements found.</DD
+></DL
+></DIV
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="terminology.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="tut_open_meas.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Terminology</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Access Measurements</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

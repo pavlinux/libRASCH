@@ -1,0 +1,18 @@
+<chapter id="infos"><title>Infos Reference</title>
+<para>
+The tables in this section list the informations, which are available
+from libRASCH. For measurements, recordings and measurement objects
+not all informations must be available.
+</para>
+<para>
+The first column ('Info Name') list the info-name which must be used in
+the Perl, Python, Matlab, Octave functions to get informations. The
+second column ('Info Constant') list the constants used in C/C++
+programs to get informations. The third column ('Info Description')
+gives a short description of the information returned from libRASCH.
+</para>
+
+&infos-auto;
+
+</chapter>
+

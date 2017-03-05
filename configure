@@ -1,0 +1,557 @@
+#!/bin/sh
+
+#
+# A simple configuration script for libRASCH. Version 0.8.5
+# 
+# Copyright 2003-2008 by Raphael Schneider <librasch@gmail.com>
+#
+#
+# Changes:
+#   Version 0.1.0 (rasch@med1.med.tum.de):
+#     - first version
+#   Version 0.2.0 (rasch@med1.med.tum.de):
+#     - added handling of libxml2 configuration
+#   Version 0.3.0 (rasch@med1.med.tum.de):
+#     - added code to get Scilab installation path
+#     - write config-file is now default (in the $HOME directory)
+#   Version 0.3.1 (rasch@med1.med.tum.de):
+#     correct usage information
+#   Version 0.3.2 (rasch@med1.med.tum.de):
+#     - added initial handling for setting of Qt directory
+#   Version 0.4.0 (rasch@med1.med.tum.de):
+#     - find out which interfaces should be build
+#     - write Makefile for interfaces
+#   Version 0.4.1 (rasch@med1.med.tum.de):
+#     - added options to set Qt configuration
+#     - changed check for programs (needed to run on Debian)
+#   Version 0.4.2 (rasch@med1.med.tum.de):
+#     - set path for man pages
+#   Version 0.5.0 (rasch@med1.med.tum.de):
+#     - added RASCHlab
+#   Version 0.5.1 (rasch@med1.med.tum.de):
+#     - fixed problem with moc and uic setting for Qt
+#   Version 0.5.2 (rasch@med1.med.tum.de):
+#     - install RASCHlab in PREFIX as default
+#   Version 0.5.3 (rasch@med1.med.tum.de):
+#     - fixed install of RASCHlab; now in PREFIX/bin as default
+#     - fixed RASCHlab default install path in usage info
+#   Version 0.5.4 (rasch@med1.med.tum.de):
+#     - Scilab build temporarily not working
+#   Version 0.6.0 (rasch@med1.med.tum.de):
+#     - add support for installation of documentation
+#   Version 0.6.1 (rasch@med1.med.tum.de):
+#     - cosmetic change
+#   Version 0.6.2 (rasch@med1.med.tum.de):
+#     - check which type of Qt (mt or non-mt) is installed
+#   Version 0.6.3 (rasch@med1.med.tum.de):
+#     - use Qt-mt version first
+#   Version 0.6.4 (rasch@med1.med.tum.de):
+#     - added support for C++ interface
+#   Version 0.6.5 (rasch@med1.med.tum.de):
+#     - added support for l10n
+#   Version 0.6.6 <rasch@med1.med.tum.de>:
+#     - export the Qt-directory in the variable QTDIR_RA because make prefers
+#       to use the environment variable instead the one set in Makefile.incl
+#   Version 0.6.7 <rasch@med1.med.tum.de>:
+#     - added extra checks for Scilab interface if needed Makefile's are
+#       available (they are missing in the package coming with SUSE)
+#   Version 0.6.8 <rasch@med1.med.tum.de>:
+#     - added code to check location of Qt header files
+#     - set flags if librasch and raschlab prefix is changed so
+#       raschlab-prefix is set to librasch-prefix if no special raschlab-prefix
+#       was given
+#   Version 0.6.9 <librasch@gmail.com>:
+#     temporarely removed support for Scilab (I am not sure if _I_ support it
+#     longer because I don't use it and do not have enough time to work on it)
+#   Version 0.7.0 <librasch@gmail.com>:
+#     changed part getting infos about the local Qt installation
+#   Version 0.8.0 <librasch@gmail.com>:
+#     added support for libRASCH plot-lib
+#   Version 0.8.1 <librasch@gmail.com>:
+#     added initial support for Gtk+ (Gtkmm)
+#   Version 0.8.2 <librasch@gmail.com>:
+#     added option and detection-scheme (not really) for libfftw3
+#   Version 0.8.3 <librasch@gmail.com>:
+#     - check if libgd is installed and get flags for its usage
+#     - write options for plot-lib devices (when Qt and libgd is available,
+#       build the qt- and gd-device for the plot-lib)
+#   Version 0.8.4 <librasch@gmail.com>:
+#     export found qmake program (when Qt is installed); needed for RASCHlab
+#   Version 0.8.5 <librasch@gmail.com>:
+#     - fixed typos in usage-text
+#     - build Makefile for raschlab_qt4
+#     - added support for installation of raschlab_qt4
+#
+
+prefix="/usr/local"
+prefix_changed=""
+plugin_dir="$prefix/lib/librasch/plugins"
+oct_file_dir=""
+qt_bin_dir=""
+
+use_fftw3="yes"
+
+write_config="yes"
+config_in_etc="yes"
+force="no"
+
+use_gtk="no"
+
+plot_lib="yes"
+
+raschlab="yes"
+#raschlab_prefix="/opt/raschlab"
+raschlab_prefix="$prefix/bin"
+rl_prefix_changed=""
+
+doc="yes"
+doc_prefix="/usr/share/doc"
+
+# i18n settings for gettext
+package="librasch"
+localedir="$prefix/share/locale"
+
+options()
+{
+	cat <<EOF
+Available options to configure:
+	--prefix=DIR             install directory (default: /usr/local)
+	--plugins=DIR            install plugins in DIR
+                                 (default: $prefix/lib/librasch/plugins)
+        --dont-write-config      do not create librasch.conf
+        --local-config           write librasch.conf in $HOME directory
+                                 instead of '/etc'
+        --dont-use-fftw3         do not use fftw3 library
+	--with-qt-bin-dir=DIR    directory where Qt's qmake program is
+                                 installed
+        --use-gtk                build Gtk+ based GUI plugins
+        --with-oct-dir=DIR       directory where libRASCH octave-files are
+                                 installed
+                                 (default: depends on octave installation)
+        --no-plot-lib            do not compile and install libRASCH plot-lib
+        --no-raschlab            do not compile and install RASCHlab
+        --raschlab-prefix=DIR    install directory for RASCHlab
+                                 (default: /usr/local/bin)
+        --doc-prefix=DIR         directory where doc's will be installed
+                                 (default: /usr/share/doc)
+        --dont-install-doc       do not install documentation
+        --force                  write files even an error occured
+EOF
+	exit $1
+}
+
+while test $# -gt 0; do
+  case "$1" in
+  -*=*) optarg=`echo "$1" | sed 's/[-_a-zA-Z0-9]*=//'` ;;
+  *) optarg= ;;
+  esac
+
+  case $1 in
+    --prefix=*)
+      prefix=$optarg
+      plugin_dir="$prefix/lib/librasch/plugins"
+      prefix_changed="yes"
+      ;;
+    --plugins=*)
+      plugin_dir=$optarg
+      ;;
+    --dont-write-config)
+      write_config="no"
+      ;;
+    --local-config)
+      config_in_etc="no"
+      ;;
+    --dont-use-fftw3)
+      use_fftw="no"
+      ;;
+    --with-qt-bin-dir=*)
+      qt_bin_dir=$optarg
+      ;;
+    --use-gtk)
+      use_gtk="yes"
+      ;;
+    --with-oct-dir=*)
+      oct_file_dir=$optarg
+      ;;
+    --no-raschlab)
+      raschlab="no"
+      ;;
+    --no-plot-lib)
+      plot_lib="no"
+      ;;
+    --raschlab-prefix=*)
+      raschlab_prefix=$optarg
+      rl_prefix_changed="yes"
+      ;;
+    --doc-prefix=*)
+      doc_prefix=$optarg
+      ;;
+    --dont-install-doc)
+      doc="no"
+      ;;
+    --force)
+      force="yes"
+      ;;
+    *)
+      options 1 1>&2
+      ;;
+  esac
+  shift
+done
+
+if test "$rl_prefix_changed" = ""; then
+    raschlab_prefix="$prefix/bin"
+fi
+
+conf_file=""
+if test "$write_config" = "yes"; then
+    conf_file="$HOME/librasch.conf"
+fi
+
+if test "$config_in_etc" = "yes"; then
+    conf_file="/etc/librasch.conf"
+fi
+
+# if prefix was set to '/usr', use '/usr/share/man' for man path instead
+# of '$prefix/man'
+man_path="$prefix/man"
+if test "prefix" = "/usr"; then
+    man_path="/usr/share/man"
+fi
+
+########## libxml2 stuff
+xml2_cflags=""
+xml2_libs=""
+if !(which xml2-config 2>&1 | grep "no \|not " >/dev/null); then
+    xml2_cflags=`xml2-config --cflags`
+    xml2_libs=`xml2-config --libs`
+else
+    echo ""
+    echo "  ERROR: libxml2 seems not to be installed. Please install libxml2 first."
+    echo ""
+    if test "$force" = "no"; then
+	exit -1
+    fi
+fi
+
+########## fftw3 stuff
+# check availability of libfftw3 only when usage is wanted
+#if test "$use_fftw" = "yes"; then
+#    # do not know at the moment how to find out if libfftw3 is available
+#fi
+
+########## Qt stuff
+# we only have to find qmake to get all needed Qt informations
+# get Qt binary directory
+qt_ok=1
+echo ""
+echo "looking for Qt... (a warning that 'qt_main.cpp' can not be found is OK)"
+if test "$qt_bin_dir" = ""; then
+	if test "$QTDIR" = ""; then
+	    # nothing is set, therefore chances are high that qmake is in /usr/bin
+	    # programs in /usr/bin
+	    qt_bin_dir=/usr/bin
+	else
+	    qt_bin_dir="$QTDIR/bin"
+	fi
+fi
+
+# get qmake
+qmake="$qt_bin_dir/qmake-qt4"
+use_qt4_ext=1
+if (type $qmake 2>&1 | grep "no \|not " > /dev/null); then
+    qmake="$qt_bin_dir/qmake"
+    use_qt4_ext=0
+    if (type $qmake 2>&1 | grep "no \|not " > /dev/null); then
+	# still not found
+	echo "Error: something is wrong with the Qt installation, can not find qmake program."
+	qt_ok=0
+	if test "$force" = "no"; then
+	    exit -1
+	fi
+    fi
+fi
+    
+if (test $qt_ok = "1"); then
+    # check that we have really version 4 of Qt (TODO)
+    qt_version=`$qmake -v | grep 'Using Qt version 4' -`
+    if test "$qt_version" = ""; then
+	echo "Error: It seems that Qt4 is not installed."
+	qt_ok=0
+	if test "$force" = "no"; then
+	    exit -1
+	fi
+    else
+        # use $qmake to build a dummy Makefile to get the infos needed for building the view plugins
+	`$qmake -o qt_dummy.mak qt_help.pro`
+	qt_cflags=`grep '^CFLAGS' qt_dummy.mak | sed 's/CFLAGS        = //'`
+	qt_incl=`grep '^INCPATH' qt_dummy.mak | sed 's/INCPATH       = //'`
+	qt_lflags=`grep '^LFLAGS' qt_dummy.mak | sed 's/LFLAGS        = //'`
+	qt_libs=`grep '^LIBS' qt_dummy.mak | sed 's/LIBS          = //'`
+
+	# build path for uic and moc
+	if test "$use_qt4_ext" = "1"; then
+	    qt_moc="$qt_bin_dir/moc-qt4"
+	    qt_uic="$qt_bin_dir/uic-qt4"
+	else
+	    qt_moc="$qt_bin_dir/moc"
+	    qt_uic="$qt_bin_dir/uic"
+	fi
+    fi
+fi
+
+
+######### Gtk+ stuff (or to be more exact: Gtkmm stuff)
+gtk_ok=0
+gtk_cflags=""
+gtk_lflags=""
+if test "$use_gtk" = "yes"; then
+    # TODO: add check that next calls are successfull
+    gtk_cflags=`pkg-config gtkmm-2.4 libglademm-2.4 --cflags`
+    gtk_lflags=`pkg-config gtkmm-2.4 libglademm-2.4 --libs`
+    gtk_ok=1
+fi
+
+
+########## libgd stuff
+gd_ok=0
+if !(which gdlib-config 2>&1 | grep "no \|not " >/dev/null); then
+    gd_ok=1
+    gd_cflags=`gdlib-config --cflags`
+    gd_libs=`gdlib-config --libs`
+    gd_ldflags=`gdlib-config --ldflags`
+fi
+
+
+########## Perl stuff
+perl_installed=""
+if !(which perl 2>&1 | grep "no \|not " >/dev/null); then
+    perl_installed="yes"
+fi
+
+########## Python stuff
+python_installed=""
+if !(which python 2>&1 | grep "no \|not " >/dev/null); then
+    python_installed="yes"
+fi
+
+########## Octave stuff
+octave_installed=""
+octave_incl_path=""
+missing_mkoctfile="false"
+if !(type octave 2>&1 | grep "no \|not " > /dev/null); then
+    `echo octave_config_info > get_octave_oct_file_include_dir.m`
+    octave_incl_path=`octave get_octave_oct_file_include_dir.m | grep octincludedir - | sed 's/  octincludedir = //'`
+    if test "$oct_file_dir" = ""; then
+	oct_file_dir=`octave get_octave_oct_file_include_dir.m | grep localoctfiledir - | sed 's/  localoctfiledir = //'`
+    fi
+    `rm get_octave_oct_file_include_dir.m`
+
+    if (type mkoctfile 2>&1 | grep "no \|not " > /dev/null); then
+	missing_mkoctfile="true"
+    else
+	octave_installed="yes"
+    fi
+fi
+
+
+########## Matlab stuff
+matlab_installed=""
+if !(type matlab 2>&1 | grep "no \|not " > /dev/null); then
+    matlab_installed="yes"
+fi
+
+########## Scilab stuff
+scilab_installed=""
+scilab_path=""
+scilab_error=""
+#if !(type scilab 2>&1 | grep "no \|not "  > /dev/null); then
+#    scilab_path=`echo SCI | scilab -nw | sed -e '/ [\/\\]/!d;s/^[ \t]*//;s/[ \t]*$//'`
+#    if !(find $scilab_path/Makefile.incl > /dev/null 2> /dev/null); then
+#	scilab_error="1";
+#    else
+#	if !(find $scilab_path/config/Makeso.incl > /dev/null 2> /dev/null); then
+#	    scilab_error="1";
+#	fi
+#    fi
+#    if test "$scilab_error" = ""; then
+#	scilab_installed="yes"
+#    fi	
+#fi
+
+########## options use
+echo ""
+echo "configuration used:"
+echo "  install libRASCH in directory $prefix"
+echo "  install plugins in directory $plugin_dir"
+if test "$use_fftw3" = "yes"; then
+    echo "  use fftw3 library"
+fi
+if test "$conf_file" != ""; then
+    echo "  write conf-file $conf_file"
+fi
+if test "$doc" = "yes"; then
+    echo "  install documentation in directory $doc_prefix"
+fi
+echo "  install localization files in $localedir"
+if test "$qt_ok" = "1"; then
+    echo "  Qt-cflags:  $qt_cflags"
+    echo "  Qt-include: $qt_incl"
+    echo "  Qt-lflags:  $qt_lflags"
+    echo "  Qt-libs:    $qt_libs"
+    echo "  Qt moc:     $qt_moc"
+    echo "  Qt uic:     $qt_uic"
+
+    if test "$raschlab" = "yes"; then
+	echo "  handle RASCHlab"
+	echo "    install RASCHlab in $raschlab_prefix"
+        # run qmake for RASCHlab_qt
+	echo "    build now Makefile for current Qt installation"
+	`RASCHLAB_PREFIX=$raschlab_prefix $qmake -o raschlab/Qt4/Makefile raschlab/Qt4/raschlab_qt.pro`
+    else
+	echo "  not compiling and installing RASCHlab"
+    fi
+
+fi
+if test "$gtk_ok" = "1"; then
+    echo "  Gtk-cflags: $gtk_cflags"
+    echo "  Gtk-lflags: $gtk_lflags"
+fi
+if test "$gd_ok" = "1"; then
+    echo "  libgd-cflags:  $gd_cflags"
+    echo "  libgd-ldflags: $gd_ldflags"
+    echo "  libgd-libs:    $gd_libs"
+fi
+
+if test "$plot_lib" = "yes"; then
+    echo "  build and install plot-lib"
+fi
+
+########## interfaces available
+echo ""
+echo "Interfaces for the following languages/systems will be build:"
+if test "$perl_installed" = "yes"; then
+    echo "  Perl"
+fi
+if test "$python_installed" = "yes"; then
+    echo "  Python"
+fi
+if test "$octave_installed" = "yes"; then
+    echo "  Octave (install in: $oct_file_dir)"
+fi
+if test "$matlab_installed" = "yes"; then
+    echo "  Matlab"
+fi
+if test "$scilab_installed" = "yes"; then
+    echo "  SCILAB"
+fi
+if test "$missing_mkoctfile" = "true"; then
+    echo ""
+    echo "!!! Can not find mkoctfile, which is needed to build the octave interface."
+    echo "!!! Please check your octave installation or build it from source."
+    echo "!!! (If you build it from source do not forget to add the --enable-shared"
+    echo "!!!  option when calling ./configure.)"
+    echo ""
+fi
+if test "$scilab_error" = "1"; then
+    echo ""
+    echo "!!! A needed make file for the Scilab interface is missing. To get the"
+    echo "!!! Scilab support working, please get the source from the Scilab website"
+    echo "!!! (www.scilab.org) and build & install it."
+    echo ""
+fi	
+
+########## write librasch.conf
+if test "$conf_file" != ""; then
+    echo "<?xml version=\"1.0\"?>" > librasch.conf
+    echo "<librasch-config>" >> librasch.conf
+    echo "<plugin-path>$plugin_dir</plugin-path>" >> librasch.conf
+    echo "</librasch-config>" >> librasch.conf
+fi
+
+    
+########## write Makefile
+echo "########## configure specific settings ##########" > Makefile.incl
+echo "PREFIX = $prefix" >> Makefile.incl
+echo "MAN_PATH_USE = $man_path" >> Makefile.incl
+echo "PLUGIN_DIR = $plugin_dir" >> Makefile.incl
+echo "CONF_FILE = $conf_file" >> Makefile.incl
+echo "DOC = $doc" >> Makefile.incl
+echo "DOC_PREFIX = $doc_prefix" >> Makefile.incl
+echo "XML2_CFLAGS = $xml2_cflags" >> Makefile.incl
+echo "XML2_LIBS = $xml2_libs" >> Makefile.incl
+echo "PL_USE_FFTW3 = $use_fftw3" >> Makefile.incl
+if test "$qt_ok" = "1"; then
+    echo "QT_AVAIL = yes" >> Makefile.incl
+    echo "QT_CFLAGS = $qt_cflags" >> Makefile.incl
+    echo "QT_INCLUDE = $qt_incl" >> Makefile.incl
+    echo "QT_LFLAGS = $qt_lflags" >> Makefile.incl
+    echo "QT_LIBS = $qt_libs" >> Makefile.incl
+    echo "QT_MOC = $qt_moc" >> Makefile.incl
+    echo "QT_UIC = $qt_uic" >> Makefile.incl
+    echo "QT_QMAKE = $qmake" >> Makefile.incl
+    # RASCHlab can only be build if Qt setup is OK
+    echo "RASCHLAB = $raschlab" >> Makefile.incl
+    echo "RASCHLAB_PREFIX = $raschlab_prefix" >> Makefile.incl
+fi
+if test "$gtk_ok" = "1"; then
+    echo "USE_GTK = yes" >> Makefile.incl
+    echo "GTK_CFLAGS = $gtk_cflags" >> Makefile.incl
+    echo "GTK_LFLAGS = $gtk_lflags" >> Makefile.incl
+fi
+if test "$gd_ok" = "1"; then
+    echo "GD_AVAIL = yes" >> Makefile.incl
+    echo "GD_CFLAGS = $gd_cflags" >> Makefile.incl
+    echo "GD_LDFLAGS = $gd_ldflags" >> Makefile.incl
+    echo "GD_LIBS = $gd_libs" >> Makefile.incl
+fi
+
+if test "$plot_lib" = "yes"; then
+    echo "PLOT_LIB = $plot_lib" >> Makefile.incl
+    if test "$qt_ok" = "1"; then
+	echo "PLOT_LIB_CFLAGS = -DRA_PLOT_LIB_USE_QT" >> Makefile.incl
+    fi
+    if test "$gd_ok" = "1"; then
+	echo "PLOT_LIB_CFLAGS += -DRA_PLOT_LIB_USE_GD" >> Makefile.incl
+    fi
+fi
+
+echo "SCILAB_PATH = $scilab_path" >> Makefile.incl
+echo "OCTAVE_INCL_PATH = $octave_incl_path" >> Makefile.incl
+echo "OCTAVE_FILE_DIR = $oct_file_dir" >> Makefile.incl
+echo "PACKAGE = $package" >> Makefile.incl
+echo "PACKAGE_DEFINE = \\\"$package\\\"" >> Makefile.incl
+echo "LOCALEDIR = $localedir" >> Makefile.incl
+echo "LOCALEDIR_DEFINE = \\\"$localedir\\\"" >> Makefile.incl
+echo "" >> Makefile.incl
+cat Makefile.dist >> Makefile.incl
+cat Makefile.incl.in >> Makefile.incl
+
+# at first the command processing things
+cat Makefile.cmd.in > Makefile
+# then the distribution/configuration things
+cat Makefile.incl >> Makefile
+# and now the remaining stuff (all the targets)
+cat Makefile.in >> Makefile
+
+
+########## write Makefile for interfaces
+echo "########## configure specific settings ##########" > interfaces/Makefile
+echo "PERL_INSTALLED = $perl_installed" >> interfaces/Makefile
+echo "PYTHON_INSTALLED = $python_installed" >> interfaces/Makefile
+echo "OCTAVE_INSTALLED = $octave_installed" >> interfaces/Makefile
+echo "MATLAB_INSTALLED = $matlab_installed" >> interfaces/Makefile
+echo "SCILAB_INSTALLED = $scilab_installed" >> interfaces/Makefile
+echo "" >> interfaces/Makefile
+cat interfaces/Makefile.in >> interfaces/Makefile
+
+
+########## write librasch-config
+echo "#!/bin/sh" > librasch-config
+echo "########## configure specific settings ##########" >> librasch-config
+echo "prefix=$prefix" >> librasch-config
+echo "plugin_dir=$plugin_dir" >> librasch-config
+echo "" >> librasch-config
+cat librasch-config.dist >> librasch-config
+cat librasch-config.in >> librasch-config
+chmod 755 librasch-config

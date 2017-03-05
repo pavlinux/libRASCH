@@ -1,0 +1,347 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>ap-morphology</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="Reference Manual for libRASCH-0.7.2"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Process Plugins"
+HREF="process-plugins.html"><LINK
+REL="PREVIOUS"
+TITLE="Process Plugins"
+HREF="process-plugins.html"><LINK
+REL="NEXT"
+TITLE="calibration"
+HREF="plugin-calibration.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="REFENTRY"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Reference Manual for libRASCH-0.7.2</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="process-plugins.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="plugin-calibration.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="PLUGIN-AP-MORPHOLOGY"
+></A
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ap-morphology</SPAN
+></SPAN
+></H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN5288"
+></A
+><H2
+>Name</H2
+>ap-morphology&nbsp;--&nbsp;get systolic and diastolyc values and positions of aterial pressure waves</DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5291"
+></A
+><H2
+>Description</H2
+><P
+> The plugin get systolic and diastolic values and positions from bloodpressure waves. Additionally it tries to find calibration-intervals (eg in the Portapres system it is possible to enable calibration during the measurement).</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5294"
+></A
+><H2
+>Options</H2
+><DIV
+CLASS="TABLE"
+><A
+NAME="AEN5296"
+></A
+><P
+><B
+>Table 8-1. List of options for plugin ap-morphology</B
+></P
+><TABLE
+BORDER="1"
+FRAME="border"
+RULES="all"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>Name</TH
+><TH
+>Description</TH
+><TH
+>type</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>use_eval</TD
+><TD
+>use all positions in evaluation eh (function argument)</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>num_pos</TD
+><TD
+>number of positions where rr values and positions should be get</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>pos</TD
+><TD
+>positions</TD
+><TD
+>long array</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5317"
+></A
+><H2
+>Results</H2
+><DIV
+CLASS="TABLE"
+><A
+NAME="AEN5319"
+></A
+><P
+><B
+>Table 8-2. List of results of plugin ap-morphology</B
+></P
+><TABLE
+BORDER="1"
+FRAME="border"
+RULES="all"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>Name</TH
+><TH
+>Description</TH
+><TH
+>type</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>IDX</TD
+><TD
+>index of event</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>SYST</TD
+><TD
+>systolic blood pressures</TD
+><TD
+>double array</TD
+></TR
+><TR
+><TD
+>DIAS</TD
+><TD
+>diastolic blood pressures</TD
+><TD
+>double array</TD
+></TR
+><TR
+><TD
+>MEAN</TD
+><TD
+>mean blood pressures</TD
+><TD
+>double array</TD
+></TR
+><TR
+><TD
+>SYST_POS</TD
+><TD
+>positions of systolic measurements</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>DIAS_POS</TD
+><TD
+>positions of diastolic measurements</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>FLAGS</TD
+><TD
+>flags</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>IBI</TD
+><TD
+>inter beat intervals</TD
+><TD
+>double array</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5360"
+></A
+><H2
+>Version</H2
+><P
+>0.3.0</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5363"
+></A
+><H2
+>Author(s)</H2
+><P
+>Raphael Schneider (rasch@med1.med.tum.de)</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="process-plugins.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="plugin-calibration.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Process Plugins</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="process-plugins.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>calibration</SPAN
+></SPAN
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

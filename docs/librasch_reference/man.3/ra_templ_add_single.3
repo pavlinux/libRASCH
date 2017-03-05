@@ -1,0 +1,27 @@
+.TH "ra_templ_add_single" 3 "January 2005" "libRASCH API (0.7.2)"
+.SH NAME
+ra_templ_add_single \- adds a template
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_templ_add_single
+.BI "(prop_handle " proph ","
+.BI "int " fiducial_offset ","
+.BI "long " type ","
+.BI "double ** " *data ","
+.BI "long " templ_num ");"
+.SH ARGUMENTS
+.IP "proph" 12
+ event-property-handle
+.IP "fiducial_offset" 12
+ position of the fiducial-point in su from template-start
+.IP "type" 12
+ ??
+.IP "*data" 12
+ 
+.IP "templ_num" 12
+ number of the template
+.SH "DESCRIPTION"
+This function add a specific template and returns the zero-based index of the template.
+.SH "SOURCE FILE"
+template.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

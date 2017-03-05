@@ -1,0 +1,18 @@
+.TH "ra_class_del_event" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_class_del_event \- delete an event
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_class_del_event
+.BI "(class_handle " clh ","
+.BI "long " event_id ");"
+.SH ARGUMENTS
+.IP "clh" 12
+ event-class handle
+.IP "event_id" 12
+ event-id of the event
+.SH "DESCRIPTION"
+The function deletes the event 'event_id' from the event-class 'clh'.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

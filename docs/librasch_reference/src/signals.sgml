@@ -1,0 +1,6 @@
+<chapter id="signals"><title>Signals for Inter Plugin Communication</title>
+<para>
+No special intro text.
+</para>
+&signals-auto;
+</chapter>

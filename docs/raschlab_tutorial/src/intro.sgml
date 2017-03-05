@@ -1,0 +1,38 @@
+<chapter id="introduction"><title>Introduction</title>
+
+<para>
+RASCHlab is a program based on libRASCH (http://www.librasch.org), which allows the user to
+access time-series data. Additionally the user can process the signals
+(e.g. perform a beat detection in ECG's) and perform calculations
+based on the signals (e.g. calculate heart rate variability parameters
+from an ECG).
+</para>
+
+<para>
+The program provides access to different file formats (e.g. EDF(+),
+MIT/AHA) and displays the informations which are included in a
+signal. For example comments/annotations in an EDF+ file is shown and
+the user can edit a comment or add a new one. Or when ECG's contain
+informations about the position and types of the heart beats, RASCHlab
+will show the positions and the user can edit/delete/insert the
+beat positions.
+</para>
+
+<para>
+This tutorial will show you the fundamental usage of RASCHlab. All
+examples are shown on ECG's but generally it can be used for every
+kind of signal.
+</para>
+
+<para>
+At the moment libRASCH (the basis of RASCHlab)
+supports best signals used in cardiology (e.g. ECG, continuous blood
+pressure) by special plugins for displaying and processing these
+signals. If you have experience with signal processing in other fields
+and some ideas what would be nice to have in libRASCH/RASCHlab, please
+send me an email (rasch@med1.med.tum.de) with your ideas and/or source
+code.
+</para>
+
+
+</chapter>

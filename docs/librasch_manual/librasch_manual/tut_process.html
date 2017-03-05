@@ -1,0 +1,460 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Usage of process-plugins</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="User Manual for libRASCH-0.7.2"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="A Tutorial"
+HREF="tutorial.html"><LINK
+REL="PREVIOUS"
+TITLE="Get Events"
+HREF="tut_get_events.html"><LINK
+REL="NEXT"
+TITLE="Examples for all supported lanuages/systems"
+HREF="all_examples.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="SECTION"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>User Manual for libRASCH-0.7.2</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="tut_get_events.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. A Tutorial</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="all_examples.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="TUT_PROCESS"
+>Usage of process-plugins</A
+></H1
+><P
+>The example will show how to calculate Heart-Rate-Variability (HRV)
+using the process-plugin 'hrv'. We will perform the following steps:
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>get 'hrv' plugin</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>calculate HRV using the plugin</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>print the calculation results</P
+></LI
+></UL
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>//
+#include &#60;stdio.h&#62;
+#include &#60;ra.h&#62;
+
+int main(int argc, char *argv[])
+{
+    ra_handle ra;
+    struct ra_info *inf;
+    meas_handle meas;
+    eval_handle eval;
+    plugin_handle pl;
+    struct proc_info *pi;
+
+    /* initialize libRASCH */
+    ra = ra_lib_init();
+    if (ra == NULL)
+    {
+        printf("error initializing libRASCH\n");
+        return -1;
+    }
+
+    /* open measurement */
+    meas = ra_meas_open(ra, argv[1], 0);
+    if (meas == NULL)
+    {
+        printf("can't open measurement %s\n", argv[1]);
+        return -1;
+    }
+
+    /* get default evaluation */
+    eval = ra_eval_get_def(meas);
+    if (eval == NULL)
+    {
+        printf("no evaluation in measurement %s\n", argv[1]);
+        return -1;
+    }
+
+    /* get plugin-handle for hrv-plugin */
+    pl = ra_plugin_get_by_name(ra, "hrv", 0); <A
+NAME="PROCESS_C.GET_PL"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>
+    if (pl == NULL)
+    {
+        printf("can't find plugin 'hrv'\n");
+        return -1;
+    }
+
+    /* calculate hrv-values using the hrv-plugin */
+    pi = (struct proc_info *)ra_proc_get(pl); <A
+NAME="PROCESS_C.INIT"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+>
+    pi-&#62;mh = meas;
+    pi-&#62;rh = ra_rec_get_first(meas, 0);
+    pi-&#62;eh = eval;
+    if (ra_proc_do(pi) == 0) <A
+NAME="PROCESS_C.PROCESS"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+>
+    {
+        long num_results, l;
+        value_handle vh;
+
+        /* get number of results */
+        vh = ra_value_malloc();
+        if (ra_info_get(pl, RA_INFO_PL_NUM_RESULTS_L, vh) != 0)
+        {
+            printf("no results\n");
+            return -1;
+        }
+        num_results = ra_value_get_long(vh);
+
+        for (l = 0; l &#60; num_results; l++)
+        {
+            char out[200], t[100];
+
+            /* set number of result in which we are interested */
+            ra_value_set_number(vh, l); <A
+NAME="PROCESS_C.SET_RES"
+><IMG
+SRC="../images/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+>
+
+            /* test if result is a default value (some
+               non-default results are arrays which we skip in
+               this example) */
+            ra_info_get(pl, RA_INFO_PL_RES_DEFAULT_L, vh);
+            if (ra_value_get_long(vh) == 0)
+                continue;
+
+            out[0] = '\0';
+            if (ra_info_get(pl, RA_INFO_PL_RES_NAME_C, vh) == 0)
+            {
+                strcpy(t, ra_value_get_string(vh));
+                strcat(out, t);
+            }
+            if (ra_info_get(pl, RA_INFO_PL_RES_DESC_C, vh) == 0)
+            {
+                sprintf(t, " (%s)", ra_value_get_string(vh));
+                strcat(out, t);
+            }
+            if (ra_proc_get_result(pi, vh) == 0) <A
+NAME="PROCESS_C.GET_RES"
+><IMG
+SRC="../images/callouts/5.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(5)"></A
+>
+            {
+                sprintf(t, ": %lf", ra_value_get_double(vh));
+                strcat(out, t);
+            }
+
+            printf("%s\n", out);
+        }
+
+        ra_value_free(vh);
+    }
+
+    /* close */
+    ra_proc_free(pi);
+    ra_meas_close(meas);
+    ra_lib_close(ra);
+
+    return 0;
+}                               /* main() */
+
+//&#13;</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tut_process.html#PROCESS_C.GET_PL"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+>Returns the plugin-handle for the plugin 'hrv'.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tut_process.html#PROCESS_C.INIT"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+></DT
+><DD
+>Initialize the proc_info structure (defined in ra_defines.h). In this
+structure must be the information set, which will be needed for the
+processing (the next 3 lines).</DD
+><DD
+><P
+>Not all process-plugins need the information of the recording and/or
+the evaluation. Please check the plugin-reference section which
+information is needed. In case of doubt set all variables.</P
+></DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tut_process.html#PROCESS_C.PROCESS"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+></DT
+><DD
+>This function-call starts the processing. If the processing is 
+successfull, the function returns 0.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tut_process.html#PROCESS_C.SET_RES"
+><IMG
+SRC="../images/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+></DT
+><DD
+>To select the result, in which you are interessted, the variable
+'res_num' in the ra_info structure must be set. The value of the
+result as well as information about the result will be returned using
+a ra_info structure.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="tut_process.html#PROCESS_C.GET_RES"
+><IMG
+SRC="../images/callouts/5.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(5)"></A
+></DT
+><DD
+>Information about a result will be obtained using
+ra_get_info_id(). The value of the result will be obtained using
+ra_get_result().</DD
+></DL
+></DIV
+><P
+>The output of the above example for the ECG '100s'
+is shown here:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>SDNN (standard deviation of normal-to-normal intervals):
+31.092193
+HRVI (HRV-Index): 4.733333
+SDANN (standard deviation of averaged normal-to-normal
+intervals): nan
+rmssd (root mean of squared sucsessive differences): 34.078554
+pNN50 (): 7.246377
+TP (total power): 484.785610
+ULF (ultra low frequency power): 0.000000
+VLF (very low frequency power of short-term recordings):
+32.899861
+LF (low frequency power): 180.739763
+LF_NORM (normalised low frequency power): 39.996783
+HF (high freuqency power): 271.145986
+HF_NORM (normalised high frequency power): 60.003217
+LF_HF_RATIO (LF/HF ratio): 0.666577
+POWER_LAW (power law behavior): 0.000000&#13;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="tut_get_events.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="all_examples.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Get Events</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="tutorial.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Examples for all supported lanuages/systems</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

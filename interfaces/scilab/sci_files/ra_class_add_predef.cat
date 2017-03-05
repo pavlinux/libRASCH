@@ -1,0 +1,7 @@
+Returns the handle of the newly added event-class.
+    Input parameters:
+    eval_handle
+    id
+
+  Output parameters:
+    class_handle

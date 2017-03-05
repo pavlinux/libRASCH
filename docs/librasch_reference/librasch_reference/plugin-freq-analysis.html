@@ -1,0 +1,545 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>freq-analysis</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="Reference Manual for libRASCH-0.7.2"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Process Plugins"
+HREF="process-plugins.html"><LINK
+REL="PREVIOUS"
+TITLE="fiducial-point"
+HREF="plugin-fiducial-point.html"><LINK
+REL="NEXT"
+TITLE="hrv"
+HREF="plugin-hrv.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="REFENTRY"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Reference Manual for libRASCH-0.7.2</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="plugin-fiducial-point.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="plugin-hrv.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="PLUGIN-FREQ-ANALYSIS"
+></A
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>freq-analysis</SPAN
+></SPAN
+></H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN6226"
+></A
+><H2
+>Name</H2
+>freq-analysis&nbsp;--&nbsp;perform frequency analysis</DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN6229"
+></A
+><H2
+>Description</H2
+><P
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN6232"
+></A
+><H2
+>Options</H2
+><DIV
+CLASS="TABLE"
+><A
+NAME="AEN6234"
+></A
+><P
+><B
+>Table 8-1. List of options for plugin freq-analysis</B
+></P
+><TABLE
+BORDER="1"
+FRAME="border"
+RULES="all"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>Name</TH
+><TH
+>Description</TH
+><TH
+>type</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>use_events</TD
+><TD
+>!=0: use events, ==0: use signal raw data</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>evprop_name</TD
+><TD
+>use these event-property for frequency analysis</TD
+><TD
+>char *</TD
+></TR
+><TR
+><TD
+>evprop_pos_name</TD
+><TD
+>when using events, the position of the events is needed for time based analysis</TD
+><TD
+>char *</TD
+></TR
+><TR
+><TD
+>use_time</TD
+><TD
+>flag if freq. analysis should be done based on time(!=0) or based on the event(=0) (e.g. rr-interval)</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>use_start_end_event</TD
+><TD
+>use events from start_event to end_event</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>start_event</TD
+><TD
+>start-event (including this event)</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>end_event</TD
+><TD
+>end-event (excluding this event)</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>num_events</TD
+><TD
+>use the events listed in events</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>events</TD
+><TD
+>list of events to use</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>num_ignore_events</TD
+><TD
+>number of events which should be ignored</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>ignore_events</TD
+><TD
+>list of events to ignore</TD
+><TD
+>long array</TD
+></TR
+><TR
+><TD
+>rh</TD
+><TD
+>recording handle</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>ch_num</TD
+><TD
+>use this channel for PRSA</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>use_ignore_value</TD
+><TD
+>flag if there are values which should not be used for freq. analysis</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>ignore_value</TD
+><TD
+>this value will be not used for freq. analysis (if use_ignore_value_1 is != 0)</TD
+><TD
+>double</TD
+></TR
+><TR
+><TD
+>use_start_end_pos</TD
+><TD
+>use raw-data/events between start_pos and end_pos</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>start_pos</TD
+><TD
+>start-pos in sample-units</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>end_pos</TD
+><TD
+>end-pos in sample-units</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>use_data</TD
+><TD
+>use the data given in 'data'</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>num_data</TD
+><TD
+>number of the data given in 'data'</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>data</TD
+><TD
+>perform frequency analysis using this data</TD
+><TD
+>double array</TD
+></TR
+><TR
+><TD
+>samplerate</TD
+><TD
+>samplerate to use when freq.analysis should be done time based</TD
+><TD
+>double</TD
+></TR
+><TR
+><TD
+>smooth_data</TD
+><TD
+>flag if input-data should be smoothed</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>smooth_method</TD
+><TD
+>at the moment only a boxcar-filter is available</TD
+><TD
+>char *</TD
+></TR
+><TR
+><TD
+>smooth_width</TD
+><TD
+>width of the smooth-filter</TD
+><TD
+>double</TD
+></TR
+><TR
+><TD
+>window</TD
+><TD
+>window function used</TD
+><TD
+>char *</TD
+></TR
+><TR
+><TD
+>remove_mean</TD
+><TD
+>remove the mean value before the frequency analysis</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>remove_trend</TD
+><TD
+>remove the trend (first order) before the frequency analysis</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>method</TD
+><TD
+>method used for the frequency analysis</TD
+><TD
+>char *</TD
+></TR
+><TR
+><TD
+>num_freq</TD
+><TD
+>number of frequency components</TD
+><TD
+>long</TD
+></TR
+><TR
+><TD
+>smooth_spec</TD
+><TD
+>flag if spectrum should be smoothed</TD
+><TD
+>long</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN6367"
+></A
+><H2
+>Results</H2
+><DIV
+CLASS="TABLE"
+><A
+NAME="AEN6369"
+></A
+><P
+><B
+>Table 8-2. List of results of plugin freq-analysis</B
+></P
+><TABLE
+BORDER="1"
+FRAME="border"
+RULES="all"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>Name</TH
+><TH
+>Description</TH
+><TH
+>type</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>FREQ_AXIS</TD
+><TD
+>frequency values (the x-axis)</TD
+><TD
+>double array</TD
+></TR
+><TR
+><TD
+>PSD</TD
+><TD
+>Power Spectrum Density</TD
+><TD
+>double array</TD
+></TR
+><TR
+><TD
+>REAL_PART</TD
+><TD
+>real part of the frequency spectrum</TD
+><TD
+>double array</TD
+></TR
+><TR
+><TD
+>IMG_PART</TD
+><TD
+>imaginary part of the frequency spectrum</TD
+><TD
+>double array</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN6394"
+></A
+><H2
+>Version</H2
+><P
+>0.2.1</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN6397"
+></A
+><H2
+>Author(s)</H2
+><P
+>Raphael Schneider (rasch@med1.med.tum.de)</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="plugin-fiducial-point.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="plugin-hrv.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>fiducial-point</SPAN
+></SPAN
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="process-plugins.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>hrv</SPAN
+></SPAN
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

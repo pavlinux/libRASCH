@@ -1,0 +1,7 @@
+Returns the event-property-handle number 'index'.
+  Input parameters:
+    eval_handle
+    index
+
+  Output parameters:
+    prop_handle

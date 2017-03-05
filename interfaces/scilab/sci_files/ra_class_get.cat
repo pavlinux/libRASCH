@@ -1,0 +1,8 @@
+
+    Returns all event-classes with the id 'id'.
+    Input parameters:
+    eval_handle
+    id
+
+  Output parameters:
+    value

@@ -1,0 +1,8 @@
+
+    Return the event-propertiy with the id 'id'.
+    Input parameters:
+    class_handle
+    id
+
+  Output parameters:
+    value

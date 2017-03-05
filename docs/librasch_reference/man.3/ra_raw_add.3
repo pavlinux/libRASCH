@@ -1,0 +1,21 @@
+.TH "ra_raw_add" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_raw_add \- add raw data
+.SH SYNOPSIS
+.B "LIBRAAPI size_t" ra_raw_add
+.BI "(meas_handle " mh ","
+.BI "unsigned int " ch ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ handle of the measurement
+.IP "ch" 12
+ channel where data should be added
+.IP "vh" 12
+ data to be added
+.SH "DESCRIPTION"
+Adds raw data to a measurement. The data is added to the current session. Not implemented yet. !!!
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

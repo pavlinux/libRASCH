@@ -1,0 +1,45 @@
+.TH "ra_prop_add" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_prop_add \- adds an user-defined event-property to an event-class
+.SH SYNOPSIS
+.B "LIBRAAPI prop_handle" ra_prop_add
+.BI "(class_handle " clh ","
+.BI "const char * " id ","
+.BI "long " value_type ","
+.BI "const char * " name ","
+.BI "const char * " desc ","
+.BI "const char * " unit ","
+.BI "int " use_minmax ","
+.BI "double " min ","
+.BI "double " max ","
+.BI "int " has_ignore_value ","
+.BI "double " ignore_value ");"
+.SH ARGUMENTS
+.IP "clh" 12
+ event-class handle
+.IP "id" 12
+ ASCII-id of the event-property
+.IP "value_type" 12
+ RA_VALUE_TYPE_* of the values stored in the event-property
+.IP "name" 12
+ a short name for the event-property
+.IP "desc" 12
+ a short description of the event-property
+.IP "unit" 12
+ unit of the values stored in the event-property
+.IP "use_minmax" 12
+ flag if min-/max-values are valid
+.IP "min" 12
+ minimum value
+.IP "max" 12
+ maximum value
+.IP "has_ignore_value" 12
+ flag if 'ignore_value' is valid
+.IP "ignore_value" 12
+ a value which is interpreted as non-valid and can be ignored
+.SH "DESCRIPTION"
+The function adds an event-property to the event-class 'clh'. The parameter 'id' is used to identifiy the event-property and must contain only ASCII characters. The parameters 'name' and 'desc' are used to describe the  event-class. If you want to use a pre-defined event-property, use ra_prop_add_predef().
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

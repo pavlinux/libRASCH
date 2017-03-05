@@ -1,0 +1,7 @@
+Delete a summary part.
+    Input parameters:
+    sum_handle
+    part_id
+
+  Output parameters:
+    ok

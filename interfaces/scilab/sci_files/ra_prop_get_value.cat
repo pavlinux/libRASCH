@@ -1,0 +1,8 @@
+Returns the event-property value for event 'event-id' and channel 'channel'.
+  Input parameters:
+    prop_handle
+    id
+    ch
+
+  Output parameters:
+    value

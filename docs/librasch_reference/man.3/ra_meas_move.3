@@ -1,0 +1,18 @@
+.TH "ra_meas_move" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_meas_move \- move measurement
+.SH SYNOPSIS
+.B "LIBRAAPI meas_handle" ra_meas_move
+.BI "(meas_handle " mh ","
+.BI "const char * " dest_dir ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ handle of measurement which should be moved
+.IP "dest_dir" 12
+ destination directory
+.SH "DESCRIPTION"
+The function move the files of measurement mh to directory dest_dir. After the move the measurement will be reopend (to be able to handle the new positions of the files) and the functions returns the new measurement-handle. IMPORTANT!!! Function _not_ completely tested. Use at your own risk.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

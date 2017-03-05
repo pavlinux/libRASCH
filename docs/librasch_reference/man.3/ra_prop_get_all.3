@@ -1,0 +1,18 @@
+.TH "ra_prop_get_all" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_prop_get_all \- returns all event-properties of an event-class
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_prop_get_all
+.BI "(class_handle " clh ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "clh" 12
+ 
+.IP "vh" 12
+ ra-value handle receiving the event-property handles
+.SH "DESCRIPTION"
+The function returns in 'vh' all event-properties available in event-class 'clh'.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

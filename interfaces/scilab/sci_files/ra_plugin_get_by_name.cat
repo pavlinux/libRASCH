@@ -1,0 +1,8 @@
+Returns the plugin-handle for plugin 'name'.
+  Input parameters:
+    ra_handle
+    name
+    search_all
+
+  Output parameters:
+    plugin_handle

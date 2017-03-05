@@ -1,0 +1,27 @@
+.TH "ra_class_add_event_mass" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_class_add_event_mass \- add a list of events
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_class_add_event_mass
+.BI "(class_handle " clh ","
+.BI "unsigned long " num_events ","
+.BI "const long * " start ","
+.BI "const long * " end ","
+.BI "long * " ev_ids ");"
+.SH ARGUMENTS
+.IP "clh" 12
+ event-class handle
+.IP "num_events" 12
+ number of events to add
+.IP "start" 12
+ array with the start positions of the event in sample-units
+.IP "end" 12
+ array with the end positions of the event in sample-units
+.IP "ev_ids" 12
+ array receiving the event-ids
+.SH "DESCRIPTION"
+The function adds a list of events to the event-class 'clh'. The start and end of the events are given by 'start' and 'end' respectively. The event-ids are returned in the array 'ev_ids'.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

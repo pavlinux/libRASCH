@@ -1,0 +1,18 @@
+.TH "ra_eval_loadxml" 3 "January 2005" "libRASCH API (0.7.2)"
+.SH NAME
+ra_eval_loadxml \- load evalution in XML format
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_eval_loadxml
+.BI "(meas_handle " mh ","
+.BI "const char * " file ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ measurement handle
+.IP "file" 12
+ name of the evaluation file (optional)
+.SH "DESCRIPTION"
+This function loads the evaluation(s) that belongs to the measurement mh. If no filename file is given, the default-filename will be used.
+.SH "SOURCE FILE"
+load_xml.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

@@ -1,0 +1,142 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Deutsch (Deutschland) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_EVAL_DLG DIALOG DISCARDABLE  0, 0, 259, 225
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Evaluations"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,146,204,50,14
+    PUSHBUTTON      "Abbrechen",IDCANCEL,37,204,50,14
+    LISTBOX         IDC_EVAL_LIST,7,7,187,49,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "delete",IDC_DELETE,202,7,50,14
+    GROUPBOX        "Static",IDC_GROUP,7,63,245,135
+    LTEXT           "Description",IDC_TXT_DESCRIPTION,14,76,201,8
+    EDITTEXT        IDC_DESC,14,89,232,27,ES_AUTOHSCROLL
+    CONTROL         "default evaluation",IDC_DEFAULT,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,14,122,109,10
+    LTEXT           "original evaluation: no",IDC_ORIGINAL,128,122,115,8
+    LTEXT           "created: Static",IDC_CREATED,14,139,229,8
+    LTEXT           "program: Static",IDC_PROGRAM,14,152,225,8
+    LTEXT           "user: Static",IDC_USER,14,165,105,8
+    LTEXT           "host: Static",IDC_HOST,126,165,111,8
+    LTEXT           "last modified: Static",IDC_MODIFIED,14,178,178,8
+    PUSHBUTTON      "event-types",IDC_EVENT_TYPES,197,179,50,14
+END
+
+IDD_EVPROP_DLG DIALOG DISCARDABLE  0, 0, 231, 244
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Event Properties"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Exit",IDOK,174,223,50,14
+    PUSHBUTTON      "delete",IDC_DEL_PROP_BTN,174,80,50,14
+    LISTBOX         IDC_PROP_LIST,7,80,157,43,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Static",IDC_GROUP,7,129,217,87
+    LTEXT           "Description",IDC_TXT_DESCRIPTION,14,142,202,8
+    EDITTEXT        IDC_DESC_FIELD,14,155,203,37,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "occurence: Static",IDC_OCCURENCE,119,200,96,8
+    LTEXT           "value-type: Static",IDC_VALUE,14,200,99,8
+    LTEXT           "Event Properties",IDC_STATIC,7,67,217,8
+    LTEXT           "Event Class's",IDC_STATIC,7,7,217,8
+    LISTBOX         IDC_CLASS_LIST,7,17,156,43,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "delete",IDC_DEL_CLASS_BTN,174,17,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_EVAL_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 252
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 218
+    END
+
+    IDD_EVPROP_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 224
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 237
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Deutsch (Deutschland) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

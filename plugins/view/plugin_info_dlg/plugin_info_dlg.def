@@ -1,0 +1,7 @@
+; plugin_info_dlg.def : Deklariert die Modul-Parameter für die DLL.
+
+LIBRARY      "plugin_info_dlg"
+DESCRIPTION  'plugin_info_dlg Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explizite Exporte können hier eingefügt werden

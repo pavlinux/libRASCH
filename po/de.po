@@ -1,0 +1,4034 @@
+# translation of de.po to Deutsch
+# translation of de.po to
+# German translations for librasch package
+# German messages for librasch.
+# Copyright (C) 2004 Raphael Schneider
+# This file is distributed under the same license as the libRASCH package.
+# Raphael Schneider <rasch@med1.med.tum.de>, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: de\n"
+"Report-Msgid-Bugs-To: Raphael Schneider <rasch@med1.med.tum.de>\n"
+"POT-Creation-Date: 2004-06-25 12:04+0200\n"
+"PO-Revision-Date: 2004-07-27 16:16+0200\n"
+"Last-Translator: Raphael Schneider <rasch@med1.med.tum.de>\n"
+"Language-Team: Deutsch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.3.1\n"
+
+#: src/handle_plugin_linux.c:76
+#, c-format
+msgid "can't load %s: %s\n"
+msgstr "Kann %s nicht laden: %s\n"
+
+#: src/handle_plugin_linux.c:104
+#, c-format
+msgid "error load plugin %s: %s\n"
+msgstr "Fehler beim laden des Plugins %s: %s\n"
+
+#: src/handle_plugin_linux.c:117
+#, c-format
+msgid "error init plugin %s: %s\n"
+msgstr "Fehler beim initialisieren des Plugins %s: %s\n"
+
+#: src/handle_plugin_linux.c:158
+#, c-format
+msgid "dlopen() failed\n"
+msgstr "Funktion dlopen() fehlgeschlagen\n"
+
+#: src/handle_plugin_linux.c:168
+#, c-format
+msgid "dlsym() failed\n"
+msgstr "Funktion ´dlsym() fehlgeschlagen\n"
+
+#: src/ra.c:230
+#, c-format
+msgid "config-file: %s\n"
+msgstr "Konfigurations-Datei: %s\n"
+
+#: src/ra.c:254
+#, c-format
+msgid "config plugin-dir: %s\n"
+msgstr "Plugin-Verzeichnis (aus Config-Datei): %s\n"
+
+#: src/ra.c:265
+#, c-format
+msgid "po-dir: %s\n"
+msgstr "po-Verzeichnis (aus Config-Datei): %s\n"
+
+#: src/ra.c:559
+#, c-format
+msgid "circular set_error-calling, this should NOT happen\n"
+msgstr "Wiederholter Aufruf von set_error(). Dies sollte NICHT passieren.\n"
+
+#: src/ra.c:1419
+#, c-format
+msgid ""
+"critical error - get_plugin_info() in ra.c:\n"
+"tried to get result-infos but mem was not set\n"
+"plugin used: %s\n"
+msgstr ""
+"Kritischer Fehler - get_plugin_info() in ra.c:\n"
+"Es wurde versucht auf Ergebnisse zuzugreifen aber der Speicher war nicht "
+"initialisiert\n"
+"verwendetes plugin: %s\n"
+
+#: src/ra.c:1426
+#, c-format
+msgid ""
+"critical error - get_plugin_info() in ra.c:\n"
+"tried to get option-infos but mem was not set\n"
+"plugin used: %s\n"
+msgstr ""
+"Kritischer Fehler - get_plugin_info() in ra.c:\n"
+"Es wurde versucht auf eine Option zuzugreifen aber der Speicher war nicht "
+"initialisiert\n"
+"verwendetes plugin: %s\n"
+
+#: src/ra.c:2180 src/ra.c:2182
+msgid "plugin"
+msgstr "Plugin"
+
+#: include/pl_general.h:51
+msgid "#plugins"
+msgstr "#Plugins"
+
+#: include/pl_general.h:52
+msgid "libRASCH version"
+msgstr "libRASCH Version"
+
+#: include/pl_general.h:52
+msgid "version of libRASCH"
+msgstr "Version von libRASCH"
+
+#: include/pl_general.h:54
+msgid "#sessions"
+msgstr "#Sitzungen"
+
+#: include/pl_general.h:55
+msgid "#obj. infos"
+msgstr "#Objekt Infos"
+
+#: include/pl_general.h:56
+msgid "#general rec. infos"
+msgstr "#Aufz.Infos"
+
+#: include/pl_general.h:57
+msgid "#device infos"
+msgstr "#Gerät Infos"
+
+#: include/pl_general.h:58
+msgid "#ch. infos"
+msgstr "#Kanal Infos"
+
+#: include/pl_general.h:59
+msgid "#eval. infos"
+msgstr "#Ausw. Infos"
+
+#: include/pl_general.h:60
+msgid "#eval's"
+msgstr "#Auswertungen"
+
+#: include/pl_general.h:60
+msgid "number of evaluations"
+msgstr "Anzahl vorhandener Auswertungen"
+
+#: include/pl_general.h:61
+msgid "max. samplerate"
+msgstr "max.Abtastrate"
+
+#: include/pl_general.h:61
+msgid "maximum samplrate used in measurement"
+msgstr "maximale Abtastrate die in der Messung verwendet wurde"
+
+#: include/pl_general.h:62
+msgid "x-axis scale"
+msgstr "X-Achsen Skalierung"
+
+#: include/pl_general.h:62
+msgid "factor for a channel to scale positions"
+msgstr "Skalierungsfaktor für die Poition des Messkanals"
+
+#: include/pl_general.h:63
+msgid "size [Bytes]"
+msgstr "Größe [Bytes]"
+
+#: include/pl_general.h:63
+msgid "size needed on disc of measurement in Bytes"
+msgstr "Größe der Messung auf der Festplatte in Bytes"
+
+#: include/pl_general.h:64
+msgid "files"
+msgstr "Dateien"
+
+#: include/pl_general.h:64
+msgid "files belonging to measurement"
+msgstr "Dateien die zur Messung gehören"
+
+#: include/pl_general.h:65
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_mfc.cpp:81
+msgid "path"
+msgstr "Pfad"
+
+#: include/pl_general.h:65
+msgid "full path of measurement incl. measurement name"
+msgstr "Absoluter Pfad der Messung inklusive des Namens der Messung"
+
+#: include/pl_general.h:66
+msgid "data in dir"
+msgstr "Dateien in Verzeichnis"
+
+#: include/pl_general.h:66
+msgid "flag if measurement was saved in directory"
+msgstr "Flag ob die Dateien der Messung in einem Verzeichnis gespeichert sind"
+
+#: include/pl_general.h:68
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:48
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:148
+msgid "Name"
+msgstr "Name"
+
+#: include/pl_general.h:68
+msgid "name of the person measured"
+msgstr "Name der Messperson"
+
+#: include/pl_general.h:69
+msgid "Forename"
+msgstr "Vorname"
+
+#: include/pl_general.h:69
+msgid "forename of the person measured"
+msgstr "Vorname der Messperson"
+
+#: include/pl_general.h:70
+msgid "Birthday"
+msgstr "Geburtsdatum"
+
+#: include/pl_general.h:70
+msgid "birthday of the person measured"
+msgstr "Geburtsdatum der Messperson"
+
+#: include/pl_general.h:71
+msgid "gender"
+msgstr "Geschlecht"
+
+#: include/pl_general.h:71
+msgid "gender of the person measured"
+msgstr "Geschlecht der Messperson"
+
+#: include/pl_general.h:72
+msgid "Age"
+msgstr "Alter"
+
+#: include/pl_general.h:72
+msgid "age of the person measured"
+msgstr "Alter der Messperson"
+
+#: include/pl_general.h:73
+msgid "Height"
+msgstr "Größe"
+
+#: include/pl_general.h:73
+msgid "height of the person measured in cm"
+msgstr "Größe der Messperson"
+
+#: include/pl_general.h:74
+msgid "Weight"
+msgstr "Gewicht"
+
+#: include/pl_general.h:74
+msgid "weight of the person measured in kg"
+msgstr "Gewicht der Messperson"
+
+#: include/pl_general.h:75
+msgid "street"
+msgstr "Straße"
+
+#: include/pl_general.h:76
+msgid "city"
+msgstr "Stadt"
+
+#: include/pl_general.h:77
+msgid "postal code"
+msgstr "Postleitzahl"
+
+#: include/pl_general.h:78
+msgid "country"
+msgstr "Land"
+
+#: include/pl_general.h:79
+msgid "address"
+msgstr "Adresse"
+
+#: include/pl_general.h:80
+msgid "phone1"
+msgstr "Telefonnummer-1"
+
+#: include/pl_general.h:81
+msgid "phone2"
+msgstr "Telefonnummer-2"
+
+#: include/pl_general.h:82
+msgid "mobile_phone"
+msgstr "Handy"
+
+#: include/pl_general.h:83
+msgid "fax"
+msgstr "Fax"
+
+#: include/pl_general.h:84
+msgid "email"
+msgstr "E-Mail"
+
+#: include/pl_general.h:85
+msgid "website"
+msgstr "Webseite"
+
+#: include/pl_general.h:86 include/pl_general.h:104
+#: include/ra_event_props.h:106
+msgid "comment"
+msgstr "Kommentar"
+
+#: include/pl_general.h:88
+msgid "ID"
+msgstr "ID"
+
+#: include/pl_general.h:88
+msgid "Patient-ID"
+msgstr "Patienten ID"
+
+#: include/pl_general.h:89
+msgid "reason"
+msgstr "Grund der Messung"
+
+#: include/pl_general.h:90
+msgid "diagnosis"
+msgstr "Diagnose"
+
+#: include/pl_general.h:91
+msgid "therapy"
+msgstr "Therapie"
+
+#: include/pl_general.h:92
+msgid "medication"
+msgstr "Medikation"
+
+#: include/pl_general.h:93
+msgid "hospital"
+msgstr "Krankenhaus"
+
+#: include/pl_general.h:94
+msgid "department"
+msgstr "Abteilung"
+
+#: include/pl_general.h:95
+msgid "doctor"
+msgstr "Arzt"
+
+#: include/pl_general.h:96
+msgid "examiner"
+msgstr "Auswerter"
+
+#: include/pl_general.h:98
+msgid "number of fetus"
+msgstr "Anzahl Feten"
+
+#: include/pl_general.h:99
+msgid "gestation date"
+msgstr "Gestations Alter"
+
+#: include/pl_general.h:101
+msgid "rec.type"
+msgstr "Aufzeichnungs Art"
+
+#: include/pl_general.h:102 plugins/view/eval_dlg/evprop_dlg_ui.cpp:131
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:120
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:292
+#: plugins/view/sig_sel_dlg/sig_sel_dlg_qt.cpp:36
+msgid "name"
+msgstr "Name"
+
+#: include/pl_general.h:103
+msgid "description"
+msgstr "Beschreibung"
+
+#: include/pl_general.h:105
+msgid "rec.time"
+msgstr "Aufzeichnungs Zeit"
+
+#: include/pl_general.h:106
+msgid "rec.date"
+msgstr "Aufzeichnungs Datum"
+
+#: include/pl_general.h:107
+msgid "rec.duration[sec]"
+msgstr "Aufzeichnungs Dauer [s]"
+
+#: include/pl_general.h:108
+msgid "rec.number"
+msgstr "Aufzeichnungs-Nummer"
+
+#: include/pl_general.h:109
+msgid "#sub-rec's"
+msgstr "#Unter-Aufzeichnungen"
+
+#: include/pl_general.h:110
+msgid "#device's"
+msgstr "#Messgeräte"
+
+#: include/pl_general.h:111
+msgid "#channels"
+msgstr "#Kanäle"
+
+#: include/pl_general.h:112
+msgid "offset[msec]"
+msgstr "Offset [ms]"
+
+#: include/pl_general.h:113
+msgid "full path"
+msgstr "Absoluter Pfad"
+
+#: include/pl_general.h:113
+msgid "full path of recording incl. recording name"
+msgstr "Absoluter Pfad inklusive des Aufzeichnungs-Namens"
+
+#: include/pl_general.h:114
+msgid "rec. in dir"
+msgstr "Aufzeichnungs-Dateien in Verzeichnis"
+
+#: include/pl_general.h:114
+msgid "flag if recording is saved in directory"
+msgstr "Flag ob Dateien der Aufzeichnung in einem Verzeichnis gespeichert wurden"
+
+#: include/pl_general.h:115
+msgid "mm/sec"
+msgstr "mm/s"
+
+#: include/pl_general.h:115
+msgid "mm per second (hint for displaing signal)"
+msgstr "mm pro Sekunde (Hinweis für die Darstellung des Signals)"
+
+#: include/pl_general.h:117
+msgid "dev-hw-name"
+msgstr "Name des Messgerätes"
+
+#: include/pl_general.h:118
+msgid "dev-hw-manufacturer"
+msgstr "Hersteller des Messgerätes"
+
+#: include/pl_general.h:119
+msgid "dev-hw-serial#"
+msgstr "Seriennummer des Messgerätes"
+
+#: include/pl_general.h:120
+msgid "dev-hw-version"
+msgstr "Version des Messgerätes"
+
+#: include/pl_general.h:121
+msgid "dev-sw-name"
+msgstr "Name des Messprogramms"
+
+#: include/pl_general.h:122
+msgid "dev-sw-manufacturer"
+msgstr "Hersteller des Messprogramms"
+
+#: include/pl_general.h:123
+msgid "dev-sw-serial#"
+msgstr "Seriennummer des Messprogramms"
+
+#: include/pl_general.h:124
+msgid "dev-sw-version"
+msgstr "Version des Messprogramms"
+
+#: include/pl_general.h:126
+msgid "ch-name"
+msgstr "Name"
+
+#: include/pl_general.h:127
+msgid "ch-desc"
+msgstr "Beschreibung"
+
+#: include/pl_general.h:128
+msgid "ch-#samples"
+msgstr "#Abtastwerte"
+
+#: include/pl_general.h:129
+msgid "ch-samplerate"
+msgstr "Abtastrate"
+
+#: include/pl_general.h:130
+msgid "ch-#bits"
+msgstr "#Bits"
+
+#: include/pl_general.h:131
+msgid "ch-resolution"
+msgstr "Amplituden-Auflösung"
+
+#: include/pl_general.h:132
+msgid "ch-sample-type"
+msgstr "Sample-Format"
+
+#: include/pl_general.h:133
+msgid "storage type of the sample values (e.g. integer, real)"
+msgstr "Speicherformat der Abtastwerte (z.B. Integer, Real)"
+
+#: include/pl_general.h:134
+msgid "ch-unit"
+msgstr "Einheit"
+
+#: include/pl_general.h:135
+msgid "center value"
+msgstr "zentraler Wert"
+
+#: include/pl_general.h:135
+msgid "value[unit] signal is centered"
+msgstr "Wert (physikalisch) um den das Signal zentriert dargestellt werden soll"
+
+#: include/pl_general.h:136
+msgid "center sample"
+msgstr "zentraler Abtastwert"
+
+#: include/pl_general.h:136
+msgid "center value as sample-value"
+msgstr "Abtastwert der dem zentralen Wert entspricht"
+
+#: include/pl_general.h:137
+msgid "min.value"
+msgstr "min.Wert"
+
+#: include/pl_general.h:137
+msgid "minimum value in units"
+msgstr "minimaler Wert"
+
+#: include/pl_general.h:138
+msgid "max.value"
+msgstr "max.Wert"
+
+#: include/pl_general.h:138
+msgid "maximum value in units"
+msgstr "maximaler Wert"
+
+#: include/pl_general.h:139
+msgid "mm/unit"
+msgstr "mm/Einheit"
+
+#: include/pl_general.h:139
+msgid "mm per unit (hint for displaing signal)"
+msgstr "mm pro Einheit (Hinweis für die Darstellung des Signals)"
+
+#: include/pl_general.h:140 plugins/view/plot_view/pair_opt_dlg_mfc.cpp:131
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:303
+msgid "type"
+msgstr "Typ"
+
+#: include/pl_general.h:140
+msgid "type of channel (e.g. ecg, eeg)"
+msgstr "Typ des Messkanals (z.B. EGK, EEG)"
+
+#: include/pl_general.h:141
+msgid "do-ignore-value"
+msgstr "ignoriere Werte"
+
+#: include/pl_general.h:142
+msgid "flag if some values of the channel should be ignored"
+msgstr "Flag ob spezielle Werte ignoriert werden sollen"
+
+#: include/pl_general.h:143
+msgid "ignore-value"
+msgstr "Wert"
+
+#: include/pl_general.h:143
+msgid "value which should be ignored"
+msgstr "Wert der ignoriert werden soll"
+
+#: include/pl_general.h:145
+msgid "eval-name"
+msgstr "Name der Auswertung"
+
+#: include/pl_general.h:145
+msgid "name of evaluation"
+msgstr "Name der Auswertung"
+
+#: include/pl_general.h:146
+msgid "eval-comment"
+msgstr "Kommentar zur Auswertung"
+
+#: include/pl_general.h:146
+msgid "comment of evaluation"
+msgstr "Kommentar zur Auswertung"
+
+#: include/pl_general.h:147
+msgid "eval add ts"
+msgstr "Zeitpunkt der Auswertung"
+
+#: include/pl_general.h:147
+msgid "timestamp when eval was added"
+msgstr "Zeitpunkt an dem die Auswertung ausgeführt wurde"
+
+#: include/pl_general.h:148
+msgid "eval modify ts"
+msgstr "Zeitpunkt der Modifikation"
+
+#: include/pl_general.h:148
+msgid "timestamp when eval was last modified"
+msgstr "Zeitpunkt der letzten Modifikation der Auswertung"
+
+#: include/pl_general.h:149
+msgid "user"
+msgstr "Benutzer"
+
+#: include/pl_general.h:149
+msgid "user who added eval"
+msgstr "Benutzer der die Auswertung durchgeführt hat"
+
+#: include/pl_general.h:150
+msgid "host"
+msgstr "Computer"
+
+#: include/pl_general.h:150
+msgid "machine on which eval was added"
+msgstr "Computer an dem die Auswertung durchgeführt wurde"
+
+#: include/pl_general.h:151
+msgid "program"
+msgstr "Programm"
+
+#: include/pl_general.h:151
+msgid "program which added eval"
+msgstr "Programm mit dem die Auswertung durchgeführt wurde"
+
+#: include/pl_general.h:152
+msgid "original-eval"
+msgstr "Original-Auswertung"
+
+#: include/pl_general.h:152
+msgid "evaluation done in recording system"
+msgstr "Auswertung die im Aufzeichnungssystem erstellt wurde"
+
+#: include/pl_general.h:153
+msgid "default-eval"
+msgstr "Standard-Auswertung"
+
+#: include/pl_general.h:153
+msgid "evaluation which should be used"
+msgstr "Auswertung die standardmäßig verwendet wird"
+
+#: include/pl_general.h:154
+msgid "#event sets"
+msgstr "#Ereignisgruppen"
+
+#: include/pl_general.h:154
+msgid "number of event-sets"
+msgstr "Anzahl der vorhandenen Ereignisgruppen"
+
+#: include/pl_general.h:155
+msgid "#event-properties"
+msgstr "#Ereignis-Eigenschaften"
+
+#: include/pl_general.h:155
+msgid "number of different event properties"
+msgstr "Anzahl der Eigenschaften der Ereignisgruppe"
+
+#: include/pl_general.h:157
+msgid "set-id-ascii"
+msgstr "Set-ASCII-ID"
+
+#: include/pl_general.h:157
+msgid "id-string of event-set"
+msgstr "Beschreibung der Ereignisgruppe"
+
+#: include/pl_general.h:158
+msgid "set-name"
+msgstr "Name"
+
+#: include/pl_general.h:158
+msgid "name of event-set"
+msgstr "Name der Ereignisgruppe"
+
+#: include/pl_general.h:159
+msgid "set-desc"
+msgstr "Beschreibung"
+
+#: include/pl_general.h:159
+msgid "description of event-set"
+msgstr "Beschreibung der Ereignisgruppe"
+
+#: include/pl_general.h:160
+msgid "set-type"
+msgstr "Typ"
+
+#: include/pl_general.h:160
+msgid "type of event-set (e.g. discrete, continues)"
+msgstr "Typ der Ereignisgruppe (z.B. diskret, kontinuierlich)"
+
+#: include/pl_general.h:161
+msgid "#events"
+msgstr "#Ereignisse"
+
+#: include/pl_general.h:161
+msgid "number of events"
+msgstr "Anzahl der Ereignisse"
+
+#: include/pl_general.h:163
+msgid "prop-id-ascii"
+msgstr "Property-ASCII-ID"
+
+#: include/pl_general.h:163
+msgid "id-string of event property"
+msgstr "Beschreibung der Ereignis-Eigenschaft"
+
+#: include/pl_general.h:164
+msgid "prop-name"
+msgstr "Name"
+
+#: include/pl_general.h:164
+msgid "name of event property"
+msgstr "Name der Ereignis-Eigenschaft"
+
+#: include/pl_general.h:165
+msgid "prop-desc"
+msgstr "Beschreibung"
+
+#: include/pl_general.h:165
+msgid "description of event property"
+msgstr "Beschreibung der Ereignis-Eigenschaft"
+
+#: include/pl_general.h:166
+msgid "prop-value type"
+msgstr "Variablentyp"
+
+#: include/pl_general.h:166
+msgid "type of the event-property values (short, long, double)"
+msgstr "Variablentyp der Ereignis-Eigenschaft (short, long, double)"
+
+#: include/pl_general.h:167
+msgid "template-prop"
+msgstr "ist Musternummer"
+
+#: include/pl_general.h:167
+msgid "flag if property handles template numbers (0: no, 1: yes)"
+msgstr "Flag ob Eigenschaft Muster-Nummern verwaltet (0: Nein, 1: Ja)"
+
+#: include/pl_general.h:168
+msgid "have min/max-values"
+msgstr "es gibt min/max-Werte"
+
+#: include/pl_general.h:169
+msgid "min-value"
+msgstr "Minimal Wert"
+
+#: include/pl_general.h:170
+msgid "max-value"
+msgstr "Maximal Wert"
+
+#: include/pl_general.h:171
+msgid "unit"
+msgstr "Einheit"
+
+#: include/pl_general.h:173
+msgid "#templates"
+msgstr "#Muster"
+
+#: include/pl_general.h:173
+msgid "number of templates"
+msgstr "Anzahl vorhandener Muster"
+
+#: include/pl_general.h:174
+msgid "#template channels"
+msgstr "#Muster-Kanäle"
+
+#: include/pl_general.h:174
+msgid "number of channels where templates where got"
+msgstr "Anzahl der Kanäle für die die Muster erstellt wurden"
+
+#: include/pl_general.h:175
+msgid "ch-number"
+msgstr "Kanal-Nummer"
+
+#: include/pl_general.h:175
+msgid "channel-number used"
+msgstr "Kanal-Nummer"
+
+#: include/pl_general.h:176
+msgid "template size"
+msgstr "Muster-Größe"
+
+#: include/pl_general.h:176
+msgid "number of data used for template in this channel"
+msgstr "Anzahl der Abtastwerte die für das Muster in diesem Kanal verwendet wurden"
+
+#: include/pl_general.h:178
+msgid "template number"
+msgstr "Nummer des Musters"
+
+#: include/pl_general.h:179
+msgid "fiducial value"
+msgstr "Referenzpunkt"
+
+#: include/pl_general.h:179
+msgid "offset of fiducial value (-1 if none)"
+msgstr "Offset zum Referenzpunkt (-1 wenn nicht angegeben)"
+
+#: include/pl_general.h:180
+msgid "template type"
+msgstr "Typ des Musters"
+
+#: include/pl_general.h:180
+msgid "type of template"
+msgstr "Typ des Musters"
+
+#: include/pl_general.h:182
+msgid "plugin name"
+msgstr "Name"
+
+#: include/pl_general.h:183
+msgid "plugin description"
+msgstr "Beschreibung"
+
+#: include/pl_general.h:184
+msgid "plugin filename"
+msgstr "Dateiname"
+
+#: include/pl_general.h:185
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_mfc.cpp:82
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:156
+msgid "use plugin"
+msgstr "verwende Plugin"
+
+#: include/pl_general.h:186
+msgid "plugin type"
+msgstr "Typ"
+
+#: include/pl_general.h:187
+msgid "plugin version"
+msgstr "Version"
+
+#: include/pl_general.h:188
+msgid "plugin build-timestamp"
+msgstr "Zeitpunkt der Erstellung"
+
+#: include/pl_general.h:189
+msgid "plugin license"
+msgstr "Lizenz"
+
+#: include/pl_general.h:191
+msgid "#options"
+msgstr "Optionen"
+
+#: include/pl_general.h:191
+msgid "number of options available in the plugin"
+msgstr "Anzahl der Plugin-Optionen"
+
+#: include/pl_general.h:192
+msgid "opt-name"
+msgstr "Name"
+
+#: include/pl_general.h:192
+msgid "a short name of the option"
+msgstr "Name der Option"
+
+#: include/pl_general.h:193
+msgid "opt-desc"
+msgstr "Beschreibung"
+
+#: include/pl_general.h:193
+msgid "a description of the option"
+msgstr "Beschreibung der Option"
+
+#: include/pl_general.h:194
+msgid "opt-type"
+msgstr "Typ"
+
+#: include/pl_general.h:194
+msgid "type of the option (eg. long, double, char)"
+msgstr "Variablentyp der Option (z.B. long, double char *)"
+
+#: include/pl_general.h:196
+msgid "#results"
+msgstr "#Ergebnisse"
+
+#: include/pl_general.h:196
+msgid "number of results in the plugin"
+msgstr "Anzahl der Ergebnisse die das Plugin liefert"
+
+#: include/pl_general.h:197
+msgid "res-name"
+msgstr "Name"
+
+#: include/pl_general.h:197
+msgid "a short name of the result"
+msgstr "Name des Ergebnisses"
+
+#: include/pl_general.h:198
+msgid "res-desc"
+msgstr "Beschreibung"
+
+#: include/pl_general.h:198
+msgid "a description of the result"
+msgstr "Beschreibung des Ergebnisses"
+
+#: include/pl_general.h:199
+msgid "res-type"
+msgstr "Ergebnis-Typ"
+
+#: include/pl_general.h:199
+msgid "type of the result (eg. long, double, char)"
+msgstr "Variablentyp des Ergebnisses (short, long, double)"
+
+#: include/pl_general.h:200
+msgid "res-default"
+msgstr "Standardergebniss"
+
+#: include/pl_general.h:200
+msgid "flag if the result belongs to the default results"
+msgstr "Flag ob das Ergebnis ein Standard-Ergebnis ist"
+
+#: include/pl_general.h:202
+msgid "session-name"
+msgstr "Name"
+
+#: include/pl_general.h:202
+msgid "name of the session"
+msgstr "Name"
+
+#: include/pl_general.h:203
+msgid "session-desc"
+msgstr "Beschreibung"
+
+#: include/pl_general.h:203
+msgid "a description of the session"
+msgstr "Beschreibung der Sitzung"
+
+#: include/ra_ecg.h:228
+msgid "min-hr"
+msgstr "min-HF"
+
+#: include/ra_ecg.h:228
+msgid "maximal heart rate"
+msgstr "maximale Herzfrequenz"
+
+#: include/ra_ecg.h:229
+msgid "arr_min.hr"
+msgstr "min.hf"
+
+#: include/ra_ecg.h:229
+msgid "minimum heart rate"
+msgstr "minimale Herzfrequenz"
+
+#: include/ra_ecg.h:230
+msgid "arr_brady"
+msgstr "brady"
+
+#: include/ra_ecg.h:230
+msgid "Bradycardia"
+msgstr "Bradykardie"
+
+#: include/ra_ecg.h:231
+msgid "arr_ssalvo"
+msgstr "ssalve"
+
+#: include/ra_ecg.h:231
+msgid "supra ventricular salvo (hr < 100bpm)"
+msgstr "Supraventrikuläre Salve (HF < 100 bpm)"
+
+#: include/ra_ecg.h:232
+msgid "arr_svt"
+msgstr "svt"
+
+#: include/ra_ecg.h:232
+msgid "Tachycardia (Supra Ventricular Tachycardia)"
+msgstr "Tachykardie (supraventrikuläre Tachykardie)"
+
+#: include/ra_ecg.h:233
+msgid "arr_ssalvo+svt"
+msgstr "ssalve+svt"
+
+#: include/ra_ecg.h:233
+msgid "supra ventricular salvos AND supra ventricular tachycardias"
+msgstr "supraventrikuläre Salven UND supraventrikuläre Tachykardien"
+
+#: include/ra_ecg.h:234
+msgid "arr_afib"
+msgstr "Vhfli"
+
+#: include/ra_ecg.h:234
+msgid "atrial fibrilation"
+msgstr "Vorhofflimmern"
+
+#: include/ra_ecg.h:235
+msgid "arr_irregular"
+msgstr "irregulär"
+
+#: include/ra_ecg.h:235
+msgid "irregular rhyhtm"
+msgstr "Irregulärer Rhythmus"
+
+#: include/ra_ecg.h:236
+msgid "arr_couplet"
+msgstr "Cpl"
+
+#: include/ra_ecg.h:236
+msgid "Couplets"
+msgstr "Couplet"
+
+#: include/ra_ecg.h:237
+msgid "arr_triplet"
+msgstr "triplet"
+
+#: include/ra_ecg.h:237
+msgid "Triplets"
+msgstr "Triplet"
+
+#: include/ra_ecg.h:238
+msgid "arr_bigeminus"
+msgstr "bigeminus"
+
+#: include/ra_ecg.h:238
+msgid "Bigeminus"
+msgstr "Bigeminus"
+
+#: include/ra_ecg.h:239
+msgid "arr_trigeminus"
+msgstr "trigeminus"
+
+#: include/ra_ecg.h:239
+msgid "Trigeminus"
+msgstr "Trigeminus"
+
+#: include/ra_ecg.h:240
+msgid "arr_ivrs"
+msgstr "ivrs"
+
+#: include/ra_ecg.h:240
+msgid "ideo ventricular rhythm"
+msgstr "ideoventrikulärer Rhythmus"
+
+#: include/ra_ecg.h:241
+msgid "arr_salvo"
+msgstr "salve"
+
+#: include/ra_ecg.h:241
+msgid "ventricular salvo (hr < 100bpm)"
+msgstr "ventrikuläre Salve (HF < 100bpm)"
+
+#: include/ra_ecg.h:242
+msgid "arr_vt"
+msgstr "vt"
+
+#: include/ra_ecg.h:242
+msgid "ventricular tachycardia"
+msgstr "ventrikuläre Tachikardie"
+
+#: include/ra_ecg.h:243
+msgid "arr_salvo+vt"
+msgstr "salve+vt"
+
+#: include/ra_ecg.h:243
+msgid "ventricular salvos AND ventricular tachycardias"
+msgstr "ventrikuläre Salven UND ventrikuläre Tachykardien"
+
+#: include/ra_error_txt.h:23
+msgid "no error"
+msgstr "Kein Fehler"
+
+#: include/ra_error_txt.h:24
+msgid "unspecific error (maybe internal)"
+msgstr "unspezifischer Fehler (wahrscheinlich ein interner Fehler)"
+
+#: include/ra_error_txt.h:25
+msgid "error reading config-file"
+msgstr "Fehler beim lesen der Konfigurations-Datei"
+
+#: include/ra_error_txt.h:26
+msgid "error loading plugins"
+msgstr "Fehler beim laden der Plugins"
+
+#: include/ra_error_txt.h:27
+msgid "not supported format"
+msgstr "Nicht unterstütztes Format"
+
+#: include/ra_error_txt.h:28
+msgid "unknown plugin"
+msgstr "Unbekanntes Plugin"
+
+#: include/ra_error_txt.h:29
+msgid "needed plugin function is not available"
+msgstr "benötigte Funktion ist im Plugin nicht vorhanden"
+
+#: include/ra_error_txt.h:30
+msgid "unknown handle"
+msgstr "unbekannter Handle"
+
+#: include/ra_error_txt.h:31
+msgid "not handled/not supported info"
+msgstr "gewünschte Information ist nicht vorhanden"
+
+#: include/ra_error_txt.h:32
+msgid "a input parameter is out of range"
+msgstr "Ein Eingabewert ist außerhalb seiner zulässigen Grenze"
+
+#: include/ra_error_txt.h:33
+msgid "functionality not supported (planned for future versions)"
+msgstr ""
+"Funktion wird im Moment nicht unterstützt (ist für zukünftige Versionen "
+"geplant)"
+
+#: include/ra_error_txt.h:34
+msgid "wrong handle was used"
+msgstr "Es wurde ein falscher Handle benutzt"
+
+#: include/ra_error_txt.h:35
+msgid "error reading evaluation"
+msgstr "Fehler beim lesen der Auswertungen"
+
+#: include/ra_error_txt.h:36
+msgid "info for used event-type not available"
+msgstr "Information über die Ereignis-Art ist nicht vorhanden"
+
+#: include/ra_error_txt.h:37
+msgid "event property is not known/out of range"
+msgstr "Ereignis-Eigenschaft ist unbekannt"
+
+#: include/ra_error_txt.h:38
+msgid "event set is not known/out of range"
+msgstr "Ereignis-Gruppe ist unbekannt"
+
+#: include/ra_error_txt.h:39
+msgid "wrong event-property was used"
+msgstr "falsche Ereignis-Eigenschaft wurde verwendet"
+
+#: include/ra_error_txt.h:40
+msgid "template number was not found"
+msgstr "Muster-Nummer wurde nicht gefunden"
+
+#: include/ra_error_txt.h:41
+msgid "structure of evaluation file is corrupt"
+msgstr "Struktur der Auswerte-Datei ist fehlerhaft"
+
+#: include/ra_error_txt.h:42
+msgid "a needed plugin is not available"
+msgstr "Ein benötigtes Plugin ist nicht vorhanden/wurde nicht geladen"
+
+#: include/ra_error_txt.h:43
+msgid "one of the measurement files is missing or corrupt"
+msgstr "Eine Datei der Messung fehlt oder ist fehlerhaft"
+
+#: include/ra_error_txt.h:44
+msgid "a needed information is missing"
+msgstr "Eine benötigte Information fehlt"
+
+#: include/ra_error_txt.h:45
+msgid "at least one needed event-property is not available"
+msgstr "Mindestens eine Ereignis-Eigenschaft fehlt"
+
+#: include/ra_error_txt.h:46
+msgid "the option is unknown"
+msgstr "Die Option ist unbekannt"
+
+#: include/ra_error_txt.h:47
+msgid "the needed signal is not available in the measurement"
+msgstr "Ein benötigtes Signal ist in der Messung nicht vorhanden"
+
+#: include/ra_error_txt.h:48
+msgid "serious internal error: an offset for an option was not set"
+msgstr "Kritischer interner Fehler: Ein offset für eine Option wurde nicht gesetzt"
+
+#: include/ra_error_txt.h:49
+msgid "internal error"
+msgstr "Interner Fehler"
+
+#: include/ra_error_txt.h:50
+msgid "internal error in plugin"
+msgstr "Interner Fehler im Plugin"
+
+#: include/ra_error_txt.h:51
+msgid "function argument(s) wrong"
+msgstr "Funktions Argument(e) ist/sind falsch"
+
+#: include/ra_error_txt.h:58
+msgid "no events for processing available"
+msgstr "Es sind keine Ereignisse für die Berechnung vorhanden"
+
+#: include/ra_error_txt.h:59
+msgid "no config-file was found"
+msgstr "Die Konfigurationsdatei wurde nicht gefunden"
+
+#: include/ra_event_props.h:103
+msgid "heartbeat"
+msgstr "Herzschlag"
+
+#: include/ra_event_props.h:103
+msgid "infos about a heart beat"
+msgstr "Eigenschaften eines Herzschlags"
+
+#: include/ra_event_props.h:104
+msgid "rr-calibration"
+msgstr "RR-Kalibrierung"
+
+#: include/ra_event_props.h:105
+msgid "infos about sequences of calibration in bloodpressure measurements"
+msgstr "Eigenschaften von Kalibrierungssequenzen in Blutdruck Messungen"
+
+#: include/ra_event_props.h:106 include/ra_event_props.h:234
+msgid "comments/annotations"
+msgstr "Kommentare/Bezeichnungen"
+
+#: include/ra_event_props.h:107
+msgid "arrhythmia"
+msgstr "Arryhthmie"
+
+#: include/ra_event_props.h:107
+msgid "arrhythmic events"
+msgstr "Arrhyhthmien"
+
+#: include/ra_event_props.h:108
+msgid "arrhythmia-original"
+msgstr "Arryhthmie (original)"
+
+#: include/ra_event_props.h:109
+msgid "arrhythmic events from original evaluation"
+msgstr "Arryhthmien der Original-Auswertung"
+
+#: include/ra_event_props.h:110
+msgid "uterine-contraction"
+msgstr "Uteruskontraktion"
+
+#: include/ra_event_props.h:111
+msgid "infos about uterine contraction"
+msgstr "Eigenschaften von Uterus-Kontraktionen"
+
+#: include/ra_event_props.h:124
+msgid "heartbeat-flags"
+msgstr "Herzschlag-Flags"
+
+#: include/ra_event_props.h:125 include/ra_event_props.h:127
+msgid "Flags for heartbeat events"
+msgstr "Kennzeichen für Herzschläge"
+
+#: include/ra_event_props.h:126
+msgid "rr-calibration-flags"
+msgstr "RR-Kalibrierung-Flags"
+
+#: include/ra_event_props.h:128
+msgid "comment-flags"
+msgstr "Kommentar-Flags"
+
+#: include/ra_event_props.h:129
+msgid "Flags for comment events"
+msgstr "Kennzeichen für Kommentare"
+
+#: include/ra_event_props.h:130
+msgid "arrhythmia-flags"
+msgstr "Arryhthmie-Flags"
+
+#: include/ra_event_props.h:131
+msgid "Flags for arrhythmia events"
+msgstr "Kennzeichen für Arrhythmien"
+
+#: include/ra_event_props.h:132
+msgid "arrhythmia-original-flags"
+msgstr "Arrhythmie (original) Flags"
+
+#: include/ra_event_props.h:133
+msgid "Flags for original arrhythmia events"
+msgstr "Kennzeichen für Arrhythmien der Original-Auswertung"
+
+#: include/ra_event_props.h:134
+msgid "uterine-contraction-flags"
+msgstr "Uteruskontraktion-Flags"
+
+#: include/ra_event_props.h:135
+msgid "Flags for uterine contraction events"
+msgstr "Kennzeichen für Uterus Kontraktionen"
+
+#: include/ra_event_props.h:138
+msgid "qrs-template"
+msgstr "QRS-Muster"
+
+#: include/ra_event_props.h:139
+msgid "QRS template number"
+msgstr "Nummer des QRS-Musters"
+
+#: include/ra_event_props.h:140
+msgid "qrs-template-corr"
+msgstr "QRS-Muster Korrelation"
+
+#: include/ra_event_props.h:141
+msgid "correlation of qrs-complex with template"
+msgstr "Korrelationen der QRS-Komplexe mit dem QRS-Muster"
+
+#: include/ra_event_props.h:142
+msgid "qrs-pos"
+msgstr "QRS-Position"
+
+#: include/ra_event_props.h:143
+msgid "position of fiducial point of QRS-complex in sampleunits"
+msgstr "Position des Referenzpunkts der QRS-Komplexe (in Abtasteinheiten)"
+
+#: include/ra_event_props.h:144
+msgid "qrs-class"
+msgstr "QRS-Klasse"
+
+#: include/ra_event_props.h:145
+msgid "classification of QRS complex"
+msgstr "Klassifikation der QRS-Komplexe"
+
+#: include/ra_event_props.h:146
+msgid "qrs-ch"
+msgstr "QRS-Kanal"
+
+#: include/ra_event_props.h:147
+msgid "bitmask of channels where qrs was detected"
+msgstr "Bitmaske der Kanäle die für die QRS-Erkennung verwendet wurden"
+
+#: include/ra_event_props.h:148
+msgid "qrs-temporal"
+msgstr "QRS-zeitliches Verhalten"
+
+#: include/ra_event_props.h:149
+msgid "temporal setting of beat"
+msgstr "zeitliches Setting der Schläge"
+
+#: include/ra_event_props.h:151
+msgid "qrs-p-start"
+msgstr "QRS-P-Beginn"
+
+#: include/ra_event_props.h:152
+msgid "offset of p-wave begin from qrs-pos in sampleunits"
+msgstr ""
+"Offset des Beginns der P-Welle von der Position des QRS-Komplexes (in "
+"Abtastwerten)"
+
+#: include/ra_event_props.h:153
+msgid "qrs-p-max"
+msgstr "QRS-P-Maximum"
+
+#: include/ra_event_props.h:154
+msgid "offset of p-wave maximum from qrs-pos in sampleunits"
+msgstr ""
+"Offset des Maximums der P-Welle von der Position des QRS-Komplexes (in "
+"Abtastwerten)"
+
+#: include/ra_event_props.h:155
+msgid "qrs-p-end"
+msgstr "QRS-P-Ende"
+
+#: include/ra_event_props.h:156
+msgid "offset of p-wave end from qrs-pos in sampleunits"
+msgstr ""
+"Offset des Endes der P-Welle von der Position des QRS-Komplexes (in "
+"Abtastwerten)"
+
+#: include/ra_event_props.h:157
+msgid "qrs-q"
+msgstr "QRS-Q"
+
+#: include/ra_event_props.h:158
+msgid "offset of q-wave from qrs-pos in sampleunits"
+msgstr "Offset der Q-Welle von der Position des QRS-Komplexes (in Abtastwerten)"
+
+#: include/ra_event_props.h:159
+msgid "qrs-r"
+msgstr "QRS-R"
+
+#: include/ra_event_props.h:160
+msgid "offset of r-wave from qrs-pos in sampleunits"
+msgstr "Offset der R-Welle von der Position des QRS-Komplexes (in Abtastwerten)"
+
+#: include/ra_event_props.h:161
+msgid "qrs-s"
+msgstr "QRS-S"
+
+#: include/ra_event_props.h:162
+msgid "offset of s-wave from qrs-pos in sampleunits"
+msgstr "Offset der S-Welle von der Position des QRS-Komplexes (in Abtastwerten)"
+
+#: include/ra_event_props.h:163
+msgid "qrs-j"
+msgstr "QRS-J"
+
+#: include/ra_event_props.h:164
+msgid "offset of j-point from qrs-pos in sampleunits"
+msgstr "Offset des J-Punktes von der Position des QRS-Komplexes (in Abtastwerten)"
+
+#: include/ra_event_props.h:165
+msgid "qrs-t-start"
+msgstr "QRS-T-Beginn"
+
+#: include/ra_event_props.h:166
+msgid "offset of t-wave begin from qrs-pos in sampleunits"
+msgstr ""
+"Offset des Beginns der T-Welle von der Position des QRS-Komplexes (in "
+"Abtastwerten)"
+
+#: include/ra_event_props.h:167
+msgid "qrs-t-max"
+msgstr "QRS-T-Maximum"
+
+#: include/ra_event_props.h:168
+msgid "offset of t-wave max from qrs-pos in sampleunits"
+msgstr ""
+"Offset des Maximums der T-Welle von der Position des QRS-Komplexes (in "
+"Abtastwerten)"
+
+#: include/ra_event_props.h:169
+msgid "qrs-t-end"
+msgstr "QRS-T-Ende"
+
+#: include/ra_event_props.h:170
+msgid "offset of t-wave end from qrs-pos in sampleunits"
+msgstr ""
+"Offset des Endes der T-Welle von der Position des QRS-Komplexes (in "
+"Abtastwerten)"
+
+#: include/ra_event_props.h:171
+msgid "qrs-u-start"
+msgstr "QRS-U-Beginn"
+
+#: include/ra_event_props.h:172
+msgid "offset of u-wave begin from qrs-pos in sampleunits"
+msgstr ""
+"Offset des Beginns der U-Welle von der Position des QRS-Komplexes (in "
+"Abtastwerten)"
+
+#: include/ra_event_props.h:173
+msgid "qrs-u-max"
+msgstr "QRS-U-Maximum"
+
+#: include/ra_event_props.h:174
+msgid "offset of u-wave max from qrs-pos in sampleunits"
+msgstr ""
+"Offset des Maximums der U-Welle von der Position des QRS-Komplexes (in "
+"Abtastwerten)"
+
+#: include/ra_event_props.h:175
+msgid "qrs-u-end"
+msgstr "QRS-U-Ende"
+
+#: include/ra_event_props.h:176
+msgid "offset of u-wave end from qrs-pos in sampleunits"
+msgstr ""
+"Offset des Endes der U-Welle von der Position des QRS-Komplexes (in "
+"Abtastwerten)"
+
+#: include/ra_event_props.h:179
+msgid "rri"
+msgstr "RRI"
+
+#: include/ra_event_props.h:179
+msgid "RR interval"
+msgstr "RR-Intervall"
+
+#: include/ra_event_props.h:181
+msgid "rri-class"
+msgstr "RRI-Klassifikation"
+
+#: include/ra_event_props.h:182
+msgid "classification of RR interval"
+msgstr "Klassifikation der RR-Intervalle"
+
+#: include/ra_event_props.h:183
+msgid "rri-refvalue"
+msgstr "RRI-Ref-Wert"
+
+#: include/ra_event_props.h:184
+msgid "reference rri representing the current heart-rate"
+msgstr "Referenz RR-Intervall für die aktuelle Herzfrequenz"
+
+#: include/ra_event_props.h:185
+msgid "rri-num-refvalue"
+msgstr "#RRI für Referenz-Wert"
+
+#: include/ra_event_props.h:186
+msgid "number of rri's used for calculation of reference value"
+msgstr ""
+"Anzahl der RR-Intervalle die für die Berechnung des Referenzwertes verwendet "
+"wurden"
+
+#: include/ra_event_props.h:189
+msgid "qt"
+msgstr "QT"
+
+#: include/ra_event_props.h:189
+msgid "QT interval"
+msgstr "QT-Intervall"
+
+#: include/ra_event_props.h:191
+msgid "qta"
+msgstr "QTA"
+
+#: include/ra_event_props.h:191
+msgid "QTa interval"
+msgstr "QTa-Intervall"
+
+#: include/ra_event_props.h:193
+msgid "qt-rri"
+msgstr "QT-RRI"
+
+#: include/ra_event_props.h:194
+msgid "the rr-interval belonging to the QT values"
+msgstr "Das zum QT-Wert gehörende RR-Intervall"
+
+#: include/ra_event_props.h:197
+msgid "resp-chest-mean-rri"
+msgstr "Atmung-mittleres-RRI"
+
+#: include/ra_event_props.h:198
+msgid "mean chest measurement of the rr interval"
+msgstr "RR-Intervall: mittlerer Brustumfang (Atmung)"
+
+#: include/ra_event_props.h:199
+msgid "resp-chest-mean-ibi"
+msgstr "Atmung-mittleres-IBI"
+
+#: include/ra_event_props.h:200
+msgid "mean chest measurement of the inter beat interval"
+msgstr "Inter-Beat-Intervall: mittlerer brustumfang (Atmung)"
+
+#: include/ra_event_props.h:203
+msgid "rr-template"
+msgstr "RR-Muster"
+
+#: include/ra_event_props.h:204
+msgid "bloodpressure template number"
+msgstr "Nummer der \"Muster\"-Blutdruckwelle"
+
+#: include/ra_event_props.h:205
+msgid "rr-systolic"
+msgstr "RR-Systolisch"
+
+#: include/ra_event_props.h:206
+msgid "systolic bloodpressure in mmHg"
+msgstr "systlischer Bludruck [mmHg]"
+
+#: include/ra_event_props.h:207
+msgid "rr-systolic-pos"
+msgstr "RR-Systolisch-Position"
+
+#: include/ra_event_props.h:208
+msgid "position of systolic bloodpressure in sampleunits"
+msgstr "Meßpunkt für den systolischen Blutdruck [Abtastwerte]"
+
+#: include/ra_event_props.h:209
+msgid "rr-diastolic"
+msgstr "RR-Diastolisch"
+
+#: include/ra_event_props.h:210
+msgid "diastolic bloodpressure in mmHg"
+msgstr "diastolischer Blutdruck [mmHg]"
+
+#: include/ra_event_props.h:211
+msgid "rr-diastolic-pos"
+msgstr "RR-Diastolisch-Position"
+
+#: include/ra_event_props.h:212
+msgid "position of diastolic bloodpressure in sampleunits"
+msgstr "Meßpunkt für den diastolischen Blutdruck [Abtasteinheiten]"
+
+#: include/ra_event_props.h:213
+msgid "rr-mean"
+msgstr "mittleres RR"
+
+#: include/ra_event_props.h:214
+msgid "mean bloodpressure in mmHg"
+msgstr "mittlerer Blutdruck [mmHg]"
+
+#: include/ra_event_props.h:215
+msgid "rr-flags"
+msgstr "RR-Flags"
+
+#: include/ra_event_props.h:216
+msgid "flags for the rr-values"
+msgstr "Marker für die Blutdruckwerte"
+
+#: include/ra_event_props.h:217
+msgid "ibi"
+msgstr "IBI"
+
+#: include/ra_event_props.h:218
+msgid "inter-beat-interval"
+msgstr "Schlag-zu-Schlag Intervall"
+
+#: include/ra_event_props.h:221
+msgid "rr-calibration-seq"
+msgstr "RR-Kalibrierungs-Sequenz"
+
+#: include/ra_event_props.h:222
+msgid ""
+"start- and end-value of event is start- and end-position of calibration "
+"sequence"
+msgstr "Start- und End-Position der Kalibrierungssequenzen"
+
+#: include/ra_event_props.h:225
+msgid "uc-max-pos"
+msgstr "UC-Maximum-Position"
+
+#: include/ra_event_props.h:226
+msgid "position of uterine contraction (max. peak)"
+msgstr "Position der maximalen Uterus Kontraktion"
+
+#: include/ra_event_props.h:227
+msgid "uc-template"
+msgstr "UC-Muster"
+
+#: include/ra_event_props.h:228
+msgid "Uterine Contraction template number"
+msgstr "Muster-Nummer der Uterus Kontraktion"
+
+#: include/ra_event_props.h:229
+msgid "uc-template-corr"
+msgstr "UC-Muster-Korrelation"
+
+#: include/ra_event_props.h:230
+msgid "correlation of uterine contraction with template"
+msgstr "Korrelation der Uterus Kontraktion mit dem Muster"
+
+#: include/ra_event_props.h:233
+msgid "comments"
+msgstr "Kommentare"
+
+#: include/ra_event_props.h:235
+msgid "comment-ch"
+msgstr "Kommentar-Kanal"
+
+#: include/ra_event_props.h:236
+msgid "channel which comment refers to"
+msgstr "Kanal auf den sich der Kommentar bezieht"
+
+#: include/ra_event_props.h:239
+msgid "arr-type"
+msgstr "Arr-Typ"
+
+#: include/ra_event_props.h:240
+msgid "type of arrhythmic event"
+msgstr "Typ des arrhythmischen Ereignisses"
+
+#: include/ra_event_props.h:241
+msgid "arr-hr"
+msgstr "Arr-HF"
+
+#: include/ra_event_props.h:242
+msgid "heart rate [bpm] of arrhythmic event"
+msgstr "Herzfrequenz [bpm] während des arrhythmischen Ereignisses"
+
+#: include/ra_event_props.h:243
+msgid "arr-num-qrs"
+msgstr "Arr-Anzahl-QRS"
+
+#: include/ra_event_props.h:244
+msgid "number of qrs-complexes in arryhthmic event"
+msgstr "Anzahl der QRS-Komplexe des arrhythmischen Ereignisses"
+
+#: include/ra_event_props.h:247
+msgid "arr_o-type"
+msgstr "Arr_o-Typ"
+
+#: include/ra_event_props.h:248
+msgid "type of arrhythmic event (original eval)"
+msgstr "Originalauswertung: Typ des arrhythmischen Ereignisses"
+
+#: include/ra_event_props.h:249
+msgid "arr_o-hr"
+msgstr "Arr_o-HF"
+
+#: include/ra_event_props.h:250
+msgid "heart rate [bpm] of arrhythmic event (original eval)"
+msgstr "Originalauswertung: Herzfrequeny [bpm] während des arrhythmischen Ereignisses"
+
+#: include/ra_event_props.h:251
+msgid "arr_o-num-qrs"
+msgstr "Arr_o-Anzahl-QRS"
+
+#: include/ra_event_props.h:252
+msgid "number of qrs-complexes in arryhthmic event (original eval)"
+msgstr ""
+"Originalauswertung: Anzahl der QRS-Komplexe während des arryhthmischen "
+"Ereignisses"
+
+#: raschlab/Qt/detect_progress_dlg.cpp:81
+msgid "libRASCH Detect"
+msgstr "libRASCH Erkennung"
+
+#: raschlab/Qt/detect_progress_dlg.cpp:82
+msgid "detection in channel 1"
+msgstr "Erkennung in Kanal 1"
+
+#: raschlab/Qt/detect_progress_dlg.cpp:83
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_ui.cpp:134
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:230
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:304
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:190
+#: plugins/view/simple_calc_dlg/options_dlg_ui.cpp:101
+#: plugins/view/ts_view/annot_dlg_ui.cpp:129
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:233
+#: plugins/view/ts_view/ts_view_optdlg_ui.cpp:141
+msgid "Cancel"
+msgstr "Abbruch"
+
+#: raschlab/Qt/raschlab_qt.cpp:51
+#, c-format
+msgid ""
+"Couldn't initialize libRASCH.\n"
+"Reason: %s (%d)"
+msgstr ""
+"Konnte libRASCH nicht initialisieren.\n"
+"Grund: %s (%d)"
+
+#: raschlab/Qt/raschlab_qt.cpp:72 raschlab/MFC/MainFrm.cpp:125
+msgid "&File"
+msgstr "&Datei"
+
+#: raschlab/Qt/raschlab_qt.cpp:73 raschlab/MFC/MainFrm.cpp:137
+msgid "&General"
+msgstr "&Allgemein"
+
+#: raschlab/Qt/raschlab_qt.cpp:74 raschlab/Qt/raschlab_qt.cpp:199
+#: raschlab/MFC/MainFrm.cpp:149 raschlab/MFC/MainFrm.cpp:155
+msgid "&Detect"
+msgstr "&Erkennung"
+
+#: raschlab/Qt/raschlab_qt.cpp:75 raschlab/MFC/MainFrm.cpp:167
+msgid "&View"
+msgstr "&Darstellung"
+
+#: raschlab/Qt/raschlab_qt.cpp:76
+msgid "&Window"
+msgstr "&Fenster"
+
+#: raschlab/Qt/raschlab_qt.cpp:77 raschlab/MFC/MainFrm.cpp:179
+msgid "&Help"
+msgstr "&Hilfe"
+
+#: raschlab/Qt/raschlab_qt.cpp:137
+msgid "Open Signal"
+msgstr "Öffne Aufzeichnung"
+
+#: raschlab/Qt/raschlab_qt.cpp:137
+msgid "&Open..."
+msgstr "&Öffnen..."
+
+#: raschlab/Qt/raschlab_qt.cpp:138
+msgid "Opens a Signal handled by libRASCH"
+msgstr "Öffnet eine Aufzeichnung"
+
+#: raschlab/Qt/raschlab_qt.cpp:139
+msgid ""
+"Open Signal\n"
+"\n"
+"Opens a Signal handled by libRASCH"
+msgstr ""
+"Öffne Aufzeichnung\n"
+"\n"
+"Öffnet eine Aufzeichnung"
+
+#: raschlab/Qt/raschlab_qt.cpp:143
+msgid "Save Changes"
+msgstr "Speichere Änderungen"
+
+#: raschlab/Qt/raschlab_qt.cpp:143
+msgid "&Save"
+msgstr "&Speichern"
+
+#: raschlab/Qt/raschlab_qt.cpp:144
+msgid "Saves the changes done at the evaluation(s)"
+msgstr "Speichert die Änderungen in den Auswertungen"
+
+#: raschlab/Qt/raschlab_qt.cpp:145
+msgid ""
+"Save Changes\n"
+"\n"
+"Saves the changes done at the evaluation(s)"
+msgstr ""
+"Speichere Änderungen\n"
+"\n"
+"Speichert die Änderungen in den Auswertungen"
+
+#: raschlab/Qt/raschlab_qt.cpp:151
+msgid "Close Signal"
+msgstr "Schließe Aufzeichnung"
+
+#: raschlab/Qt/raschlab_qt.cpp:151
+msgid "&Close"
+msgstr "&Schließen"
+
+#: raschlab/Qt/raschlab_qt.cpp:152
+msgid "Closes the actual signal"
+msgstr "Schließt die aktuelle Aufzeichnung"
+
+#: raschlab/Qt/raschlab_qt.cpp:153
+msgid ""
+"Close Signal\n"
+"\n"
+"Closes the actual signal"
+msgstr ""
+"Schließe Aufzeichnung\n"
+"\n"
+"Schließt die aktuelle Aufzeichnung"
+
+#: raschlab/Qt/raschlab_qt.cpp:159 plugins/view/eval_dlg/evprop_dlg_mfc.cpp:66
+#: plugins/view/eval_dlg/evprop_dlg_ui.cpp:130
+#: plugins/view/simple_calc_dlg/simple_calc_dlg_mfc.cpp:73
+#: plugins/view/simple_calc_dlg/simple_calc_dlg_ui.cpp:102
+msgid "Exit"
+msgstr "Beenden"
+
+#: raschlab/Qt/raschlab_qt.cpp:159 raschlab/MFC/MainFrm.cpp:134
+msgid "E&xit"
+msgstr "&Beenden"
+
+#: raschlab/Qt/raschlab_qt.cpp:160
+msgid "Quits the application"
+msgstr "Beendet das Program"
+
+#: raschlab/Qt/raschlab_qt.cpp:161
+msgid ""
+"Exit\n"
+"\n"
+"Quits the application"
+msgstr ""
+"Ende\n"
+"\n"
+"Beendet das Programm"
+
+#: raschlab/Qt/raschlab_qt.cpp:172
+msgid "Plugin infos..."
+msgstr "Plugin Infos"
+
+#: raschlab/Qt/raschlab_qt.cpp:172 raschlab/MFC/MainFrm.cpp:140
+msgid "&Plugin infos..."
+msgstr "&Plugin Infos..."
+
+#: raschlab/Qt/raschlab_qt.cpp:173
+msgid "Show infos about loaded plugins"
+msgstr "Zeige Informationen über geladene Plugins"
+
+#: raschlab/Qt/raschlab_qt.cpp:174
+msgid ""
+"Plugin infos\n"
+"\n"
+"show infos about loaded plugins"
+msgstr ""
+"Plugin Infos\n"
+"\n"
+"Zeige Informationen über geladene Plugins"
+
+#: raschlab/Qt/raschlab_qt.cpp:178
+msgid "Evaluation infos..."
+msgstr "Auswerteinformationen..."
+
+#: raschlab/Qt/raschlab_qt.cpp:178 raschlab/MFC/MainFrm.cpp:143
+msgid "&Evaluation infos..."
+msgstr "&Auswerteinformationen..."
+
+#: raschlab/Qt/raschlab_qt.cpp:179
+msgid "Show infos about evaluations"
+msgstr "Zeige Informationen über die Auswertungen"
+
+#: raschlab/Qt/raschlab_qt.cpp:180
+msgid ""
+"Evaluation infos\n"
+"\n"
+"show infos about evaluations"
+msgstr ""
+"Auswerteinformationen\n"
+"\n"
+"Zeige Informationen über die Auswertungen"
+
+#: raschlab/Qt/raschlab_qt.cpp:184
+msgid "Save ASCII eval-values"
+msgstr "Speichere Auswerungen als ASCII"
+
+#: raschlab/Qt/raschlab_qt.cpp:184 raschlab/MFC/MainFrm.cpp:146
+msgid "Save &ASCII eval-values"
+msgstr "Speichere Auswerungen als &ASCII"
+
+#: raschlab/Qt/raschlab_qt.cpp:185
+msgid "Save the evaluation values as ASCII text"
+msgstr "Speichere die Auswertungen als ASCII Text"
+
+#: raschlab/Qt/raschlab_qt.cpp:186
+msgid ""
+"Save ASCII eval-values\n"
+"\n"
+"Save the evaluation values as ASCII text"
+msgstr ""
+"Speichere Auswerungen als ASCII\n"
+"\n"
+"Speichere Auswerungen als ASCII Text"
+
+#: raschlab/Qt/raschlab_qt.cpp:199
+msgid "Detect"
+msgstr "Erkennung"
+
+#: raschlab/Qt/raschlab_qt.cpp:200
+msgid "Runs libRASCH beat-detection"
+msgstr "Führt die libRASCH Schlagerkennung durch"
+
+#: raschlab/Qt/raschlab_qt.cpp:201
+msgid ""
+"Detect\n"
+"\n"
+"Runs libRASCH beat-detection"
+msgstr ""
+"Erkennung\n"
+"\n"
+"Führt die libRASCH Schlagerkennung durch"
+
+#: raschlab/Qt/raschlab_qt.cpp:204
+msgid "Detect CTG"
+msgstr "CTG-Erkennung"
+
+#: raschlab/Qt/raschlab_qt.cpp:204 raschlab/MFC/MainFrm.cpp:158
+msgid "Detect C&TG"
+msgstr "C&TG Erkennung"
+
+#: raschlab/Qt/raschlab_qt.cpp:205
+msgid "Runs libRASCH CTG-detection"
+msgstr "Führt die libRASCH CTG Erkennung durch"
+
+#: raschlab/Qt/raschlab_qt.cpp:206
+msgid ""
+"Detect\n"
+"\n"
+"Runs libRASCH CTG-detection"
+msgstr ""
+"Erkennung\n"
+"\n"
+"Führt die libRASCH CTG Erkennung durch"
+
+#: raschlab/Qt/raschlab_qt.cpp:209
+msgid "RR-Morphology"
+msgstr "RR-Morphology"
+
+#: raschlab/Qt/raschlab_qt.cpp:209 raschlab/MFC/MainFrm.cpp:164
+msgid "&RR-Morphology"
+msgstr "&RR-Morphology"
+
+#: raschlab/Qt/raschlab_qt.cpp:210
+msgid "Runs libRASCH RR-Morphology Plugin"
+msgstr "Vermisst die Blutdruckkurve"
+
+#: raschlab/Qt/raschlab_qt.cpp:211
+msgid ""
+"RR-Morphology\n"
+"\n"
+"Runs libRASCH RR-Morphology Plugin"
+msgstr ""
+"RR-Morphology\n"
+"\n"
+"Vermisst die Blutdruckkurve"
+
+#: raschlab/Qt/raschlab_qt.cpp:214
+msgid "Classify ECG"
+msgstr "Klassifiziere das EKG"
+
+#: raschlab/Qt/raschlab_qt.cpp:214 raschlab/MFC/MainFrm.cpp:161
+msgid "&Classify ECG"
+msgstr "&Klassifiziere das EKG"
+
+#: raschlab/Qt/raschlab_qt.cpp:215
+msgid "Runs libRASCH ecg Plugin"
+msgstr "Klassifiziert die Schläge im aktuellen EKG"
+
+#: raschlab/Qt/raschlab_qt.cpp:216
+msgid ""
+"Classify ECG\n"
+"\n"
+"Runs libRASCH ecg Plugin"
+msgstr ""
+"Klassifiziere das EKG\n"
+"\n"
+"Klassifiziert die Schläge im aktuellen EKG"
+
+#: raschlab/Qt/raschlab_qt.cpp:219
+msgid "Perform Calculations"
+msgstr "Berechnungen"
+
+#: raschlab/Qt/raschlab_qt.cpp:219 raschlab/MFC/MainFrm.cpp:152
+msgid "&Perform Calculations"
+msgstr "&Berechnungen"
+
+#: raschlab/Qt/raschlab_qt.cpp:220
+msgid "Perform Calculations using libRASCH process plugins"
+msgstr "Führe Berechnungen mittels der Berechnungs-Plugins durch"
+
+#: raschlab/Qt/raschlab_qt.cpp:221
+msgid ""
+"Perform Calculations\n"
+"\n"
+"Perform Calculations using libRASCH process plugins"
+msgstr ""
+"Berechnungen\n"
+"\n"
+"Führe Berechnungen mittels der Berechnungs-Plugins durch"
+
+#: raschlab/Qt/raschlab_qt.cpp:233
+msgid "Toolbar"
+msgstr "Werkzeugleiste"
+
+#: raschlab/Qt/raschlab_qt.cpp:233 raschlab/MFC/MainFrm.cpp:170
+msgid "Tool&bar"
+msgstr "Werk&zeugleiste"
+
+#: raschlab/Qt/raschlab_qt.cpp:234
+msgid "Enables/disables the toolbar"
+msgstr "Werkzeugleiste einblenden/ausblenden"
+
+#: raschlab/Qt/raschlab_qt.cpp:235
+msgid ""
+"Toolbar\n"
+"\n"
+"Enables/disables the toolbar"
+msgstr ""
+"Werkzeugleiste\n"
+"\n"
+"Werkzeugleiste einblenden/ausblenden"
+
+#: raschlab/Qt/raschlab_qt.cpp:239
+msgid "Statusbar"
+msgstr "Statuszeile"
+
+#: raschlab/Qt/raschlab_qt.cpp:239
+msgid "&Statusbar"
+msgstr "&Statuszeile"
+
+#: raschlab/Qt/raschlab_qt.cpp:240
+msgid "Enables/disables the statusbar"
+msgstr "Statuszeile einblenden/ausblenden"
+
+#: raschlab/Qt/raschlab_qt.cpp:241
+msgid ""
+"Statusbar\n"
+"\n"
+"Enables/disables the statusbar"
+msgstr ""
+"Statuszeile\n"
+"\n"
+"Statuszeile einblenden/ausblenden"
+
+#: raschlab/Qt/raschlab_qt.cpp:247
+msgid "Plot"
+msgstr "Plot"
+
+#: raschlab/Qt/raschlab_qt.cpp:247
+msgid "&Plot"
+msgstr "&Plot"
+
+#: raschlab/Qt/raschlab_qt.cpp:248
+msgid "show RASCH-Plot"
+msgstr "öffne Plot-Plugin"
+
+#: raschlab/Qt/raschlab_qt.cpp:249
+msgid ""
+"Plot\n"
+"\n"
+"show RASCH-Plot"
+msgstr ""
+"Plot\n"
+"\n"
+"öffne Plot-Plugin"
+
+#: raschlab/Qt/raschlab_qt.cpp:258
+msgid "New Window"
+msgstr "Neues Fenster"
+
+#: raschlab/Qt/raschlab_qt.cpp:258
+msgid "&New Window"
+msgstr "&Neues Fenster"
+
+#: raschlab/Qt/raschlab_qt.cpp:259
+msgid "Opens a new view for the current document"
+msgstr "Öffnet ein neues Fenster für das aktuelle Signal"
+
+#: raschlab/Qt/raschlab_qt.cpp:260
+msgid ""
+"New Window\n"
+"\n"
+"Opens a new view for the current document"
+msgstr ""
+"Neues Fenster\n"
+"\n"
+"Öffnet ein neues Fenster für das aktuelle Signal"
+
+#: raschlab/Qt/raschlab_qt.cpp:263
+msgid "Cascade"
+msgstr "Überlappend"
+
+#: raschlab/Qt/raschlab_qt.cpp:263
+msgid "&Cascade"
+msgstr "Über&lappend"
+
+#: raschlab/Qt/raschlab_qt.cpp:264
+msgid "Cascades all windows"
+msgstr "Positioniere alle Fenster überlappend"
+
+#: raschlab/Qt/raschlab_qt.cpp:265
+msgid ""
+"Cascade\n"
+"\n"
+"Cascades all windows"
+msgstr ""
+"Überlappend\n"
+"\n"
+"Positioniere alle Fenster überlappend"
+
+#: raschlab/Qt/raschlab_qt.cpp:268
+msgid "Tile"
+msgstr "Nebeneinander"
+
+#: raschlab/Qt/raschlab_qt.cpp:268
+msgid "&Tile"
+msgstr "&Nebeneinander"
+
+#: raschlab/Qt/raschlab_qt.cpp:269
+msgid "Tiles all windows"
+msgstr "Stelle alle Fenster nebeneinander dar"
+
+#: raschlab/Qt/raschlab_qt.cpp:270
+msgid ""
+"Tile\n"
+"\n"
+"Tiles all windows"
+msgstr ""
+"Nebeneinander\n"
+"\n"
+"Stelle alle Fenster nebeneinander dar"
+
+#: raschlab/Qt/raschlab_qt.cpp:289
+msgid "About"
+msgstr "Über"
+
+#: raschlab/Qt/raschlab_qt.cpp:289
+msgid "&About..."
+msgstr "&Über"
+
+#: raschlab/Qt/raschlab_qt.cpp:290
+msgid "About the application"
+msgstr "Über das Programm"
+
+#: raschlab/Qt/raschlab_qt.cpp:291
+msgid ""
+"About\n"
+"\n"
+"About the application"
+msgstr ""
+"Über\n"
+"\n"
+"Über das Programm"
+
+#: raschlab/Qt/raschlab_qt.cpp:297
+msgid "What's &This"
+msgstr "Was ist &Dies"
+
+#: raschlab/Qt/raschlab_qt.cpp:315 raschlab/Qt/raschlab_qt.cpp:447
+#: raschlab/Qt/raschlab_qt.cpp:704 raschlab/Qt/raschlab_qt.cpp:762
+#: raschlab/Qt/raschlab_qt.cpp:1203 raschlab/Qt/raschlab_qt.cpp:1217
+msgid "Ready."
+msgstr "Fertig."
+
+#: raschlab/Qt/raschlab_qt.cpp:423
+msgid "Opening file..."
+msgstr "Öffne Datei..."
+
+#: raschlab/Qt/raschlab_qt.cpp:508
+msgid "recording: "
+msgstr "Aufzeichnung: "
+
+#: raschlab/Qt/raschlab_qt.cpp:601
+msgid "qrs-templates: "
+msgstr "QRS-Muster: "
+
+#: raschlab/Qt/raschlab_qt.cpp:646
+msgid "uc-templates: "
+msgstr "UC-Muster: "
+
+#: raschlab/Qt/raschlab_qt.cpp:688
+msgid "Exiting application..."
+msgstr "Beende Programm..."
+
+#: raschlab/Qt/raschlab_qt.cpp:758
+msgid "Toggle that eval-values are saved in ASCII..."
+msgstr "Umschalten das die Werte der Auswertung als ASCII Texte gespeichert werden..."
+
+#: raschlab/Qt/raschlab_qt.cpp:1196
+msgid "Toggle toolbar..."
+msgstr "Umschalten Werkzeugleiste..."
+
+#: raschlab/Qt/raschlab_qt.cpp:1210
+msgid "Toggle statusbar..."
+msgstr "Umschalten Statuszeile..."
+
+#: raschlab/Qt/raschlab_qt.cpp:1317
+msgid "About..."
+msgstr "Über..."
+
+#: raschlab/MFC/MainFrm.cpp:128
+msgid "&Open...\tCtrl+O"
+msgstr "&Öffnen...\tStrg-O"
+
+#: raschlab/MFC/MainFrm.cpp:131
+msgid "&Close\tCtrl+C"
+msgstr "&Schließen\tStrg+C"
+
+#: raschlab/MFC/MainFrm.cpp:173
+msgid "&Status Bar"
+msgstr "&Statuszeile"
+
+#: raschlab/MFC/MainFrm.cpp:176
+msgid "&Plot..."
+msgstr "&Plot..."
+
+#: raschlab/MFC/MainFrm.cpp:182
+msgid "&About RASCHlab-MFC..."
+msgstr "&Über RASCHlab-MFC"
+
+#: raschlab/MFC/raschlab_mfc.cpp:154
+#, c-format
+msgid ""
+"RASCHlab-MFC 0.2.4\n"
+"(build: %s  %s)\n"
+"using libRASCH Version %s"
+msgstr ""
+"RASCHlab-MFC 0.2.4\n"
+"(erstellt: %s  %s)\n"
+"verwende libRASCH Version %s"
+
+#: plugins/access/ART/ART.h:18
+msgid "Handle signals recorded for ART-Study"
+msgstr "Ermöglicht den Zugriff auf die Aufzeichnungen der ART-Studie"
+
+#: plugins/access/cfs/cfs.h:17
+msgid "Handle signals saved using the CED Filing System (CFS)"
+msgstr ""
+"Ermöglicht den Zugriff auf Aufzeichnungen die im CED Filing System (CFS) "
+"gespeichert worden sind"
+
+#: plugins/access/dasylab/dasylab.h:17
+msgid "Handle signals recorded using DasyLab"
+msgstr ""
+"Ermöglicht den Zugriff auf Aufzeichnungen die mit dem DasyLab System "
+"aufgezeichnet worden sind"
+
+#: plugins/access/edf/edf.h:17
+msgid "Handle signals recorded using European Data Format(+)"
+msgstr ""
+"Ermöglicht den Zugriff auf Aufzeichnungen die im European Data Format (+) "
+"gepsichert sind"
+
+#: plugins/access/ishne/ishne.h:17
+msgid "Handle signals saved using ISHNE standard output for Holter ECG"
+msgstr ""
+"Ermöglicht den Zugriff auf Aufzeichnungen die im ISHNE Standard Output for "
+"Holter ECG Format gespeichert worden sind"
+
+#: plugins/access/mit_bih/mit_bih.c:1142
+#, c-format
+msgid "lead-%ld"
+msgstr "Ableitung-%ld"
+
+#: plugins/access/mit_bih/mit_bih.h:17
+msgid "Handle signals recorded using the MIT/BIH Data Format (Physiobank data sets)"
+msgstr ""
+"Ermöglicht den Zugriff auf Aufzeichnungen, die im MIT/BIH Format gespeichert "
+"wuden (Physiobank Datensätze)"
+
+#: plugins/access/oxford/oxford.h:21
+msgid "Handles Oxford Excel 2 Holter-ECGs"
+msgstr ""
+"Ermöglicht den Zugriff auf Langzeit-EKGs, die im Oxford Excel 2 System "
+"gespeichert wurden"
+
+#: plugins/access/pathfinder/pathfinder.h:18
+msgid "Handles Reynolds Pathfinder 700 Holter-ECGs"
+msgstr ""
+"Ermöglicht den Zugriff auf Langzeit-EKGs, die im DelMar/Reynolds Pathfinder "
+"700 System gespeichert wurden"
+
+#: plugins/access/portapres/portapres.h:17
+msgid "Handle signals recorded with Portapres-System"
+msgstr ""
+"Ermöglicht den Zugriff auf Aufzeichnungen, die mit dem PortaPres System "
+"gemessen wurden"
+
+#: plugins/access/portilab/portilab.h:17
+msgid "Handle signals recorded using TMS ADC system and PortiLab"
+msgstr ""
+"Ermöglicht den Zugriff auf Aufzeichnungen die mit dem A/D-Wandler von TMS "
+"und dem Programm PortiLab gemessen wurden"
+
+#: plugins/access/ctg_rasch/ctg.h:17
+msgid "Handle cardiotocogram signals exported from GMT system"
+msgstr ""
+"Ermöglicht den Zugriff auf Kardiotokogramme die mit dem GMT System "
+"aufgezeichnet wurden"
+
+#: plugins/access/rri_test/rri_test.h:17
+msgid "Handle RR interval-files (nearly the final design)"
+msgstr "Ermöglicht den Zugriff auf RR-Intervall Dateien (Design im Beta-Status)"
+
+#: plugins/process/afib/afib.h:24
+msgid "perform analyses for ecg's with atrial fibrilation"
+msgstr "Analysiert EKGs mit Vorhofflimmern"
+
+#: plugins/process/afib/afib.h:54
+msgid "PRA used for the PRSA calculations on afib ecg's"
+msgstr "PRA die für die PRSA Berechnung bei Vorhofflimmer-EKGs verwendet wurde"
+
+#: plugins/process/afib/afib.h:55
+msgid "PRSA variable for an atrial fibrilation ecg"
+msgstr "PRSA Parameter für EKGs mit Vorhofflimmern"
+
+#: plugins/process/afib/afib.h:60 plugins/process/prsa/prsa.h:66
+#: plugins/process/hrh/hrh.h:102 plugins/process/hrv/hrv.h:87
+msgid "use events between start_pos and end_pos"
+msgstr "verwende die Ereignisse zwischen start_pos und end_pos"
+
+#: plugins/process/afib/afib.h:61 plugins/process/prsa/prsa.h:67
+#: plugins/process/hrh/hrh.h:103 plugins/process/hrv/hrv.h:88
+#: plugins/process/freq_analysis/freq_analysis.h:84
+#: plugins/process/dawes_redman/dawes_redman.h:118
+#: plugins/process/respiration/respiration.h:65
+msgid "start-pos in sample-units"
+msgstr "Anfangsposition in Abtasteinheiten"
+
+#: plugins/process/afib/afib.h:62 plugins/process/prsa/prsa.h:68
+#: plugins/process/hrh/hrh.h:104 plugins/process/hrv/hrv.h:89
+#: plugins/process/freq_analysis/freq_analysis.h:85
+#: plugins/process/dawes_redman/dawes_redman.h:119
+#: plugins/process/respiration/respiration.h:66
+msgid "end-pos in sample-units"
+msgstr "Endposition in Abtasteinheiten"
+
+#: plugins/process/afib/afib.h:64 plugins/process/prsa/prsa.h:74
+#: plugins/process/hrh/hrh.h:106 plugins/process/hrv/hrv.h:91
+#: plugins/process/freq_analysis/freq_analysis.h:67
+msgid "use events from start_event to end_event"
+msgstr "verwende die Ereignisse zwischen start_event und end_event (einschließlich)"
+
+#: plugins/process/afib/afib.h:65 plugins/process/hrh/hrh.h:107
+#: plugins/process/hrv/hrv.h:92
+msgid "start-event"
+msgstr "Startereignis"
+
+#: plugins/process/afib/afib.h:66 plugins/process/hrh/hrh.h:108
+#: plugins/process/hrv/hrv.h:93
+msgid "end-event"
+msgstr "Endereignis"
+
+#: plugins/process/detect_simple/simple.c:54
+#, c-format
+msgid "detect beats in channel %ld"
+msgstr "Schlagerkennung in Kanal %ld"
+
+#: plugins/process/detect_simple/simple.c:76
+#, c-format
+msgid "combine found beats"
+msgstr "Kombiniere gefundene Schläge"
+
+#: plugins/process/detect_simple/simple.c:82
+#, c-format
+msgid "classify beats"
+msgstr "Klassifiziere Schläge"
+
+#: plugins/process/detect_simple/simple.c:88
+#: plugins/process/detect_ctg/simple.c:81
+#, c-format
+msgid "save results"
+msgstr "speichere Ergebnisse"
+
+#: plugins/process/detect_simple/simple.c:548
+#: plugins/process/detect_ctg/simple.c:488
+#, c-format
+msgid "finish detection"
+msgstr "Beende Detektion"
+
+#: plugins/process/detect_simple/detect_simple.h:21
+msgid "a simple beat-detection algorithm"
+msgstr "Ein einfacher Schlagerkennungs Algorithmus"
+
+#: plugins/process/detect_simple/detect_simple.h:35
+msgid "number of found events"
+msgstr "Anzahl der gefundenen Ereignisse"
+
+#: plugins/process/detect_simple/detect_simple.h:36
+msgid "positions of the found events in sampleunits"
+msgstr "Position der gefundenen Ereignisse [Abtasteinheiten]"
+
+#: plugins/process/detect_simple/detect_simple.h:37
+msgid "bit-mask indicating the channels in which the event was found"
+msgstr "Bit-Maske die die Kanäle kennzeichnet, in denen das Ereignis gefunden wurde"
+
+#: plugins/process/detect_simple/detect_simple.h:38
+msgid "width of each event in sampleunits"
+msgstr "Breite jedes Ereignisses [Abtasteinheiten]"
+
+#: plugins/process/detect_simple/detect_simple.h:39
+msgid "annotations to the found events"
+msgstr "Klassifizierung der gefundenen Ereignisse"
+
+#: plugins/process/detect_simple/detect_simple.h:44
+msgid "number of channels set in 'ch'"
+msgstr "Anzahl der Kanäle die in 'ch' angegeben sind"
+
+#: plugins/process/detect_simple/detect_simple.h:45
+msgid "list of channels used for the event detection"
+msgstr "Liste der Kanäle die für die Ereigniss-Erkennung verwendet wurden"
+
+#: plugins/process/detect_ctg/simple.c:54
+#, c-format
+msgid "detect events in channel %ld"
+msgstr "Ereigniserkennung in Kanal %ld"
+
+#: plugins/process/detect_ctg/simple.c:76
+#, c-format
+msgid "combine found events"
+msgstr "\"Vereine\" gefundene Ereignisse"
+
+#: plugins/process/detect_ctg/detect_ctg.h:19
+msgid "perform detections in cardiotocograms"
+msgstr "Führt Ereigniserkennung in KardioTokogrammen durch"
+
+#: plugins/process/ecg/ecg.h:19
+msgid ""
+"perform ecg specific actions after reading original evaluation or doing "
+"detect using libRASCH"
+msgstr ""
+"Führt EKG spezifische Berechnungen durch, nachdem die Original-Auswertung "
+"gelesen wurde bzw. nach der Schlagerkennung durch libRASCH"
+
+#: plugins/process/ecg/ecg.h:59
+msgid "number rri used for calculation of reference-value"
+msgstr ""
+"Anzahl der RR-Intervalle die für die Berechnung des Referenzwertes verwendet "
+"wurden"
+
+#: plugins/process/ecg/ecg.h:60
+msgid "percent within the previous rri will be uses as reference-value"
+msgstr "Prozent-Bereich indem das vorherige RRI als Referenz-Wert verwendet wird"
+
+#: plugins/process/ecg/ecg.h:61
+msgid "max. tolerance for being a normal rri in percent"
+msgstr "Maximale Toleranz in Prozent damit das RRI als Normal angesehen wird"
+
+#: plugins/process/ecg/ecg.h:65
+msgid "max. percent of ref-value to be premature vpc"
+msgstr ""
+"Minimal notwendige Vorzeitigkeit (in Prozent zum Referenz-RRI) um eine "
+"vorzeitige VES zu sein"
+
+#: plugins/process/ecg/ecg.h:66
+msgid "min. percent of ref-value to be a 'real' compensatory pause"
+msgstr ""
+"Maximal notwendigs RRI (in Prozent zum Referenz-RRI) um eine \"wirkliche\" "
+"kompensatorische Pause zu sein"
+
+#: plugins/process/ecg/ecg.h:69
+msgid ""
+"value in sec; if in the last time2get.. sec no normalrri show up, a new ref-"
+"value must be calculated"
+msgstr ""
+"Wert in Sekunden der angibt, wie lange kein normal RRI auftreten darf, bevor "
+"ein neues Referenz-RRI berechnet wird"
+
+#: plugins/process/ecg/ecg.h:71
+msgid "minimum value of a valid rr-interval"
+msgstr "minimal erlaubter Werte für ein RR-Interval"
+
+#: plugins/process/ecg/ecg.h:72
+msgid "rri at which a pause begins"
+msgstr "Wert ab dem ein RRI eine Pause darstellt"
+
+#: plugins/process/fiducial_point/fiducial.c:286
+#, c-format
+msgid "find fiducial points"
+msgstr "suche Referenzpunkte"
+
+#: plugins/process/fiducial_point/fiducial.h:21
+msgid "finds fiducial point of a QRS-complex"
+msgstr "sucht Referenzpunkte in QRS-Komplexen"
+
+#: plugins/process/fiducial_point/fiducial.h:33
+#: plugins/process/ra_template/template.h:79
+#: plugins/process/ap_morphology/ap_morphology.h:99
+msgid "use all positions in evaluation eh (function argument)"
+msgstr "Flag ob alle Positionen in der angegebenen Auswertung verwendet werden sollen"
+
+#: plugins/process/fiducial_point/fiducial.h:34
+#: plugins/process/ra_template/template.h:81
+msgid "number of positions where qrs-positions should be get"
+msgstr ""
+"Anzahl der übergebenen Positionen, bei denen die QRS-Position ermittelt "
+"werden soll"
+
+#: plugins/process/fiducial_point/fiducial.h:35
+#: plugins/process/ra_template/template.h:82
+msgid "positions are index to events in eh"
+msgstr "Die Positionen sind Indizes zu Ereignissen in 'eh'"
+
+#: plugins/process/fiducial_point/fiducial.h:36
+#: plugins/process/ra_template/template.h:83
+msgid "postions"
+msgstr "Positionen"
+
+#: plugins/process/fiducial_point/fiducial.h:37
+msgid "in which channel fiducial point should be searched"
+msgstr "Kanal in dem der Referenzpunkt gesucht werden soll"
+
+#: plugins/process/prsa/prsa.h:23
+msgid "perform phase rectified signal analyses (PRSA)"
+msgstr "Führe 'Phase Rectified Signal Analyses' (PRSA) durch"
+
+#: plugins/process/prsa/prsa.h:54
+msgid "Phase Rectified Average "
+msgstr "Phase Rectified Average"
+
+#: plugins/process/prsa/prsa.h:55
+msgid "x-axis for the Phase Rectified Average"
+msgstr "X-Achse für das Phase Rectified Average"
+
+#: plugins/process/prsa/prsa.h:56
+msgid "Phase Rectified Spectrum"
+msgstr "Phase Rectified Spectrum"
+
+#: plugins/process/prsa/prsa.h:57
+msgid "Frequency values for the Phase Rectified Spectrum"
+msgstr "Frequenzwerte für das Phase Rectified Spectrum"
+
+#: plugins/process/prsa/prsa.h:62
+#: plugins/process/freq_analysis/freq_analysis.h:62
+msgid "!=0: use events, ==0: use signal raw data"
+msgstr "Flag ob Roh-Daten (=0) oder Ereignisse (<>0) verwendet werden sollen"
+
+#: plugins/process/prsa/prsa.h:63
+msgid ""
+"prsa can be used to 'link' two data-streams !=0: 'sort' first data-stream "
+"according the second data-stream"
+msgstr ""
+"Flag ob der erste Datenstrom nach dem zweiten Datenstrom sortiert werden "
+"soll (<>0)"
+
+#: plugins/process/prsa/prsa.h:70
+msgid "use these events for PRSA"
+msgstr "verwende diese Ereignisse für die Berechnung der PRSA"
+
+#: plugins/process/prsa/prsa.h:71
+msgid "use these events to sort the other events"
+msgstr "verwende diese Erignisse um die anderen Ereignisse zu sortieren"
+
+#: plugins/process/prsa/prsa.h:72
+msgid "when using events, the position of the events is needed"
+msgstr "Positionen der Ereignisse"
+
+#: plugins/process/prsa/prsa.h:75
+#: plugins/process/freq_analysis/freq_analysis.h:68
+msgid "start-event (including this event)"
+msgstr "Anfangsereignis (einschließlich)"
+
+#: plugins/process/prsa/prsa.h:76
+#: plugins/process/freq_analysis/freq_analysis.h:69
+msgid "end-event (excluding this event)"
+msgstr "Endereigniss (einschließlich)"
+
+#: plugins/process/prsa/prsa.h:77 plugins/process/hrv/hrv.h:95
+#: plugins/process/freq_analysis/freq_analysis.h:71
+msgid "use the events listed in events"
+msgstr "verwende die Ereignisse die in 'events' angegeben sind"
+
+#: plugins/process/prsa/prsa.h:78 plugins/process/hrv/hrv.h:96
+#: plugins/process/freq_analysis/freq_analysis.h:72
+msgid "list of events to use"
+msgstr "Liste der Ereignisse die verwendet werden sollen"
+
+#: plugins/process/prsa/prsa.h:80
+msgid "ignore regions which are marked in the annotations with the IGNORE flag"
+msgstr ""
+"ignoriere die Bereiche die in den Bemerkungen mit dem IGNORE Flag "
+"gekennzeichnet sind"
+
+#: plugins/process/prsa/prsa.h:81
+msgid "ignore regions which are marked in the annotations with the NOISE flag"
+msgstr ""
+"ignoriere die Bereiche die in den Bemerkungen mit dem NOISE Flag "
+"gekennzeichnet sind"
+
+#: plugins/process/prsa/prsa.h:82
+#: plugins/process/freq_analysis/freq_analysis.h:73
+msgid "number of events which should be ignored"
+msgstr "Anzahl der zu ignorierenden Ereignisse"
+
+#: plugins/process/prsa/prsa.h:83
+#: plugins/process/freq_analysis/freq_analysis.h:74
+msgid "list of events to ignore"
+msgstr "Liste der zu ignorierenden Ereignisse"
+
+#: plugins/process/prsa/prsa.h:84
+msgid "flag if ignore-regions/-values are cut-out(=0) or interpolated(=1)"
+msgstr "Flag ob Bereiche/Werte die zu ignorieren sind, ausgeschnitten (=0) oder interpoliert werden solln"
+
+#: plugins/process/prsa/prsa.h:86
+#: plugins/process/freq_analysis/freq_analysis.h:77
+#: plugins/process/dawes_redman/dawes_redman.h:121
+#: plugins/process/respiration/respiration.h:68
+msgid "recording handle"
+msgstr "recording handle"
+
+#: plugins/process/prsa/prsa.h:87
+#: plugins/process/freq_analysis/freq_analysis.h:78
+msgid "use this channel for PRSA"
+msgstr "Kanal der für die PRSA verwendet werden soll"
+
+#: plugins/process/prsa/prsa.h:88
+msgid "use this channel to sort data of first channel"
+msgstr ""
+"Aufzeichnungskanal der zur Sortierung des ersten angegebenen Kanals "
+"verwendet werden soll"
+
+#: plugins/process/prsa/prsa.h:89 plugins/process/prsa/prsa.h:91
+msgid "flag if there are values which should not be used for PRSA"
+msgstr "Flag ob Werte für die PRSA ignoriert werden sollen"
+
+#: plugins/process/prsa/prsa.h:90
+msgid "this value in ch#1 will be not used for PRSA (if use_ignore_value_1 is != 0)"
+msgstr ""
+"Wert der im ersten angegebenen Kanal ignoriert werden soll (falls "
+"'use_ignore_value_1' gesetzt ist)"
+
+#: plugins/process/prsa/prsa.h:92
+msgid "this value in ch#2 will be not used for PRSA (if use_ignore_value_2 is != 0)"
+msgstr ""
+"Wert der im zweiten angegebenen Kanal ignoriert werden soll (falls "
+"'use_ignore_value_2' gesetzt ist)"
+
+#: plugins/process/prsa/prsa.h:94
+msgid "flag if on the data for PRSA analysis a boxcar-filter should applied before"
+msgstr "Flag ob an den Daten für die PRSA Analyse ein Boxcar-Filter angewendet werden soll"
+
+#: plugins/process/prsa/prsa.h:96
+msgid "width of boxcar-filter in data-units"
+msgstr "Breite des Boxcar-Filters in Abtasteinheiten"
+
+#: plugins/process/prsa/prsa.h:98 plugins/process/hrh/hrh.h:110
+msgid "flag if PRA is time (!= 0) or event (e.g. rr-interval) (= 0) based"
+msgstr "Flag ob PRSA Zeit (<>0) oder Ereignis (z.B. RR-Intervalle)(=0) basiert ist"
+
+#: plugins/process/prsa/prsa.h:99 plugins/process/hrh/hrh.h:111
+msgid "samplerate used for PRA (if time based)"
+msgstr "Abtastrate die für die PRSA verwendet wurde (wenn sie zeitbasiert ist)"
+
+#: plugins/process/prsa/prsa.h:100 plugins/process/hrh/hrh.h:112
+msgid "filter width used for PRA (time[sec] or #events)"
+msgstr "verwendete Filterbreite in der PRSA (Zeit[s] oder Anzahl der Ereignisse)"
+
+#: plugins/process/prsa/prsa.h:101 plugins/process/hrh/hrh.h:113
+msgid "window width of one side used for PRA (time[sec] or #events)"
+msgstr ""
+"Breite des Fensters auf EINER Seite des PRA (Zeit[s] oder Anzahl der "
+"Ereignisse)"
+
+#: plugins/process/prsa/prsa.h:102 plugins/process/hrh/hrh.h:114
+msgid "minimal value of filter acceptance"
+msgstr "untere Grenze des Filters"
+
+#: plugins/process/prsa/prsa.h:103 plugins/process/hrh/hrh.h:115
+msgid "maximal value of filter acceptance"
+msgstr "obere Grenze des Filters"
+
+#: plugins/process/prsa/prsa.h:104
+msgid "flag which 'direction' of change is used as trigger"
+msgstr "Flag welche Richtung der Änderung als Trigger verwendet werden soll"
+
+#: plugins/process/prsa/prsa.h:105
+msgid "if more than length of PRA: length of PRS"
+msgstr "Länge des PRS"
+
+#: plugins/process/hrh/hrh.h:24
+msgid "perform Phase Rectified Signal Analyses for ecg's"
+msgstr "führt Phase Rectified Signal Analyses für EKG's durch"
+
+#: plugins/process/hrh/hrh.h:77
+msgid "Mean Deceleration Magnitude"
+msgstr "Mean Deceleration Magnitude"
+
+#: plugins/process/hrh/hrh.h:78
+msgid "Ultra Low Frequency power in the PRS"
+msgstr "Ultra Low Frequency Power im PRS"
+
+#: plugins/process/hrh/hrh.h:79
+msgid "Very Low Frequency power in the PRS"
+msgstr "Very Low Frequency Power im PRS"
+
+#: plugins/process/hrh/hrh.h:80
+msgid "Low Frequency power in the PRS"
+msgstr "Low Frequency Power im PRS"
+
+#: plugins/process/hrh/hrh.h:81
+msgid "High Frequency power in the PRS"
+msgstr "High Frequency Power im PRS"
+
+#: plugins/process/hrh/hrh.h:82
+msgid "x-axis of PRA for ULF"
+msgstr "X-Achse des PRA für ULF"
+
+#: plugins/process/hrh/hrh.h:83
+msgid "PRA for ULF"
+msgstr "PRA für ULF"
+
+#: plugins/process/hrh/hrh.h:84
+msgid "x-axis of PRA for VLF"
+msgstr "X-Achse des PRA für VLF"
+
+#: plugins/process/hrh/hrh.h:85
+msgid "PRA for VLF"
+msgstr "PRA für VLF"
+
+#: plugins/process/hrh/hrh.h:86
+msgid "x-axis of PRA for LF"
+msgstr "X-Achse des PRA für LF"
+
+#: plugins/process/hrh/hrh.h:87
+msgid "PRA for LF"
+msgstr "PRA für LF"
+
+#: plugins/process/hrh/hrh.h:88
+msgid "x-axis of PRA for HF"
+msgstr "X-Achse des PRA für HF"
+
+#: plugins/process/hrh/hrh.h:89
+msgid "PRA for HF"
+msgstr "PRA für HF"
+
+#: plugins/process/hrh/hrh.h:90
+msgid "frequency axis of PRS for ULF"
+msgstr "Frequenzachse des PRS für ULF"
+
+#: plugins/process/hrh/hrh.h:91
+msgid "PRS for ULF"
+msgstr "PRS für ULF"
+
+#: plugins/process/hrh/hrh.h:92
+msgid "frequency axis of PRS for VLF"
+msgstr "Frequenzachse des PRS für VLF"
+
+#: plugins/process/hrh/hrh.h:93
+msgid "PRS for VLF"
+msgstr "PRS für VLF"
+
+#: plugins/process/hrh/hrh.h:94
+msgid "frequency axis of PRS for LF"
+msgstr "Frequenzachse des PRS für LF"
+
+#: plugins/process/hrh/hrh.h:95
+msgid "PRS for LF"
+msgstr "PRS für LF"
+
+#: plugins/process/hrh/hrh.h:96
+msgid "frequency axis of PRS for HF"
+msgstr "Frequenzachse des PRS für HF"
+
+#: plugins/process/hrh/hrh.h:97
+msgid "PRS for HF"
+msgstr "PRS für HF"
+
+#: plugins/process/hrt/hrt.h:40
+msgid "calculate heart rate turbulence (HRT) parameters"
+msgstr "berechne Heart Rate Turbulence (HRT) Parameter"
+
+#: plugins/process/hrt/hrt.h:82
+msgid "Turbulence Onset"
+msgstr "Turbulence Onset"
+
+#: plugins/process/hrt/hrt.h:83
+msgid "number of triggers used for calculation of TO"
+msgstr "Anzahl der Trigger die für die Berechnung von TO verwendet wurden"
+
+#: plugins/process/hrt/hrt.h:84
+msgid "Turbulence Slope"
+msgstr "Turbulence Slope"
+
+#: plugins/process/hrt/hrt.h:85
+msgid "position of Turbulence Slope"
+msgstr "Position des Turbulence Slope"
+
+#: plugins/process/hrt/hrt.h:86
+msgid "offset of TS regression line"
+msgstr "Offset der Regressionsgerade von TS"
+
+#: plugins/process/hrt/hrt.h:87
+msgid "correlation coefficient of TS regression line"
+msgstr "Korrelationskoeffizient der Regressionsgerade von TS"
+
+#: plugins/process/hrt/hrt.h:88
+msgid "number of triggers used for calculation of TS"
+msgstr "Anzahl der Trigger die für die Berechnung von TS verwendet wurde"
+
+#: plugins/process/hrt/hrt.h:89
+msgid "Correlation Coefficient"
+msgstr "Korrelationskoeffizient"
+
+#: plugins/process/hrt/hrt.h:90
+msgid "slope of the regression line"
+msgstr "Steigung der Regressionsgerade"
+
+#: plugins/process/hrt/hrt.h:91
+msgid "number of triggers used for calculation of KS"
+msgstr "Anzahl der Trigger die für die Berechnung von KS verwendet wurden"
+
+#: plugins/process/hrt/hrt.h:92
+msgid "event number(s) of the triggers used for the calculation of TO"
+msgstr "Indizes der Ereignisse die für die Berechnung von TO verwendet wurden"
+
+#: plugins/process/hrt/hrt.h:93
+msgid "event number(s) of the triggers used for the calculation of TS"
+msgstr "Indizes der Ereignisse die für die Berechnung von TS verwendet wurden"
+
+#: plugins/process/hrt/hrt.h:94
+msgid "event number(s) of the triggers used for the calculation of KS"
+msgstr "Indizes der Ereignisse die für die Berechnung von KS verwendet wurden"
+
+#: plugins/process/hrt/hrt.h:95
+msgid "local HRT-tachogram"
+msgstr "lokales HRT-Tachogramm"
+
+#: plugins/process/hrt/hrt.h:102
+msgid "type of trigger"
+msgstr "Typ des Triggers"
+
+#: plugins/process/hrv/hrv.h:23
+msgid "calculate heart rate variability (HRV) parameters"
+msgstr "berechne Parameter der Herzfrequenz-Variabilität (HRV)"
+
+#: plugins/process/hrv/hrv.h:67
+msgid "standard deviation of normal-to-normal intervals"
+msgstr "Standardabweichung der Normal-zu-Normal Intervall"
+
+#: plugins/process/hrv/hrv.h:68
+msgid "HRV-Index"
+msgstr "HRV-Index"
+
+#: plugins/process/hrv/hrv.h:69
+msgid "standard deviation of averaged normal-to-normal intervals"
+msgstr "Standardabweichung der gemittelten Normal-zu-Normal Intervalle"
+
+#: plugins/process/hrv/hrv.h:70
+msgid "root mean of squared sucsessive differences"
+msgstr ""
+"Wurzel des Mittelwertes der quadrierten Differenzen aufeinanderfolgender "
+"Intervalle"
+
+#: plugins/process/hrv/hrv.h:72
+msgid "total power"
+msgstr "Total Power"
+
+#: plugins/process/hrv/hrv.h:73
+msgid "ultra low frequency power"
+msgstr "Ultra Low Frequency Power"
+
+#: plugins/process/hrv/hrv.h:74
+msgid "very low frequency power of short-term recordings"
+msgstr "Very Low Frequency Power in Kurzzeit-Aufzeichnungen"
+
+#: plugins/process/hrv/hrv.h:75
+msgid "low frequency power"
+msgstr "Low Frequency Power"
+
+#: plugins/process/hrv/hrv.h:76
+msgid "normalised low frequency power"
+msgstr "normalisierte Low Frequency Power"
+
+#: plugins/process/hrv/hrv.h:77
+msgid "high freuqency power"
+msgstr "High Frequency Power"
+
+#: plugins/process/hrv/hrv.h:78
+msgid "normalised high frequency power"
+msgstr "normalisiert High Frequency Power"
+
+#: plugins/process/hrv/hrv.h:79
+msgid "LF/HF ratio"
+msgstr "LF/HF-Verhältnis"
+
+#: plugins/process/hrv/hrv.h:80
+msgid "power law behavior"
+msgstr "Power-Law Verhalten"
+
+#: plugins/process/hrv/hrv.h:81
+msgid "Event numbers used for HRV calculations"
+msgstr "Indizes der Ereignisse die für die HRV Berechnung verwendet wurden"
+
+#: plugins/process/hrv/hrv.h:82
+msgid "frequency power in a user-selected frequency band"
+msgstr "Power im vom Benutzer gewählten Frequenzband"
+
+#: plugins/process/hrv/hrv.h:98
+msgid "calculate also the power in the user-selected frequency band"
+msgstr "Berechne die Power im Benutzer gewählten Frequenzband"
+
+#: plugins/process/hrv/hrv.h:99
+msgid "start of user-selected frequency band [Hz]"
+msgstr "Beginn des Benutzer gewählten Frequenzbandes [Hz]"
+
+#: plugins/process/hrv/hrv.h:100
+msgid "end of user-selected frequency band [Hz]"
+msgstr "Ende des Benutzer gewählten Frequenzbandes [Hz]"
+
+#: plugins/process/ra_template/template.c:394
+#, c-format
+msgid "find templates"
+msgstr "suche Muster"
+
+#: plugins/process/ra_template/template.c:438
+#: plugins/process/ra_template/template.c:468
+#, c-format
+msgid "find templates (number found: %d)"
+msgstr "suche Muster (bisher gefunden: %d)"
+
+#: plugins/process/ra_template/template.h:21
+msgid "combine events in templates"
+msgstr "\"kombiniere\" die Ereignisse in den Mustern"
+
+#: plugins/process/ra_template/template.h:85
+msgid "name of event-type which holds event positions"
+msgstr "Name der Ereigniseigenschaft die die Positionen der Ereignisse enthält"
+
+#: plugins/process/ra_template/template.h:86
+msgid "name of event-type which holds template numbers"
+msgstr "Name der Ereigniseigenschaft die die Nummern der Muster enthält"
+
+#: plugins/process/ra_template/template.h:87
+msgid "name of event-type which holds template correlation"
+msgstr ""
+"Name der Ereigniseigenschaft die die Korrelation des Musters mit dem "
+"Ereignis enthält"
+
+#: plugins/process/ra_template/template.h:89
+msgid "template-window-size before postion (in seconds)"
+msgstr "Breite des Musters vor dem Referenzpunkt [s]"
+
+#: plugins/process/ra_template/template.h:90
+msgid "template-window-size after position (in seconds)"
+msgstr "Breite des Musters nach dem Referenzpunkt [s]"
+
+#: plugins/process/ra_template/template.h:92
+msgid "treshold which correlation values are accepted"
+msgstr ""
+"minimal zu erreichende Korrelation damit das Ereignis dem Muster zugeordnet "
+"wird"
+
+#: plugins/process/ra_template/template.h:93
+msgid "min-value of slope of regression line"
+msgstr "minimal zulässiger Wert der Steigung der Regressionsgerade"
+
+#: plugins/process/ra_template/template.h:94
+msgid "max-value of slope of regression line"
+msgstr "maximal zulässiger Wert der Steigung der Regressionsgerade"
+
+#: plugins/process/ra_template/template.h:96
+msgid "number of channels used for template creation"
+msgstr "Anzahl der Kanäle für die die Muster erstellt werden sollen"
+
+#: plugins/process/ra_template/template.h:97
+msgid "list of channesl for which the template should be created"
+msgstr "Liste der Kanäle für die die Muster erstellt werden sollen"
+
+#: plugins/process/ap_morphology/ap_morphology.c:630
+#, c-format
+msgid "get bloodpressure values"
+msgstr "messe Blutdruckwerte"
+
+#: plugins/process/ap_morphology/ap_morphology.h:21
+msgid "get systolic and diastolyc values and positions of aterial pressure waves"
+msgstr ""
+"messe den Wert und die Position des systolischen und diastolischen "
+"Blutdrucks in arteriellen Druckkurven"
+
+#: plugins/process/ap_morphology/ap_morphology.h:87
+msgid "index of event"
+msgstr "Index des Ereignisses"
+
+#: plugins/process/ap_morphology/ap_morphology.h:88
+msgid "systolic blood pressures"
+msgstr "systlischer Bludruck"
+
+#: plugins/process/ap_morphology/ap_morphology.h:89
+msgid "diastolic blood pressures"
+msgstr "diastolischer Blutdruck"
+
+#: plugins/process/ap_morphology/ap_morphology.h:90
+msgid "mean blood pressures"
+msgstr "mittlerer Blutdruck"
+
+#: plugins/process/ap_morphology/ap_morphology.h:91
+msgid "positions of systolic measurements"
+msgstr "Meßpunkt für den systolischen Blutdruck"
+
+#: plugins/process/ap_morphology/ap_morphology.h:92
+msgid "positions of diastolic measurements"
+msgstr "Meßpunkt für den diastolischen Blutdruck"
+
+#: plugins/process/ap_morphology/ap_morphology.h:93
+msgid "flags"
+msgstr "Flags"
+
+#: plugins/process/ap_morphology/ap_morphology.h:94
+msgid "inter beat intervals"
+msgstr "Schlag-zu-Schlag Intervalle"
+
+#: plugins/process/ap_morphology/ap_morphology.h:101
+msgid "number of positions where rr values and positions should be get"
+msgstr "Anzahl der Positionen in denen die RR Werte/Positionen gemessen werden sollen"
+
+#: plugins/process/ap_morphology/ap_morphology.h:102
+msgid "positions"
+msgstr "Positionen"
+
+#: plugins/process/ap_morphology/ap_morphology.h:104
+msgid "flag if positions are start and end of a region; if set, num_pos must be 2"
+msgstr ""
+"Flag ob die angegebenen Positionen den Beginn und das Ende einer Region "
+"angeben (num_pos muß 2 sein)"
+
+#: plugins/process/ap_morphology/ap_morphology.h:105
+msgid "flag if positions are index to events in eh"
+msgstr "Flag ob die angegebenen Positionen Indizes zu Ereignissen in 'eh' sind"
+
+#: plugins/process/ap_morphology/ap_morphology.h:106
+msgid ""
+"positions are bloodpressure peaks (= 1) or qrs-complexes (= 0); don't be "
+"used if postions are start-/end-region"
+msgstr ""
+"Positionen sind Spitzen in der Blutdruckkurve (=1) oder QRS-Komplexe (=0); "
+"wird ignoriert wenn Positionen eine Region angeben"
+
+#: plugins/process/ap_morphology/ap_morphology.h:109
+msgid ""
+"if set (=1) -> don't look for sequences of calibration in bloodpressure "
+"measurements"
+msgstr ""
+"Flag of NICHT nach Kalibrierungssequenzen in der Blutdruckkurve gesucht "
+"werden soll"
+
+#: plugins/process/ap_morphology/ap_morphology.h:112
+msgid ""
+"if set (=1) -> do not search the positions of systolic- and diastolic blood "
+"pressure but use the previously selected positions (needed to re-calc the ap "
+"related measures)"
+msgstr ""
+"Flag ob die Positionen des systolischen und diastolischen Blutdrucks NICHT "
+"gesucht werden sollen (<>0) oder doch (=0)"
+
+#: plugins/process/freq_analysis/freq_analysis.h:23
+msgid "perform frequency analysis"
+msgstr "führt eine Frequenzanalyse durch"
+
+#: plugins/process/freq_analysis/freq_analysis.h:53
+msgid "frequency values (the x-axis)"
+msgstr "Frequenzwerte (X-Achse)"
+
+#: plugins/process/freq_analysis/freq_analysis.h:54
+msgid "Power Spectrum Density"
+msgstr "Power Spektrum Dichte"
+
+#: plugins/process/freq_analysis/freq_analysis.h:55
+msgid "real part of the frequency spectrum"
+msgstr "realer Anteil des Frequenzspektrums"
+
+#: plugins/process/freq_analysis/freq_analysis.h:56
+msgid "imaginary part of the frequency spectrum"
+msgstr "imaginärer Anteil des Frequenzspektrums"
+
+#: plugins/process/freq_analysis/freq_analysis.h:63
+msgid "use these event-property for frequency analysis"
+msgstr "Ereigniseigenschaft die für die Frequenz-Analyse verwendet werden soll"
+
+#: plugins/process/freq_analysis/freq_analysis.h:64
+msgid ""
+"when using events, the position of the events is needed for time based "
+"analysis"
+msgstr "Ereignisname der die Positionen der zu verwendenden Ereignisse beinhaltet"
+
+#: plugins/process/freq_analysis/freq_analysis.h:65
+msgid ""
+"flag if freq. analysis should be done based on time(!=0) or based on the "
+"event(=0) (e.g. rr-interval)"
+msgstr ""
+"Flag ob die Frequenz-Analyse zeitbasiert (<>0) oder ereignisbasiert (=0) "
+"erfolgen soll"
+
+#: plugins/process/freq_analysis/freq_analysis.h:79
+msgid "flag if there are values which should not be used for freq. analysis"
+msgstr "Flag ob es Werte gibt, die bei der Frequenz-Analyse ignoriert werden sollen"
+
+#: plugins/process/freq_analysis/freq_analysis.h:80
+msgid ""
+"this value will be not used for freq. analysis (if use_ignore_value_1 is != "
+"0)"
+msgstr "dieser Wert wird für die Frequenz-Analyse ignoriert"
+
+#: plugins/process/freq_analysis/freq_analysis.h:83
+msgid "use raw-data/events between start_pos and end_pos"
+msgstr "verwende Roh-Daten/Ereignisse zwischen start_pos und end_pos"
+
+#: plugins/process/freq_analysis/freq_analysis.h:88
+msgid "use the data given in 'data'"
+msgstr "Flag ob die Daten in 'data' verwendet werden sollen"
+
+#: plugins/process/freq_analysis/freq_analysis.h:89
+msgid "number of the data given in 'data'"
+msgstr "Anzahl der daten die in 'data' übergeben werden"
+
+#: plugins/process/freq_analysis/freq_analysis.h:90
+msgid "perform frequency analysis using this data"
+msgstr "Mache eine Frequenz-Analyse dieser Daten"
+
+#: plugins/process/freq_analysis/freq_analysis.h:93
+msgid "samplerate to use when freq.analysis should be done time based"
+msgstr ""
+"Abtastrate die für die Frequenz-Analyse verwendet werden soll (wenn "
+"Zeitbasiert)"
+
+#: plugins/process/freq_analysis/freq_analysis.h:96
+msgid "flag if input-data should be smoothed"
+msgstr "Flag ob die Eingangsdaten geglättet werden sollen"
+
+#: plugins/process/freq_analysis/freq_analysis.h:97
+msgid "at the moment only a boxcar-filter is available"
+msgstr "im Moment steht nur der boxcar-Filter zur Verfügung"
+
+#: plugins/process/freq_analysis/freq_analysis.h:98
+msgid "width of the smooth-filter"
+msgstr "Breite des Glättungsfilters"
+
+#: plugins/process/freq_analysis/freq_analysis.h:101
+msgid "window function used"
+msgstr "Fensterfunktion die verwendet werden soll"
+
+#: plugins/process/freq_analysis/freq_analysis.h:102
+msgid "remove the mean value before the frequency analysis"
+msgstr "Flag ob der Mittelwert vor der Frequenz-Analyse entfernt werden soll"
+
+#: plugins/process/freq_analysis/freq_analysis.h:103
+msgid "remove the trend (first order) before the frequency analysis"
+msgstr ""
+"Flag ob der Trend (erster Ordnung) vor der Frequenz-Analyse entfernt werden "
+"soll"
+
+#: plugins/process/freq_analysis/freq_analysis.h:104
+msgid "method used for the frequency analysis"
+msgstr "Methode die zur Frequenzberechnung verwendet werden soll"
+
+#: plugins/process/freq_analysis/freq_analysis.h:105
+msgid "number of frequency components"
+msgstr "Anzahl der Frequenzkomponenten"
+
+#: plugins/process/freq_analysis/freq_analysis.h:108
+msgid "flag if spectrum should be smoothed"
+msgstr "Flag ob Spektrum geglättet werden soll"
+
+#: plugins/process/dawes_redman/dawes_redman.h:23
+msgid "calculate FHR variations using the Dawes/Redman criteria"
+msgstr "berechnet FHF Variabilität nach den Dawes/Redman Kriterien"
+
+#: plugins/process/dawes_redman/dawes_redman.h:100
+msgid "epochs of the fetal heart rate (averages over 3.75 seconds)"
+msgstr "Epochen der fetalen Herzfrequenz (Mittelwerte über 3.75 Sekunden)"
+
+#: plugins/process/dawes_redman/dawes_redman.h:101
+msgid "baseline of the fetal heart rate"
+msgstr "Baseline der fetalen Herzfrequenz"
+
+#: plugins/process/dawes_redman/dawes_redman.h:117
+#: plugins/process/respiration/respiration.h:64
+msgid "use values between start_pos and end_pos"
+msgstr "verwende die Werte zwischen start_pos und end_pos"
+
+#: plugins/process/dawes_redman/dawes_redman.h:122
+msgid "channel with the FHR"
+msgstr "Kanal mit der FHF"
+
+#: plugins/process/dawes_redman/dawes_redman.h:123
+msgid "flag if there are values which are not valid"
+msgstr "Flag ob ungültige Werte gibt"
+
+#: plugins/process/dawes_redman/dawes_redman.h:124
+msgid "value which indicate not valid values"
+msgstr "Wert der einen ungültigen Wert darstellt"
+
+#: plugins/process/dawes_redman/dawes_redman.h:125
+msgid "run filter to find maternal pulse and remove these values"
+msgstr "Verwende Filter um mütterlichen Puls zu detektieren und lösche diese Werte"
+
+#: plugins/process/respiration/respiration.h:23
+msgid "calculates respiration parameters"
+msgstr "berechne Atmungs Parameter"
+
+#: plugins/process/respiration/respiration.h:63
+msgid "use values from evaluation"
+msgstr "verwende Werte aus der Auswertung"
+
+#: plugins/process/respiration/respiration.h:69
+msgid "channel with the respiration signal"
+msgstr "Kanal mit dem Atmungssignal"
+
+#: plugins/process/respiration/respiration.h:71
+msgid "eval handle"
+msgstr "eval handle"
+
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_mfc.cpp:86
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_ui.cpp:127
+msgid "Select channel's to process"
+msgstr "Wähle Kanäle"
+
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_mfc.cpp:87
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_ui.cpp:128
+msgid "recorded channels"
+msgstr "vorhandene Kanäle"
+
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_mfc.cpp:88
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_ui.cpp:131
+msgid "channels use"
+msgstr "verwendete Kanäle"
+
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_mfc.cpp:89
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_ui.cpp:132
+msgid "up"
+msgstr "rauf"
+
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_mfc.cpp:90
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_ui.cpp:133
+msgid "down"
+msgstr "runter"
+
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_ui.cpp:129
+msgid "-->"
+msgstr "-->"
+
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_ui.cpp:130
+msgid "<--"
+msgstr "<--"
+
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_ui.cpp:135
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:232
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:305
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:191
+#: plugins/view/simple_calc_dlg/options_dlg_ui.cpp:102
+#: plugins/view/ts_view/annot_dlg_ui.cpp:130
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:234
+#: plugins/view/ts_view/ts_view_optdlg_ui.cpp:142
+msgid "OK"
+msgstr "OK"
+
+#: plugins/view/ch_sel_dlg/ch_sel_dlg.h:28
+msgid "dialog for selecting channels which will be used for processing"
+msgstr ""
+"Dialog zur Auswahl von Kanälen, die für eine weitere Bearbeitung verwendet "
+"werden sollen"
+
+#: plugins/view/ch_sel_dlg/ch_sel_dlg.h:43
+msgid "list of selected channels"
+msgstr "Liste der ausgewählten Kanäle"
+
+#: plugins/view/cont_ap_view/cont_ap_view_qt.cpp:34
+msgid "lowest diastolic value first"
+msgstr "niedrigster diastolischer Wert zuerst"
+
+#: plugins/view/cont_ap_view/cont_ap_view_qt.cpp:36
+msgid "highest diastolic value first"
+msgstr "höchster diastolischer Wert zuerst"
+
+#: plugins/view/cont_ap_view/cont_ap_view_qt.cpp:39
+msgid "lowest systolic value first"
+msgstr "niedrigster systolischer Wert zuerst"
+
+#: plugins/view/cont_ap_view/cont_ap_view_qt.cpp:41
+msgid "highest systolic value first"
+msgstr "höchster systolischer Wert zuerst"
+
+#: plugins/view/cont_ap_view/cont_ap_view_qt.cpp:44
+#: plugins/view/ecg_view/ecg_view_mfc.cpp:91
+#: plugins/view/ecg_view/ecg_view_qt.cpp:44
+msgid "normal beats"
+msgstr "Normale Schläge"
+
+#: plugins/view/cont_ap_view/cont_ap_view_qt.cpp:46
+#: plugins/view/ecg_view/ecg_view_mfc.cpp:92
+#: plugins/view/ecg_view/ecg_view_qt.cpp:46
+msgid "VPCs"
+msgstr "VES"
+
+#: plugins/view/cont_ap_view/cont_ap_view_qt.cpp:48
+#: plugins/view/ecg_view/ecg_view_mfc.cpp:93
+#: plugins/view/ecg_view/ecg_view_qt.cpp:48
+msgid "paced beats"
+msgstr "Schrittmacher Schläge"
+
+#: plugins/view/cont_ap_view/cont_ap_view_qt.cpp:50
+#: plugins/view/ecg_view/ecg_view_mfc.cpp:94
+#: plugins/view/ecg_view/ecg_view_qt.cpp:50
+msgid "Artifacts"
+msgstr "Artifakte"
+
+#: plugins/view/cont_ap_view/cont_ap_view_qt.cpp:54
+#: plugins/view/ecg_view/ecg_view_mfc.cpp:108
+#: plugins/view/ecg_view/ecg_view_qt.cpp:66
+msgid "sort"
+msgstr "sortieren"
+
+#: plugins/view/cont_ap_view/cont_ap_view_qt.cpp:56
+msgid "bloodpressure"
+msgstr "Blutdruck"
+
+#: plugins/view/cont_ap_view/cont_ap_view.h:30
+msgid "view for continues arterial pressure recordings"
+msgstr "Darstellung kontinuierlicher arterieller Blutdruck Aufzeichnungen"
+
+#: plugins/view/ecg_view/ecg_view_general.cpp:254
+#, c-format
+msgid "unknown arr-type (%ld)"
+msgstr "unbekannter Arrhythmie-Typ (%ld)"
+
+#: plugins/view/ecg_view/ecg_view_mfc.cpp:82
+#: plugins/view/ecg_view/ecg_view_qt.cpp:35
+#, c-format
+msgid "beats found in %d channel%s"
+msgstr "Schläge in %d Kanälen%s gefunden"
+
+#: plugins/view/ecg_view/ecg_view_mfc.cpp:87
+#: plugins/view/ecg_view/ecg_view_qt.cpp:39
+msgid "shortest rr-interval first"
+msgstr "kürzestes RR-Intervall zuerst"
+
+#: plugins/view/ecg_view/ecg_view_mfc.cpp:88
+#: plugins/view/ecg_view/ecg_view_qt.cpp:41
+msgid "longest rr-interval first"
+msgstr "längstes RR-Intervall zuerst"
+
+#: plugins/view/ecg_view/ecg_view_mfc.cpp:102
+#: plugins/view/ecg_view/ecg_view_qt.cpp:59
+#, c-format
+msgid "beats in template %d"
+msgstr "Schläge in Muster %d"
+
+#: plugins/view/ecg_view/ecg_view_mfc.cpp:111
+#: plugins/view/ecg_view/ecg_view_qt.cpp:68
+msgid "templates"
+msgstr "Muster"
+
+#: plugins/view/ecg_view/ecg_view_mfc.cpp:113
+#: plugins/view/ecg_view/ecg_view_qt.cpp:70
+msgid "ecg"
+msgstr "EKG"
+
+#: plugins/view/ecg_view/ecg_view.h:26
+msgid "view for ecg's"
+msgstr "Darstellung von EKG's"
+
+#: plugins/view/ctg_view/ctg_view.h:26
+msgid "view for cardiotocograms"
+msgstr "Darstellung von Kardiotokogrammen"
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:89
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:212
+msgid "Evaluations"
+msgstr "Auswertungen"
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:90
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:213
+#: plugins/view/eval_dlg/evprop_dlg_mfc.cpp:65
+#: plugins/view/eval_dlg/evprop_dlg_ui.cpp:129
+msgid "delete"
+msgstr "Löschen"
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:91
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:215
+#: plugins/view/eval_dlg/evprop_dlg_mfc.cpp:67
+#: plugins/view/eval_dlg/evprop_dlg_ui.cpp:132
+msgid "Description"
+msgstr "Beschreibung"
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:92
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:216
+msgid "default evaluation"
+msgstr "Standardauswertung"
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:93
+msgid "event-types"
+msgstr "Eigenschaften"
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:199
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:217
+msgid "original evaluation:"
+msgstr "Original-Auswertung:"
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:203
+#: plugins/view/eval_dlg/eval_dlg_qt.cpp:101
+msgid "no"
+msgstr "nein"
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:205
+#: plugins/view/eval_dlg/eval_dlg_qt.cpp:103
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:218
+msgid "yes"
+msgstr "ja"
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:213
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:219
+msgid "created:"
+msgstr "Aufzeichnungs Datum:"
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:218
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:227
+msgid "last modified:"
+msgstr "zuletzt geändert:"
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:223
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:223
+msgid "user:"
+msgstr "Benutzer:"
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:228
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:225
+msgid "host:"
+msgstr "Computer:"
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:233
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:221
+msgid "program:"
+msgstr "Programm:"
+
+#: plugins/view/eval_dlg/eval_dlg_qt.cpp:79
+msgid "Settings were modified, do you want to discard changes?"
+msgstr "Es wurden Änderungen vorgenommen, wollen Sie diese wirklich verwerfen?"
+
+#: plugins/view/eval_dlg/eval_dlg_qt.cpp:80
+#: plugins/view/eval_dlg/eval_dlg_qt.cpp:139
+#: plugins/view/eval_dlg/eval_dlg_qt.cpp:144
+#: plugins/view/eval_dlg/eval_dlg_qt.cpp:164
+msgid "libRASCH - Evaluation"
+msgstr "libRASCH - Auswertung"
+
+#: plugins/view/eval_dlg/eval_dlg_qt.cpp:140
+msgid "You can not delete the default evaluation."
+msgstr "Die Standardauswertung kann nicht gelöscht werden."
+
+#: plugins/view/eval_dlg/eval_dlg_qt.cpp:145
+msgid "Do you really want to delete the evaluation?"
+msgstr "Wollen Sie die Auswertung wirklich endgültig löschen?"
+
+#: plugins/view/eval_dlg/eval_dlg_qt.cpp:165
+msgid "Settings were modified, do you want to save changes?"
+msgstr "Änderungen wurden vorgenommen, wollen Sie diese speichern?"
+
+#: plugins/view/eval_dlg/eval_dlg_qt.cpp:220
+msgid "libRASCH - Evaluations"
+msgstr "libRASCH - Auswertungen"
+
+#: plugins/view/eval_dlg/eval_dlg_qt.cpp:221
+msgid ""
+"You can't deselect default evalution.\n"
+"Please choose evaluation which you want to be the\n"
+"default-evalution and check there the default-box."
+msgstr ""
+"Die Standardauswertung kann nicht de-selektiert werden.\n"
+"Bitte wählen Sie die Auswertung aus, die die zukünftige Standardauswertung\n"
+"werden soll und markieren diese als Standardauswertung."
+
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:214
+msgid "detect"
+msgstr "detect"
+
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:220
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:155
+msgid "TextLabel4"
+msgstr "TextLabel4"
+
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:222
+msgid "MTKlab"
+msgstr "RASCHlab"
+
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:224
+msgid "rasch"
+msgstr "rasch"
+
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:226
+msgid "spirit"
+msgstr "spirit"
+
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:228
+msgid "13.06.1970  18:45:00"
+msgstr "13.06.1970  18:45:00"
+
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:229
+msgid "event-prop's"
+msgstr "Ereignis-Eigenschaften"
+
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:231
+msgid "Apply"
+msgstr "Anwenden"
+
+#: plugins/view/eval_dlg/evprop_dlg_mfc.cpp:64
+msgid "Event Properties"
+msgstr "Ereignis-Eigenschaften"
+
+#: plugins/view/eval_dlg/evprop_dlg_mfc.cpp:84
+#: plugins/view/eval_dlg/evprop_dlg_mfc.cpp:161
+#: plugins/view/eval_dlg/evprop_dlg_ui.cpp:133
+msgid "value-type:"
+msgstr "Variablentyp:"
+
+#: plugins/view/eval_dlg/evprop_dlg_mfc.cpp:85
+#: plugins/view/eval_dlg/evprop_dlg_mfc.cpp:136
+#: plugins/view/eval_dlg/evprop_dlg_ui.cpp:135
+msgid "occurence:"
+msgstr "Auftreten:"
+
+#: plugins/view/eval_dlg/evprop_dlg_mfc.cpp:142
+#: plugins/view/eval_dlg/evprop_dlg_qt.cpp:69
+msgid "discrete"
+msgstr "diskret"
+
+#: plugins/view/eval_dlg/evprop_dlg_mfc.cpp:145
+#: plugins/view/eval_dlg/evprop_dlg_qt.cpp:72
+msgid "continues"
+msgstr "kontinuierlich"
+
+#: plugins/view/eval_dlg/evprop_dlg_qt.cpp:82
+#, c-format
+msgid "%s (%ld events)"
+msgstr "%s (%ld Ereignisse)"
+
+#: plugins/view/eval_dlg/evprop_dlg_ui.cpp:128
+msgid "Event-Properties"
+msgstr "Ereignis-Eigenschaften"
+
+#: plugins/view/eval_dlg/evprop_dlg_ui.cpp:134
+msgid "double"
+msgstr "double"
+
+#: plugins/view/eval_dlg/evprop_dlg_ui.cpp:136
+msgid "continues12345"
+msgstr "continues12345"
+
+#: plugins/view/eval_dlg/eval_dlg.h:26
+msgid "a dialog showing all evaluations for a measurement"
+msgstr "Ein Dialog der alle Auswertungen einer Messung anzeigt"
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:113
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:283
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:189
+#: plugins/view/simple_calc_dlg/options_dlg_ui.cpp:98
+msgid "Options"
+msgstr "Optionen"
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:114
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:284
+msgid "plot symbols"
+msgstr "zeichne Symbole"
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:115
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:285
+msgid "symbol"
+msgstr "Symbol"
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:116
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:119
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:286
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:290
+msgid "color"
+msgstr "Farbe"
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:117
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:288
+msgid "plot line"
+msgstr "zeichne Linie"
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:118
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:289
+msgid "line"
+msgstr "Linie"
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:121
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:293
+msgid "add. Analyses"
+msgstr "zusätzliche Analysen"
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:122
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:294
+msgid "Axis Options"
+msgstr "Achsen Optionen"
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:123
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:295
+msgid "Axis"
+msgstr "Achse"
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:124
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:296
+msgid "use min"
+msgstr "verwende Minimum"
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:125
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:127
+msgid "value"
+msgstr "Wert"
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:126
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:298
+msgid "use max"
+msgstr "verwende Maximum"
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:128
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:300
+msgid "is time"
+msgstr "ist Zeit"
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:129
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:301
+msgid "format"
+msgstr "Format"
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:130
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:302
+msgid "log"
+msgstr "log"
+
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:297
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:299
+msgid "val"
+msgstr "Wert"
+
+#: plugins/view/plot_view/sel_data_dlg_mfc.cpp:95
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:177
+msgid "Select Data"
+msgstr "Wähle Daten"
+
+#: plugins/view/plot_view/sel_data_dlg_mfc.cpp:96
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:178
+msgid "data-set"
+msgstr "Datensatz"
+
+#: plugins/view/plot_view/sel_data_dlg_mfc.cpp:97
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:179
+msgid "show legend"
+msgstr "zeige Legende"
+
+#: plugins/view/plot_view/sel_data_dlg_mfc.cpp:98
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:180
+#: plugins/view/ts_view/gen_opt_dlg_mfc.cpp:99
+#: plugins/view/ts_view/ts_view_optdlg_ui.cpp:137
+msgid "show grid"
+msgstr "zeige Gitter"
+
+#: plugins/view/plot_view/sel_data_dlg_mfc.cpp:99
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:183
+msgid "use Z-Axis"
+msgstr "verwende Z-Achse"
+
+#: plugins/view/plot_view/sel_data_dlg_mfc.cpp:100
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:181
+msgid "X-Axis"
+msgstr "X-Achse"
+
+#: plugins/view/plot_view/sel_data_dlg_mfc.cpp:101
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:182
+msgid "Y-Axis"
+msgstr "Y-Achse"
+
+#: plugins/view/plot_view/sel_data_dlg_mfc.cpp:102
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:184
+msgid "Z-Axis"
+msgstr "Z-Achse"
+
+#: plugins/view/plot_view/sel_data_dlg_mfc.cpp:103
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:185
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: plugins/view/plot_view/sel_data_dlg_mfc.cpp:104
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:188
+#: plugins/view/ts_view/annot_dlg_mfc.cpp:89
+#: plugins/view/ts_view/annot_dlg_ui.cpp:128
+msgid "Delete"
+msgstr "Löschen"
+
+#: plugins/view/plot_view/sel_data_dlg_mfc.cpp:105
+#: plugins/view/simple_calc_dlg/simple_calc_dlg_ui.cpp:99
+msgid "Options..."
+msgstr "Optionen..."
+
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:187
+msgid "New Item"
+msgstr "Neues Objekt"
+
+#: plugins/view/plot_view/ra_plot.h:26
+msgid "plot evaluation data"
+msgstr "zeichne Auswertungsdaten"
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_mfc.cpp:79
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:147
+msgid "loaded plugins"
+msgstr "geladene Plugins"
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_mfc.cpp:80
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:152
+msgid "Description:"
+msgstr "Beschreibung:"
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_mfc.cpp:123
+msgid "access "
+msgstr "Zugriffs Plugin "
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_mfc.cpp:126
+msgid "process "
+msgstr "Berechnungs Plugin "
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_mfc.cpp:129
+msgid "GUI "
+msgstr "GUI Plugin "
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_mfc.cpp:132
+msgid "view "
+msgstr "Darstellungs Plugin "
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_mfc.cpp:146
+msgid "proprietary"
+msgstr "Proprietär"
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_mfc.cpp:149
+msgid "not choosen"
+msgstr "noch nicht ausgewählt"
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_mfc.cpp:236
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_qt.cpp:80
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:157
+msgid "plugin-build: "
+msgstr "Zeitpunkt der Erstellung:"
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:49
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:149
+msgid "Type"
+msgstr "Typ"
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:50
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:150
+msgid "License"
+msgstr "Lizenz"
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:146
+msgid "libRASCH plugins"
+msgstr "libRASCH Plugins"
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:151
+msgid "plugin info"
+msgstr "Plugin Info"
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:153
+msgid "t"
+msgstr "t"
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:154
+msgid "Path:"
+msgstr "Pfad:"
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:158
+msgid "Close"
+msgstr "Schließen"
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg.h:22
+msgid "a dialog showing the list of all loaded plugins"
+msgstr "eine Dialogbox die die geladenen Plugins zeigt"
+
+#: plugins/view/ra_view/ra_view.h:27
+msgid "general view for libRASCH, handling all views"
+msgstr "Kontainer für die Darstellungs-Plugins von libRASCH"
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg_mfc.cpp:69
+msgid "Select Signal"
+msgstr "Wähle Aufzeichnung"
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg_qt.cpp:19
+msgid "Select signal"
+msgstr "Wähle Aufzeichnung"
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg_qt.cpp:28
+msgid "directory"
+msgstr "Verzeichnis"
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg_qt.cpp:37
+msgid "forename"
+msgstr "Vorname"
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg_qt.cpp:38
+msgid "birthday"
+msgstr "Geb.Datum"
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg_qt.cpp:39
+msgid "id"
+msgstr "ID"
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg_qt.cpp:40
+msgid "rec. date"
+msgstr "Aufz. Datum"
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg_qt.cpp:41
+msgid "eval. date"
+msgstr "Ausw. Datum"
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg_qt.cpp:42
+msgid "sig.name"
+msgstr "Aufz. Name"
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg_qt.cpp:43
+msgid "sig.type"
+msgstr "Aufz. Typ"
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg.h:23
+msgid "dialog to choose signales which can be handled with libRASCH"
+msgstr "Eine Dialogbox zur Auswahl von Aufzeichnungen"
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg.h:38
+msgid "selected file (incl. path)"
+msgstr "ausgewählte Datei (inkl. Pfad)"
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg.h:43
+msgid "open dialog showing this path"
+msgstr "Pfad der verwendet werden soll wenn die Dialogbox geöffnet wird"
+
+#: plugins/view/simple_calc_dlg/options_dlg_ui.cpp:97
+msgid "Set Options"
+msgstr "Setze Optionen"
+
+#: plugins/view/simple_calc_dlg/options_dlg_ui.cpp:99
+msgid "textLabel2"
+msgstr "textLabel2"
+
+#: plugins/view/simple_calc_dlg/options_dlg_ui.cpp:100
+msgid "Change"
+msgstr "Ändere"
+
+#: plugins/view/simple_calc_dlg/simple_calc_dlg_mfc.cpp:70
+msgid "process data"
+msgstr "Berechne Parameter"
+
+#: plugins/view/simple_calc_dlg/simple_calc_dlg_mfc.cpp:71
+msgid "calculate"
+msgstr "berechne"
+
+#: plugins/view/simple_calc_dlg/simple_calc_dlg_mfc.cpp:72
+msgid "copy to clipboard"
+msgstr "Kopiere in Zwischenspeicher"
+
+#: plugins/view/simple_calc_dlg/simple_calc_dlg_mfc.cpp:74
+#: plugins/view/simple_calc_dlg/simple_calc_dlg_ui.cpp:98
+msgid "Process Plugins"
+msgstr "Berechnungs Plugins"
+
+#: plugins/view/simple_calc_dlg/simple_calc_dlg_mfc.cpp:75
+#: plugins/view/simple_calc_dlg/simple_calc_dlg_ui.cpp:101
+msgid "Results"
+msgstr "Ergebnisse"
+
+#: plugins/view/simple_calc_dlg/simple_calc_dlg_ui.cpp:97
+msgid "calculate parameters"
+msgstr "berechne Parameter"
+
+#: plugins/view/simple_calc_dlg/simple_calc_dlg_ui.cpp:100
+msgid "Calculate"
+msgstr "Berechnung"
+
+#: plugins/view/simple_calc_dlg/simple_calc_dlg.h:22
+msgid "dialog to perform calculations using process plugins"
+msgstr "Dialog um Berechnungen mittels der Berechnungs-Plugins durchzuführen"
+
+#: plugins/view/template_view/template_view.h:28
+msgid "view for templates"
+msgstr "Darstellung von Mustern"
+
+#: plugins/view/ts_view/annot_dlg_mfc.cpp:82
+msgid "Edit Annotations"
+msgstr "ändere Anmerkungen"
+
+#: plugins/view/ts_view/annot_dlg_mfc.cpp:83
+#: plugins/view/ts_view/annot_dlg_ui.cpp:122
+msgid "Annotation for Channel"
+msgstr "Anmerkung für Kanal"
+
+#: plugins/view/ts_view/annot_dlg_mfc.cpp:84
+#: plugins/view/ts_view/annot_dlg_ui.cpp:123
+msgid "Indicators"
+msgstr "Indikatoren"
+
+#: plugins/view/ts_view/annot_dlg_mfc.cpp:85
+#: plugins/view/ts_view/annot_dlg_ui.cpp:124
+msgid "Noise"
+msgstr "Rauschen"
+
+#: plugins/view/ts_view/annot_dlg_mfc.cpp:86
+msgid "Ignore"
+msgstr "ignorieren"
+
+#: plugins/view/ts_view/annot_dlg_mfc.cpp:87
+#: plugins/view/ts_view/annot_dlg_ui.cpp:126
+msgid "pre-defined Annotations"
+msgstr "vordefinierte Anmerkungen"
+
+#: plugins/view/ts_view/annot_dlg_mfc.cpp:88
+#: plugins/view/ts_view/annot_dlg_ui.cpp:127
+msgid "Annotation"
+msgstr "Anmerkung"
+
+#: plugins/view/ts_view/annot_dlg_ui.cpp:121
+msgid "Edit Annotation"
+msgstr "ändere Anmerkung"
+
+#: plugins/view/ts_view/annot_dlg_ui.cpp:125
+msgid "ignore data"
+msgstr "ignoriere Werte"
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:220
+#: plugins/view/ts_view/ts_view_ch_opt_dlg_mfc.cpp:98
+msgid "Set Channel Draw-Options"
+msgstr "Kanal Zeichen-Optionen"
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:221
+msgid "select channel"
+msgstr "Wähle Kanal"
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:222
+msgid "position"
+msgstr "Position"
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:223
+#: plugins/view/ts_view/ts_view_ch_opt_dlg_mfc.cpp:104
+msgid "centered"
+msgstr "zentriert"
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:224
+#: plugins/view/ts_view/ts_view_ch_opt_dlg_mfc.cpp:105
+msgid "position [%]"
+msgstr "Position [%]"
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:225
+#: plugins/view/ts_view/ts_view_ch_opt_dlg_mfc.cpp:159
+msgid "min/max"
+msgstr "min/max"
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:226
+#: plugins/view/ts_view/ts_view_ch_opt_dlg_mfc.cpp:106
+msgid "min"
+msgstr "min"
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:227
+#: plugins/view/ts_view/ts_view_ch_opt_dlg_mfc.cpp:107
+msgid "max"
+msgstr "Max"
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:228
+#: plugins/view/ts_view/ts_view_ch_opt_dlg_mfc.cpp:108
+msgid "use Res."
+msgstr "verwende Amp.Auflösung"
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:229
+#: plugins/view/ts_view/ts_view_ch_opt_dlg_mfc.cpp:100
+msgid "show channel"
+msgstr "zeige Kanal"
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:230
+#: plugins/view/ts_view/ts_view_ch_opt_dlg_mfc.cpp:101
+msgid "invert channel"
+msgstr "zeige Kanal invers"
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:231
+#: plugins/view/ts_view/ts_view_ch_opt_dlg_mfc.cpp:102
+msgid "Resolution"
+msgstr "Amplituden-Auflösung"
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:232
+msgid "mm/Unit"
+msgstr "mm/Einheit"
+
+#: plugins/view/ts_view/gen_opt_dlg_mfc.cpp:96
+#: plugins/view/ts_view/ts_view_optdlg_ui.cpp:134
+msgid "Set General Draw-Options"
+msgstr "Allgemeine Zeichen-Optionen"
+
+#: plugins/view/ts_view/gen_opt_dlg_mfc.cpp:97
+#: plugins/view/ts_view/ts_view_optdlg_ui.cpp:135
+msgid "show statusline"
+msgstr "Zeige Statuszeile"
+
+#: plugins/view/ts_view/gen_opt_dlg_mfc.cpp:98
+#: plugins/view/ts_view/ts_view_optdlg_ui.cpp:136
+msgid "show channel info"
+msgstr "Zeige Kanal-Info"
+
+#: plugins/view/ts_view/gen_opt_dlg_mfc.cpp:100
+#: plugins/view/ts_view/ts_view_optdlg_ui.cpp:138
+msgid "use fixed channel-height"
+msgstr "Verwende feste Kanal-Höhe"
+
+#: plugins/view/ts_view/gen_opt_dlg_mfc.cpp:101
+#: plugins/view/ts_view/ts_view_optdlg_ui.cpp:139
+msgid "channel-height [pixel]"
+msgstr "Kanal-Höhe [pixel]"
+
+#: plugins/view/ts_view/gen_opt_dlg_mfc.cpp:102
+#: plugins/view/ts_view/ts_view_optdlg_ui.cpp:140
+msgid "\"speed\" [mm/sec]"
+msgstr "\"Geschwindigkeit\" [mm/s]"
+
+#: plugins/view/ts_view/ts_view_ch_opt_dlg_mfc.cpp:99
+msgid "Select Channel"
+msgstr "Wähle Kanal"
+
+#: plugins/view/ts_view/ts_view_ch_opt_dlg_mfc.cpp:103
+msgid "Position"
+msgstr "Position"
+
+#: plugins/view/ts_view/ts_view_general.cpp:474
+#, c-format
+msgid "time: %s (rel: %s)"
+msgstr "Zeit: %s (rel: %s)"
+
+#: plugins/view/ts_view/ts_view_general.cpp:486
+#, c-format
+msgid "  --  session %s"
+msgstr "  --  Sitzung %s"
+
+#: plugins/view/ts_view/ts_view_general.cpp:488
+#, c-format
+msgid "  --  session #%ld"
+msgstr "  --  Sitzung #%ld"
+
+#: plugins/view/ts_view/ts_view_mfc.cpp:52
+msgid "&General Options..."
+msgstr "&Allgemeine Optionen..."
+
+#: plugins/view/ts_view/ts_view_mfc.cpp:53
+msgid "&Channel Options..."
+msgstr "&Kanal Optionen..."
+
+#: plugins/view/ts_view/ts_view_qt.cpp:60
+msgid "General Options..."
+msgstr "Allgemeine Optionen..."
+
+#: plugins/view/ts_view/ts_view_qt.cpp:61
+msgid "Channel Options..."
+msgstr "Kanal Optionen..."
+
+#: plugins/view/ts_view/ts_view_qt.cpp:69
+#, c-format
+msgid "session #%d"
+msgstr "Sitzung #%d"
+
+#: plugins/view/ts_view/ts_view_qt.cpp:73
+msgid "Sessions"
+msgstr "Sitzungen"
+
+#: plugins/view/ts_view/ts_view.h:24
+msgid "view for time-series"
+msgstr "Darstellung von Zeitserien"
+

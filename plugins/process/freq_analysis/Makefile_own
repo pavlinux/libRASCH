@@ -1,0 +1,29 @@
+LIBRASCH_HOME = ../../..
+include $(LIBRASCH_HOME)/Makefile.incl
+
+OBJS = freq_analysis.o frequency.o stat.o
+
+all: $(OBJS)
+	@echo $(INDENT)LD $(RELDIR)/freq_analysis.o
+	$(Q)$(LD) $(LDFLAGS_PL) -o freq_analysis_t.o $(OBJS)
+	$(Q)cp freq_analysis_t.o $(LIBRASCH_HOME)/plugins/bin/freq_analysis.o
+
+freq_analysis.o: freq_analysis.c freq_analysis.h frequency.h
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CC) $(CFLAGS) -o freq_analysis.o freq_analysis.c
+
+stat.o: statistics.c statistics.h
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CC) $(CFLAGS) -o stat.o statistics.c
+
+frequency.o: frequency.c frequency.h fft.h
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CC) $(CFLAGS) -o frequency.o frequency.c
+
+clean:
+	@echo $(INDENT)clean plugin freq_analysis
+	$(Q)rm -f *~
+	$(Q)rm -f $(LIBRASCH_HOME)/plugins/bin/freq_analysis.o
+	$(Q)rm -f *.o
+
+# $Header: /home/cvs_repos.bak/librasch/plugins/process/freq_analysis/Makefile_own,v 1.1 2004/10/16 15:51:29 rasch Exp $

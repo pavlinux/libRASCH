@@ -1,0 +1,7 @@
+Returns the last error occured inside of libRASCH.
+  Input parameters:
+    ra_handle
+
+  Output parameters:
+    error_number
+    error_text

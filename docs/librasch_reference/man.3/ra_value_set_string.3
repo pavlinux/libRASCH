@@ -1,0 +1,18 @@
+.TH "ra_value_set_string" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_set_string \- set a string in value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_value_set_string
+.BI "(value_handle " vh ","
+.BI "const char * " string ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.IP "string" 12
+ string to set in ra_info
+.SH "DESCRIPTION"
+This function set the string (`\\0`-ended char *) in vh.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

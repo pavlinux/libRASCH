@@ -1,0 +1,13 @@
+<chapter id="c-interface-ref"><title>Function Reference for C</title>
+<para>
+No special intro text.
+</para>
+&c-interface-auto;
+</chapter>
+
+<chapter id="c-struct-ref"><title>Structure Reference for C</title>
+<para>
+No special intro text.
+</para>
+&c-structs-auto;
+</chapter>

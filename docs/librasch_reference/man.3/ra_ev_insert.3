@@ -1,0 +1,24 @@
+.TH "ra_ev_insert" 3 "January 2005" "libRASCH API (0.7.2)"
+.SH NAME
+ra_ev_insert \- insert an event
+.SH SYNOPSIS
+.B "LIBRAAPI long" ra_ev_insert
+.BI "(evset_handle " seth ","
+.BI "long " pos ","
+.BI "long " start ","
+.BI "long " end ");"
+.SH ARGUMENTS
+.IP "seth" 12
+ event-set handle
+.IP "pos" 12
+ position of event
+.IP "start" 12
+ start of event
+.IP "end" 12
+ end of event
+.SH "DESCRIPTION"
+This function adds the event on position pos to an event-set evsh. If it is a continues event, the start- and end-position (start and end) will be set also.
+.SH "SOURCE FILE"
+event.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

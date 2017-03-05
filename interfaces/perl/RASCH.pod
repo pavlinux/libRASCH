@@ -1,0 +1,574 @@
+=head1 NAME
+
+RASCH - Perl extension for using libRASCH
+
+=head1 SYNOPSIS
+
+use RASCH;
+
+=head1 DESCRIPTION
+
+Here comes the description of RASCH for Perl. See libRASCH Manual.
+
+=head1 METHODS
+
+=over 4
+
+=item I<ra_handle> = B<ra_lib_init>();
+
+Initialize libRASCH and read all plugins. Must be called
+    before any other function for libRASCH can be used.
+  
+
+=item B<ra_lib_close>(I<ra_handle>);
+
+Unload plugins and free memory.
+  
+
+=item I<error_number, error_text> = B<ra_lib_get_error>(I<ra_handle>);
+
+Returns the last error occured inside of libRASCH.
+
+
+=item I<ra_handle> = B<ra_lib_handle_from_any_handle>(I<any_handle>);
+
+Returns the ra-handle from any handle.
+
+
+=item I<ret> = B<ra_lib_set_option>(I<handle, option_name, option_type, option_value>);
+
+
+Set an option.
+
+
+=item I<option_value> = B<ra_lib_get_option>(I<handle, option_name>);
+
+
+Get an option.
+
+
+=item I<value, name, desc> = B<ra_lib_info_get>(I<ra_handle, info_name>);
+
+Returns the information 'info_name' about libRASCH. The
+name and a short description is also returned. See
+XXX for available informations.
+
+
+=item I<value, name, desc> = B<ra_plugin_info_get>(I<plugin_handle, num, info_name>);
+
+Returns the information 'info_name' about the plugin
+'plugin_handle'. The name and a short description is also returned. See
+XXX for available informations.
+
+
+=item I<value, name, desc> = B<ra_result_info_get>(I<plugin_handle, result_num, info_name>);
+
+Returns the information 'info_name' about the result
+number 'result_num' from plugin
+'plugin_handle'. The name and a short description is also returned. See
+XXX for available informations.
+
+
+=item I<value, name, desc> = B<ra_meas_info_get>(I<meas_handle, info_name>);
+
+Returns the information 'info_name' about a
+measurement. The name and a short description is also returned. See
+XXX for available informations.
+
+
+=item I<value, name, desc> = B<ra_obj_info_get>(I<meas_handle, info_name>);
+
+Returns the information 'info_name' about a
+measurement-object. The name and a short description is also returned. See
+XXX for available informations.
+
+
+=item I<value, name, desc> = B<ra_rec_info_get>(I<rec_handle, info_name>);
+
+Returns the information 'info_name' about a
+recording. The name and a short description is also returned. See
+XXX for available informations.
+
+
+=item I<value, name, desc> = B<ra_dev_info_get>(I<rec_handle, dev_num, info_name>);
+
+Returns the information 'info_name' about a
+measurement-device. The name and a short description is also returned. See
+XXX for available informations.
+
+
+=item I<value, name, desc> = B<ra_ch_info_get>(I<rec_handle, channel, info_name>);
+
+Returns the information 'info_name' about a
+recorded channel. The name and a short description is also returned. See
+XXX for available informations.
+
+
+=item I<value, name, desc> = B<ra_eval_info_get>(I<eval_handle, info_name>);
+
+Returns the information 'info_name' about an evaluation.
+The name and a short description is also returned. See
+XXX for available informations.
+
+
+=item I<value, name, desc> = B<ra_class_info_get>(I<class_handle, info_name>);
+
+Returns the information 'info_name' about an
+evaluation-class. The name and a short description is also returned. See
+XXX for available informations.
+
+
+=item I<value, name, desc> = B<ra_prop_info_get>(I<prop_handle, info_name>);
+
+Returns the information 'info_name' about an
+event-property. The name and a short description is also returned. See
+XXX for available informations.
+
+
+=item I<value, name, desc> = B<ra_summary_info_get>(I<sum_handle, info_name>);
+
+Returns the information 'info_name' about an
+event-summary. The name and a short description is also returned. See
+XXX for available informations.
+
+
+=item I<value, name, desc> = B<ra_sum_dim_info_get>(I<sum_handle, dim, info_name>);
+
+Returns the information 'info_name' about the dimension
+'dim' of the event-summary. The name and a short description is also
+returned. See XXX for available informations.
+
+
+=item I<value, name, desc> = B<ra_sum_ch_info_get>(I<sum_handle, channel, info_name>);
+
+Returns the information 'info_name' about the channel
+'channel' of the event-summary. The name and a short description is
+also returned. See XXX for available informations.
+
+
+=item I<value, name, desc> = B<ra_info_get_by_idx>(I<any_handle, info_type, index>);
+
+Returns the information number 'index' from the info-type
+'info_type'. The name and a short description is also returned. See
+XXX for available informations and for valid 'info_type'.
+
+
+=item I<ok> = B<ra_info_set>(I<handle, info_name, info_type, info_value>);
+
+Set the information 'info_name' to 'info_value' for the object
+handled by 'handle'.
+
+
+=item I<meas_handle> = B<ra_meas_handle_from_any_handle>(I<any_handle>);
+
+Returns a measurement-handle from any handle.
+
+
+=item I<signals, plugins> = B<ra_meas_find>(I<ra_handle, directory>);
+
+Returns all signales handled by libRASCH in the directory 'directory'.
+
+
+=item I<meas_handle> = B<ra_meas_open>(I<ra_handle, signal_name, eval_file, open_fast>);
+
+Opens the measurement 'signal_name'. If you are
+interested only in information about the type of the measurement or
+about informations of the measurement-object than the flag 'open_fast'
+can be set to '1' and the opening is faster (the reading of the
+evaluations are skipped.) A specific evaluation file can be given
+in 'eval_file'. If this is set to NULL or the empty string, libRASCH
+will look for the default evaluation file associated with the
+measurement.
+
+
+=item I<meas_handle> = B<ra_meas_new>(I<ra_handle, dir_name, signal_name>);
+
+Creates a new measurement with the name @name in the
+directory @dir. The function returns the handle to the
+measurement. The measurement will be stored using the libRASCH
+file-format.
+
+
+=item B<ra_meas_save>(I<meas_handle>);
+
+Saves the changes to a measurement (NOT to the
+evaluation). Plugin must support this.
+
+
+=item B<ra_meas_close>(I<meas_handle>);
+
+Close the measurement with the measurement-handle 'meas_handle'.
+
+
+=item I<rec_handle> = B<ra_rec_get_first>(I<meas_handle, session_number>);
+
+Returns the first recording-handle for session number
+'session_number'.
+
+
+=item I<rec_handle> = B<ra_rec_get_next>(I<rec_handle>);
+
+Returns the recording-handle after 'rec_handle'.
+
+
+=item I<rec_handle> = B<ra_rec_get_first_child>(I<rec_handle>);
+
+Returns the recording-handle which is the first child of
+'rec_handle'. 
+
+
+=item I<data> = B<ra_raw_get>(I<rec_handle, channel, start_sample, num_samples>);
+
+Returns 'num_samples' raw-data starting with sample
+'start_sample' from recording 'rec_handle' and channel 'ch'.
+
+
+=item I<data> = B<ra_raw_get_unit>(I<rec_handle, channel, start_sample, num_samples>);
+
+Returns 'num_samples' raw-data starting with sample
+'start_sample' from recording 'rec_handle' and channel 'ch'. The values
+returned are scaled so the values are 'unit'-values
+
+
+=item I<ok> = B<ra_meas_copy>(I<meas_handle, dir>);
+
+
+The function copy the files of measurement meas_handle to directory dir.
+
+IMPORTANT!!!
+Function _not_ completely tested. Use at your own risk.
+
+
+=item I<meas_handle_moved> = B<ra_meas_move>(I<meas_handle, dir>);
+
+
+The function move the files of the measurement to directory dir. After the move
+the measurement will be reopend (to be able to handle the new positions of the files)
+and the functions returns the new measurement-handle.
+
+IMPORTANT!!!
+Function _not_ completely tested. Use at your own risk.
+
+
+=item I<ok> = B<ra_meas_delete>(I<meas_handle>);
+
+
+The function deletes the files of the measurement. The measurement
+will be closed after the deletion. Therefore meas_handle is no longer a valid
+measurement-handle.
+
+IMPORTANT!!!
+Function _not_ completely tested. Use at your own risk.
+
+
+=item B<ra_lib_use_plugin>(I<ra_handle, index, use_it>);
+
+Not implemented yet.
+
+
+=item I<plugin_handle> = B<ra_plugin_get_by_num>(I<ra_handle, number, search_all>);
+
+Returns the plugin-handle for plugin number 'number'.
+
+
+=item I<plugin_handle> = B<ra_plugin_get_by_name>(I<ra_handle, name, search_all>);
+
+Returns the plugin-handle for plugin 'name'.
+
+
+=item I<process_handle> = B<ra_proc_get>(I<meas_handle, plugin_handle>);
+
+
+
+
+=item I<error> = B<ra_proc_do>(I<process_handle>);
+
+Perform some calculation using the processing-plugin
+'plugin_handle. The function returns a process-handle, which will be
+used in the function 'ra_result_get' to get the results of the
+calculation.
+
+
+=item I<index> = B<ra_proc_get_result_idx>(I<process_handle, res_ascii_id>);
+
+The function returns the index of the result
+'res_ascii_id' in the results returned in re_proc_get_result().
+
+
+=item I<values, name, desc> = B<ra_proc_get_result>(I<process_handle, plugin_handle>);
+
+Returns the results of the calculation done calling
+'ra_proc_do'. It also returns the name's and short descriptions
+of the values. The returning variables are vectors containing all
+results.
+
+
+=item B<ra_proc_free>(I<process_handle>);
+
+The function ra_proc_do() allocates some memory to
+store the results. This function frees the allocated memory.
+
+
+=item I<ok> = B<ra_eval_save>(I<meas_handle, file, use_ascii>);
+
+Save evaluation infos of a measurement.
+  
+
+=item I<value> = B<ra_eval_attribute_list>(I<handle>);
+
+
+    Get the list of available attributes for evaluation related handle 'handle'.
+  
+
+=item I<value> = B<ra_eval_attribute_get>(I<handle, attrib_name>);
+
+
+    Get the value of the attribute 'attrib_name'.
+  
+
+=item B<ra_eval_attribute_set>(I<handle, attrib_name, attrib_type, attrib_value>);
+
+
+    Set the value of the attribute 'attrib_name'.
+  
+
+=item I<ok> = B<ra_eval_attribute_unset>(I<handle, attrib_name>);
+
+
+    Unset the value of the attribute 'attrib_name'.
+  
+
+=item I<eval_handle> = B<ra_eval_add>(I<meas_handle, name, desc, orig>);
+
+Returns the evaluation-handle of the newly added evaluation.
+  
+
+=item I<ok> = B<ra_eval_delete>(I<eval_handle>);
+
+Delete the evaluation 'eval_handle'.
+  
+
+=item I<value> = B<ra_eval_get_all>(I<meas_handle>);
+
+
+    Returns all evaluations belonging to 'meas_handle'.
+  
+
+=item I<eval_handle> = B<ra_eval_get_original>(I<meas_handle>);
+
+Returns the evaluation-handle of the original evaluation.
+  
+
+=item I<eval_handle> = B<ra_eval_get_default>(I<meas_handle>);
+
+Returns the evaluation-handle of the default evaluation.
+  
+
+=item I<ok> = B<ra_eval_set_default>(I<eval_handle>);
+
+Set the evaluation 'eval_handle' as the default one.
+  
+
+=item I<eval_handle> = B<ra_eval_get_handle>(I<class_handle>);
+
+Returns the evaluation-handle the event-class 'class_handle' belongs to.
+  
+
+=item I<class_handle> = B<ra_class_add>(I<eval_handle, id, name, desc>);
+
+Returns the handle of the newly added event-class.
+  
+
+=item I<class_handle> = B<ra_class_add_predef>(I<eval_handle, id>);
+
+Returns the handle of the newly added event-class.
+  
+
+=item I<ok> = B<ra_class_delete>(I<class_handle>);
+
+Delete the event-class given by 'class_handle'.
+  
+
+=item I<value> = B<ra_class_get>(I<eval_handle, id>);
+
+
+    Returns all event-classes with the id 'id'.
+  
+
+=item I<event_id> = B<ra_class_add_event>(I<class_handle, start_pos, end_pos>);
+
+Returns the id of the added event.
+  
+
+=item I<OK> = B<ra_class_del_event>(I<class_handle, event_id>);
+
+Delete the event with the id 'event_id'.
+  
+
+=item I<pos> = B<ra_class_get_event_pos>(I<class_handle, event_id>);
+
+Returns the start- and end-position of the event 'event_id'.
+  
+
+=item I<OK> = B<ra_class_set_event_pos>(I<class_handle, event_id, start_pos, end_pos>);
+
+Set the start- and end-position of the event 'event_id'.
+  
+
+=item I<value> = B<ra_class_get_events>(I<class_handle, start_pos, end_pos, complete, sort>);
+
+
+    Returns all events which are between 'start_pos' and 'end_pos'. If the flag
+    'complete' is set, only these events are returned which starts AND ends in
+    region. If the flag 'sort' is set, the returned events are sorted according
+    to their position.
+  
+
+=item I<event_id> = B<ra_class_get_prev_event>(I<class_handle, event_id>);
+
+Returns the event-id of the previous event.
+  
+
+=item I<event_id> = B<ra_class_get_next_event>(I<class_handle, event_id>);
+
+Returns the event-id of the next event.
+  
+
+=item I<class_handle> = B<ra_class_get_handle>(I<handle>);
+
+Returns the class-handle the property or summary handle 'handle' belongs to.
+  
+
+=item I<prop_handle> = B<ra_prop_add>(I<class_handle, id, value_type, name, desc, unit, use_minmax, min, max, has_ignore_value, ignore_value>);
+
+Returns the handle of the added event-property.
+  
+
+=item I<prop_handle> = B<ra_prop_add_predef>(I<class_handle, id>);
+
+Returns the handle of the added event-property.
+  
+
+=item I<ok> = B<ra_prop_delete>(I<prop_handle>);
+
+Delete the event-property given by 'prop_handle'.
+  
+
+=item I<value> = B<ra_prop_get>(I<class_handle, id>);
+
+
+    Return the event-propertiy with the id 'id'.
+  
+
+=item I<value> = B<ra_prop_get_all>(I<class_handle>);
+
+
+    Returns all event-properties within event-class 'class_handle'.
+  
+
+=item B<ra_prop_set_value>(I<prop_handle, event_id, ch, value_type, value>);
+
+
+Set an event-property.
+
+
+=item I<ret> = B<ra_prop_set_value_mass>(I<prop_handle, event_id, ch, value_type, value>);
+
+
+Set all values of an event-property.
+
+
+=item I<ch> = B<ra_prop_get_ch>(I<prop_handle, id>);
+
+Returns for event 'event-id' a list of channels for which
+values are available.
+
+
+=item I<value> = B<ra_prop_get_value>(I<prop_handle, id, ch>);
+
+Returns the event-property value for event 'event-id' and channel 'channel'.
+
+
+=item I<event_ids, ch, values> = B<ra_prop_get_value_all>(I<prop_handle>);
+
+Returns all event-property values and the corresponding event-ids channels.
+
+
+=item I<event_ids> = B<ra_prop_get_events>(I<prop_handle, val_type, min, max, ch>);
+
+Return the event-ids which values are between 'min' and 'max.
+
+
+=item I<sum_handle> = B<ra_sum_add>(I<class_handle, id, name, desc, num_dim, dim_name, dim_unit>);
+
+Returns the handle of the added event-summary.
+  
+
+=item I<OK> = B<ra_sum_add_ch>(I<sum_handle, ch, fid_offset>);
+
+Add a channel to the event-summary 'sum_handle'.
+  
+
+=item I<ok> = B<ra_sum_delete>(I<sum_handle>);
+
+Delete the event-summary given by 'sum_handle'.
+  
+
+=item I<value> = B<ra_sum_get>(I<class_handle, id>);
+
+
+    Returns all event-summaries with the id 'id'.
+  
+
+=item I<part_id> = B<ra_sum_add_part>(I<sum_handle, events>);
+
+Add a summary part; the part-id is returned.  
+  
+
+=item I<ok> = B<ra_sum_del_part>(I<sum_handle, part_id>);
+
+Delete a summary part.
+  
+
+=item I<value> = B<ra_sum_get_part_all>(I<sum_handle>);
+
+
+    Returns all parts in the event-summary 'sum_handle'.
+  
+
+=item I<ok> = B<ra_sum_set_part_data>(I<sum_handle, part_id, ch_idx, dim, data_type, data>);
+
+
+Set the data for an event-summary.
+
+
+=item B<ra_sum_get_part_data>(I<sum_handle, part_id, ch_idx, dim>);
+
+Returns the data of an event-summary part.
+
+
+=item B<ra_sum_get_part_events>(I<sum_handle, part_id>);
+
+Returns for an event-summary part the event-ids which are the part is based on.
+
+
+=item I<OK> = B<ra_sum_set_part_events>(I<sum_handle, part_id, event_ids>);
+
+Returns for an event-summary part the event-ids which are the part is based on.
+
+
+=back
+
+=head2 EXPORT
+
+None by default.
+
+=head1 AUTHOR
+
+Raphael Schneider, E<lt>rasch@med1.med.tum.deE<gt>
+
+=head1 SEE ALSO
+
+
+
+=cut

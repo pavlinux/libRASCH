@@ -1,0 +1,11 @@
+Returns 'num' start- and end-postions of continues events
+starting with event 'start', from event-set 'evset_handle' and
+evaluation 'eval_handle'.
+  Input parameters:
+    evset_handle
+    start
+    num
+
+  Output parameters:
+    start_pos
+    end_pos

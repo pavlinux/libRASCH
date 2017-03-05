@@ -1,0 +1,5589 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>User Manual for libRASCH-0.8.29</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"></HEAD
+><BODY
+CLASS="BOOK"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="BOOK"
+><A
+NAME="AEN1"
+></A
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="TITLE"
+><A
+NAME="AEN1"
+>User Manual for libRASCH-0.8.29</A
+></H1
+><H3
+CLASS="AUTHOR"
+><A
+NAME="AEN4"
+></A
+>Raphael Schneider</H3
+><P
+CLASS="COPYRIGHT"
+>Copyright &copy; 2004-2006 Raphael Schneider</P
+><HR></DIV
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="#AEN12"
+>Forword</A
+></DT
+><DT
+>1. <A
+HREF="#INTRODUCTION"
+>Introduction</A
+></DT
+><DD
+><DL
+><DT
+>1.1. <A
+HREF="#INTRO-CHAPTER-DESC"
+>Overview of the next chapters</A
+></DT
+></DL
+></DD
+><DT
+>2. <A
+HREF="#CONCEPT-TERMINOLOGY"
+>Concepts and Terminology</A
+></DT
+><DD
+><DL
+><DT
+>2.1. <A
+HREF="#GENERAL-LIBRASCH-STRUCT"
+>General Structure of libRASCH</A
+></DT
+><DT
+>2.2. <A
+HREF="#TERMINOLOGY"
+>Terminology</A
+></DT
+></DL
+></DD
+><DT
+>3. <A
+HREF="#TUTORIAL"
+>A Tutorial</A
+></DT
+><DD
+><DL
+><DT
+>3.1. <A
+HREF="#TUT-INIT-LIB"
+>Initialize libRASCH and Basic Usage</A
+></DT
+><DD
+><DL
+><DT
+>3.1.1. <A
+HREF="#INIT-LIB-C"
+>C Version</A
+></DT
+><DT
+>3.1.2. <A
+HREF="#INIT-LIB-PL"
+>Perl Version</A
+></DT
+><DT
+>3.1.3. <A
+HREF="#INIT-LIB-PY"
+>Python Version</A
+></DT
+><DT
+>3.1.4. <A
+HREF="#INIT-LIB-MAT"
+>Matlab/Octave Version</A
+></DT
+></DL
+></DD
+><DT
+>3.2. <A
+HREF="#TUT-OPEN-MEAS"
+>Access Measurements</A
+></DT
+><DT
+>3.3. <A
+HREF="#TUT-HANDLE-RECS"
+>Access Recordings</A
+></DT
+><DT
+>3.4. <A
+HREF="#TUT-GET-RAW"
+>Get Sample Data</A
+></DT
+><DT
+>3.5. <A
+HREF="#TUT-HANDLE-EVAL"
+>Access Evaluations</A
+></DT
+><DT
+>3.6. <A
+HREF="#TUT-GET-EVENTS"
+>Get Events</A
+></DT
+><DT
+>3.7. <A
+HREF="#TUT-PROCESS"
+>Usage of process-plugins</A
+></DT
+></DL
+></DD
+><DT
+>A. <A
+HREF="#ALL-EXAMPLES"
+>Examples for all supported lanuages/systems</A
+></DT
+><DD
+><DL
+><DT
+>A.1. <A
+HREF="#AEN421"
+>Init libRASCH</A
+></DT
+><DD
+><DL
+><DT
+>A.1.1. <A
+HREF="#AEN423"
+>C Version</A
+></DT
+><DT
+>A.1.2. <A
+HREF="#AEN429"
+>Perl Version</A
+></DT
+><DT
+>A.1.3. <A
+HREF="#AEN435"
+>Python Version</A
+></DT
+><DT
+>A.1.4. <A
+HREF="#AEN441"
+>Matlab/Octave Version</A
+></DT
+></DL
+></DD
+><DT
+>A.2. <A
+HREF="#AEN445"
+>Open measurement</A
+></DT
+><DD
+><DL
+><DT
+>A.2.1. <A
+HREF="#AEN447"
+>C Version</A
+></DT
+><DT
+>A.2.2. <A
+HREF="#AEN453"
+>Perl Version</A
+></DT
+><DT
+>A.2.3. <A
+HREF="#AEN459"
+>Python Version</A
+></DT
+><DT
+>A.2.4. <A
+HREF="#AEN465"
+>Matlab/Octave Version</A
+></DT
+></DL
+></DD
+><DT
+>A.3. <A
+HREF="#AEN469"
+>Handle recordings</A
+></DT
+><DD
+><DL
+><DT
+>A.3.1. <A
+HREF="#AEN471"
+>C Version</A
+></DT
+><DT
+>A.3.2. <A
+HREF="#AEN477"
+>Perl Version</A
+></DT
+><DT
+>A.3.3. <A
+HREF="#AEN483"
+>Python Version</A
+></DT
+><DT
+>A.3.4. <A
+HREF="#AEN489"
+>Matlab/Octave Version</A
+></DT
+></DL
+></DD
+><DT
+>A.4. <A
+HREF="#AEN493"
+>Access raw data</A
+></DT
+><DD
+><DL
+><DT
+>A.4.1. <A
+HREF="#AEN495"
+>C Version</A
+></DT
+><DT
+>A.4.2. <A
+HREF="#AEN499"
+>Perl Version</A
+></DT
+><DT
+>A.4.3. <A
+HREF="#AEN503"
+>Python Version</A
+></DT
+><DT
+>A.4.4. <A
+HREF="#AEN507"
+>Matlab/Octave Version</A
+></DT
+></DL
+></DD
+><DT
+>A.5. <A
+HREF="#AEN511"
+>Access evaluation</A
+></DT
+><DD
+><DL
+><DT
+>A.5.1. <A
+HREF="#AEN513"
+>C Version</A
+></DT
+><DT
+>A.5.2. <A
+HREF="#AEN519"
+>Perl Version</A
+></DT
+><DT
+>A.5.3. <A
+HREF="#AEN525"
+>Python Version</A
+></DT
+><DT
+>A.5.4. <A
+HREF="#AEN531"
+>Matlab/Octave Version</A
+></DT
+></DL
+></DD
+><DT
+>A.6. <A
+HREF="#AEN535"
+>Access events</A
+></DT
+><DD
+><DL
+><DT
+>A.6.1. <A
+HREF="#AEN537"
+>C Version</A
+></DT
+><DT
+>A.6.2. <A
+HREF="#AEN541"
+>Perl Version</A
+></DT
+><DT
+>A.6.3. <A
+HREF="#AEN545"
+>Python Version</A
+></DT
+><DT
+>A.6.4. <A
+HREF="#AEN549"
+>Matlab/Octave Version</A
+></DT
+></DL
+></DD
+><DT
+>A.7. <A
+HREF="#AEN553"
+>Use process-plugin</A
+></DT
+><DD
+><DL
+><DT
+>A.7.1. <A
+HREF="#AEN555"
+>C Version</A
+></DT
+><DT
+>A.7.2. <A
+HREF="#AEN561"
+>Perl Version</A
+></DT
+><DT
+>A.7.3. <A
+HREF="#AEN567"
+>Python Version</A
+></DT
+><DT
+>A.7.4. <A
+HREF="#AEN573"
+>Matlab/Octave Version</A
+></DT
+></DL
+></DD
+></DL
+></DD
+></DL
+></DIV
+><DIV
+CLASS="LOT"
+><DL
+CLASS="LOT"
+><DT
+><B
+>List of Figures</B
+></DT
+><DT
+>2-1. <A
+HREF="#LIBRASCH-STRUCT-FIG"
+>Structure of libRASCH.</A
+></DT
+><DT
+>3-1. <A
+HREF="#GET-RAW-FIG"
+>Screenshot after performing the commands in Octave as shown in the
+Octave session above (and on the left side in the screenshot).</A
+></DT
+><DT
+>3-2. <A
+HREF="#GET-EVENTS-FIG"
+>Screenshot after performing the commands in Octave as shown in the
+Octave session above (and on the left side in the screenshot).</A
+></DT
+></DL
+></DIV
+><DIV
+CLASS="PREFACE"
+><HR><H1
+><A
+NAME="AEN12"
+></A
+>Forword</H1
+><P
+>Nothing yet.</P
+></DIV
+><DIV
+CLASS="CHAPTER"
+><HR><H1
+><A
+NAME="INTRODUCTION"
+></A
+>Chapter 1. Introduction</H1
+><P
+>When analyzing biological signals, access to the raw data is
+mandatory. Because of different demands, both, the industry and the
+research community created a high number of different data formats for
+signal storage and signal distribution. To analyze data stored in a
+new data format, either a conversion program has to be written or the
+access functionality for the new data format has to be added to the
+analyzing program(s).</P
+><P
+>One way to solve this problem is the use of a standard file format,
+which is powerful enough to handle all needs for storing and
+distributing signals. For physiological signals, the 'File Exchange
+Format for Vital Signs' (FEF) tries to accomplish this task. If
+this format (or a similar one) is accepted by the research community
+and if the industry provides the possibility to export the signal data
+in this format, the data access will be facilitated.</P
+><P
+>Our approach, moreover, is different. We assume that there will be
+always different data formats (some 'standard' formats and a lot of
+proprietary formats). Therefore libRASCH, a programming
+library, was developed, which hides the differences of the data formats
+behind a common application programming interface (API).</P
+><P
+>Programs using libRASCH, no longer need to be adapted to each new
+data format. The implementation of a new data format needs only to be
+done once for libRASCH. Than all libRASCH based programs can handle
+the new format. </P
+><P
+>Additionally, libRASCH provides the infrastructure to perform
+processing algorithms in a standardized way and provide support to
+display the signal data on the computer screen. </P
+><DIV
+CLASS="SECTION"
+><HR><H2
+CLASS="SECTION"
+><A
+NAME="INTRO-CHAPTER-DESC"
+>1.1. Overview of the next chapters</A
+></H2
+><P
+>concept/terminology: describes how a measurement is seen in libRASCH
+and describes the words used in libRASCH</P
+><P
+>installation: more or less the INSTALL file (use one source for both
+files)</P
+><P
+>tutorial: short examples describing the primary functions of
+libRASCH</P
+></DIV
+></DIV
+><DIV
+CLASS="CHAPTER"
+><HR><H1
+><A
+NAME="CONCEPT-TERMINOLOGY"
+></A
+>Chapter 2. Concepts and Terminology</H1
+><P
+>This section gives a short overview about the concepts and terminology
+used in the manual.</P
+><P
+></P
+><DIV
+CLASS="SECTION"
+><HR><H2
+CLASS="SECTION"
+><A
+NAME="GENERAL-LIBRASCH-STRUCT"
+>2.1. General Structure of libRASCH</A
+></H2
+><P
+><A
+HREF="#LIBRASCH-STRUCT-FIG"
+>Figure 2-1</A
+> shows the operational area of
+libRASCH. Programs from User-space will call libRASCH to access
+measurements stored in files, to display signals on the screen and to
+process the signal. In the following "User-space" means all programs,
+which use the external interface of libRASCH (the API of libRASCH). Also
+programs like Matlab or Octave, for which an interface is available,
+are user-space programs (and the scripts used in this
+programs). "Library-space" describes the internal interfaces used in
+libRASCH. And "Filesystem" describes the real files used to store the
+measurement data on disk.</P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="LIBRASCH-STRUCT-FIG"
+></A
+><P
+><B
+>Figure 2-1. Structure of libRASCH.</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/librasch_struct.png"></P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H2
+CLASS="SECTION"
+><A
+NAME="TERMINOLOGY"
+>2.2. Terminology</A
+></H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>Measurement</DT
+><DD
+><P
+>A measurement is the topmost object in libRASCH. Measurements
+consists of one or more sessions, information about the measurement
+object (e.g. name, forename and birthday if the measurement object is
+a person) and zero or more evaluations.</P
+></DD
+><DT
+>Session</DT
+><DD
+><P
+>A Session is a recording for a specific time interval without any
+interruptions during this time interval. In a measurement can be more
+than one session, but the layout of the recording (see below)
+must not be changed.</P
+></DD
+><DT
+>Recording</DT
+><DD
+><P
+>A recording contains the measured data (e.g. ecg-leads V1-V6). A
+recording has one or more channels or two or more
+sub-recordings. Sub-recordings are used if more than one
+recording device is used. For example when one ADC-system records
+3 ecg-leads and one bloodpressure channel and another system
+records 12 eeg-leeds, the measurement consists of one top
+recording with two sub-recordings. The first sub-recording
+contains 4 channels (3 ecg and 1 bloodpressure channel) and the second
+sub-recording contains 12 channels (12 eeg channels). </P
+></DD
+><DT
+>Evaluation</DT
+><DD
+><P
+>The results of an analysis (e.g. detection of qrs-complexes in ecg's)
+are stored in an evaluation. An evaluation contains zero or more
+discrete events (like 'occurence of a qrs-complex') and/or zero or more continous
+events (like 'time interval with noise'). </P
+></DD
+><DT
+>Event</DT
+><DD
+><P
+>An event describes the occurence of something in a recording (e.g. a
+heartbeat in an ecg). An event has one or more event-properties.</P
+></DD
+><DT
+>Event-Property</DT
+><DD
+><P
+>An event-property is a specific property of the event (e.g. the position
+of the event, the type of the event). A specific event-property is
+allowed only once in an evaluation, for example there can be not more than one
+'qrs-position' property.</P
+></DD
+><DT
+>Event-Set</DT
+><DD
+><P
+>An event-set describes a group of event-properties. For example the
+event-set 'heartbeat' contains all properties which belongs to a heart
+beat (like position of qrs-complex, RR interval, type of qrs-complex,
+systolic bloodpressure).</P
+></DD
+><DT
+>Plugins</DT
+><DD
+><P
+>libRASCH makes heavy use of plugins. Plugins are small "programs" which
+are loaded when libRASCH is initialized. In the plugins the real work is
+done, the library-code coordinates that the correct plugin is used and
+does some other administrative tasks.
+
+In libRASCH exits three principal types of plugins: 
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>signal plugins</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>view plugins</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>process plugins</P
+></LI
+></UL
+></P
+></DD
+><DT
+>Access-Plugin</DT
+><DD
+><P
+>Access plugins handle the access to measurement files. They hide
+the differences of the various types of formats and offer
+an consistent interface to the measurements<A
+NAME="AEN86"
+HREF="#FTN.AEN86"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+>. Most of the times, the direct usage of
+access-plugins with the libRASCH-API is not needed.</P
+></DD
+><DT
+>Process-Plugin</DT
+><DD
+><P
+>Process plugins perform a specifc task on the measurement (e.g. the
+HRT-plugin calculates the Heart-Rate Turbulence parameters for an
+ecg or the detect plugin performs a simple beat detection in ecg's).
+The usage of these plugins </P
+></DD
+><DT
+>View-Plugin</DT
+><DD
+><P
+>View plugins allow to display the measurements on the screen. If you
+develop a program using a graphical user interface (GUI) all you need
+to display signals is to call the apropriate plugin. At the moment the
+following GUI's are supported:
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>Qt from Trolltech (for Linux)</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>MFC from Microsoft (for Windows)</P
+></LI
+></UL
+></P
+></DD
+></DL
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="CHAPTER"
+><HR><H1
+><A
+NAME="TUTORIAL"
+></A
+>Chapter 3. A Tutorial</H1
+><P
+>The handling of evaluations will be changed in the next version of
+libRASCH. Because we are working already on it, the sections about
+evaluations, event-sets and event-propertiey may not work with the
+current version (0.7.0). If you have any questions about the changes,
+please send them to the mailing list.</P
+><DIV
+CLASS="SECTION"
+><HR><H2
+CLASS="SECTION"
+><A
+NAME="TUT-INIT-LIB"
+>3.1. Initialize libRASCH and Basic Usage</A
+></H2
+><P
+>This section will show you how to start using libRASCH. We will
+initialize the library and get some information about it.</P
+><P
+>So let's start with the first example. We will perform the following
+steps:
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>init libRASCH</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>get number of plugins</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>find all measurements in a directory</P
+></LI
+></UL
+></P
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="INIT-LIB-C"
+>3.1.1. C Version</A
+></H3
+><PRE
+CLASS="PROGRAMLISTING"
+>//
+#include &#60;stdio.h&#62;
+#include &#60;ra.h&#62; <A
+NAME="INIT-LIB-C.INCLUDE"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>
+
+int main(int argc, char *argv[])
+{
+    ra_handle ra;
+    value_handle vh;
+    ra_find_handle f;
+    struct ra_find_struct fs;
+
+    /* initialize libRASCH */
+    ra = ra_lib_init(); <A
+NAME="INIT-LIB-C.INIT"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+>
+
+    /* check if init was successful */
+    if ((ra == NULL)
+        || (ra_lib_get_error(ra, NULL, 0) != RA_ERR_NONE)) <A
+NAME="INIT-LIB-C.ERROR"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+>
+    {
+        if (!ra)
+            printf("error initializing libRASCH\n");
+        else
+        {
+            char err_t[200];
+            long err_num;
+
+            err_num = ra_lib_get_error(ra, err_t, 200);
+            printf("while initializing libRASCH, error #%d "
+                   "occured\n  %s\n", err_num, err_t);
+
+            ra_lib_close(ra);
+        }
+        return -1;
+    }
+
+    /* get some infos */
+    vh = ra_value_malloc(); <A
+NAME="INIT-LIB-C.INFO-START"
+><IMG
+SRC="../images/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+>
+    if (ra_info_get(ra, RA_INFO_NUM_PLUGINS_L, vh) == 0) <A
+NAME="INIT-LIB-C.INFO-GET"
+><IMG
+SRC="../images/callouts/5.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(5)"></A
+>
+    {
+        printf("%s (%s): %d\n", ra_value_get_name(vh),
+               ra_value_get_desc(vh), ra_value_get_long(vh));
+    }
+    ra_value_free(vh); <A
+NAME="INIT-LIB-C.INFO-CLOSE"
+><IMG
+SRC="../images/callouts/6.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(6)"></A
+>
+
+    /* find all measurements in a directory */
+    f = ra_meas_find_first(ra, argv[1], &#38;fs); <A
+NAME="INIT-LIB-C.FIND-START"
+><IMG
+SRC="../images/callouts/7.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(7)"></A
+>
+    if (f)
+    {
+        int cnt = 1;
+
+        printf("measurements found in %s:\n", argv[1]);
+        do
+        {
+            printf("  %2d: %s\n", cnt, fs.name);
+            cnt++;
+        }
+        while (ra_meas_find_next(f, &#38;fs)); <A
+NAME="INIT-LIB-C.FIND-NEXT"
+><IMG
+SRC="../images/callouts/8.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(8)"></A
+>
+
+        ra_meas_close_find(f); <A
+NAME="INIT-LIB-C.FIND-CLOSE"
+><IMG
+SRC="../images/callouts/9.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(9)"></A
+>
+    }
+
+    /* close libRASCH */
+    ra_lib_close(ra); <A
+NAME="INIT-LIB-C.CLOSE"
+><IMG
+SRC="../images/callouts/10.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(10)"></A
+>
+
+    return 0;
+}                               /* main() */
+
+//&#13;</PRE
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#INIT-LIB-C.INCLUDE"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+>To use libRASCH, the header-file ra.h must be included. In this
+example the include-directory of libRASCH is in the INCLUDE path of
+the C compiler. In ra.h you will find all function prototypes of the
+API of libRASCH. ra.h includes the header-file ra_defines.h, there you
+will find all define's and structure's needed for the libRASCH API.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#INIT-LIB-C.INIT"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+></DT
+><DD
+>ra_lib_init() initialize libRASCH. The function returns
+an ra_handle. </DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#INIT-LIB-C.ERROR"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+></DT
+><DD
+>ra_lib_get_error() returns the last error occured in
+libRASCH. To check if the initialization was successful, check that no
+error occured. If an error occured, a short description of the error
+can be retrieved with the function ra_lib_get_error().</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#INIT-LIB-C.INFO-START"
+><IMG
+SRC="../images/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+></DT
+><DD
+>ra_value_malloc() returns an value object. This object will be used in
+libRASCH to handle data. To set/get the data and to get informations
+about the stored data, API functions in libRASCH are available. The
+functions start with 'ra_value_*'.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#INIT-LIB-C.INFO-GET"
+><IMG
+SRC="../images/callouts/5.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(5)"></A
+></DT
+><DD
+>ra_info_get() returns information about libRASCH and all objects
+handled by libRASCH. RA_INFO_NUM_PLUGINS_L asks libRASCH for the the
+number of loaded plugins. The last character of the info-id ('L')
+indicates that the returned value will be a long-value. Therefore the
+number of plugins will be returned by using the function
+ra_value_get_long(). (See the descriptions of the ra_value_* functions
+in the reference manual what else can be done with an value object.)</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#INIT-LIB-C.INFO-CLOSE"
+><IMG
+SRC="../images/callouts/6.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(6)"></A
+></DT
+><DD
+>ra_value_free() frees the memory associated with the value object
+allocated above.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#INIT-LIB-C.FIND-START"
+><IMG
+SRC="../images/callouts/7.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(7)"></A
+></DT
+><DD
+>ra_meas_find_first() returns a valid handle (not
+NULL) if at least one supported measurement (this means that at least
+one measurement in the directory can be handled with one of the loaded
+access-plugins). The information about the found measurement will be
+set in the ra_find_struct (for definition of structure see
+ra_defines.h).</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#INIT-LIB-C.FIND-NEXT"
+><IMG
+SRC="../images/callouts/8.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(8)"></A
+></DT
+><DD
+>ra_meas_find_next() returns true (!= 0) if another
+measurement is available. Again, the info about the measurement will
+be in the ra_find_struct. This function iterates over all found
+measurements.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#INIT-LIB-C.FIND-CLOSE"
+><IMG
+SRC="../images/callouts/9.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(9)"></A
+></DT
+><DD
+>ra_meas_close_find() frees all memory allocated during
+ra_meas_find_first() and ra_meas_find_next().</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#INIT-LIB-C.CLOSE"
+><IMG
+SRC="../images/callouts/10.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(10)"></A
+></DT
+><DD
+>ra_lib_close() unloads all plugins and frees all
+allocated memory.</DD
+></DL
+></DIV
+><P
+>Running the example in the examples directory with the command 
+<B
+CLASS="COMMAND"
+>init_lib ./database</B
+> produced the following output.</P
+><PRE
+CLASS="PROGRAMLISTING"
+>#plugins (): 37
+measurements found in ./database:
+   1: ./database/100s.hea
+   2: ./database/JesusOlivan2003-12-EMG2.edf
+   3: ./database/100s.dat&#13;</PRE
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="INIT-LIB-PL"
+>3.1.2. Perl Version</A
+></H3
+><P
+>The Perl script shown below produces exactly the same
+output as the C version, therefore the output is not shown.</P
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+use strict;
+use RASCH; <A
+NAME="INIT-LIB-PL.USE"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>
+
+# initialize libRASCH
+my $ra = new RASCH or die "error initializing libRASCH\n"; <A
+NAME="INIT-LIB-PL.INIT"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+>
+my ($err_num, $err_text) = $ra-&#62;get_error ();
+if ($err_num != 1)
+{
+    print "while initializing libRASCH, error # $err_num " .
+        "occured:\n $err_text\n";
+    exit -1;
+}
+
+# get some infos
+my $value = $ra-&#62;get_info(info =&#62;'num_plugins'); <A
+NAME="INIT-LIB-PL.INFO"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+>
+if ($value-&#62;is_ok())
+{
+    print $value-&#62;name() . " (" . $value-&#62;desc() . "): " . $value-&#62;value() . "\n"; <A
+NAME="INIT-LIB-PL.VALUE"
+><IMG
+SRC="../images/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+>
+}
+
+# find all measurements in a directory
+my $meas = $ra-&#62;find_meas($ARGV[0]); <A
+NAME="INIT-LIB-PL.FIND"
+><IMG
+SRC="../images/callouts/5.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(5)"></A
+>
+print "measurements found in $ARGV[0]:\n";
+my $cnt = 1;
+for (@$meas)
+{
+    print "$cnt: " . $_-&#62;filename() . "\n";
+    $cnt++;
+}
+
+# ra_close() will be called when $ra is being destroyed
+
+exit 0;
+#&#13;</PRE
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#INIT-LIB-PL.USE"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+>After installing the Perl support for libRASCH, the package RASCH.pm
+is available.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#INIT-LIB-PL.INIT"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+></DT
+><DD
+>Create a new RASCH object.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#INIT-LIB-PL.INFO"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+></DT
+><DD
+>The function get_info() returns an RAvalue object.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#INIT-LIB-PL.VALUE"
+><IMG
+SRC="../images/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+></DT
+><DD
+>The function value() returns the value stored in a RAvalue object. The
+functions name() and desc() returns the name and a short description
+of the info, respectively.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#INIT-LIB-PL.FIND"
+><IMG
+SRC="../images/callouts/5.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(5)"></A
+></DT
+><DD
+>get_all_meas() returns an array with all the measurements found.</DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="INIT-LIB-PY"
+>3.1.3. Python Version</A
+></H3
+><P
+>The Python script shown below produces exactly the same
+output as the C and Perl version, therefore the output is not shown.</P
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+import sys
+from RASCH import * <A
+NAME="INIT-LIB-PY.USE"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>
+
+# initialize libRASCH
+ra = RASCH() <A
+NAME="INIT-LIB-PY.INIT"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+>
+if not ra:
+    print "can't initialize libRASCH"
+    sys.exit()
+[err_num, err_text] = ra.get_error()
+if err_num != 1:
+    print "while initializing libRASCH, error #%d occured:\n " \
+          "%s\n" % err_num, err_text
+    sys.exit()
+    
+# get some infos
+value = ra.get_info(info='num_plugins')  <A
+NAME="INIT-LIB-PY.INFO"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+>
+if (value.is_ok()):
+    print value.name(), "("+value.desc()+"):", value.value() <A
+NAME="INIT-LIB-PY.VALUE"
+><IMG
+SRC="../images/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+>
+
+# find all measurements in a directory
+meas = ra.find_meas(sys.argv[1]) <A
+NAME="INIT-LIB-PY.FIND"
+><IMG
+SRC="../images/callouts/5.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(5)"></A
+>
+print "measurements found in " + sys.argv[1] + ":\n"
+cnt = 1
+for item in meas:
+    print "%d: %s" % (cnt, item.filename())
+    cnt = cnt + 1
+
+#&#13;</PRE
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#INIT-LIB-PY.USE"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+>After installing the Python support for libRASCH, the module 'RASCH'
+is available.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#INIT-LIB-PY.INIT"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+></DT
+><DD
+>Create a new RASCH object.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#INIT-LIB-PY.INFO"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+></DT
+><DD
+>The function get_info() returns a RAvalue object.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#INIT-LIB-PL.VALUE"
+><IMG
+SRC="../images/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+></DT
+><DD
+>The function value() returns the value stored in a RAvalue object. The
+functions name() and desc() returns the name and a short description
+of the info, respectively.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#INIT-LIB-PY.FIND"
+><IMG
+SRC="../images/callouts/5.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(5)"></A
+></DT
+><DD
+>get_all_meas() returns an array with all the measurements found.</DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="INIT-LIB-MAT"
+>3.1.4. Matlab/Octave Version</A
+></H3
+><P
+>Here an Octave session using the libRASCH support is shown. The same
+tasks are performed as in the previous examples. Most of the functions
+have in Matlab and Octave the same behaviour. Differences are listed
+in the function reference section for Matlab and Octave.</P
+><PRE
+CLASS="PROGRAMLISTING"
+>GNU Octave, version 3.0.5
+Copyright (C) 2008 John W. Eaton and others.
+This is free software; see the source code for copying
+conditions.
+There is ABSOLUTELY NO WA<A
+NAME="INIT-LIB-M.INIT"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>RRANTY; not even for MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.
+
+Octave was configured for "i486-pc-linux-gnu".
+
+Additional information about Octave is available at              <A
+NAME="INIT-LIB-M.INFO"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+>
+http://www.octave.org.
+
+Please contribute if you find this software useful.
+For more information, visit                   <A
+NAME="INIT-LIB-M.FIND"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+>
+http://www.octave.org/help-wanted.html
+
+Report bugs to &#60;bug@octave.org&#62; (but first, please read
+http://www.octave.org/bugs.html to learn how to write a
+helpful report).
+
+For information about changes from previous versions, type
+`news'.
+
++ ra=ra_lib_init
+ra =  193209216
++ [err_num, err_text]=ra_lib_get_error(ra)
+err_num =  1
+err_text = libRASCH (ra.c:109): no error
++ [value, name, desc]=ra_lib_info_get(ra, 'num_plugins')
+value =  37
+name = #plugins
+desc =
++ meas=ra_meas_find(ra, './database')
+meas =
+
+{
+  [1,1] = ./database/100s.hea
+  [2,1] = ./database/JesusOlivan2003-12-EMG2.edf
+  [3,1] = ./database/100s.dat
+}
+
++ ra_lib_close(ra);&#13;</PRE
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#INIT-LIB-M.INIT"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+>Initialize libRASCH. If function call is successfull, a value not 0
+will be returned.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#INIT-LIB-M.INFO"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+></DT
+><DD
+>The function returns an array including (1) the value, (2)
+the name and (3) a short description of the wanted information.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#INIT-LIB-M.FIND"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+></DT
+><DD
+>The function returns a cell-array with all the measurements found.</DD
+></DL
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H2
+CLASS="SECTION"
+><A
+NAME="TUT-OPEN-MEAS"
+>3.2. Access Measurements</A
+></H2
+><P
+>The example will show how to open a measurement and how to get some
+information from a measurement. We will perform the following steps:
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>open a measurement</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>get the number of sessions and the maximum samplerate</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>print all available infos about the measurement object
+(in this example it is a patient)</P
+></LI
+></UL
+></P
+><PRE
+CLASS="PROGRAMLISTING"
+>//
+#include &#60;stdio.h&#62;
+#include &#60;ra.h&#62;
+
+int main(int argc, char *argv[])
+{
+    ra_handle ra;
+    value_handle vh;
+    meas_handle meas;
+
+    /* initialize libRASCH */
+    ra = ra_lib_init();
+    if ((ra == NULL)
+        || (ra_lib_get_error(ra, NULL, 0) != RA_ERR_NONE))
+    {
+        if (!ra)
+            printf("error initializing libRASCH\n");
+        else
+        {
+            char err_t[200];
+            long err_num;
+
+            err_num = ra_lib_get_error(ra, err_t, 200);
+            printf("while initializing libRASCH, error #%d "
+                   "occured\n  %s\n", err_num, err_t);
+
+            ra_lib_close(ra);
+        }
+        return -1;
+    }
+
+    /* open measurement */
+    meas = ra_meas_open(ra, argv[1], NULL, 0); <A
+NAME="OPEN-MEAS-C.OPEN"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>
+    if (meas == NULL)
+    {
+        char err_t[200];
+        long err_num;
+
+        err_num = ra_lib_get_error(ra, err_t, 200);
+        printf("can't open measurement %s\nerror #%d: %s\n",
+               argv[1], err_num, err_t);
+        ra_lib_close(ra);
+        return -1;
+    }
+
+    /* get some infos */
+    vh = ra_value_malloc();
+    if (ra_info_get(meas, RA_INFO_NUM_SESSIONS_L, vh) == 0)
+        printf("%s (%s): %d\n", ra_value_get_name(vh),
+               ra_value_get_desc(vh), ra_value_get_long(vh));
+    if (ra_info_get(meas, RA_INFO_MAX_SAMPLERATE_D, vh) == 0)
+        printf("%s (%s): %f\n", ra_value_get_name(vh),
+               ra_value_get_desc(vh), ra_value_get_double(vh));
+
+    /* get all measurement-object infos */
+    if (ra_info_get(meas, RA_INFO_NUM_OBJ_INFOS_L, vh) == 0) <A
+NAME="OPEN-MEAS-C.INFO"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+>
+    {
+        long l;
+        long n = ra_value_get_long(vh);
+
+        for (l = 0; l &#60; n; l++)
+        {
+            ra_info_get_by_idx(meas, RA_INFO_OBJECT, l, vh); <A
+NAME="OPEN-MEAS-C.INFO-IDX"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+>
+            printf("%s (%s): ", ra_value_get_name(vh),
+                   ra_value_get_desc(vh));
+            switch (ra_value_get_type(vh)) <A
+NAME="OPEN-MEAS-C.INFO-TYPE"
+><IMG
+SRC="../images/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+>
+            {
+            case RA_VALUE_TYPE_LONG:
+                printf("%d\n", ra_value_get_long(vh));
+                break;
+            case RA_VALUE_TYPE_DOUBLE:
+                printf("%f\n", ra_value_get_double(vh));
+                break;
+            case RA_VALUE_TYPE_CHAR:
+                printf("%s\n", ra_value_get_string(vh));
+                break;
+            default:
+                printf("not supported type\n");
+                break;
+            }
+        }
+    }
+
+    /* close */
+    ra_value_free(vh);
+    ra_meas_close(meas);
+    ra_lib_close(ra);
+
+    return 0;
+}                               /* main() */
+
+//&#13;</PRE
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#OPEN-MEAS-C.OPEN"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+>ra_open_meas() opens a measurement. The user do not need to specify
+the format in which the measurement was saved, libRASCH selects the
+access plugin which can handle the format. If no access plugin can
+handle the measurement, the function fails. The third parameter (here
+it is set to '0') controls if a fast-open should be done (set to
+'1'). When a fast-open is selected, some "time-consuming"
+initialization is skipped and only the object informations and some
+basic recording informations (e.g. recording date) are
+available. <A
+NAME="AEN258"
+HREF="#FTN.AEN258"
+><SPAN
+CLASS="footnote"
+>[2]</SPAN
+></A
+></DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#OPEN-MEAS-C.INFO"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+></DT
+><DD
+>With this call, the number of available measurement objects is
+returned. In the following loop, we will get all available
+informations about the measurement object.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#OPEN-MEAS-C.INFO-IDX"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+></DT
+><DD
+>With the function ra_info_get_by_idx() we select the information we
+want by a number. Because we do not know which number is which
+information, this function is only useful to display all available
+data in a list.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#OPEN-MEAS-C.INFO-TYPE"
+><IMG
+SRC="../images/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+></DT
+><DD
+>Because we do not know which information is returned, we do not know
+the type of the information. Therefore we have to get the type of the
+information so we use the correct way to display the information.</DD
+></DL
+></DIV
+><P
+>The output of the above example for the measurement '100s'
+is shown here:</P
+><PRE
+CLASS="PROGRAMLISTING"
+>#sessions (): 1
+max. samplerate (maximum samplrate used in measurement):
+360.000000
+ID (Patient-ID): 100s&#13;</PRE
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H2
+CLASS="SECTION"
+><A
+NAME="TUT-HANDLE-RECS"
+>3.3. Access Recordings</A
+></H2
+><P
+>The example will show how to get the root recording and some
+information about it. We will perform the following steps:
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>get root recording</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>get some general informations about the recording</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>get some infos about all used recording devices</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>get some infos about all recorded channels</P
+></LI
+></UL
+></P
+><P
+>When more than one recording device was used, the root recording
+provides access to the channels as if they were recorded with one
+device.</P
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+use strict;
+use RASCH;
+
+# initialize libRASCH
+my $ra = new RASCH or die "error initializing libRASCH\n";
+
+# open measurement
+my $meas = $ra-&#62;open_meas($ARGV[0], '', 0) or
+    die "can't open measurement $ARGV[0]\n";
+
+# get root recording
+my $rec = $meas-&#62;get_first_rec(0) or <A
+NAME="HANDLE-RECS-PL.GET-REC"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>
+    die "can't get root recording\n";
+
+# get some infos about recording
+my $v = $rec-&#62;get_info(info =&#62; 'rec_num_devices');
+my $num_dev = $v-&#62;value();
+$v = $rec-&#62;get_info(info =&#62; 'rec_num_channel');
+my $num_ch = $v-&#62;value();
+$v = $rec-&#62;get_info(info =&#62; 'rec_name');
+my $rec_name = $v-&#62;value();
+$v = $rec-&#62;get_info(info =&#62; 'rec_date');
+my $rec_date = $v-&#62;value;
+print "measurement $rec_name\nrecorded at $rec_date\n" .
+    "#devices=$num_dev\n#channels=$num_ch\n\n";
+
+# print name for every device
+print "infos about the recording devices used:\n";
+for (my $i = 0; $i &#60; $num_dev; $i++)
+{
+    $v = $rec-&#62;get_info(dev =&#62; $i, info =&#62; 'dev_hw_name'); <A
+NAME="HANDLE-RECS-PL.GET-INFO-DEV"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+>
+    my $name = $v-&#62;value();
+    print "  device #$i: $name\n";
+}
+print "\n";
+	
+# print name for every channel
+print "infos about the channels:\n";
+for (my $i = 0; $i &#60; $num_ch; $i++)
+{
+    $v = $rec-&#62;get_info(ch =&#62; $i, info =&#62; 'ch_name'); <A
+NAME="HANDLE-RECS-PL.GET-INFO-CH"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+>
+    my $name = $v-&#62;value();
+    $v = $rec-&#62;get_info(ch =&#62; $i, info =&#62; 'ch_unit');
+    my $unit = $v-&#62;value();
+    print "  channel #$i: $name [$unit]\n";
+}
+print "\n";
+
+exit 0;
+#&#13;</PRE
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#HANDLE-RECS-PL.GET-REC"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+>The function get_first_rec(s_num) returns the root-recording of
+the session s_num. The sessions start with number 0.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#HANDLE-RECS-PL.GET-INFO-DEV"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+></DT
+><DD
+>When asking for information about recording devices you need to set
+the device number. In Perl and Python this is done by setting the argument 'dev'
+to the device number. In C the device number is set in the
+value_handle (using ra_value_set_number()) used to receive the
+information when calling ra_info_get().</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#HANDLE-RECS-PL.GET-INFO-CH"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+></DT
+><DD
+>When asking for information about a channel you need to set
+the channel number. In Perl and Python this is done by setting the argument 'ch'
+to the device number. In C the device number is set in the
+value_handle (using ra_value_set_number()) used to receive the
+information when calling ra_info_get()</DD
+></DL
+></DIV
+><P
+>The output of the above example for the measurement '100s'
+is shown here:</P
+><PRE
+CLASS="PROGRAMLISTING"
+>measurement 100s
+recorded at 00.00.0
+#devices=
+#channels=2
+
+infos about the recording devices used:
+
+infos about the channels:
+  channel #0: MLII []
+  channel #1: V5 []
+&#13;</PRE
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H2
+CLASS="SECTION"
+><A
+NAME="TUT-GET-RAW"
+>3.4. Get Sample Data</A
+></H2
+><P
+>The example will show how to get the root recording and some
+information about it. We will perform the following steps:
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>get root recording</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>get some general informations about the recording</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>get some infos about all used recording devices</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>get some infos about all recorded channels</P
+></LI
+></UL
+></P
+><P
+>When more than one recording device was used, the root recording
+provides access to the channels as if they were recorded with one
+device.</P
+><PRE
+CLASS="PROGRAMLISTING"
+>GNU Octave, version 3.0.5
+Copyright (C) 2008 John W. Eaton and others.
+This is free software; see the source code for copying
+conditions.
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.
+
+Octave was configured for "i486-pc-linux-gnu".
+
+Additional information about Octave is available at
+http://www.octave.org.
+
+Please contribute if you find this software useful.
+For more information, visit
+http://www.octave.org/help-wanted.h<A
+NAME="GET-RAW-M.GET-DATA"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>tml
+
+Report bugs to &#60;bug@octave.org&#62; (but first, please read
+http://www.octave.org/bugs.html to learn how to write a
+helpful report).
+
+For information about changes from previous versions, type
+`news'.
+
++ ra=ra_lib_init
+ra =  172924936
++ meas=ra_meas_open(ra, './database/100s.hea', '', 0)
+meas =  173460320
++ rec=ra_rec_get_first(meas, 0)
+rec =  173467080
++ num_ch=ra_rec_info_get(rec, 'rec_num_channel')
+num_ch =  2
++ ch_all=[];
++ for i=0:(num_ch-1)
++   ch=ra_raw_get_unit(rec, i, 0, 10000);
++   ch_all=[ch_all ch'];
++ endfor
++ whos ch_all
+
+*** local user variables:
+
+  Prot Name        Size                     Bytes  Class
+  ==== ====        ====                     =====  =====
+   rwd ch_all  10000x2                     160000  double
+
+Total is 20000 elements using 160000 bytes
+
++ samplerate=ra_ch_info_get(rec, 0, 'ch_samplerate')
+samplerate =  360
++ x=0:9999;
++ x = x / samplerate;
++
++ figure();
++ for i=1:num_ch
++   subplot(num_ch,1,i)
++   plot(x,ch_all(:,i))
++ endfor
++
++ ra_meas_close(meas);
++ ra_lib_close(ra);&#13;</PRE
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#GET-RAW-M.GET-DATA"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+>Returns 10,000 samples for channels 0..4, starting with sample 0 in
+each channel.</DD
+></DL
+></DIV
+><P
+><A
+HREF="#GET-RAW-FIG"
+>Figure 3-1</A
+> shows a screenshot of Octave after
+performing the above steps. Each plot window on the right side shows a
+recording channel. The x-axis is in seconds.</P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="GET-RAW-FIG"
+></A
+><P
+><B
+>Figure 3-1. Screenshot after performing the commands in Octave as shown in the
+Octave session above (and on the left side in the screenshot).</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/get_raw_octave2.png"></P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H2
+CLASS="SECTION"
+><A
+NAME="TUT-HANDLE-EVAL"
+>3.5. Access Evaluations</A
+></H2
+><P
+>The example will show how to get the evaluation belonging to a
+measurement and to get some information about it. We will perform the following steps:
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>get default evaluation</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>get some general infos about the evaluation</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>get a list of event-properties</P
+></LI
+></UL
+></P
+><P
+>libRASCH supports different "types" of evaluations, these are
+'original evaluation', 'default evaluation' and '"old" evaluations. The
+'original evaluation' is the evaluation performed with the recording
+system (e.g. commercial Holter systems). In a measurement there can be
+only one 'original evaluation', but there can be none.</P
+><P
+>The 'default evaluation' is the evaluation which should be used as
+default. If a measurement has only a 'original evaluation', than this
+will also be the 'default evaluation'.</P
+><P
+>Old evaluations are like a history of evaluations. When a new
+evaluation is added to a measurement, than this will be the new
+'default evaluation' and the previous 'default evaluation' will become
+a 'old evaluation'. This enables the user to go back to a previous
+evaluation, if the current evalution went wrong.</P
+><PRE
+CLASS="PROGRAMLISTING"
+>//
+#include &#60;stdio.h&#62;
+#include &#60;stdlib.h&#62;
+#include &#60;string.h&#62;
+#include &#60;ra.h&#62;
+
+int main(int argc, char *argv[])
+{
+    ra_handle ra;
+    value_handle vh;
+    meas_handle meas;
+    eval_handle eval;
+    long l, m, num_class, num_prop;
+    class_handle *clh = NULL;
+    prop_handle *ph = NULL;
+
+    /* initialize libRASCH */
+    ra = ra_lib_init();
+    if (ra == NULL)
+    {
+        printf("error initializing libRASCH\n");
+        return -1;
+    }
+
+    /* open measurement */
+    meas = ra_meas_open(ra, argv[1], NULL, 0);
+    if (meas == NULL)
+    {
+        printf("can't open measurement %s\n", argv[1]);
+        return -1;                <A
+NAME="HANDLE-EVAL-C.GET-EVAL"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>
+    }
+
+    /* get default evaluation */
+    eval = ra_eval_get_default(meas);
+    if (eval == NULL)
+    {
+        printf("no evaluation in measurement %s\n", argv[1]);
+        return -1;
+    }
+
+    /* get some infos about evaluation */
+    vh = ra_value_malloc();
+    if (ra_info_get(eval, RA_INFO_EVAL_NAME_C, vh) == 0)
+        printf("evaluation %s ", ra_value_get_string(vh));
+    if (ra_info_get(eval, RA_INFO_EVAL_ADD_TS_C, vh) == 0)
+        printf("was added at %s ", ra_value_get_string(vh));
+    if (ra_info_get(eval, RA_INFO_EVAL_PROG_C, vh) == 0)
+        printf("using the program %s", ra_value_get_string(vh));
+    printf("\n\n");
+
+    /* list event-class's */  <A
+NAME="HANDLE-EVAL-C.INFO"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+>
+    num_class = 0;
+    if (ra_class_get(eval, NULL, vh) == 0)
+    {
+        num_class = ra_value_get_num_elem(vh);
+        clh = malloc(sizeof(class_handle) * num_class);
+        memcpy(clh, (void *)ra_value_get_voidp_array(vh),
+               sizeof(class_handle) * num_class);
+    }
+
+    for (l = 0; l &#60; num_class; l++)
+    {
+        if (ra_info_get(clh[l], RA_INFO_CLASS_NAME_C, vh) == 0)
+            printf("event-class %s", ra_value_get_string(vh));
+        if (ra_info_get(clh[l], RA_INFO_CLASS_EV_NUM_L, vh) == 0)
+            printf(" with %d events", ra_value_get_long(vh));
+        printf(":\n");
+
+        /* list event-properties */
+        num_prop = 0;
+        if (ra_prop_get_all(clh[l], vh) == 0)
+        {
+            num_prop = ra_value_get_num_elem(vh);
+            ph = malloc(sizeof(prop_handle) * num_prop);
+            memcpy(ph, (void *)ra_value_get_voidp_array(vh),
+                   sizeof(prop_handle) * num_prop);
+        }
+
+        for (m = 0; m &#60; num_prop; m++)
+        {
+            if (ra_info_get(ph[m], RA_INFO_PROP_ASCII_ID_C, vh)
+                == 0)
+                printf("  %s\n", ra_value_get_string(vh));
+            if (ra_info_get(ph[m], RA_INFO_PROP_DESC_C, vh) == 0)
+                printf("    %s", ra_value_get_string(vh));
+            printf("\n");
+        }
+
+        free(ph);
+    }
+    free(clh);
+
+    /* close */
+    ra_value_free(vh);
+    ra_meas_close(meas);
+    ra_lib_close(ra);
+
+    return 0;
+}                               /* main() */
+
+//&#13;</PRE
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#HANDLE-EVAL-C.GET-EVAL"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+>Returns the 'default evaluation'.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#HANDLE-EVAL-C.INFO"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+></DT
+><DD
+>In the function ra_info_get() we got the number of available event
+properties. Now we return some informations about each event property.</DD
+></DL
+></DIV
+><P
+>The output of the above example for ECG '100s'
+is shown here:</P
+><PRE
+CLASS="PROGRAMLISTING"
+>evaluation RASCHlab was added at 15.11.2009  11:48:00 using
+the program raschlab_qt
+
+event-class heartbeat with 75 events:
+  qrs-pos
+    position of fiducial point of QRS-complex in sampleunits
+  qrs-annot
+    annotation of QRS complex
+  ecg-noise
+
+  ecg-morph-flags
+    flags for the morphology values
+  ecg-p-type
+
+  ecg-qrs-type
+
+  ecg-t-type
+
+  ecg-p-start
+    offset of p-wave begin from qrs-pos in sampleunits
+  ecg-p-end
+    offset of p-wave end from qrs-pos in sampleunits
+  ecg-p-width
+
+  ecg-p-peak-1
+    offset of p-wave peak from qrs-pos in sampleunits
+  ecg-p-peak-2
+    offset of 2nd p-wave peak (if biphasic) from qrs-pos
+    in sampleunits
+  ecg-qrs-start
+    offset of start of qrs complex from qrs-pos in sampleunits
+  ecg-qrs-end
+    offset of end of qrs complex from qrs-pos in sampleunits
+  ecg-qrs-width
+
+  ecg-q-peak
+    offset of q-wave from qrs-pos in sampleunits
+  ecg-r-peak
+    offset of r-wave from qrs-pos in sampleunits
+  ecg-s-peak
+    offset of s-wave from qrs-pos in sampleunits
+  ecg-rs-peak
+    offset of r'-wave from qrs-pos in sampleunits
+  ecg-t-start
+    offset of t-wave begin from qrs-pos in sampleunits
+  ecg-t-end
+    offset of t-wave end from qrs-pos in sampleunits
+  ecg-t-width
+
+  ecg-t-peak-1
+    offset of t-wave peak from qrs-pos in sampleunits
+  ecg-t-peak-2
+    offset of 2nd t-wave peak (if biphasic) from qrs-pos
+    in sampleunits
+  ecg-pq
+    PQ interval
+  ecg-qt
+    QT interval
+  ecg-qtc
+    QTc interval
+  qrs-temporal
+    temporal setting of beat
+  ecg-flags
+    ECG releated flags
+  rri
+    RR interval
+  rri-annot
+    annoation of RR interval
+  rri-refvalue
+    reference rri representing the current heart-rate
+  rri-num-refvalue
+    number of rri's used for calculation of reference value&#13;</PRE
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H2
+CLASS="SECTION"
+><A
+NAME="TUT-GET-EVENTS"
+>3.6. Get Events</A
+></H2
+><P
+>The example will show how to get values associated with an event.
+We will perform the following steps:
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>get RR intervals and the postion of the QRS-complexes</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>plot the tachogram of the measurement</P
+></LI
+></UL
+></P
+><PRE
+CLASS="PROGRAMLISTING"
+>GNU Octave, version 3.0.5
+Copyright (C) 2008 John W. Eaton and others.
+This is free software; see the source code for copying
+conditions.
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.
+
+Octave was configured for "i486-pc-linux-gnu".
+
+Additional information about Octave is available at
+http://www.octave.org.
+
+Please contribute if you find this software usefu<A
+NAME="GET-EVENTS-M.GET-DATA"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>l.
+For more information, visit
+http://www.octave.org/help-wanted.html
+
+Report bugs to &#60;bug@octave.org&#62; (but first, please read
+http://www.octave.org/bugs.html to learn how to write a
+helpful report).
+
+For information about changes from previous versions, type
+`news'.
+
++ ra=ra_lib_init
+ra =  190655216
++ meas=ra_meas_open(ra, './database/100s.hea', '', 0)
+meas =  191227456
++ eva=ra_eval_get_default(meas)
+eva =  191707864
++
++ samplerate=ra_meas_info_get(meas, 'max_samplerate')
+samplerate =  360
++
++ cl = ra_class_get(eva, 'heartbeat')
+cl =  191621760
++ num_hb = length(cl)
+num_hb =  1
++ for i = 1:num_hb
++   ev = ra_class_get_events(cl(i), -1, -1, 0, 1);
++   num_ev = length(ev)
++
++   prop_rri = ra_prop_get(cl(i), 'rri')
++   prop_qrs_pos = ra_prop_get(cl(i), 'qrs-pos')
++
++   rri = [];
++   qrs_pos = [];
++   for j = 1:num_ev
++     r = ra_prop_get_value(prop_rri, ev(j), -1);
++     p = ra_prop_get_value(prop_qrs_pos, ev(j), -1);
++
++     rri = [rri r];
++     qrs_pos = [qrs_pos p];
++   endfor
++
++   %% To get all property values within one function call
++   %% use ra_prop_get_value_all():
++   % [ev_ids, chs, rri] = ra_prop_get_value_all(prop_rri);
++   % [ev_ids, chs, qrs_pos] =
+ra_prop_get_value_all(prop_qrs_pos);
++   %
++   %% !!! This function returns also the event-id's and channel
++   %% !!! numbers the value belongs to. The order of returned
+values
++   %% !!! is not guaranteed to be in chronological order.
++
++   whos rri
++   whos qrs_pos
++
++   figure();
++   x=(qrs_pos/samplerate) / 60;
++   plot(x, rri);
++ endfor
+num_ev =  75
+prop_rri =  192116472
+prop_qrs_pos =  192076800
+
+*** local user variables:
+
+  Prot Name        Size                     Bytes  Class
+  ==== ====        ====                     =====  =====
+   rwd rri         1x75                       600  double
+
+Total is 75 elements using 600 bytes
+
+
+*** local user variables:
+
+  Prot Name         Size                     Bytes  Class
+  ==== ====         ====                     =====  =====
+   rwd qrs_pos      1x75                       600  double
+
+Total is 75 elements using 600 bytes
+
++
++ ra_meas_close(meas);
++ ra_lib_close(ra);&#13;</PRE
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#GET-EVENTS-M.GET-DATA"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+></DD
+></DL
+></DIV
+><P
+><A
+HREF="#GET-EVENTS-FIG"
+>Figure 3-2</A
+> shows a screenshot of Octave after
+performing the above steps. </P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="GET-EVENTS-FIG"
+></A
+><P
+><B
+>Figure 3-2. Screenshot after performing the commands in Octave as shown in the
+Octave session above (and on the left side in the screenshot).</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/get_events_octave2.png"></P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H2
+CLASS="SECTION"
+><A
+NAME="TUT-PROCESS"
+>3.7. Usage of process-plugins</A
+></H2
+><P
+>The example will show how to calculate Heart-Rate-Variability (HRV)
+using the process-plugin 'hrv'. We will perform the following steps:
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>get 'hrv' plugin</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>calculate HRV using the plugin</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>print the calculation results</P
+></LI
+></UL
+></P
+><PRE
+CLASS="PROGRAMLISTING"
+>//
+#include &#60;stdio.h&#62;
+#include &#60;string.h&#62;
+#include &#60;ra.h&#62;
+
+int main(int argc, char *argv[])
+{
+    ra_handle ra;
+    struct ra_info *inf;
+    meas_handle meas;
+    eval_handle eval;
+    plugin_handle pl;
+    struct proc_info *pi;
+
+    /* initialize libRASCH */
+    ra = ra_lib_init();
+    if (ra == NULL)
+    {
+        printf("error initializing libRASCH\n");
+        return -1;
+    }
+
+    /* open measurement */
+    meas = ra_meas_open(ra, argv[1], NULL, 0);
+    if (meas == NULL)
+    {
+        printf("can't open measurement %s\n", argv[1]);
+        return -1;
+    }
+
+    /* get default evaluation */
+    eval = ra_eval_get_default(meas);
+    if (eval == NULL)
+    {
+        printf("no evaluation in measurement %s\n", argv[1]);
+        return -1;
+    }
+
+    /* get plugin-handle for hrv-plugin */    <A
+NAME="PROCESS-C.GET-PL"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>
+    pl = ra_plugin_get_by_name(ra, "hrv", 0);
+    if (pl == NULL)
+    {
+        printf("can't find plugin 'hrv'\n");
+        return -1;
+    }
+
+    /* calculate hrv-values using the hrv-plug<A
+NAME="PROCESS-C.INIT"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+>in */
+    pi = (struct proc_info *)ra_proc_get(meas, pl, NULL);
+    if (ra_proc_do(pi) == 0)
+    {
+        long num_res_sets, nu<A
+NAME="PROCESS-C.PROCESS"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+>m_results, m, l;
+        value_handle vh;
+
+        /* get number of result-sets */
+        vh = ra_value_malloc();
+        if (ra_info_get(pi, RA_INFO_PROC_NUM_RES_SETS_L, vh) !=
+            0)
+        {
+            printf("no result-sets\n");
+            return -1;
+        }
+        num_res_sets = ra_value_get_long(vh);
+
+        /* get number of results */
+        if (ra_info_get(pi, RA_INFO_PROC_NUM_RES_L, vh) != 0)
+        {
+            printf("no results\n");
+            return -1;
+        }
+        num_results = ra_value_get_long(<A
+NAME="PROCESS-C.SET-RES"
+><IMG
+SRC="../images/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+>vh);
+
+        for (m = 0; m &#60; num_res_sets; m++)
+        {
+            printf("result-set #%d:\n", m + 1);
+
+            for (l = 0; l &#60; num_results; l++)
+            {
+                char out[200], t[100];
+
+                /* set number of result in which we are interested */
+                ra_value_set_number(vh, l);
+
+                /* test if result is a default value (some
+                   non-default results are arrays which we skip in
+                   this example) */
+                ra_info_get(pl, RA_INFO_PL_RES_DEFAULT_L, vh);
+                if (ra_value_get_long(vh) == 0)
+                    continue;
+
+                out[0] = '\0';                   <A
+NAME="PROCESS-C.GET-RES"
+><IMG
+SRC="../images/callouts/5.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(5)"></A
+>
+                if (ra_info_get(pl, RA_INFO_PL_RES_NAME_C, vh) ==
+                    0)
+                {
+                    strcpy(t, ra_value_get_string(vh));
+                    strcat(out, t);
+                }
+                if (ra_info_get(pl, RA_INFO_PL_RES_DESC_C, vh) ==
+                    0)
+                {
+                    sprintf(t, " (%s)", ra_value_get_string(vh));
+                    strcat(out, t);
+                }
+                if (ra_proc_get_result(pi, l, m, vh) == 0)
+                {
+                    sprintf(t, ": %lf", ra_value_get_double(vh));
+                    strcat(out, t);
+                }
+
+                printf("  %s\n", out);
+            }
+        }
+
+        ra_value_free(vh);
+    }
+
+    /* close */
+    ra_proc_free(pi);
+    ra_meas_close(meas);
+    ra_lib_close(ra);
+
+    return 0;
+}                               /* main() */
+
+//&#13;</PRE
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#PROCESS-C.GET-PL"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+>Returns the plugin-handle for the plugin 'hrv'.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#PROCESS-C.INIT"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+></DT
+><DD
+>Initialize the proc_info structure (defined in ra_defines.h). In this
+structure must be the information set, which will be needed for the
+processing (the next 3 lines).</DD
+><DD
+><P
+>Not all process-plugins need the information of the recording and/or
+the evaluation. Please check the plugin-reference section which
+information is needed. In case of doubt set all variables.</P
+></DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#PROCESS-C.PROCESS"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+></DT
+><DD
+>This function-call starts the processing. If the processing is 
+successfull, the function returns 0.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#PROCESS-C.SET-RES"
+><IMG
+SRC="../images/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+></DT
+><DD
+>To select the result, in which you are interessted, the variable
+'res_num' in the ra_info structure must be set. The value of the
+result as well as information about the result will be returned using
+a ra_info structure.</DD
+></DL
+></DIV
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="#PROCESS-C.GET-RES"
+><IMG
+SRC="../images/callouts/5.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(5)"></A
+></DT
+><DD
+>Information about a result will be obtained using
+ra_get_info_id(). The value of the result will be obtained using
+ra_get_result().</DD
+></DL
+></DIV
+><P
+>The output of the above example for the ECG '100s'
+is shown here:</P
+><PRE
+CLASS="PROGRAMLISTING"
+>result-set #1:
+  SDNN (standard deviation of normal-to-normal intervals):
+  30.238227
+  HRVI (HRV-Index): 7.200000
+  SDANN (standard deviation of averaged normal-to-normal
+  intervals): nan
+  rmssd (root mean of squared sucsessive differences): 32.494403
+  pNN50 (): 7.142857
+  TP (total power): 476.707920
+  ULF (ultra low frequency power): 0.000000
+  VLF (very low frequency power of short-term recordings):
+  31.580847
+  LF (low frequency power): 157.664788
+  LF_NORM (normalised low frequency power): 35.420175
+  HF (high freuqency power): 287.462286
+  HF_NORM (normalised high frequency power): 64.579825
+  LF_HF_RATIO (LF/HF ratio): 0.548471
+  POWER_LAW (power law behavior): 0.000000
+  SD1 (SD1 of the Poincare Plot): 15.845239
+  SD2 (SD2 of the Poincare Plot): 17.873049
+  DFA (overall DFA Alpha): nan
+  DFA_OFFSET (offset of the overall DFA Alpha slope): nan
+  DFA1 (DFA Alpha1): 0.242035
+  DFA1_OFFSET (offset of the DFA Alpha-1 slope): 1.404195
+  DFA2 (DFA Alpha2): nan
+  DFA2_OFFSET (offset of the DFA Alpha-2 slope): nan
+  DFA_USER (DFA Alpha of user-defined range)
+  DFA_USER_OFFSET (offset of the user-defined DFA Alpha slope)&#13;</PRE
+></DIV
+></DIV
+><DIV
+CLASS="APPENDIX"
+><HR><H1
+><A
+NAME="ALL-EXAMPLES"
+></A
+>Appendix A. Examples for all supported lanuages/systems</H1
+><P
+>This appendix shows the examples presented in <A
+HREF="#TUTORIAL"
+>Chapter 3</A
+> for
+all supported languages/systems.</P
+><DIV
+CLASS="SECTION"
+><HR><H2
+CLASS="SECTION"
+><A
+NAME="AEN421"
+>A.1. Init libRASCH</A
+></H2
+><DIV
+CLASS="SECTION"
+><H3
+CLASS="SECTION"
+><A
+NAME="AEN423"
+>A.1.1. C Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>//
+#include &#60;stdio.h&#62;
+#include &#60;ra.h&#62;
+
+int main(int argc, char *argv[])
+{
+    ra_handle ra;
+    value_handle vh;
+    ra_find_handle f;
+    struct ra_find_struct fs;
+
+    /* initialize libRASCH */
+    ra = ra_lib_init();
+
+    /* check if init was successful */
+    if ((ra == NULL)
+        || (ra_lib_get_error(ra, NULL, 0) != RA_ERR_NONE))
+    {
+        if (!ra)
+            printf("error initializing libRASCH\n");
+        else
+        {
+            char err_t[200];
+            long err_num;
+
+            err_num = ra_lib_get_error(ra, err_t, 200);
+            printf("while initializing libRASCH, error #%d "
+                   "occured\n  %s\n", err_num, err_t);
+
+            ra_lib_close(ra);
+        }
+        return -1;
+    }
+
+    /* get some infos */
+    vh = ra_value_malloc();
+    if (ra_info_get(ra, RA_INFO_NUM_PLUGINS_L, vh) == 0)
+    {
+        printf("%s (%s): %d\n", ra_value_get_name(vh),
+               ra_value_get_desc(vh), ra_value_get_long(vh));
+    }
+    ra_value_free(vh);
+
+    /* find all measurements in a directory */
+    f = ra_meas_find_first(ra, argv[1], &#38;fs);
+    if (f)
+    {
+        int cnt = 1;
+
+        printf("measurements found in %s:\n", argv[1]);
+        do
+        {
+            printf("  %2d: %s\n", cnt, fs.name);
+            cnt++;
+        }
+        while (ra_meas_find_next(f, &#38;fs));
+
+        ra_meas_close_find(f);
+    }
+
+    /* close libRASCH */
+    ra_lib_close(ra);
+
+    return 0;
+}                               /* main() */
+
+//&#13;</PRE
+></P
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>#plugins (): 37
+measurements found in ./database:
+   1: ./database/100s.hea
+   2: ./database/JesusOlivan2003-12-EMG2.edf
+   3: ./database/100s.dat&#13;</PRE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="AEN429"
+>A.1.2. Perl Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+use strict;
+use RASCH;
+
+# initialize libRASCH
+my $ra = new RASCH or die "error initializing libRASCH\n";
+my ($err_num, $err_text) = $ra-&#62;get_error ();
+if ($err_num != 1)
+{
+    print "while initializing libRASCH, error # $err_num " .
+        "occured:\n $err_text\n";
+    exit -1;
+}
+
+# get some infos
+my $value = $ra-&#62;get_info(info =&#62;'num_plugins');
+if ($value-&#62;is_ok())
+{
+    print $value-&#62;name() . " (" . $value-&#62;desc() . "): " . $value-&#62;value() . "\n";
+}
+
+# find all measurements in a directory
+my $meas = $ra-&#62;find_meas($ARGV[0]);
+print "measurements found in $ARGV[0]:\n";
+my $cnt = 1;
+for (@$meas)
+{
+    print "$cnt: " . $_-&#62;filename() . "\n";
+    $cnt++;
+}
+
+# ra_close() will be called when $ra is being destroyed
+
+exit 0;
+#&#13;</PRE
+></P
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>#plugins (): 37
+measurements found in ./database:
+1: ./database/100s.dat
+2: ./database/100s.hea
+3: ./database/JesusOlivan2003-12-EMG2.edf&#13;</PRE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="AEN435"
+>A.1.3. Python Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+import sys
+from RASCH import *
+
+# initialize libRASCH
+ra = RASCH()
+if not ra:
+    print "can't initialize libRASCH"
+    sys.exit()
+[err_num, err_text] = ra.get_error()
+if err_num != 1:
+    print "while initializing libRASCH, error #%d occured:\n " \
+          "%s\n" % err_num, err_text
+    sys.exit()
+    
+# get some infos
+value = ra.get_info(info='num_plugins')
+if (value.is_ok()):
+    print value.name(), "("+value.desc()+"):", value.value()
+
+# find all measurements in a directory
+meas = ra.find_meas(sys.argv[1])
+print "measurements found in " + sys.argv[1] + ":\n"
+cnt = 1
+for item in meas:
+    print "%d: %s" % (cnt, item.filename())
+    cnt = cnt + 1
+
+#&#13;</PRE
+></P
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>#plugins (): 37
+measurements found in ./database:
+
+1: ./database/100s.dat
+2: ./database/100s.hea
+3: ./database/JesusOlivan2003-12-EMG2.edf&#13;</PRE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="AEN441"
+>A.1.4. Matlab/Octave Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>GNU Octave, version 3.0.5
+Copyright (C) 2008 John W. Eaton and others.
+This is free software; see the source code for copying
+conditions.
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.
+
+Octave was configured for "i486-pc-linux-gnu".
+
+Additional information about Octave is available at
+http://www.octave.org.
+
+Please contribute if you find this software useful.
+For more information, visit
+http://www.octave.org/help-wanted.html
+
+Report bugs to &#60;bug@octave.org&#62; (but first, please read
+http://www.octave.org/bugs.html to learn how to write a
+helpful report).
+
+For information about changes from previous versions, type
+`news'.
+
++ ra=ra_lib_init
+ra =  193209216
++ [err_num, err_text]=ra_lib_get_error(ra)
+err_num =  1
+err_text = libRASCH (ra.c:109): no error
++ [value, name, desc]=ra_lib_info_get(ra, 'num_plugins')
+value =  37
+name = #plugins
+desc =
++ meas=ra_meas_find(ra, './database')
+meas =
+
+{
+  [1,1] = ./database/100s.hea
+  [2,1] = ./database/JesusOlivan2003-12-EMG2.edf
+  [3,1] = ./database/100s.dat
+}
+
++ ra_lib_close(ra);&#13;</PRE
+></P
+></DIV
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H2
+CLASS="SECTION"
+><A
+NAME="AEN445"
+>A.2. Open measurement</A
+></H2
+><DIV
+CLASS="SECTION"
+><H3
+CLASS="SECTION"
+><A
+NAME="AEN447"
+>A.2.1. C Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>//
+#include &#60;stdio.h&#62;
+#include &#60;ra.h&#62;
+
+int main(int argc, char *argv[])
+{
+    ra_handle ra;
+    value_handle vh;
+    meas_handle meas;
+
+    /* initialize libRASCH */
+    ra = ra_lib_init();
+    if ((ra == NULL)
+        || (ra_lib_get_error(ra, NULL, 0) != RA_ERR_NONE))
+    {
+        if (!ra)
+            printf("error initializing libRASCH\n");
+        else
+        {
+            char err_t[200];
+            long err_num;
+
+            err_num = ra_lib_get_error(ra, err_t, 200);
+            printf("while initializing libRASCH, error #%d "
+                   "occured\n  %s\n", err_num, err_t);
+
+            ra_lib_close(ra);
+        }
+        return -1;
+    }
+
+    /* open measurement */
+    meas = ra_meas_open(ra, argv[1], NULL, 0);
+    if (meas == NULL)
+    {
+        char err_t[200];
+        long err_num;
+
+        err_num = ra_lib_get_error(ra, err_t, 200);
+        printf("can't open measurement %s\nerror #%d: %s\n",
+               argv[1], err_num, err_t);
+        ra_lib_close(ra);
+        return -1;
+    }
+
+    /* get some infos */
+    vh = ra_value_malloc();
+    if (ra_info_get(meas, RA_INFO_NUM_SESSIONS_L, vh) == 0)
+        printf("%s (%s): %d\n", ra_value_get_name(vh),
+               ra_value_get_desc(vh), ra_value_get_long(vh));
+    if (ra_info_get(meas, RA_INFO_MAX_SAMPLERATE_D, vh) == 0)
+        printf("%s (%s): %f\n", ra_value_get_name(vh),
+               ra_value_get_desc(vh), ra_value_get_double(vh));
+
+    /* get all measurement-object infos */
+    if (ra_info_get(meas, RA_INFO_NUM_OBJ_INFOS_L, vh) == 0)
+    {
+        long l;
+        long n = ra_value_get_long(vh);
+
+        for (l = 0; l &#60; n; l++)
+        {
+            ra_info_get_by_idx(meas, RA_INFO_OBJECT, l, vh);
+            printf("%s (%s): ", ra_value_get_name(vh),
+                   ra_value_get_desc(vh));
+            switch (ra_value_get_type(vh))
+            {
+            case RA_VALUE_TYPE_LONG:
+                printf("%d\n", ra_value_get_long(vh));
+                break;
+            case RA_VALUE_TYPE_DOUBLE:
+                printf("%f\n", ra_value_get_double(vh));
+                break;
+            case RA_VALUE_TYPE_CHAR:
+                printf("%s\n", ra_value_get_string(vh));
+                break;
+            default:
+                printf("not supported type\n");
+                break;
+            }
+        }
+    }
+
+    /* close */
+    ra_value_free(vh);
+    ra_meas_close(meas);
+    ra_lib_close(ra);
+
+    return 0;
+}                               /* main() */
+
+//&#13;</PRE
+></P
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>#sessions (): 1
+max. samplerate (maximum samplrate used in measurement):
+360.000000
+ID (Patient-ID): 100s&#13;</PRE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="AEN453"
+>A.2.2. Perl Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+use strict;
+use RASCH;
+
+# initialize libRASCH
+my $ra = new RASCH or die "error initializing libRASCH\n";
+
+# open measurement
+my $meas = $ra-&#62;open_meas($ARGV[0], '', 0) or
+    die "can't open measurement $ARGV[0]\n";
+
+# get some infos
+my $v = $meas-&#62;get_info(info =&#62; 'num_sessions');
+print $v-&#62;name() . ' (' . $v-&#62;desc() . '): ' . $v-&#62;value() ."\n" if (defined($v));
+$v = $meas-&#62;get_info(info =&#62; 'max_samplerate');
+print $v-&#62;name() . ' (' . $v-&#62;desc() . '): ' . $v-&#62;value() ."\n" if (defined($v));
+
+# get all measurement-object infos
+$v = $meas-&#62;get_info(info =&#62; 'num_obj_infos');
+my $num = $v-&#62;value();
+for (my $i = 0; $i &#60; $num; $i++)
+{
+    $v = $meas-&#62;get_info_idx(index =&#62; $i);
+    print $v-&#62;name() . ' (' . $v-&#62;desc() . '): ' . $v-&#62;value() ."\n" if (defined($v));
+}
+
+exit 0;
+#&#13;</PRE
+></P
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>#sessions (): 1
+max. samplerate (maximum samplrate used in measurement): 360&#13;</PRE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="AEN459"
+>A.2.3. Python Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+import sys
+from RASCH import *
+
+# initialize libRASCH
+ra = RASCH()
+if not ra:
+    print "can't initialize libRASCH"
+    sys.exit()
+
+# open measurement
+meas = ra.open_meas(sys.argv[1], '', 0)
+if not meas:
+    print "can't open measurement", sys.argv[1]
+    sys.exit()
+
+# get some infos
+value = meas.get_info(info='num_sessions')
+if value.is_ok():
+    print value.name(), "("+value.desc()+"):", value.value()
+value = meas.get_info(info='max_samplerate')
+if value.is_ok():
+    print value.name(), "("+value.desc()+"):", value.value()
+
+# get all measurement-object infos
+num = meas.get_info(info='num_obj_infos')
+for i in range(num.value()):
+    value = meas.get_info_idx(index=i)
+    if value.is_ok():
+        print value.name(), "("+value.desc()+"):", value.value()
+
+#&#13;</PRE
+></P
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>#sessions (): 1
+max. samplerate (maximum samplrate used in measurement): 360.0
+ID (Patient-ID): 100s&#13;</PRE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="AEN465"
+>A.2.4. Matlab/Octave Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>GNU Octave, version 3.0.5
+Copyright (C) 2008 John W. Eaton and others.
+This is free software; see the source code for copying
+conditions.
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.
+
+Octave was configured for "i486-pc-linux-gnu".
+
+Additional information about Octave is available at
+http://www.octave.org.
+
+Please contribute if you find this software useful.
+For more information, visit
+http://www.octave.org/help-wanted.html
+
+Report bugs to &#60;bug@octave.org&#62; (but first, please read
+http://www.octave.org/bugs.html to learn how to write a
+helpful report).
+
+For information about changes from previous versions, type
+`news'.
+
++ ra=ra_lib_init
+ra =  188275104
++ meas=ra_meas_open(ra, './database/100s.hea', '', 0)
+meas =  188821616
++ [v, n, d]=ra_meas_info_get(meas, 'num_sessions')
+v =  1
+n = #sessions
+d =
++ [v, n, d]=ra_meas_info_get(meas, 'max_samplerate')
+v =  360
+n = max. samplerate
+d = maximum samplrate used in measurement
++ num=ra_meas_info_get(meas, 'num_obj_infos')
+num =  1
++ for i=0:(num-1)
++     [v,n,d]=ra_info_get_by_idx(meas, 'meas', i)
++ endfor
+v = 100s
+n = ID
+d = Patient-ID
++ ra_meas_close(meas);
++ ra_lib_close(ra);&#13;</PRE
+></P
+></DIV
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H2
+CLASS="SECTION"
+><A
+NAME="AEN469"
+>A.3. Handle recordings</A
+></H2
+><DIV
+CLASS="SECTION"
+><H3
+CLASS="SECTION"
+><A
+NAME="AEN471"
+>A.3.1. C Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>//
+#include &#60;stdio.h&#62;
+#include &#60;ra.h&#62;
+
+int main(int argc, char *argv[])
+{
+    ra_handle ra;
+    value_handle vh;
+    meas_handle meas;
+    rec_handle rec;
+    long l, num_dev, num_ch;
+
+    /* initialize libRASCH */
+    ra = ra_lib_init();
+    if (ra == NULL)
+    {
+        printf("error initializing libRASCH\n");
+        return -1;
+    }
+
+    /* open measurement */
+    meas = ra_meas_open(ra, argv[1], NULL, 0);
+    if (meas == NULL)
+    {
+        printf("can't open measurement %s\n", argv[1]);
+        return -1;
+    }
+
+    /* get root recording */
+    rec = ra_rec_get_first(meas, 0);
+    if (rec == NULL)
+    {
+        printf("can't get recording-handle\n");
+        return -1;
+    }
+
+    /* get some infos about recording */
+    num_dev = num_ch = 0;
+    vh = ra_value_malloc();
+    if (ra_info_get(rec, RA_INFO_REC_GEN_NUM_DEVICES_L, vh) == 0)
+        num_dev = ra_value_get_long(vh);
+    if (ra_info_get(rec, RA_INFO_REC_GEN_NUM_CHANNEL_L, vh) == 0)
+        num_ch = ra_value_get_long(vh);
+    if (ra_info_get(rec, RA_INFO_REC_GEN_NAME_C, vh) == 0)
+        printf("measurement %s\n", ra_value_get_string(vh));
+    if (ra_info_get(rec, RA_INFO_REC_GEN_DATE_C, vh) == 0)
+        printf("recorded at %s\n", ra_value_get_string(vh));
+    printf("#devices=%d\n#channels=%d\n\n", num_dev, num_ch);
+
+    /* print name for every device */
+    printf("infos about the recording devices used:\n");
+    for (l = 0; l &#60; num_dev; l++)
+    {
+        /* set number of device from which the info is wanted */
+        ra_value_set_number(vh, l);
+        if (ra_info_get(rec, RA_INFO_REC_DEV_HW_NAME_C, vh) == 0)
+            printf("  device #%d: %s\n", l,
+                   ra_value_get_string(vh));
+    }
+    printf("\n");
+
+    /* print name and unit of every channel */
+    printf("infos about the channels:\n");
+    for (l = 0; l &#60; num_ch; l++)
+    {
+        /* set number of channel */
+        ra_value_set_number(vh, l);
+        if (ra_info_get(rec, RA_INFO_REC_CH_NAME_C, vh) == 0)
+            printf("  ch #%d: %s", l, ra_value_get_string(vh));
+        if (ra_info_get(rec, RA_INFO_REC_CH_UNIT_C, vh) == 0)
+            printf(" [%s]", ra_value_get_string(vh));
+        printf("\n");
+    }
+    printf("\n");
+
+    /* close */
+    ra_value_free(vh);
+    ra_meas_close(meas);
+    ra_lib_close(ra);
+
+    return 0;
+}                               /* main() */
+
+//&#13;</PRE
+></P
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>measurement 100s
+recorded at 00.00.0
+#devices=0
+#channels=2
+
+infos about the recording devices used:
+
+infos about the channels:
+  ch #0: MLII []
+  ch #1: V5 []
+&#13;</PRE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="AEN477"
+>A.3.2. Perl Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+use strict;
+use RASCH;
+
+# initialize libRASCH
+my $ra = new RASCH or die "error initializing libRASCH\n";
+
+# open measurement
+my $meas = $ra-&#62;open_meas($ARGV[0], '', 0) or
+    die "can't open measurement $ARGV[0]\n";
+
+# get root recording
+my $rec = $meas-&#62;get_first_rec(0) or
+    die "can't get root recording\n";
+
+# get some infos about recording
+my $v = $rec-&#62;get_info(info =&#62; 'rec_num_devices');
+my $num_dev = $v-&#62;value();
+$v = $rec-&#62;get_info(info =&#62; 'rec_num_channel');
+my $num_ch = $v-&#62;value();
+$v = $rec-&#62;get_info(info =&#62; 'rec_name');
+my $rec_name = $v-&#62;value();
+$v = $rec-&#62;get_info(info =&#62; 'rec_date');
+my $rec_date = $v-&#62;value;
+print "measurement $rec_name\nrecorded at $rec_date\n" .
+    "#devices=$num_dev\n#channels=$num_ch\n\n";
+
+# print name for every device
+print "infos about the recording devices used:\n";
+for (my $i = 0; $i &#60; $num_dev; $i++)
+{
+    $v = $rec-&#62;get_info(dev =&#62; $i, info =&#62; 'dev_hw_name');
+    my $name = $v-&#62;value();
+    print "  device #$i: $name\n";
+}
+print "\n";
+	
+# print name for every channel
+print "infos about the channels:\n";
+for (my $i = 0; $i &#60; $num_ch; $i++)
+{
+    $v = $rec-&#62;get_info(ch =&#62; $i, info =&#62; 'ch_name');
+    my $name = $v-&#62;value();
+    $v = $rec-&#62;get_info(ch =&#62; $i, info =&#62; 'ch_unit');
+    my $unit = $v-&#62;value();
+    print "  channel #$i: $name [$unit]\n";
+}
+print "\n";
+
+exit 0;
+#&#13;</PRE
+></P
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>measurement 100s
+recorded at 00.00.0
+#devices=
+#channels=2
+
+infos about the recording devices used:
+
+infos about the channels:
+  channel #0: MLII []
+  channel #1: V5 []
+&#13;</PRE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="AEN483"
+>A.3.3. Python Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+import sys
+from RASCH import *
+
+# initialize libRASCH
+ra = RASCH()
+if not ra:
+    print "can't initialize libRASCH"
+    sys.exit()
+
+# open measurement
+meas = ra.open_meas(sys.argv[1], '', 0)
+if not meas:
+    print "can't open measurement", sys.argv[1]
+    sys.exit()
+
+# get root recording
+rec = meas.get_first_rec(0)
+if not rec:
+    print "can't get root recording"
+    sys.exit()
+
+# get some infos about recording
+num_dev = rec.get_info(info='rec_num_devices')
+num_ch = rec.get_info(info='rec_num_channel')
+rec_name = rec.get_info(info='rec_name')
+rec_date = rec.get_info(info='rec_date')
+print "measurement", rec_name.value()
+print "recorded at", rec_date.value()
+print "#devices =", num_dev.value()
+print "#channels =", num_ch.value()
+print
+
+# print name for every device
+print "infos about the recording devices used:"
+if num_dev.value() &#62; 0:
+    for i in range(num_dev.value()):
+        name = rec.get_info(dev=i, info='dev_hw_name')
+        print "  device #%d: %s" % (i, name.value())
+print ""
+	
+# print name for every channel
+print "infos about the channels:";
+if num_ch.value() &#62; 0:
+    for i in range(num_ch.value()):
+        name = rec.get_info(ch=i, info='ch_name')
+        unit = rec.get_info(ch=i, info='ch_unit')
+        print "  channel #%d: %s [%s]" % (i, name.value(), unit.value())
+print "";
+    
+#&#13;</PRE
+></P
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>measurement 100s
+recorded at 00.00.0
+#devices = None
+#channels = 2
+
+infos about the recording devices used:
+
+infos about the channels:
+  channel #0: MLII []
+  channel #1: V5 []
+&#13;</PRE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="AEN489"
+>A.3.4. Matlab/Octave Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>GNU Octave, version 3.0.5
+Copyright (C) 2008 John W. Eaton and others.
+This is free software; see the source code for copying
+conditions.
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.
+
+Octave was configured for "i486-pc-linux-gnu".
+
+Additional information about Octave is available at
+http://www.octave.org.
+
+Please contribute if you find this software useful.
+For more information, visit
+http://www.octave.org/help-wanted.html
+
+Report bugs to &#60;bug@octave.org&#62; (but first, please read
+http://www.octave.org/bugs.html to learn how to write a
+helpful report).
+
+For information about changes from previous versions, type
+`news'.
+
++ ra=ra_lib_init
+ra =  175741680
++ meas=ra_meas_open(ra, './database/100s.hea', '', 0)
+meas =  176278120
++ rec=ra_rec_get_first(meas, 0)
+rec =  176284632
++ num_ch=ra_rec_info_get(rec, 'rec_num_channel')
+num_ch =  2
++ rec_name=ra_rec_info_get(rec, 'rec_name')
+rec_name = 100s
++ rec_date=ra_rec_info_get(rec, 'rec_date')
+rec_date = 00.00.0
++ for i=0:(num_ch-1)
++     name=ra_ch_info_get(rec, i, 'ch_name')
++     unit=ra_ch_info_get(rec, i, 'ch_unit')
++ endfor
+name = MLII
+unit =
+name = V5
+unit =
++ ra_meas_close(meas);
++ ra_lib_close(ra);&#13;</PRE
+></P
+></DIV
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H2
+CLASS="SECTION"
+><A
+NAME="AEN493"
+>A.4. Access raw data</A
+></H2
+><DIV
+CLASS="SECTION"
+><H3
+CLASS="SECTION"
+><A
+NAME="AEN495"
+>A.4.1. C Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>//
+#include &#60;stdio.h&#62;
+#include &#60;stdlib.h&#62;
+#include &#60;ra.h&#62;
+
+int main(int argc, char *argv[])
+{
+    ra_handle ra;
+    value_handle vh;
+    meas_handle meas;
+    rec_handle rec;
+    long l, num_ch;
+    double *buf = NULL;
+
+    /* initialize libRASCH */
+    ra = ra_lib_init();
+    if (ra == NULL)
+    {
+        printf("error initializing libRASCH\n");
+        return -1;
+    }
+
+    /* open measurement */
+    meas = ra_meas_open(ra, argv[1], NULL, 0);
+    if (meas == NULL)
+    {
+        printf("can't open measurement %s\n", argv[1]);
+        return -1;
+    }
+
+    /* get root recording */
+    rec = ra_rec_get_first(meas, 0);
+    if (rec == NULL)
+    {
+        printf("can't get recording-handle\n");
+        return -1;
+    }
+
+    /* get first 10000 samples for each channel */
+    vh = ra_value_malloc();
+    if (ra_info_get(rec, RA_INFO_REC_GEN_NUM_CHANNEL_L, vh) == 0)
+        num_ch = ra_value_get_long(vh);
+    buf = malloc(sizeof(double) * 10000);
+    for (l = 0; l &#60; num_ch; l++)
+    {
+        long m, num_read;
+
+        num_read = ra_raw_get_unit(rec, l, 0, 10000, buf);
+        for (m = 0; m &#60; num_read; m++)
+            ;                   /* do something with every sample */
+    }
+
+    /* clean up */
+    free(buf);
+    ra_value_free(vh);
+    ra_meas_close(meas);
+    ra_lib_close(ra);
+
+    return 0;
+}                               /* main() */
+
+//&#13;</PRE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="AEN499"
+>A.4.2. Perl Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+use strict;
+use RASCH;
+
+# initialize libRASCH
+my $ra = new RASCH or die "error initializing libRASCH\n";
+
+# open measurement
+my $meas = $ra-&#62;open_meas($ARGV[0], 0) or
+    die "can't open measurement $ARGV[0]\n";
+
+# get root recording
+my $rec = $meas-&#62;get_first_session_rec(0) or
+    die "can't get root recording\n";
+
+# get first 10000 samples for each channel
+my ($num_ch) = $rec-&#62;get_info(info =&#62; 'rec_num_channel');
+for (my $i = 0; $i &#60; $num_ch; $i++)
+{
+    my $data_ref = $rec-&#62;get_raw($i, 0, 10000);
+    for (@$data_ref)
+    {
+	; # do something with every sample
+    }
+}
+
+exit 0;
+#&#13;</PRE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="AEN503"
+>A.4.3. Python Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+import sys
+from RASCH import *
+
+# initialize libRASCH
+ra = RASCH()
+if not ra:
+    print "can't initialize libRASCH"
+    sys.exit()
+
+# open measurement
+meas = ra.open_meas(sys.argv[1], 0)
+if not meas:
+    print "can't open measurement", sys.argv[1]
+    sys.exit()
+
+# get root recording
+rec = meas.get_first_session_rec(0)
+if not rec:
+    print "can't get root recording"
+    sys.exit()
+
+# get first 10000 samples for each channel
+[num_ch, n, d] = rec.get_info(info='rec_num_channel')
+if num_ch &#62; 0:
+    for i in range(num_ch):
+        data = rec.get_raw(i, 0, 10000)
+        for elem in data:
+            elem # do something with every sample
+
+#&#13;</PRE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="AEN507"
+>A.4.4. Matlab/Octave Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>GNU Octave, version 3.0.5
+Copyright (C) 2008 John W. Eaton and others.
+This is free software; see the source code for copying
+conditions.
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.
+
+Octave was configured for "i486-pc-linux-gnu".
+
+Additional information about Octave is available at
+http://www.octave.org.
+
+Please contribute if you find this software useful.
+For more information, visit
+http://www.octave.org/help-wanted.html
+
+Report bugs to &#60;bug@octave.org&#62; (but first, please read
+http://www.octave.org/bugs.html to learn how to write a
+helpful report).
+
+For information about changes from previous versions, type
+`news'.
+
++ ra=ra_lib_init
+ra =  172924936
++ meas=ra_meas_open(ra, './database/100s.hea', '', 0)
+meas =  173460320
++ rec=ra_rec_get_first(meas, 0)
+rec =  173467080
++ num_ch=ra_rec_info_get(rec, 'rec_num_channel')
+num_ch =  2
++ ch_all=[];
++ for i=0:(num_ch-1)
++   ch=ra_raw_get_unit(rec, i, 0, 10000);
++   ch_all=[ch_all ch'];
++ endfor
++ whos ch_all
+
+*** local user variables:
+
+  Prot Name        Size                     Bytes  Class
+  ==== ====        ====                     =====  =====
+   rwd ch_all  10000x2                     160000  double
+
+Total is 20000 elements using 160000 bytes
+
++ samplerate=ra_ch_info_get(rec, 0, 'ch_samplerate')
+samplerate =  360
++ x=0:9999;
++ x = x / samplerate;
++
++ figure();
++ for i=1:num_ch
++   subplot(num_ch,1,i)
++   plot(x,ch_all(:,i))
++ endfor
++
++ ra_meas_close(meas);
++ ra_lib_close(ra);&#13;</PRE
+></P
+></DIV
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H2
+CLASS="SECTION"
+><A
+NAME="AEN511"
+>A.5. Access evaluation</A
+></H2
+><DIV
+CLASS="SECTION"
+><H3
+CLASS="SECTION"
+><A
+NAME="AEN513"
+>A.5.1. C Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>//
+#include &#60;stdio.h&#62;
+#include &#60;stdlib.h&#62;
+#include &#60;string.h&#62;
+#include &#60;ra.h&#62;
+
+int main(int argc, char *argv[])
+{
+    ra_handle ra;
+    value_handle vh;
+    meas_handle meas;
+    eval_handle eval;
+    long l, m, num_class, num_prop;
+    class_handle *clh = NULL;
+    prop_handle *ph = NULL;
+
+    /* initialize libRASCH */
+    ra = ra_lib_init();
+    if (ra == NULL)
+    {
+        printf("error initializing libRASCH\n");
+        return -1;
+    }
+
+    /* open measurement */
+    meas = ra_meas_open(ra, argv[1], NULL, 0);
+    if (meas == NULL)
+    {
+        printf("can't open measurement %s\n", argv[1]);
+        return -1;
+    }
+
+    /* get default evaluation */
+    eval = ra_eval_get_default(meas);
+    if (eval == NULL)
+    {
+        printf("no evaluation in measurement %s\n", argv[1]);
+        return -1;
+    }
+
+    /* get some infos about evaluation */
+    vh = ra_value_malloc();
+    if (ra_info_get(eval, RA_INFO_EVAL_NAME_C, vh) == 0)
+        printf("evaluation %s ", ra_value_get_string(vh));
+    if (ra_info_get(eval, RA_INFO_EVAL_ADD_TS_C, vh) == 0)
+        printf("was added at %s ", ra_value_get_string(vh));
+    if (ra_info_get(eval, RA_INFO_EVAL_PROG_C, vh) == 0)
+        printf("using the program %s", ra_value_get_string(vh));
+    printf("\n\n");
+
+    /* list event-class's */
+    num_class = 0;
+    if (ra_class_get(eval, NULL, vh) == 0)
+    {
+        num_class = ra_value_get_num_elem(vh);
+        clh = malloc(sizeof(class_handle) * num_class);
+        memcpy(clh, (void *)ra_value_get_voidp_array(vh),
+               sizeof(class_handle) * num_class);
+    }
+
+    for (l = 0; l &#60; num_class; l++)
+    {
+        if (ra_info_get(clh[l], RA_INFO_CLASS_NAME_C, vh) == 0)
+            printf("event-class %s", ra_value_get_string(vh));
+        if (ra_info_get(clh[l], RA_INFO_CLASS_EV_NUM_L, vh) == 0)
+            printf(" with %d events", ra_value_get_long(vh));
+        printf(":\n");
+
+        /* list event-properties */
+        num_prop = 0;
+        if (ra_prop_get_all(clh[l], vh) == 0)
+        {
+            num_prop = ra_value_get_num_elem(vh);
+            ph = malloc(sizeof(prop_handle) * num_prop);
+            memcpy(ph, (void *)ra_value_get_voidp_array(vh),
+                   sizeof(prop_handle) * num_prop);
+        }
+
+        for (m = 0; m &#60; num_prop; m++)
+        {
+            if (ra_info_get(ph[m], RA_INFO_PROP_ASCII_ID_C, vh)
+                == 0)
+                printf("  %s\n", ra_value_get_string(vh));
+            if (ra_info_get(ph[m], RA_INFO_PROP_DESC_C, vh) == 0)
+                printf("    %s", ra_value_get_string(vh));
+            printf("\n");
+        }
+
+        free(ph);
+    }
+    free(clh);
+
+    /* close */
+    ra_value_free(vh);
+    ra_meas_close(meas);
+    ra_lib_close(ra);
+
+    return 0;
+}                               /* main() */
+
+//&#13;</PRE
+></P
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>evaluation RASCHlab was added at 15.11.2009  11:48:00 using
+the program raschlab_qt
+
+event-class heartbeat with 75 events:
+  qrs-pos
+    position of fiducial point of QRS-complex in sampleunits
+  qrs-annot
+    annotation of QRS complex
+  ecg-noise
+
+  ecg-morph-flags
+    flags for the morphology values
+  ecg-p-type
+
+  ecg-qrs-type
+
+  ecg-t-type
+
+  ecg-p-start
+    offset of p-wave begin from qrs-pos in sampleunits
+  ecg-p-end
+    offset of p-wave end from qrs-pos in sampleunits
+  ecg-p-width
+
+  ecg-p-peak-1
+    offset of p-wave peak from qrs-pos in sampleunits
+  ecg-p-peak-2
+    offset of 2nd p-wave peak (if biphasic) from qrs-pos
+    in sampleunits
+  ecg-qrs-start
+    offset of start of qrs complex from qrs-pos in sampleunits
+  ecg-qrs-end
+    offset of end of qrs complex from qrs-pos in sampleunits
+  ecg-qrs-width
+
+  ecg-q-peak
+    offset of q-wave from qrs-pos in sampleunits
+  ecg-r-peak
+    offset of r-wave from qrs-pos in sampleunits
+  ecg-s-peak
+    offset of s-wave from qrs-pos in sampleunits
+  ecg-rs-peak
+    offset of r'-wave from qrs-pos in sampleunits
+  ecg-t-start
+    offset of t-wave begin from qrs-pos in sampleunits
+  ecg-t-end
+    offset of t-wave end from qrs-pos in sampleunits
+  ecg-t-width
+
+  ecg-t-peak-1
+    offset of t-wave peak from qrs-pos in sampleunits
+  ecg-t-peak-2
+    offset of 2nd t-wave peak (if biphasic) from qrs-pos
+    in sampleunits
+  ecg-pq
+    PQ interval
+  ecg-qt
+    QT interval
+  ecg-qtc
+    QTc interval
+  qrs-temporal
+    temporal setting of beat
+  ecg-flags
+    ECG releated flags
+  rri
+    RR interval
+  rri-annot
+    annoation of RR interval
+  rri-refvalue
+    reference rri representing the current heart-rate
+  rri-num-refvalue
+    number of rri's used for calculation of reference value&#13;</PRE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="AEN519"
+>A.5.2. Perl Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+use strict;
+use RASCH;
+
+# initialize libRASCH
+my $ra = new RASCH or die "error initializing libRASCH\n";
+
+# open measurement
+my $meas = $ra-&#62;open_meas($ARGV[0], '', 0) or 
+    die "can't open measurement $ARGV[0]\n";
+
+# get default evaluation
+my $eval = $meas-&#62;get_default_eval() or
+    die "no evaluation in measurement\n";
+
+# get some general infos
+my $v = $eval-&#62;get_info(info =&#62; 'eval_name');
+my $eval_name = $v-&#62;value();
+$v = $eval-&#62;get_info(info =&#62; 'eval_add_timestamp');
+my $eval_add_ts = $v-&#62;value();
+$v = $eval-&#62;get_info(info =&#62; 'eval_program');
+my $eval_prg = $v-&#62;value();
+print "evaluation $eval_name was added at $eval_add_ts" .
+    " using the program $eval_prg\n\n";
+
+
+# list event-class
+my $cl_all = $eval-&#62;get_class();
+for my $cl_curr (@$cl_all)
+{
+    my $name = $cl_curr-&#62;get_info(info =&#62; 'class_name');
+    my $num_events = $cl_curr-&#62;get_info(info =&#62; 'class_num_events');
+
+    print "event-class " . $name-&#62;value() . " with " . $num_events-&#62;value() . " events\n";
+
+    # list event properties
+    my $props = $cl_curr-&#62;get_prop_all();
+    for my $prop (@$props)
+    {
+        my $name = $prop-&#62;get_info(info =&#62; 'prop_name');
+        my $desc = $prop-&#62;get_info(info =&#62; 'prop_desc');
+
+        print "  " . $name-&#62;value() . "\n";
+	print "    " . $desc-&#62;value() . "\n";
+    }
+}
+
+exit 0;
+#&#13;</PRE
+></P
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>evaluation RASCHlab was added at 15.11.2009  11:48:00 using
+the program raschlab_qt
+
+event-class heartbeat with 75 events
+  qrs-pos
+    position of fiducial point of QRS-complex in sampleunits
+  qrs-annot
+    annotation of QRS complex
+  ecg-noise
+
+  ecg-morph-flags
+    flags for the morphology values
+  ecg-p-type
+
+  ecg-qrs-type
+
+  ecg-t-type
+
+  ecg-p-start
+    offset of p-wave begin from qrs-pos in sampleunits
+  ecg-p-end
+    offset of p-wave end from qrs-pos in sampleunits
+  ecg-p-width
+
+  ecg-p-peak-1
+    offset of p-wave peak from qrs-pos in sampleunits
+  ecg-p-peak-2
+    offset of 2nd p-wave peak (if biphasic) from qrs-pos
+    in sampleunits
+  ecg-qrs-start
+    offset of start of qrs complex from qrs-pos in sampleunits
+  ecg-qrs-end
+    offset of end of qrs complex from qrs-pos in sampleunits
+  ecg-qrs-width
+
+  ecg-q-peak
+    offset of q-wave from qrs-pos in sampleunits
+  ecg-r-peak
+    offset of r-wave from qrs-pos in sampleunits
+  ecg-s-peak
+    offset of s-wave from qrs-pos in sampleunits
+  ecg-rs-peak
+    offset of r'-wave from qrs-pos in sampleunits
+  ecg-t-start
+    offset of t-wave begin from qrs-pos in sampleunits
+  ecg-t-end
+    offset of t-wave end from qrs-pos in sampleunits
+  ecg-t-width
+
+  ecg-t-peak-1
+    offset of t-wave peak from qrs-pos in sampleunits
+  ecg-t-peak-2
+    offset of 2nd t-wave peak (if biphasic) from qrs-pos
+    in sampleunits
+  ecg-pq
+    PQ interval
+  ecg-qt
+    QT interval
+  ecg-qtc
+    QTc interval
+  qrs-temporal
+    temporal setting of beat
+  ecg-flags
+    ECG releated flags
+  rri
+    RR interval
+  rri-annotation
+    annoation of RR interval
+  rri-refvalue
+    reference rri representing the current heart-rate
+  rri-num-refvalue
+    number of rri's used for calculation of reference value&#13;</PRE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="AEN525"
+>A.5.3. Python Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+import sys
+from RASCH import *
+
+# initialize libRASCH
+ra = RASCH()
+if not ra:
+    print "can't initialize libRASCH"
+    sys.exit()
+
+# open measurement
+meas = ra.open_meas(sys.argv[1], '', 0)
+if not meas:
+    print "can't open measurement", sys.argv[1]
+    sys.exit()
+
+# get default evaluation
+eva = meas.get_default_eval()
+if not eva:
+    print "no evaluation in measurement"
+    sys.exit()
+
+# get some general infos
+eval_name = eva.get_info(info='eval_name')
+eval_add_ts = eva.get_info(info='eval_add_timestamp')
+eval_prg = eva.get_info(info='eval_program')
+print "evaluation", eval_name.value(), "was added at", eval_add_ts.value(), \
+      "using the program", eval_prg.value(), "\n"
+
+# list event-class
+cl = eva.get_class()
+for cl_curr in cl:
+    name = cl_curr.get_info(info='class_name')
+    num_events = cl_curr.get_info(info='class_num_events')
+
+    print "event-class", name.value(), "with",
+    print num_events.value(),
+    print "events"
+
+    # list event properties
+    props = cl_curr.get_prop_all()
+    for elem in props:
+        name = elem.get_info(info='prop_name')
+        desc = elem.get_info(info='prop_desc')
+
+        print " ", name.value()
+        print "   ", desc.value()
+
+#&#13;</PRE
+></P
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>evaluation RASCHlab was added at 15.11.2009  11:48:00 using
+the program raschlab_qt
+
+event-class heartbeat with 75 events
+  qrs-pos
+    position of fiducial point of QRS-complex in sampleunits
+  qrs-annot
+    annotation of QRS complex
+  ecg-noise
+
+  ecg-morph-flags
+    flags for the morphology values
+  ecg-p-type
+
+  ecg-qrs-type
+
+  ecg-t-type
+
+  ecg-p-start
+    offset of p-wave begin from qrs-pos in sampleunits
+  ecg-p-end
+    offset of p-wave end from qrs-pos in sampleunits
+  ecg-p-width
+
+  ecg-p-peak-1
+    offset of p-wave peak from qrs-pos in sampleunits
+  ecg-p-peak-2
+    offset of 2nd p-wave peak (if biphasic) from qrs-pos
+    in sampleunits
+  ecg-qrs-start
+    offset of start of qrs complex from qrs-pos in sampleunits
+  ecg-qrs-end
+    offset of end of qrs complex from qrs-pos in sampleunits
+  ecg-qrs-width
+
+  ecg-q-peak
+    offset of q-wave from qrs-pos in sampleunits
+  ecg-r-peak
+    offset of r-wave from qrs-pos in sampleunits
+  ecg-s-peak
+    offset of s-wave from qrs-pos in sampleunits
+  ecg-rs-peak
+    offset of r'-wave from qrs-pos in sampleunits
+  ecg-t-start
+    offset of t-wave begin from qrs-pos in sampleunits
+  ecg-t-end
+    offset of t-wave end from qrs-pos in sampleunits
+  ecg-t-width
+
+  ecg-t-peak-1
+    offset of t-wave peak from qrs-pos in sampleunits
+  ecg-t-peak-2
+    offset of 2nd t-wave peak (if biphasic) from qrs-pos
+    in sampleunits
+  ecg-pq
+    PQ interval
+  ecg-qt
+    QT interval
+  ecg-qtc
+    QTc interval
+  qrs-temporal
+    temporal setting of beat
+  ecg-flags
+    ECG releated flags
+  rri
+    RR interval
+  rri-annotation
+    annoation of RR interval
+  rri-refvalue
+    reference rri representing the current heart-rate
+  rri-num-refvalue
+    number of rri's used for calculation of reference value&#13;</PRE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="AEN531"
+>A.5.4. Matlab/Octave Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>GNU Octave, version 3.0.5
+Copyright (C) 2008 John W. Eaton and others.
+This is free software; see the source code for copying
+conditions.
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.
+
+Octave was configured for "i486-pc-linux-gnu".
+
+Additional information about Octave is available at
+http://www.octave.org.
+
+Please contribute if you find this software useful.
+For more information, visit
+http://www.octave.org/help-wanted.html
+
+Report bugs to &#60;bug@octave.org&#62; (but first, please read
+http://www.octave.org/bugs.html to learn how to write a
+helpful report).
+
+For information about changes from previous versions, type
+`news'.
+
++ ra=ra_lib_init
+ra =  193760624
++ meas=ra_meas_open(ra, './database/100s.hea', '', 0)
+meas =  194306168
++ eva=ra_eval_get_default(meas)
+eva =  194813056
++ ra_eval_info_get(eva, 'eval_name')
+ans = RASCHlab
++ ra_eval_info_get(eva, 'eval_add_timestamp')
+ans = 15.11.2009  11:48:00
++ ra_eval_info_get(eva, 'eval_program')
+ans = raschlab_qt
++ cl = ra_class_get(eva, '');
++ num_cl = length(cl)
+num_cl =  1
++ for i = 1:num_cl
++   name_cl = ra_class_info_get(cl(i), 'class_name')
++   desc_cl = ra_prop_info_get(cl(i), 'class_desc')
++   num_events = ra_class_info_get(cl(i), 'class_num_events')
++
++   props = ra_prop_get_all(cl(i));
++   num_prop = length(props)
++   for j = 1:num_prop
++     id_ascii = ra_prop_info_get(props(j), 'prop_id_ascii')
++     desc_prop = ra_prop_info_get(props(j), 'prop_desc')
++   endfor
++ endfor
+name_cl = heartbeat
+desc_cl = infos about a heart beat
+num_events =  75
+num_prop =  33
+id_ascii = qrs-pos
+desc_prop = position of fiducial point of QRS-complex in
+sampleunits
+id_ascii = qrs-annot
+desc_prop = annotation of QRS complex
+id_ascii = ecg-noise
+desc_prop =
+id_ascii = ecg-morph-flags
+desc_prop = flags for the morphology values
+id_ascii = ecg-p-type
+desc_prop =
+id_ascii = ecg-qrs-type
+desc_prop =
+id_ascii = ecg-t-type
+desc_prop =
+id_ascii = ecg-p-start
+desc_prop = offset of p-wave begin from qrs-pos in sampleunits
+id_ascii = ecg-p-end
+desc_prop = offset of p-wave end from qrs-pos in sampleunits
+id_ascii = ecg-p-width
+desc_prop =
+id_ascii = ecg-p-peak-1
+desc_prop = offset of p-wave peak from qrs-pos in sampleunits
+id_ascii = ecg-p-peak-2
+desc_prop = offset of 2nd p-wave peak (if biphasic) from
+qrs-pos in sampleunits
+id_ascii = ecg-qrs-start
+desc_prop = offset of start of qrs complex from qrs-pos in
+sampleunits
+id_ascii = ecg-qrs-end
+desc_prop = offset of end of qrs complex from qrs-pos in
+sampleunits
+id_ascii = ecg-qrs-width
+desc_prop =
+id_ascii = ecg-q-peak
+desc_prop = offset of q-wave from qrs-pos in sampleunits
+id_ascii = ecg-r-peak
+desc_prop = offset of r-wave from qrs-pos in sampleunits
+id_ascii = ecg-s-peak
+desc_prop = offset of s-wave from qrs-pos in sampleunits
+id_ascii = ecg-rs-peak
+desc_prop = offset of r'-wave from qrs-pos in sampleunits
+id_ascii = ecg-t-start
+desc_prop = offset of t-wave begin from qrs-pos in sampleunits
+id_ascii = ecg-t-end
+desc_prop = offset of t-wave end from qrs-pos in sampleunits
+id_ascii = ecg-t-width
+desc_prop =
+id_ascii = ecg-t-peak-1
+desc_prop = offset of t-wave peak from qrs-pos in sampleunits
+id_ascii = ecg-t-peak-2
+desc_prop = offset of 2nd t-wave peak (if biphasic) from
+qrs-pos in sampleunits
+id_ascii = ecg-pq
+desc_prop = PQ interval
+id_ascii = ecg-qt
+desc_prop = QT interval
+id_ascii = ecg-qtc
+desc_prop = QTc interval
+id_ascii = qrs-temporal
+desc_prop = temporal setting of beat
+id_ascii = ecg-flags
+desc_prop = ECG releated flags
+id_ascii = rri
+desc_prop = RR interval
+id_ascii = rri-annot
+desc_prop = annoation of RR interval
+id_ascii = rri-refvalue
+desc_prop = reference rri representing the current heart-rate
+id_ascii = rri-num-refvalue
+desc_prop = number of rri's used for calculation of reference
+value
++
++ ra_meas_close(meas);
++ ra_lib_close(ra);&#13;</PRE
+></P
+></DIV
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H2
+CLASS="SECTION"
+><A
+NAME="AEN535"
+>A.6. Access events</A
+></H2
+><DIV
+CLASS="SECTION"
+><H3
+CLASS="SECTION"
+><A
+NAME="AEN537"
+>A.6.1. C Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>//
+#include &#60;stdio.h&#62;
+#include &#60;stdlib.h&#62;
+#include &#60;ra.h&#62;
+
+int main(int argc, char *argv[])
+{
+    ra_handle ra;
+    meas_handle meas;
+    eval_handle eval;
+    class_handle *clh;
+    prop_handle prop_rri, prop_qrs_pos;
+    long l, m, num_heartbeat, num_events, num_rri;
+    const long *ev_ids;
+    double *rri = NULL;
+    double *qrs_pos = NULL;
+    value_handle vh, vh_id, value;
+
+    /* initialize libRASCH */
+    ra = ra_lib_init();
+    if (ra == NULL)
+    {
+        printf("error initializing libRASCH\n");
+        return -1;
+    }
+
+    /* open measurement */
+    meas = ra_meas_open(ra, argv[1], NULL, 0);
+    if (meas == NULL)
+    {
+        printf("can't open measurement %s\n", argv[1]);
+        return -1;
+    }
+
+    /* get default evaluation */
+    eval = ra_eval_get_default(meas);
+    if (eval == NULL)
+    {
+        printf("no evaluation in measurement %s\n", argv[1]);
+        return -1;
+    }
+
+    vh = ra_value_malloc();
+    if (ra_class_get(eval, "heartbeat", vh) != 0)
+    {
+        printf
+            ("no 'heartbeat' event-classes in measurement %s\n",
+             argv[1]);
+        return -1;
+    }
+    num_heartbeat = ra_value_get_num_elem(vh);
+    clh = (class_handle *) ra_value_get_voidp_array(vh);
+    vh_id = ra_value_malloc();
+    value = ra_value_malloc();
+    for (l = 0; l &#60; num_heartbeat; l++)
+    {
+        if (ra_class_get_events(clh[l], -1, -1, 0, 1, vh_id) !=
+            0)
+        {
+            printf("error getting event-id's\n");
+            continue;
+        }
+        ev_ids = ra_value_get_long_array(vh_id);
+        num_events = ra_value_get_num_elem(vh_id);
+
+        /* get event-properties for RR-intervals and position of
+           QRS-complex */
+        prop_rri = ra_prop_get(clh[l], "rri");
+        if (prop_rri == NULL)
+        {
+            printf("no event-property 'rri' in event-class\n");
+            continue;
+        }
+        prop_qrs_pos = ra_prop_get(clh[l], "qrs-pos");
+        if (prop_qrs_pos == NULL)
+        {
+            printf
+                ("no event-property 'qrs-pos' in event-class\n");
+            continue;
+        }
+
+        rri = malloc(sizeof(double) * num_events);
+        qrs_pos = malloc(sizeof(double) * num_events);
+        num_rri = 0;
+        for (m = 0; m &#60; num_events; m++)
+        {
+            if (ra_prop_get_value(prop_rri, ev_ids[m], -1, value)
+                != 0)
+                continue;
+            rri[num_rri] = ra_value_get_double(value);
+
+            if (ra_prop_get_value
+                (prop_qrs_pos, ev_ids[m], -1, value) != 0)
+                continue;
+            qrs_pos[num_rri] = ra_value_get_double(value);
+
+            num_rri++;
+        }
+
+        /* now do something with the RR-intervals and QRS-complex
+           positions */
+
+        if (rri)
+            free(rri);
+        if (qrs_pos)
+            free(qrs_pos);
+    }
+
+    /* clean up */
+    ra_value_free(vh);
+    ra_value_free(vh_id);
+    ra_value_free(value);
+
+    ra_meas_close(meas);
+    ra_lib_close(ra);
+
+    return 0;
+}                               /* main() */
+
+//&#13;</PRE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="AEN541"
+>A.6.2. Perl Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+use strict;
+use RASCH;
+
+# initialize libRASCH
+my $ra = new RASCH or die "error initializing libRASCH\n";
+
+# open measurement
+my $meas = $ra-&#62;open_meas($ARGV[0], 0) or
+    die "can't open measurement $ARGV[0]\n";
+
+# get default evaluation
+my $eval = $meas-&#62;get_default_eval() or
+    die "no evaluation in the measurement\n";
+
+my $cl = $eval-&#62;get_class('heartbeat');
+# we are only interested in the first 'heartbeat' event-class
+# in this example
+my $cl_use = $cl-&#62;[0];
+
+# get event-properties for RR-intervals and position of QRS-complex
+my $prop_rri = $cl_use-&#62;get_prop('rri') or
+    die "no event-property 'rri' in the evaluation\n";
+my $prop_qrs_pos = $cl_use-&#62;get_prop('qrs-pos') or
+    die "no event-property 'qrs-pos' in the evaluation\n";
+
+# get values for all RR-intervals and QRS-complexes
+my $rri_ref = $prop_rri-&#62;get_events();
+my $qrs_pos_ref = $prop_qrs_pos-&#62;get_events();
+
+# now do something with the RR-intervals and QRS-complex-positions
+
+exit 0;
+#&#13;</PRE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="AEN545"
+>A.6.3. Python Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+import sys
+from RASCH import *
+
+# initialize libRASCH
+ra = RASCH()
+if not ra:
+    print "can't initialize libRASCH"
+    sys.exit()
+
+# open measurement
+meas = ra.open_meas(sys.argv[1], 0)
+if not meas:
+    print "can't open measurement", sys.argv[1]
+    sys.exit()
+
+# get default evaluation
+eva = meas.get_def_eval()
+if not eva:
+    print "no evaluation in measurement"
+    sys.exit()
+
+# get event-properties for RR-intervals and position of QRS-complexs
+prop_rri = eva.get_evprop_by_name('rri')
+if not prop_rri:
+    print "no event-property 'rri' in the evaluation"
+    sys.exit()
+
+prop_qrs_pos = eva.get_evprop_by_name('qrs-pos')
+if not prop_qrs_pos:
+    print "no event-property 'qrs-pos' in the evaluation"
+    sys.exit()
+
+# get values for all RR-intervals and QRS-complexes
+rri = prop_rri.get_events()
+qrs_pos_ref = prop_qrs_pos.get_events()
+
+# now do something with the RR-intervals and QRS-complex-positions
+
+#&#13;</PRE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="AEN549"
+>A.6.4. Matlab/Octave Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>GNU Octave, version 3.0.5
+Copyright (C) 2008 John W. Eaton and others.
+This is free software; see the source code for copying
+conditions.
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.
+
+Octave was configured for "i486-pc-linux-gnu".
+
+Additional information about Octave is available at
+http://www.octave.org.
+
+Please contribute if you find this software useful.
+For more information, visit
+http://www.octave.org/help-wanted.html
+
+Report bugs to &#60;bug@octave.org&#62; (but first, please read
+http://www.octave.org/bugs.html to learn how to write a
+helpful report).
+
+For information about changes from previous versions, type
+`news'.
+
++ ra=ra_lib_init
+ra =  190655216
++ meas=ra_meas_open(ra, './database/100s.hea', '', 0)
+meas =  191227456
++ eva=ra_eval_get_default(meas)
+eva =  191707864
++
++ samplerate=ra_meas_info_get(meas, 'max_samplerate')
+samplerate =  360
++
++ cl = ra_class_get(eva, 'heartbeat')
+cl =  191621760
++ num_hb = length(cl)
+num_hb =  1
++ for i = 1:num_hb
++   ev = ra_class_get_events(cl(i), -1, -1, 0, 1);
++   num_ev = length(ev)
++
++   prop_rri = ra_prop_get(cl(i), 'rri')
++   prop_qrs_pos = ra_prop_get(cl(i), 'qrs-pos')
++
++   rri = [];
++   qrs_pos = [];
++   for j = 1:num_ev
++     r = ra_prop_get_value(prop_rri, ev(j), -1);
++     p = ra_prop_get_value(prop_qrs_pos, ev(j), -1);
++
++     rri = [rri r];
++     qrs_pos = [qrs_pos p];
++   endfor
++
++   %% To get all property values within one function call
++   %% use ra_prop_get_value_all():
++   % [ev_ids, chs, rri] = ra_prop_get_value_all(prop_rri);
++   % [ev_ids, chs, qrs_pos] =
+ra_prop_get_value_all(prop_qrs_pos);
++   %
++   %% !!! This function returns also the event-id's and channel
++   %% !!! numbers the value belongs to. The order of returned
+values
++   %% !!! is not guaranteed to be in chronological order.
++
++   whos rri
++   whos qrs_pos
++
++   figure();
++   x=(qrs_pos/samplerate) / 60;
++   plot(x, rri);
++ endfor
+num_ev =  75
+prop_rri =  192116472
+prop_qrs_pos =  192076800
+
+*** local user variables:
+
+  Prot Name        Size                     Bytes  Class
+  ==== ====        ====                     =====  =====
+   rwd rri         1x75                       600  double
+
+Total is 75 elements using 600 bytes
+
+
+*** local user variables:
+
+  Prot Name         Size                     Bytes  Class
+  ==== ====         ====                     =====  =====
+   rwd qrs_pos      1x75                       600  double
+
+Total is 75 elements using 600 bytes
+
++
++ ra_meas_close(meas);
++ ra_lib_close(ra);&#13;</PRE
+></P
+></DIV
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H2
+CLASS="SECTION"
+><A
+NAME="AEN553"
+>A.7. Use process-plugin</A
+></H2
+><DIV
+CLASS="SECTION"
+><H3
+CLASS="SECTION"
+><A
+NAME="AEN555"
+>A.7.1. C Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>//
+#include &#60;stdio.h&#62;
+#include &#60;string.h&#62;
+#include &#60;ra.h&#62;
+
+int main(int argc, char *argv[])
+{
+    ra_handle ra;
+    struct ra_info *inf;
+    meas_handle meas;
+    eval_handle eval;
+    plugin_handle pl;
+    struct proc_info *pi;
+
+    /* initialize libRASCH */
+    ra = ra_lib_init();
+    if (ra == NULL)
+    {
+        printf("error initializing libRASCH\n");
+        return -1;
+    }
+
+    /* open measurement */
+    meas = ra_meas_open(ra, argv[1], NULL, 0);
+    if (meas == NULL)
+    {
+        printf("can't open measurement %s\n", argv[1]);
+        return -1;
+    }
+
+    /* get default evaluation */
+    eval = ra_eval_get_default(meas);
+    if (eval == NULL)
+    {
+        printf("no evaluation in measurement %s\n", argv[1]);
+        return -1;
+    }
+
+    /* get plugin-handle for hrv-plugin */
+    pl = ra_plugin_get_by_name(ra, "hrv", 0);
+    if (pl == NULL)
+    {
+        printf("can't find plugin 'hrv'\n");
+        return -1;
+    }
+
+    /* calculate hrv-values using the hrv-plugin */
+    pi = (struct proc_info *)ra_proc_get(meas, pl, NULL);
+    if (ra_proc_do(pi) == 0)
+    {
+        long num_res_sets, num_results, m, l;
+        value_handle vh;
+
+        /* get number of result-sets */
+        vh = ra_value_malloc();
+        if (ra_info_get(pi, RA_INFO_PROC_NUM_RES_SETS_L, vh) !=
+            0)
+        {
+            printf("no result-sets\n");
+            return -1;
+        }
+        num_res_sets = ra_value_get_long(vh);
+
+        /* get number of results */
+        if (ra_info_get(pi, RA_INFO_PROC_NUM_RES_L, vh) != 0)
+        {
+            printf("no results\n");
+            return -1;
+        }
+        num_results = ra_value_get_long(vh);
+
+        for (m = 0; m &#60; num_res_sets; m++)
+        {
+            printf("result-set #%d:\n", m + 1);
+
+            for (l = 0; l &#60; num_results; l++)
+            {
+                char out[200], t[100];
+
+                /* set number of result in which we are interested */
+                ra_value_set_number(vh, l);
+
+                /* test if result is a default value (some
+                   non-default results are arrays which we skip in
+                   this example) */
+                ra_info_get(pl, RA_INFO_PL_RES_DEFAULT_L, vh);
+                if (ra_value_get_long(vh) == 0)
+                    continue;
+
+                out[0] = '\0';
+                if (ra_info_get(pl, RA_INFO_PL_RES_NAME_C, vh) ==
+                    0)
+                {
+                    strcpy(t, ra_value_get_string(vh));
+                    strcat(out, t);
+                }
+                if (ra_info_get(pl, RA_INFO_PL_RES_DESC_C, vh) ==
+                    0)
+                {
+                    sprintf(t, " (%s)", ra_value_get_string(vh));
+                    strcat(out, t);
+                }
+                if (ra_proc_get_result(pi, l, m, vh) == 0)
+                {
+                    sprintf(t, ": %lf", ra_value_get_double(vh));
+                    strcat(out, t);
+                }
+
+                printf("  %s\n", out);
+            }
+        }
+
+        ra_value_free(vh);
+    }
+
+    /* close */
+    ra_proc_free(pi);
+    ra_meas_close(meas);
+    ra_lib_close(ra);
+
+    return 0;
+}                               /* main() */
+
+//&#13;</PRE
+></P
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>result-set #1:
+  SDNN (standard deviation of normal-to-normal intervals):
+  30.238227
+  HRVI (HRV-Index): 7.200000
+  SDANN (standard deviation of averaged normal-to-normal
+  intervals): nan
+  rmssd (root mean of squared sucsessive differences): 32.494403
+  pNN50 (): 7.142857
+  TP (total power): 476.707920
+  ULF (ultra low frequency power): 0.000000
+  VLF (very low frequency power of short-term recordings):
+  31.580847
+  LF (low frequency power): 157.664788
+  LF_NORM (normalised low frequency power): 35.420175
+  HF (high freuqency power): 287.462286
+  HF_NORM (normalised high frequency power): 64.579825
+  LF_HF_RATIO (LF/HF ratio): 0.548471
+  POWER_LAW (power law behavior): 0.000000
+  SD1 (SD1 of the Poincare Plot): 15.845239
+  SD2 (SD2 of the Poincare Plot): 17.873049
+  DFA (overall DFA Alpha): nan
+  DFA_OFFSET (offset of the overall DFA Alpha slope): nan
+  DFA1 (DFA Alpha1): 0.242035
+  DFA1_OFFSET (offset of the DFA Alpha-1 slope): 1.404195
+  DFA2 (DFA Alpha2): nan
+  DFA2_OFFSET (offset of the DFA Alpha-2 slope): nan
+  DFA_USER (DFA Alpha of user-defined range)
+  DFA_USER_OFFSET (offset of the user-defined DFA Alpha slope)&#13;</PRE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="AEN561"
+>A.7.2. Perl Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+use strict;
+use RASCH;
+
+# initialize libRASCH
+my $ra = new RASCH or die "error initializing libRASCH\n";
+
+# open measurement and get default evaluation
+my $meas = $ra-&#62;open_meas($ARGV[0], '', 0) or
+    die "can't open measurement $ARGV[0]\n";
+
+# get plugin-handle for hrv-plugin
+my $pl = $ra-&#62;get_plugin_by_name('hrv') or
+    die "can't find plugin 'hrv'\n";
+
+# calculate hrv-values using the hrv-plugin
+my $proc = $pl-&#62;get_process($meas) or
+    die "can't initialize processing\n";
+my $results = $proc-&#62;process();
+# $results is a reference to an array; each array-element contains
+# another array with three elements (value, name, description)
+for (@$results)
+{
+    print $_-&#62;name() . ' (' . $_-&#62;desc() . ') = ' .
+	$_-&#62;value() . "\n";
+}
+
+exit 0;
+#&#13;</PRE
+></P
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>SDNN (standard deviation of normal-to-normal intervals) =
+30.2382268563552
+HRVI (HRV-Index) = 7.2
+SDANN (standard deviation of averaged normal-to-normal
+intervals) = nan
+rmssd (root mean of squared sucsessive differences) =
+32.4944032625042
+pNN50 () = 7.14285714285714
+TP (total power) = 476.707920259995
+ULF (ultra low frequency power) = 0
+VLF (very low frequency power of short-term recordings) =
+31.5808466629042
+LF (low frequency power) = 157.664787578416
+LF_NORM (normalised low frequency power) = 35.4201748063357
+HF (high freuqency power) = 287.462286018674
+HF_NORM (normalised high frequency power) = 64.5798251936643
+LF_HF_RATIO (LF/HF ratio) = 0.548471209082966
+POWER_LAW (power law behavior) = 0
+TACHO_INDEX (Event numbers used for HRV calculations) =
+ARRAY(0x9104b90)
+USER_BAND (frequency power in a user-selected frequency band)
+= 0
+SD1 (SD1 of the Poincare Plot) = 15.8452385921394
+SD2 (SD2 of the Poincare Plot) = 17.8730488314873
+DFA (overall DFA Alpha) = nan
+DFA_OFFSET (offset of the overall DFA Alpha slope) = nan
+DFA1 (DFA Alpha1) = 0.242034900196407
+DFA1_OFFSET (offset of the DFA Alpha-1 slope) = 1.40419467895075
+DFA2 (DFA Alpha2) = nan
+DFA2_OFFSET (offset of the DFA Alpha-2 slope) = nan
+ () =
+ () =
+DFA_X (x-axis for DFA plot) = ARRAY(0x91582f8)
+DFA_Y (y-axis for DFA plot) = ARRAY(0x9158438)&#13;</PRE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="AEN567"
+>A.7.3. Python Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+import sys
+from RASCH import *
+
+# initialize libRASCH
+ra = RASCH()
+if not ra:
+    print "can't initialize libRASCH"
+    sys.exit()
+
+# open measurement and get default evaluation
+meas = ra.open_meas(sys.argv[1], '', 0)
+if not meas:
+    print "can't open measurement", sys.argv[1]
+    sys.exit()
+
+# get plugin-handle for hrv-plugin
+pl = ra.get_plugin_by_name('hrv')
+if not pl:
+    print "can't find plugin 'hrv'"
+    sys.exit();
+
+# calculate hrv-values using the hrv-plugin
+proc = pl.get_process(meas)
+if not proc:
+    print "can't initialize processing"
+    sys.exit()
+    
+results = proc.process()
+for item in results:
+    if item.is_ok():
+        print item.name(), "("+item.desc()+") =", item.value()    
+#&#13;</PRE
+></P
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>SDNN (standard deviation of normal-to-normal intervals) =
+30.2382268564
+HRVI (HRV-Index) = 7.2
+SDANN (standard deviation of averaged normal-to-normal
+intervals) = nan
+rmssd (root mean of squared sucsessive differences) =
+32.4944032625
+pNN50 () = 7.14285714286
+TP (total power) = 476.70792026
+ULF (ultra low frequency power) = 0.0
+VLF (very low frequency power of short-term recordings) =
+31.5808466629
+LF (low frequency power) = 157.664787578
+LF_NORM (normalised low frequency power) = 35.4201748063
+HF (high freuqency power) = 287.462286019
+HF_NORM (normalised high frequency power) = 64.5798251937
+LF_HF_RATIO (LF/HF ratio) = 0.548471209083
+POWER_LAW (power law behavior) = 0.0
+TACHO_INDEX (Event numbers used for HRV calculations) = [2.0,
+3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 24.0,
+25.0, 26.0, 27.0, 28.0, 29.0, 30.0, 31.0, 32.0, 33.0, 34.0,
+35.0, 36.0, 37.0, 38.0, 39.0, 40.0, 41.0, 42.0, 43.0, 44.0,
+45.0, 46.0, 47.0, 48.0, 49.0, 50.0, 51.0, 52.0, 53.0, 54.0,
+55.0, 56.0, 57.0, 58.0, 59.0, 60.0, 61.0, 62.0, 63.0, 64.0,
+65.0, 66.0, 67.0, 68.0, 69.0, 70.0, 71.0, 72.0, 73.0, 74.0]
+USER_BAND (frequency power in a user-selected frequency band)
+= 0.0
+SD1 (SD1 of the Poincare Plot) = 15.8452385921
+SD2 (SD2 of the Poincare Plot) = 17.8730488315
+DFA (overall DFA Alpha) = nan
+DFA_OFFSET (offset of the overall DFA Alpha slope) = nan
+DFA1 (DFA Alpha1) = 0.242034900196
+DFA1_OFFSET (offset of the DFA Alpha-1 slope) = 1.40419467895
+DFA2 (DFA Alpha2) = nan
+DFA2_OFFSET (offset of the DFA Alpha-2 slope) = nan
+DFA_X (x-axis for DFA plot) = [0.6020599913279624,
+0.69897000433601886, 0.77815125038364363, 0.84509804001425681,
+0.90308998699194354, 0.95424250943932487, 1.0,
+1.0413926851582251, 1.0791812460476249, 1.1139433523068367,
+1.146128035678238, 1.1760912590556813, 1.2041199826559248,
+1.2304489213782739]
+DFA_Y (y-axis for DFA plot) = [1.4964657214676538,
+1.5932815728362522, 1.6208138827475429, 1.6561856924575491,
+1.6469306466489699, 1.5934526766952628, 1.6510314905644941,
+1.6268009535558938, 1.6141161531657984, 1.6277297067193524,
+nan, nan, nan, nan]&#13;</PRE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><HR><H3
+CLASS="SECTION"
+><A
+NAME="AEN573"
+>A.7.4. Matlab/Octave Version</A
+></H3
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>GNU Octave, version 3.0.5
+Copyright (C) 2008 John W. Eaton and others.
+This is free software; see the source code for copying
+conditions.
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.
+
+Octave was configured for "i486-pc-linux-gnu".
+
+Additional information about Octave is available at
+http://www.octave.org.
+
+Please contribute if you find this software useful.
+For more information, visit
+http://www.octave.org/help-wanted.html
+
+Report bugs to &#60;bug@octave.org&#62; (but first, please read
+http://www.octave.org/bugs.html to learn how to write a
+helpful report).
+
+For information about changes from previous versions, type
+`news'.
+
+ra =  172958040
+meas =  173499480
+eva =  174012408
+pl =  173713720
+proc =  174617360
+ans = 0
+num =  28
+1: SDNN (standard deviation of normal-to-normal intervals)
+= 30.238227
+2: HRVI (HRV-Index) = 7.200000
+3: SDANN (standard deviation of averaged normal-to-normal
+intervals) = NaN
+4: rmssd (root mean of squared sucsessive differences)
+= 32.494403
+5: pNN50 () = 7.142857
+6: TP (total power) = 476.707920
+7: ULF (ultra low frequency power) = 0.000000
+8: VLF (very low frequency power of short-term recordings)
+= 31.580847
+9: LF (low frequency power) = 157.664788
+10: LF_NORM (normalised low frequency power) = 35.420175
+11: HF (high freuqency power) = 287.462286
+12: HF_NORM (normalised high frequency power) = 64.579825
+13: LF_HF_RATIO (LF/HF ratio) = 0.548471
+14: POWER_LAW (power law behavior) = 0.000000
+15: TACHO_INDEX (Event numbers used for HRV calculations) =
+[not a scalar value]
+16: USER_BAND (frequency power in a user-selected frequency
+band) = 0.000000
+17: SD1 (SD1 of the Poincare Plot) = 15.845239
+18: SD2 (SD2 of the Poincare Plot) = 17.873049
+19: DFA (overall DFA Alpha) = NaN
+20: DFA_OFFSET (offset of the overall DFA Alpha slope) = NaN
+21: DFA1 (DFA Alpha1) = 0.242035
+22: DFA1_OFFSET (offset of the DFA Alpha-1 slope) = 1.404195
+23: DFA2 (DFA Alpha2) = NaN
+24: DFA2_OFFSET (offset of the DFA Alpha-2 slope) = NaN
+25: DFA_USER (DFA Alpha of user-defined range) = [not a
+scalar value]&#13;</PRE
+></P
+></DIV
+></DIV
+></DIV
+></DIV
+><H3
+CLASS="FOOTNOTES"
+>Notes</H3
+><TABLE
+BORDER="0"
+CLASS="FOOTNOTES"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN86"
+HREF="#AEN86"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>The signal plugins can be compared with device drivers in operating
+systems.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN258"
+HREF="#AEN258"
+><SPAN
+CLASS="footnote"
+>[2]</SPAN
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>Some access plugins do not differ between
+fast and normal open. But it is recommended, when writing access
+plugins, to skip time consuming tasks when fast-open was
+selected. This decreases the time needed to list all measurements in a
+directory.</P
+></TD
+></TR
+></TABLE
+></BODY
+></HTML
+>

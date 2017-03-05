@@ -1,0 +1,125 @@
+TO-DO list for whole libRASCH project
+====================================
+
+$Id$
+
+('+' means that topic is done, '-' means topic needs to be done)
+
+
+Need to be finished for version 1.0
+-----------------------------------
+- error handling (mostly done, think if additional things are necessary)
+- regression tests (see General below)
+- support most of the public avail. formats (to be sure that the
+  API is sufficient)
+- the major parts of RASCHlab done (to be sure libRASCH works)
+- complete documentation and source-comments
+- first implementations of picture/movie formats to check if the
+  interface makes sense or needs to be rewritten (it is OK if some
+  parts needs to be extended; it is NOT OK, if some crucial parts
+  needs to be changed)
+- interfaces for as much languages/systems as possible (systems mean
+  Matlab, Octave, IDL, Scilab, ...)
+- as much experience as possible (different operating-systems,
+  different languages, different systems, different signals, ...)
+- write documentation for interfaces (and therefore for lib)
+- comment source code, write design documents, design RASCHlab
+- implement own format
+(- write export program)
+(- write graphical conversion program (main purpose: convert ASCII
+   files in own format))
+
+
+General
+-------
+- document XML-eval-file-format
++ comment source
+- write documentation (started)
+- use gnu auto-tools (not decided yet)
+- implement error-handling (mostly done, need thinking if complete)
+- when adding an event find a way how to be sure that all properties
+  are get/calculated (e.g. for ART-measures: added a beat in ecg-view
+  how to be sure that blood-pressure-properties are also saved when
+  cont_rr_view-plugin is not used)
+- Process-plugins should be telling which event-properties they are
+  generating, which event-properties they are needing and which
+  signals they are processing. With this, the processing of a
+  measurement is simple and can be done automagically. (Do not forget
+  to implement a check for circular dependencies.)
++ when user edit event, mark this event so that processing of the
+  events leave the event in the state it is
+- add regression tests for core and all plugins (test runs should
+  produce "nice" HTML pages with success/fail reports); tests should
+  cover all available interfaces also (for each interface a complete
+  set of tests)
+- some recordings calculate the channel-data available via the API from
+  other channels (e.g. 12 lead ECGs normally store only 8 channels);
+  think if it is neccessary to access the original channel-data and
+  -information via the API; and when yes, how much data is needed 
+ 
+
+libRASCH
+--------
+- add Scilab support for Windows version
+- fix Scilab build for Linux version
+- implement support for config-file
+- i18n support (started)
+  * support for date, time and numbers
+  * check string/character processing routines
+  * decide how to handle data (strings, dates and times) stored in
+    files (if no special definition, assume locale settings)
+- adapt OO interfaces for Perl and Python according the C++ interface
+
+
+build-system
+------------
++ check if big or little endian -> set c-flag (is done during runtime)
+- add scripts to distribution (mostly done)
+- think about binary-distributions for Linux (RPM and deb)
+- building libRASCH on Windows using nmake is not working correctly
+- octave comes with octave-config which tells about installation
+  details -> check if it is available in older distributions also and
+  if it is then use this instead the code currently used in the
+  configure script
+
+
+distribution script
+-------------------
+- write a script which do all the tasks distributing a new release:
+  * build libRASCH distribution archive
+  * generate a ChangeLog and To-do page in HTML
+  * generate a main ChangeLog (changes that will appear in the news
+    section and in freshmeat.net)
+  * generate SQL commands for plugin-infos for web-site
+  * generate SQL commands for news-section of new release
+  * copy all files to the appropriate place of the local web-site
+  * execute SQL-command-scripts on local mysql database
+  * start sync to transfer local web-site/db to web server
+  * use freshmeat.net automatic 'new version' capability
+
+
+Plugins
+-------
++ template-view plugin has problems when changing speed/amplitude
+- check process-modules for better programming (more structure)
++ ecg-view plugin shows arrhythmic events (think if a more general
+  implementation in the ts-view plugin can be done)
+- implement general documentation/help system for plugins (started)
+- write basic-statistics plugin
+
+
+RASCHlab
+--------
+- make concept of program
+- in Windows version plot-window is not closed
++ make preliminary version available for download (is added since 0.6.0)
+
+
+File-Formats
+------------
++ support EDF+ discontinuous recordings
++ support for arrhythmic events in ecg's
+- CFS format (finished for equalSpaced data)
+- DasyLab (implementation of Universal Format 1 finished)
+- ADInstruments format (Windows only) (seems to work, needs testing)
+- Mortara (Windows only)

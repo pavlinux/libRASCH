@@ -1,0 +1,6 @@
+Returns the recording-handle after 'rec_handle'.
+  Input parameters:
+    rec_handle
+
+  Output parameters:
+    rec_handle

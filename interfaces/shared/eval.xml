@@ -1,0 +1,525 @@
+<func name="ra_eval_save">
+  <para type="in" num="1" perl-type="void *" desc="handle to a libRASCH measurement">meas_handle</para>
+  <para type="in" num="2" perl-type="char *" desc="filename of evaluation file">file</para>
+  <para type="in" num="3" perl-type="long" desc="flag if data should be saved as ASCII">use_ascii</para>
+  <para type="out" num="1">ok</para>
+  <purpose>save evaluation file</purpose>
+  <description>Save evaluation infos of a measurement.
+  </description>
+  <perl-code>
+   CODE:
+     RETVAL = ra_eval_save(p_meas_handle, p_file, p_use_ascii);
+  </perl-code>
+  <perl-out>int</perl-out>
+  <python-code-init>
+    long ok;
+  </python-code-init>
+  <python-code>
+    ok = (long)ra_eval_save(p_meas_handle, p_file, p_use_ascii);
+    return Py_BuildValue("l", ok);  
+  </python-code>
+</func>
+
+
+<func name="ra_eval_attribute_list">
+  <para type="in" num="1" perl-type="void *" desc="any evaluation related libRASCH handle">handle</para>
+  <para type="out" num="1">value</para>
+  <purpose>get list of available attributes</purpose>
+  <description>
+    Get the list of available attributes for evaluation related handle 'handle'.
+  </description>
+  <perl-code><![CDATA[
+    PPCODE:
+      value_handle vh;
+      SV *value;
+
+      vh = ra_value_malloc();
+      if (ra_eval_attribute_list(p_handle, vh) != 0)
+      {
+        ra_value_free(vh);
+	PUSHs(&PL_sv_undef);
+        return;
+      }
+      if (!ra_value_is_ok(vh))
+      {
+        ra_value_free(vh);
+	PUSHs(&PL_sv_undef);
+        return;
+      }
+
+      value = value_to_sv(vh);
+
+      ra_value_free(vh);
+
+      PUSHs(value);
+  ]]>
+  </perl-code>
+  <python-code-init>
+    value_handle vh;
+    PyObject *value;
+  </python-code-init>
+  <python-code><![CDATA[
+    vh = ra_value_malloc();
+
+    if (ra_eval_attribute_list(p_handle, vh) != 0)
+    {
+        ra_value_free(vh);
+        return Py_None;
+    }
+    if (!ra_value_is_ok(vh))
+    {
+        ra_value_free(vh);
+        return Py_None;
+    }
+
+    value = value_to_py_object(vh);
+
+    ra_value_free(vh);
+
+    return value;
+  ]]>
+  </python-code>
+</func>
+
+
+<func name="ra_eval_attribute_get">
+  <para type="in" num="1" perl-type="void *" desc="any evaluation related libRASCH handle">handle</para>
+  <para type="in" num="2" perl-type="const char *" desc="attribute name">attrib_name</para>
+  <para type="out" num="1">value</para>
+  <purpose>get attribute value</purpose>
+  <description>
+    Get the value of the attribute 'attrib_name'.
+  </description>
+  <perl-code><![CDATA[
+    PPCODE:
+      value_handle vh;
+      SV *value;
+
+      vh = ra_value_malloc();
+      if (ra_eval_attribute_get(p_handle, p_attrib_name, vh) != 0)
+      {
+        ra_value_free(vh);
+	PUSHs(&PL_sv_undef);
+        return;
+      }
+      if (!ra_value_is_ok(vh))
+      {
+        ra_value_free(vh);
+	PUSHs(&PL_sv_undef);
+        return;
+      }
+
+      value = value_to_sv(vh);
+
+      ra_value_free(vh);
+
+      PUSHs(value);
+  ]]>
+  </perl-code>
+  <python-code-init>
+    value_handle vh;
+    PyObject *value;
+  </python-code-init>
+  <python-code><![CDATA[
+    vh = ra_value_malloc();
+
+    if (ra_eval_attribute_get(p_handle, p_attrib_name, vh) != 0)
+    {
+        ra_value_free(vh);
+        return Py_None;
+    }
+    if (!ra_value_is_ok(vh))
+    {
+        ra_value_free(vh);
+        return Py_None;
+    }
+
+    value = value_to_py_object(vh);
+
+    ra_value_free(vh);
+
+    return value;
+  ]]>
+  </python-code>
+</func>
+
+
+<func name="ra_eval_attribute_set">
+  <para type="in" num="1" perl-type="void *" desc="any evaluation related libRASCH handle">handle</para>
+  <para type="in" num="2" perl-type="char *" desc="attribute name">attrib_name</para>
+  <para type="in" num="3" perl-type="char *" desc="attribute type">attrib_type</para>
+  <para type="in" num="4" perl-type="void *" desc="attribute value">attrib_value</para>
+  <purpose>set attribute value</purpose>
+  <description>
+    Set the value of the attribute 'attrib_name'.
+  </description>
+  <perl-code><![CDATA[
+  PPCODE:
+    int ok = 1;
+    value_handle vh;
+    SV *value;
+
+    value = (SV *)p_attrib_value;
+
+    vh = ra_value_malloc();
+
+    if (p_attrib_type[0] == 'p')  /* check if it's an array */
+    {
+      long len, l;
+      AV *arr;
+      SV **elem;
+
+      if (SvROK(value) && SvTYPE(SvRV(value)) == SVt_PVAV)
+        arr = (AV*)SvRV(value);
+      else
+        return;
+      len = av_len(arr) + 1;
+
+      if (p_attrib_type[1] == 'l')  /* long array? */
+      {
+        long *all = malloc(sizeof(long) * len);
+        for (l = 0; l < len; l++)
+        {
+          elem = av_fetch(arr, l, 0);
+          all[l] = (long)SvIV(*elem);
+        }
+        ra_value_set_long_array(vh, all, len);
+
+        free(all);
+      }
+      else if (p_attrib_type[1] == 'd')  /* or double array? */
+      {
+        double *all = malloc(sizeof(double) * len);
+        for (l = 0; l < len; l++)
+        {
+          elem = av_fetch(arr, l ,0);
+          all[l] = (double)SvNV(*elem);
+        }
+        ra_value_set_double_array(vh, all, len);
+
+        free(all);
+      }
+    }
+    else if (p_attrib_type[0] == 'l') /* is it a long? */
+    {
+      long val = (long)SvIV(value);
+
+      ra_value_set_long(vh, val);
+    }
+    else if (p_attrib_type[0] == 'd') /* is it a double? */
+    {
+      double val = (double)SvNV(value);
+
+      ra_value_set_double(vh, val);
+    }
+    else if (p_attrib_type[0] == 'c') /* is it a string? */
+    {
+      STRLEN len;
+      char *str;
+
+      str = (char *)SvPV(value, len);
+
+      ra_value_set_string(vh, str);
+    }
+    else
+      ok = 0;
+
+    if (ok)
+      ra_eval_attribute_set(p_handle, p_attrib_name, vh);
+
+    ra_value_free(vh);
+  ]]>
+  </perl-code>
+  <python-code-init>
+    int ok = 1;
+    value_handle vh;
+    PyObject *value;
+  </python-code-init>
+  <python-code><![CDATA[
+    value = (PyObject *)p_attrib_value;
+
+    vh = ra_value_malloc();
+
+    if (p_attrib_type[0] == 'p')  /* check if it's an array */
+    {
+      int len, i;
+      PyObject *item;
+
+      if (!PyList_Check(value))
+        return Py_None;
+
+      len = PyList_Size(value);
+
+      if (p_attrib_type[1] == 'l')  /* long array? */
+      {
+        long *all = malloc(sizeof(long) * len);
+        for (i = 0; i < len; i++)
+        {
+          item = PyList_GetItem(value, i);
+	  PyArg_ParseTuple(item, "l", &(all[i]));
+        }
+        ra_value_set_long_array(vh, all, len);
+
+        free(all);
+      }
+      else if (p_attrib_type[1] == 'd')  /* or double array? */
+      {
+        double *all = malloc(sizeof(double) * len);
+        for (i = 0; i < len; i++)
+        {
+          item = PyList_GetItem(value, i);
+	  PyArg_ParseTuple(item, "d", &(all[i]));
+        }
+        ra_value_set_double_array(vh, all, len);
+
+        free(all);
+      }
+    }
+    else if (p_attrib_type[0] == 'l') /* is it a long? */
+    {
+      long val;
+
+      PyArg_ParseTuple(value, "l", &val);
+      ra_value_set_long(vh, val);
+    }
+    else if (p_attrib_type[0] == 'd') /* is it a double? */
+    {
+      double val;
+
+      PyArg_ParseTuple(value, "d", &val);
+      ra_value_set_double(vh, val);
+    }
+    else if (p_attrib_type[0] == 'c') /* is it a string? */
+    {
+      char *str;
+
+      PyArg_ParseTuple(value, "s", &str);
+      ra_value_set_string(vh, str);
+    }
+    else
+      ok = 0;
+
+    if (ok)
+      ra_eval_attribute_set(p_handle, p_attrib_name, vh);
+
+    ra_value_free(vh);
+
+    return Py_None;
+  ]]>
+  </python-code>
+</func>
+
+
+<func name="ra_eval_attribute_unset">
+  <para type="in" num="1" perl-type="void *" desc="any evaluation related libRASCH handle">handle</para>
+  <para type="in" num="2" perl-type="const char *" desc="attribute name">attrib_name</para>
+  <para type="out" num="1">ok</para>
+  <purpose>unset attribute value</purpose>
+  <description>
+    Unset the value of the attribute 'attrib_name'.
+  </description>
+  <perl-code>
+  CODE:
+    RETVAL = ra_eval_attribute_unset(p_handle, p_attrib_name);
+  </perl-code>
+  <perl-out>long</perl-out>
+  <python-code-init>
+    long ok;
+  </python-code-init>
+  <python-code>
+    ok = (long)ra_eval_attribute_unset(p_handle, p_attrib_name);
+    return Py_BuildValue("l", ok);  
+  </python-code>
+</func>
+
+
+<func name="ra_eval_add">
+  <para type="in" num="1" perl-type="void *" desc="handle to a libRASCH measurement">meas_handle</para>
+  <para type="in" num="2" perl-type="char *" desc="name of the evaluation">name</para>
+  <para type="in" num="3" perl-type="char *" desc="a short description of the evaluation">desc</para>
+  <para type="in" num="4" perl-type="long" desc="flag if evaluation is the original evaluation">orig</para>
+  <para type="out" num="1">eval_handle</para>
+  <purpose>add an evaluation</purpose>
+  <description>Returns the evaluation-handle of the newly added evaluation.
+  </description>
+  <perl-code>
+  CODE:
+    RETVAL = ra_eval_add(p_meas_handle, p_name, p_desc, p_orig);
+  </perl-code>
+  <perl-out>void *</perl-out>
+  <python-code-init>
+    eval_handle eval;
+  </python-code-init>
+  <python-code>
+    eval = ra_eval_add(p_meas_handle, p_name, p_desc, p_orig);
+    return Py_BuildValue("l", eval);
+  </python-code>
+</func>
+
+
+<func name="ra_eval_delete">
+  <para type="in" num="1" perl-type="void *" desc="handle to a libRASCH evaluation">eval_handle</para>
+  <para type="out" num="1">ok</para>
+  <purpose>delete an evaluation</purpose>
+  <description>Delete the evaluation 'eval_handle'.
+  </description>
+  <perl-code>
+  CODE:
+    RETVAL = ra_eval_delete(p_eval_handle);
+  </perl-code>
+  <perl-out>long</perl-out>
+  <python-code-init>
+    long ok;
+  </python-code-init>
+  <python-code>
+    ok = (long)ra_eval_delete(p_eval_handle);
+    return Py_BuildValue("l", ok);
+  </python-code>
+</func>
+
+
+<func name="ra_eval_get_all">
+  <para type="in" num="1" perl-type="void *" desc="handle to a libRASCH measurement">meas_handle</para>
+  <para type="out" num="1">value</para>
+  <purpose>get all evaluations</purpose>
+  <description>
+    Returns all evaluations belonging to 'meas_handle'.
+  </description>
+  <perl-code><![CDATA[
+    PPCODE:
+      value_handle vh;
+      SV *value;
+
+      vh = ra_value_malloc();
+      if (ra_eval_get_all(p_meas_handle, vh) != 0)
+      {
+        ra_value_free(vh);
+	PUSHs(&PL_sv_undef);
+        return;
+      }
+      if (!ra_value_is_ok(vh))
+      {
+        ra_value_free(vh);
+	PUSHs(&PL_sv_undef);
+        return;
+      }
+
+      value = value_to_sv(vh);
+
+      ra_value_free(vh);
+
+      PUSHs(value);
+  ]]>
+  </perl-code>
+  <python-code-init>
+    value_handle vh;
+    PyObject *value;
+  </python-code-init>
+  <python-code><![CDATA[
+    vh = ra_value_malloc();
+
+    if (ra_eval_get_all(p_meas_handle, vh) != 0)
+    {
+        ra_value_free(vh);
+        return Py_None;
+    }
+    if (!ra_value_is_ok(vh))
+    {
+        ra_value_free(vh);
+        return Py_None;
+    }
+
+    value = value_to_py_object(vh);
+
+    ra_value_free(vh);
+
+    return value;
+  ]]>
+  </python-code>
+</func>
+
+
+<func name="ra_eval_get_original">
+  <para type="in" num="1" perl-type="void *" desc="handle to a libRASCH measurement">meas_handle</para>
+  <para type="out" num="1">eval_handle</para>
+  <purpose>return original evaluation</purpose>
+  <description>Returns the evaluation-handle of the original evaluation.
+  </description>
+  <perl-code>
+  CODE:
+    RETVAL = ra_eval_get_original(p_meas_handle);
+  </perl-code>
+  <perl-out>void *</perl-out>
+  <python-code-init>
+    eval_handle eval;
+  </python-code-init>
+  <python-code>
+    eval = ra_eval_get_original(p_meas_handle);
+    return Py_BuildValue("l", eval);
+  </python-code>
+</func>
+
+
+<func name="ra_eval_get_default">
+  <para type="in" num="1" perl-type="void *" desc="handle to a libRASCH measurement">meas_handle</para>
+  <para type="out" num="1">eval_handle</para>
+  <purpose>return default evaluation</purpose>
+  <description>Returns the evaluation-handle of the default evaluation.
+  </description>
+  <perl-code>
+  CODE:
+    RETVAL = ra_eval_get_default(p_meas_handle);
+  </perl-code>
+  <perl-out>void *</perl-out>
+  <python-code-init>
+    eval_handle eval;
+  </python-code-init>
+  <python-code>
+    eval = ra_eval_get_default(p_meas_handle);
+    return Py_BuildValue("l", eval);
+  </python-code>
+</func>
+
+
+<func name="ra_eval_set_default">
+  <para type="in" num="1" perl-type="void *" desc="handle to a libRASCH evaluation">eval_handle</para>
+  <para type="out" num="1">ok</para>
+  <purpose>set default evaluation</purpose>
+  <description>Set the evaluation 'eval_handle' as the default one.
+  </description>
+  <perl-code>
+  CODE:
+    RETVAL = ra_eval_set_default(p_eval_handle);
+  </perl-code>
+  <perl-out>long</perl-out>
+  <python-code-init>
+    long ok;
+  </python-code-init>
+  <python-code>
+    ok = (long)ra_eval_set_default(p_eval_handle);
+    return Py_BuildValue("l", ok);
+  </python-code>
+</func>
+
+
+<func name="ra_eval_get_handle">
+  <para type="in" num="1" perl-type="void *" desc="handle to a libRASCH event-class">class_handle</para>
+  <para type="out" num="1">eval_handle</para>
+  <purpose>return eval-handle of 'class_handle'</purpose>
+  <description>Returns the evaluation-handle the event-class 'class_handle' belongs to.
+  </description>
+  <perl-code>
+  CODE:
+    RETVAL = ra_eval_get_handle(p_class_handle);
+  </perl-code>
+  <perl-out>void *</perl-out>
+  <python-code-init>
+    eval_handle eval;
+  </python-code-init>
+  <python-code>
+    eval = ra_eval_get_handle(p_class_handle);
+    return Py_BuildValue("l", eval);
+  </python-code>
+</func>
+
+

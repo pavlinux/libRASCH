@@ -1,0 +1,35 @@
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.2//EN" [
+<!ENTITY c-interface-ref SYSTEM "ref_c.sgml">
+<!ENTITY c-interface-auto SYSTEM "../API.sgml">
+<!--<!ENTITY c-structs-auto SYSTEM "../structs.sgml">-->
+<!ENTITY c-structs-auto SYSTEM "dummy.sgml">
+<!ENTITY perl-interface-ref SYSTEM "ref_perl.sgml">
+<!ENTITY perl-interface-auto SYSTEM "dummy.sgml">
+<!ENTITY python-interface-ref SYSTEM "ref_python.sgml">
+<!ENTITY python-interface-auto SYSTEM "dummy.sgml">
+<!ENTITY mat-oct-interface-ref SYSTEM "ref_mat_oct.sgml">
+<!ENTITY mat-oct-interface-auto SYSTEM "dummy.sgml">
+<!ENTITY infos SYSTEM "infos.sgml">
+<!ENTITY infos-auto SYSTEM "../infos_tab.sgml">
+<!ENTITY signals SYSTEM "signals.sgml">
+<!ENTITY signals-auto SYSTEM "../signals.sgml">
+<!ENTITY plugins SYSTEM "plugins.sgml">
+<!ENTITY plugins-auto SYSTEM "../plugins.sgml">
+]>
+<book><title>Reference Manual for libRASCH-0.8.31</title>
+<bookinfo>
+    <author><firstname>Raphael</firstname><surname>Schneider</surname></author>
+    <edition>libRASCH Reference Manual Version 0.1.0</edition>
+    <pubdate>2004</pubdate>
+    <copyright><year>2004</year>
+      <holder>Raphael Schneider</holder>
+    </copyright>
+</bookinfo>
+&c-interface-ref;
+&perl-interface-ref;
+&python-interface-ref;
+&mat-oct-interface-ref;
+&infos;
+&signals;
+&plugins;
+</book>

@@ -1,0 +1,11 @@
+Returns the information 'info_name' about a
+measurement-object. The name and a short description is also returned. See
+XXX for available informations.
+  Input parameters:
+    meas_handle
+    info_name
+
+  Output parameters:
+    value
+    name
+    desc

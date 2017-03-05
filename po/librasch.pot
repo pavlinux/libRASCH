@@ -1,0 +1,3850 @@
+#: src/handle_plugin_linux.c:76
+#, c-format
+msgid "can't load %s: %s\n"
+msgstr ""
+
+#: src/handle_plugin_linux.c:104
+#, c-format
+msgid "error load plugin %s: %s\n"
+msgstr ""
+
+#: src/handle_plugin_linux.c:117
+#, c-format
+msgid "error init plugin %s: %s\n"
+msgstr ""
+
+#: src/handle_plugin_linux.c:158
+#, c-format
+msgid "dlopen() failed\n"
+msgstr ""
+
+#: src/handle_plugin_linux.c:168
+#, c-format
+msgid "dlsym() failed\n"
+msgstr ""
+
+#: src/ra.c:230
+#, c-format
+msgid "config-file: %s\n"
+msgstr ""
+
+#: src/ra.c:254
+#, c-format
+msgid "config plugin-dir: %s\n"
+msgstr ""
+
+#: src/ra.c:265
+#, c-format
+msgid "po-dir: %s\n"
+msgstr ""
+
+#: src/ra.c:559
+#, c-format
+msgid "circular set_error-calling, this should NOT happen\n"
+msgstr ""
+
+#: src/ra.c:1419
+#, c-format
+msgid ""
+"critical error - get_plugin_info() in ra.c:\n"
+"tried to get result-infos but mem was not set\n"
+"plugin used: %s\n"
+msgstr ""
+
+#: src/ra.c:1426
+#, c-format
+msgid ""
+"critical error - get_plugin_info() in ra.c:\n"
+"tried to get option-infos but mem was not set\n"
+"plugin used: %s\n"
+msgstr ""
+
+#: src/ra.c:2180 src/ra.c:2182
+msgid "plugin"
+msgstr ""
+
+#: include/pl_general.h:51
+msgid "#plugins"
+msgstr ""
+
+#: include/pl_general.h:52
+msgid "libRASCH version"
+msgstr ""
+
+#: include/pl_general.h:52
+msgid "version of libRASCH"
+msgstr ""
+
+#: include/pl_general.h:54
+msgid "#sessions"
+msgstr ""
+
+#: include/pl_general.h:55
+msgid "#obj. infos"
+msgstr ""
+
+#: include/pl_general.h:56
+msgid "#general rec. infos"
+msgstr ""
+
+#: include/pl_general.h:57
+msgid "#device infos"
+msgstr ""
+
+#: include/pl_general.h:58
+msgid "#ch. infos"
+msgstr ""
+
+#: include/pl_general.h:59
+msgid "#eval. infos"
+msgstr ""
+
+#: include/pl_general.h:60
+msgid "#eval's"
+msgstr ""
+
+#: include/pl_general.h:60
+msgid "number of evaluations"
+msgstr ""
+
+#: include/pl_general.h:61
+msgid "max. samplerate"
+msgstr ""
+
+#: include/pl_general.h:61
+msgid "maximum samplrate used in measurement"
+msgstr ""
+
+#: include/pl_general.h:62
+msgid "x-axis scale"
+msgstr ""
+
+#: include/pl_general.h:62
+msgid "factor for a channel to scale positions"
+msgstr ""
+
+#: include/pl_general.h:63
+msgid "size [Bytes]"
+msgstr ""
+
+#: include/pl_general.h:63
+msgid "size needed on disc of measurement in Bytes"
+msgstr ""
+
+#: include/pl_general.h:64
+msgid "files"
+msgstr ""
+
+#: include/pl_general.h:64
+msgid "files belonging to measurement"
+msgstr ""
+
+#: include/pl_general.h:65
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_mfc.cpp:81
+msgid "path"
+msgstr ""
+
+#: include/pl_general.h:65
+msgid "full path of measurement incl. measurement name"
+msgstr ""
+
+#: include/pl_general.h:66
+msgid "data in dir"
+msgstr ""
+
+#: include/pl_general.h:66
+msgid "flag if measurement was saved in directory"
+msgstr ""
+
+#: include/pl_general.h:68
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:48
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:148
+msgid "Name"
+msgstr ""
+
+#: include/pl_general.h:68
+msgid "name of the person measured"
+msgstr ""
+
+#: include/pl_general.h:69
+msgid "Forename"
+msgstr ""
+
+#: include/pl_general.h:69
+msgid "forename of the person measured"
+msgstr ""
+
+#: include/pl_general.h:70
+msgid "Birthday"
+msgstr ""
+
+#: include/pl_general.h:70
+msgid "birthday of the person measured"
+msgstr ""
+
+#: include/pl_general.h:71
+msgid "gender"
+msgstr ""
+
+#: include/pl_general.h:71
+msgid "gender of the person measured"
+msgstr ""
+
+#: include/pl_general.h:72
+msgid "Age"
+msgstr ""
+
+#: include/pl_general.h:72
+msgid "age of the person measured"
+msgstr ""
+
+#: include/pl_general.h:73
+msgid "Height"
+msgstr ""
+
+#: include/pl_general.h:73
+msgid "height of the person measured in cm"
+msgstr ""
+
+#: include/pl_general.h:74
+msgid "Weight"
+msgstr ""
+
+#: include/pl_general.h:74
+msgid "weight of the person measured in kg"
+msgstr ""
+
+#: include/pl_general.h:75
+msgid "street"
+msgstr ""
+
+#: include/pl_general.h:76
+msgid "city"
+msgstr ""
+
+#: include/pl_general.h:77
+msgid "postal code"
+msgstr ""
+
+#: include/pl_general.h:78
+msgid "country"
+msgstr ""
+
+#: include/pl_general.h:79
+msgid "address"
+msgstr ""
+
+#: include/pl_general.h:80
+msgid "phone1"
+msgstr ""
+
+#: include/pl_general.h:81
+msgid "phone2"
+msgstr ""
+
+#: include/pl_general.h:82
+msgid "mobile_phone"
+msgstr ""
+
+#: include/pl_general.h:83
+msgid "fax"
+msgstr ""
+
+#: include/pl_general.h:84
+msgid "email"
+msgstr ""
+
+#: include/pl_general.h:85
+msgid "website"
+msgstr ""
+
+#: include/pl_general.h:86 include/pl_general.h:104
+#: include/ra_event_props.h:106
+msgid "comment"
+msgstr ""
+
+#: include/pl_general.h:88
+msgid "ID"
+msgstr ""
+
+#: include/pl_general.h:88
+msgid "Patient-ID"
+msgstr ""
+
+#: include/pl_general.h:89
+msgid "reason"
+msgstr ""
+
+#: include/pl_general.h:90
+msgid "diagnosis"
+msgstr ""
+
+#: include/pl_general.h:91
+msgid "therapy"
+msgstr ""
+
+#: include/pl_general.h:92
+msgid "medication"
+msgstr ""
+
+#: include/pl_general.h:93
+msgid "hospital"
+msgstr ""
+
+#: include/pl_general.h:94
+msgid "department"
+msgstr ""
+
+#: include/pl_general.h:95
+msgid "doctor"
+msgstr ""
+
+#: include/pl_general.h:96
+msgid "examiner"
+msgstr ""
+
+#: include/pl_general.h:98
+msgid "number of fetus"
+msgstr ""
+
+#: include/pl_general.h:99
+msgid "gestation date"
+msgstr ""
+
+#: include/pl_general.h:101
+msgid "rec.type"
+msgstr ""
+
+#: include/pl_general.h:102 plugins/view/eval_dlg/evprop_dlg_ui.cpp:131
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:120
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:292
+#: plugins/view/sig_sel_dlg/sig_sel_dlg_qt.cpp:36
+msgid "name"
+msgstr ""
+
+#: include/pl_general.h:103
+msgid "description"
+msgstr ""
+
+#: include/pl_general.h:105
+msgid "rec.time"
+msgstr ""
+
+#: include/pl_general.h:106
+msgid "rec.date"
+msgstr ""
+
+#: include/pl_general.h:107
+msgid "rec.duration[sec]"
+msgstr ""
+
+#: include/pl_general.h:108
+msgid "rec.number"
+msgstr ""
+
+#: include/pl_general.h:109
+msgid "#sub-rec's"
+msgstr ""
+
+#: include/pl_general.h:110
+msgid "#device's"
+msgstr ""
+
+#: include/pl_general.h:111
+msgid "#channels"
+msgstr ""
+
+#: include/pl_general.h:112
+msgid "offset[msec]"
+msgstr ""
+
+#: include/pl_general.h:113
+msgid "full path"
+msgstr ""
+
+#: include/pl_general.h:113
+msgid "full path of recording incl. recording name"
+msgstr ""
+
+#: include/pl_general.h:114
+msgid "rec. in dir"
+msgstr ""
+
+#: include/pl_general.h:114
+msgid "flag if recording is saved in directory"
+msgstr ""
+
+#: include/pl_general.h:115
+msgid "mm/sec"
+msgstr ""
+
+#: include/pl_general.h:115
+msgid "mm per second (hint for displaing signal)"
+msgstr ""
+
+#: include/pl_general.h:117
+msgid "dev-hw-name"
+msgstr ""
+
+#: include/pl_general.h:118
+msgid "dev-hw-manufacturer"
+msgstr ""
+
+#: include/pl_general.h:119
+msgid "dev-hw-serial#"
+msgstr ""
+
+#: include/pl_general.h:120
+msgid "dev-hw-version"
+msgstr ""
+
+#: include/pl_general.h:121
+msgid "dev-sw-name"
+msgstr ""
+
+#: include/pl_general.h:122
+msgid "dev-sw-manufacturer"
+msgstr ""
+
+#: include/pl_general.h:123
+msgid "dev-sw-serial#"
+msgstr ""
+
+#: include/pl_general.h:124
+msgid "dev-sw-version"
+msgstr ""
+
+#: include/pl_general.h:126
+msgid "ch-name"
+msgstr ""
+
+#: include/pl_general.h:127
+msgid "ch-desc"
+msgstr ""
+
+#: include/pl_general.h:128
+msgid "ch-#samples"
+msgstr ""
+
+#: include/pl_general.h:129
+msgid "ch-samplerate"
+msgstr ""
+
+#: include/pl_general.h:130
+msgid "ch-#bits"
+msgstr ""
+
+#: include/pl_general.h:131
+msgid "ch-resolution"
+msgstr ""
+
+#: include/pl_general.h:132
+msgid "ch-sample-type"
+msgstr ""
+
+#: include/pl_general.h:133
+msgid "storage type of the sample values (e.g. integer, real)"
+msgstr ""
+
+#: include/pl_general.h:134
+msgid "ch-unit"
+msgstr ""
+
+#: include/pl_general.h:135
+msgid "center value"
+msgstr ""
+
+#: include/pl_general.h:135
+msgid "value[unit] signal is centered"
+msgstr ""
+
+#: include/pl_general.h:136
+msgid "center sample"
+msgstr ""
+
+#: include/pl_general.h:136
+msgid "center value as sample-value"
+msgstr ""
+
+#: include/pl_general.h:137
+msgid "min.value"
+msgstr ""
+
+#: include/pl_general.h:137
+msgid "minimum value in units"
+msgstr ""
+
+#: include/pl_general.h:138
+msgid "max.value"
+msgstr ""
+
+#: include/pl_general.h:138
+msgid "maximum value in units"
+msgstr ""
+
+#: include/pl_general.h:139
+msgid "mm/unit"
+msgstr ""
+
+#: include/pl_general.h:139
+msgid "mm per unit (hint for displaing signal)"
+msgstr ""
+
+#: include/pl_general.h:140 plugins/view/plot_view/pair_opt_dlg_mfc.cpp:131
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:303
+msgid "type"
+msgstr ""
+
+#: include/pl_general.h:140
+msgid "type of channel (e.g. ecg, eeg)"
+msgstr ""
+
+#: include/pl_general.h:141
+msgid "do-ignore-value"
+msgstr ""
+
+#: include/pl_general.h:142
+msgid "flag if some values of the channel should be ignored"
+msgstr ""
+
+#: include/pl_general.h:143
+msgid "ignore-value"
+msgstr ""
+
+#: include/pl_general.h:143
+msgid "value which should be ignored"
+msgstr ""
+
+#: include/pl_general.h:145
+msgid "eval-name"
+msgstr ""
+
+#: include/pl_general.h:145
+msgid "name of evaluation"
+msgstr ""
+
+#: include/pl_general.h:146
+msgid "eval-comment"
+msgstr ""
+
+#: include/pl_general.h:146
+msgid "comment of evaluation"
+msgstr ""
+
+#: include/pl_general.h:147
+msgid "eval add ts"
+msgstr ""
+
+#: include/pl_general.h:147
+msgid "timestamp when eval was added"
+msgstr ""
+
+#: include/pl_general.h:148
+msgid "eval modify ts"
+msgstr ""
+
+#: include/pl_general.h:148
+msgid "timestamp when eval was last modified"
+msgstr ""
+
+#: include/pl_general.h:149
+msgid "user"
+msgstr ""
+
+#: include/pl_general.h:149
+msgid "user who added eval"
+msgstr ""
+
+#: include/pl_general.h:150
+msgid "host"
+msgstr ""
+
+#: include/pl_general.h:150
+msgid "machine on which eval was added"
+msgstr ""
+
+#: include/pl_general.h:151
+msgid "program"
+msgstr ""
+
+#: include/pl_general.h:151
+msgid "program which added eval"
+msgstr ""
+
+#: include/pl_general.h:152
+msgid "original-eval"
+msgstr ""
+
+#: include/pl_general.h:152
+msgid "evaluation done in recording system"
+msgstr ""
+
+#: include/pl_general.h:153
+msgid "default-eval"
+msgstr ""
+
+#: include/pl_general.h:153
+msgid "evaluation which should be used"
+msgstr ""
+
+#: include/pl_general.h:154
+msgid "#event sets"
+msgstr ""
+
+#: include/pl_general.h:154
+msgid "number of event-sets"
+msgstr ""
+
+#: include/pl_general.h:155
+msgid "#event-properties"
+msgstr ""
+
+#: include/pl_general.h:155
+msgid "number of different event properties"
+msgstr ""
+
+#: include/pl_general.h:157
+msgid "set-id-ascii"
+msgstr ""
+
+#: include/pl_general.h:157
+msgid "id-string of event-set"
+msgstr ""
+
+#: include/pl_general.h:158
+msgid "set-name"
+msgstr ""
+
+#: include/pl_general.h:158
+msgid "name of event-set"
+msgstr ""
+
+#: include/pl_general.h:159
+msgid "set-desc"
+msgstr ""
+
+#: include/pl_general.h:159
+msgid "description of event-set"
+msgstr ""
+
+#: include/pl_general.h:160
+msgid "set-type"
+msgstr ""
+
+#: include/pl_general.h:160
+msgid "type of event-set (e.g. discrete, continues)"
+msgstr ""
+
+#: include/pl_general.h:161
+msgid "#events"
+msgstr ""
+
+#: include/pl_general.h:161
+msgid "number of events"
+msgstr ""
+
+#: include/pl_general.h:163
+msgid "prop-id-ascii"
+msgstr ""
+
+#: include/pl_general.h:163
+msgid "id-string of event property"
+msgstr ""
+
+#: include/pl_general.h:164
+msgid "prop-name"
+msgstr ""
+
+#: include/pl_general.h:164
+msgid "name of event property"
+msgstr ""
+
+#: include/pl_general.h:165
+msgid "prop-desc"
+msgstr ""
+
+#: include/pl_general.h:165
+msgid "description of event property"
+msgstr ""
+
+#: include/pl_general.h:166
+msgid "prop-value type"
+msgstr ""
+
+#: include/pl_general.h:166
+msgid "type of the event-property values (short, long, double)"
+msgstr ""
+
+#: include/pl_general.h:167
+msgid "template-prop"
+msgstr ""
+
+#: include/pl_general.h:167
+msgid "flag if property handles template numbers (0: no, 1: yes)"
+msgstr ""
+
+#: include/pl_general.h:168
+msgid "have min/max-values"
+msgstr ""
+
+#: include/pl_general.h:169
+msgid "min-value"
+msgstr ""
+
+#: include/pl_general.h:170
+msgid "max-value"
+msgstr ""
+
+#: include/pl_general.h:171
+msgid "unit"
+msgstr ""
+
+#: include/pl_general.h:173
+msgid "#templates"
+msgstr ""
+
+#: include/pl_general.h:173
+msgid "number of templates"
+msgstr ""
+
+#: include/pl_general.h:174
+msgid "#template channels"
+msgstr ""
+
+#: include/pl_general.h:174
+msgid "number of channels where templates where got"
+msgstr ""
+
+#: include/pl_general.h:175
+msgid "ch-number"
+msgstr ""
+
+#: include/pl_general.h:175
+msgid "channel-number used"
+msgstr ""
+
+#: include/pl_general.h:176
+msgid "template size"
+msgstr ""
+
+#: include/pl_general.h:176
+msgid "number of data used for template in this channel"
+msgstr ""
+
+#: include/pl_general.h:178
+msgid "template number"
+msgstr ""
+
+#: include/pl_general.h:179
+msgid "fiducial value"
+msgstr ""
+
+#: include/pl_general.h:179
+msgid "offset of fiducial value (-1 if none)"
+msgstr ""
+
+#: include/pl_general.h:180
+msgid "template type"
+msgstr ""
+
+#: include/pl_general.h:180
+msgid "type of template"
+msgstr ""
+
+#: include/pl_general.h:182
+msgid "plugin name"
+msgstr ""
+
+#: include/pl_general.h:183
+msgid "plugin description"
+msgstr ""
+
+#: include/pl_general.h:184
+msgid "plugin filename"
+msgstr ""
+
+#: include/pl_general.h:185
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_mfc.cpp:82
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:156
+msgid "use plugin"
+msgstr ""
+
+#: include/pl_general.h:186
+msgid "plugin type"
+msgstr ""
+
+#: include/pl_general.h:187
+msgid "plugin version"
+msgstr ""
+
+#: include/pl_general.h:188
+msgid "plugin build-timestamp"
+msgstr ""
+
+#: include/pl_general.h:189
+msgid "plugin license"
+msgstr ""
+
+#: include/pl_general.h:191
+msgid "#options"
+msgstr ""
+
+#: include/pl_general.h:191
+msgid "number of options available in the plugin"
+msgstr ""
+
+#: include/pl_general.h:192
+msgid "opt-name"
+msgstr ""
+
+#: include/pl_general.h:192
+msgid "a short name of the option"
+msgstr ""
+
+#: include/pl_general.h:193
+msgid "opt-desc"
+msgstr ""
+
+#: include/pl_general.h:193
+msgid "a description of the option"
+msgstr ""
+
+#: include/pl_general.h:194
+msgid "opt-type"
+msgstr ""
+
+#: include/pl_general.h:194
+msgid "type of the option (eg. long, double, char)"
+msgstr ""
+
+#: include/pl_general.h:196
+msgid "#results"
+msgstr ""
+
+#: include/pl_general.h:196
+msgid "number of results in the plugin"
+msgstr ""
+
+#: include/pl_general.h:197
+msgid "res-name"
+msgstr ""
+
+#: include/pl_general.h:197
+msgid "a short name of the result"
+msgstr ""
+
+#: include/pl_general.h:198
+msgid "res-desc"
+msgstr ""
+
+#: include/pl_general.h:198
+msgid "a description of the result"
+msgstr ""
+
+#: include/pl_general.h:199
+msgid "res-type"
+msgstr ""
+
+#: include/pl_general.h:199
+msgid "type of the result (eg. long, double, char)"
+msgstr ""
+
+#: include/pl_general.h:200
+msgid "res-default"
+msgstr ""
+
+#: include/pl_general.h:200
+msgid "flag if the result belongs to the default results"
+msgstr ""
+
+#: include/pl_general.h:202
+msgid "session-name"
+msgstr ""
+
+#: include/pl_general.h:202
+msgid "name of the session"
+msgstr ""
+
+#: include/pl_general.h:203
+msgid "session-desc"
+msgstr ""
+
+#: include/pl_general.h:203
+msgid "a description of the session"
+msgstr ""
+
+#: include/ra_ecg.h:228
+msgid "min-hr"
+msgstr ""
+
+#: include/ra_ecg.h:228
+msgid "maximal heart rate"
+msgstr ""
+
+#: include/ra_ecg.h:229
+msgid "arr_min.hr"
+msgstr ""
+
+#: include/ra_ecg.h:229
+msgid "minimum heart rate"
+msgstr ""
+
+#: include/ra_ecg.h:230
+msgid "arr_brady"
+msgstr ""
+
+#: include/ra_ecg.h:230
+msgid "Bradycardia"
+msgstr ""
+
+#: include/ra_ecg.h:231
+msgid "arr_ssalvo"
+msgstr ""
+
+#: include/ra_ecg.h:231
+msgid "supra ventricular salvo (hr < 100bpm)"
+msgstr ""
+
+#: include/ra_ecg.h:232
+msgid "arr_svt"
+msgstr ""
+
+#: include/ra_ecg.h:232
+msgid "Tachycardia (Supra Ventricular Tachycardia)"
+msgstr ""
+
+#: include/ra_ecg.h:233
+msgid "arr_ssalvo+svt"
+msgstr ""
+
+#: include/ra_ecg.h:233
+msgid "supra ventricular salvos AND supra ventricular tachycardias"
+msgstr ""
+
+#: include/ra_ecg.h:234
+msgid "arr_afib"
+msgstr ""
+
+#: include/ra_ecg.h:234
+msgid "atrial fibrilation"
+msgstr ""
+
+#: include/ra_ecg.h:235
+msgid "arr_irregular"
+msgstr ""
+
+#: include/ra_ecg.h:235
+msgid "irregular rhyhtm"
+msgstr ""
+
+#: include/ra_ecg.h:236
+msgid "arr_couplet"
+msgstr ""
+
+#: include/ra_ecg.h:236
+msgid "Couplets"
+msgstr ""
+
+#: include/ra_ecg.h:237
+msgid "arr_triplet"
+msgstr ""
+
+#: include/ra_ecg.h:237
+msgid "Triplets"
+msgstr ""
+
+#: include/ra_ecg.h:238
+msgid "arr_bigeminus"
+msgstr ""
+
+#: include/ra_ecg.h:238
+msgid "Bigeminus"
+msgstr ""
+
+#: include/ra_ecg.h:239
+msgid "arr_trigeminus"
+msgstr ""
+
+#: include/ra_ecg.h:239
+msgid "Trigeminus"
+msgstr ""
+
+#: include/ra_ecg.h:240
+msgid "arr_ivrs"
+msgstr ""
+
+#: include/ra_ecg.h:240
+msgid "ideo ventricular rhythm"
+msgstr ""
+
+#: include/ra_ecg.h:241
+msgid "arr_salvo"
+msgstr ""
+
+#: include/ra_ecg.h:241
+msgid "ventricular salvo (hr < 100bpm)"
+msgstr ""
+
+#: include/ra_ecg.h:242
+msgid "arr_vt"
+msgstr ""
+
+#: include/ra_ecg.h:242
+msgid "ventricular tachycardia"
+msgstr ""
+
+#: include/ra_ecg.h:243
+msgid "arr_salvo+vt"
+msgstr ""
+
+#: include/ra_ecg.h:243
+msgid "ventricular salvos AND ventricular tachycardias"
+msgstr ""
+
+#: include/ra_error_txt.h:23
+msgid "no error"
+msgstr ""
+
+#: include/ra_error_txt.h:24
+msgid "unspecific error (maybe internal)"
+msgstr ""
+
+#: include/ra_error_txt.h:25
+msgid "error reading config-file"
+msgstr ""
+
+#: include/ra_error_txt.h:26
+msgid "error loading plugins"
+msgstr ""
+
+#: include/ra_error_txt.h:27
+msgid "not supported format"
+msgstr ""
+
+#: include/ra_error_txt.h:28
+msgid "unknown plugin"
+msgstr ""
+
+#: include/ra_error_txt.h:29
+msgid "needed plugin function is not available"
+msgstr ""
+
+#: include/ra_error_txt.h:30
+msgid "unknown handle"
+msgstr ""
+
+#: include/ra_error_txt.h:31
+msgid "not handled/not supported info"
+msgstr ""
+
+#: include/ra_error_txt.h:32
+msgid "a input parameter is out of range"
+msgstr ""
+
+#: include/ra_error_txt.h:33
+msgid "functionality not supported (planned for future versions)"
+msgstr ""
+
+#: include/ra_error_txt.h:34
+msgid "wrong handle was used"
+msgstr ""
+
+#: include/ra_error_txt.h:35
+msgid "error reading evaluation"
+msgstr ""
+
+#: include/ra_error_txt.h:36
+msgid "info for used event-type not available"
+msgstr ""
+
+#: include/ra_error_txt.h:37
+msgid "event property is not known/out of range"
+msgstr ""
+
+#: include/ra_error_txt.h:38
+msgid "event set is not known/out of range"
+msgstr ""
+
+#: include/ra_error_txt.h:39
+msgid "wrong event-property was used"
+msgstr ""
+
+#: include/ra_error_txt.h:40
+msgid "template number was not found"
+msgstr ""
+
+#: include/ra_error_txt.h:41
+msgid "structure of evaluation file is corrupt"
+msgstr ""
+
+#: include/ra_error_txt.h:42
+msgid "a needed plugin is not available"
+msgstr ""
+
+#: include/ra_error_txt.h:43
+msgid "one of the measurement files is missing or corrupt"
+msgstr ""
+
+#: include/ra_error_txt.h:44
+msgid "a needed information is missing"
+msgstr ""
+
+#: include/ra_error_txt.h:45
+msgid "at least one needed event-property is not available"
+msgstr ""
+
+#: include/ra_error_txt.h:46
+msgid "the option is unknown"
+msgstr ""
+
+#: include/ra_error_txt.h:47
+msgid "the needed signal is not available in the measurement"
+msgstr ""
+
+#: include/ra_error_txt.h:48
+msgid "serious internal error: an offset for an option was not set"
+msgstr ""
+
+#: include/ra_error_txt.h:49
+msgid "internal error"
+msgstr ""
+
+#: include/ra_error_txt.h:50
+msgid "internal error in plugin"
+msgstr ""
+
+#: include/ra_error_txt.h:51
+msgid "function argument(s) wrong"
+msgstr ""
+
+#: include/ra_error_txt.h:58
+msgid "no events for processing available"
+msgstr ""
+
+#: include/ra_error_txt.h:59
+msgid "no config-file was found"
+msgstr ""
+
+#: include/ra_event_props.h:103
+msgid "heartbeat"
+msgstr ""
+
+#: include/ra_event_props.h:103
+msgid "infos about a heart beat"
+msgstr ""
+
+#: include/ra_event_props.h:104
+msgid "rr-calibration"
+msgstr ""
+
+#: include/ra_event_props.h:105
+msgid "infos about sequences of calibration in bloodpressure measurements"
+msgstr ""
+
+#: include/ra_event_props.h:106 include/ra_event_props.h:234
+msgid "comments/annotations"
+msgstr ""
+
+#: include/ra_event_props.h:107
+msgid "arrhythmia"
+msgstr ""
+
+#: include/ra_event_props.h:107
+msgid "arrhythmic events"
+msgstr ""
+
+#: include/ra_event_props.h:108
+msgid "arrhythmia-original"
+msgstr ""
+
+#: include/ra_event_props.h:109
+msgid "arrhythmic events from original evaluation"
+msgstr ""
+
+#: include/ra_event_props.h:110
+msgid "uterine-contraction"
+msgstr ""
+
+#: include/ra_event_props.h:111
+msgid "infos about uterine contraction"
+msgstr ""
+
+#: include/ra_event_props.h:124
+msgid "heartbeat-flags"
+msgstr ""
+
+#: include/ra_event_props.h:125 include/ra_event_props.h:127
+msgid "Flags for heartbeat events"
+msgstr ""
+
+#: include/ra_event_props.h:126
+msgid "rr-calibration-flags"
+msgstr ""
+
+#: include/ra_event_props.h:128
+msgid "comment-flags"
+msgstr ""
+
+#: include/ra_event_props.h:129
+msgid "Flags for comment events"
+msgstr ""
+
+#: include/ra_event_props.h:130
+msgid "arrhythmia-flags"
+msgstr ""
+
+#: include/ra_event_props.h:131
+msgid "Flags for arrhythmia events"
+msgstr ""
+
+#: include/ra_event_props.h:132
+msgid "arrhythmia-original-flags"
+msgstr ""
+
+#: include/ra_event_props.h:133
+msgid "Flags for original arrhythmia events"
+msgstr ""
+
+#: include/ra_event_props.h:134
+msgid "uterine-contraction-flags"
+msgstr ""
+
+#: include/ra_event_props.h:135
+msgid "Flags for uterine contraction events"
+msgstr ""
+
+#: include/ra_event_props.h:138
+msgid "qrs-template"
+msgstr ""
+
+#: include/ra_event_props.h:139
+msgid "QRS template number"
+msgstr ""
+
+#: include/ra_event_props.h:140
+msgid "qrs-template-corr"
+msgstr ""
+
+#: include/ra_event_props.h:141
+msgid "correlation of qrs-complex with template"
+msgstr ""
+
+#: include/ra_event_props.h:142
+msgid "qrs-pos"
+msgstr ""
+
+#: include/ra_event_props.h:143
+msgid "position of fiducial point of QRS-complex in sampleunits"
+msgstr ""
+
+#: include/ra_event_props.h:144
+msgid "qrs-class"
+msgstr ""
+
+#: include/ra_event_props.h:145
+msgid "classification of QRS complex"
+msgstr ""
+
+#: include/ra_event_props.h:146
+msgid "qrs-ch"
+msgstr ""
+
+#: include/ra_event_props.h:147
+msgid "bitmask of channels where qrs was detected"
+msgstr ""
+
+#: include/ra_event_props.h:148
+msgid "qrs-temporal"
+msgstr ""
+
+#: include/ra_event_props.h:149
+msgid "temporal setting of beat"
+msgstr ""
+
+#: include/ra_event_props.h:151
+msgid "qrs-p-start"
+msgstr ""
+
+#: include/ra_event_props.h:152
+msgid "offset of p-wave begin from qrs-pos in sampleunits"
+msgstr ""
+
+#: include/ra_event_props.h:153
+msgid "qrs-p-max"
+msgstr ""
+
+#: include/ra_event_props.h:154
+msgid "offset of p-wave maximum from qrs-pos in sampleunits"
+msgstr ""
+
+#: include/ra_event_props.h:155
+msgid "qrs-p-end"
+msgstr ""
+
+#: include/ra_event_props.h:156
+msgid "offset of p-wave end from qrs-pos in sampleunits"
+msgstr ""
+
+#: include/ra_event_props.h:157
+msgid "qrs-q"
+msgstr ""
+
+#: include/ra_event_props.h:158
+msgid "offset of q-wave from qrs-pos in sampleunits"
+msgstr ""
+
+#: include/ra_event_props.h:159
+msgid "qrs-r"
+msgstr ""
+
+#: include/ra_event_props.h:160
+msgid "offset of r-wave from qrs-pos in sampleunits"
+msgstr ""
+
+#: include/ra_event_props.h:161
+msgid "qrs-s"
+msgstr ""
+
+#: include/ra_event_props.h:162
+msgid "offset of s-wave from qrs-pos in sampleunits"
+msgstr ""
+
+#: include/ra_event_props.h:163
+msgid "qrs-j"
+msgstr ""
+
+#: include/ra_event_props.h:164
+msgid "offset of j-point from qrs-pos in sampleunits"
+msgstr ""
+
+#: include/ra_event_props.h:165
+msgid "qrs-t-start"
+msgstr ""
+
+#: include/ra_event_props.h:166
+msgid "offset of t-wave begin from qrs-pos in sampleunits"
+msgstr ""
+
+#: include/ra_event_props.h:167
+msgid "qrs-t-max"
+msgstr ""
+
+#: include/ra_event_props.h:168
+msgid "offset of t-wave max from qrs-pos in sampleunits"
+msgstr ""
+
+#: include/ra_event_props.h:169
+msgid "qrs-t-end"
+msgstr ""
+
+#: include/ra_event_props.h:170
+msgid "offset of t-wave end from qrs-pos in sampleunits"
+msgstr ""
+
+#: include/ra_event_props.h:171
+msgid "qrs-u-start"
+msgstr ""
+
+#: include/ra_event_props.h:172
+msgid "offset of u-wave begin from qrs-pos in sampleunits"
+msgstr ""
+
+#: include/ra_event_props.h:173
+msgid "qrs-u-max"
+msgstr ""
+
+#: include/ra_event_props.h:174
+msgid "offset of u-wave max from qrs-pos in sampleunits"
+msgstr ""
+
+#: include/ra_event_props.h:175
+msgid "qrs-u-end"
+msgstr ""
+
+#: include/ra_event_props.h:176
+msgid "offset of u-wave end from qrs-pos in sampleunits"
+msgstr ""
+
+#: include/ra_event_props.h:179
+msgid "rri"
+msgstr ""
+
+#: include/ra_event_props.h:179
+msgid "RR interval"
+msgstr ""
+
+#: include/ra_event_props.h:181
+msgid "rri-class"
+msgstr ""
+
+#: include/ra_event_props.h:182
+msgid "classification of RR interval"
+msgstr ""
+
+#: include/ra_event_props.h:183
+msgid "rri-refvalue"
+msgstr ""
+
+#: include/ra_event_props.h:184
+msgid "reference rri representing the current heart-rate"
+msgstr ""
+
+#: include/ra_event_props.h:185
+msgid "rri-num-refvalue"
+msgstr ""
+
+#: include/ra_event_props.h:186
+msgid "number of rri's used for calculation of reference value"
+msgstr ""
+
+#: include/ra_event_props.h:189
+msgid "qt"
+msgstr ""
+
+#: include/ra_event_props.h:189
+msgid "QT interval"
+msgstr ""
+
+#: include/ra_event_props.h:191
+msgid "qta"
+msgstr ""
+
+#: include/ra_event_props.h:191
+msgid "QTa interval"
+msgstr ""
+
+#: include/ra_event_props.h:193
+msgid "qt-rri"
+msgstr ""
+
+#: include/ra_event_props.h:194
+msgid "the rr-interval belonging to the QT values"
+msgstr ""
+
+#: include/ra_event_props.h:197
+msgid "resp-chest-mean-rri"
+msgstr ""
+
+#: include/ra_event_props.h:198
+msgid "mean chest measurement of the rr interval"
+msgstr ""
+
+#: include/ra_event_props.h:199
+msgid "resp-chest-mean-ibi"
+msgstr ""
+
+#: include/ra_event_props.h:200
+msgid "mean chest measurement of the inter beat interval"
+msgstr ""
+
+#: include/ra_event_props.h:203
+msgid "rr-template"
+msgstr ""
+
+#: include/ra_event_props.h:204
+msgid "bloodpressure template number"
+msgstr ""
+
+#: include/ra_event_props.h:205
+msgid "rr-systolic"
+msgstr ""
+
+#: include/ra_event_props.h:206
+msgid "systolic bloodpressure in mmHg"
+msgstr ""
+
+#: include/ra_event_props.h:207
+msgid "rr-systolic-pos"
+msgstr ""
+
+#: include/ra_event_props.h:208
+msgid "position of systolic bloodpressure in sampleunits"
+msgstr ""
+
+#: include/ra_event_props.h:209
+msgid "rr-diastolic"
+msgstr ""
+
+#: include/ra_event_props.h:210
+msgid "diastolic bloodpressure in mmHg"
+msgstr ""
+
+#: include/ra_event_props.h:211
+msgid "rr-diastolic-pos"
+msgstr ""
+
+#: include/ra_event_props.h:212
+msgid "position of diastolic bloodpressure in sampleunits"
+msgstr ""
+
+#: include/ra_event_props.h:213
+msgid "rr-mean"
+msgstr ""
+
+#: include/ra_event_props.h:214
+msgid "mean bloodpressure in mmHg"
+msgstr ""
+
+#: include/ra_event_props.h:215
+msgid "rr-flags"
+msgstr ""
+
+#: include/ra_event_props.h:216
+msgid "flags for the rr-values"
+msgstr ""
+
+#: include/ra_event_props.h:217
+msgid "ibi"
+msgstr ""
+
+#: include/ra_event_props.h:218
+msgid "inter-beat-interval"
+msgstr ""
+
+#: include/ra_event_props.h:221
+msgid "rr-calibration-seq"
+msgstr ""
+
+#: include/ra_event_props.h:222
+msgid ""
+"start- and end-value of event is start- and end-position of calibration "
+"sequence"
+msgstr ""
+
+#: include/ra_event_props.h:225
+msgid "uc-max-pos"
+msgstr ""
+
+#: include/ra_event_props.h:226
+msgid "position of uterine contraction (max. peak)"
+msgstr ""
+
+#: include/ra_event_props.h:227
+msgid "uc-template"
+msgstr ""
+
+#: include/ra_event_props.h:228
+msgid "Uterine Contraction template number"
+msgstr ""
+
+#: include/ra_event_props.h:229
+msgid "uc-template-corr"
+msgstr ""
+
+#: include/ra_event_props.h:230
+msgid "correlation of uterine contraction with template"
+msgstr ""
+
+#: include/ra_event_props.h:233
+msgid "comments"
+msgstr ""
+
+#: include/ra_event_props.h:235
+msgid "comment-ch"
+msgstr ""
+
+#: include/ra_event_props.h:236
+msgid "channel which comment refers to"
+msgstr ""
+
+#: include/ra_event_props.h:239
+msgid "arr-type"
+msgstr ""
+
+#: include/ra_event_props.h:240
+msgid "type of arrhythmic event"
+msgstr ""
+
+#: include/ra_event_props.h:241
+msgid "arr-hr"
+msgstr ""
+
+#: include/ra_event_props.h:242
+msgid "heart rate [bpm] of arrhythmic event"
+msgstr ""
+
+#: include/ra_event_props.h:243
+msgid "arr-num-qrs"
+msgstr ""
+
+#: include/ra_event_props.h:244
+msgid "number of qrs-complexes in arryhthmic event"
+msgstr ""
+
+#: include/ra_event_props.h:247
+msgid "arr_o-type"
+msgstr ""
+
+#: include/ra_event_props.h:248
+msgid "type of arrhythmic event (original eval)"
+msgstr ""
+
+#: include/ra_event_props.h:249
+msgid "arr_o-hr"
+msgstr ""
+
+#: include/ra_event_props.h:250
+msgid "heart rate [bpm] of arrhythmic event (original eval)"
+msgstr ""
+
+#: include/ra_event_props.h:251
+msgid "arr_o-num-qrs"
+msgstr ""
+
+#: include/ra_event_props.h:252
+msgid "number of qrs-complexes in arryhthmic event (original eval)"
+msgstr ""
+
+#: raschlab/Qt/detect_progress_dlg.cpp:81
+msgid "libRASCH Detect"
+msgstr ""
+
+#: raschlab/Qt/detect_progress_dlg.cpp:82
+msgid "detection in channel 1"
+msgstr ""
+
+#: raschlab/Qt/detect_progress_dlg.cpp:83
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_ui.cpp:134
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:230
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:304
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:190
+#: plugins/view/simple_calc_dlg/options_dlg_ui.cpp:101
+#: plugins/view/ts_view/annot_dlg_ui.cpp:129
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:233
+#: plugins/view/ts_view/ts_view_optdlg_ui.cpp:141
+msgid "Cancel"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:51
+#, c-format
+msgid ""
+"Couldn't initialize libRASCH.\n"
+"Reason: %s (%d)"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:72 raschlab/MFC/MainFrm.cpp:125
+msgid "&File"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:73 raschlab/MFC/MainFrm.cpp:137
+msgid "&General"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:74 raschlab/Qt/raschlab_qt.cpp:199
+#: raschlab/MFC/MainFrm.cpp:149 raschlab/MFC/MainFrm.cpp:155
+msgid "&Detect"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:75 raschlab/MFC/MainFrm.cpp:167
+msgid "&View"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:76
+msgid "&Window"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:77 raschlab/MFC/MainFrm.cpp:179
+msgid "&Help"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:137
+msgid "Open Signal"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:137
+msgid "&Open..."
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:138
+msgid "Opens a Signal handled by libRASCH"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:139
+msgid ""
+"Open Signal\n"
+"\n"
+"Opens a Signal handled by libRASCH"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:143
+msgid "Save Changes"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:143
+msgid "&Save"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:144
+msgid "Saves the changes done at the evaluation(s)"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:145
+msgid ""
+"Save Changes\n"
+"\n"
+"Saves the changes done at the evaluation(s)"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:151
+msgid "Close Signal"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:151
+msgid "&Close"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:152
+msgid "Closes the actual signal"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:153
+msgid ""
+"Close Signal\n"
+"\n"
+"Closes the actual signal"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:159 plugins/view/eval_dlg/evprop_dlg_mfc.cpp:66
+#: plugins/view/eval_dlg/evprop_dlg_ui.cpp:130
+#: plugins/view/simple_calc_dlg/simple_calc_dlg_mfc.cpp:73
+#: plugins/view/simple_calc_dlg/simple_calc_dlg_ui.cpp:102
+msgid "Exit"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:159 raschlab/MFC/MainFrm.cpp:134
+msgid "E&xit"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:160
+msgid "Quits the application"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:161
+msgid ""
+"Exit\n"
+"\n"
+"Quits the application"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:172
+msgid "Plugin infos..."
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:172 raschlab/MFC/MainFrm.cpp:140
+msgid "&Plugin infos..."
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:173
+msgid "Show infos about loaded plugins"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:174
+msgid ""
+"Plugin infos\n"
+"\n"
+"show infos about loaded plugins"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:178
+msgid "Evaluation infos..."
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:178 raschlab/MFC/MainFrm.cpp:143
+msgid "&Evaluation infos..."
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:179
+msgid "Show infos about evaluations"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:180
+msgid ""
+"Evaluation infos\n"
+"\n"
+"show infos about evaluations"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:184
+msgid "Save ASCII eval-values"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:184 raschlab/MFC/MainFrm.cpp:146
+msgid "Save &ASCII eval-values"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:185
+msgid "Save the evaluation values as ASCII text"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:186
+msgid ""
+"Save ASCII eval-values\n"
+"\n"
+"Save the evaluation values as ASCII text"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:199
+msgid "Detect"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:200
+msgid "Runs libRASCH beat-detection"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:201
+msgid ""
+"Detect\n"
+"\n"
+"Runs libRASCH beat-detection"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:204
+msgid "Detect CTG"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:204 raschlab/MFC/MainFrm.cpp:158
+msgid "Detect C&TG"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:205
+msgid "Runs libRASCH CTG-detection"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:206
+msgid ""
+"Detect\n"
+"\n"
+"Runs libRASCH CTG-detection"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:209
+msgid "RR-Morphology"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:209 raschlab/MFC/MainFrm.cpp:164
+msgid "&RR-Morphology"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:210
+msgid "Runs libRASCH RR-Morphology Plugin"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:211
+msgid ""
+"RR-Morphology\n"
+"\n"
+"Runs libRASCH RR-Morphology Plugin"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:214
+msgid "Classify ECG"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:214 raschlab/MFC/MainFrm.cpp:161
+msgid "&Classify ECG"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:215
+msgid "Runs libRASCH ecg Plugin"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:216
+msgid ""
+"Classify ECG\n"
+"\n"
+"Runs libRASCH ecg Plugin"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:219
+msgid "Perform Calculations"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:219 raschlab/MFC/MainFrm.cpp:152
+msgid "&Perform Calculations"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:220
+msgid "Perform Calculations using libRASCH process plugins"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:221
+msgid ""
+"Perform Calculations\n"
+"\n"
+"Perform Calculations using libRASCH process plugins"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:233
+msgid "Toolbar"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:233 raschlab/MFC/MainFrm.cpp:170
+msgid "Tool&bar"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:234
+msgid "Enables/disables the toolbar"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:235
+msgid ""
+"Toolbar\n"
+"\n"
+"Enables/disables the toolbar"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:239
+msgid "Statusbar"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:239
+msgid "&Statusbar"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:240
+msgid "Enables/disables the statusbar"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:241
+msgid ""
+"Statusbar\n"
+"\n"
+"Enables/disables the statusbar"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:247
+msgid "Plot"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:247
+msgid "&Plot"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:248
+msgid "show RASCH-Plot"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:249
+msgid ""
+"Plot\n"
+"\n"
+"show RASCH-Plot"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:258
+msgid "New Window"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:258
+msgid "&New Window"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:259
+msgid "Opens a new view for the current document"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:260
+msgid ""
+"New Window\n"
+"\n"
+"Opens a new view for the current document"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:263
+msgid "Cascade"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:263
+msgid "&Cascade"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:264
+msgid "Cascades all windows"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:265
+msgid ""
+"Cascade\n"
+"\n"
+"Cascades all windows"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:268
+msgid "Tile"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:268
+msgid "&Tile"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:269
+msgid "Tiles all windows"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:270
+msgid ""
+"Tile\n"
+"\n"
+"Tiles all windows"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:289
+msgid "About"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:289
+msgid "&About..."
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:290
+msgid "About the application"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:291
+msgid ""
+"About\n"
+"\n"
+"About the application"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:297
+msgid "What's &This"
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:315 raschlab/Qt/raschlab_qt.cpp:447
+#: raschlab/Qt/raschlab_qt.cpp:704 raschlab/Qt/raschlab_qt.cpp:762
+#: raschlab/Qt/raschlab_qt.cpp:1203 raschlab/Qt/raschlab_qt.cpp:1217
+msgid "Ready."
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:423
+msgid "Opening file..."
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:508
+msgid "recording: "
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:601
+msgid "qrs-templates: "
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:646
+msgid "uc-templates: "
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:688
+msgid "Exiting application..."
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:758
+msgid "Toggle that eval-values are saved in ASCII..."
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:1196
+msgid "Toggle toolbar..."
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:1210
+msgid "Toggle statusbar..."
+msgstr ""
+
+#: raschlab/Qt/raschlab_qt.cpp:1317
+msgid "About..."
+msgstr ""
+
+#: raschlab/MFC/MainFrm.cpp:128
+msgid "&Open...\tCtrl+O"
+msgstr ""
+
+#: raschlab/MFC/MainFrm.cpp:131
+msgid "&Close\tCtrl+C"
+msgstr ""
+
+#: raschlab/MFC/MainFrm.cpp:173
+msgid "&Status Bar"
+msgstr ""
+
+#: raschlab/MFC/MainFrm.cpp:176
+msgid "&Plot..."
+msgstr ""
+
+#: raschlab/MFC/MainFrm.cpp:182
+msgid "&About RASCHlab-MFC..."
+msgstr ""
+
+#: raschlab/MFC/raschlab_mfc.cpp:154
+#, c-format
+msgid ""
+"RASCHlab-MFC 0.2.4\n"
+"(build: %s  %s)\n"
+"using libRASCH Version %s"
+msgstr ""
+
+#: plugins/access/ART/ART.h:18
+msgid "Handle signals recorded for ART-Study"
+msgstr ""
+
+#: plugins/access/cfs/cfs.h:17
+msgid "Handle signals saved using the CED Filing System (CFS)"
+msgstr ""
+
+#: plugins/access/dasylab/dasylab.h:17
+msgid "Handle signals recorded using DasyLab"
+msgstr ""
+
+#: plugins/access/edf/edf.h:17
+msgid "Handle signals recorded using European Data Format(+)"
+msgstr ""
+
+#: plugins/access/ishne/ishne.h:17
+msgid "Handle signals saved using ISHNE standard output for Holter ECG"
+msgstr ""
+
+#: plugins/access/mit_bih/mit_bih.c:1142
+#, c-format
+msgid "lead-%ld"
+msgstr ""
+
+#: plugins/access/mit_bih/mit_bih.h:17
+msgid ""
+"Handle signals recorded using the MIT/BIH Data Format (Physiobank data sets)"
+msgstr ""
+
+#: plugins/access/oxford/oxford.h:21
+msgid "Handles Oxford Excel 2 Holter-ECGs"
+msgstr ""
+
+#: plugins/access/pathfinder/pathfinder.h:18
+msgid "Handles Reynolds Pathfinder 700 Holter-ECGs"
+msgstr ""
+
+#: plugins/access/portapres/portapres.h:17
+msgid "Handle signals recorded with Portapres-System"
+msgstr ""
+
+#: plugins/access/portilab/portilab.h:17
+msgid "Handle signals recorded using TMS ADC system and PortiLab"
+msgstr ""
+
+#: plugins/access/ctg_rasch/ctg.h:17
+msgid "Handle cardiotocogram signals exported from GMT system"
+msgstr ""
+
+#: plugins/access/rri_test/rri_test.h:17
+msgid "Handle RR interval-files (nearly the final design)"
+msgstr ""
+
+#: plugins/process/afib/afib.h:24
+msgid "perform analyses for ecg's with atrial fibrilation"
+msgstr ""
+
+#: plugins/process/afib/afib.h:54
+msgid "PRA used for the PRSA calculations on afib ecg's"
+msgstr ""
+
+#: plugins/process/afib/afib.h:55
+msgid "PRSA variable for an atrial fibrilation ecg"
+msgstr ""
+
+#: plugins/process/afib/afib.h:60 plugins/process/prsa/prsa.h:66
+#: plugins/process/hrh/hrh.h:102 plugins/process/hrv/hrv.h:87
+msgid "use events between start_pos and end_pos"
+msgstr ""
+
+#: plugins/process/afib/afib.h:61 plugins/process/prsa/prsa.h:67
+#: plugins/process/hrh/hrh.h:103 plugins/process/hrv/hrv.h:88
+#: plugins/process/freq_analysis/freq_analysis.h:84
+#: plugins/process/dawes_redman/dawes_redman.h:118
+#: plugins/process/respiration/respiration.h:65
+msgid "start-pos in sample-units"
+msgstr ""
+
+#: plugins/process/afib/afib.h:62 plugins/process/prsa/prsa.h:68
+#: plugins/process/hrh/hrh.h:104 plugins/process/hrv/hrv.h:89
+#: plugins/process/freq_analysis/freq_analysis.h:85
+#: plugins/process/dawes_redman/dawes_redman.h:119
+#: plugins/process/respiration/respiration.h:66
+msgid "end-pos in sample-units"
+msgstr ""
+
+#: plugins/process/afib/afib.h:64 plugins/process/prsa/prsa.h:74
+#: plugins/process/hrh/hrh.h:106 plugins/process/hrv/hrv.h:91
+#: plugins/process/freq_analysis/freq_analysis.h:67
+msgid "use events from start_event to end_event"
+msgstr ""
+
+#: plugins/process/afib/afib.h:65 plugins/process/hrh/hrh.h:107
+#: plugins/process/hrv/hrv.h:92
+msgid "start-event"
+msgstr ""
+
+#: plugins/process/afib/afib.h:66 plugins/process/hrh/hrh.h:108
+#: plugins/process/hrv/hrv.h:93
+msgid "end-event"
+msgstr ""
+
+#: plugins/process/detect_simple/simple.c:54
+#, c-format
+msgid "detect beats in channel %ld"
+msgstr ""
+
+#: plugins/process/detect_simple/simple.c:76
+#, c-format
+msgid "combine found beats"
+msgstr ""
+
+#: plugins/process/detect_simple/simple.c:82
+#, c-format
+msgid "classify beats"
+msgstr ""
+
+#: plugins/process/detect_simple/simple.c:88
+#: plugins/process/detect_ctg/simple.c:81
+#, c-format
+msgid "save results"
+msgstr ""
+
+#: plugins/process/detect_simple/simple.c:548
+#: plugins/process/detect_ctg/simple.c:488
+#, c-format
+msgid "finish detection"
+msgstr ""
+
+#: plugins/process/detect_simple/detect_simple.h:21
+msgid "a simple beat-detection algorithm"
+msgstr ""
+
+#: plugins/process/detect_simple/detect_simple.h:35
+msgid "number of found events"
+msgstr ""
+
+#: plugins/process/detect_simple/detect_simple.h:36
+msgid "positions of the found events in sampleunits"
+msgstr ""
+
+#: plugins/process/detect_simple/detect_simple.h:37
+msgid "bit-mask indicating the channels in which the event was found"
+msgstr ""
+
+#: plugins/process/detect_simple/detect_simple.h:38
+msgid "width of each event in sampleunits"
+msgstr ""
+
+#: plugins/process/detect_simple/detect_simple.h:39
+msgid "annotations to the found events"
+msgstr ""
+
+#: plugins/process/detect_simple/detect_simple.h:44
+msgid "number of channels set in 'ch'"
+msgstr ""
+
+#: plugins/process/detect_simple/detect_simple.h:45
+msgid "list of channels used for the event detection"
+msgstr ""
+
+#: plugins/process/detect_ctg/simple.c:54
+#, c-format
+msgid "detect events in channel %ld"
+msgstr ""
+
+#: plugins/process/detect_ctg/simple.c:76
+#, c-format
+msgid "combine found events"
+msgstr ""
+
+#: plugins/process/detect_ctg/detect_ctg.h:19
+msgid "perform detections in cardiotocograms"
+msgstr ""
+
+#: plugins/process/ecg/ecg.h:19
+msgid ""
+"perform ecg specific actions after reading original evaluation or doing "
+"detect using libRASCH"
+msgstr ""
+
+#: plugins/process/ecg/ecg.h:59
+msgid "number rri used for calculation of reference-value"
+msgstr ""
+
+#: plugins/process/ecg/ecg.h:60
+msgid "percent within the previous rri will be uses as reference-value"
+msgstr ""
+
+#: plugins/process/ecg/ecg.h:61
+msgid "max. tolerance for being a normal rri in percent"
+msgstr ""
+
+#: plugins/process/ecg/ecg.h:65
+msgid "max. percent of ref-value to be premature vpc"
+msgstr ""
+
+#: plugins/process/ecg/ecg.h:66
+msgid "min. percent of ref-value to be a 'real' compensatory pause"
+msgstr ""
+
+#: plugins/process/ecg/ecg.h:69
+msgid ""
+"value in sec; if in the last time2get.. sec no normalrri show up, a new ref-"
+"value must be calculated"
+msgstr ""
+
+#: plugins/process/ecg/ecg.h:71
+msgid "minimum value of a valid rr-interval"
+msgstr ""
+
+#: plugins/process/ecg/ecg.h:72
+msgid "rri at which a pause begins"
+msgstr ""
+
+#: plugins/process/fiducial_point/fiducial.c:286
+#, c-format
+msgid "find fiducial points"
+msgstr ""
+
+#: plugins/process/fiducial_point/fiducial.h:21
+msgid "finds fiducial point of a QRS-complex"
+msgstr ""
+
+#: plugins/process/fiducial_point/fiducial.h:33
+#: plugins/process/ra_template/template.h:79
+#: plugins/process/ap_morphology/ap_morphology.h:99
+msgid "use all positions in evaluation eh (function argument)"
+msgstr ""
+
+#: plugins/process/fiducial_point/fiducial.h:34
+#: plugins/process/ra_template/template.h:81
+msgid "number of positions where qrs-positions should be get"
+msgstr ""
+
+#: plugins/process/fiducial_point/fiducial.h:35
+#: plugins/process/ra_template/template.h:82
+msgid "positions are index to events in eh"
+msgstr ""
+
+#: plugins/process/fiducial_point/fiducial.h:36
+#: plugins/process/ra_template/template.h:83
+msgid "postions"
+msgstr ""
+
+#: plugins/process/fiducial_point/fiducial.h:37
+msgid "in which channel fiducial point should be searched"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:23
+msgid "perform phase rectified signal analyses (PRSA)"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:54
+msgid "Phase Rectified Average "
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:55
+msgid "x-axis for the Phase Rectified Average"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:56
+msgid "Phase Rectified Spectrum"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:57
+msgid "Frequency values for the Phase Rectified Spectrum"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:62
+#: plugins/process/freq_analysis/freq_analysis.h:62
+msgid "!=0: use events, ==0: use signal raw data"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:63
+msgid ""
+"prsa can be used to 'link' two data-streams !=0: 'sort' first data-stream "
+"according the second data-stream"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:70
+msgid "use these events for PRSA"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:71
+msgid "use these events to sort the other events"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:72
+msgid "when using events, the position of the events is needed"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:75
+#: plugins/process/freq_analysis/freq_analysis.h:68
+msgid "start-event (including this event)"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:76
+#: plugins/process/freq_analysis/freq_analysis.h:69
+msgid "end-event (excluding this event)"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:77 plugins/process/hrv/hrv.h:95
+#: plugins/process/freq_analysis/freq_analysis.h:71
+msgid "use the events listed in events"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:78 plugins/process/hrv/hrv.h:96
+#: plugins/process/freq_analysis/freq_analysis.h:72
+msgid "list of events to use"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:80
+msgid "ignore regions which are marked in the annotations with the IGNORE flag"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:81
+msgid "ignore regions which are marked in the annotations with the NOISE flag"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:82
+#: plugins/process/freq_analysis/freq_analysis.h:73
+msgid "number of events which should be ignored"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:83
+#: plugins/process/freq_analysis/freq_analysis.h:74
+msgid "list of events to ignore"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:84
+msgid "flag if ignore-regions/-values are cut-out(=0) or interpolated(=1)"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:86
+#: plugins/process/freq_analysis/freq_analysis.h:77
+#: plugins/process/dawes_redman/dawes_redman.h:121
+#: plugins/process/respiration/respiration.h:68
+msgid "recording handle"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:87
+#: plugins/process/freq_analysis/freq_analysis.h:78
+msgid "use this channel for PRSA"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:88
+msgid "use this channel to sort data of first channel"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:89 plugins/process/prsa/prsa.h:91
+msgid "flag if there are values which should not be used for PRSA"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:90
+msgid ""
+"this value in ch#1 will be not used for PRSA (if use_ignore_value_1 is != 0)"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:92
+msgid ""
+"this value in ch#2 will be not used for PRSA (if use_ignore_value_2 is != 0)"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:94
+msgid ""
+"flag if on the data for PRSA analysis a boxcar-filter should applied before"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:96
+msgid "width of boxcar-filter in data-units"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:98 plugins/process/hrh/hrh.h:110
+msgid "flag if PRA is time (!= 0) or event (e.g. rr-interval) (= 0) based"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:99 plugins/process/hrh/hrh.h:111
+msgid "samplerate used for PRA (if time based)"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:100 plugins/process/hrh/hrh.h:112
+msgid "filter width used for PRA (time[sec] or #events)"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:101 plugins/process/hrh/hrh.h:113
+msgid "window width of one side used for PRA (time[sec] or #events)"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:102 plugins/process/hrh/hrh.h:114
+msgid "minimal value of filter acceptance"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:103 plugins/process/hrh/hrh.h:115
+msgid "maximal value of filter acceptance"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:104
+msgid "flag which 'direction' of change is used as trigger"
+msgstr ""
+
+#: plugins/process/prsa/prsa.h:105
+msgid "if more than length of PRA: length of PRS"
+msgstr ""
+
+#: plugins/process/hrh/hrh.h:24
+msgid "perform Phase Rectified Signal Analyses for ecg's"
+msgstr ""
+
+#: plugins/process/hrh/hrh.h:77
+msgid "Mean Deceleration Magnitude"
+msgstr ""
+
+#: plugins/process/hrh/hrh.h:78
+msgid "Ultra Low Frequency power in the PRS"
+msgstr ""
+
+#: plugins/process/hrh/hrh.h:79
+msgid "Very Low Frequency power in the PRS"
+msgstr ""
+
+#: plugins/process/hrh/hrh.h:80
+msgid "Low Frequency power in the PRS"
+msgstr ""
+
+#: plugins/process/hrh/hrh.h:81
+msgid "High Frequency power in the PRS"
+msgstr ""
+
+#: plugins/process/hrh/hrh.h:82
+msgid "x-axis of PRA for ULF"
+msgstr ""
+
+#: plugins/process/hrh/hrh.h:83
+msgid "PRA for ULF"
+msgstr ""
+
+#: plugins/process/hrh/hrh.h:84
+msgid "x-axis of PRA for VLF"
+msgstr ""
+
+#: plugins/process/hrh/hrh.h:85
+msgid "PRA for VLF"
+msgstr ""
+
+#: plugins/process/hrh/hrh.h:86
+msgid "x-axis of PRA for LF"
+msgstr ""
+
+#: plugins/process/hrh/hrh.h:87
+msgid "PRA for LF"
+msgstr ""
+
+#: plugins/process/hrh/hrh.h:88
+msgid "x-axis of PRA for HF"
+msgstr ""
+
+#: plugins/process/hrh/hrh.h:89
+msgid "PRA for HF"
+msgstr ""
+
+#: plugins/process/hrh/hrh.h:90
+msgid "frequency axis of PRS for ULF"
+msgstr ""
+
+#: plugins/process/hrh/hrh.h:91
+msgid "PRS for ULF"
+msgstr ""
+
+#: plugins/process/hrh/hrh.h:92
+msgid "frequency axis of PRS for VLF"
+msgstr ""
+
+#: plugins/process/hrh/hrh.h:93
+msgid "PRS for VLF"
+msgstr ""
+
+#: plugins/process/hrh/hrh.h:94
+msgid "frequency axis of PRS for LF"
+msgstr ""
+
+#: plugins/process/hrh/hrh.h:95
+msgid "PRS for LF"
+msgstr ""
+
+#: plugins/process/hrh/hrh.h:96
+msgid "frequency axis of PRS for HF"
+msgstr ""
+
+#: plugins/process/hrh/hrh.h:97
+msgid "PRS for HF"
+msgstr ""
+
+#: plugins/process/hrt/hrt.h:40
+msgid "calculate heart rate turbulence (HRT) parameters"
+msgstr ""
+
+#: plugins/process/hrt/hrt.h:82
+msgid "Turbulence Onset"
+msgstr ""
+
+#: plugins/process/hrt/hrt.h:83
+msgid "number of triggers used for calculation of TO"
+msgstr ""
+
+#: plugins/process/hrt/hrt.h:84
+msgid "Turbulence Slope"
+msgstr ""
+
+#: plugins/process/hrt/hrt.h:85
+msgid "position of Turbulence Slope"
+msgstr ""
+
+#: plugins/process/hrt/hrt.h:86
+msgid "offset of TS regression line"
+msgstr ""
+
+#: plugins/process/hrt/hrt.h:87
+msgid "correlation coefficient of TS regression line"
+msgstr ""
+
+#: plugins/process/hrt/hrt.h:88
+msgid "number of triggers used for calculation of TS"
+msgstr ""
+
+#: plugins/process/hrt/hrt.h:89
+msgid "Correlation Coefficient"
+msgstr ""
+
+#: plugins/process/hrt/hrt.h:90
+msgid "slope of the regression line"
+msgstr ""
+
+#: plugins/process/hrt/hrt.h:91
+msgid "number of triggers used for calculation of KS"
+msgstr ""
+
+#: plugins/process/hrt/hrt.h:92
+msgid "event number(s) of the triggers used for the calculation of TO"
+msgstr ""
+
+#: plugins/process/hrt/hrt.h:93
+msgid "event number(s) of the triggers used for the calculation of TS"
+msgstr ""
+
+#: plugins/process/hrt/hrt.h:94
+msgid "event number(s) of the triggers used for the calculation of KS"
+msgstr ""
+
+#: plugins/process/hrt/hrt.h:95
+msgid "local HRT-tachogram"
+msgstr ""
+
+#: plugins/process/hrt/hrt.h:102
+msgid "type of trigger"
+msgstr ""
+
+#: plugins/process/hrv/hrv.h:23
+msgid "calculate heart rate variability (HRV) parameters"
+msgstr ""
+
+#: plugins/process/hrv/hrv.h:67
+msgid "standard deviation of normal-to-normal intervals"
+msgstr ""
+
+#: plugins/process/hrv/hrv.h:68
+msgid "HRV-Index"
+msgstr ""
+
+#: plugins/process/hrv/hrv.h:69
+msgid "standard deviation of averaged normal-to-normal intervals"
+msgstr ""
+
+#: plugins/process/hrv/hrv.h:70
+msgid "root mean of squared sucsessive differences"
+msgstr ""
+
+#: plugins/process/hrv/hrv.h:72
+msgid "total power"
+msgstr ""
+
+#: plugins/process/hrv/hrv.h:73
+msgid "ultra low frequency power"
+msgstr ""
+
+#: plugins/process/hrv/hrv.h:74
+msgid "very low frequency power of short-term recordings"
+msgstr ""
+
+#: plugins/process/hrv/hrv.h:75
+msgid "low frequency power"
+msgstr ""
+
+#: plugins/process/hrv/hrv.h:76
+msgid "normalised low frequency power"
+msgstr ""
+
+#: plugins/process/hrv/hrv.h:77
+msgid "high freuqency power"
+msgstr ""
+
+#: plugins/process/hrv/hrv.h:78
+msgid "normalised high frequency power"
+msgstr ""
+
+#: plugins/process/hrv/hrv.h:79
+msgid "LF/HF ratio"
+msgstr ""
+
+#: plugins/process/hrv/hrv.h:80
+msgid "power law behavior"
+msgstr ""
+
+#: plugins/process/hrv/hrv.h:81
+msgid "Event numbers used for HRV calculations"
+msgstr ""
+
+#: plugins/process/hrv/hrv.h:82
+msgid "frequency power in a user-selected frequency band"
+msgstr ""
+
+#: plugins/process/hrv/hrv.h:98
+msgid "calculate also the power in the user-selected frequency band"
+msgstr ""
+
+#: plugins/process/hrv/hrv.h:99
+msgid "start of user-selected frequency band [Hz]"
+msgstr ""
+
+#: plugins/process/hrv/hrv.h:100
+msgid "end of user-selected frequency band [Hz]"
+msgstr ""
+
+#: plugins/process/ra_template/template.c:394
+#, c-format
+msgid "find templates"
+msgstr ""
+
+#: plugins/process/ra_template/template.c:438
+#: plugins/process/ra_template/template.c:468
+#, c-format
+msgid "find templates (number found: %d)"
+msgstr ""
+
+#: plugins/process/ra_template/template.h:21
+msgid "combine events in templates"
+msgstr ""
+
+#: plugins/process/ra_template/template.h:85
+msgid "name of event-type which holds event positions"
+msgstr ""
+
+#: plugins/process/ra_template/template.h:86
+msgid "name of event-type which holds template numbers"
+msgstr ""
+
+#: plugins/process/ra_template/template.h:87
+msgid "name of event-type which holds template correlation"
+msgstr ""
+
+#: plugins/process/ra_template/template.h:89
+msgid "template-window-size before postion (in seconds)"
+msgstr ""
+
+#: plugins/process/ra_template/template.h:90
+msgid "template-window-size after position (in seconds)"
+msgstr ""
+
+#: plugins/process/ra_template/template.h:92
+msgid "treshold which correlation values are accepted"
+msgstr ""
+
+#: plugins/process/ra_template/template.h:93
+msgid "min-value of slope of regression line"
+msgstr ""
+
+#: plugins/process/ra_template/template.h:94
+msgid "max-value of slope of regression line"
+msgstr ""
+
+#: plugins/process/ra_template/template.h:96
+msgid "number of channels used for template creation"
+msgstr ""
+
+#: plugins/process/ra_template/template.h:97
+msgid "list of channesl for which the template should be created"
+msgstr ""
+
+#: plugins/process/ap_morphology/ap_morphology.c:630
+#, c-format
+msgid "get bloodpressure values"
+msgstr ""
+
+#: plugins/process/ap_morphology/ap_morphology.h:21
+msgid ""
+"get systolic and diastolyc values and positions of aterial pressure waves"
+msgstr ""
+
+#: plugins/process/ap_morphology/ap_morphology.h:87
+msgid "index of event"
+msgstr ""
+
+#: plugins/process/ap_morphology/ap_morphology.h:88
+msgid "systolic blood pressures"
+msgstr ""
+
+#: plugins/process/ap_morphology/ap_morphology.h:89
+msgid "diastolic blood pressures"
+msgstr ""
+
+#: plugins/process/ap_morphology/ap_morphology.h:90
+msgid "mean blood pressures"
+msgstr ""
+
+#: plugins/process/ap_morphology/ap_morphology.h:91
+msgid "positions of systolic measurements"
+msgstr ""
+
+#: plugins/process/ap_morphology/ap_morphology.h:92
+msgid "positions of diastolic measurements"
+msgstr ""
+
+#: plugins/process/ap_morphology/ap_morphology.h:93
+msgid "flags"
+msgstr ""
+
+#: plugins/process/ap_morphology/ap_morphology.h:94
+msgid "inter beat intervals"
+msgstr ""
+
+#: plugins/process/ap_morphology/ap_morphology.h:101
+msgid "number of positions where rr values and positions should be get"
+msgstr ""
+
+#: plugins/process/ap_morphology/ap_morphology.h:102
+msgid "positions"
+msgstr ""
+
+#: plugins/process/ap_morphology/ap_morphology.h:104
+msgid ""
+"flag if positions are start and end of a region; if set, num_pos must be 2"
+msgstr ""
+
+#: plugins/process/ap_morphology/ap_morphology.h:105
+msgid "flag if positions are index to events in eh"
+msgstr ""
+
+#: plugins/process/ap_morphology/ap_morphology.h:106
+msgid ""
+"positions are bloodpressure peaks (= 1) or qrs-complexes (= 0); don't be "
+"used if postions are start-/end-region"
+msgstr ""
+
+#: plugins/process/ap_morphology/ap_morphology.h:109
+msgid ""
+"if set (=1) -> don't look for sequences of calibration in bloodpressure "
+"measurements"
+msgstr ""
+
+#: plugins/process/ap_morphology/ap_morphology.h:112
+msgid ""
+"if set (=1) -> do not search the positions of systolic- and diastolic blood "
+"pressure but use the previously selected positions (needed to re-calc the ap "
+"related measures)"
+msgstr ""
+
+#: plugins/process/freq_analysis/freq_analysis.h:23
+msgid "perform frequency analysis"
+msgstr ""
+
+#: plugins/process/freq_analysis/freq_analysis.h:53
+msgid "frequency values (the x-axis)"
+msgstr ""
+
+#: plugins/process/freq_analysis/freq_analysis.h:54
+msgid "Power Spectrum Density"
+msgstr ""
+
+#: plugins/process/freq_analysis/freq_analysis.h:55
+msgid "real part of the frequency spectrum"
+msgstr ""
+
+#: plugins/process/freq_analysis/freq_analysis.h:56
+msgid "imaginary part of the frequency spectrum"
+msgstr ""
+
+#: plugins/process/freq_analysis/freq_analysis.h:63
+msgid "use these event-property for frequency analysis"
+msgstr ""
+
+#: plugins/process/freq_analysis/freq_analysis.h:64
+msgid ""
+"when using events, the position of the events is needed for time based "
+"analysis"
+msgstr ""
+
+#: plugins/process/freq_analysis/freq_analysis.h:65
+msgid ""
+"flag if freq. analysis should be done based on time(!=0) or based on the "
+"event(=0) (e.g. rr-interval)"
+msgstr ""
+
+#: plugins/process/freq_analysis/freq_analysis.h:79
+msgid "flag if there are values which should not be used for freq. analysis"
+msgstr ""
+
+#: plugins/process/freq_analysis/freq_analysis.h:80
+msgid ""
+"this value will be not used for freq. analysis (if use_ignore_value_1 is != "
+"0)"
+msgstr ""
+
+#: plugins/process/freq_analysis/freq_analysis.h:83
+msgid "use raw-data/events between start_pos and end_pos"
+msgstr ""
+
+#: plugins/process/freq_analysis/freq_analysis.h:88
+msgid "use the data given in 'data'"
+msgstr ""
+
+#: plugins/process/freq_analysis/freq_analysis.h:89
+msgid "number of the data given in 'data'"
+msgstr ""
+
+#: plugins/process/freq_analysis/freq_analysis.h:90
+msgid "perform frequency analysis using this data"
+msgstr ""
+
+#: plugins/process/freq_analysis/freq_analysis.h:93
+msgid "samplerate to use when freq.analysis should be done time based"
+msgstr ""
+
+#: plugins/process/freq_analysis/freq_analysis.h:96
+msgid "flag if input-data should be smoothed"
+msgstr ""
+
+#: plugins/process/freq_analysis/freq_analysis.h:97
+msgid "at the moment only a boxcar-filter is available"
+msgstr ""
+
+#: plugins/process/freq_analysis/freq_analysis.h:98
+msgid "width of the smooth-filter"
+msgstr ""
+
+#: plugins/process/freq_analysis/freq_analysis.h:101
+msgid "window function used"
+msgstr ""
+
+#: plugins/process/freq_analysis/freq_analysis.h:102
+msgid "remove the mean value before the frequency analysis"
+msgstr ""
+
+#: plugins/process/freq_analysis/freq_analysis.h:103
+msgid "remove the trend (first order) before the frequency analysis"
+msgstr ""
+
+#: plugins/process/freq_analysis/freq_analysis.h:104
+msgid "method used for the frequency analysis"
+msgstr ""
+
+#: plugins/process/freq_analysis/freq_analysis.h:105
+msgid "number of frequency components"
+msgstr ""
+
+#: plugins/process/freq_analysis/freq_analysis.h:108
+msgid "flag if spectrum should be smoothed"
+msgstr ""
+
+#: plugins/process/dawes_redman/dawes_redman.h:23
+msgid "calculate FHR variations using the Dawes/Redman criteria"
+msgstr ""
+
+#: plugins/process/dawes_redman/dawes_redman.h:100
+msgid "epochs of the fetal heart rate (averages over 3.75 seconds)"
+msgstr ""
+
+#: plugins/process/dawes_redman/dawes_redman.h:101
+msgid "baseline of the fetal heart rate"
+msgstr ""
+
+#: plugins/process/dawes_redman/dawes_redman.h:117
+#: plugins/process/respiration/respiration.h:64
+msgid "use values between start_pos and end_pos"
+msgstr ""
+
+#: plugins/process/dawes_redman/dawes_redman.h:122
+msgid "channel with the FHR"
+msgstr ""
+
+#: plugins/process/dawes_redman/dawes_redman.h:123
+msgid "flag if there are values which are not valid"
+msgstr ""
+
+#: plugins/process/dawes_redman/dawes_redman.h:124
+msgid "value which indicate not valid values"
+msgstr ""
+
+#: plugins/process/dawes_redman/dawes_redman.h:125
+msgid "run filter to find maternal pulse and remove these values"
+msgstr ""
+
+#: plugins/process/respiration/respiration.h:23
+msgid "calculates respiration parameters"
+msgstr ""
+
+#: plugins/process/respiration/respiration.h:63
+msgid "use values from evaluation"
+msgstr ""
+
+#: plugins/process/respiration/respiration.h:69
+msgid "channel with the respiration signal"
+msgstr ""
+
+#: plugins/process/respiration/respiration.h:71
+msgid "eval handle"
+msgstr ""
+
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_mfc.cpp:86
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_ui.cpp:127
+msgid "Select channel's to process"
+msgstr ""
+
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_mfc.cpp:87
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_ui.cpp:128
+msgid "recorded channels"
+msgstr ""
+
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_mfc.cpp:88
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_ui.cpp:131
+msgid "channels use"
+msgstr ""
+
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_mfc.cpp:89
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_ui.cpp:132
+msgid "up"
+msgstr ""
+
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_mfc.cpp:90
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_ui.cpp:133
+msgid "down"
+msgstr ""
+
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_ui.cpp:129
+msgid "-->"
+msgstr ""
+
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_ui.cpp:130
+msgid "<--"
+msgstr ""
+
+#: plugins/view/ch_sel_dlg/ch_sel_dlg_ui.cpp:135
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:232
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:305
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:191
+#: plugins/view/simple_calc_dlg/options_dlg_ui.cpp:102
+#: plugins/view/ts_view/annot_dlg_ui.cpp:130
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:234
+#: plugins/view/ts_view/ts_view_optdlg_ui.cpp:142
+msgid "OK"
+msgstr ""
+
+#: plugins/view/ch_sel_dlg/ch_sel_dlg.h:28
+msgid "dialog for selecting channels which will be used for processing"
+msgstr ""
+
+#: plugins/view/ch_sel_dlg/ch_sel_dlg.h:43
+msgid "list of selected channels"
+msgstr ""
+
+#: plugins/view/cont_ap_view/cont_ap_view_qt.cpp:34
+msgid "lowest diastolic value first"
+msgstr ""
+
+#: plugins/view/cont_ap_view/cont_ap_view_qt.cpp:36
+msgid "highest diastolic value first"
+msgstr ""
+
+#: plugins/view/cont_ap_view/cont_ap_view_qt.cpp:39
+msgid "lowest systolic value first"
+msgstr ""
+
+#: plugins/view/cont_ap_view/cont_ap_view_qt.cpp:41
+msgid "highest systolic value first"
+msgstr ""
+
+#: plugins/view/cont_ap_view/cont_ap_view_qt.cpp:44
+#: plugins/view/ecg_view/ecg_view_mfc.cpp:91
+#: plugins/view/ecg_view/ecg_view_qt.cpp:44
+msgid "normal beats"
+msgstr ""
+
+#: plugins/view/cont_ap_view/cont_ap_view_qt.cpp:46
+#: plugins/view/ecg_view/ecg_view_mfc.cpp:92
+#: plugins/view/ecg_view/ecg_view_qt.cpp:46
+msgid "VPCs"
+msgstr ""
+
+#: plugins/view/cont_ap_view/cont_ap_view_qt.cpp:48
+#: plugins/view/ecg_view/ecg_view_mfc.cpp:93
+#: plugins/view/ecg_view/ecg_view_qt.cpp:48
+msgid "paced beats"
+msgstr ""
+
+#: plugins/view/cont_ap_view/cont_ap_view_qt.cpp:50
+#: plugins/view/ecg_view/ecg_view_mfc.cpp:94
+#: plugins/view/ecg_view/ecg_view_qt.cpp:50
+msgid "Artifacts"
+msgstr ""
+
+#: plugins/view/cont_ap_view/cont_ap_view_qt.cpp:54
+#: plugins/view/ecg_view/ecg_view_mfc.cpp:108
+#: plugins/view/ecg_view/ecg_view_qt.cpp:66
+msgid "sort"
+msgstr ""
+
+#: plugins/view/cont_ap_view/cont_ap_view_qt.cpp:56
+msgid "bloodpressure"
+msgstr ""
+
+#: plugins/view/cont_ap_view/cont_ap_view.h:30
+msgid "view for continues arterial pressure recordings"
+msgstr ""
+
+#: plugins/view/ecg_view/ecg_view_general.cpp:254
+#, c-format
+msgid "unknown arr-type (%ld)"
+msgstr ""
+
+#: plugins/view/ecg_view/ecg_view_mfc.cpp:82
+#: plugins/view/ecg_view/ecg_view_qt.cpp:35
+#, c-format
+msgid "beats found in %d channel%s"
+msgstr ""
+
+#: plugins/view/ecg_view/ecg_view_mfc.cpp:87
+#: plugins/view/ecg_view/ecg_view_qt.cpp:39
+msgid "shortest rr-interval first"
+msgstr ""
+
+#: plugins/view/ecg_view/ecg_view_mfc.cpp:88
+#: plugins/view/ecg_view/ecg_view_qt.cpp:41
+msgid "longest rr-interval first"
+msgstr ""
+
+#: plugins/view/ecg_view/ecg_view_mfc.cpp:102
+#: plugins/view/ecg_view/ecg_view_qt.cpp:59
+#, c-format
+msgid "beats in template %d"
+msgstr ""
+
+#: plugins/view/ecg_view/ecg_view_mfc.cpp:111
+#: plugins/view/ecg_view/ecg_view_qt.cpp:68
+msgid "templates"
+msgstr ""
+
+#: plugins/view/ecg_view/ecg_view_mfc.cpp:113
+#: plugins/view/ecg_view/ecg_view_qt.cpp:70
+msgid "ecg"
+msgstr ""
+
+#: plugins/view/ecg_view/ecg_view.h:26
+msgid "view for ecg's"
+msgstr ""
+
+#: plugins/view/ctg_view/ctg_view.h:26
+msgid "view for cardiotocograms"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:89
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:212
+msgid "Evaluations"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:90
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:213
+#: plugins/view/eval_dlg/evprop_dlg_mfc.cpp:65
+#: plugins/view/eval_dlg/evprop_dlg_ui.cpp:129
+msgid "delete"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:91
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:215
+#: plugins/view/eval_dlg/evprop_dlg_mfc.cpp:67
+#: plugins/view/eval_dlg/evprop_dlg_ui.cpp:132
+msgid "Description"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:92
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:216
+msgid "default evaluation"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:93
+msgid "event-types"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:199
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:217
+msgid "original evaluation:"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:203
+#: plugins/view/eval_dlg/eval_dlg_qt.cpp:101
+msgid "no"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:205
+#: plugins/view/eval_dlg/eval_dlg_qt.cpp:103
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:218
+msgid "yes"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:213
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:219
+msgid "created:"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:218
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:227
+msgid "last modified:"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:223
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:223
+msgid "user:"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:228
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:225
+msgid "host:"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_mfc.cpp:233
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:221
+msgid "program:"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_qt.cpp:79
+msgid "Settings were modified, do you want to discard changes?"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_qt.cpp:80
+#: plugins/view/eval_dlg/eval_dlg_qt.cpp:139
+#: plugins/view/eval_dlg/eval_dlg_qt.cpp:144
+#: plugins/view/eval_dlg/eval_dlg_qt.cpp:164
+msgid "libRASCH - Evaluation"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_qt.cpp:140
+msgid "You can not delete the default evaluation."
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_qt.cpp:145
+msgid "Do you really want to delete the evaluation?"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_qt.cpp:165
+msgid "Settings were modified, do you want to save changes?"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_qt.cpp:220
+msgid "libRASCH - Evaluations"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_qt.cpp:221
+msgid ""
+"You can't deselect default evalution.\n"
+"Please choose evaluation which you want to be the\n"
+"default-evalution and check there the default-box."
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:214
+msgid "detect"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:220
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:155
+msgid "TextLabel4"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:222
+msgid "MTKlab"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:224
+msgid "rasch"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:226
+msgid "spirit"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:228
+msgid "13.06.1970  18:45:00"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:229
+msgid "event-prop's"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg_ui.cpp:231
+msgid "Apply"
+msgstr ""
+
+#: plugins/view/eval_dlg/evprop_dlg_mfc.cpp:64
+msgid "Event Properties"
+msgstr ""
+
+#: plugins/view/eval_dlg/evprop_dlg_mfc.cpp:84
+#: plugins/view/eval_dlg/evprop_dlg_mfc.cpp:161
+#: plugins/view/eval_dlg/evprop_dlg_ui.cpp:133
+msgid "value-type:"
+msgstr ""
+
+#: plugins/view/eval_dlg/evprop_dlg_mfc.cpp:85
+#: plugins/view/eval_dlg/evprop_dlg_mfc.cpp:136
+#: plugins/view/eval_dlg/evprop_dlg_ui.cpp:135
+msgid "occurence:"
+msgstr ""
+
+#: plugins/view/eval_dlg/evprop_dlg_mfc.cpp:142
+#: plugins/view/eval_dlg/evprop_dlg_qt.cpp:69
+msgid "discrete"
+msgstr ""
+
+#: plugins/view/eval_dlg/evprop_dlg_mfc.cpp:145
+#: plugins/view/eval_dlg/evprop_dlg_qt.cpp:72
+msgid "continues"
+msgstr ""
+
+#: plugins/view/eval_dlg/evprop_dlg_qt.cpp:82
+#, c-format
+msgid "%s (%ld events)"
+msgstr ""
+
+#: plugins/view/eval_dlg/evprop_dlg_ui.cpp:128
+msgid "Event-Properties"
+msgstr ""
+
+#: plugins/view/eval_dlg/evprop_dlg_ui.cpp:134
+msgid "double"
+msgstr ""
+
+#: plugins/view/eval_dlg/evprop_dlg_ui.cpp:136
+msgid "continues12345"
+msgstr ""
+
+#: plugins/view/eval_dlg/eval_dlg.h:26
+msgid "a dialog showing all evaluations for a measurement"
+msgstr ""
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:113
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:283
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:189
+#: plugins/view/simple_calc_dlg/options_dlg_ui.cpp:98
+msgid "Options"
+msgstr ""
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:114
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:284
+msgid "plot symbols"
+msgstr ""
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:115
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:285
+msgid "symbol"
+msgstr ""
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:116
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:119
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:286
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:290
+msgid "color"
+msgstr ""
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:117
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:288
+msgid "plot line"
+msgstr ""
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:118
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:289
+msgid "line"
+msgstr ""
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:121
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:293
+msgid "add. Analyses"
+msgstr ""
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:122
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:294
+msgid "Axis Options"
+msgstr ""
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:123
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:295
+msgid "Axis"
+msgstr ""
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:124
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:296
+msgid "use min"
+msgstr ""
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:125
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:127
+msgid "value"
+msgstr ""
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:126
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:298
+msgid "use max"
+msgstr ""
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:128
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:300
+msgid "is time"
+msgstr ""
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:129
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:301
+msgid "format"
+msgstr ""
+
+#: plugins/view/plot_view/pair_opt_dlg_mfc.cpp:130
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:302
+msgid "log"
+msgstr ""
+
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:297
+#: plugins/view/plot_view/pair_opt_dlg_ui.cpp:299
+msgid "val"
+msgstr ""
+
+#: plugins/view/plot_view/sel_data_dlg_mfc.cpp:95
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:177
+msgid "Select Data"
+msgstr ""
+
+#: plugins/view/plot_view/sel_data_dlg_mfc.cpp:96
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:178
+msgid "data-set"
+msgstr ""
+
+#: plugins/view/plot_view/sel_data_dlg_mfc.cpp:97
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:179
+msgid "show legend"
+msgstr ""
+
+#: plugins/view/plot_view/sel_data_dlg_mfc.cpp:98
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:180
+#: plugins/view/ts_view/gen_opt_dlg_mfc.cpp:99
+#: plugins/view/ts_view/ts_view_optdlg_ui.cpp:137
+msgid "show grid"
+msgstr ""
+
+#: plugins/view/plot_view/sel_data_dlg_mfc.cpp:99
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:183
+msgid "use Z-Axis"
+msgstr ""
+
+#: plugins/view/plot_view/sel_data_dlg_mfc.cpp:100
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:181
+msgid "X-Axis"
+msgstr ""
+
+#: plugins/view/plot_view/sel_data_dlg_mfc.cpp:101
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:182
+msgid "Y-Axis"
+msgstr ""
+
+#: plugins/view/plot_view/sel_data_dlg_mfc.cpp:102
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:184
+msgid "Z-Axis"
+msgstr ""
+
+#: plugins/view/plot_view/sel_data_dlg_mfc.cpp:103
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:185
+msgid "Add"
+msgstr ""
+
+#: plugins/view/plot_view/sel_data_dlg_mfc.cpp:104
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:188
+#: plugins/view/ts_view/annot_dlg_mfc.cpp:89
+#: plugins/view/ts_view/annot_dlg_ui.cpp:128
+msgid "Delete"
+msgstr ""
+
+#: plugins/view/plot_view/sel_data_dlg_mfc.cpp:105
+#: plugins/view/simple_calc_dlg/simple_calc_dlg_ui.cpp:99
+msgid "Options..."
+msgstr ""
+
+#: plugins/view/plot_view/sel_data_dlg_ui.cpp:187
+msgid "New Item"
+msgstr ""
+
+#: plugins/view/plot_view/ra_plot.h:26
+msgid "plot evaluation data"
+msgstr ""
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_mfc.cpp:79
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:147
+msgid "loaded plugins"
+msgstr ""
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_mfc.cpp:80
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:152
+msgid "Description:"
+msgstr ""
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_mfc.cpp:123
+msgid "access "
+msgstr ""
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_mfc.cpp:126
+msgid "process "
+msgstr ""
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_mfc.cpp:129
+msgid "GUI "
+msgstr ""
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_mfc.cpp:132
+msgid "view "
+msgstr ""
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_mfc.cpp:146
+msgid "proprietary"
+msgstr ""
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_mfc.cpp:149
+msgid "not choosen"
+msgstr ""
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_mfc.cpp:236
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_qt.cpp:80
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:157
+msgid "plugin-build: "
+msgstr ""
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:49
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:149
+msgid "Type"
+msgstr ""
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:50
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:150
+msgid "License"
+msgstr ""
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:146
+msgid "libRASCH plugins"
+msgstr ""
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:151
+msgid "plugin info"
+msgstr ""
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:153
+msgid "t"
+msgstr ""
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:154
+msgid "Path:"
+msgstr ""
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg_ui.cpp:158
+msgid "Close"
+msgstr ""
+
+#: plugins/view/plugin_info_dlg/plugin_info_dlg.h:22
+msgid "a dialog showing the list of all loaded plugins"
+msgstr ""
+
+#: plugins/view/ra_view/ra_view.h:27
+msgid "general view for libRASCH, handling all views"
+msgstr ""
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg_mfc.cpp:69
+msgid "Select Signal"
+msgstr ""
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg_qt.cpp:19
+msgid "Select signal"
+msgstr ""
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg_qt.cpp:28
+msgid "directory"
+msgstr ""
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg_qt.cpp:37
+msgid "forename"
+msgstr ""
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg_qt.cpp:38
+msgid "birthday"
+msgstr ""
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg_qt.cpp:39
+msgid "id"
+msgstr ""
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg_qt.cpp:40
+msgid "rec. date"
+msgstr ""
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg_qt.cpp:41
+msgid "eval. date"
+msgstr ""
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg_qt.cpp:42
+msgid "sig.name"
+msgstr ""
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg_qt.cpp:43
+msgid "sig.type"
+msgstr ""
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg.h:23
+msgid "dialog to choose signales which can be handled with libRASCH"
+msgstr ""
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg.h:38
+msgid "selected file (incl. path)"
+msgstr ""
+
+#: plugins/view/sig_sel_dlg/sig_sel_dlg.h:43
+msgid "open dialog showing this path"
+msgstr ""
+
+#: plugins/view/simple_calc_dlg/options_dlg_ui.cpp:97
+msgid "Set Options"
+msgstr ""
+
+#: plugins/view/simple_calc_dlg/options_dlg_ui.cpp:99
+msgid "textLabel2"
+msgstr ""
+
+#: plugins/view/simple_calc_dlg/options_dlg_ui.cpp:100
+msgid "Change"
+msgstr ""
+
+#: plugins/view/simple_calc_dlg/simple_calc_dlg_mfc.cpp:70
+msgid "process data"
+msgstr ""
+
+#: plugins/view/simple_calc_dlg/simple_calc_dlg_mfc.cpp:71
+msgid "calculate"
+msgstr ""
+
+#: plugins/view/simple_calc_dlg/simple_calc_dlg_mfc.cpp:72
+msgid "copy to clipboard"
+msgstr ""
+
+#: plugins/view/simple_calc_dlg/simple_calc_dlg_mfc.cpp:74
+#: plugins/view/simple_calc_dlg/simple_calc_dlg_ui.cpp:98
+msgid "Process Plugins"
+msgstr ""
+
+#: plugins/view/simple_calc_dlg/simple_calc_dlg_mfc.cpp:75
+#: plugins/view/simple_calc_dlg/simple_calc_dlg_ui.cpp:101
+msgid "Results"
+msgstr ""
+
+#: plugins/view/simple_calc_dlg/simple_calc_dlg_ui.cpp:97
+msgid "calculate parameters"
+msgstr ""
+
+#: plugins/view/simple_calc_dlg/simple_calc_dlg_ui.cpp:100
+msgid "Calculate"
+msgstr ""
+
+#: plugins/view/simple_calc_dlg/simple_calc_dlg.h:22
+msgid "dialog to perform calculations using process plugins"
+msgstr ""
+
+#: plugins/view/template_view/template_view.h:28
+msgid "view for templates"
+msgstr ""
+
+#: plugins/view/ts_view/annot_dlg_mfc.cpp:82
+msgid "Edit Annotations"
+msgstr ""
+
+#: plugins/view/ts_view/annot_dlg_mfc.cpp:83
+#: plugins/view/ts_view/annot_dlg_ui.cpp:122
+msgid "Annotation for Channel"
+msgstr ""
+
+#: plugins/view/ts_view/annot_dlg_mfc.cpp:84
+#: plugins/view/ts_view/annot_dlg_ui.cpp:123
+msgid "Indicators"
+msgstr ""
+
+#: plugins/view/ts_view/annot_dlg_mfc.cpp:85
+#: plugins/view/ts_view/annot_dlg_ui.cpp:124
+msgid "Noise"
+msgstr ""
+
+#: plugins/view/ts_view/annot_dlg_mfc.cpp:86
+msgid "Ignore"
+msgstr ""
+
+#: plugins/view/ts_view/annot_dlg_mfc.cpp:87
+#: plugins/view/ts_view/annot_dlg_ui.cpp:126
+msgid "pre-defined Annotations"
+msgstr ""
+
+#: plugins/view/ts_view/annot_dlg_mfc.cpp:88
+#: plugins/view/ts_view/annot_dlg_ui.cpp:127
+msgid "Annotation"
+msgstr ""
+
+#: plugins/view/ts_view/annot_dlg_ui.cpp:121
+msgid "Edit Annotation"
+msgstr ""
+
+#: plugins/view/ts_view/annot_dlg_ui.cpp:125
+msgid "ignore data"
+msgstr ""
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:220
+#: plugins/view/ts_view/ts_view_ch_opt_dlg_mfc.cpp:98
+msgid "Set Channel Draw-Options"
+msgstr ""
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:221
+msgid "select channel"
+msgstr ""
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:222
+msgid "position"
+msgstr ""
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:223
+#: plugins/view/ts_view/ts_view_ch_opt_dlg_mfc.cpp:104
+msgid "centered"
+msgstr ""
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:224
+#: plugins/view/ts_view/ts_view_ch_opt_dlg_mfc.cpp:105
+msgid "position [%]"
+msgstr ""
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:225
+#: plugins/view/ts_view/ts_view_ch_opt_dlg_mfc.cpp:159
+msgid "min/max"
+msgstr ""
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:226
+#: plugins/view/ts_view/ts_view_ch_opt_dlg_mfc.cpp:106
+msgid "min"
+msgstr ""
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:227
+#: plugins/view/ts_view/ts_view_ch_opt_dlg_mfc.cpp:107
+msgid "max"
+msgstr ""
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:228
+#: plugins/view/ts_view/ts_view_ch_opt_dlg_mfc.cpp:108
+msgid "use Res."
+msgstr ""
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:229
+#: plugins/view/ts_view/ts_view_ch_opt_dlg_mfc.cpp:100
+msgid "show channel"
+msgstr ""
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:230
+#: plugins/view/ts_view/ts_view_ch_opt_dlg_mfc.cpp:101
+msgid "invert channel"
+msgstr ""
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:231
+#: plugins/view/ts_view/ts_view_ch_opt_dlg_mfc.cpp:102
+msgid "Resolution"
+msgstr ""
+
+#: plugins/view/ts_view/ch_optdlg_ui.cpp:232
+msgid "mm/Unit"
+msgstr ""
+
+#: plugins/view/ts_view/gen_opt_dlg_mfc.cpp:96
+#: plugins/view/ts_view/ts_view_optdlg_ui.cpp:134
+msgid "Set General Draw-Options"
+msgstr ""
+
+#: plugins/view/ts_view/gen_opt_dlg_mfc.cpp:97
+#: plugins/view/ts_view/ts_view_optdlg_ui.cpp:135
+msgid "show statusline"
+msgstr ""
+
+#: plugins/view/ts_view/gen_opt_dlg_mfc.cpp:98
+#: plugins/view/ts_view/ts_view_optdlg_ui.cpp:136
+msgid "show channel info"
+msgstr ""
+
+#: plugins/view/ts_view/gen_opt_dlg_mfc.cpp:100
+#: plugins/view/ts_view/ts_view_optdlg_ui.cpp:138
+msgid "use fixed channel-height"
+msgstr ""
+
+#: plugins/view/ts_view/gen_opt_dlg_mfc.cpp:101
+#: plugins/view/ts_view/ts_view_optdlg_ui.cpp:139
+msgid "channel-height [pixel]"
+msgstr ""
+
+#: plugins/view/ts_view/gen_opt_dlg_mfc.cpp:102
+#: plugins/view/ts_view/ts_view_optdlg_ui.cpp:140
+msgid "\"speed\" [mm/sec]"
+msgstr ""
+
+#: plugins/view/ts_view/ts_view_ch_opt_dlg_mfc.cpp:99
+msgid "Select Channel"
+msgstr ""
+
+#: plugins/view/ts_view/ts_view_ch_opt_dlg_mfc.cpp:103
+msgid "Position"
+msgstr ""
+
+#: plugins/view/ts_view/ts_view_general.cpp:474
+#, c-format
+msgid "time: %s (rel: %s)"
+msgstr ""
+
+#: plugins/view/ts_view/ts_view_general.cpp:486
+#, c-format
+msgid "  --  session %s"
+msgstr ""
+
+#: plugins/view/ts_view/ts_view_general.cpp:488
+#, c-format
+msgid "  --  session #%ld"
+msgstr ""
+
+#: plugins/view/ts_view/ts_view_mfc.cpp:52
+msgid "&General Options..."
+msgstr ""
+
+#: plugins/view/ts_view/ts_view_mfc.cpp:53
+msgid "&Channel Options..."
+msgstr ""
+
+#: plugins/view/ts_view/ts_view_qt.cpp:60
+msgid "General Options..."
+msgstr ""
+
+#: plugins/view/ts_view/ts_view_qt.cpp:61
+msgid "Channel Options..."
+msgstr ""
+
+#: plugins/view/ts_view/ts_view_qt.cpp:69
+#, c-format
+msgid "session #%d"
+msgstr ""
+
+#: plugins/view/ts_view/ts_view_qt.cpp:73
+msgid "Sessions"
+msgstr ""
+
+#: plugins/view/ts_view/ts_view.h:24
+msgid "view for time-series"
+msgstr ""

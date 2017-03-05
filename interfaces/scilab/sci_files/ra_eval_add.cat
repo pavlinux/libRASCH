@@ -1,0 +1,9 @@
+Returns the evaluation-handle of the newly added evaluation.
+    Input parameters:
+    meas_handle
+    name
+    desc
+    orig
+
+  Output parameters:
+    eval_handle

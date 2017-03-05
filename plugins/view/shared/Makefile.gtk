@@ -1,0 +1,58 @@
+LIBRASCH_HOME = ../../..
+include $(LIBRASCH_HOME)/Makefile.incl
+
+CFLAGS	+= 	`pkg-config gtkmm-2.4 libglademm-2.4 --cflags` `librasch-config --cflags` -g
+LINK	=	$(LD)
+LFLAGS	= 	`pkg-config gtkmm-2.4 libglademm-2.4 --libs` `librasch-config --libs` -g
+
+OBJS = view_frame_general.o view_frame_gtk.o
+
+# progress_dlg_qt.o
+
+####### Implicit rules
+
+.SUFFIXES: .cpp .cxx .cc .C .c
+
+.cpp.o:
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
+
+.cxx.o:
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
+
+.cc.o:
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
+
+.C.o:
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
+
+.c.o:
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CC) -c $(CFLAGS) $(INCPATH) -o $@ $<
+
+
+
+all: $(OBJS) $(OBJSMOC)
+
+
+view_frame_general.o: view_frame_general.cpp view_frame_general.h $(LIBRASCH_HOME)/include/ra_pl_comm.h $(LIBRASCH_HOME)/include/ra_defines.h
+
+view_frame_gtk.o: view_frame_gtk.cpp view_frame_gtk.h view_frame_general.h view_frame_general.o
+
+#progress_dlg_qt.o: progress_dlg_qt.cpp progress_dlg_qt.h progress_dlg_qt_ui.h
+
+
+clean:
+	@echo $(INDENT)clean shared source for view plugins
+	$(Q)rm -f *~
+	$(Q)rm -f *.o
+
+distclean: clean
+	@echo $(INDENT)distclean shared source for view plugins
+	$(Q)rm -f *_ui.h
+	$(Q)rm -f *_ui.cpp
+
+# $Id: $

@@ -1,0 +1,382 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>ra_prop_add_custom</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="Reference Manual for libRASCH-0.7.2"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Function Reference for C"
+HREF="c_interface_ref.html"><LINK
+REL="PREVIOUS"
+TITLE="ra_prop_add_name"
+HREF="api-ra-prop-add-name.html"><LINK
+REL="NEXT"
+TITLE="ra_prop_del"
+HREF="api-ra-prop-del.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="REFENTRY"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Reference Manual for libRASCH-0.7.2</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="api-ra-prop-add-name.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="api-ra-prop-del.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="API-RA-PROP-ADD-CUSTOM"
+></A
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_prop_add_custom</SPAN
+></SPAN
+></H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN3325"
+></A
+><H2
+>Name</H2
+>ra_prop_add_custom&nbsp;--&nbsp;  add an event-property </DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN3328"
+></A
+><H2
+>Synopsis</H2
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><A
+NAME="AEN3330"
+></A
+><P
+><CODE
+><CODE
+CLASS="FUNCDEF"
+>LIBRAAPI prop_handle <B
+CLASS="FSFUNC"
+>ra_prop_add_custom </B
+></CODE
+>(eval_handle <VAR
+CLASS="PDPARAM"
+>eh</VAR
+>, const char * <VAR
+CLASS="PDPARAM"
+>set_id_ascii</VAR
+>, const char * <VAR
+CLASS="PDPARAM"
+>set_name</VAR
+>, const char * <VAR
+CLASS="PDPARAM"
+>set_desc</VAR
+>, int <VAR
+CLASS="PDPARAM"
+>event_type</VAR
+>, const char * <VAR
+CLASS="PDPARAM"
+>prop_id_ascii</VAR
+>, const char * <VAR
+CLASS="PDPARAM"
+>prop_name</VAR
+>, const char * <VAR
+CLASS="PDPARAM"
+>prop_desc</VAR
+>, int <VAR
+CLASS="PDPARAM"
+>val_type</VAR
+>, int <VAR
+CLASS="PDPARAM"
+>use_minmax</VAR
+>, double <VAR
+CLASS="PDPARAM"
+>min</VAR
+>, double <VAR
+CLASS="PDPARAM"
+>max</VAR
+>, const char * <VAR
+CLASS="PDPARAM"
+>unit</VAR
+>);</CODE
+></P
+><P
+></P
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN3360"
+></A
+><H2
+>Arguments</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><VAR
+CLASS="PARAMETER"
+>eh</VAR
+></DT
+><DD
+><P
+>evaluation handle    </P
+></DD
+><DT
+><VAR
+CLASS="PARAMETER"
+>set_id_ascii</VAR
+></DT
+><DD
+><P
+>event-set id-string (only ASCII char's allowed)    </P
+></DD
+><DT
+><VAR
+CLASS="PARAMETER"
+>set_name</VAR
+></DT
+><DD
+><P
+>event-set name    </P
+></DD
+><DT
+><VAR
+CLASS="PARAMETER"
+>set_desc</VAR
+></DT
+><DD
+><P
+>event-set description    </P
+></DD
+><DT
+><VAR
+CLASS="PARAMETER"
+>event_type</VAR
+></DT
+><DD
+><P
+>type of event (discrete or continues)    </P
+></DD
+><DT
+><VAR
+CLASS="PARAMETER"
+>prop_id_ascii</VAR
+></DT
+><DD
+><P
+>event-property id-string (only ASCII char's allowed)    </P
+></DD
+><DT
+><VAR
+CLASS="PARAMETER"
+>prop_name</VAR
+></DT
+><DD
+><P
+>event-property name    </P
+></DD
+><DT
+><VAR
+CLASS="PARAMETER"
+>prop_desc</VAR
+></DT
+><DD
+><P
+>event-property description    </P
+></DD
+><DT
+><VAR
+CLASS="PARAMETER"
+>val_type</VAR
+></DT
+><DD
+><P
+>type of value (short, long or double)    </P
+></DD
+><DT
+><VAR
+CLASS="PARAMETER"
+>use_minmax</VAR
+></DT
+><DD
+><P
+>are the following parameters min and max are valid    </P
+></DD
+><DT
+><VAR
+CLASS="PARAMETER"
+>min</VAR
+></DT
+><DD
+><P
+>normal min. value of the property    </P
+></DD
+><DT
+><VAR
+CLASS="PARAMETER"
+>max</VAR
+></DT
+><DD
+><P
+>normal max. value of the property    </P
+></DD
+><DT
+><VAR
+CLASS="PARAMETER"
+>unit</VAR
+></DT
+><DD
+><P
+>unit of the property    </P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN3428"
+></A
+><H2
+>Description</H2
+><P
+>This function adds a new event-property the evaluation eh.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN3431"
+></A
+><H2
+>source file</H2
+><P
+>event_prop.c</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="api-ra-prop-add-name.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="api-ra-prop-del.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_prop_add_name</SPAN
+></SPAN
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c_interface_ref.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_prop_del</SPAN
+></SPAN
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

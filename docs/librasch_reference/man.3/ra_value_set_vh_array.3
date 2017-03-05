@@ -1,0 +1,21 @@
+.TH "ra_value_set_vh_array" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_set_vh_array \- set value-handle-array values in value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_value_set_vh_array
+.BI "(value_handle " vh ","
+.BI "const value_handle * " array ","
+.BI "unsigned long " num ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.IP "array" 12
+ array to set in ra_value
+.IP "num" 12
+ number of array elements
+.SH "DESCRIPTION"
+This function set the value-handle array 'array' with num elements in vh.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

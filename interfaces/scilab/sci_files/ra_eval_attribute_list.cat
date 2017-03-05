@@ -1,0 +1,7 @@
+
+    Get the list of available attributes for evaluation related handle 'handle'.
+    Input parameters:
+    handle
+
+  Output parameters:
+    value

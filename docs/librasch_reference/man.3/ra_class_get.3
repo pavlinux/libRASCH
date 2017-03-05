@@ -1,0 +1,21 @@
+.TH "ra_class_get" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_class_get \- return event-class 
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_class_get
+.BI "(eval_handle " eh ","
+.BI "const char * " id ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "eh" 12
+ evaluation handle
+.IP "id" 12
+ event-class ASCII-id
+.IP "vh" 12
+ value handle
+.SH "DESCRIPTION"
+The function returns all event-classes with the id 'id'. If 'id' is NULL (or is an empty string), all event-classes in the evaluation 'eh' are given.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

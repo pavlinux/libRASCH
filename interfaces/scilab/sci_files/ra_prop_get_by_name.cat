@@ -1,0 +1,7 @@
+Returns the event-property-handle with the name 'name'.
+  Input parameters:
+    eval_handle
+    name
+
+  Output parameters:
+    prop_handle

@@ -1,0 +1,18 @@
+.TH "ra_meas_find_next" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_meas_find_next \- find libRASCH-handled measurements (returns next)
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_meas_find_next
+.BI "(ra_find_handle " h ","
+.BI "struct ra_find_struct * " rfs ");"
+.SH ARGUMENTS
+.IP "h" 12
+ find-handle
+.IP "rfs" 12
+ pointer to ra_find_struct which will held the infos for the found measurement.
+.SH "DESCRIPTION"
+Returns 1 if another measurement was found (the information will be in mfs) or 0 if there are no more measurements searched with ra_meas_find_first().
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

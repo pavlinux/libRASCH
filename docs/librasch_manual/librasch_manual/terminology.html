@@ -1,0 +1,324 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Terminology</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="User Manual for libRASCH-0.7.2"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Concepts and Terminology"
+HREF="concept_terminology.html"><LINK
+REL="PREVIOUS"
+TITLE="Concepts and Terminology"
+HREF="concept_terminology.html"><LINK
+REL="NEXT"
+TITLE="A Tutorial"
+HREF="tutorial.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="SECTION"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>User Manual for libRASCH-0.7.2</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="concept_terminology.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 2. Concepts and Terminology</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="tutorial.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="TERMINOLOGY"
+>Terminology</A
+></H1
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>Measurement</DT
+><DD
+><P
+>A measurement is the topmost object in libRASCH. Measurements
+consists of one or more sessions, information about the measurement
+object (e.g. name, forename and birthday if the measurement object is
+a person) and zero or more evaluations.</P
+></DD
+><DT
+>Session</DT
+><DD
+><P
+>A Session is a recording for a specific time interval without any
+interruptions during this time interval. In a measurement can be more
+than one session, but the layout of the recording (see below)
+must not be changed.</P
+></DD
+><DT
+>Recording</DT
+><DD
+><P
+>A recording contains the measured data (e.g. ecg-leads V1-V6). A
+recording has one or more channels or two or more
+sub-recordings. Sub-recordings are used if more than one
+recording device is used. For example when one ADC-system records
+3 ecg-leads and one bloodpressure channel and another system
+records 12 eeg-leeds, the measurement consists of one top
+recording with two sub-recordings. The first sub-recording
+contains 4 channels (3 ecg and 1 bloodpressure channel) and the second
+sub-recording contains 12 channels (12 eeg channels). </P
+></DD
+><DT
+>Evaluation</DT
+><DD
+><P
+>The results of an analysis (e.g. detection of qrs-complexes in ecg's)
+are stored in an evaluation. An evaluation contains zero or more
+discrete events (like 'occurence of a qrs-complex') and/or zero or more continous
+events (like 'time interval with noise'). </P
+></DD
+><DT
+>Event</DT
+><DD
+><P
+>An event describes the occurence of something in a recording (e.g. a
+heartbeat in an ecg). An event has one or more event-properties.</P
+></DD
+><DT
+>Event-Property</DT
+><DD
+><P
+>An event-property is a specific property of the event (e.g. the position
+of the event, the type of the event). A specific event-property is
+allowed only once in an evaluation, for example there can be not more than one
+'qrs-position' property.</P
+></DD
+><DT
+>Event-Set</DT
+><DD
+><P
+>An event-set describes a group of event-properties. For example the
+event-set 'heartbeat' contains all properties which belongs to a heart
+beat (like position of qrs-complex, RR interval, type of qrs-complex,
+systolic bloodpressure).</P
+></DD
+><DT
+>Plugins</DT
+><DD
+><P
+>libRASCH makes heavy use of plugins. Plugins are small "programs" which
+are loaded when libRASCH is initialized. In the plugins the real work is
+done, the library-code coordinates that the correct plugin is used and
+does some other administrative tasks.
+
+In libRASCH exits three principal types of plugins: 
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>signal plugins</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>view plugins</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>process plugins</P
+></LI
+></UL
+></P
+></DD
+><DT
+>Access-Plugin</DT
+><DD
+><P
+>Access plugins handle the access to measurement files. They hide
+the differences of the various types of formats and offer
+an consistent interface to the measurements<A
+NAME="AEN86"
+HREF="#FTN.AEN86"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+>. Most of the times, the direct usage of
+access-plugins with the libRASCH-API is not needed.</P
+></DD
+><DT
+>Process-Plugin</DT
+><DD
+><P
+>Process plugins perform a specifc task on the measurement (e.g. the
+HRT-plugin calculates the Heart-Rate Turbulence parameters for an
+ecg or the detect plugin performs a simple beat detection in ecg's).
+The usage of these plugins </P
+></DD
+><DT
+>View-Plugin</DT
+><DD
+><P
+>View plugins allow to display the measurements on the screen. If you
+develop a program using a graphical user interface (GUI) all you need
+to display signals is to call the apropriate plugin. At the moment the
+following GUI's are supported:
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>Qt from Trolltech (for Linux)</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>MFC from Microsoft (for Windows)</P
+></LI
+></UL
+></P
+></DD
+></DL
+></DIV
+></DIV
+><H3
+CLASS="FOOTNOTES"
+>Notes</H3
+><TABLE
+BORDER="0"
+CLASS="FOOTNOTES"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN86"
+HREF="terminology.html#AEN86"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>The signal plugins can be compared with device drivers in operating
+systems.</P
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="concept_terminology.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="tutorial.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Concepts and Terminology</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="concept_terminology.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>A Tutorial</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

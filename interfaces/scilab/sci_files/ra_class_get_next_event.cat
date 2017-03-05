@@ -1,0 +1,7 @@
+Returns the event-id of the next event.
+    Input parameters:
+    class_handle
+    event_id
+
+  Output parameters:
+    event_id

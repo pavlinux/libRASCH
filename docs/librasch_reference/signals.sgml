@@ -1,0 +1,830 @@
+
+<refentry>
+<refmeta>
+<refentrytitle><phrase id="SIG-select-event">select-event</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>select-event</refname>
+<refpurpose>
+select evens with a specific value
+</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<title>Synopsis</title>
+<funcsynopsis><funcprototype>
+<funcdef> <function>select-event </function></funcdef>
+<paramdef><parameter>event-name</parameter></paramdef><paramdef><parameter>event-value</parameter></paramdef></funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+<title>Arguments</title>
+<variablelist>
+<varlistentry>
+<term><parameter>event-name - char-pointer</parameter></term>
+<listitem>
+<para>
+name of an event-property
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><parameter>event-value - double</parameter></term>
+<listitem>
+<para>
+value of an event-property
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+
+      This signal will be emitted if a set of events ('event-name') with a
+      specific value ('event-value') should be selected.
+    
+</para>
+</refsect1>
+</refentry>
+
+
+
+<refentry>
+<refmeta>
+<refentrytitle><phrase id="SIG-highlight-event">highlight-event</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>highlight-event</refname>
+<refpurpose>
+highlight an event
+</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<title>Synopsis</title>
+<funcsynopsis><funcprototype>
+<funcdef> <function>highlight-event </function></funcdef>
+<paramdef><parameter>event-set-name</parameter></paramdef><paramdef><parameter>event-number</parameter></paramdef></funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+<title>Arguments</title>
+<variablelist>
+<varlistentry>
+<term><parameter>event-set-name - char-pointer</parameter></term>
+<listitem>
+<para>
+name of an event-set
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><parameter>event-number - long</parameter></term>
+<listitem>
+<para>
+number of a single event
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+
+      This signal can be emitted from a plugin if an event was selected and
+      this event should be emphasised in other view-plugins. The
+      selected event has the number 'event-number' and is in the event-set
+      'event-set-name'.      
+    
+</para>
+</refsect1>
+</refentry>
+
+
+
+<refentry>
+<refmeta>
+<refentrytitle><phrase id="SIG-eval-change">eval-change</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>eval-change</refname>
+<refpurpose>
+evaluation has changed
+</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<title>Synopsis</title>
+<funcsynopsis><funcprototype>
+<funcdef> <function>eval-change </function></funcdef>
+<paramdef><parameter>none</parameter></paramdef>
+</funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+<title>Arguments</title>
+<variablelist>
+<varlistentry>
+<term><parameter>-</parameter></term>
+<listitem>
+<para>
+no argument
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+
+      This signal will be emitted if the default-evaluation has changed. The receiving
+      plugins must re-read the evaluation data and correct their handling of
+      the evaluation data (e.g. displaying a x/y-plot) if necessary.
+    
+</para>
+</refsect1>
+</refentry>
+
+
+
+<refentry>
+<refmeta>
+<refentrytitle><phrase id="SIG-start-event-change">start-event-change</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>start-event-change</refname>
+<refpurpose>
+some event-change signals are coming
+</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<title>Synopsis</title>
+<funcsynopsis><funcprototype>
+<funcdef> <function>start-event-change </function></funcdef>
+<paramdef><parameter>none</parameter></paramdef>
+</funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+<title>Arguments</title>
+<variablelist>
+<varlistentry>
+<term><parameter>-</parameter></term>
+<listitem>
+<para>
+no argument
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+
+    This signal will be emitted if more than one event-change signal
+    is coming. The plugin can decide if it will response to every
+    single change or collect all changes and response to the
+    "end-event-change" signal.
+    
+</para>
+</refsect1>
+</refentry>
+
+
+
+<refentry>
+<refmeta>
+<refentrytitle><phrase id="SIG-end-event-change">end-event-change</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>end-event-change</refname>
+<refpurpose>
+close an start-event-change
+</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<title>Synopsis</title>
+<funcsynopsis><funcprototype>
+<funcdef> <function>end-event-change </function></funcdef>
+<paramdef><parameter>none</parameter></paramdef>
+</funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+<title>Arguments</title>
+<variablelist>
+<varlistentry>
+<term><parameter>-</parameter></term>
+<listitem>
+<para>
+no argument
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+
+    This signal 'closes' an "start-event-change". If the plugin
+    collected the event-changes, now it can handle the changes.
+    
+</para>
+</refsect1>
+</refentry>
+
+
+
+<refentry>
+<refmeta>
+<refentrytitle><phrase id="SIG-event-change">event-change</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>event-change</refname>
+<refpurpose>
+event-value has changed
+</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<title>Synopsis</title>
+<funcsynopsis><funcprototype>
+<funcdef> <function>event-change </function></funcdef>
+<paramdef><parameter>event-name</parameter></paramdef><paramdef><parameter>event-number</parameter></paramdef></funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+<title>Arguments</title>
+<variablelist>
+<varlistentry>
+<term><parameter>event-name - char-pointer</parameter></term>
+<listitem>
+<para>
+name of an event-property
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><parameter>event-number - long</parameter></term>
+<listitem>
+<para>
+number of a single event
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+
+      This signal will be emitted if the value of an event-property
+      has changed. The receiving plugins must check if the
+      event-property is handled by the plugin and can ignore it, if it
+      is not handled. If it is handled, the plugin can update whatever
+      is needed (e.g. replot event-property values). If 'event-number'
+      is -1, the whole event-property should be re-read.
+    
+</para>
+</refsect1>
+</refentry>
+
+
+
+<refentry>
+<refmeta>
+<refentrytitle><phrase id="SIG-region-change">region-change</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>region-change</refname>
+<refpurpose>
+
+</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<title>Synopsis</title>
+<funcsynopsis><funcprototype>
+<funcdef> <function>region-change </function></funcdef>
+<paramdef><parameter>rec-pos</parameter></paramdef><paramdef><parameter>rec-pos</parameter></paramdef></funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+<title>Arguments</title>
+<variablelist>
+<varlistentry>
+<term><parameter>rec-pos - long</parameter></term>
+<listitem>
+<para>
+position in recording stream
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><parameter>rec-pos - long</parameter></term>
+<listitem>
+<para>
+position in recording stream
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+
+      This signal will be emitted if something changed between two positions.
+    
+</para>
+</refsect1>
+</refentry>
+
+
+
+<refentry>
+<refmeta>
+<refentrytitle><phrase id="SIG-add-event">add-event</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>add-event</refname>
+<refpurpose>
+an event was added
+</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<title>Synopsis</title>
+<funcsynopsis><funcprototype>
+<funcdef> <function>add-event </function></funcdef>
+<paramdef><parameter>event-set-name</parameter></paramdef><paramdef><parameter>event-number</parameter></paramdef></funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+<title>Arguments</title>
+<variablelist>
+<varlistentry>
+<term><parameter>event-set-name - char-pointer</parameter></term>
+<listitem>
+<para>
+name of an event-set
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><parameter>event-number - long</parameter></term>
+<listitem>
+<para>
+number of a single event
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+
+      This signal will be emitted if a new event (with event-number
+      'event-number') was added to event-set 'event-set-name'.
+    
+</para>
+</refsect1>
+</refentry>
+
+
+
+<refentry>
+<refmeta>
+<refentrytitle><phrase id="SIG-del-event-begin">del-event-begin</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>del-event-begin</refname>
+<refpurpose>
+start of an event-deletion
+</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<title>Synopsis</title>
+<funcsynopsis><funcprototype>
+<funcdef> <function>del-event-begin </function></funcdef>
+<paramdef><parameter>event-set-name</parameter></paramdef><paramdef><parameter>event-number</parameter></paramdef></funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+<title>Arguments</title>
+<variablelist>
+<varlistentry>
+<term><parameter>event-set-name - char-pointer</parameter></term>
+<listitem>
+<para>
+name of an event-set
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><parameter>event-number - long</parameter></term>
+<listitem>
+<para>
+number of a single event
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+
+      This signal will be emitted before an event will be deleted. This enables
+      plugins to get infos from the event before deletion. E.g. for templates
+      it is necessary to know th template-number used by an event. The deleted
+      event is event number 'event-number' from the event-set 'event-set-name'.
+    
+</para>
+</refsect1>
+</refentry>
+
+
+
+<refentry>
+<refmeta>
+<refentrytitle><phrase id="SIG-del-event-end">del-event-end</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>del-event-end</refname>
+<refpurpose>
+end of an event-deletion
+</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<title>Synopsis</title>
+<funcsynopsis><funcprototype>
+<funcdef> <function>del-event-end </function></funcdef>
+<paramdef><parameter>event-set-name</parameter></paramdef><paramdef><parameter>event-number</parameter></paramdef></funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+<title>Arguments</title>
+<variablelist>
+<varlistentry>
+<term><parameter>event-set-name - char-pointer</parameter></term>
+<listitem>
+<para>
+name of an event-set
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><parameter>event-number - long</parameter></term>
+<listitem>
+<para>
+number of a single event
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+
+      This signal will be emitted after an event was deleted. The deleted
+      event is event number 'event-number' from the event-set 'event-set-name'.
+    
+</para>
+</refsect1>
+</refentry>
+
+
+
+<refentry>
+<refmeta>
+<refentrytitle><phrase id="SIG-template-delete">template-delete</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>template-delete</refname>
+<refpurpose>
+a template was deleted
+</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<title>Synopsis</title>
+<funcsynopsis><funcprototype>
+<funcdef> <function>template-delete </function></funcdef>
+<paramdef><parameter>event-set-name</parameter></paramdef><paramdef><parameter>template-number</parameter></paramdef></funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+<title>Arguments</title>
+<variablelist>
+<varlistentry>
+<term><parameter>event-set-name - char-pointer</parameter></term>
+<listitem>
+<para>
+name of an event-set
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><parameter>template-number - long</parameter></term>
+<listitem>
+<para>
+number of a template
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+
+      This signal will be emitted after a template was deleted. The deleted
+      template is template number 'template-number' from the event-set 'event-set-name'.
+    
+</para>
+</refsect1>
+</refentry>
+
+
+
+<refentry>
+<refmeta>
+<refentrytitle><phrase id="SIG-template-add">template-add</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>template-add</refname>
+<refpurpose>
+a template was added
+</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<title>Synopsis</title>
+<funcsynopsis><funcprototype>
+<funcdef> <function>template-add </function></funcdef>
+<paramdef><parameter>event-set-name</parameter></paramdef><paramdef><parameter>template-number</parameter></paramdef></funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+<title>Arguments</title>
+<variablelist>
+<varlistentry>
+<term><parameter>event-set-name - char-pointer</parameter></term>
+<listitem>
+<para>
+name of an event-set
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><parameter>template-number - long</parameter></term>
+<listitem>
+<para>
+number of a template
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+
+      This signal will be emitted if a template was added. The added template
+      is template number 'template-number' from the event-set 'event-set-name'.
+    
+</para>
+</refsect1>
+</refentry>
+
+
+
+<refentry>
+<refmeta>
+<refentrytitle><phrase id="SIG-pos-change">pos-change</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>pos-change</refname>
+<refpurpose>
+set view to a new position
+</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<title>Synopsis</title>
+<funcsynopsis><funcprototype>
+<funcdef> <function>pos-change </function></funcdef>
+<paramdef><parameter>rec-pos</parameter></paramdef><paramdef><parameter>max-x-scale</parameter></paramdef></funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+<title>Arguments</title>
+<variablelist>
+<varlistentry>
+<term><parameter>rec-pos - long</parameter></term>
+<listitem>
+<para>
+position in recording stream
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><parameter>max-x-scale - double</parameter></term>
+<listitem>
+<para>
+scaling factor for x-axis for channel with highest samplerate
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+
+      This signal will be emitted, if a view-plugin changed the position in the
+      recording stream which is displayed. The new position is given by
+      'rec-pos' and is in sampleunits of the recording. View-plugins MUST
+      handle this signal. (TODO: think about how to handle different recordings?)
+    
+</para>
+</refsect1>
+</refentry>
+
+
+
+<refentry>
+<refmeta>
+<refentrytitle><phrase id="SIG-gui-event-start">gui-event-start</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>gui-event-start</refname>
+<refpurpose>
+start of signal activated by GUI-event
+</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<title>Synopsis</title>
+<funcsynopsis><funcprototype>
+<funcdef> <function>gui-event-start </function></funcdef>
+<paramdef><parameter>none</parameter></paramdef>
+</funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+<title>Arguments</title>
+<variablelist>
+<varlistentry>
+<term><parameter>-</parameter></term>
+<listitem>
+<para>
+no argument
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+
+      This signal will indicate that the next signal(s) emitted is(are) released by a
+      GUI-event (e.g. mouse click).
+    
+</para>
+</refsect1>
+</refentry>
+
+
+
+<refentry>
+<refmeta>
+<refentrytitle><phrase id="SIG-gui-event-end">gui-event-end</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>gui-event-end</refname>
+<refpurpose>
+end of signal activated by GUI-event
+</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<title>Synopsis</title>
+<funcsynopsis><funcprototype>
+<funcdef> <function>gui-event-end </function></funcdef>
+<paramdef><parameter>none</parameter></paramdef>
+</funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+<title>Arguments</title>
+<variablelist>
+<varlistentry>
+<term><parameter>-</parameter></term>
+<listitem>
+<para>
+no argument
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+
+      Indicating that the GUI-event is finished. (see 'gui-event-start'). 
+    
+</para>
+</refsect1>
+</refentry>
+
+
+
+<refentry>
+<refmeta>
+<refentrytitle><phrase id="SIG-x-resolution">x-resolution</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>x-resolution</refname>
+<refpurpose>
+set new resolution of x-axis
+</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<title>Synopsis</title>
+<funcsynopsis><funcprototype>
+<funcdef> <function>x-resolution </function></funcdef>
+<paramdef><parameter>x-res</parameter></paramdef><paramdef><parameter>gui-parent</parameter></paramdef></funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+<title>Arguments</title>
+<variablelist>
+<varlistentry>
+<term><parameter>x-res - double</parameter></term>
+<listitem>
+<para>
+resolution of the x-axis
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><parameter>gui-parent - long</parameter></term>
+<listitem>
+<para>
+id (e.g. the pointer) of the parent gui-element
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+
+      This signal will be emitted if the resolution of the x-axis of a view has
+      changed. The new reslution is given by 'x-res'. Additionally the parent
+      of the view is given by 'gui-parent'. Normally the view only change his
+      x-resolution if the parent of the receiving view is the same as the
+      sending view (sync. of splitted views).
+    
+</para>
+</refsect1>
+</refentry>
+
+
+
+<refentry>
+<refmeta>
+<refentrytitle><phrase id="SIG-y-resolution">y-resolution</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>y-resolution</refname>
+<refpurpose>
+set new mm/unit of a channel
+</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<title>Synopsis</title>
+<funcsynopsis><funcprototype>
+<funcdef> <function>y-resolution </function></funcdef>
+<paramdef><parameter>mm-per-unit</parameter></paramdef><paramdef><parameter>channel</parameter></paramdef></funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+<title>Arguments</title>
+<variablelist>
+<varlistentry>
+<term><parameter>mm-per-unit - double</parameter></term>
+<listitem>
+<para>
+mm/unit a channel
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><parameter>channel - long</parameter></term>
+<listitem>
+<para>
+channel-number of root-measurement
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+
+      This signal will be emitted if the mm/unit of a
+      channel has changed. The new y-resolution is given by
+      'mm-per-unit', the channel by 'channel'.
+    
+</para>
+</refsect1>
+</refentry>
+
+

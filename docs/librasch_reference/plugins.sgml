@@ -1,0 +1,1478 @@
+<section id="access-plugins"><title>Access Plugins</title>
+
+<refentry id="plugin-ART">
+<refmeta>
+<refentrytitle><phrase>ART</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>ART</refname>
+<refpurpose>
+Handle signals recorded for ART-Study
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin handles signals which are recorded for the ART-Study. To access the recorded data, the plugins for portilab and portapres are used.
+</para>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.3.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-adi-ascii">
+<refmeta>
+<refentrytitle><phrase>adi-ascii</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>adi-ascii</refname>
+<refpurpose>
+Handle signals recorded with Powerlab and saved as ASCII files
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin provides access to signals recorded with Powerlab from ADInstruments and exported as an ASCII file.
+</para>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.1.1</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (librasch@gmail.com)</para>
+</refsect1></refentry>
+<refentry id="plugin-cfs">
+<refmeta>
+<refentrytitle><phrase>cfs</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>cfs</refname>
+<refpurpose>
+Handle signals saved using the CED Filing System (CFS)
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin provides access to recordings saved in the CED Filing System (CFS) format. At the moment only equalspaced channels are supported.
+</para>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.2.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-ctg-rasch">
+<refmeta>
+<refentrytitle><phrase>ctg-rasch</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>ctg-rasch</refname>
+<refpurpose>
+Handle cardiotocogram signals exported from GMT system
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin provides access to CTG's exported from the GMT system. The exported raw data (three files: fetal heart rate child 1, fetal heart rate child 2 and uterine contraction) is packed in a directory with the extension '.ctg'. Additionally some information about the  mother and the recording is stored in the file 'ctg_info.txt'.
+</para>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.2.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-ctg-sonicaid">
+<refmeta>
+<refentrytitle><phrase>ctg-sonicaid</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>ctg-sonicaid</refname>
+<refpurpose>
+Handle cardiotocogram signals saved with the Oxford FetalCare system
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin provides access to CTG's handled with the Oxford FetalCare system. The information about the Mother and the recording date and time is stored in a Access database-file. Therefore a text file similar to the one in the ctg-rasch plugin will be used to handle this information (the file is called 'ctg_info.txt').
+</para>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.1.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-dadisp">
+<refmeta>
+<refentrytitle><phrase>dadisp</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>dadisp</refname>
+<refpurpose>
+Handle signals saved a DaDisp signal file format
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin provides access to recordings saved in a DaDisp signal file format. Because I have not used the program DaDisp but have only some files, this plugin supports only this format (files with the extension 'dsp' and a ASCII header at the beginning).
+</para>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.1.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-dasylab">
+<refmeta>
+<refentrytitle><phrase>dasylab</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>dasylab</refname>
+<refpurpose>
+Handle signals recorded using DasyLab
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin provides access to recordings saved in the format used by the DasyLab-Systems.
+</para>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.2.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-edf-edfp">
+<refmeta>
+<refentrytitle><phrase>edf/edf+</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>edf/edf+</refname>
+<refpurpose>
+Handle signals recorded using European Data Format(+)
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin provides access to recordings saved in the European Data Format (EDF) and the EDF+ format.
+</para>
+</refsect1>
+<refsect1>
+<title>Remarks</title>
+<para>
+ If the EDF+ file is a non-contiguous signal, than each data-block is handled as a single session. (Recommendation from Jesus Olivan.)</para>
+</refsect1><refsect1>
+<title>Version</title>
+<para>
+0.4.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (librasch@gmail.com)</para>
+</refsect1></refentry>
+<refentry id="plugin-ideeq-ascii">
+<refmeta>
+<refentrytitle><phrase>ideeq-ascii</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>ideeq-ascii</refname>
+<refpurpose>
+Handle signals recorded with IDEEQ and saved as ASCII files
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin provides access to signals recorded with IDEEQ and exported as an ASCII file.
+</para>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.1.1</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (librasch@gmail.com)</para>
+</refsect1></refentry>
+<refentry id="plugin-ishne-holter">
+<refmeta>
+<refentrytitle><phrase>ishne-holter</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>ishne-holter</refname>
+<refpurpose>
+Handle signals saved using ISHNE standard output for Holter ECG
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin provides access to recordings saved in the 'ISHNE standard output for Holter ECG' format.
+</para>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.3.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-mit-bih">
+<refmeta>
+<refentrytitle><phrase>mit-bih</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>mit-bih</refname>
+<refpurpose>
+Handle signals recorded using the MIT/BIH Data Format
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin provides access to recordings saved in the format used for the MIT/BIH database(s) and the databases of provides by PhysioNet (www.physionet.org).
+</para>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.5.1</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (librasch@gmail.com)</para>
+</refsect1></refentry>
+<refentry id="plugin-mortara-sparc">
+<refmeta>
+<refentrytitle><phrase>mortara-sparc</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>mortara-sparc</refname>
+<refpurpose>
+Handle ECGs stored in the (Mortara) SPARC format
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin provides access to ECGs stored in the (Mortara) SPARC format.
+</para>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.1.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-portapres">
+<refmeta>
+<refentrytitle><phrase>portapres</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>portapres</refname>
+<refpurpose>
+Handle signals recorded with Portapres-System
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin provides access to blood-pressure data recorded with the Portapres system.
+</para>
+</refsect1>
+<refsect1>
+<title>Remarks</title>
+<para>
+ Up to now only a small subset of the binary-file can be read. It is planned to add support to access the data exported with BeatScope.</para>
+</refsect1><refsect1>
+<title>Version</title>
+<para>
+0.2.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-poly5-tms32">
+<refmeta>
+<refentrytitle><phrase>poly5/tms32</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>poly5/tms32</refname>
+<refpurpose>
+Handle signals recorded using TMS ADC system and PortiLab
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin provides access to data recorded with the TMS ADC-system and using the PortiLab software.
+</para>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.2.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-read-rri">
+<refmeta>
+<refentrytitle><phrase>read-rri</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>read-rri</refname>
+<refpurpose>
+Handle RR interval-files (nearly the final design)
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin provides access to RR interval files. It now supports the first RR-interval format specific for libRASCH.
+</para>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.4.1</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (librasch@gmail.com)</para>
+</refsect1></refentry>
+
+</section>
+
+<section id="process-plugins"><title>Process Plugins</title>
+
+<refentry id="plugin-ap-morphology">
+<refmeta>
+<refentrytitle><phrase>ap-morphology</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>ap-morphology</refname>
+<refpurpose>
+get systolic and diastolyc values and positions of aterial pressure waves
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin get systolic and diastolic values and positions from bloodpressure waves. Additionally it tries to find calibration-intervals (eg in the Portapres system it is possible to enable calibration during the measurement).
+</para>
+</refsect1>
+<refsect1>
+<title>Results</title>
+<table frame=all><title>List of results of plugin ap-morphology</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Name</entry><entry>Description</entry><entry>type</entry></row></thead>
+<tbody>
+<row><entry>EV_ID</entry><entry>event-id's</entry><entry>long array</entry></row>
+<row><entry>CH</entry><entry>channel-number the tuple of data belongs to</entry><entry>long array</entry></row>
+<row><entry>SYST</entry><entry>systolic blood pressures</entry><entry>double array</entry></row>
+<row><entry>DIAS</entry><entry>diastolic blood pressures</entry><entry>double array</entry></row>
+<row><entry>MEAN</entry><entry>mean blood pressures</entry><entry>double array</entry></row>
+<row><entry>SYST_POS</entry><entry>positions of systolic measurements</entry><entry>long array</entry></row>
+<row><entry>DIAS_POS</entry><entry>positions of diastolic measurements</entry><entry>long array</entry></row>
+<row><entry>FLAGS</entry><entry>flags</entry><entry>long array</entry></row>
+<row><entry>IBI</entry><entry>inter beat intervals</entry><entry>double array</entry></row>
+<row><entry>CALIB_BEGIN</entry><entry>begin of the calibration sequences [su]</entry><entry>long array</entry></row>
+<row><entry>CALIB_END</entry><entry>end of the calibration sequences [su]</entry><entry>long array</entry></row>
+<row><entry>CALIB_CH</entry><entry>channel-number the calibration sequence belongs to</entry><entry>long array</entry></row>
+<row><entry>CALIB_INFO</entry><entry>infos about the calibration sequences</entry><entry>long array</entry></row>
+<row><entry>DPDT_MIN</entry><entry>dp/dt minimum</entry><entry>double array</entry></row>
+<row><entry>DPDT_MAX</entry><entry>dp/dt maximum</entry><entry>double array</entry></row>
+<row><entry>DPDT_MIN_POS</entry><entry>positions of dp/dt min</entry><entry>long array</entry></row>
+<row><entry>DPDT_MAX_POS</entry><entry>positions of dp/dt max</entry><entry>long array</entry></row>
+</tbody>
+</tgroup></table>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.4.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (librasch@gmail.com)</para>
+</refsect1></refentry>
+<refentry id="plugin-calibration">
+<refmeta>
+<refentrytitle><phrase>calibration</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>calibration</refname>
+<refpurpose>
+measure calibration signals in a recording
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin tries to detect and measure a calibration signal in a recording channel.
+</para>
+</refsect1>
+<refsect1>
+<title>Options</title>
+<table frame=all><title>List of options for plugin calibration</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Name</entry><entry>Description</entry><entry>type</entry></row></thead>
+<tbody>
+<row><entry>rh</entry><entry>recording handle</entry><entry>long</entry></row>
+<row><entry>ch</entry><entry>channel of the recording used to measure the calibration signal</entry><entry>long</entry></row>
+<row><entry>start_pos</entry><entry>signal-position to start search for calibration signal [su]</entry><entry>long</entry></row>
+<row><entry>end_pos</entry><entry>signal-position to stop search for calibration signal [su]</entry><entry>long</entry></row>
+<row><entry>use_data</entry><entry>use the data given in 'data'</entry>
+<row><entry>num_data</entry><entry>number of the data given in 'data'</entry><entry>long</entry></row>
+<row><entry>data</entry><entry>perform calibration meausure using this data</entry><entry>double array</entry></row>
+<row><entry>samplerate</entry><entry>samplerate used for the values in 'data'</entry><entry>double</entry></row>
+<row><entry>type</entry><entry>type of calibration signal (see CALIB_TYPE_* in ra_calibration.h)</entry><entry>long</entry></row>
+<row><entry>difference_lag</entry><entry>gap between samples used for difference signal [su]</entry><entry>long</entry></row>
+<row><entry>min_calib_amp</entry><entry>percentage of maximum difference used as minimal calibration amplitude</entry><entry>double</entry></row>
+<row><entry>segment_length</entry><entry>grid-width used to search for continous calibration signals [seconds]</entry><entry>double</entry></row>
+<row><entry>min_level_length</entry><entry>minimum duration staying on the same level [seconds]</entry><entry>double</entry></row>
+<row><entry>calib_cycle_length</entry><entry>length of one calibration cycle [seconds]</entry><entry>double</entry></row>
+<row><entry>get_cycle_length</entry><entry>flag if the calibration cycle length should be measured</entry>
+<row><entry>min_cycles</entry><entry>required minimum number of contiguous calibration cycles</entry><entry>long</entry></row>
+</tbody>
+</tgroup></table>
+</refsect1>
+<refsect1>
+<title>Results</title>
+<table frame=all><title>List of results of plugin calibration</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Name</entry><entry>Description</entry><entry>type</entry></row></thead>
+<tbody>
+<row><entry>calib_height</entry><entry>calibration value</entry><entry>double</entry></row>
+<row><entry>calib_high_value</entry><entry>high-level value of the calibration signal</entry><entry>double</entry></row>
+<row><entry>calib_low_value</entry><entry>low-level value of the calibration signal</entry><entry>double</entry></row>
+<row><entry>calib_width</entry><entry>width of the calibration signal (measured using 'calib_data')</entry><entry>double</entry></row>
+<row><entry>calib_type</entry><entry>type of the calibration signal</entry><entry>long</entry></row>
+<row><entry>calib_accuracy</entry><entry>accurcy of the calibration height [percent]</entry><entry>double</entry></row>
+<row><entry>calib_out_of_range</entry><entry>flag if calibration cycles reached upper or lower value range</entry><entry>long</entry></row>
+<row><entry>calib_data</entry><entry>data used to measure calibration (all valid segments combined)</entry><entry>double array</entry></row>
+<row><entry>calib_cycle_pos</entry><entry>start- and end-position of valid calibration cycles</entry><entry>long array</entry></row>
+</tbody>
+</tgroup></table>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.3.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-dawes-redman">
+<refmeta>
+<refentrytitle><phrase>dawes-redman</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>dawes-redman</refname>
+<refpurpose>
+calculate FHR variations using the Dawes/Redman criteria
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin calculates the fetal heart rate variations using the Dawes/Redman criteria. The estimation of the baseline of the fetal heart rate is done according the descriptions in the various papers from Dawes and Redman. For the digital filter, a Butterworth filter with order 4 and corner-frequency of 0.0017Hz (approx. 0.1 min-1)is used (using the 3.75sec epoch-values results in a samplerate of approx. 0.2667Hz). The filter was designed on the website of Tony Fisher, using the mkfilter cgi-script. This can be found at http://www-users.cs.york.ac.uk/~fisher/mkfilter/ .
+</para>
+</refsect1>
+<refsect1>
+<title>Results</title>
+<table frame=all><title>List of results of plugin dawes-redman</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Name</entry><entry>Description</entry><entry>type</entry></row></thead>
+<tbody>
+<row><entry>FHR_EPOCHS</entry><entry>epochs of the fetal heart rate (averages over 3.75 seconds)</entry><entry>double array</entry></row>
+<row><entry>FHR_BASELINE</entry><entry>baseline of the fetal heart rate</entry><entry>double array</entry></row>
+<row><entry>SIGNAL_LOST</entry><entry>signal lost in percent</entry><entry>double</entry></row>
+<row><entry>NUM_VALID_EPOCHS</entry><entry>number of valid epochs</entry><entry>long</entry></row>
+<row><entry>BASAL_FHR</entry><entry>basal heart rate of the fetus</entry><entry>double</entry></row>
+<row><entry>ACCEL_10</entry><entry>number of accelerations > 10bpm and <= 15bpm</entry><entry>long</entry></row>
+<row><entry>POS_ACCEL_10</entry><entry>positions of the accelerations between 10 and 15bpm</entry><entry>long array</entry></row>
+<row><entry>ACCEL_15</entry><entry>number of accelerations > 15bpm</entry><entry>long</entry></row>
+<row><entry>POS_ACCEL_15</entry><entry>positions of the accelerations > 15bpm</entry><entry>long array</entry></row>
+<row><entry>LOST_BEATS_20</entry><entry>decelerations < 20 lost beats</entry><entry>long</entry></row>
+<row><entry>POS_LOST_BEATS_20</entry><entry>positions of the decelerations < 20</entry><entry>long array</entry></row>
+<row><entry>LOST_BEATS_21_100</entry><entry>decelerations between 20 and 100 lost beats</entry><entry>long</entry></row>
+<row><entry>POS_LOST_BEATS_21_100</entry><entry>postions of the decelerations between 20 and 100</entry><entry>long array</entry></row>
+<row><entry>LOST_BEATS_101</entry><entry>decelerations above 100 lost beats</entry><entry>long</entry></row>
+<row><entry>POS_LOST_BEATS_101</entry><entry>postions of the decelerations above 100</entry><entry>long array</entry></row>
+<row><entry>MINUTE_RANGE</entry><entry>minute range for each minute in bpm</entry><entry>double array</entry></row>
+<row><entry>MINUTE_RANGE_MS</entry><entry>miniute range for each minute in msec</entry><entry>double array</entry></row>
+<row><entry>HIGH_VARIATIONS</entry><entry>number of minutes with high variations</entry><entry>long</entry></row>
+<row><entry>MIN_HIGH_VARIATIONS</entry><entry>the minutes with the high variations</entry><entry>long array</entry></row>
+<row><entry>LOW_VARIATIONS</entry><entry>number of minutes with low variations</entry><entry>long</entry></row>
+<row><entry>MIN_LOW_VARIATIONS</entry><entry>the minutes with low variations</entry><entry>long array</entry></row>
+<row><entry>LONG_TERM_VARIATIONS_MS</entry><entry>long term variations for all minutes in msec</entry><entry>double</entry></row>
+<row><entry>LONG_TERM_VARIATIONS_BPM</entry><entry>long term variations for all minutes in bpm</entry><entry>double</entry></row>
+<row><entry>LONG_TERM_VARIATIONS_HIGH_MS</entry><entry>long term variations for minutes with high variations in msec</entry><entry>double</entry></row>
+<row><entry>LONG_TERM_VARIATIONS_HIGH_BPM</entry><entry>long term variations for minutes with high variations in bpm</entry><entry>double</entry></row>
+<row><entry>SHORT_TERM_VARIATIONS</entry><entry>short term variations</entry><entry>double</entry></row>
+</tbody>
+</tgroup></table>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.2.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-detect-ctg">
+<refmeta>
+<refentrytitle><phrase>detect-ctg</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>detect-ctg</refname>
+<refpurpose>
+perform detections in cardiotocograms
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin performs detections of events in a cardiotocogram. At the moment only the position of the maximal uterine contraction will be searched.
+</para>
+</refsect1>
+<refsect1>
+<title>Remarks</title>
+<para>
+ In the future, the plugin will be combined with the detect-simple plugin. For this step, the detect-simple plugin will be extended with options and the possibility to return the detection results not only by saving them in the evaluation file. But to get a faster result, the CTG-specific code will be first implemented here.</para>
+</refsect1><refsect1>
+<title>Options</title>
+<table frame=all><title>List of options for plugin detect-ctg</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Name</entry><entry>Description</entry><entry>type</entry></row></thead>
+<tbody>
+<row><entry>num_ch</entry><entry>number of channels set in 'ch'</entry><entry>long</entry></row>
+<row><entry>ch</entry><entry>list of channels used for the event detection</entry><entry>long array</entry></row>
+<row><entry>save_in_eval</entry><entry>flag if results should be saved in an evaluation</entry>
+<row><entry>eh</entry><entry>eval-handle used to store the results</entry>
+<row><entry>clh</entry><entry>event-class-handle used to store the results when region was selected</entry>
+</tbody>
+</tgroup></table>
+</refsect1>
+<refsect1>
+<title>Results</title>
+<table frame=all><title>List of results of plugin detect-ctg</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Name</entry><entry>Description</entry><entry>type</entry></row></thead>
+<tbody>
+<row><entry>num</entry><entry>number of found events</entry><entry>long</entry></row>
+<row><entry>pos</entry><entry>positions of the found events in sampleunits</entry><entry>long array</entry></row>
+</tbody>
+</tgroup></table>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.2.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-detect-ecg">
+<refmeta>
+<refentrytitle><phrase>detect-ecg</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>detect-ecg</refname>
+<refpurpose>
+performs ECG beat-detection and morphology measures
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The file provides the following digital signal processing (DSP) routines:  - FIR filter creation  - filtfilt function to filter a signal without a phase-distortion  - interpolation (increase in samplerate) of a signal
+</para>
+</refsect1>
+<refsect1>
+<title>Options</title>
+<table frame=all><title>List of options for plugin detect-ecg</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Name</entry><entry>Description</entry><entry>type</entry></row></thead>
+<tbody>
+<row><entry>num_ch</entry><entry>number of channels set in 'ch'</entry><entry>long</entry></row>
+<row><entry>ch</entry><entry>list of channels used for the event detection</entry><entry>long array</entry></row>
+<row><entry>combine_beats</entry><entry>flag if nearby beats (distance below 'min_beat_distance') should be combined</entry>
+<row><entry>min_beat_distance</entry><entry>minimum allowed distance between beats [seconds]</entry><entry>double</entry></row>
+<row><entry>save_in_eval</entry><entry>flag if results should be saved in an evaluation</entry>
+<row><entry>eh</entry><entry>eval-handle used to store the results</entry>
+<row><entry>clh</entry><entry>event-class-handle used to store the results when region was selected</entry>
+<row><entry>use_region</entry><entry>search beats in a given area</entry>
+<row><entry>region_start</entry><entry>start position of the search area</entry><entry>long</entry></row>
+<row><entry>region_end</entry><entry>end position of the search area</entry><entry>long</entry></row>
+<row><entry>region_start_is_beatpos</entry><entry>'region_start' is the beat position</entry>
+<row><entry>num_events</entry><entry>number of events set in 'events' option</entry><entry>long</entry></row>
+<row><entry>events</entry><entry>heartbeat events for which the wave-boundary detection should be re-run</entry><entry>long array</entry></row>
+<row><entry>filter_powerline_noise</entry><entry>flag if a power-line noise filter should be applied</entry>
+<row><entry>filter_baseline_wander</entry><entry>flag if a baseline-wander filter should be applied</entry>
+<row><entry>check_for_calibration</entry><entry>flag if for a calibration signal should be searched</entry>
+<row><entry>check_for_calibration</entry><entry>flag if for a calibration signal should be searched</entry>
+<row><entry>check_for_calibration</entry><entry>flag if for a calibration signal should be searched</entry>
+<row><entry>force_p_type</entry><entry></entry><entry>long</entry></row>
+<row><entry>force_qrs_type</entry><entry></entry><entry>long</entry></row>
+<row><entry>force_t_type</entry><entry></entry><entry>long</entry></row>
+<row><entry>check_wave_at_cursor</entry><entry></entry>
+<row><entry>edit_cursor_pos</entry><entry></entry><entry>long</entry></row>
+<row><entry>edit_cursor_pos</entry><entry></entry><entry>long</entry></row>
+<row><entry>thresh_p</entry><entry></entry><entry>double</entry></row>
+<row><entry>thresh_qrs</entry><entry></entry><entry>double</entry></row>
+<row><entry>thresh_t</entry><entry></entry><entry>double</entry></row>
+</tbody>
+</tgroup></table>
+</refsect1>
+<refsect1>
+<title>Results</title>
+<table frame=all><title>List of results of plugin detect-ecg</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Name</entry><entry>Description</entry><entry>type</entry></row></thead>
+<tbody>
+<row><entry>"ch_t_type", gettext_noop(""), RA_VALUE_TYPE_LONG_ARRAY</entry>
+<row><entry>"ch_t_type", gettext_noop(""), RA_VALUE_TYPE_LONG_ARRAY</entry>
+<row><entry>"ch_t_type", gettext_noop(""), RA_VALUE_TYPE_LONG_ARRAY</entry>
+<row><entry>"ch_t_type", gettext_noop(""), RA_VALUE_TYPE_LONG_ARRAY</entry>
+<row><entry>"ch_t_type", gettext_noop(""), RA_VALUE_TYPE_LONG_ARRAY</entry>
+<row><entry>"ch_t_type", gettext_noop(""), RA_VALUE_TYPE_LONG_ARRAY</entry>
+<row><entry>"ch_t_type", gettext_noop(""), RA_VALUE_TYPE_LONG_ARRAY</entry>
+<row><entry>"ch_t_type", gettext_noop(""), RA_VALUE_TYPE_LONG_ARRAY</entry>
+<row><entry>"ch_t_type", gettext_noop(""), RA_VALUE_TYPE_LONG_ARRAY</entry>
+<row><entry>"ch_t_type", gettext_noop(""), RA_VALUE_TYPE_LONG_ARRAY</entry>
+<row><entry>"ch_t_type", gettext_noop(""), RA_VALUE_TYPE_LONG_ARRAY</entry>
+<row><entry>"ch_t_type", gettext_noop(""), RA_VALUE_TYPE_LONG_ARRAY</entry>
+<row><entry>"ch_t_type", gettext_noop(""), RA_VALUE_TYPE_LONG_ARRAY</entry>
+<row><entry>"ch_t_type", gettext_noop(""), RA_VALUE_TYPE_LONG_ARRAY</entry>
+</tbody>
+</tgroup></table>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.1.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-ecg">
+<refmeta>
+<refentrytitle><phrase>ecg</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>ecg</refname>
+<refpurpose>
+perform ecg specific actions after reading original evaluation or doing detect using libRASCH
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin performs a finer classification of the qrs-complexes of an ecg, using from a previous evaluation only the information of the general annotation of a beat (coming from atrium, from ventricle, paced beat or artifact).  Using this plugin allows to have in libRASCH a consistent sub-classification (eg premature normal beat) independent of the original evaluation system used.
+</para>
+</refsect1>
+<refsect1>
+<title>Results</title>
+<table frame=all><title>List of results of plugin ecg</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Name</entry><entry>Description</entry><entry>type</entry></row></thead>
+<tbody>
+<row><entry>QRS_TEMPORAL</entry><entry>temporal setting of beat</entry>
+<row><entry>QRS_ANNOT</entry><entry>annotation of QRS complex</entry><entry>long array</entry></row>
+<row><entry>ECG_FLAGS</entry><entry>ecg flags</entry><entry>long array</entry></row>
+<row><entry>RRI</entry><entry>RR interval</entry><entry>double array</entry></row>
+<row><entry>RRI_ANNOT</entry><entry>annoation of RR interval</entry><entry>long array</entry></row>
+<row><entry>RRI_REFVALUE</entry><entry>reference rri representing the current heart-rate</entry><entry>double array</entry></row>
+<row><entry>RRI_NUM_REFVALUE</entry><entry>number of rri's used for calculation of reference value</entry>
+<row><entry>IDX_RRI</entry><entry>event indeces the RR intervals belongs to</entry><entry>long array</entry></row>
+<row><entry>p_width</entry><entry></entry><entry>double array</entry></row>
+<row><entry>qrs_width</entry><entry></entry><entry>double array</entry></row>
+<row><entry>t_width</entry><entry></entry><entry>double array</entry></row>
+<row><entry>pq</entry><entry></entry><entry>double array</entry></row>
+<row><entry>qt</entry><entry></entry><entry>double array</entry></row>
+<row><entry>qtc</entry><entry></entry><entry>double array</entry></row>
+<row><entry>qta</entry><entry></entry><entry>double array</entry></row>
+<row><entry>resp_phase</entry><entry></entry><entry>double array</entry></row>
+<row><entry>resp_ch</entry><entry></entry><entry>long array</entry></row>
+<row><entry>NUM_ALL</entry><entry>number of all QRS complexes</entry><entry>long</entry></row>
+<row><entry>NUM_UNKNOWN</entry><entry>number of un-classified QRS complexes</entry><entry>long</entry></row>
+<row><entry>IDX_UNKNOWN</entry><entry>event indeces of un-classified QRS complexes</entry><entry>long array</entry></row>
+<row><entry>NUM_SINUS</entry><entry>number of sinus beats</entry><entry>long</entry></row>
+<row><entry>IDX_SINUS</entry><entry>event indeces of sinus beats</entry><entry>long array</entry></row>
+<row><entry>NUM_NORMAL</entry><entry>number of normal sinus-beats</entry><entry>long</entry></row>
+<row><entry>IDX_NORMAL</entry><entry>event indeces of normal sinus-beats</entry><entry>long array</entry></row>
+<row><entry>NUM_SVPC</entry><entry>number of SVPCs</entry><entry>long</entry></row>
+<row><entry>IDX_SVPC</entry><entry>event indeces of SVPCs</entry><entry>long array</entry></row>
+<row><entry>NUM_SINUS_VPC</entry><entry>number of premature sinus-beats which following beats come late (perhaps VENT?)</entry><entry>long</entry></row>
+<row><entry>IDX_SINUS_VPC</entry><entry>event indeces of premature sinus-beats which following beats come late (perhaps VENT?)</entry><entry>long array</entry></row>
+<row><entry>NUM_PAUSE</entry><entry>number of pause</entry><entry>long</entry></row>
+<row><entry>IDX_PAUSE</entry><entry>event indeces of pause</entry><entry>long array</entry></row>
+<row><entry>NUM_VENT</entry><entry>number of VPCs</entry><entry>long</entry></row>
+<row><entry>IDX_VENT</entry><entry>event indeces of VPCs</entry><entry>long array</entry></row>
+<row><entry>NUM_VENT_SINGLE</entry><entry>number of single VPCs</entry><entry>long</entry></row>
+<row><entry>IDX_VENT_SINGLE</entry><entry>event indeces of single VPCs</entry><entry>long array</entry></row>
+<row><entry>NUM_VENT_SINGLE_PREM</entry><entry>number of VPCs which are premature</entry><entry>long</entry></row>
+<row><entry>IDX_VENT_SINGLE_PREM</entry><entry>event indeces of VPCs which are premature</entry><entry>long array</entry></row>
+<row><entry>NUM_VENT_SINGLE_PREM_COMP</entry><entry>number of VPCs which are premature and have a compensatory pause</entry><entry>long</entry></row>
+<row><entry>IDX_VENT_SINGLE_PREM_COMP</entry><entry>event indeces of VPCs which are premature and have a compensatory pause</entry><entry>long array</entry></row>
+<row><entry>NUM_INTERP</entry><entry>number of interpolated VPCs</entry><entry>long</entry></row>
+<row><entry>IDX_INTERP</entry><entry>event indeces of interpolated VPCs</entry><entry>long array</entry></row>
+<row><entry>NUM_ESACPE</entry><entry>number of escape beats</entry><entry>long</entry></row>
+<row><entry>IDX_ESCAPE</entry><entry>event indeces of escape beats</entry><entry>long array</entry></row>
+<row><entry>NUM_PACED</entry><entry>number of paced beats</entry><entry>long</entry></row>
+<row><entry>IDX_PACED</entry><entry>event indeces of paced beats</entry><entry>long array</entry></row>
+<row><entry>NUM_ARTIFACT</entry><entry>number of artifacts</entry><entry>long</entry></row>
+<row><entry>IDX_ARTIFACT</entry><entry>event indeces of artifacts</entry><entry>long array</entry></row>
+<row><entry>IDX_ARTIFACT</entry><entry>event indeces of artifacts</entry><entry>long array</entry></row>
+<row><entry>IDX_ARTIFACT</entry><entry>event indeces of artifacts</entry><entry>long array</entry></row>
+<row><entry>NUM_ARTIFACT_TYPE2</entry><entry>number of automatic detected artifacts: perhaps detected T-wave</entry><entry>long</entry></row>
+<row><entry>IDX_ARTIFACT_TYPE2</entry><entry>event indeces of automatic detected artifacts: perhaps detected T-wave</entry><entry>long array</entry></row>
+<row><entry>NUM_ARTIFACT_TYPE3</entry><entry>number of automatic detected artifacts: perhaps overlooked beat after a VPC</entry><entry>long</entry></row>
+<row><entry>IDX_ARTIFACT_TYPE3</entry><entry>event indeces of automatic detected artifacts: perhaps overlooked beat after a VPC</entry><entry>long array</entry></row>
+<row><entry>MIN_HR</entry><entry>min. heart rate</entry><entry>double</entry></row>
+<row><entry>IDX_MIN_HR</entry><entry>start event index of min. heart rate</entry><entry>long</entry></row>
+<row><entry>MAX_HR</entry><entry>max. heart rate</entry><entry>double</entry></row>
+<row><entry>IDX_MAX_HR</entry><entry>start event index of max. heart rate</entry><entry>long</entry></row>
+<row><entry>MEAN_HR</entry><entry>mean heart rate</entry><entry>double</entry></row>
+<row><entry>NUM_BRADY</entry><entry>number of bradycardia</entry><entry>long</entry></row>
+<row><entry>IDX_BRADY</entry><entry>start event indeces of the bradicardia</entry><entry>long array</entry></row>
+<row><entry>LEN_BRADY</entry><entry>length (#rri's) of the bradicardia</entry><entry>long array</entry></row>
+<row><entry>HR_BRADY</entry><entry>heart rate of the bradicardia</entry><entry>double array</entry></row>
+<row><entry>NUM_TACHY</entry><entry>number of tachycardia</entry><entry>long</entry></row>
+<row><entry>IDX_TACHY</entry><entry>start event indeces of the tachycardia</entry><entry>long array</entry></row>
+<row><entry>LEN_TACHY</entry><entry>length (#rri's) of the tachycardia</entry><entry>long array</entry></row>
+<row><entry>HR_TACHY</entry><entry>heart rate of the tachycardia</entry><entry>double array</entry></row>
+<row><entry>NUM_SSALVO</entry><entry>number of supraventricular salvos</entry><entry>long</entry></row>
+<row><entry>IDX_SSALVO</entry><entry>start event indeces of supraventricular salvos</entry><entry>long array</entry></row>
+<row><entry>LEN_SSALVO</entry><entry>length of supraventricular salvos</entry><entry>long</entry></row>
+<row><entry>HR_SSALVO</entry><entry>heart rate of supraventricular salvos</entry><entry>double</entry></row>
+<row><entry>NUM_SVT</entry><entry>number of supraventricular tachycardia</entry><entry>long</entry></row>
+<row><entry>IDX_SVT</entry><entry>start event indeces of supraventricular tachycardia</entry><entry>long array</entry></row>
+<row><entry>LEN_SVT</entry><entry>length of supraventricular tachycardia</entry><entry>long</entry></row>
+<row><entry>HR_SVT</entry><entry>heart rate of supraventricular tachycardia</entry><entry>double</entry></row>
+<row><entry>NUM_SSALVO_SVT</entry><entry>number of supraventricular salvos/SVT's</entry><entry>long</entry></row>
+<row><entry>IDX_SSALVO_SVT</entry><entry>start event indeces of supraventricular salvos/SVT's</entry><entry>long array</entry></row>
+<row><entry>LEN_SSALVO_SVT</entry><entry>length of supraventricular salvos/SVT's</entry><entry>long</entry></row>
+<row><entry>HR_SSALVO_SVT</entry><entry>heart rate of supraventricular salvos/SVT's</entry><entry>double</entry></row>
+<row><entry>NUM_IVR</entry><entry>number of ideoventricular rhythms</entry><entry>long</entry></row>
+<row><entry>IDX_IVR</entry><entry>start event indeces of ideoventricular rhythms</entry><entry>long array</entry></row>
+<row><entry>LEN_IVR</entry><entry>length (#rri's) of ideoventricular rhythms</entry><entry>long array</entry></row>
+<row><entry>HR_IVR</entry><entry>heart rate of ideoventricular rhythms</entry><entry>double array</entry></row>
+<row><entry>NUM_COUPLET</entry><entry>number of couplets</entry><entry>long</entry></row>
+<row><entry>IDX_COUPLET</entry><entry>event indeces of couplets</entry><entry>long array</entry></row>
+<row><entry>NUM_BIGEMINY</entry><entry>number of bigeminy</entry><entry>long</entry></row>
+<row><entry>IDX_BIGEMINY</entry><entry>start event indeces of the bigeminy</entry><entry>long array</entry></row>
+<row><entry>LEN_BIGEMINY</entry><entry>length (#rri's) of the bigeminy</entry><entry>long array</entry></row>
+<row><entry>NUM_TRIGEMINY</entry><entry>number of trigeminy</entry><entry>long</entry></row>
+<row><entry>IDX_TRIGEMINY</entry><entry>start event indeces of the trigeminy</entry><entry>long array</entry></row>
+<row><entry>LEN_TRIGEMINY</entry><entry>length (#rri's) of the trigeminy</entry><entry>long array</entry></row>
+<row><entry>NUM_SALVO</entry><entry>number of salvos</entry><entry>long</entry></row>
+<row><entry>IDX_SALVO</entry><entry>start event indeces of the salvos</entry><entry>long array</entry></row>
+<row><entry>LEN_SALVO</entry><entry>length (#rri's) of the salvos</entry><entry>long</entry></row>
+<row><entry>HR_SALVO</entry><entry>heart rate of the salvos</entry><entry>double</entry></row>
+<row><entry>NUM_VT</entry><entry>number of VTs</entry><entry>long</entry></row>
+<row><entry>IDX_VT</entry><entry>start event indeces of VTs</entry><entry>long array</entry></row>
+<row><entry>LEN_VT</entry><entry>length (#rri's) of the VTs</entry><entry>long</entry></row>
+<row><entry>HR_VT</entry><entry>heart rate of the VTs</entry><entry>double</entry></row>
+<row><entry>NUM_SALVO_VT</entry><entry>number of salvos/VTs</entry><entry>long</entry></row>
+<row><entry>IDX_SALVO_VT</entry><entry>start event indeces of the salvos/VTs</entry><entry>long array</entry></row>
+<row><entry>LEN_SALVO_VT</entry><entry>length (#rri's) of the salvos/VTs</entry><entry>long</entry></row>
+<row><entry>HR_SALVO_VT</entry><entry>heart rate of the salvos/VTs</entry><entry>double</entry></row>
+</tbody>
+</tgroup></table>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.5.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-fiducial-point">
+<refmeta>
+<refentrytitle><phrase>fiducial-point</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>fiducial-point</refname>
+<refpurpose>
+finds fiducial points
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin finds the fiducial-points of the QRS-complexes in an ecg.
+</para>
+</refsect1>
+<refsect1>
+<title>Options</title>
+<table frame=all><title>List of options for plugin fiducial-point</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Name</entry><entry>Description</entry><entry>type</entry></row></thead>
+<tbody>
+<row><entry>use_class</entry><entry>align events stored in option 'clh'</entry>
+<row><entry>clh</entry><entry>handle to the event-class holding the events which should be processed</entry>
+<row><entry>pos_prop</entry><entry>ASCII-id of the event-property holding the positions (optional)</entry><entry>char *</entry></row>
+<row><entry>save_in_class</entry><entry>flag if the fiducial-points should be saved in the event-class</entry>
+<row><entry>num_data</entry><entry>number of event-id's/sample-positions</entry><entry>long</entry></row>
+<row><entry>data</entry><entry>event-id's/sample-positions</entry><entry>long array</entry></row>
+<row><entry>data_is_pos</entry><entry>flag if values in 'data' are event-id's (=0) or sample positions (=1)</entry>
+<row><entry>ch</entry><entry>channel where fiducial point should be searched</entry><entry>long</entry></row>
+<row><entry>win_len</entry><entry>area (+-'win_len') where the fiducial-point will be searched [sec]</entry><entry>double</entry></row>
+<row><entry>corr_len</entry><entry>length of correlation [sec]</entry><entry>double</entry></row>
+</tbody>
+</tgroup></table>
+</refsect1>
+<refsect1>
+<title>Results</title>
+<table frame=all><title>List of results of plugin fiducial-point</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Name</entry><entry>Description</entry><entry>type</entry></row></thead>
+<tbody>
+<row><entry>pos</entry><entry>positions after the alignment</entry><entry>long array</entry></row>
+</tbody>
+</tgroup></table>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.3.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (librasch@gmail.com)</para>
+</refsect1></refentry>
+<refentry id="plugin-freq-analysis">
+<refmeta>
+<refentrytitle><phrase>freq-analysis</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>freq-analysis</refname>
+<refpurpose>
+perform frequency analysis
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+
+</para>
+</refsect1>
+<refsect1>
+<title>Options</title>
+<table frame=all><title>List of options for plugin freq-analysis</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Name</entry><entry>Description</entry><entry>type</entry></row></thead>
+<tbody>
+<row><entry>use_events</entry><entry>!=0: use events, ==0: use signal raw data</entry>
+<row><entry>clh</entry><entry>event class of the events</entry>
+<row><entry>prop_value</entry><entry>use these event-property for frequency analysis</entry><entry>char *</entry></row>
+<row><entry>use_event_pos</entry><entry>flag if positions should be used from the events (=1) or from 'prop_pos' (=0)</entry>
+<row><entry>use_event_pos</entry><entry>flag if positions should be used from the events (=1) or from 'prop_pos' (=0)</entry>
+<row><entry>use_event_pos</entry><entry>flag if positions should be used from the events (=1) or from 'prop_pos' (=0)</entry>
+<row><entry>num_events</entry><entry>use the events listed in events</entry><entry>long</entry></row>
+<row><entry>events</entry><entry>list of events to use</entry><entry>long array</entry></row>
+<row><entry>num_ignore_events</entry><entry>number of events which should be ignored</entry><entry>long</entry></row>
+<row><entry>ignore_events</entry><entry>list of events to ignore</entry><entry>long array</entry></row>
+<row><entry>rh</entry><entry>recording handle</entry>
+<row><entry>ch</entry><entry>channel which should be used</entry><entry>long</entry></row>
+<row><entry>ch</entry><entry>channel which should be used</entry><entry>long</entry></row>
+<row><entry>ch</entry><entry>channel which should be used</entry><entry>long</entry></row>
+<row><entry>use_start_end_pos</entry><entry>use raw-data/events between start_pos and end_pos</entry>
+<row><entry>start_pos</entry><entry>start-pos in sample-units</entry><entry>long</entry></row>
+<row><entry>end_pos</entry><entry>end-pos in sample-units</entry><entry>long</entry></row>
+<row><entry>num_values</entry><entry>number of values given in 'value'</entry><entry>long</entry></row>
+<row><entry>values</entry><entry>perform frequency analysis using this data</entry><entry>double array</entry></row>
+<row><entry>pos</entry><entry>positions of the values given in 'values'</entry><entry>double array</entry></row>
+<row><entry>pos_samplerate</entry><entry>samplerate of the position values</entry><entry>double</entry></row>
+<row><entry>samplerate</entry><entry>samplerate to use when freq.analysis should be done time based</entry><entry>double</entry></row>
+<row><entry>smooth_data</entry><entry>flag if input-data should be smoothed</entry>
+<row><entry>smooth_method</entry><entry>at the moment only a boxcar-filter is available</entry><entry>char *</entry></row>
+<row><entry>smooth_width</entry><entry>width of the smooth-filter</entry><entry>double</entry></row>
+<row><entry>window</entry><entry>window function used</entry><entry>char *</entry></row>
+<row><entry>remove_mean</entry><entry>remove the mean value before the frequency analysis</entry>
+<row><entry>remove_trend</entry><entry>remove the trend (first order) before the frequency analysis</entry>
+<row><entry>method</entry><entry>method used for the frequency analysis</entry><entry>char *</entry></row>
+<row><entry>num_freq</entry><entry>number of frequency components</entry><entry>long</entry></row>
+<row><entry>smooth_spec</entry><entry>flag if spectrum should be smoothed</entry>
+<row><entry>save_in_eval</entry><entry>save results in the evaluation file (not supported yet)</entry>
+</tbody>
+</tgroup></table>
+</refsect1>
+<refsect1>
+<title>Results</title>
+<table frame=all><title>List of results of plugin freq-analysis</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Name</entry><entry>Description</entry><entry>type</entry></row></thead>
+<tbody>
+<row><entry>FREQ_AXIS</entry><entry>frequency values (the x-axis)</entry><entry>double array</entry></row>
+<row><entry>PSD</entry><entry>Power Spectrum Density</entry><entry>double array</entry></row>
+<row><entry>REAL_PART</entry><entry>real part of the frequency spectrum</entry><entry>double array</entry></row>
+<row><entry>IMG_PART</entry><entry>imaginary part of the frequency spectrum</entry><entry>double array</entry></row>
+</tbody>
+</tgroup></table>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.3.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-hrv">
+<refmeta>
+<refentrytitle><phrase>hrv</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>hrv</refname>
+<refpurpose>
+calculate heart rate variability (HRV) parameters
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin calculates the heart rate variability (HRV) parameters. In the time domain the parameters, which are recommended from the Task Force for HRV, are calculated. The parameters from the frequency domain are calculated on the power-spectrum of the complete tachogram using FFT.
+</para>
+</refsect1>
+<refsect1>
+<title>Results</title>
+<table frame=all><title>List of results of plugin hrv</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Name</entry><entry>Description</entry><entry>type</entry></row></thead>
+<tbody>
+<row><entry>SDNN</entry><entry>standard deviation of normal-to-normal intervals</entry><entry>double</entry></row>
+<row><entry>HRVI</entry><entry>HRV-Index</entry><entry>double</entry></row>
+<row><entry>SDANN</entry><entry>standard deviation of averaged normal-to-normal intervals</entry><entry>double</entry></row>
+<row><entry>rmssd</entry><entry>root mean of squared sucsessive differences</entry><entry>double</entry></row>
+<row><entry>pNN50</entry><entry></entry><entry>double</entry></row>
+<row><entry>TP</entry><entry>total power</entry><entry>double</entry></row>
+<row><entry>ULF</entry><entry>ultra low frequency power</entry><entry>double</entry></row>
+<row><entry>VLF</entry><entry>very low frequency power of short-term recordings</entry><entry>double</entry></row>
+<row><entry>LF</entry><entry>low frequency power</entry><entry>double</entry></row>
+<row><entry>LF_NORM</entry><entry>normalised low frequency power</entry><entry>double</entry></row>
+<row><entry>HF</entry><entry>high freuqency power</entry><entry>double</entry></row>
+<row><entry>HF_NORM</entry><entry>normalised high frequency power</entry><entry>double</entry></row>
+<row><entry>LF_HF_RATIO</entry><entry>LF/HF ratio</entry><entry>double</entry></row>
+<row><entry>POWER_LAW</entry><entry>power law behavior</entry><entry>double</entry></row>
+<row><entry>TACHO_INDEX</entry><entry>Event numbers used for HRV calculations</entry><entry>long array</entry></row>
+<row><entry>USER_BAND</entry><entry>frequency power in a user-selected frequency band</entry><entry>double</entry></row>
+<row><entry>SD1</entry><entry>SD1 of the Poincare Plot</entry><entry>double</entry></row>
+<row><entry>SD2</entry><entry>SD2 of the Poincare Plot</entry><entry>double</entry></row>
+<row><entry>DFA</entry><entry>overall DFA Alpha</entry><entry>double</entry></row>
+<row><entry>DFA_OFFSET</entry><entry>offset of the overall DFA Alpha slope</entry><entry>double</entry></row>
+<row><entry>DFA1</entry><entry>DFA Alpha1</entry><entry>double</entry></row>
+<row><entry>DFA1_OFFSET</entry><entry>offset of the DFA Alpha-1 slope</entry><entry>double</entry></row>
+<row><entry>DFA2</entry><entry>DFA Alpha2</entry><entry>double</entry></row>
+<row><entry>DFA2_OFFSET</entry><entry>offset of the DFA Alpha-2 slope</entry><entry>double</entry></row>
+<row><entry>DFA_USER</entry><entry>DFA Alpha of user-defined range</entry><entry>double</entry></row>
+<row><entry>DFA_USER_OFFSET</entry><entry>offset of the user-defined DFA Alpha slope</entry><entry>double</entry></row>
+<row><entry>DFA_X</entry><entry>x-axis for DFA plot</entry><entry>double array</entry></row>
+<row><entry>DFA_Y</entry><entry>y-axis for DFA plot</entry><entry>double array</entry></row>
+</tbody>
+</tgroup></table>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.4.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-template">
+<refmeta>
+<refentrytitle><phrase>template</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>template</refname>
+<refpurpose>
+combine events in templates
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin group events which have similar raw-data (e.g. QRS-complexes which have a similar morphology).
+</para>
+</refsect1>
+<refsect1>
+<title>Options</title>
+<table frame=all><title>List of options for plugin template</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Name</entry><entry>Description</entry><entry>type</entry></row></thead>
+<tbody>
+<row><entry>rh</entry><entry>recording handle of the data which should be processed</entry>
+<row><entry>sh</entry><entry>event summary handle of already available template event-class</entry>
+<row><entry>use_class</entry><entry>align events stored in option 'clh'</entry>
+<row><entry>clh</entry><entry>handle to the event-class holding the events which should be processed</entry>
+<row><entry>pos_prop</entry><entry>ASCII-id of the event-property holding the positions (optional)</entry><entry>char *</entry></row>
+<row><entry>pos_ch</entry><entry>channel-number 'pos_prop' belongs to (only needed when 'pos_prop' is used)</entry><entry>long</entry></row>
+<row><entry>save_in_class</entry><entry>flag if the fiducial-points should be saved in the event-class</entry>
+<row><entry>num_data</entry><entry>number of event-id's/sample-positions</entry><entry>long</entry></row>
+<row><entry>data</entry><entry>event-id's/sample-positions</entry><entry>long array</entry></row>
+<row><entry>data_is_pos</entry><entry>flag if values in 'data' are event-id's (=0) or sample positions (=1)</entry>
+<row><entry>templ_name</entry><entry>name of event-type which holds template numbers</entry><entry>char *</entry></row>
+<row><entry>templ_corr</entry><entry>name of event-type which holds template correlation</entry><entry>char *</entry></row>
+<row><entry>corr_win_before</entry><entry>correlation window size before the reference position [sec]</entry><entry>double</entry></row>
+<row><entry>corr_win_after</entry><entry>correlation window size after the reference position [sec]</entry><entry>double</entry></row>
+</tbody>
+</tgroup></table>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.4.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (librasch@gmail.com)</para>
+</refsect1></refentry>
+
+</section>
+
+<section id="gui-plugins"><title>GUI/View Plugins</title>
+
+<refentry id="plugin-ch-select-dlg">
+<refmeta>
+<refentrytitle><phrase>ch-select-dlg</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>ch-select-dlg</refname>
+<refpurpose>
+dialog for selecting channels which will be used for processing
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para></para>
+</refsect1>
+<refsect1>
+<title>Options</title>
+<table frame=all><title>List of options for plugin ch-select-dlg</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Name</entry><entry>Description</entry><entry>type</entry></row></thead>
+<tbody>
+<row><entry>num_ch</entry><entry>number of channels given in 'ch_type_filter'</entry><entry>long</entry></row>
+<row><entry>ch_type_filter</entry><entry>list of channel types which have to be shown</entry><entry>long array</entry></row>
+</tbody>
+</tgroup></table>
+</refsect1>
+<refsect1>
+<title>Results</title>
+<table frame=all><title>List of results of plugin ch-select-dlg</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Name</entry><entry>Description</entry><entry>type</entry></row></thead>
+<tbody>
+<row><entry>CH</entry><entry>list of selected channels</entry><entry>long array</entry></row>
+</tbody>
+</tgroup></table>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.3.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+</para>
+</refsect1></refentry>
+<refentry id="plugin-eval-dlg">
+<refmeta>
+<refentrytitle><phrase>eval-dlg</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>eval-dlg</refname>
+<refpurpose>
+a dialog showing all evaluations for a measurement
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+
+</para>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.2.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-plugin-info-dlg">
+<refmeta>
+<refentrytitle><phrase>plugin-info-dlg</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>plugin-info-dlg</refname>
+<refpurpose>
+a dialog showing the list of all loaded plugins
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+
+</para>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.3.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-sig-sel-dlg-mfc">
+<refmeta>
+<refentrytitle><phrase>sig-sel-dlg-mfc</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>sig-sel-dlg-mfc</refname>
+<refpurpose>
+dialog to choose signales which can be handled with libRASCH (MFC version)
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin provides a dialog which allows to choose a measurement. The dialog shows all supported measurements in a directory, which can be selected.
+</para>
+</refsect1>
+<refsect1>
+<title>Options</title>
+<table frame=all><title>List of options for plugin sig-sel-dlg-mfc</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Name</entry><entry>Description</entry><entry>type</entry></row></thead>
+<tbody>
+<row><entry>initial_path</entry><entry>open dialog showing this path</entry><entry>char *</entry></row>
+</tbody>
+</tgroup></table>
+</refsect1>
+<refsect1>
+<title>Results</title>
+<table frame=all><title>List of results of plugin sig-sel-dlg-mfc</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Name</entry><entry>Description</entry><entry>type</entry></row></thead>
+<tbody>
+<row><entry>SEL_FILE</entry><entry>selected file (incl. path)</entry><entry>char *</entry></row>
+</tbody>
+</tgroup></table>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.3.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-simple-calc-dlg">
+<refmeta>
+<refentrytitle><phrase>simple-calc-dlg</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>simple-calc-dlg</refname>
+<refpurpose>
+dialog to perform calculations using process plugins
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin provides a dialog to perform calculations done process plugins. Only process plugins which return values (and not only store the results in the evaluation file like the beat-detect plugin) can be used (and only these can be selected).
+</para>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.2.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-annot-comment-view">
+<refmeta>
+<refentrytitle><phrase>annot-comment-view</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>annot-comment-view</refname>
+<refpurpose>
+view listing annotations/comments
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin list the annotations/comments saved in an evaluation.
+</para>
+</refsect1>
+<refsect1>
+<title>Options</title>
+<table frame=all><title>List of options for plugin annot-comment-view</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Name</entry><entry>Description</entry><entry>type</entry></row></thead>
+<tbody>
+<row><entry>eh</entry><entry>eval-handle</entry>
+</tbody>
+</tgroup></table>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.1.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (librasch@gmail.com)</para>
+</refsect1></refentry>
+<refentry id="plugin-cont-ap-view">
+<refmeta>
+<refentrytitle><phrase>cont-ap-view</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>cont-ap-view</refname>
+<refpurpose>
+view for continues arterial pressure recordings
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para></para>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.2.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+</para>
+</refsect1></refentry>
+<refentry id="plugin-ctg-view">
+<refmeta>
+<refentrytitle><phrase>ctg-view</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>ctg-view</refname>
+<refpurpose>
+view for cardiotocograms
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin allows to view ecg-stripes. The plugin use the ts-view plugin for showing the raw-data.
+</para>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.2.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-ecg-view">
+<refmeta>
+<refentrytitle><phrase>ecg-view</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>ecg-view</refname>
+<refpurpose>
+view for ecg's
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin allows to view ecg-stripes. The plugin use the ts-view plugin for showing the raw-data.
+</para>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.2.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (librasch@gmail.com)</para>
+</refsect1></refentry>
+<refentry id="plugin-ev-summary-view">
+<refmeta>
+<refentrytitle><phrase>ev-summary-view</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>ev-summary-view</refname>
+<refpurpose>
+view for event summaries
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin shows event-summaries of an evaluation.
+</para>
+</refsect1>
+<refsect1>
+<title>Options</title>
+<table frame=all><title>List of options for plugin ev-summary-view</title>
+<tgroup cols=3 align=left colsep=1 rowsep=1>
+<thead><row><entry>Name</entry><entry>Description</entry><entry>type</entry></row></thead>
+<tbody>
+<row><entry>sh</entry><entry>event-summary-handle</entry>
+</tbody>
+</tgroup></table>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.2.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-plot-view">
+<refmeta>
+<refentrytitle><phrase>plot-view</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>plot-view</refname>
+<refpurpose>
+plot evaluation data
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin plot evaluation data in a window and allows to control which data and in which format the data is plotted.
+</para>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.2.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-rasch-view">
+<refmeta>
+<refentrytitle><phrase>rasch-view</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>rasch-view</refname>
+<refpurpose>
+general view for libRASCH, handling all views
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ This plugin is a general view-plugin, which tries to use for every supported type of signal (eg ecg, bloodpressure) the corresponding view-plugin. For ever channels which is not handled by a specific view-plugin, the default plugin is used (eg ts-view for time-series signals).
+</para>
+</refsect1>
+<refsect1>
+<title>Remarks</title>
+<para>
+ Win32 specific: This view needs as parent a CMDIFrameWnd. The plugin creates a CMDIChildWnd and this will be returned. (The other view plugins don't create the CMDIChildWnd by themself, these plugins need a CMDIChildWnd as parent.)</para>
+</refsect1><refsect1>
+<title>Version</title>
+<para>
+0.3.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+<refentry id="plugin-ts-view">
+<refmeta>
+<refentrytitle><phrase>ts-view</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>ts-view</refname>
+<refpurpose>
+view for time-series
+</refpurpose>
+</refnamediv>
+<refsect1>
+<title>Description</title>
+<para>
+ The plugin shows the raw-data for time-series signals. This plugin is the default-plugin for all time-series signals.
+</para>
+</refsect1>
+<refsect1>
+<title>Version</title>
+<para>
+0.5.0</para>
+</refsect1><refsect1>
+<title>Author(s)</title>
+<para>
+Raphael Schneider (rasch@med1.med.tum.de)</para>
+</refsect1></refentry>
+
+</section>

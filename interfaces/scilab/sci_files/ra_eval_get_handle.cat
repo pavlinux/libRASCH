@@ -1,0 +1,6 @@
+Returns the evaluation-handle the event-class 'class_handle' belongs to.
+    Input parameters:
+    class_handle
+
+  Output parameters:
+    eval_handle

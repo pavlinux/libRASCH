@@ -1,0 +1,472 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Open measurement</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="User Manual for libRASCH-0.7.2"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Examples for all supported lanuages/systems"
+HREF="all_examples.html"><LINK
+REL="PREVIOUS"
+TITLE="Examples for all supported lanuages/systems"
+HREF="all_examples.html"><LINK
+REL="NEXT"
+TITLE="Handle recordings"
+HREF="x461.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="SECTION"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>User Manual for libRASCH-0.7.2</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="all_examples.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Appendix A. Examples for all supported lanuages/systems</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x461.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="AEN437"
+>Open measurement</A
+></H1
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN439"
+>C Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>//
+#include &#60;stdio.h&#62;
+#include &#60;ra.h&#62;
+
+int main(int argc, char *argv[])
+{
+    ra_handle ra;
+    value_handle vh;
+    meas_handle meas;
+
+    /* initialize libRASCH */
+    ra = ra_lib_init();
+    if ((ra == NULL)
+        || (ra_lib_get_error(ra, NULL, 0) != RA_ERR_NONE))
+    {
+        if (!ra)
+            printf("error initializing libRASCH\n");
+        else
+        {
+            char err_t[200];
+            long err_num;
+
+            err_num = ra_lib_get_error(ra, err_t, 200);
+            printf("while initializing libRASCH, error #%d "
+                   "occured\n  %s\n", err_num, err_t);
+
+            ra_lib_close(ra);
+        }
+        return -1;
+    }
+
+    /* open measurement */
+    meas = ra_meas_open(ra, argv[1], 0);
+    if (meas == NULL)
+    {
+        char err_t[200];
+        long err_num;
+
+        err_num = ra_lib_get_error(ra, err_t, 200);
+        printf("can't open measurement %s\nerror #%d: %s\n",
+               argv[1], err_num, err_t);
+        ra_lib_close(ra);
+        return -1;
+    }
+
+    /* get some infos */
+    vh = ra_value_malloc();
+    if (ra_info_get(meas, RA_INFO_NUM_SESSIONS_L, vh) == 0)
+        printf("%s (%s): %d\n", ra_value_get_name(vh),
+               ra_value_get_desc(vh), ra_value_get_long(vh));
+    if (ra_info_get(meas, RA_INFO_MAX_SAMPLERATE_D, vh) == 0)
+        printf("%s (%s): %f\n", ra_value_get_name(vh),
+               ra_value_get_desc(vh), ra_value_get_double(vh));
+
+    /* get all measurement-object infos */
+    if (ra_info_get(meas, RA_INFO_NUM_OBJ_INFOS_L, vh) == 0)
+    {
+        long l;
+        long n = ra_value_get_long(vh);
+
+        for (l = 0; l &#60; n; l++)
+        {
+            ra_info_get_by_idx(meas, RA_INFO_OBJECT, l, vh);
+            printf("%s (%s): ", ra_value_get_name(vh),
+                   ra_value_get_desc(vh));
+            switch (ra_value_get_type(vh))
+            {
+            case RA_VALUE_TYPE_LONG:
+                printf("%d\n", ra_value_get_long(vh));
+                break;
+            case RA_VALUE_TYPE_DOUBLE:
+                printf("%f\n", ra_value_get_double(vh));
+                break;
+            case RA_VALUE_TYPE_CHAR:
+                printf("%s\n", ra_value_get_string(vh));
+                break;
+            default:
+                printf("not supported type\n");
+                break;
+            }
+        }
+    }
+
+    /* close */
+    ra_value_free(vh);
+    ra_meas_close(meas);
+    ra_lib_close(ra);
+
+    return 0;
+}                               /* main() */
+
+//&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#sessions (): 1
+max. samplerate (maximum samplrate used in measurement):
+360.000000
+ID (Patient-ID): 100s&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN445"
+>Perl Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+use strict;
+use RASCH;
+
+# initialize libRASCH
+my $ra = new RASCH or die "error initializing libRASCH\n";
+
+# open measurement
+my $meas = $ra-&#62;open_meas($ARGV[0], 0) or
+    die "can't open measurement $ARGV[0]\n";
+
+# get some infos
+my $v = $meas-&#62;get_info(info =&#62; 'num_sessions');
+print $v-&#62;name() . ' (' . $v-&#62;desc() . '): ' . $v-&#62;value() ."\n" if (defined($v));
+$v = $meas-&#62;get_info(info =&#62; 'max_samplerate');
+print $v-&#62;name() . ' (' . $v-&#62;desc() . '): ' . $v-&#62;value() ."\n" if (defined($v));
+
+# get all measurement-object infos
+$v = $meas-&#62;get_info(info =&#62; 'num_obj_infos');
+my $num = $v-&#62;value();
+for (my $i = 0; $i &#60; $num; $i++)
+{
+    $v = $meas-&#62;get_info_idx(index =&#62; $i);
+    print $v-&#62;name() . ' (' . $v-&#62;desc() . '): ' . $v-&#62;value() ."\n" if (defined($v));
+}
+
+exit 0;
+#&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#sessions (): 1
+max. samplerate (maximum samplrate used in measurement): 360&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN451"
+>Python Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+import sys
+from RASCH import *
+
+# initialize libRASCH
+ra = RASCH()
+if not ra:
+    print "can't initialize libRASCH"
+    sys.exit()
+
+# open measurement
+meas = ra.open_meas(sys.argv[1], 0)
+if not meas:
+    print "can't open measurement", sys.argv[1]
+    sys.exit()
+
+# get some infos
+[value, name, desc] = meas.get_info(info='num_sessions')
+if value:
+    print name, "("+desc+"):", value
+[value, name, desc] = meas.get_info(info='max_samplerate')
+if value:
+    print name, "("+desc+"):", value
+
+# get all measurement-object infos
+[num, n, d] = meas.get_info(info='num_obj_infos')
+for i in range(num):
+    [value, name, desc] = meas.get_info_idx(index=i)
+    if value:
+        print name, "("+desc+"):", value
+
+#&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#sessions (): 1
+max. samplerate (maximum samplrate used in measurement): 360.0
+ID (Patient-ID): 100s&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN457"
+>Matlab/Octave Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>rasch@rasch:~&#62; octave
+GNU Octave, version 2.1.50 (i686-pc-linux-gnu).
+...
+
+octave:1&#62; ra=ra_lib_init
+ra = 145016232
+octave:2&#62; meas=ra_meas_open(ra, '/home/rasch/ecgs/AT011030_rdi.ART', 0)
+meas = 145244032
+octave:3&#62; [v, n, d]=ra_meas_get_info(meas, 'num_sessions')
+v = 1
+n = #sessions
+d =
+octave:4&#62; [v, n, d]=ra_meas_get_info(meas, 'max_samplerate')
+v = 1600
+n = max. samplerate
+d = maximum samplrate used in measurement
+octave:5&#62; num=ra_meas_get_info(meas, 'num_obj_infos')
+num = 7
+octave:6&#62; for i=0:(num-1)
+&#62; [v,n,d]=ra_info_get_by_idx(meas, 'meas', i)
+&#62; endfor
+v = A.
+n = Name
+d = name of the person measured
+v = T.
+n = Forename
+d = forename of the person measured
+v = 16.01.1955
+n = Birthday
+d = birthday of the person measured
+v = male
+n = gender
+d = gender of the person measured
+v = 46
+n = Age
+d = age of the person measured
+v = 196
+n = Height
+d = height of the person measured in cm
+v = 99
+n = Weight
+d = weight of the person measured in kg
+octave:7&#62;&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="all_examples.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x461.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Examples for all supported lanuages/systems</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="all_examples.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Handle recordings</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

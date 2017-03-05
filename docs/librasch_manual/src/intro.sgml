@@ -1,0 +1,60 @@
+<chapter id="introduction"><title>Introduction</title>
+
+<para>
+When analyzing biological signals, access to the raw data is
+mandatory. Because of different demands, both, the industry and the
+research community created a high number of different data formats for
+signal storage and signal distribution. To analyze data stored in a
+new data format, either a conversion program has to be written or the
+access functionality for the new data format has to be added to the
+analyzing program(s).
+</para>
+
+<para>
+One way to solve this problem is the use of a standard file format,
+which is powerful enough to handle all needs for storing and
+distributing signals. For physiological signals, the 'File Exchange
+Format for Vital Signs' (FEF) tries to accomplish this task. If
+this format (or a similar one) is accepted by the research community
+and if the industry provides the possibility to export the signal data
+in this format, the data access will be facilitated.
+</para>
+
+<para>
+Our approach, moreover, is different. We assume that there will be
+always different data formats (some 'standard' formats and a lot of
+proprietary formats). Therefore libRASCH, a programming
+library, was developed, which hides the differences of the data formats
+behind a common application programming interface (API).
+</para>
+
+<para>
+Programs using libRASCH, no longer need to be adapted to each new
+data format. The implementation of a new data format needs only to be
+done once for libRASCH. Than all libRASCH based programs can handle
+the new format. 
+</para>
+
+<para>
+Additionally, libRASCH provides the infrastructure to perform
+processing algorithms in a standardized way and provide support to
+display the signal data on the computer screen. 
+</para>
+
+<section id="intro-chapter-desc"><title>Overview of the next chapters</title>
+
+<para>
+concept/terminology: describes how a measurement is seen in libRASCH
+and describes the words used in libRASCH
+</para>
+<para>
+installation: more or less the INSTALL file (use one source for both
+files)
+</para>
+<para>
+tutorial: short examples describing the primary functions of
+libRASCH
+</para>
+</section>
+
+</chapter>

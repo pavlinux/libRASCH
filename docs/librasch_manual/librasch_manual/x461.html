@@ -1,0 +1,506 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Handle recordings</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="User Manual for libRASCH-0.7.2"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Examples for all supported lanuages/systems"
+HREF="all_examples.html"><LINK
+REL="PREVIOUS"
+TITLE="Open measurement"
+HREF="x437.html"><LINK
+REL="NEXT"
+TITLE="Access raw data"
+HREF="x485.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="SECTION"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>User Manual for libRASCH-0.7.2</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x437.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Appendix A. Examples for all supported lanuages/systems</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x485.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="AEN461"
+>Handle recordings</A
+></H1
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN463"
+>C Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>//
+#include &#60;stdio.h&#62;
+#include &#60;ra.h&#62;
+
+int main(int argc, char *argv[])
+{
+    ra_handle ra;
+    value_handle vh;
+    meas_handle meas;
+    rec_handle rec;
+    long l, num_dev, num_ch;
+
+    /* initialize libRASCH */
+    ra = ra_lib_init();
+    if (ra == NULL)
+    {
+        printf("error initializing libRASCH\n");
+        return -1;
+    }
+
+    /* open measurement */
+    meas = ra_meas_open(ra, argv[1], 0);
+    if (meas == NULL)
+    {
+        printf("can't open measurement %s\n", argv[1]);
+        return -1;
+    }
+
+    /* get root recording */
+    rec = ra_rec_get_first(meas, 0);
+    if (rec == NULL)
+    {
+        printf("can't get recording-handle\n");
+        return -1;
+    }
+
+    /* get some infos about recording */
+    num_dev = num_ch = 0;
+    vh = ra_value_malloc();
+    if (ra_info_get(rec, RA_INFO_REC_GEN_NUM_DEVICES_L, vh) == 0)
+        num_dev = ra_value_get_long(vh);
+    if (ra_info_get(rec, RA_INFO_REC_GEN_NUM_CHANNEL_L, vh) == 0)
+        num_ch = ra_value_get_long(vh);
+    if (ra_info_get(rec, RA_INFO_REC_GEN_NAME_C, vh) == 0)
+        printf("measurement %s  --  ", ra_value_get_string(vh));
+    if (ra_info_get(rec, RA_INFO_REC_GEN_DATE_C, vh) == 0)
+        printf("recorded at %s  --  ", ra_value_get_string(vh));
+    printf("#devices=%d  #channels=%d\n", num_dev, num_ch);
+
+    /* print name for every device */
+    printf("infos about the recording devices used:\n");
+    for (l = 0; l &#60; num_dev; l++)
+    {
+        /* set number of device from which the info is wanted */
+        ra_value_set_number(vh, l);
+        if (ra_info_get(rec, RA_INFO_REC_DEV_HW_NAME_C, vh) == 0)
+            printf("  device #%d: %s\n", l,
+                   ra_value_get_string(vh));
+    }
+    printf("\n");
+
+    /* print name and unit of every channel */
+    printf("infos about the channels:\n");
+    for (l = 0; l &#60; num_ch; l++)
+    {
+        /* set number of channel */
+        ra_value_set_number(vh, l);
+        if (ra_info_get(rec, RA_INFO_REC_CH_NAME_C, vh) == 0)
+            printf("  ch #%d: %s", l, ra_value_get_string(vh));
+        if (ra_info_get(rec, RA_INFO_REC_CH_UNIT_C, vh) == 0)
+            printf(" [%s]", ra_value_get_string(vh));
+        printf("\n");
+    }
+    printf("\n");
+
+    /* close */
+    ra_value_free(vh);
+    ra_meas_close(meas);
+    ra_lib_close(ra);
+
+    return 0;
+}                               /* main() */
+
+//&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>measurement 100s  --  recorded at 00.00.0  --  #devices=0
+#channels=2
+infos about the recording devices used:
+
+infos about the channels:
+  ch #0: MLII []
+  ch #1: V5 []
+&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN469"
+>Perl Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+use strict;
+use RASCH;
+
+# initialize libRASCH
+my $ra = new RASCH or die "error initializing libRASCH\n";
+
+# open measurement
+my $meas = $ra-&#62;open_meas($ARGV[0], 0) or
+    die "can't open measurement $ARGV[0]\n";
+
+# get root recording
+my $rec = $meas-&#62;get_first_rec(0) or
+    die "can't get root recording\n";
+
+# get some infos about recording
+my $v = $rec-&#62;get_info(info =&#62; 'rec_num_devices');
+my $num_dev = $v-&#62;value();
+$v = $rec-&#62;get_info(info =&#62; 'rec_num_channel');
+my $num_ch = $v-&#62;value();
+$v = $rec-&#62;get_info(info =&#62; 'rec_name');
+my $rec_name = $v-&#62;value();
+$v = $rec-&#62;get_info(info =&#62; 'rec_date');
+my $rec_date = $v-&#62;value;
+print "measurement $rec_name  --  recorded at $rec_date" .
+    "  --  #devices=$num_dev  #channels=$num_ch\n";
+
+# print name for every device
+print "infos about the recording devices used:\n";
+for (my $i = 0; $i &#60; $num_dev; $i++)
+{
+    $v = $rec-&#62;get_info(dev =&#62; $i, info =&#62; 'dev_hw_name');
+    my $name = $v-&#62;value();
+    print "  device #$i: $name\n";
+}
+print "\n";
+	
+# print name for every channel
+print "infos about the channels:\n";
+for (my $i = 0; $i &#60; $num_ch; $i++)
+{
+    $v = $rec-&#62;get_info(ch =&#62; $i, info =&#62; 'ch_name');
+    my $name = $v-&#62;value();
+    $v = $rec-&#62;get_info(ch =&#62; $i, info =&#62; 'ch_unit');
+    my $unit = $v-&#62;value();
+    print "  channel #$i: $name [$unit]\n";
+}
+print "\n";
+
+exit 0;
+#&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>measurement 100s  --  recorded at 00.00.0  --  #devices=
+#channels=2
+infos about the recording devices used:
+
+infos about the channels:
+  channel #0: MLII []
+  channel #1: V5 []
+&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN475"
+>Python Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+import sys
+from RASCH import *
+
+# initialize libRASCH
+ra = RASCH()
+if not ra:
+    print "can't initialize libRASCH"
+    sys.exit()
+
+# open measurement
+meas = ra.open_meas(sys.argv[1], 0)
+if not meas:
+    print "can't open measurement", sys.argv[1]
+    sys.exit()
+
+# get root recording
+rec = meas.get_first_session_rec(0)
+if not rec:
+    print "can't get root recording"
+    sys.exit()
+
+# get some infos about recording
+[num_dev, n, d] = rec.get_info(info='rec_num_devices')
+[num_ch, n, d] = rec.get_info(info='rec_num_channel')
+[rec_name, n, d] = rec.get_info(info='rec_name')
+[rec_date, n, d] = rec.get_info(info='rec_date')
+print "measurement", rec_name, " --  recorded at", rec_date, \
+      " --  #devices =", num_dev, " #channels =", num_ch
+
+# print name for every device
+print "infos about the recording devices used:"
+if num_dev &#62; 0:
+    for i in range(num_dev):
+        [name, v, d] = rec.get_info(dev=i, info='dev_hw_name')
+        print "  device #%d: %s" % (i, name)
+print ""
+	
+# print name for every channel
+print "infos about the channels:";
+if num_ch &#62; 0:
+    for i in range(num_ch):
+        [name, n, d] = rec.get_info(ch=i, info='ch_name')
+        [unit, n, d] = rec.get_info(ch=i, info='ch_unit')
+        print "  channel #%d: %s [%s]" % (i, name, unit)
+print "";
+    
+#&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>measurement 100s  --  recorded at 00.00.0  --  #devices =
+None  #channels = 2
+infos about the recording devices used:
+
+infos about the channels:
+  channel #0: MLII []
+  channel #1: V5 []
+&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN481"
+>Matlab/Octave Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>rasch@rasch:~&#62; octave
+GNU Octave, version 2.1.50 (i686-pc-linux-gnu).
+...
+
+octave:1&#62; ra=ra_lib_init
+ra = 145016952
+octave:2&#62; meas=ra_meas_open(ra, '/home/rasch/ecgs/AT011030_rdi.ART', 0)
+meas = 145243840
+octave:3&#62; rec=ra_rec_get_first(meas, 0)
+rec = 145420840
+octave:4&#62; num_ch=ra_rec_get_info(rec, 'rec_num_channel')
+num_ch = 5
+octave:5&#62; rec_name=ra_rec_get_info(rec, 'rec_name')
+rec_name = AT011030_rdi
+octave:6&#62; rec_date=ra_rec_get_info(rec, 'rec_date')
+rec_date = 30.10.2001
+octave:7&#62; for i=0:(num_ch-1)
+&#62; name=ra_ch_get_info(rec, i, 'ch_name')
+&#62; unit=ra_ch_get_info(rec, i, 'ch_unit')
+&#62; endfor
+name = EKGX
+unit = uV
+name = EKGY
+unit = uV
+name = EKGZ
+unit = uV
+name = ABP
+unit = mmHg
+name = RESP
+unit = uV
+octave:8&#62;&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x437.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x485.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Open measurement</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="all_examples.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Access raw data</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

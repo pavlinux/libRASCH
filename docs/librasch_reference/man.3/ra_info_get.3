@@ -1,0 +1,21 @@
+.TH "ra_info_get" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_info_get \- get infos
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_info_get
+.BI "(any_handle " h ","
+.BI "int " id ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "h" 12
+ handle
+.IP "id" 12
+ id of information wanted
+.IP "vh" 12
+ value_handle receiving the info
+.SH "DESCRIPTION"
+Returns 0 if the wanted information was found and != 0 if not. The information will be in vh. For usage of the function please see user-manual.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

@@ -1,0 +1,446 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>User Manual for libRASCH-0.7.2</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="NEXT"
+TITLE="Forword"
+HREF="f12.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="BOOK"
+><DIV
+CLASS="BOOK"
+><A
+NAME="AEN1"
+></A
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="TITLE"
+><A
+NAME="AEN1"
+>User Manual for libRASCH-0.7.2</A
+></H1
+><H3
+CLASS="AUTHOR"
+><A
+NAME="AEN4"
+></A
+>Raphael Schneider</H3
+><P
+CLASS="COPYRIGHT"
+>Copyright &copy; 2004 Raphael Schneider</P
+><HR></DIV
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="f12.html"
+>Forword</A
+></DT
+><DT
+>1. <A
+HREF="introduction.html"
+>Introduction</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="introduction.html#INTRO_CHAPTER_DESC"
+>Overview of the next chapters</A
+></DT
+></DL
+></DD
+><DT
+>2. <A
+HREF="concept_terminology.html"
+>Concepts and Terminology</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="concept_terminology.html#GENERAL_LIBRASCH_STRUCT"
+>General Structure of libRASCH</A
+></DT
+><DT
+><A
+HREF="terminology.html"
+>Terminology</A
+></DT
+></DL
+></DD
+><DT
+>3. <A
+HREF="tutorial.html"
+>A Tutorial</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="tutorial.html#TUT_INIT_LIB"
+>Initialize libRASCH and Basic Usage</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_C"
+>C Version</A
+></DT
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_PL"
+>Perl Version</A
+></DT
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_PY"
+>Python Version</A
+></DT
+><DT
+><A
+HREF="tutorial.html#INIT_LIB_MAT"
+>Matlab/Octave Version</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="tut_open_meas.html"
+>Access Measurements</A
+></DT
+><DT
+><A
+HREF="tut_handle_recs.html"
+>Access Recordings</A
+></DT
+><DT
+><A
+HREF="tut_get_raw.html"
+>Get Sample Data</A
+></DT
+><DT
+><A
+HREF="tut_handle_eval.html"
+>Access Evaluations</A
+></DT
+><DT
+><A
+HREF="tut_get_events.html"
+>Get Events</A
+></DT
+><DT
+><A
+HREF="tut_process.html"
+>Usage of process-plugins</A
+></DT
+></DL
+></DD
+><DT
+>A. <A
+HREF="all_examples.html"
+>Examples for all supported lanuages/systems</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="all_examples.html#AEN413"
+>Init libRASCH</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="all_examples.html#AEN415"
+>C Version</A
+></DT
+><DT
+><A
+HREF="all_examples.html#AEN421"
+>Perl Version</A
+></DT
+><DT
+><A
+HREF="all_examples.html#AEN427"
+>Python Version</A
+></DT
+><DT
+><A
+HREF="all_examples.html#AEN433"
+>Matlab/Octave Version</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x437.html"
+>Open measurement</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x437.html#AEN439"
+>C Version</A
+></DT
+><DT
+><A
+HREF="x437.html#AEN445"
+>Perl Version</A
+></DT
+><DT
+><A
+HREF="x437.html#AEN451"
+>Python Version</A
+></DT
+><DT
+><A
+HREF="x437.html#AEN457"
+>Matlab/Octave Version</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x461.html"
+>Handle recordings</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x461.html#AEN463"
+>C Version</A
+></DT
+><DT
+><A
+HREF="x461.html#AEN469"
+>Perl Version</A
+></DT
+><DT
+><A
+HREF="x461.html#AEN475"
+>Python Version</A
+></DT
+><DT
+><A
+HREF="x461.html#AEN481"
+>Matlab/Octave Version</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x485.html"
+>Access raw data</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x485.html#AEN487"
+>C Version</A
+></DT
+><DT
+><A
+HREF="x485.html#AEN491"
+>Perl Version</A
+></DT
+><DT
+><A
+HREF="x485.html#AEN495"
+>Python Version</A
+></DT
+><DT
+><A
+HREF="x485.html#AEN499"
+>Matlab/Octave Version</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x503.html"
+>Access evaluation</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x503.html#AEN505"
+>C Version</A
+></DT
+><DT
+><A
+HREF="x503.html#AEN511"
+>Perl Version</A
+></DT
+><DT
+><A
+HREF="x503.html#AEN517"
+>Python Version</A
+></DT
+><DT
+><A
+HREF="x503.html#AEN523"
+>Matlab/Octave Version</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x527.html"
+>Access events</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x527.html#AEN529"
+>C Version</A
+></DT
+><DT
+><A
+HREF="x527.html#AEN533"
+>Perl Version</A
+></DT
+><DT
+><A
+HREF="x527.html#AEN537"
+>Python Version</A
+></DT
+><DT
+><A
+HREF="x527.html#AEN541"
+>Matlab/Octave Version</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x545.html"
+>Use process-plugin</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x545.html#AEN547"
+>C Version</A
+></DT
+><DT
+><A
+HREF="x545.html#AEN553"
+>Perl Version</A
+></DT
+><DT
+><A
+HREF="x545.html#AEN559"
+>Python Version</A
+></DT
+><DT
+><A
+HREF="x545.html#AEN565"
+>Matlab/Octave Version</A
+></DT
+></DL
+></DD
+></DL
+></DD
+></DL
+></DIV
+><DIV
+CLASS="LOT"
+><DL
+CLASS="LOT"
+><DT
+><B
+>List of Figures</B
+></DT
+><DT
+>2-1. <A
+HREF="concept_terminology.html#LIBRASCH-STRUCT-FIG"
+>Structure of libRASCH.</A
+></DT
+><DT
+>3-1. <A
+HREF="tut_get_raw.html#GET-RAW-FIG"
+>Screenshot after performing the commands in Octave as shown in the
+Octave session above (and on the left side in the screenshot).</A
+></DT
+><DT
+>3-2. <A
+HREF="tut_get_events.html#GET-EVENTS-FIG"
+>Screenshot after performing the commands in Octave as shown in the
+Octave session above (and on the left side in the screenshot).</A
+></DT
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="f12.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Forword</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

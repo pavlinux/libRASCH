@@ -1,0 +1,172 @@
+<chapter id="navigation"><title>Navigation</title>
+
+<section><title>Navigation in the signal window</title>
+<para>
+If there is more than one window in the signal window, then you
+have to select the signal window which should be used. To do this,
+click in the sub-window. Then a black frame in
+the sub-window will be shown and this sub-window has the input
+focus. <xref linkend="raschlab-more-sigs-fig"> shows an example of
+a measurement containing three ECG channels, one arterial blood
+pressure channel and one respiration channel. In the example the
+ecg-sub-window has the input focus (shown by the black frame around
+the ecg-sub-window).
+</para>
+
+<figure id="raschlab-more-sigs-fig">
+<title>
+Screen shot of a measurement with different kind of signal types.
+</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="pics/raschlab_art_2.png" scale="50">
+</imageobject>
+</mediaobject>
+</figure>
+
+<para>
+To browse through the signal, you can use the horizontal slider on the
+bottom of the signal window or you can use the following keys:
+<itemizedlist mark=bullet>
+<listitem><para>'cursor left' (<-): 1/10th back in the signal</para></listitem>
+<listitem><para>'cursor right' (->): 1/10th forward in the signal</para></listitem>
+<listitem><para>'shift + cursor left' or 'page up': one page back in the signal</para></listitem>
+<listitem><para>'shift + cursor right' or 'page down': one page forward in the signal</para></listitem>
+</itemizedlist>
+</para>
+
+</section>
+
+
+<section><title>Selections</title>
+
+<para>
+In the signal-view-plugins, libRASCH supports the concept of
+selections. Selections are a subset of events which have one common
+property. For example you can select all heart beats which belongs
+to the same template (i.e. all heart beats with similar morphology)
+or you can select all ventricular beats. 
+</para>
+
+<para>
+In these selctions, you can step back and forth with the following keys:
+<itemizedlist mark=bullet>
+<listitem><para>'space bar': go to the next item in the selection</para></listitem>
+<listitem><para>'b': go to the previous item in the selection</para></listitem>
+</itemizedlist>
+When a selection is "active", then the number of selected events and
+the current position in the selection is shown in the signal view in
+the lower right corner. The figure "12/456" means that you are
+currently at the 12th event from 456 selected events. For example the
+numbers inside the red circle in <xref linkend="raschlab-sel-template-fig">.
+</para>
+
+<para>
+Selections are implemented in the signal-specific view
+plugins. Therefore the type of selections will differ from signal to
+signal but the concept will be always the same independent of the
+signal type. (Because at the moment there are not so much signal
+specific view plugins, the examples shown here are all for ECG's.)
+</para>
+
+<para>
+<xref linkend="raschlab-context-menu-fig"> shows the context menu which
+pops up when pressing the right mouse button inside an ecg view. The
+main context menu has three entries: (1) General Options, (2) Channel
+Options and (3) ecg. The first two entries are available in all
+view-plugins and will be described in <xref linkend="settings">. The
+third entry (ecg) is only available in ecg views. The ecg entry has
+two sub entries: (1) sort and (2) templates. <xref
+linkend="raschlab-context-menu-fig"> shows the sub menu of the sort entry
+and <xref linkend="raschlab-context-menu-2-fig"> shows the sub menu of the
+template entry.
+</para>
+
+<figure id="raschlab-context-menu-fig">
+<title>
+Context menu for the selection of beat types (e.g. normal beats,
+ventricular beats).
+</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="pics/raschlab_context_menu_2.png" scale="50">
+</imageobject>
+</mediaobject>
+</figure>
+
+<figure id="raschlab-context-menu-2-fig">
+<title>
+Context menu for the selection of beats belonging to a specific template.
+</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="pics/raschlab_context_menu1_2.png" scale="50">
+</imageobject>
+</mediaobject>
+</figure>
+
+<para>
+When you are interested in specific beat types (e.g. all ventricular
+beats or all artifacts) then you have to choose the wanted beat type
+from the sort menu. If you are interested in a specific template, then
+you have to choose the template from the template menu. After the
+selection of the selection criteria, the first beat in the selection
+is shown in the signal window. The selection is sorted chronological.
+</para>
+
+</section>
+
+
+<section><title>Inter Plugin Communication</title>
+
+<para>
+All plugins in libRASCH can communicate with each other. This
+communication allows the selection of a signal position or the
+selection of specific events through view-plugins which are not in the
+signal window. For example, you can select a postion in the tachogram
+by clicking on it and the signal in the signal window will positioned
+to this position. <xref linkend="raschlab-sel-tacho-pos-fig"> shows an
+example. In the tachogram the short RR Interval (which is followed by
+a longer RR interval) was selected (marked with a vertical bar). In
+the ecg-view, the beat with the short RR interval is shown in the
+middle of the window and is marked also with a vertical bar (the
+cursor).
+</para>
+
+<figure id="raschlab-sel-tacho-pos-fig">
+<title>
+Select position in tachogram.
+</title>
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="pics/raschlab_sel_tacho_pos_2.png" scale="50">
+</imageobject>
+</mediaobject>
+</screenshot>
+</figure>
+
+<para>
+If you are interested in a specific template, you can select the beats
+belonging to this template as described above. Another way is to
+double click on the wanted template in the template window (<xref
+linkend="raschlab-sel-template-fig">). This has the same effect as
+selecting the template from the pop-up menu.
+</para>
+
+<figure id="raschlab-sel-template-fig">
+<title>
+Select beats belonging to a specific template in the template window.
+</title>
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="pics/raschlab_sel_template_2.png" scale="50">
+</imageobject>
+</mediaobject>
+</screenshot>
+</figure>
+
+</section>
+
+</chapter>

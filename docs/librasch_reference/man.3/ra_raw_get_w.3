@@ -1,0 +1,27 @@
+.TH "ra_raw_get_w" 3 "May 2004" "libRASCH API (0.6.1)"
+.SH NAME
+ra_raw_get_w \- get raw-signal data (WORD)
+.SH SYNOPSIS
+.B "LIBRAAPI size_t" ra_raw_get_w
+.BI "(rec_handle " rh ","
+.BI "unsigned int " ch ","
+.BI "size_t " start ","
+.BI "size_t " num_data ","
+.BI "WORD * " data ");"
+.SH ARGUMENTS
+.IP "rh" 12
+ recording-handle
+.IP "ch" 12
+ channel
+.IP "start" 12
+ first sample
+.IP "num_data" 12
+ number of samples
+.IP "data" 12
+ buffer for samples
+.SH "DESCRIPTION"
+This function returns the sample's (raw-signal data) from the measurement mh and the recording rh. The first sample in data will be the sample number start (in sampleunits) and max. num_data are in data. The memory for buffer data must  be allocated in calling function. If the original signal-data needs a greater range than a WORD can represent the values will be "cast" to WORD.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

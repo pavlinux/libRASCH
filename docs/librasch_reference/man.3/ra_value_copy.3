@@ -1,0 +1,18 @@
+.TH "ra_value_copy" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_copy \- copy one value_handle to another value_handle
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_value_copy
+.BI "(value_handle " dest ","
+.BI "value_handle " src ");"
+.SH ARGUMENTS
+.IP "dest" 12
+ destination value-handle
+.IP "src" 12
+ source value-handle
+.SH "DESCRIPTION"
+This function copies the values from one value-handle to another value-handle and the name and description. The remaining fields are not copied.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

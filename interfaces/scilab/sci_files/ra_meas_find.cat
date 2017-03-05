@@ -1,0 +1,8 @@
+Returns all signales handled by libRASCH in the directory 'directory'.
+  Input parameters:
+    ra_handle
+    directory
+
+  Output parameters:
+    signals
+    plugins

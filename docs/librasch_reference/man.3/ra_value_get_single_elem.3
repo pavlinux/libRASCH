@@ -1,0 +1,21 @@
+.TH "ra_value_get_single_elem" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_get_single_elem \- copy one element from a value-handle in another value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_value_get_single_elem
+.BI "(value_handle " dest ","
+.BI "value_handle " src ","
+.BI "size_t " elem_num ");"
+.SH ARGUMENTS
+.IP "dest" 12
+ destination value-handle
+.IP "src" 12
+ source value-handle
+.IP "elem_num" 12
+ zero-based index of the value which has to be copied
+.SH "DESCRIPTION"
+This function copies one element from value-handle to another value-handle and the name and description. The remaining fields are not copied. The function is helpfull when a single value from an array, stored in a value-handle, is needed for another function expecting a single value in a value-handle.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

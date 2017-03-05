@@ -1,0 +1,21 @@
+.TH "ra_lib_use_plugin" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_lib_use_plugin \- set using a plugin (or not)
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_lib_use_plugin
+.BI "(ra_handle " h ","
+.BI "int " plugin_index ","
+.BI "int " use_it ");"
+.SH ARGUMENTS
+.IP "h" 12
+ handle to libRASCH
+.IP "plugin_index" 12
+ index of plugin to change
+.IP "use_it" 12
+ flag using plugin (1: use plugin, !1: do not use plugin)
+.SH "DESCRIPTION"
+Use or do not use plugin.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

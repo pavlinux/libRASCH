@@ -1,0 +1,21 @@
+.TH "ra_eval_savexml" 3 "January 2005" "libRASCH API (0.7.2)"
+.SH NAME
+ra_eval_savexml \- save evalution in XML format
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_eval_savexml
+.BI "(meas_handle " mh ","
+.BI "const char * " file ","
+.BI "int " use_ascii ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ measurement handle
+.IP "file" 12
+ name of the evaluation file (optional)
+.IP "use_ascii" 12
+ flag if event-values should be stored as ASCII-text (=1) or as
+.SH "DESCRIPTION"
+binary MIME64 encoded data (=0) This function saves the evaluation(s) that belongs to the measurement mh. If no filename file is given, the default-filename will be used. If use_ascii is !=0 than the event values are stored as ASCII text.
+.SH "SOURCE FILE"
+save_xml.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

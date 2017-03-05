@@ -1,0 +1,688 @@
+<func name="ra_lib_info_get">
+<para type="in" num="1" perl-type="void *" desc="handle to an instance of libRASCH">ra_handle</para>
+<para type="in" num="2" perl-type="char *" desc="name of the information wanted">info_name</para>
+<para type="out" num="1">value</para>
+<para type="out" num="2">name</para>
+<para type="out" num="3">desc</para>
+<purpose>get infos about libRASCH</purpose>
+<description>Returns the information 'info_name' about libRASCH. The
+name and a short description is also returned. See
+XXX for available informations.
+</description>
+<perl-code><![CDATA[
+PPCODE:
+  value_handle vh;
+
+  vh = ra_value_malloc();
+  if (ra_info_get_by_name(p_ra_handle, p_info_name, vh) == 0)
+    VALUE_TO_STACK(vh);
+  else
+    PUSHs(&PL_sv_undef);
+
+  ra_value_free(vh);
+]]>
+</perl-code>
+<python-code-init>
+  value_handle vh;
+  PyObject *ret;
+</python-code-init>
+<python-code>
+  vh = ra_value_malloc();
+  ra_info_get_by_name(p_ra_handle, p_info_name, vh);
+
+  ret = value_to_py_list(vh);
+
+  ra_value_free(vh);
+
+  return ret;
+</python-code>
+</func>
+
+
+<func name="ra_plugin_info_get">
+<para type="in" num="1" perl-type="void *" desc="handle to a libRASCH-plugin">plugin_handle</para>
+<para type="in" num="2" perl-type="long" desc="optional number needed for some infos">num</para>
+<para type="in" num="3" perl-type="char *" desc="name of the information wanted">info_name</para>
+<para type="out" num="1">value</para>
+<para type="out" num="2">name</para>
+<para type="out" num="3">desc</para>
+<purpose>get infos about a plugin</purpose>
+<description>Returns the information 'info_name' about the plugin
+'plugin_handle'. The name and a short description is also returned. See
+XXX for available informations.
+</description>
+<perl-code><![CDATA[
+PPCODE:
+  value_handle vh;
+  int ret;
+
+  vh = ra_value_malloc();
+  ra_value_set_number(vh, p_num);
+  if ((ret = ra_info_get_by_name(p_plugin_handle, p_info_name, vh)) == 0)
+    VALUE_TO_STACK(vh);
+  else
+    PUSHs(&PL_sv_undef);
+
+  ra_value_free(vh);
+]]>
+</perl-code>
+<python-code-init>
+  value_handle vh;
+  PyObject *ret;
+</python-code-init>
+<python-code>
+  vh = ra_value_malloc();
+  ra_value_set_number(vh, p_num);
+  ra_info_get_by_name(p_plugin_handle, p_info_name, vh);
+
+  ret = value_to_py_list(vh);
+
+  ra_value_free(vh);
+
+  return ret;
+</python-code>
+</func>
+
+
+<func name="ra_result_info_get">
+<para type="in" num="1" perl-type="void *" desc="handle to a libRASCH-plugin">plugin_handle</para>
+<para type="in" num="2" perl-type="long" desc="number of the result">result_num</para>
+<para type="in" num="3" perl-type="char *" desc="name of the information wanted">info_name</para>
+<para type="out" num="1">value</para>
+<para type="out" num="2">name</para>
+<para type="out" num="3">desc</para>
+<purpose>get infos about results from process-plugins</purpose>
+<description>Returns the information 'info_name' about the result
+number 'result_num' from plugin
+'plugin_handle'. The name and a short description is also returned. See
+XXX for available informations.
+</description>
+<perl-code><![CDATA[
+PPCODE:
+  value_handle vh;
+ 
+  vh = ra_value_malloc();
+  ra_value_set_number(vh, p_result_num);
+  if (ra_info_get_by_name(p_plugin_handle, p_info_name, vh) == 0)
+    VALUE_TO_STACK(vh);
+  else
+    PUSHs(&PL_sv_undef);
+
+  ra_value_free(vh);
+]]>
+</perl-code>
+<python-code-init>
+  value_handle vh;
+  PyObject *ret;
+</python-code-init>
+<python-code>
+  vh = ra_value_malloc();
+  ra_value_set_number(vh, p_result_num);
+  ra_info_get_by_name(p_plugin_handle, p_info_name, vh);
+
+  ret = value_to_py_list(vh);
+
+  ra_value_free(vh);
+
+  return ret;
+</python-code>
+</func>
+
+
+<func name="ra_meas_info_get">
+<para type="in" num="1" perl-type="void *" desc="handle to a libRASCH measurement">meas_handle</para>
+<para type="in" num="2" perl-type="char *" desc="name of the information wanted">info_name</para>
+<para type="out" num="1">value</para>
+<para type="out" num="2">name</para>
+<para type="out" num="3">desc</para>
+<purpose>get infos about a measurement</purpose>
+<description>Returns the information 'info_name' about a
+measurement. The name and a short description is also returned. See
+XXX for available informations.
+</description>
+<perl-code><![CDATA[
+PPCODE:
+  value_handle vh;
+
+  vh = ra_value_malloc();
+  if (ra_info_get_by_name(p_meas_handle, p_info_name, vh) == 0)
+    VALUE_TO_STACK(vh);
+  else
+    PUSHs(&PL_sv_undef);
+    
+  ra_value_free(vh);
+]]>
+</perl-code>
+<python-code-init>
+  value_handle vh;
+  PyObject *ret;
+</python-code-init>
+<python-code>
+  vh = ra_value_malloc();
+  ra_info_get_by_name(p_meas_handle, p_info_name, vh);
+  ret = value_to_py_list(vh);
+
+  ra_value_free(vh);
+
+  return ret;
+</python-code>
+</func>
+
+
+<func name="ra_obj_info_get">
+<para type="in" num="1" perl-type="void *" desc="handle to a libRASCH measurement">meas_handle</para>
+<para type="in" num="2" perl-type="char *" desc="name of the information wanted">info_name</para>
+<para type="out" num="1">value</para>
+<para type="out" num="2">name</para>
+<para type="out" num="3">desc</para>
+<purpose>get infos about a measurement object</purpose>
+<description>Returns the information 'info_name' about a
+measurement-object. The name and a short description is also returned. See
+XXX for available informations.
+</description>
+<perl-code><![CDATA[
+PPCODE:
+  value_handle vh;
+
+  vh = ra_value_malloc();
+  if (ra_info_get_by_name(p_meas_handle, p_info_name, vh) == 0)
+    VALUE_TO_STACK(vh);
+  else
+    PUSHs(&PL_sv_undef);
+
+  ra_value_free(vh);
+]]>
+</perl-code>
+<python-code-init>
+  value_handle vh;
+  PyObject *ret;
+</python-code-init>
+<python-code>
+  vh = ra_value_malloc();
+  ra_info_get_by_name(p_meas_handle, p_info_name, vh);
+  ret = value_to_py_list(vh);
+
+  ra_value_free(vh);
+
+  return ret;
+</python-code>
+</func>
+
+
+<func name="ra_rec_info_get">
+<para type="in" num="1" perl-type="void *" desc="handle to a recording">rec_handle</para>
+<para type="in" num="2" perl-type="char *" desc="name of the information wanted">info_name</para>
+<para type="out" num="1">value</para>
+<para type="out" num="2">name</para>
+<para type="out" num="3">desc</para>
+<purpose>get infos about a recording</purpose>
+<description>Returns the information 'info_name' about a
+recording. The name and a short description is also returned. See
+XXX for available informations.
+</description>
+<perl-code><![CDATA[
+PPCODE:
+  value_handle vh;
+
+  vh = ra_value_malloc();
+  if (ra_info_get_by_name(p_rec_handle, p_info_name, vh) == 0)
+    VALUE_TO_STACK(vh);
+  else
+    PUSHs(&PL_sv_undef);
+
+  ra_value_free(vh);
+]]>
+</perl-code>
+<python-code-init>
+  value_handle vh;
+  PyObject *ret;
+</python-code-init>
+<python-code>
+  vh = ra_value_malloc();
+  ra_info_get_by_name(p_rec_handle, p_info_name, vh);
+  ret = value_to_py_list(vh);
+
+  ra_value_free(vh);
+
+  return ret;
+</python-code>
+</func>
+
+
+<func name="ra_dev_info_get">
+<para type="in" num="1" perl-type="void *" desc="handle to a recording">rec_handle</para>
+<para type="in" num="2" perl-type="long" desc="number of the device">dev_num</para>
+<para type="in" num="3" perl-type="char *" desc="name of the information wanted">info_name</para>
+<para type="out" num="1">value</para>
+<para type="out" num="2">name</para>
+<para type="out" num="3">desc</para>
+<purpose>get infos about a recording device</purpose>
+<description>Returns the information 'info_name' about a
+measurement-device. The name and a short description is also returned. See
+XXX for available informations.
+</description>
+<perl-code><![CDATA[
+PPCODE:
+  value_handle vh;
+
+  vh = ra_value_malloc();
+  ra_value_set_number(vh, p_dev_num);
+  if (ra_info_get_by_name(p_rec_handle, p_info_name, vh) == 0)
+    VALUE_TO_STACK(vh);
+  else
+    PUSHs(&PL_sv_undef);
+
+  ra_value_free(vh);
+]]>
+</perl-code>
+<python-code-init>
+  value_handle vh;
+  PyObject *ret;
+</python-code-init>
+<python-code>
+  vh = ra_value_malloc();
+  ra_value_set_number(vh, p_dev_num);
+  ra_info_get_by_name(p_rec_handle, p_info_name, vh);
+  ret = value_to_py_list(vh);
+
+  ra_value_free(vh);
+
+  return ret;
+</python-code>
+</func>
+
+
+<func name="ra_ch_info_get">
+<para type="in" num="1" perl-type="void *" desc="handle to a recording">rec_handle</para>
+<para type="in" num="2" perl-type="long" desc="number of the channel">channel</para>
+<para type="in" num="3" perl-type="char *" desc="name of the information wanted">info_name</para>
+<para type="out" num="1">value</para>
+<para type="out" num="2">name</para>
+<para type="out" num="3">desc</para>
+<purpose>get infos about a recording channel</purpose>
+<description>Returns the information 'info_name' about a
+recorded channel. The name and a short description is also returned. See
+XXX for available informations.
+</description>
+<perl-code><![CDATA[
+PPCODE:
+  value_handle vh;
+
+  vh = ra_value_malloc();
+  ra_value_set_number(vh, p_channel);
+  if (ra_info_get_by_name(p_rec_handle, p_info_name, vh) == 0)
+    VALUE_TO_STACK(vh);
+  else
+    PUSHs(&PL_sv_undef);
+
+  ra_value_free(vh);
+]]>
+</perl-code>
+<python-code-init>
+  value_handle vh;
+  PyObject *ret;
+</python-code-init>
+<python-code>
+  vh = ra_value_malloc();
+  ra_value_set_number(vh, p_channel);
+  ra_info_get_by_name(p_rec_handle, p_info_name, vh);
+  ret = value_to_py_list(vh);
+
+  ra_value_free(vh);
+
+  return ret;
+</python-code>
+</func>
+
+
+<func name="ra_eval_info_get">
+<para type="in" num="1" perl-type="void *" desc="handle to an evaluation">eval_handle</para>
+<para type="in" num="2" perl-type="char *" desc="name of the information wanted">info_name</para>
+<para type="out" num="1">value</para>
+<para type="out" num="2">name</para>
+<para type="out" num="3">desc</para>
+<purpose>get infos about an evaluation</purpose>
+<description>Returns the information 'info_name' about an evaluation.
+The name and a short description is also returned. See
+XXX for available informations.
+</description>
+<perl-code><![CDATA[
+PPCODE:
+  value_handle vh;
+
+  vh = ra_value_malloc();
+  if (ra_info_get_by_name(p_eval_handle, p_info_name, vh) == 0)
+    VALUE_TO_STACK(vh);
+  else
+    PUSHs(&PL_sv_undef);
+
+  ra_value_free(vh);
+]]>
+</perl-code>
+<python-code-init>
+  value_handle vh;
+  PyObject *ret;
+</python-code-init>
+<python-code>
+  vh = ra_value_malloc();
+  ra_info_get_by_name(p_eval_handle, p_info_name, vh);
+  ret = value_to_py_list(vh);
+
+  ra_value_free(vh);
+
+  return ret;
+</python-code>
+</func>
+
+
+<func name="ra_class_info_get">
+<para type="in" num="1" perl-type="void *" desc="handle to an evaluation-class">class_handle</para>
+<para type="in" num="2" perl-type="char *" desc="name of the information wanted">info_name</para>
+<para type="out" num="1">value</para>
+<para type="out" num="2">name</para>
+<para type="out" num="3">desc</para>
+<purpose>get infos about an evaluation-set</purpose>
+<description>Returns the information 'info_name' about an
+evaluation-class. The name and a short description is also returned. See
+XXX for available informations.
+</description>
+<perl-code><![CDATA[
+PPCODE:
+  value_handle vh;
+
+  vh = ra_value_malloc();
+  if (ra_info_get_by_name(p_class_handle, p_info_name, vh) == 0)
+    VALUE_TO_STACK(vh);
+  else
+    PUSHs(&PL_sv_undef);
+
+  ra_value_free(vh);
+]]>
+</perl-code>
+<python-code-init>
+  value_handle vh;
+  PyObject *ret;
+</python-code-init>
+<python-code>
+  vh = ra_value_malloc();
+  ra_info_get_by_name(p_class_handle, p_info_name, vh);
+  ret = value_to_py_list(vh);
+
+  ra_value_free(vh);
+
+  return ret;
+</python-code>
+</func>
+
+
+<func name="ra_prop_info_get">
+<para type="in" num="1" perl-type="void *" desc="handle to an event-property">prop_handle</para>
+<para type="in" num="2" perl-type="char *" desc="name of the information wanted">info_name</para>
+<para type="out" num="1">value</para>
+<para type="out" num="2">name</para>
+<para type="out" num="3">desc</para>
+<purpose>get infos about an event-property</purpose>
+<description>Returns the information 'info_name' about an
+event-property. The name and a short description is also returned. See
+XXX for available informations.
+</description>
+<perl-code><![CDATA[
+PPCODE:
+  value_handle vh;
+
+  vh = ra_value_malloc();
+  if (ra_info_get_by_name(p_prop_handle, p_info_name, vh) == 0)
+    VALUE_TO_STACK(vh);
+  else
+    PUSHs(&PL_sv_undef);
+
+  ra_value_free(vh);
+]]>
+</perl-code>
+<python-code-init>
+  value_handle vh;
+  PyObject *ret;
+</python-code-init>
+<python-code>
+  vh = ra_value_malloc();
+  ra_info_get_by_name(p_prop_handle, p_info_name, vh);
+
+  ret = value_to_py_list(vh);
+
+  ra_value_free(vh);
+
+  return ret;
+</python-code>
+</func>
+
+
+<func name="ra_summary_info_get">
+<para type="in" num="1" perl-type="void *" desc="handle to an event-summary">sum_handle</para>
+<para type="in" num="2" perl-type="char *" desc="name of the information wanted">info_name</para>
+<para type="out" num="1">value</para>
+<para type="out" num="2">name</para>
+<para type="out" num="3">desc</para>
+<purpose>get infos about an event-property</purpose>
+<description>Returns the information 'info_name' about an
+event-summary. The name and a short description is also returned. See
+XXX for available informations.
+</description>
+<perl-code><![CDATA[
+PPCODE:
+  value_handle vh;
+
+  vh = ra_value_malloc();
+  if (ra_info_get_by_name(p_sum_handle, p_info_name, vh) == 0)
+    VALUE_TO_STACK(vh);
+  else
+    PUSHs(&PL_sv_undef);
+
+  ra_value_free(vh);
+]]>
+</perl-code>
+<python-code-init>
+  value_handle vh;
+  PyObject *ret;
+</python-code-init>
+<python-code>
+  vh = ra_value_malloc();
+  ra_info_get_by_name(p_sum_handle, p_info_name, vh);
+
+  ret = value_to_py_list(vh);
+
+  ra_value_free(vh);
+
+  return ret;
+</python-code>
+</func>
+
+
+<func name="ra_sum_dim_info_get">
+<para type="in" num="1" perl-type="void *" desc="handle to an event-summary">sum_handle</para>
+<para type="in" num="2" perl-type="long" desc="dimension">dim</para>
+<para type="in" num="3" perl-type="char *" desc="name of the information wanted">info_name</para>
+<para type="out" num="1">value</para>
+<para type="out" num="2">name</para>
+<para type="out" num="3">desc</para>
+<purpose>get infos about an event-property</purpose>
+<description>Returns the information 'info_name' about the dimension
+'dim' of the event-summary. The name and a short description is also
+returned. See XXX for available informations.
+</description>
+<perl-code><![CDATA[
+PPCODE:
+  value_handle vh;
+
+  vh = ra_value_malloc();
+  ra_value_set_number(vh, p_dim);
+  if (ra_info_get_by_name(p_sum_handle, p_info_name, vh) == 0)
+    VALUE_TO_STACK(vh);
+  else
+    PUSHs(&PL_sv_undef);
+
+  ra_value_free(vh);
+]]>
+</perl-code>
+<python-code-init>
+  value_handle vh;
+  PyObject *ret;
+</python-code-init>
+<python-code>
+  vh = ra_value_malloc();
+  ra_value_set_number(vh, p_dim);
+  ra_info_get_by_name(p_sum_handle, p_info_name, vh);
+
+  ret = value_to_py_list(vh);
+
+  ra_value_free(vh);
+
+  return ret;
+</python-code>
+</func>
+
+
+<func name="ra_sum_ch_info_get">
+<para type="in" num="1" perl-type="void *" desc="handle to an event-summary">sum_handle</para>
+<para type="in" num="2" perl-type="long" desc="channel number">channel</para>
+<para type="in" num="3" perl-type="char *" desc="name of the information wanted">info_name</para>
+<para type="out" num="1">value</para>
+<para type="out" num="2">name</para>
+<para type="out" num="3">desc</para>
+<purpose>get infos about an event-property</purpose>
+<description>Returns the information 'info_name' about the channel
+'channel' of the event-summary. The name and a short description is
+also returned. See XXX for available informations.
+</description>
+<perl-code><![CDATA[
+PPCODE:
+  value_handle vh;
+
+  vh = ra_value_malloc();
+  ra_value_set_number(vh, p_channel);
+  if (ra_info_get_by_name(p_sum_handle, p_info_name, vh) == 0)
+    VALUE_TO_STACK(vh);
+  else
+    PUSHs(&PL_sv_undef);
+
+  ra_value_free(vh);
+]]>
+</perl-code>
+<python-code-init>
+  value_handle vh;
+  PyObject *ret;
+</python-code-init>
+<python-code>
+  vh = ra_value_malloc();
+  ra_value_set_number(vh, p_channel);
+  ra_info_get_by_name(p_sum_handle, p_info_name, vh);
+
+  ret = value_to_py_list(vh);
+
+  ra_value_free(vh);
+
+  return ret;
+</python-code>
+</func>
+
+
+<func name="ra_info_get_by_idx">
+<para type="in" num="1" perl-type="void *" desc="handle of any type except ra-handle">any_handle</para>
+<para type="in" num="2" perl-type="char *" desc="type of the wanted information">info_type</para>
+<para type="in" num="3" perl-type="long" desc="index of the information">index</para>
+<para type="out" num="1">value</para>
+<para type="out" num="2">name</para>
+<para type="out" num="3">desc</para>
+<purpose>get infos by index</purpose>
+<description>Returns the information number 'index' from the info-type
+'info_type'. The name and a short description is also returned. See
+XXX for available informations and for valid 'info_type'.
+</description>
+<perl-code><![CDATA[
+PPCODE:
+  value_handle vh;
+  long inf_type;
+
+  inf_type = get_info_type(p_info_type);
+  if (inf_type < 0)
+  {
+    PUSHs(&PL_sv_undef);
+    return;  
+  }
+
+  vh = ra_value_malloc();
+
+  if (ra_info_get_by_idx(p_any_handle, inf_type, p_index, vh) == 0)
+    VALUE_TO_STACK(vh);
+  else
+    PUSHs(&PL_sv_undef);
+
+  ra_value_free(vh);
+]]>
+</perl-code>
+<python-code-init>
+  value_handle vh;
+  long inf_type;
+  PyObject *ret;
+</python-code-init>
+<python-code><![CDATA[
+  inf_type = get_info_type(p_info_type);
+  if (inf_type < 0)
+    return 0;  
+
+  vh = ra_value_malloc();
+
+  ra_info_get_by_idx(p_any_handle, inf_type, p_index, vh);
+
+  ret = value_to_py_list(vh);
+
+  ra_value_free(vh);
+
+  return ret;
+]]>
+</python-code>
+</func>
+
+
+<func name="ra_info_set">
+<para type="in" num="1" perl-type="void *" desc="handle">handle</para>
+<para type="in" num="2" perl-type="char *" desc="name of the information to be set">info_name</para>
+<para type="in" num="3" perl-type="char *" desc="info type">info_type</para>
+<para type="in" num="4" perl-type="SV *" desc="info value">info_value</para>
+<para type="out" num="1">ok</para>
+<purpose>Set infos</purpose>
+<description>Set the information 'info_name' to 'info_value' for the object
+handled by 'handle'.
+</description>
+<perl-code><![CDATA[
+PPCODE:
+  int ret;
+  value_handle vh;
+
+  vh = ra_value_malloc();
+
+  ret = sv_to_value(p_info_value, p_info_type, vh);
+  if (ret == 0)
+    ret = ra_info_set_by_name(p_handle, p_info_name, vh);
+
+  ra_value_free(vh);
+
+  PUSHs(sv_2mortal(newSViv(ret)));
+]]>
+</perl-code>
+<python-code-init>
+  value_handle vh;
+  int ret;
+</python-code-init>
+<python-code>
+  vh = ra_value_malloc();
+
+  ret = py_object_to_value(p_info_value, p_info_type, vh);
+  if (ret == 0)
+    ret = ra_info_set_by_name(p_handle, p_info_name, vh);
+
+  ra_value_free(vh);
+
+  return Py_BuildValue("l", (long)ret);
+</python-code>
+</func>
+

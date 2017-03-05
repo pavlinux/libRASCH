@@ -1,0 +1,89 @@
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.2//EN" [
+<!ENTITY preface SYSTEM "preface.sgml">
+<!ENTITY introduction SYSTEM "intro.sgml">
+<!ENTITY terminology SYSTEM "term.sgml">
+<!ENTITY installation SYSTEM "install.sgml">
+
+<!ENTITY tutorial SYSTEM "tutorial.sgml">
+<!ENTITY tut-init-lib SYSTEM "tut_init_lib.sgml">
+<!ENTITY init-lib.c SYSTEM "../../../examples/init_lib.c">
+<!ENTITY init-lib.c.out SYSTEM "../../../examples/output/init_lib.c.out">
+<!ENTITY init-lib.pl SYSTEM "../../../examples/init_lib.pl">
+<!ENTITY init-lib.pl.out SYSTEM "../../../examples/output/init_lib.pl.out">
+<!ENTITY init-lib.py SYSTEM "../../../examples/init_lib.py">
+<!ENTITY init-lib.py.out SYSTEM "../../../examples/output/init_lib.py.out">
+<!ENTITY init-lib.m SYSTEM "../../../examples/init_lib.m">
+<!ENTITY init-lib.m.out SYSTEM "../../../examples/output/init_lib.m.out">
+
+<!ENTITY tut-open-meas SYSTEM "tut_open_meas.sgml">
+<!ENTITY open-meas.c SYSTEM "../../../examples/open_meas.c">
+<!ENTITY open-meas.c.out SYSTEM "../../../examples/output/open_meas.c.out">
+<!ENTITY open-meas.pl SYSTEM "../../../examples/open_meas.pl">
+<!ENTITY open-meas.pl.out SYSTEM "../../../examples/output/open_meas.pl.out">
+<!ENTITY open-meas.py SYSTEM "../../../examples/open_meas.py">
+<!ENTITY open-meas.py.out SYSTEM "../../../examples/output/open_meas.py.out">
+<!ENTITY open-meas.m SYSTEM "../../../examples/open_meas.m">
+<!ENTITY open-meas.m.out SYSTEM "../../../examples/output/open_meas.m.out">
+
+<!ENTITY tut-handle-recs SYSTEM "tut_handle_recs.sgml">
+<!ENTITY handle-recs.c SYSTEM "../../../examples/handle_recs.c">
+<!ENTITY handle-recs.c.out SYSTEM "../../../examples/output/handle_recs.c.out">
+<!ENTITY handle-recs.pl SYSTEM "../../../examples/handle_recs.pl">
+<!ENTITY handle-recs.pl.out SYSTEM "../../../examples/output/handle_recs.pl.out">
+<!ENTITY handle-recs.py SYSTEM "../../../examples/handle_recs.py">
+<!ENTITY handle-recs.py.out SYSTEM "../../../examples/output/handle_recs.py.out">
+<!ENTITY handle-recs.m SYSTEM "../../../examples/handle_recs.m">
+<!ENTITY handle-recs.m.out SYSTEM "../../../examples/output/handle_recs.m.out">
+
+<!ENTITY tut-get-raw SYSTEM "tut_get_raw.sgml">
+<!ENTITY get-raw.c SYSTEM "../../../examples/get_raw.c">
+<!ENTITY get-raw.pl SYSTEM "../../../examples/get_raw.pl">
+<!ENTITY get-raw.py SYSTEM "../../../examples/get_raw.py">
+<!ENTITY get-raw.m SYSTEM "../../../examples/get_raw.m">
+<!ENTITY get-raw.m.out SYSTEM "../../../examples/output/get_raw.m.out">
+
+<!ENTITY tut-handle-eval SYSTEM "tut_handle_eval.sgml">
+<!ENTITY handle-eval.c SYSTEM "../../../examples/handle_eval.c">
+<!ENTITY handle-eval.c.out SYSTEM "../../../examples/output/handle_eval.c.out">
+<!ENTITY handle-eval.pl SYSTEM "../../../examples/handle_eval.pl">
+<!ENTITY handle-eval.pl.out SYSTEM "../../../examples/output/handle_eval.pl.out">
+<!ENTITY handle-eval.py SYSTEM "../../../examples/handle_eval.py">
+<!ENTITY handle-eval.py.out SYSTEM "../../../examples/output/handle_eval.py.out">
+<!ENTITY handle-eval.m SYSTEM "../../../examples/handle_eval.m">
+<!ENTITY handle-eval.m.out SYSTEM "../../../examples/output/handle_eval.m.out">
+
+<!ENTITY tut-get-events SYSTEM "tut_get_events.sgml">
+<!ENTITY get-events.c SYSTEM "../../../examples/get_events.c">
+<!ENTITY get-events.pl SYSTEM "../../../examples/get_events.pl">
+<!ENTITY get-events.py SYSTEM "../../../examples/get_events.py">
+<!ENTITY get-events.m SYSTEM "../../../examples/get_events.m">
+<!ENTITY get-events.m.out SYSTEM "../../../examples/output/get_events.m.out">
+
+<!ENTITY tut-process SYSTEM "tut_process.sgml">
+<!ENTITY process.c SYSTEM "../../../examples/process.c">
+<!ENTITY process.c.out SYSTEM "../../../examples/output/process.c.out">
+<!ENTITY process.pl SYSTEM "../../../examples/process.pl">
+<!ENTITY process-short.pl SYSTEM "../../../examples/process_short.pl">
+<!ENTITY process.pl.out SYSTEM "../../../examples/output/process.pl.out">
+<!ENTITY process.py SYSTEM "../../../examples/process.py">
+<!ENTITY process.py.out SYSTEM "../../../examples/output/process.py.out">
+<!ENTITY process.m SYSTEM "../../../examples/process.m">
+<!ENTITY process.m.out SYSTEM "../../../examples/output/process.m.out">
+
+<!ENTITY all-examples SYSTEM "all_examples.sgml">
+]>
+<book><title>User Manual for libRASCH-0.8.31</title>
+<bookinfo>
+    <author><firstname>Raphael</firstname><surname>Schneider</surname></author>
+    <edition>libRASCH User Manual Version 0.1</edition>
+    <pubdate>2006</pubdate>
+    <copyright><year>2004-2006</year>
+      <holder>Raphael Schneider</holder>
+    </copyright>
+</bookinfo>
+&preface;
+&introduction;
+&terminology;
+&tutorial;
+&all-examples;
+</book>

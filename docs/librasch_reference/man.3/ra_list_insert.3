@@ -1,0 +1,21 @@
+.TH "ra_list_insert" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_list_insert \- insert an entry to a linked list
+.SH SYNOPSIS
+.B "int" ra_list_insert
+.BI "(void ** " *head ","
+.BI "void * " prev ","
+.BI "void * " item ");"
+.SH ARGUMENTS
+.IP "*head" 12
+ 
+.IP "prev" 12
+ previous item
+.IP "item" 12
+ item to be added
+.SH "DESCRIPTION"
+This function inserts 'item' in a linked list (identified by 'head'). The item will come directly after 'prev'.
+.SH "SOURCE FILE"
+linked_list.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

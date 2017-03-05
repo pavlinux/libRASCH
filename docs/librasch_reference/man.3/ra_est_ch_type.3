@@ -1,0 +1,30 @@
+.TH "ra_est_ch_type" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_est_ch_type \- estimate channel type
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_est_ch_type
+.BI "(ra_handle " ra ","
+.BI "const char * " folder ","
+.BI "const char * " filename ","
+.BI "int " is_dir_based ","
+.BI "const char * " name ","
+.BI "struct ra_est_ch_infos * " inf ");"
+.SH ARGUMENTS
+.IP "ra" 12
+ ra-handle, needed to check for system-wide ch-map
+.IP "folder" 12
+ folder to look for the folder specific ch-map
+.IP "filename" 12
+ filename of the measurement, needed to look for the meas-specific ch-map
+.IP "is_dir_based" 12
+ flag if measurement files are stored in a folder
+.IP "name" 12
+ channel name
+.IP "inf" 12
+ this variable contains the estimated type
+.SH "DESCRIPTION"
+This function tries to estimate the type of a recording channel from the channel name.
+.SH "SOURCE FILE"
+estimate_ch_infos.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

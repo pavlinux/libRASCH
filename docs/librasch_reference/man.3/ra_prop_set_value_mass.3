@@ -1,0 +1,24 @@
+.TH "ra_prop_set_value_mass" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_prop_set_value_mass \- set multiple values in event-property
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_prop_set_value_mass
+.BI "(prop_handle " ph ","
+.BI "const long * " event_id ","
+.BI "const long * " ch ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "ph" 12
+ event-property handle
+.IP "event_id" 12
+ array containing event-id's
+.IP "ch" 12
+ array containing channel number's
+.IP "vh" 12
+ contains values to be set
+.SH "DESCRIPTION"
+The function set the values stored in 'vh' in event-property 'ph' for the event-id's 'event_id' and channel's 'ch'. If the value is channel independent use '-1' for the channel numbers. The length of 'event_id' and 'ch' has to be the same. And the number of values in 'vh' has to be the same as in 'event_id'/'ch'.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

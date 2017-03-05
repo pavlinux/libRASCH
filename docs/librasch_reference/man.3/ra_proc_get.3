@@ -1,0 +1,21 @@
+.TH "ra_proc_get" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_proc_get \- get a processing handle
+.SH SYNOPSIS
+.B "LIBRAAPI proc_handle" ra_proc_get
+.BI "(meas_handle " mh ","
+.BI "plugin_handle " pl ","
+.BI "void " (*callback ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ 
+.IP "pl" 12
+ plugin-handle
+.IP "(*callback" 12
+ 
+.SH "DESCRIPTION"
+This function returns a proc_handle for the plugin pl. The proc_handle will be returned initialized.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

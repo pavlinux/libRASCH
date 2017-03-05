@@ -1,0 +1,21 @@
+.TH "ra_eval_copy" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_eval_copy \- copy evaluation
+.SH SYNOPSIS
+.B "LIBRAAPI eval_handle" ra_eval_copy
+.BI "(eval_handle " eh ","
+.BI "const char * " name ","
+.BI "const char * " desc ");"
+.SH ARGUMENTS
+.IP "eh" 12
+ source evaluation handle
+.IP "name" 12
+ name of the copied evaluation 
+.IP "desc" 12
+ description of the copied evaluation
+.SH "DESCRIPTION"
+The function copies the evaluation given by 'eh', the handle of the copy will be returned. If the parameter "name" is NULL or an empty string, the name of the source evaluation will be used and the prefix 'copy-' will be added.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

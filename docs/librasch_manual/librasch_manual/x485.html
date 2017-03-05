@@ -1,0 +1,384 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Access raw data</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="User Manual for libRASCH-0.7.2"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Examples for all supported lanuages/systems"
+HREF="all_examples.html"><LINK
+REL="PREVIOUS"
+TITLE="Handle recordings"
+HREF="x461.html"><LINK
+REL="NEXT"
+TITLE="Access evaluation"
+HREF="x503.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="SECTION"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>User Manual for libRASCH-0.7.2</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x461.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Appendix A. Examples for all supported lanuages/systems</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x503.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="AEN485"
+>Access raw data</A
+></H1
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN487"
+>C Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>//
+#include &#60;stdlib.h&#62;
+#include &#60;ra.h&#62;
+
+int main(int argc, char *argv[])
+{
+    ra_handle ra;
+    value_handle vh;
+    meas_handle meas;
+    rec_handle rec;
+    long l, num_ch;
+    double *buf = NULL;
+
+    /* initialize libRASCH */
+    ra = ra_lib_init();
+    if (ra == NULL)
+    {
+        printf("error initializing libRASCH\n");
+        return -1;
+    }
+
+    /* open measurement */
+    meas = ra_meas_open(ra, argv[1], 0);
+    if (meas == NULL)
+    {
+        printf("can't open measurement %s\n", argv[1]);
+        return -1;
+    }
+
+    /* get root recording */
+    rec = ra_rec_get_first(meas, 0);
+    if (rec == NULL)
+    {
+        printf("can't get recording-handle\n");
+        return -1;
+    }
+
+    /* get first 10000 samples for each channel */
+    vh = ra_value_malloc();
+    if (ra_info_get(rec, RA_INFO_REC_GEN_NUM_CHANNEL_L, vh) == 0)
+        num_ch = ra_value_get_long(vh);
+    buf = malloc(sizeof(double) * 10000);
+    for (l = 0; l &#60; num_ch; l++)
+    {
+        long m, num_read;
+
+        num_read = ra_raw_get_unit(rec, l, 0, 10000, buf);
+        for (m = 0; m &#60; num_read; m++)
+            ;                   /* do something with every sample */
+    }
+
+    /* clean up */
+    free(buf);
+    ra_value_free(vh);
+    ra_meas_close(meas);
+    ra_lib_close(ra);
+
+    return 0;
+}                               /* main() */
+
+//&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN491"
+>Perl Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+use strict;
+use RASCH;
+
+# initialize libRASCH
+my $ra = new RASCH or die "error initializing libRASCH\n";
+
+# open measurement
+my $meas = $ra-&#62;open_meas($ARGV[0], 0) or
+    die "can't open measurement $ARGV[0]\n";
+
+# get root recording
+my $rec = $meas-&#62;get_first_session_rec(0) or
+    die "can't get root recording\n";
+
+# get first 10000 samples for each channel
+my ($num_ch) = $rec-&#62;get_info(info =&#62; 'rec_num_channel');
+for (my $i = 0; $i &#60; $num_ch; $i++)
+{
+    my $data_ref = $rec-&#62;get_raw($i, 0, 10000);
+    for (@$data_ref)
+    {
+	; # do something with every sample
+    }
+}
+
+exit 0;
+#&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN495"
+>Python Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+import sys
+from RASCH import *
+
+# initialize libRASCH
+ra = RASCH()
+if not ra:
+    print "can't initialize libRASCH"
+    sys.exit()
+
+# open measurement
+meas = ra.open_meas(sys.argv[1], 0)
+if not meas:
+    print "can't open measurement", sys.argv[1]
+    sys.exit()
+
+# get root recording
+rec = meas.get_first_session_rec(0)
+if not rec:
+    print "can't get root recording"
+    sys.exit()
+
+# get first 10000 samples for each channel
+[num_ch, n, d] = rec.get_info(info='rec_num_channel')
+if num_ch &#62; 0:
+    for i in range(num_ch):
+        data = rec.get_raw(i, 0, 10000)
+        for elem in data:
+            elem # do something with every sample
+
+#&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN499"
+>Matlab/Octave Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>rasch@rasch:~&#62; octave
+GNU Octave, version 2.1.50 (i686-pc-linux-gnu).
+...
+
+octave:1&#62; ra=ra_lib_init
+ra = 145017272
+octave:2&#62; meas=ra_meas_open(ra, '/home/rasch/ecgs/AT011030_rdi.ART', 0)
+meas = 145244336
+octave:3&#62; rec=ra_rec_get_first(meas, 0)
+rec = 145421120
+octave:4&#62; num_ch=ra_rec_get_info(rec, 'rec_num_channel')
+num_ch = 5
+octave:5&#62; ch_all=[];
+octave:6&#62; for i=0:(num_ch-1)
+&#62; ch=ra_raw_get(rec, i, 0, 10000);
+&#62; ch_all=[ch_all ch'];
+&#62; endfor
+octave:7&#62; whos ch_all
+
+*** local user variables:
+
+prot  type                       rows   cols  name
+====  ====                       ====   ====  ====
+ rwd  matrix                    10000      5  ch_all
+
+octave:8&#62; samplerate=ra_ch_get_info(rec, 0, 'ch_samplerate')
+samplerate = 1600
+octave:9&#62; x=0:9999;
+octave:10&#62; x = x / samplerate;
+octave:11&#62; figure(0); plot(x, ch_all(:,1));
+octave:12&#62; figure(1); plot(x, ch_all(:,2));
+octave:13&#62; figure(2); plot(x, ch_all(:,3));
+octave:14&#62; figure(3); plot(x, ch_all(:,4));
+octave:15&#62; figure(4); plot(x, ch_all(:,5));
+octave:16&#62;&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x461.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x503.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Handle recordings</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="all_examples.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Access evaluation</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

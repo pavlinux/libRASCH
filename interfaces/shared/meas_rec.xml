@@ -1,0 +1,488 @@
+<func name="ra_meas_handle_from_any_handle">
+<para type="in" num="1" perl-type="void *" desc="handle of any type except ra-handle">any_handle</para>
+<para type="out" num="1">meas_handle</para>
+<purpose>return the measurement handle from any type of handle</purpose>
+<description>Returns a measurement-handle from any handle.
+</description>
+<perl-code>
+CODE:
+  RETVAL = ra_meas_handle_from_any_handle(p_any_handle);
+</perl-code>
+<perl-out>void *</perl-out>
+<python-code-init>
+  meas_handle meas;
+</python-code-init>
+<python-code>
+  meas = ra_meas_handle_from_any_handle(p_any_handle);
+  return Py_BuildValue("l", meas);
+</python-code>
+</func>
+
+
+<func name="ra_meas_find">
+<para type="in" num="1" perl-type="void *" desc="handle to an instance of libRASCH">ra_handle</para>
+<para type="in" num="2" perl-type="char *" desc="directory in which the measurements are searched">directory</para>
+<para type="out" num="1">signals</para>
+<para type="out" num="2">plugins</para>
+<purpose>find all measurements in a directory</purpose>
+<description>Returns all signales handled by libRASCH in the directory 'directory'.
+</description>
+<!-- no special handling for Scilab needed
+-->
+<m-file-replace-matlab>
+    [fn, pl] = ra_matlab('ra_meas_find', ra_handle, directory);
+    signals = cellstr(fn);
+    plugins = cellstr(pl);
+</m-file-replace-matlab>
+<m-file-replace-octave>
+    [fn, pl] = ra_octave('ra_meas_find', ra_handle, directory);
+    [m,n] = size(fn);
+    signals = cell(m,1);
+    for i=1:m
+        signals{i} = fn(i,:);
+    endfor
+    plugins = cell(m,1);
+    for i=1:m
+        plugins{i} = pl(i,:);
+    endfor
+</m-file-replace-octave>
+<perl-code><![CDATA[
+PPCODE:
+    char **sigs_found = NULL;
+    char **plugins = NULL;
+    long n_sigs = 0;
+    struct ra_find_struct rfs;
+    ra_find_handle mfh;
+    long l;
+    AV *arr_fn;
+    AV *arr_pl;
+
+    mfh = ra_meas_find_first(p_ra_handle, p_directory, &rfs);
+    if (mfh)
+    {
+	do
+	{
+	    ++n_sigs;
+	    sigs_found = (char **)realloc(sigs_found, sizeof(char *) * n_sigs);
+	    sigs_found[n_sigs-1] = malloc(sizeof(char) * (strlen(rfs.name)+1));
+	    strcpy(sigs_found[n_sigs-1], rfs.name);
+
+	    plugins = (char **)realloc(plugins, sizeof(char *) * n_sigs);
+	    plugins[n_sigs-1] = malloc(sizeof(char) * (strlen(rfs.plugin)+1));
+	    strcpy(plugins[n_sigs-1], rfs.plugin);
+	} while (ra_meas_find_next(mfh, &rfs));
+	ra_meas_close_find(mfh);
+    }
+    
+    arr_fn = newAV();
+    sv_2mortal((SV *)arr_fn);
+    arr_pl = newAV();
+    sv_2mortal((SV *)arr_pl);
+
+    for (l = 0; l < n_sigs; l++)
+    {
+      av_store(arr_fn, l, newSVpv(sigs_found[l], strlen(sigs_found[l])));
+      free(sigs_found[l]);
+
+      av_store(arr_pl, l, newSVpv(plugins[l], strlen(plugins[l])));
+      free(plugins[l]);
+    }
+
+    free(sigs_found);
+    free(plugins);
+
+    PUSHs(newRV_noinc((SV *)arr_fn));
+    PUSHs(newRV_noinc((SV *)arr_pl));
+]]>
+</perl-code>
+<python-code-init>
+    char **sigs_found = NULL;
+    char **plugins = NULL;
+    long n_sigs = 0;
+    struct ra_find_struct rfs;
+    ra_find_handle mfh;
+    long l;
+    PyObject *list_fn;
+    PyObject *list_pl;
+    PyObject *list_ret;    
+</python-code-init>
+<python-code><![CDATA[
+    mfh = ra_meas_find_first(p_ra_handle, p_directory, &rfs);
+    if (mfh)
+    {
+	do
+	{
+	    ++n_sigs;
+	    sigs_found = (char **)realloc(sigs_found, sizeof(char *) * n_sigs);
+	    sigs_found[n_sigs-1] = malloc(sizeof(char) * (strlen(rfs.name)+1));
+	    strcpy(sigs_found[n_sigs-1], rfs.name);
+
+	    plugins = (char **)realloc(plugins, sizeof(char *) * n_sigs);
+	    plugins[n_sigs-1] = malloc(sizeof(char) * (strlen(rfs.plugin)+1));
+	    strcpy(plugins[n_sigs-1], rfs.plugin);
+	} while (ra_meas_find_next(mfh, &rfs));
+	ra_meas_close_find(mfh);
+    }
+
+    list_fn = PyList_New(n_sigs);
+    list_pl = PyList_New(n_sigs);
+    for (l = 0; l < n_sigs; l++)
+    {
+        PyList_SetItem(list_fn, l, Py_BuildValue("s", sigs_found[l]));
+	free(sigs_found[l]);
+
+        PyList_SetItem(list_pl, l, Py_BuildValue("s", plugins[l]));
+	free(plugins[l]);
+    }
+    free(sigs_found);
+    free(plugins);
+
+    list_ret = PyList_New(2);
+    PyList_SetItem(list_ret, 0, Py_BuildValue("O", list_fn));
+    PyList_SetItem(list_ret, 1, Py_BuildValue("O", list_pl));
+
+    return list_ret;
+]]>
+</python-code>
+</func>
+
+
+<func name="ra_meas_open">
+<para type="in" num="1" perl-type="void *" desc="handle to an instance of libRASCH">ra_handle</para>
+<para type="in" num="2" perl-type="char *" desc="name of the measurement">signal_name</para>
+<para type="in" num="3" perl-type="char *" desc="name of the evaluation file (=NULL use default one)">eval_file</para>
+<para type="in" num="4" perl-type="long" desc="flag if some initalization should be skipped (=1)">open_fast</para>
+<para type="out" num="1">meas_handle</para>
+<purpose>opens a measurement</purpose>
+<description>Opens the measurement 'signal_name'. If you are
+interested only in information about the type of the measurement or
+about informations of the measurement-object than the flag 'open_fast'
+can be set to '1' and the opening is faster (the reading of the
+evaluations are skipped.) A specific evaluation file can be given
+in 'eval_file'. If this is set to NULL or the empty string, libRASCH
+will look for the default evaluation file associated with the
+measurement.
+</description>
+<perl-code>
+CODE:
+  RETVAL = ra_meas_open(p_ra_handle, p_signal_name, p_eval_file, p_open_fast);
+</perl-code>
+<perl-out>void *</perl-out>
+<python-code-init>
+  meas_handle meas;
+</python-code-init>
+<python-code>
+  meas = ra_meas_open(p_ra_handle, p_signal_name, p_eval_file, p_open_fast);
+  return Py_BuildValue("l", meas);
+</python-code>
+</func>
+
+<func name="ra_meas_new">
+<para type="in" num="1" perl-type="void *" desc="handle to an instance of libRASCH">ra_handle</para>
+<para type="in" num="2" perl-type="char *" desc="directory where the measurement should be stored">dir_name</para>
+<para type="in" num="3" perl-type="char *" desc="name of the measurement">signal_name</para>
+<para type="out" num="1">meas_handle</para>
+<purpose>opens a measurement</purpose>
+<description>Creates a new measurement with the name @name in the
+directory @dir. The function returns the handle to the
+measurement. The measurement will be stored using the libRASCH
+file-format.
+</description>
+<perl-code>
+CODE:
+  RETVAL = ra_meas_new(p_ra_handle, p_dir_name, p_signal_name);
+</perl-code>
+<perl-out>void *</perl-out>
+<python-code-init>
+  meas_handle meas;
+</python-code-init>
+<python-code>
+  meas = ra_meas_new(p_ra_handle, p_dir_name, p_signal_name);
+  return Py_BuildValue("l", meas);
+</python-code>
+</func>
+
+
+<func name="ra_meas_save">
+<para type="in" num="1" perl-type="void *" desc="handle to a libRASCH measurement">meas_handle</para>
+<purpose>close a measurement</purpose>
+<description>Saves the changes to a measurement (NOT to the
+evaluation). Plugin must support this.
+</description>
+<perl-code>
+CODE:
+  ra_meas_save(p_meas_handle);
+</perl-code>
+<python-code>
+  ra_meas_save(p_meas_handle);
+
+  Py_INCREF(Py_None);
+  return Py_None;
+</python-code>
+</func>
+
+
+<func name="ra_meas_close">
+<para type="in" num="1" perl-type="void *" desc="handle to a libRASCH measurement">meas_handle</para>
+<purpose>close a measurement</purpose>
+<description>Close the measurement with the measurement-handle 'meas_handle'.
+</description>
+<perl-code>
+CODE:
+  ra_meas_close(p_meas_handle);
+</perl-code>
+<python-code>
+  ra_meas_close(p_meas_handle);
+
+  Py_INCREF(Py_None);
+  return Py_None;
+</python-code>
+</func>
+
+
+<func name="ra_rec_get_first">
+<para type="in" num="1" perl-type="void *" desc="handle to a libRASCH measurement">meas_handle</para>
+<para type="in" num="2" perl-type="long" desc="number of the recording session">session_number</para>
+<para type="out" num="1">rec_handle</para>
+<purpose>get the first recording of a session</purpose>
+<description>Returns the first recording-handle for session number
+'session_number'.
+</description>
+<perl-code>
+CODE:
+  RETVAL = ra_rec_get_first(p_meas_handle, p_session_number);
+</perl-code>
+<perl-out>void *</perl-out>
+<python-code-init>
+  rec_handle rec;
+</python-code-init>
+<python-code>
+  rec = ra_rec_get_first(p_meas_handle, p_session_number);
+  return Py_BuildValue("l", rec);
+</python-code>
+</func>
+
+
+<func name="ra_rec_get_next">
+<para type="in" num="1" perl-type="void *" desc="handle to a recording">rec_handle</para>
+<para type="out" num="1">rec_handle</para>
+<purpose>get the next recording</purpose>
+<description>Returns the recording-handle after 'rec_handle'.
+</description>
+<perl-code>
+CODE:
+  RETVAL = ra_rec_get_next(p_rec_handle);
+</perl-code>
+<perl-out>void *</perl-out>
+<python-code-init>
+  rec_handle rec;
+</python-code-init>
+<python-code>
+  rec = ra_rec_get_next(p_rec_handle);
+  return Py_BuildValue("l", rec);
+</python-code>
+</func>
+
+
+<func name="ra_rec_get_first_child">
+<para type="in" num="1" perl-type="void *" desc="handle to a recording">rec_handle</para>
+<para type="out" num="1">rec_handle</para>
+<purpose>get the first child recording</purpose>
+<description>Returns the recording-handle which is the first child of
+'rec_handle'. 
+</description>
+<perl-code>
+CODE:
+  RETVAL = ra_rec_get_first_child(p_rec_handle);
+</perl-code>
+<perl-out>void *</perl-out>
+<python-code-init>
+  rec_handle rec;
+</python-code-init>
+<python-code>
+  rec = ra_rec_get_first_child(p_rec_handle);
+  return Py_BuildValue("l", rec);
+</python-code>
+</func>
+
+
+<func name="ra_raw_get">
+<para type="in" num="1" perl-type="void *" desc="handle to a recording">rec_handle</para>
+<para type="in" num="2" perl-type="long" desc="number of the channel">channel</para>
+<para type="in" num="3" perl-type="long" desc="number of the first sample wanted (zero-based=">start_sample</para>
+<para type="in" num="4" perl-type="long" desc="number of the wanted samples">num_samples</para>
+<para type="out" num="1">data</para>
+<purpose>get raw signal data</purpose>
+<description>Returns 'num_samples' raw-data starting with sample
+'start_sample' from recording 'rec_handle' and channel 'ch'.
+</description>
+<perl-code><![CDATA[
+PPCODE:
+  AV* arr;
+  DWORD *buf_raw = NULL;
+  long l, n;
+
+  New(0, buf_raw, p_num_samples, DWORD);
+  SAVEFREEPV(buf_raw);
+  n = ra_raw_get(p_rec_handle, (unsigned int)p_channel, (size_t)p_start_sample, (size_t)p_num_samples, buf_raw, NULL);
+
+  arr = newAV();
+  sv_2mortal((SV *)arr);
+  for (l = 0; l < n; l++)
+    av_store(arr, l, newSVnv(buf_raw[l]));
+
+  PUSHs(newRV_noinc((SV *)arr));
+]]>
+</perl-code>
+<python-code-init>
+  DWORD *buf_raw = NULL;
+  long l, n;
+  PyObject *list;
+</python-code-init>
+<python-code><![CDATA[
+  buf_raw = malloc(sizeof(DWORD) * p_num_samples);
+  n = ra_raw_get(p_rec_handle, (unsigned int)p_channel, (size_t)p_start_sample, (size_t)p_num_samples, buf_raw, NULL);
+
+  list = PyList_New(n);
+  for (l = 0; l < n; l++)
+    PyList_SetItem(list, l, Py_BuildValue("l", buf_raw[l]));
+
+  free(buf_raw);
+
+  return list;
+]]>
+</python-code>
+</func>
+
+
+<func name="ra_raw_get_unit">
+<para type="in" num="1" perl-type="void *" desc="handle to a recording">rec_handle</para>
+<para type="in" num="2" perl-type="long" desc="number of the channel">channel</para>
+<para type="in" num="3" perl-type="long" desc="number of the first sample wanted (zero-based=">start_sample</para>
+<para type="in" num="4" perl-type="long" desc="number of the wanted samples">num_samples</para>
+<para type="out" num="1">data</para>
+<purpose>get raw signal data scaled to 'unit'-values</purpose>
+<description>Returns 'num_samples' raw-data starting with sample
+'start_sample' from recording 'rec_handle' and channel 'ch'. The values
+returned are scaled so the values are 'unit'-values
+</description>
+<perl-code><![CDATA[
+PPCODE:
+  AV* arr;
+  double *buf= NULL;
+  long l, n;
+
+  New(0, buf, p_num_samples, double);
+  SAVEFREEPV(buf);
+  n = ra_raw_get_unit(p_rec_handle, (unsigned int)p_channel, (size_t)p_start_sample, (size_t)p_num_samples, buf);
+
+  arr = newAV();
+  sv_2mortal((SV *)arr);
+  for (l = 0; l < n; l++)
+    av_store(arr, l, newSVnv(buf[l]));
+
+  PUSHs(newRV_noinc((SV *)arr));
+]]>
+</perl-code>
+<python-code-init>
+  double *buf = NULL;
+  long l, n;
+  PyObject *list;
+</python-code-init>
+<python-code><![CDATA[
+  buf = malloc(sizeof(double) * p_num_samples);
+  n = ra_raw_get_unit(p_rec_handle, (unsigned int)p_channel, (size_t)p_start_sample, (size_t)p_num_samples, buf);
+
+  list = PyList_New(n);
+
+  for (l = 0; l < n; l++)
+    PyList_SetItem(list, l, Py_BuildValue("d", buf[l]));
+
+  free(buf);
+
+
+  return list;
+]]>
+</python-code>
+</func>
+
+
+<func name="ra_meas_copy">
+<para type="in" num="1" perl-type="void *" desc="handle to a libRASCH measurement">meas_handle</para>
+<para type="in" num="2" perl-type="char *" desc="destination directory">dir</para>
+<para type="out" num="1">ok</para>
+<purpose>copy measurement</purpose>
+<description>
+The function copy the files of measurement meas_handle to directory dir.
+
+IMPORTANT!!!
+Function _not_ completely tested. Use at your own risk.
+</description>
+<perl-code>
+CODE:
+  RETVAL = ra_meas_copy(p_meas_handle, p_dir);
+</perl-code>
+<perl-out>int</perl-out>
+<python-code-init>
+  long ok;
+</python-code-init>
+<python-code>
+  ok = (long)ra_meas_copy(p_meas_handle, p_dir);
+  return Py_BuildValue("l", ok);
+</python-code>
+</func>
+
+<func name="ra_meas_move">
+<para type="in" num="1" perl-type="void *" desc="handle to a libRASCH measurement">meas_handle</para>
+<para type="in" num="2" perl-type="char *" desc="destination directory">dir</para>
+<para type="out" num="1">meas_handle_moved</para>
+<purpose>copy measurement</purpose>
+<description>
+The function move the files of the measurement to directory dir. After the move
+the measurement will be reopend (to be able to handle the new positions of the files)
+and the functions returns the new measurement-handle.
+
+IMPORTANT!!!
+Function _not_ completely tested. Use at your own risk.
+</description>
+<perl-code>
+CODE:
+  RETVAL = ra_meas_move(p_meas_handle, p_dir);
+</perl-code>
+<perl-out>void *</perl-out>
+<python-code-init>
+  meas_handle mh_moved;
+</python-code-init>
+<python-code>
+  mh_moved = ra_meas_move(p_meas_handle, p_dir);
+  return Py_BuildValue("l", mh_moved);
+</python-code>
+</func>
+
+<func name="ra_meas_delete">
+<para type="in" num="1" perl-type="void *" desc="handle to a libRASCH measurement">meas_handle</para>
+<para type="out" num="1">ok</para>
+<purpose>delete measurement</purpose>
+<description>
+The function deletes the files of the measurement. The measurement
+will be closed after the deletion. Therefore meas_handle is no longer a valid
+measurement-handle.
+
+IMPORTANT!!!
+Function _not_ completely tested. Use at your own risk.
+</description>
+<perl-code>
+CODE:
+  RETVAL = ra_meas_delete(p_meas_handle);
+</perl-code>
+<perl-out>int</perl-out>
+<python-code-init>
+  long ok;
+</python-code-init>
+<python-code>
+  ok = (long)ra_meas_delete(p_meas_handle);
+  return Py_BuildValue("l", ok);
+</python-code>
+</func>
+
+

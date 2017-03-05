@@ -1,0 +1,5 @@
+Unload plugins and free memory.
+    Input parameters:
+    ra_handle
+
+  Output parameters:

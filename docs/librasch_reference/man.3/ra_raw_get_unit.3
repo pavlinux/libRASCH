@@ -1,0 +1,27 @@
+.TH "ra_raw_get_unit" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_raw_get_unit \- get raw-signal data scaled to 'unit'-values
+.SH SYNOPSIS
+.B "LIBRAAPI size_t" ra_raw_get_unit
+.BI "(rec_handle " rh ","
+.BI "unsigned int " ch ","
+.BI "size_t " start ","
+.BI "size_t " num_data ","
+.BI "double * " data ");"
+.SH ARGUMENTS
+.IP "rh" 12
+ recording-handle
+.IP "ch" 12
+ channel
+.IP "start" 12
+ first sample
+.IP "num_data" 12
+ number of samples
+.IP "data" 12
+ buffer for samples
+.SH "DESCRIPTION"
+This function returns the sample's (raw-signal data) from the measurement mh and the recording rh. The first sample in data will be the sample number start (in sampleunits) and max. num_data are in data. The memory for buffer data must  be allocated in calling function. The values are scaled to the unit of the  channel.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

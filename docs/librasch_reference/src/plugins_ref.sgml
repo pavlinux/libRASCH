@@ -1,0 +1,15 @@
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.2//EN" [
+<!ENTITY plugins SYSTEM "plugins.sgml">
+<!ENTITY plugins_auto SYSTEM "../plugins.sgml">
+]>
+<book><title>Plugin Reference Manual for libRASCH-0.6.0pre2</title>
+<bookinfo>
+    <author><firstname>Raphael</firstname><surname>Schneider</surname></author>
+    <edition>libRASCH Plugin Reference Manual Version 0.1.0</edition>
+    <pubdate>2004</pubdate>
+    <copyright><year>2004</year>
+      <holder>Raphael Schneider</holder>
+    </copyright>
+</bookinfo>
+&plugins;
+</book>

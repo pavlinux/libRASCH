@@ -1,0 +1,83 @@
+<section id="tut-process"><title>Usage of process-plugins</title>
+<para>
+The example will show how to calculate Heart-Rate-Variability (HRV)
+using the process-plugin 'hrv'. We will perform the following steps:
+<itemizedlist mark=bullet>
+<listitem><para>get 'hrv' plugin</para></listitem>
+<listitem><para>calculate HRV using the plugin</para></listitem>
+<listitem><para>print the calculation results</para></listitem>
+</itemizedlist>
+</para>
+
+<programlistingco>
+<areaspec>
+<areaset id="process-c.const" coords="">
+<area id="process-c.get-pl"  units="LineColumn" coords="39 47">
+</areaset>
+<area id="process-c.init"  units="LineColumn" coords="47 47">
+<area id="process-c.process"  units="LineColumn" coords="51 30">
+<area id="process-c.set-res"  units="LineColumn" coords="70 41">
+<area id="process-c.get-res"  units="LineColumn" coords="90 50">
+</areaspec>
+<programlisting>
+&process.c;
+</programlisting>
+<calloutlist>
+<callout arearefs="process-c.get-pl">
+<para>
+Returns the plugin-handle for the plugin 'hrv'.
+</para>
+</callout>
+</calloutlist>
+<calloutlist>
+<callout arearefs="process-c.init">
+<para>
+Initialize the proc_info structure (defined in ra_defines.h). In this
+structure must be the information set, which will be needed for the
+processing (the next 3 lines).
+</para>
+<para>
+Not all process-plugins need the information of the recording and/or
+the evaluation. Please check the plugin-reference section which
+information is needed. In case of doubt set all variables.
+</para>
+</callout>
+</calloutlist>
+<calloutlist>
+<callout arearefs="process-c.process">
+<para>
+This function-call starts the processing. If the processing is 
+successfull, the function returns 0.
+</para>
+</callout>
+</calloutlist>
+<calloutlist>
+<callout arearefs="process-c.set-res">
+<para>
+To select the result, in which you are interessted, the variable
+'res_num' in the ra_info structure must be set. The value of the
+result as well as information about the result will be returned using
+a ra_info structure.
+</para>
+</callout>
+</calloutlist>
+<calloutlist>
+<callout arearefs="process-c.get-res">
+<para>
+Information about a result will be obtained using
+ra_get_info_id(). The value of the result will be obtained using
+ra_get_result().
+</para>
+</callout>
+</calloutlist>
+</programlistingco>
+
+<para>
+The output of the above example for the ECG '100s'
+is shown here:
+</para>
+<programlisting>
+&process.c.out;
+</programlisting>
+
+</section>

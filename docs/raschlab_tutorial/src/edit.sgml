@@ -1,0 +1,20 @@
+<chapter id="edit"><title>Edit Evaluations</title>
+
+<para>
+In most of the signal specific view-plugins the user can edit the
+evaluation of the signal. In the ecg-view, the user can insert and
+delete beats and can change the annotation of a beat. 
+</para>
+
+<figure id="raschlab-ecg-with-correct-annot-fig">
+<title>
+ECG with corrected annotations.
+</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="pics/raschlab_ecg_with_correct_annot_2.png" scale="30">
+</imageobject>
+</mediaobject>
+</figure>
+
+</chapter>

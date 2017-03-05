@@ -1,0 +1,21 @@
+.TH "ra_lib_set_option" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_lib_set_option \- set an option
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_lib_set_option
+.BI "(any_handle " h ","
+.BI "const char * " opt_name ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "h" 12
+ option will be set in this object
+.IP "opt_name" 12
+ name of the option
+.IP "vh" 12
+ option value
+.SH "DESCRIPTION"
+The function set the option opt_name in object h. At the moment only options for process-plugins (h needs to be a process-handle) are supported.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

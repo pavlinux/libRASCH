@@ -1,0 +1,270 @@
+<func name="ra_lib_use_plugin">
+<para type="in" num="1" perl-type="void *" desc="handle to an instance of libRASCH">ra_handle</para>
+<para type="in" num="2" perl-type="long" desc="zero-based plugin index">index</para>
+<para type="in" num="3" perl-type="long" desc="flag if this plugin
+should be used(=1) or not(=0)">use_it</para>
+<purpose>set if plugin should be used</purpose>
+<description>Not implemented yet.
+</description>
+<perl-code>
+CODE:
+  ra_lib_use_plugin(p_ra_handle, p_index, p_use_it);
+</perl-code>
+<python-code>
+  ra_lib_use_plugin(p_ra_handle, p_index, p_use_it);
+
+  Py_INCREF(Py_None);
+  return Py_None;
+</python-code>
+</func>
+
+
+<func name="ra_plugin_get_by_num">
+<para type="in" num="1" perl-type="void *" desc="handle to an instance of libRASCH">ra_handle</para>
+<para type="in" num="2" perl-type="long" desc="zero-based plugin number">number</para>
+<para type="in" num="3" perl-type="long" desc="flag if all plugins are searched">search_all</para>
+<para type="out" num="1">plugin_handle</para>
+<purpose>get plugin by index</purpose>
+<description>Returns the plugin-handle for plugin number 'number'.
+</description>
+<perl-code>
+CODE:
+  RETVAL = ra_plugin_get_by_num(p_ra_handle, p_number, p_search_all);
+</perl-code>
+<perl-out>void *</perl-out>
+<python-code-init>
+  plugin_handle pl;
+</python-code-init>
+<python-code>
+  pl = ra_plugin_get_by_num(p_ra_handle, p_number, p_search_all);
+  return Py_BuildValue("l", pl);
+</python-code>
+</func>
+
+
+<func name="ra_plugin_get_by_name">
+<para type="in" num="1" perl-type="void *" desc="handle to an instance of libRASCH">ra_handle</para>
+<para type="in" num="2" perl-type="char *" desc="name of the plugin">name</para>
+<para type="in" num="3" perl-type="long" desc="flag if all plugins are
+searched">search_all</para>
+<para type="out" num="1">plugin_handle</para>
+<purpose>get plugin by name</purpose>
+<description>Returns the plugin-handle for plugin 'name'.
+</description>
+<perl-code>
+CODE:
+  RETVAL = ra_plugin_get_by_name(p_ra_handle, p_name, p_search_all);
+</perl-code>
+<perl-out>void *</perl-out>
+<python-code-init>
+  plugin_handle pl;
+</python-code-init>
+<python-code>
+  pl = ra_plugin_get_by_name(p_ra_handle, p_name, p_search_all);
+  return Py_BuildValue("l", pl);
+</python-code>
+</func>
+
+<func name="ra_proc_get">
+<para type="in" num="1" perl-type="void *" desc="handle to a libRASCH measurement">meas_handle</para>
+<para type="in" num="2" perl-type="void *" desc="handle to a libRASCH-plugin">plugin_handle</para>
+<para type="out" num="1">process_handle</para>
+<purpose>initialize the processing of a measurement and/or evaluation</purpose>
+<description>
+</description>
+<perl-code>
+CODE:
+  struct proc_info *pi;
+
+  pi = (struct proc_info *)ra_proc_get(p_meas_handle, p_plugin_handle, NULL);
+
+  RETVAL = pi;
+</perl-code>
+<perl-out>void *</perl-out>
+<python-code-init>
+  struct proc_info *pi;
+</python-code-init>
+<python-code>
+  pi = (struct proc_info *)ra_proc_get(p_meas_handle, p_plugin_handle, NULL);
+
+  return Py_BuildValue("l", pi);
+</python-code>
+</func>
+
+
+<func name="ra_proc_do">
+<para type="in" num="1" perl-type="void *" desc="handle returned from ra_proc_get()">process_handle</para>
+<para type="out" num="1">error</para>
+<purpose>process a measurement and/or evaluation</purpose>
+<description>Perform some calculation using the processing-plugin
+'plugin_handle. The function returns a process-handle, which will be
+used in the function 'ra_result_get' to get the results of the
+calculation.
+</description>
+<perl-code>
+CODE:
+  int res;
+
+  res = ra_proc_do(p_process_handle);
+
+  RETVAL = res;
+</perl-code>
+<perl-out>int</perl-out>
+<python-code-init>
+  int res;
+</python-code-init>
+<python-code>
+  res = ra_proc_do(p_process_handle);
+
+  return Py_BuildValue("l", res);
+</python-code>
+</func>
+
+
+<func name="ra_proc_get_result_idx">
+<para type="in" num="1" perl-type="void *" desc="handle returned from ra_proc_get()">process_handle</para>
+<para type="in" num="2" perl-type="char *" desc="result ASCII id">res_ascii_id</para>
+<para type="out" num="1">index</para>
+<purpose>returns the index of the result 'res_ascii_id'</purpose>
+<description>The function returns the index of the result
+'res_ascii_id' in the results returned in re_proc_get_result().
+</description>
+<perl-code>
+CODE:
+  long idx;
+
+  idx = ra_proc_get_result_idx(p_process_handle, p_res_ascii_id);
+
+  RETVAL = idx;
+</perl-code>
+<perl-out>long</perl-out>
+<python-code-init>
+  long idx;
+</python-code-init>
+<python-code>
+  idx = ra_proc_get_result_idx(p_process_handle, p_res_ascii_id);
+
+  return Py_BuildValue("l", idx);
+</python-code>
+</func>
+
+
+<func name="ra_proc_get_result">
+<para type="in" num="1" perl-type="void *" desc="handle returned from ra_proc_do()">process_handle</para>
+<para type="in" num="2" perl-type="void *" desc="plugin handle">plugin_handle</para>
+<para type="out" num="1">values</para>
+<para type="out" num="2">name</para>
+<para type="out" num="3">desc</para>
+<purpose>get the results from a ra_proc_do()-call</purpose>
+<description>Returns the results of the calculation done calling
+'ra_proc_do'. It also returns the name's and short descriptions
+of the values. The returning variables are vectors containing all
+results.
+</description>
+<perl-code><![CDATA[
+PPCODE:
+  value_handle vh;
+  int cnt;
+  AV *all;
+  long l, n_res;
+
+  vh = ra_value_malloc();
+  
+  all = newAV();
+  sv_2mortal((SV *)all);
+
+  n_res = 0;
+  if (ra_info_get(p_plugin_handle, RA_INFO_PL_NUM_RESULTS_L, vh) == 0)
+    n_res = ra_value_get_long(vh);
+
+  for (l = 0; l < n_res; l++)
+  {
+    AV *curr;
+
+    if (ra_proc_get_result(p_process_handle, l, 0, vh) != 0)
+    {
+      av_store(all, l, &PL_sv_undef);
+      continue;
+    }
+	
+    curr = newAV();
+    sv_2mortal((SV *)curr);
+
+    if (ra_value_is_ok(vh))
+        av_store(curr, 0, value_to_sv(vh));
+    else
+        av_store(curr, 0, &PL_sv_undef);
+
+    av_store(curr, 1, newSVpv(ra_value_get_name(vh), strlen(ra_value_get_name(vh))));
+    av_store(curr, 2, newSVpv(ra_value_get_desc(vh), strlen(ra_value_get_desc(vh))));
+
+    av_store(all, l, newRV((SV *)curr));
+  }
+  ra_value_free(vh);
+
+  PUSHs(newRV_noinc((SV *)all));
+]]>
+</perl-code>
+<python-code-init>
+  value_handle vh;
+  PyObject *list;
+  long l, n_res;
+</python-code-init>
+<python-code><![CDATA[
+  vh = ra_value_malloc();
+
+  n_res = 0;
+  if (ra_info_get(p_plugin_handle, RA_INFO_PL_NUM_RESULTS_L, vh) == 0)
+    n_res = ra_value_get_long(vh);
+
+  list = PyList_New(n_res);
+  for (l = 0; l < n_res; l++)
+  {
+    PyObject *curr;
+
+    curr = PyList_New(3);
+
+    if (ra_proc_get_result(p_process_handle, l, 0, vh) == 0)
+    {
+      PyList_SetItem(curr, 0, value_to_py_object(vh));
+      PyList_SetItem(curr, 1, Py_BuildValue("s", ra_value_get_name(vh)));
+      PyList_SetItem(curr, 2, Py_BuildValue("s", ra_value_get_desc(vh)));
+    }
+    else
+    {
+      PyList_SetItem(curr, 0, Py_BuildValue(""));
+      PyList_SetItem(curr, 1, Py_BuildValue(""));
+      PyList_SetItem(curr, 2, Py_BuildValue(""));
+    }
+
+    PyList_SetItem(list, l, curr);
+  }
+  ra_value_free(vh);
+
+  return list;
+]]>
+</python-code>
+</func>
+
+
+<func name="ra_proc_free">
+<para type="in" num="1" perl-type="void *" desc="handle returned from ra_proc_do()">process_handle</para>
+<purpose>free memory allocated by a ra_proc_do()-call</purpose>
+<description>The function ra_proc_do() allocates some memory to
+store the results. This function frees the allocated memory.
+</description>
+<perl-code>
+PPCODE:
+  if (p_process_handle)
+    ra_proc_free(p_process_handle);
+</perl-code>
+<python-code>
+  if (p_process_handle)
+    ra_proc_free(p_process_handle);
+
+  Py_INCREF(Py_None);
+  return Py_None;
+</python-code>
+</func>
+
+

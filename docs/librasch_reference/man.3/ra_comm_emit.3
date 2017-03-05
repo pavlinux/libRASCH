@@ -1,0 +1,27 @@
+.TH "ra_comm_emit" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_comm_emit \- emits a signal
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_comm_emit
+.BI "(meas_handle " mh ","
+.BI "const char * " sender ","
+.BI "const char * " sig_name ","
+.BI "int " num_para ","
+.BI "struct comm_para * " para ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ measurement handle
+.IP "sender" 12
+ name of the sender (needed for debug, can be NULL)
+.IP "sig_name" 12
+ name of the signal
+.IP "num_para" 12
+ number of signal parameters
+.IP "para" 12
+ signal parameters
+.SH "DESCRIPTION"
+This function emits the signal sig_name wit num_para parameters.
+.SH "SOURCE FILE"
+pl_comm.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

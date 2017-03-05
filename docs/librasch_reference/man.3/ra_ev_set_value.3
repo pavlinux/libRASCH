@@ -1,0 +1,21 @@
+.TH "ra_ev_set_value" 3 "January 2005" "libRASCH API (0.7.2)"
+.SH NAME
+ra_ev_set_value \- set the property of an event
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_ev_set_value
+.BI "(prop_handle " proph ","
+.BI "long " event ","
+.BI "double " value ");"
+.SH ARGUMENTS
+.IP "proph" 12
+ event-property handle
+.IP "event" 12
+ number of the event
+.IP "value" 12
+ property-value
+.SH "DESCRIPTION"
+This function sets the event-property proph of the event event to value.
+.SH "SOURCE FILE"
+event.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

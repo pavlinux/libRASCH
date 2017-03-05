@@ -1,0 +1,311 @@
+<section id="tut-init-lib"><title>Initialize libRASCH and Basic Usage</title>
+<para>
+This section will show you how to start using libRASCH. We will
+initialize the library and get some information about it.
+</para>
+<para>
+So let's start with the first example. We will perform the following
+steps:
+<itemizedlist mark=bullet>
+<listitem><para>init libRASCH</para></listitem>
+<listitem><para>get number of plugins</para></listitem>
+<listitem><para>find all measurements in a directory</para></listitem>
+</itemizedlist>
+</para>
+
+<section id="init-lib-c"><title>C Version</title>
+<programlistingco>
+<areaspec>
+<areaset id="init-lib-c.const" coords="">
+<area id="init-lib-c.include" units="LineColumn" coords="3 17">
+</areaset>
+<area id="init-lib-c.init"  units="LineColumn" coords="13 25">
+<area id="init-lib-c.error"  units="LineColumn" coords="17 60">
+<area id="init-lib-c.info-start"  units="LineColumn" coords="36 29">
+<area id="init-lib-c.info-get"  units="LineColumn" coords="37 58">
+<area id="init-lib-c.info-close"  units="LineColumn" coords="42 24">
+<area id="init-lib-c.find-start"  units="LineColumn" coords="45 47">
+<area id="init-lib-c.find-next"  units="LineColumn" coords="56 44">
+<area id="init-lib-c.find-close"  units="LineColumn" coords="58 32">
+<area id="init-lib-c.close"  units="LineColumn" coords="62 23">
+</areaspec>
+<programlisting>
+&init-lib.c;
+</programlisting>
+
+<calloutlist>
+<callout arearefs="init-lib-c.include">
+<para>
+To use libRASCH, the header-file ra.h must be included. In this
+example the include-directory of libRASCH is in the INCLUDE path of
+the C compiler. In ra.h you will find all function prototypes of the
+API of libRASCH. ra.h includes the header-file ra_defines.h, there you
+will find all define's and structure's needed for the libRASCH API.
+</para>
+</callout>
+</calloutlist>
+
+<calloutlist>
+<callout arearefs="init-lib-c.init">
+<para>
+ra_lib_init() initialize libRASCH. The function returns
+an ra_handle. 
+</para>
+</callout>
+</calloutlist>
+
+<calloutlist>
+<callout arearefs="init-lib-c.error">
+<para>
+ra_lib_get_error() returns the last error occured in
+libRASCH. To check if the initialization was successful, check that no
+error occured. If an error occured, a short description of the error
+can be retrieved with the function ra_lib_get_error().
+</para>
+</callout>
+</calloutlist>
+
+<calloutlist>
+<callout arearefs="init-lib-c.info-start">
+<para>
+ra_value_malloc() returns an value object. This object will be used in
+libRASCH to handle data. To set/get the data and to get informations
+about the stored data, API functions in libRASCH are available. The
+functions start with 'ra_value_*'.
+</para>
+</callout>
+</calloutlist>
+<calloutlist>
+<callout arearefs="init-lib-c.info-get">
+<para>
+ra_info_get() returns information about libRASCH and all objects
+handled by libRASCH. RA_INFO_NUM_PLUGINS_L asks libRASCH for the the
+number of loaded plugins. The last character of the info-id ('L')
+indicates that the returned value will be a long-value. Therefore the
+number of plugins will be returned by using the function
+ra_value_get_long(). (See the descriptions of the ra_value_* functions
+in the reference manual what else can be done with an value object.)
+</para>
+</callout>
+</calloutlist>
+<calloutlist>
+<callout arearefs="init-lib-c.info-close">
+<para>
+ra_value_free() frees the memory associated with the value object
+allocated above.
+</para>
+</callout>
+</calloutlist>
+
+<calloutlist>
+<callout arearefs="init-lib-c.find-start">
+<para>
+ra_meas_find_first() returns a valid handle (not
+NULL) if at least one supported measurement (this means that at least
+one measurement in the directory can be handled with one of the loaded
+access-plugins). The information about the found measurement will be
+set in the ra_find_struct (for definition of structure see
+ra_defines.h).
+</para>
+</callout>
+</calloutlist>
+<calloutlist>
+<callout arearefs="init-lib-c.find-next">
+<para>
+ra_meas_find_next() returns true (!= 0) if another
+measurement is available. Again, the info about the measurement will
+be in the ra_find_struct. This function iterates over all found
+measurements.
+</para>
+</callout>
+</calloutlist>
+<calloutlist>
+<callout arearefs="init-lib-c.find-close">
+<para>
+ra_meas_close_find() frees all memory allocated during
+ra_meas_find_first() and ra_meas_find_next().
+</para>
+</callout>
+</calloutlist>
+
+<calloutlist>
+<callout arearefs="init-lib-c.close">
+<para>
+ra_lib_close() unloads all plugins and frees all
+allocated memory.
+</para>
+</callout>
+</calloutlist>
+</programlistingco>
+
+<para>
+Running the example in the examples directory with the command 
+<command>init_lib ./database</command> produced the following output.
+</para>
+<programlisting>
+&init-lib.c.out;
+</programlisting>
+</section>
+
+<section id="init-lib-pl"><title>Perl Version</title>
+<para>
+The Perl script shown below produces exactly the same
+output as the C version, therefore the output is not shown.
+</para>
+<programlistingco>
+<areaspec>
+<areaset id="init-lib-pl.const" coords="">
+<area id="init-lib-pl.use" units="LineColumn" coords="3 12">
+</areaset>
+<area id="init-lib-pl.init"  units="LineColumn" coords="6 60">
+<area id="init-lib-pl.info"  units="LineColumn" coords="16 50">
+<area id="init-lib-pl.value"  units="LineColumn" coords="19 84">
+<area id="init-lib-pl.find"  units="LineColumn" coords="23 38">
+</areaspec>
+<programlisting>
+&init-lib.pl;
+</programlisting>
+<calloutlist>
+<callout arearefs="init-lib-pl.use">
+<para>
+After installing the Perl support for libRASCH, the package RASCH.pm
+is available.
+</para>
+</callout>
+</calloutlist>
+<calloutlist>
+<callout arearefs="init-lib-pl.init">
+<para>
+Create a new RASCH object.
+</para>
+</callout>
+</calloutlist>
+<calloutlist>
+<callout arearefs="init-lib-pl.info">
+<para>
+The function get_info() returns an RAvalue object.
+</para>
+</callout>
+</calloutlist>
+<calloutlist>
+<callout arearefs="init-lib-pl.value">
+<para>
+The function value() returns the value stored in a RAvalue object. The
+functions name() and desc() returns the name and a short description
+of the info, respectively.
+</para>
+</callout>
+</calloutlist>
+<calloutlist>
+<callout arearefs="init-lib-pl.find">
+<para>
+get_all_meas() returns an array with all the measurements found.
+</para>
+</callout>
+</calloutlist>
+</programlistingco>
+</section>
+
+<section id="init-lib-py"><title>Python Version</title>
+<para>
+The Python script shown below produces exactly the same
+output as the C and Perl version, therefore the output is not shown.
+</para>
+<programlistingco>
+<areaspec>
+<areaset id="init-lib-py.const" coords="">
+<area id="init-lib-py.use" units="LineColumn" coords="3 21">
+</areaset>
+<area id="init-lib-py.init"  units="LineColumn" coords="6 14">
+<area id="init-lib-py.info"  units="LineColumn" coords="17 42">
+<area id="init-lib-py.value"  units="LineColumn" coords="19 62">
+<area id="init-lib-py.find"  units="LineColumn" coords="22 34">
+</areaspec>
+<programlisting>
+&init-lib.py;
+</programlisting>
+<calloutlist>
+<callout arearefs="init-lib-py.use">
+<para>
+After installing the Python support for libRASCH, the module 'RASCH'
+is available.
+</para>
+</callout>
+</calloutlist>
+<calloutlist>
+<callout arearefs="init-lib-py.init">
+<para>
+Create a new RASCH object.
+</para>
+</callout>
+</calloutlist>
+<calloutlist>
+<callout arearefs="init-lib-py.info">
+<para>
+The function get_info() returns a RAvalue object.
+</para>
+</callout>
+</calloutlist>
+<calloutlist>
+<callout arearefs="init-lib-pl.value">
+<para>
+The function value() returns the value stored in a RAvalue object. The
+functions name() and desc() returns the name and a short description
+of the info, respectively.
+</para>
+</callout>
+</calloutlist>
+<calloutlist>
+<callout arearefs="init-lib-py.find">
+<para>
+get_all_meas() returns an array with all the measurements found.
+</para>
+</callout>
+</calloutlist>
+</programlistingco>
+</section>
+
+<section id="init-lib-mat"><title>Matlab/Octave Version</title>
+<para>
+Here an Octave session using the libRASCH support is shown. The same
+tasks are performed as in the previous examples. Most of the functions
+have in Matlab and Octave the same behaviour. Differences are listed
+in the function reference section for Matlab and Octave.
+</para>
+<programlistingco>
+<areaspec>
+<areaset id="init-lib-m.const" coords="">
+<area id="init-lib-m.init"  units="LineColumn" coords="5 26">
+</areaset>
+<area id="init-lib-m.info"  units="LineColumn" coords="10 66">
+<area id="init-lib-m.find"  units="LineColumn" coords="14 47">
+</areaspec>
+<programlisting>
+&init-lib.m.out;
+</programlisting>
+<calloutlist>
+<callout arearefs="init-lib-m.init">
+<para>
+Initialize libRASCH. If function call is successfull, a value not 0
+will be returned.
+</para>
+</callout>
+</calloutlist>
+<calloutlist>
+<callout arearefs="init-lib-m.info">
+<para>
+The function returns an array including (1) the value, (2)
+the name and (3) a short description of the wanted information.
+</para>
+</callout>
+</calloutlist>
+<calloutlist>
+<callout arearefs="init-lib-m.find">
+<para>
+The function returns a cell-array with all the measurements found.
+</para>
+</callout>
+</calloutlist>
+</programlistingco>
+</section>
+</section>

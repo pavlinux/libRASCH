@@ -1,0 +1,18 @@
+.TH "ra_class_add_predef" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_class_add_predef \- adds an pre-defined event-class to an evaluation
+.SH SYNOPSIS
+.B "LIBRAAPI class_handle" ra_class_add_predef
+.BI "(eval_handle " eh ","
+.BI "const char * " id ");"
+.SH ARGUMENTS
+.IP "eh" 12
+ evaluation handle
+.IP "id" 12
+ ASCII-id of the event-class
+.SH "DESCRIPTION"
+The function adds the event-class 'id' to the evaluation 'eh'. 'id' is one of the pre-defined event-classes in libRASCH. If you want to add not a pre-defined event-class, use ra_class_add().
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

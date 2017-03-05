@@ -1,0 +1,20 @@
+MANIFEST			This list of files
+Makefile.PL
+RASCH.pm
+RASCH.pod
+RASCH.xs
+ra_xs.h
+t/00compile.t
+t/01open_lib.t
+t/02get_lib_info.t
+t/03get_plugin_infos.t
+t/04open_meas.t
+t/05get_meas_infos.t
+t/06recording.t
+t/test.dat
+t/test1.dat
+t/test2.dat
+t/test3.dat
+t/test4.dat
+t/test5.dat
+META.yml                                 Module meta-data (added by MakeMaker)

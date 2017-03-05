@@ -1,0 +1,6 @@
+Returns the class-handle the property or summary handle 'handle' belongs to.
+    Input parameters:
+    handle
+
+  Output parameters:
+    class_handle

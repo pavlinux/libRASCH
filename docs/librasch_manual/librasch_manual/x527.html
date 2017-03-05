@@ -1,0 +1,416 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Access events</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="User Manual for libRASCH-0.7.2"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Examples for all supported lanuages/systems"
+HREF="all_examples.html"><LINK
+REL="PREVIOUS"
+TITLE="Access evaluation"
+HREF="x503.html"><LINK
+REL="NEXT"
+TITLE="Use process-plugin"
+HREF="x545.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="SECTION"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>User Manual for libRASCH-0.7.2</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x503.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Appendix A. Examples for all supported lanuages/systems</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x545.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="AEN527"
+>Access events</A
+></H1
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN529"
+>C Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>//
+#include &#60;stdlib.h&#62;
+#include &#60;ra.h&#62;
+
+int main(int argc, char *argv[])
+{
+    ra_handle ra;
+    meas_handle meas;
+    eval_handle eval;
+    prop_handle prop_rri, prop_qrs_pos;
+    long l, num_events;
+    double *rri = NULL;
+    double *qrs_pos = NULL;
+
+    /* initialize libRASCH */
+    ra = ra_lib_init();
+    if (ra == NULL)
+    {
+        printf("error initializing libRASCH\n");
+        return -1;
+    }
+
+    /* open measurement */
+    meas = ra_meas_open(ra, argv[1], 0);
+    if (meas == NULL)
+    {
+        printf("can't open measurement %s\n", argv[1]);
+        return -1;
+    }
+
+    /* get default evaluation */
+    eval = ra_eval_get_def(meas);
+    if (eval == NULL)
+    {
+        printf("no evaluation in measurement %s\n", argv[1]);
+        return -1;
+    }
+
+    /* get event-properties for RR-intervals and position of
+       QRS-complex */
+    prop_rri = ra_prop_get_by_name(eval, "rri");
+    if (prop_rri == NULL)
+    {
+        printf("no event-property 'rri' in evaluation\n");
+        return -1;
+    }
+    prop_qrs_pos = ra_prop_get_by_name(eval, "qrs-pos");
+    if (prop_qrs_pos == NULL)
+    {
+        printf("no event-property 'qrs-pos' in evaluation\n");
+        return -1;
+    }
+
+    /* get values for all RR-intervals and QRS-complexes */
+    /* number of events are the same for rri and qrs-pos, because
+       both belongs to the same event-set ('heartbeat') */
+    num_events = ra_evset_get_num_events(prop_rri);
+    rri = malloc(sizeof(double) * num_events);
+    qrs_pos = malloc(sizeof(double) * num_events);
+    for (l = 0; l &#60; num_events; l++)
+    {
+        rri[l] = ra_ev_get_value(prop_rri, l);
+        qrs_pos[l] = ra_ev_get_value(prop_qrs_pos, l);
+    }
+
+    /* now do something with the RR-intervals and QRS-complex
+       positions */
+
+    /* clean up */
+    if (rri)
+        free(rri);
+    if (qrs_pos)
+        free(rri);
+
+    ra_meas_close(meas);
+    ra_lib_close(ra);
+
+    return 0;
+}                               /* main() */
+
+//&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN533"
+>Perl Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+use strict;
+use RASCH;
+
+# initialize libRASCH
+my $ra = new RASCH or die "error initializing libRASCH\n";
+
+# open measurement
+my $meas = $ra-&#62;open_meas($ARGV[0], 0) or
+    die "can't open measurement $ARGV[0]\n";
+
+# get default evaluation
+my $eval = $meas-&#62;get_def_eval() or
+    die "no evaluation in the measurement\n";
+
+# get event-properties for RR-intervals and position of QRS-complex
+my $prop_rri = $eval-&#62;get_evprop_by_name('rri') or
+    die "no event-property 'rri' in the evaluation\n";
+my $prop_qrs_pos = $eval-&#62;get_evprop_by_name('qrs-pos') or
+    die "no event-property 'qrs-pos' in the evaluation\n";
+
+# get values for all RR-intervals and QRS-complexes
+my $rri_ref = $prop_rri-&#62;get_events();
+my $qrs_pos_ref = $prop_qrs_pos-&#62;get_events();
+
+# now do something with the RR-intervals and QRS-complex-positions
+
+exit 0;
+#&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN537"
+>Python Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+import sys
+from RASCH import *
+
+# initialize libRASCH
+ra = RASCH()
+if not ra:
+    print "can't initialize libRASCH"
+    sys.exit()
+
+# open measurement
+meas = ra.open_meas(sys.argv[1], 0)
+if not meas:
+    print "can't open measurement", sys.argv[1]
+    sys.exit()
+
+# get default evaluation
+eva = meas.get_def_eval()
+if not eva:
+    print "no evaluation in measurement"
+    sys.exit()
+
+# get event-properties for RR-intervals and position of QRS-complexs
+prop_rri = eva.get_evprop_by_name('rri')
+if not prop_rri:
+    print "no event-property 'rri' in the evaluation"
+    sys.exit()
+
+prop_qrs_pos = eva.get_evprop_by_name('qrs-pos')
+if not prop_qrs_pos:
+    print "no event-property 'qrs-pos' in the evaluation"
+    sys.exit()
+
+# get values for all RR-intervals and QRS-complexes
+rri = prop_rri.get_events()
+qrs_pos_ref = prop_qrs_pos.get_events()
+
+# now do something with the RR-intervals and QRS-complex-positions
+
+#&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN541"
+>Matlab/Octave Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>rasch@rasch:~&#62; octave
+GNU Octave, version 2.1.50 (i686-pc-linux-gnu).
+...
+
+octave:1&#62; ra=ra_lib_init
+ra = 145018424
+octave:2&#62; meas=ra_meas_open(ra, '/home/rasch/ecgs/AT011030_rdi.ART', 0)
+meas = 145245184
+octave:3&#62; eva=ra_eval_get_def(meas)
+eva = 145612904
+octave:4&#62; prop_rri=ra_prop_get_by_name(eva, 'rri')
+prop_rri = 145667632
+octave:5&#62; rri=ra_ev_get_values(prop_rri, 0, -1);
+octave:6&#62; whos rri
+
+*** local user variables:
+
+prot  type                       rows   cols  name
+====  ====                       ====   ====  ====
+ rwd  matrix                        1   1807  rri
+
+octave:7&#62; prop_qrs=ra_prop_get_by_name(eva, 'qrs-pos')
+prop_qrs = 145613912
+octave:8&#62; qrs_pos=ra_ev_get_values(prop_qrs, 0, -1);
+octave:9&#62; whos qrs_pos
+
+*** local user variables:
+
+prot  type                       rows   cols  name
+====  ====                       ====   ====  ====
+ rwd  matrix                        1   1807  qrs_pos
+
+octave:10&#62; samplerate=ra_meas_get_info(meas, 'max_samplerate')
+samplerate = 1600
+octave:11&#62; x=(qrs_pos/samplerate) / 60;
+octave:12&#62; plot(x, rri)
+octave:13&#62;&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x503.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x545.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Access evaluation</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="all_examples.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Use process-plugin</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

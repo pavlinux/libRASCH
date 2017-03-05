@@ -1,0 +1,21 @@
+.TH "ra_plugin_get_by_name" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_plugin_get_by_name \- get plugin-handle
+.SH SYNOPSIS
+.B "LIBRAAPI plugin_handle" ra_plugin_get_by_name
+.BI "(ra_handle " h ","
+.BI "const char * " name ","
+.BI "int " search_all ");"
+.SH ARGUMENTS
+.IP "h" 12
+ handle to libRASCH
+.IP "name" 12
+ name of plugin
+.IP "search_all" 12
+ flag if all plugins should be searched (or only those with the use-it-flag enabled)
+.SH "DESCRIPTION"
+Returns the plugin-handle for plugin with name name.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

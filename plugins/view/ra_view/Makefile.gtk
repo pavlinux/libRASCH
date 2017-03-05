@@ -1,0 +1,67 @@
+LIBRASCH_HOME = ../../..
+include $(LIBRASCH_HOME)/Makefile.incl
+
+CFLAGS	+= 	$(GTK_CFLAGS) -DGTKMM
+LINK	=	$(LD)
+LFLAGS	= 	$(LDFLAGS_PL) $(GTK_LFLAGS)
+
+OBJS 	= 	ra_view_g.o \
+		ra_view_gtk.o \
+		ra_view_general.o
+
+OBJS_SHARED = 	../shared/view_frame_general.o \
+		../shared/view_frame_gtk.o
+
+
+####### Implicit rules
+
+.SUFFIXES: .cpp .cxx .cc .C .c
+
+.cpp.o:
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
+
+.cxx.o:
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
+
+.cc.o:
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
+
+.C.o:
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
+
+.c.o:
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CC) -c $(CFLAGS) $(INCPATH) -o $@ $<
+
+
+
+all: FORCE $(OBJS)
+	@echo $(INDENT)LD $(RELDIR)/ra_view_gtk.o
+	@cd ../shared && $(MAKE)
+	$(Q)$(LINK) $(LFLAGS) -o ra_view_gtk_t.o $(OBJS) $(OBJS_SHARED)
+	$(Q)cp ra_view_gtk_t.o $(LIBRASCH_HOME)/plugins/bin/ra_view_gtk.o
+
+FORCE:
+
+ra_view_g.o: ra_view.cpp ra_view.h $(LIBRASCH_HOME)/include/ra.h $(LIBRASCH_HOME)/include/ra_defines.h
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CC) -c $(CFLAGS) $(INCPATH) -o ra_view_g.o ra_view.cpp
+
+ra_view_general.o: ra_view_general.cpp ra_view_general.h
+
+ra_view_gtk.o: ra_view_gtk.cpp ra_view_gtk.h ra_view_general.h
+
+clean:
+	@echo $(INDENT)clean plugin ra-view
+	$(Q)rm -f *~
+	$(Q)rm -f $(LIBRASCH_HOME)/plugins/bin/ra_view_gtk.o
+	$(Q)rm -f *.o
+
+distclean: clean
+	@echo $(INDENT)distclean plugin ra-view
+
+# $Id: $

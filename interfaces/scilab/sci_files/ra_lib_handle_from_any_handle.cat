@@ -1,0 +1,6 @@
+Returns the ra-handle from any handle.
+  Input parameters:
+    any_handle
+
+  Output parameters:
+    ra_handle

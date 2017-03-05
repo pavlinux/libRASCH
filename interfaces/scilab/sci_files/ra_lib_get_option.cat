@@ -1,0 +1,8 @@
+
+Get an option.
+  Input parameters:
+    handle
+    option_name
+
+  Output parameters:
+    option_value

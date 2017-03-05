@@ -1,0 +1,23 @@
+########## Makefile commands which need to be handled at the beginning ##########
+# switch to be verbose
+ifdef V
+  ifeq ("$(origin V)", "command line")
+    BE_VERBOSE = $(V)
+  endif
+endif
+ifndef BE_VERBOSE
+  BE_VERBOSE = 0
+endif
+
+# switch to build release version
+ifdef R
+  ifeq ("$(origin R)", "command line")
+    BUILD_RELEASE = $(R)
+  endif
+endif
+ifndef BUILD_RELEASE
+  BUILD_RELEASE = 0
+endif
+
+export BE_VERBOSE BUILD_RELEASE
+

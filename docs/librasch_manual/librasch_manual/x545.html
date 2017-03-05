@@ -1,0 +1,533 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Use process-plugin</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="User Manual for libRASCH-0.7.2"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Examples for all supported lanuages/systems"
+HREF="all_examples.html"><LINK
+REL="PREVIOUS"
+TITLE="Access events"
+HREF="x527.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="SECTION"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>User Manual for libRASCH-0.7.2</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x527.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Appendix A. Examples for all supported lanuages/systems</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+>&nbsp;</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="AEN545"
+>Use process-plugin</A
+></H1
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN547"
+>C Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>//
+#include &#60;stdio.h&#62;
+#include &#60;ra.h&#62;
+
+int main(int argc, char *argv[])
+{
+    ra_handle ra;
+    struct ra_info *inf;
+    meas_handle meas;
+    eval_handle eval;
+    plugin_handle pl;
+    struct proc_info *pi;
+
+    /* initialize libRASCH */
+    ra = ra_lib_init();
+    if (ra == NULL)
+    {
+        printf("error initializing libRASCH\n");
+        return -1;
+    }
+
+    /* open measurement */
+    meas = ra_meas_open(ra, argv[1], 0);
+    if (meas == NULL)
+    {
+        printf("can't open measurement %s\n", argv[1]);
+        return -1;
+    }
+
+    /* get default evaluation */
+    eval = ra_eval_get_def(meas);
+    if (eval == NULL)
+    {
+        printf("no evaluation in measurement %s\n", argv[1]);
+        return -1;
+    }
+
+    /* get plugin-handle for hrv-plugin */
+    pl = ra_plugin_get_by_name(ra, "hrv", 0);
+    if (pl == NULL)
+    {
+        printf("can't find plugin 'hrv'\n");
+        return -1;
+    }
+
+    /* calculate hrv-values using the hrv-plugin */
+    pi = (struct proc_info *)ra_proc_get(pl);
+    pi-&#62;mh = meas;
+    pi-&#62;rh = ra_rec_get_first(meas, 0);
+    pi-&#62;eh = eval;
+    if (ra_proc_do(pi) == 0)
+    {
+        long num_results, l;
+        value_handle vh;
+
+        /* get number of results */
+        vh = ra_value_malloc();
+        if (ra_info_get(pl, RA_INFO_PL_NUM_RESULTS_L, vh) != 0)
+        {
+            printf("no results\n");
+            return -1;
+        }
+        num_results = ra_value_get_long(vh);
+
+        for (l = 0; l &#60; num_results; l++)
+        {
+            char out[200], t[100];
+
+            /* set number of result in which we are interested */
+            ra_value_set_number(vh, l);
+
+            /* test if result is a default value (some
+               non-default results are arrays which we skip in
+               this example) */
+            ra_info_get(pl, RA_INFO_PL_RES_DEFAULT_L, vh);
+            if (ra_value_get_long(vh) == 0)
+                continue;
+
+            out[0] = '\0';
+            if (ra_info_get(pl, RA_INFO_PL_RES_NAME_C, vh) == 0)
+            {
+                strcpy(t, ra_value_get_string(vh));
+                strcat(out, t);
+            }
+            if (ra_info_get(pl, RA_INFO_PL_RES_DESC_C, vh) == 0)
+            {
+                sprintf(t, " (%s)", ra_value_get_string(vh));
+                strcat(out, t);
+            }
+            if (ra_proc_get_result(pi, vh) == 0)
+            {
+                sprintf(t, ": %lf", ra_value_get_double(vh));
+                strcat(out, t);
+            }
+
+            printf("%s\n", out);
+        }
+
+        ra_value_free(vh);
+    }
+
+    /* close */
+    ra_proc_free(pi);
+    ra_meas_close(meas);
+    ra_lib_close(ra);
+
+    return 0;
+}                               /* main() */
+
+//&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>SDNN (standard deviation of normal-to-normal intervals):
+31.092193
+HRVI (HRV-Index): 4.733333
+SDANN (standard deviation of averaged normal-to-normal
+intervals): nan
+rmssd (root mean of squared sucsessive differences): 34.078554
+pNN50 (): 7.246377
+TP (total power): 484.785610
+ULF (ultra low frequency power): 0.000000
+VLF (very low frequency power of short-term recordings):
+32.899861
+LF (low frequency power): 180.739763
+LF_NORM (normalised low frequency power): 39.996783
+HF (high freuqency power): 271.145986
+HF_NORM (normalised high frequency power): 60.003217
+LF_HF_RATIO (LF/HF ratio): 0.666577
+POWER_LAW (power law behavior): 0.000000&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN553"
+>Perl Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+use strict;
+use RASCH;
+
+# initialize libRASCH
+my $ra = new RASCH or die "error initializing libRASCH\n";
+
+# open measurement and get default evaluation
+my $meas = $ra-&#62;open_meas($ARGV[0], 0) or
+    die "can't open measurement $ARGV[0]\n";
+my $eval = $meas-&#62;get_default_eval() or
+    die "no evaluation in the measurement\n";
+
+# get plugin-handle for hrv-plugin
+my $pl = $ra-&#62;get_plugin_by_name('hrv') or
+    die "can't find plugin 'hrv'\n";
+
+# calculate hrv-values using the hrv-plugin
+my $proc = $pl-&#62;init_process(eva =&#62; $eval) or
+    die "can't initialize processing\n";
+my $results = $proc-&#62;process();
+# $results is a reference to an array; each array-element contains
+# another array with three elements (value, name, description)
+for (@$results)
+{
+    print $_-&#62;name() . ' (' . $_-&#62;desc() . ') = ' .
+	$_-&#62;value() . "\n";
+}
+
+exit 0;
+#&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>SDNN (standard deviation of normal-to-normal intervals) =
+31.0921929016377
+HRVI (HRV-Index) = 4.73333333333333
+SDANN (standard deviation of averaged normal-to-normal
+intervals) = nan
+rmssd (root mean of squared sucsessive differences) =
+34.0785537558001
+pNN50 () = 7.2463768115942
+TP (total power) = 484.785609683155
+ULF (ultra low frequency power) = 0
+VLF (very low frequency power of short-term recordings) =
+32.8998614383402
+LF (low frequency power) = 180.739762584482
+LF_NORM (normalised low frequency power) = 39.996783099821
+HF (high freuqency power) = 271.145985660333
+HF_NORM (normalised high frequency power) = 60.003216900179
+LF_HF_RATIO (LF/HF ratio) = 0.666577313119051
+POWER_LAW (power law behavior) = 0
+TACHO_INDEX (Event numbers used for HRV calculations) =
+ARRAY(0x825d464)
+USER_BAND (frequency power in a user-selected frequency band) =&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN559"
+>Python Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+import sys
+from RASCH import *
+
+# initialize libRASCH
+ra = RASCH()
+if not ra:
+    print "can't initialize libRASCH"
+    sys.exit()
+
+# open measurement and get default evaluation
+meas = ra.open_meas(sys.argv[1], 0)
+if not meas:
+    print "can't open measurement", sys.argv[1]
+    sys.exit()
+eva = meas.get_def_eval()
+if not eva:
+    print "no evaluation in measurement"
+    sys.exit()
+
+# get plugin-handle for hrv-plugin
+pl = ra.get_plugin_by_name('hrv')
+if not pl:
+    print "can't find plugin 'hrv'"
+    sys.exit();
+
+# calculate hrv-values using the hrv-plugin
+proc = pl.init_process(eva=eva)
+if not proc:
+    print "can't initialize processing"
+    sys.exit()
+    
+results = proc.process()
+for item in results:
+    print item[1], "("+item[2]+") =", item[0]
+
+#&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>SDNN (standard deviation of normal-to-normal intervals) =
+31.0921929016
+HRVI (HRV-Index) = 4.73333333333
+SDANN (standard deviation of averaged normal-to-normal
+intervals) = nan
+rmssd (root mean of squared sucsessive differences) =
+34.0785537558
+pNN50 () = 7.24637681159
+TP (total power) = 484.785609683
+ULF (ultra low frequency power) = 0.0
+VLF (very low frequency power of short-term recordings) =
+32.8998614383
+LF (low frequency power) = 180.739762584
+LF_NORM (normalised low frequency power) = 39.9967830998
+HF (high freuqency power) = 271.14598566
+HF_NORM (normalised high frequency power) = 60.0032169002
+LF_HF_RATIO (LF/HF ratio) = 0.666577313119
+POWER_LAW (power law behavior) = 0.0
+TACHO_INDEX (Event numbers used for HRV calculations) = None
+USER_BAND (frequency power in a user-selected frequency band)
+= None&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN565"
+>Matlab/Octave Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>rasch@rasch:~&#62; octave
+GNU Octave, version 2.1.50 (i686-pc-linux-gnu).
+...
+
+octave:1&#62; ra=ra_lib_init
+ra = 145019552
+octave:2&#62; meas=ra_meas_open(ra, '/home/rasch/ecgs/AT011030_rdi.ART', 0)
+meas = 145245776
+octave:3&#62; eva=ra_eval_get_def(meas)
+eva = 145613504
+octave:4&#62; pl=ra_plugin_get_by_name(ra, 'hrv', 0)
+pl = 145340240
+octave:5&#62; proc=ra_proc_init(ra, meas, 0, eva, pl, 0, 0)
+proc = 146187632
+octave:6&#62; ra_proc_do(proc)
+ans = 0
+octave:7&#62; [v, n, d]=ra_result_get(proc);
+octave:8&#62; num=length(v)
+num = 16
+octave:9&#62; for i=1:num
+&#62; printf("%s (%s) = %f\n", n(i,:), d(i,:), v{i});
+&#62; endfor
+SDNN (standard deviation of normal-to-normal intervals) = 39.136515
+HRVI (HRV-Index) = 10.482558
+SDANN (standard deviation of averaged normal-to-normal intervals)
+      = 11.164071
+rmssd (root mean of squared sucsessive differences) = 27.114662
+pNN50 () = 6.163243
+TP (total power) = 1347.525433
+ULF (ultra low frequency power) = 156.680947
+VLF (very low frequency power of short-term recordings) = 491.156903
+LF (low frequency power) = 513.812519
+LF_NORM (normalised low frequency power) = 73.434563
+HF (high freuqency power) = 185.875064
+HF_NORM (normalised high frequency power) = 26.565437
+LF_HF_RATIO (LF/HF ratio) = 2.764290
+POWER_LAW (power law behavior) = -0.657030
+TACHO_INDEX (Event numbers used for HRV calculations) = 1.000000
+octave:9&#62;&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x527.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>&nbsp;</TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Access events</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="all_examples.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>&nbsp;</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

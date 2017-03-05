@@ -1,0 +1,457 @@
+Version 0.8.0 (XX.02.2006)
+  core:
+	- complete re-design of evaluation handling (me)
+	- when setting error (with _ra_set_error()), the name of the
+	  source file and the line number is also set (me)
+
+  plugins:
+	- detect-simple process plugin: replaced by detect-ecg plugin (me)
+	- detect-ecg process plugin:
+	  * complete new process plugin performing beat detection
+	    in ECGs including morphology measurements (me)
+	- fiducial process plugin:
+	  * updated to new eval-scheme (me)
+	  * converted some defines to options (me)
+	- ecg-view view plugin:
+	  * updated to new eval-scheme (me)
+	  * added sub-view to edit morphology values (me)
+	- ts-view view plugin:
+	  * updated to new eval-scheme (me)
+	- mit/bih access plugin:
+	  * updated to new eval-scheme (me)
+	  * fixed setting of error numbers (me)
+	  * fixed setting of ADC gain when '0' was given (me)
+	  * fixed getting of signal filename (me)
+	- read-rri access plugin:
+	  * updated to new eval-scheme (me)
+	- template process plugin:
+	  * updated to new eval-scheme (me)
+	  * 'improved' code structure (me)
+	- calibration process plugin:
+	  * changes needed for changed API functions (me)
+	
+  interfaces:
+	- Perl:
+	  * updated to new eval-scheme (me)
+	  * is now API complete (me)
+	  * re-designed OO interface (me)
+	
+
+Version 0.7.5 (not publicly released)
+  plugins:
+	- adi-ascii access plugin: new access plugin to read signals
+	  recorded with the ADI Powerlab system and exported in an ASCII
+	  file (me)
+	- hrv process plugin: added calculation of some non-linear dynamic
+	  parameters: SD1&2 from Poincare plots and Detrended Fluctuation
+	  Analysis (DFA) (me)
+	- pathfinder access plugin: an unusual value in a control data
+	  results in an infinite loop, fixed it (me)
+	
+	
+Version 0.7.4 (27.05.2005)
+  core:
+        - ra_fopen: added additional way to change the char-case of the
+	  filename on Linux (me)
+	- errors: added an error when a needed information is not
+	  available in the measurement file(s) (me)
+	- handle_plugins_win32: when printing error message, show line
+	  number of source also (me)
+	- save_xml: use correct return-value when return from function (me)
+	
+  plugins:
+	- all plugins which are allocating memory for plugin-options and
+	  plugin-results: use correct type of memory allocation function
+	  for plugin-option and plugin-result memory (differs only in
+	  Win32 because there the memory has to be allocated on the global
+	  heap) (me)
+	- ART and Portilab access plugins: fixed error handling (me)
+	- dadisp access plugin: added the plugin; up to now it supports
+	  only simple signal files (and at the moment only files with
+	  double values) because I have only these files (me)
+	- ecg process plugin: fixed a shift of RRI against qrs-pos by one
+	  which happens sometimes (me)
+	- oxford access plugin: fixed crash when recording time is
+	  invalid (me)	
+	- hrv process plugin: added options to skip calculation of time
+	  and frequency domain parameters (me)
+	- dawes-redman process plugin:
+	  * added options to ignore marked regions (me)
+	  * made some changes so the calculations are more similar to the
+	    one in the Sonicaid/FetalCare system from Oxford Instruments (me)
+	- ctg-sonicaid access plugin: new plugin; provides support for
+	  CTGs which are recorded and saved with the SonicAid/FetalCare
+	  system from Oxford Instruments; the trace data is read directly
+	  from the files created with the system, the informations about
+	  the recording are handled similar to the ctg-rasch plugin (a
+	  simple text file holding the informations) (me)
+	- mit-bih access plugin: use correct mode (binary) when opening
+	  annotation file (me)
+	- ts-view plugin: fixed handling of recordings with different
+	  samplerates when in one instance of ts-view the channel with the
+	  highest samplerate is NOT handled (me)
+	- ART access plugin: fixed setting of ra-handle in
+	  sub-measurement-structs of portilab and portapres signals (me)
+
+  examples:
+	- get_events.c: fixed getting number of events (Jesus Olivan)
+
+  interfaces/API bindings:
+	- Perl:
+	  * fixed handling of event properties (me)
+	  * return results even they can not be calculated (but you have
+	    the name and the description of the result(s)) (me)
+	
+
+Version 0.7.3 (26.02.2005)
+  misc:
+	- changed the license of Qt based GUI plugins to GPL (from LGPL)
+	  because the free version of Qt is published under the GPL
+	
+  core:
+	- when setting error (with _ra_set_error()), the name of the
+	  source file and the line number is also set (me)
+	
+  plugins:
+	- sig-sel-dlg gui plugin (Win32 version): added code to set
+	  initial path (used code from Paolo Messina from his Shell_Ctrl
+	  project) (me)
+	- ecg-view view plugin:
+	  * added set/unset of busy-cursor (me)
+	  * correct drawing of cursor (me)
+	- ts-view view plugin:
+	  * added switch to skip cursor drawing by child classes (me)
+	  * added code to set start and end of an area with the ',' and
+	    '-' key (me)
+	  * shown info in status-line now depends on the "choosen"
+	    channel (me)
+	- plot-view view plugin:
+	  * show areas of annotations in the view (me)
+	  * change position of cursor when position in the signal view is
+	    changed (me)
+	- mit/bih access plugin: fixed memory leak (me)
+	- edf access plugin: added code to handle more than one annotation
+	  channel (me)
+	
+
+Version 0.7.2 (22.12.2004)
+  core:
+	- added initial code to get infos about specific recording types
+	  (e.g. Holter ECG, Stress ECG) (me)
+	
+  plugins:
+	- pathfinder access plugin: fixed a problem when the value from
+	  only one sample should be returned (me)
+	- edf access plugin: in EDF+D records, combine succeeding data
+	  records into one session when they are continuous in time (me)
+	- calibration process plugin:
+	  * improved detection of calibration signal (me)
+	  * added option to measure the cycle length of the calibration
+	    signal (me)
+	  * based on the measured cycle length re-run validation of found
+	    calibration segments which enhanced the accuarcy of the
+	    calibration measurement (me)
+	- ts-view view plugin: added the output of the position and
+	  amplitude of the signal at the cursor position (known bug: at
+	  the moment only the amplitude of the first channel is given) (me)
+
+	
+Version 0.7.1 (16.11.2004)
+  core:
+	- Linux build system: use the correct Qt-dir setting (me)
+	- Linux build system: added in configure-script extra checks
+	  for Scilab (me)
+	- set locale handling only for strings (LC_MESSAGES) because of
+	  some problems with LC_ALL (eg. using octave) (me)
+	- renamed define RA_WARN_NO_EVENTS to RA_WARN_NO_DATA to have a
+	  broader meaning (me)
+
+  plugins:
+	- added process plugin 'calibration' to measure automatically
+	  calibration signals in recordings (up to now only pulse shaped
+	  calibration signals are supported; tested only on calibration
+	  signals in Holter ECG's) (me)
+	- MIT/BIH (PhysioNet) access plugin:
+	  * added support for different samplerates used in one recording (me)
+	  * fixed handling of only one channel (me)
+	  * support recordings w/o number of samples in header file(me)
+	  * fixed returned information about available event-sets/
+	    -properties (me)
+	- ra-view view plugin: fixed the drawing of the focus-rect in the
+	  Qt version (me)
+	- template-view view plugin: fixed the drawing of the templates
+	  (wrong zero value was used) (me)
+	- plot-view view plugin: added init of some variables (needed when
+	  a program call the plugin but no data to show is available) (me)
+
+	
+Version 0.7.0 (17.10.2004)
+	- added 'angle' signal type (me)
+	- added min/max values for signal type meta-informations (me)
+	- in EDF(+) recordings use physical min/max values and do not use
+	  the signal type meta-information about amplitude scaling (me)
+	- amplitude scaling in the view plugins are now more sane (if you
+	  have a max value, use this value instead of using the amplitude
+	  resolution) (me)
+	- improved the problem of double emitting scrollbar-step in Qt
+	  version when drawing of first step take too much time but not
+	  fixed it (I haven't figured out what is the reason for it) (me)
+	- when emitting plugin-signal, sender name can be set; helpful for
+	  debuging (me)
+	- changed in function parameters 'char *' to 'const char *' when
+	  ever possible (me)
+	- added API function to get infos by the name of the info (me)
+	- added C++ interface (me)
+	- started i18n: all strings inside the libRASCH core are now UTF-8
+	  encoded (me)
+	- ra_value_* source is now in own source-file (value.c) (me)
+	- added API functions for ra-value to handle UTF-8 encoded strings (me)
+	- changed 'struct rasch' to 'struct librasch' to avoid a conflict
+	  with 'class rasch' in the C++ interface (me)
+	- fixed handling of annotations (encoded in UTF-8) in EDF+ files (me)
+	- fixed placement of comments/annotations in ts-view plugin (me)
+	- fixed handling of channel number for comments/annotations (me)
+	- extended function set_meta_info() to set info-id (me)
+	- added info-id's to get infos about available options in a plugin (me)
+	- access to option/option-infos and result/result-infos are now
+	  handled only in the core (me)
+	- started l10n (me)
+	- revised build system for Linux:  (me)
+	  (1) the build flags are now centrally handled in the
+	      Makefile.incl file which is included by every Makefile
+	  (2) the output during build is less verbose (ideas and code from
+	      the Linux Makefile)
+	- "fixed" compiler warnings which showed up when using pedantic (me)
+	- changed API to get raw sample data; now only two functions are
+	  available: (1) a function to get the sample data as stored in
+	  the file (ra_raw_get()) and (2) a function to get the sample
+	  values scaled to 'unit'-values (ra_raw_get_unit()) (me)
+	- added new channel-info to get the format how samples are stored
+	  in the file (e.g. integer-16bit) (me)
+	- added in EDF plugin support for float-values (me)
+	- changed in proc_info.callback the first parameter from char * to
+	  const char * (me)
+	- removed element private_data in proc_info (need to fixed option
+	  handling in the detect-ctg plugin) (me)
+	- renamed element private_data in view_info to options (me)
+	- renamed in proc_info and view_info the element which holds the
+	  ra_handle from 'm' to 'ra' (name makes more sense) (me)
+	- fixed calculation of blood-pressure values when editing a
+	  blood-pressure curve (me)
+	- fixed access to ECGs stored in using the "ISHNE standard output
+	  for Holter ECG" (me)
+	- fixed the amplitude scaling in the template-view plugin (me)
+	- using in the freq-analysis plugin an C implementation of the
+	  Singleton mixed-radix-fft algorithm (based on the original
+	  Fortran code) (me)
+	
+Version 0.6.1 (27.05.2004)
+	- fixed small displacement of qrs complexes when editing beats (me)
+	- fixed problem when installing documentation from CVS version (me)
+	- 'configure' script checks now which kind of Qt library
+	  (multi-threaded or non-multi-threaded) is installed (me)
+	- added missing event-file for example recording '100s' (me)
+	- fixed handling of CVS directories in distributed (and CVS
+	  managed) documentations (me)
+
+Version 0.6.0 (22.05.2004)
+	- fixed annotations shown in multi-session recordings (me)
+	- in measurement selection dialog, show measurement name when name
+	  of measurement object is empty (me)
+	- events in evaluation files can now be written as text (each
+	  event is written in it's own tag) (me)
+	- added API function to get file-name used on disk (for systems
+	  which handle case differences in file-names) (me)
+	- start and end of an event are now handled by there own functions (me)
+	- added API functions to handle libRASCH values (was done before
+	  with a structure) (me)
+	- changed API function names to be more consistent (see script
+	  do_api_changes_for_0.6.0 in 'scripts/') (me)
+	- added RASCHlab to the distribution (me)
+	- fixed problem with EDF+ annotation durations (Jesus Olivan)
+	- added comments in core source files for all functions and
+	  structures (me)
+	- fixed problem in Matlab interface when textual annotations
+	  should be returned (me)
+	- added forgotten dll's to install-script for win32-binary
+	  distribution (me)
+	- nearly all (except one) plugins are now using the libRASCH API
+	  to set/get options (me)
+	- support parallel handling of debug and release versions of
+	  plugins on Win32 (me)
+	- fixed problem when only one event was shown in a view (program
+	  crashed) (me)
+	- fixed setting of start and end positions in some process plugins (me)
+	- removed some memory leaks with the help of valgrind (me)
+	- restructured documentations and added/fixed scripts which are
+	  helping to build the documentations (me)
+	- added installation of documentation on Linux systems (me)
+	- the following documentations are now available/started to write:
+	  * libRASCH User Manual (started)
+	  * libRASCH Reference Manual (started)
+	  * RASCHlab tutorial (1st version complete)
+	
+Version 0.5.3 (08.01.2004)
+	- added man pages of API functions on Linux (me)
+	- added wrapper code in C header files needed for C++ source and
+	  removed 'extern "C"' in C++ source (me)
+	- get endianess of machine now during runtime and removed defines
+	  in Makefiles (me)
+	- fixed problem in ap-morphology plugin when blood pressure signal
+	  starts with calibration sequence (me)
+	- better calculation of available space for beat infos in ecg- and
+	  cont-ap-plugins (me)
+	
+Version 0.5.2 (25.12.2003) -- The Christmas Release
+	- build system for Linux now works on Debian (tested on Knoppix	3.3)
+	  (me)
+	- fixed minor bugs (not initialized variables; not matching
+	  function prototypes/definitions) (me)
+	- fixed minor bugs in interface code for Perl and Python (wrong
+	  return value; not used parameter) (me)
+	- fixed problem with EDF+ annotation-channel naming (me)
+	- in ecg- and cont-ap-view-plugin, shown beat info depends on
+	  available space (higher speed -> less space -> less information
+	  shown) (me)
+	- extended libRASCH API to support flags for events (e.g. event
+	  was edited by user) (me)
+	- in ecg-view-plugin, set event-flag 'user-edited' when user edit
+	  beat (me)
+	- in ecg-plugin do not change annotations of user edited beats (me)
+	- fixed draw problem of textual annotations when begin and/or end
+	  is outside of shown area (me)
+	- when selecting area, added support for moving shown area when
+	  mouse is outside of shown area (me)
+	- correct handling in view plugins of textual comment/annotation
+	  changes (me)
+	- fixed not appropriate time-resolution change in template view
+	  (me)
+	- added 'skipinterface' build destination (me)
+	
+Version 0.5.1 (04.12.2003)
+	- added forgotten ctg-view plugin to distribution (me)
+
+Version 0.5.0 (02.12.2003)
+	- added strings as event-types (can now handle textual
+	  annotations/comments) (me)
+	- view-plugins support textual annotations (me)
+	- added dialog to add/edit/change annotations (me)
+	- view-plugins support more than one session (me)
+	- complete support for EDF+ files (me)
+	- added support for textual comments in MIT/BIH formats (me)
+	- added plugin API with function to get event values in a ra_info
+	  struct (me)
+	- changed plugin API for function pl_ra_get_values() (me)
+	- added API functions to get/set event values with ra_info structs (me)
+	- Makefile's include Makefile.incl in LIBRASCH_ROOT (me)
+	- in ecg-plugin fixed sub classificaiton of VPCs (me)
+	- the oxford-plugin provides informations about arrhythmias (me)
+	- added view-plugin for cardiotocograms (me)
+	- when reading libRASCH-evaluation files, handle the case when the
+	  data type given in the file is different than the type given in
+	  ra_event_props.h (this allows to change the data type of an
+	  event property) (me)
+	- rr-interval and arterial pressure values are now stored as
+	  double values (me)
+	- added plugin to handle respiration signals (at the moment only
+	  support for respiration in combination with heartbeats) (me)
+	- in configure script include-path of octave will be get from
+	  installed octave (me)
+	- in ap_morphology-plugin: added IBI value and corrected behaviour
+	  in calibration sequences (me)
+	- added plugin 'dawes-redman' to calculate Dawes/Redman criteria
+	  for Cardiotocograms (based on some publications about the
+	  criteria) (me)
+	- fixed memory leaks in oxford and pathfinder plugin (me)
+	- fixed setting of analyse date in pathfinder plugin (me)
+	- improved configure/build/install process (me)
+	- fixed display problem in template-view (me)
+	- in ecg-plugin use only qrs-complexes with positive positions
+	  (me)
+	- added plugin detect-ctg which detects uterine contractions in
+	  cardiotocograms (me)
+	
+Version 0.4.0 (15.08.2003)
+	- handle configuration of installed libxml2 in configure-script
+	  and Makefiles for Linux (me)
+	- wrongly defined size_t caused compiling problems on some Linux
+	  distributions (e.g. RH9); replaced define with inclusion of
+	  stddef.h (me)
+	- cleaned up ra_matlab.c (interface source code for Matlab) (me)
+	- Matlab interface works under Linux (me)
+	- added horizontal scrollbar in views showing signals (me)
+	- better support for Physionet data formats (me)
+	- options handling in some plugins was not OK after redesign in
+	  libRASCH-0.3.2 (me)
+	- char-array is now supported as an option-type (me)
+	- added get_option()/set_option() functions in all interfaces (me)
+	- renamed some plugins:
+	    rr-morphology -> ap-morphology
+	    cont-rr-view  -> cont-ap-view
+	    ra-view       -> rasch-view
+	- initial support for cardiotocograms (just the infrastructure) (me)
+	- ecg-view plugin: when changing classification or insert/delete
+	  beat, post processing for complete ecg is done (me)
+	- added interface to use libRASCH in Scilab (me)
+	- some minor changes
+	
+Version 0.3.2 (12.07.2003)
+	- Linux: librasch.conf will now be found in the $HOME directory (me)
+	- access to EDF files is working (annotation channel in EDF+ files
+	  is still not supported) (me)
+	- code for setting/getting options for plugins changed;
+	  functionality is now only in ra.c (me)
+
+Version 0.3.1 (16.05.2003)
+	- added warning-handling scheme (extended error-handling) (me)
+	- corrected in ecg-plugin calculation of normal reference value (me)
+	- some minor changes in hrv plugin (me)
+
+Version 0.3.0 (13.05.2003)
+	- added error-handling scheme (me)
+	- renamed function ra_handle_from_meas_handle() to
+	  ra_handle_from_any_handle() (me)
+	- added handling of usual 'configure; make; make install' for
+	  Linux build (me)
+	- started to provide a Windows Installer file (me)
+	- Win32 version of libRASCH use Registry for configuration (me)
+	- use new error-scheme in plugins (me)
+	- started to document struct's (me)
+	- changed variable type 'ra_find_struct' to 'struct ra_find_struct' (me)
+
+Version 0.2.2 (20.04.2003)
+	- correct handling of file-names for signals if no path or a
+	  relative path was given (me)
+	- ra_open() under Linux now case insensitive (sort of) (me)
+	
+Version 0.2.1 (15.04.2003)
+	- added missing files for view-plugins needed by Win32 (me)
+	- better Makefile support for Win32 (me)
+
+Version 0.2.0 (09.04.2003)
+	- added functions to copy/move/delete the files of a measurement (me)
+	- in access plugins added needed support for file handling (me)
+	- when searching-files using find_files (in ra_file.c) '*' as
+	  wildcard character in mask is supported (at the beginning or at
+	  the end of the mask) (me)
+	- added info-id to get version of libRASCH (me)
+
+Version 0.1.0pre4 (08.04.2003)
+	- changes needed to compile with GCC3.3 under Linux (me)
+	- some cleanups in Makefiles (me)
+	- added distclean to make process (removes files created with UIC
+	  and MOC from Qt) (me)
+	- some minor changes in ecg-, hrv- and hrt-plugin (now have same
+	  results as "original" implementation) (me)
+
+Version 0.1.0pre3 (04.04.2003)
+	- removed save.c and load.c from src/eval (files no longer needed) (me)
+	
+Version 0.1.0pre2 (04.04.2003)
+	- added librasch.dsp to distribution (me)
+	- added ChangeLog to distribution (me)
+	
+Version 0.1.0pre1 (26.03.2003)
+	- first public release (me)
+
+$Header: /home/cvs_repos/librasch/ChangeLog,v 1.51 2004/12/22 14:38:29 rasch Exp $

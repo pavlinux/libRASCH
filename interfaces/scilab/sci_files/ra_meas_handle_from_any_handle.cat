@@ -1,0 +1,6 @@
+Returns a measurement-handle from any handle.
+  Input parameters:
+    any_handle
+
+  Output parameters:
+    meas_handle

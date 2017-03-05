@@ -1,0 +1,2082 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Reference Manual for libRASCH-0.7.2</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="NEXT"
+TITLE="Function Reference for C"
+HREF="c_interface_ref.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="BOOK"
+><DIV
+CLASS="BOOK"
+><A
+NAME="AEN1"
+></A
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="TITLE"
+><A
+NAME="AEN1"
+>Reference Manual for libRASCH-0.7.2</A
+></H1
+><H3
+CLASS="AUTHOR"
+><A
+NAME="AEN4"
+></A
+>Raphael Schneider</H3
+><P
+CLASS="COPYRIGHT"
+>Copyright &copy; 2004 Raphael Schneider</P
+><HR></DIV
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>1. <A
+HREF="c_interface_ref.html"
+>Function Reference for C</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="api-ra-lib-init.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_lib_init</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  init libRASCH </DT
+><DT
+><A
+HREF="api-ra-lib-close.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_lib_close</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  close libRASCH </DT
+><DT
+><A
+HREF="api-ra-lib-get-error.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_lib_get_error</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  get last error </DT
+><DT
+><A
+HREF="api-ra-lib-handle-from-any-handle.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_lib_handle_from_any_handle</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  retrive handle of libRASCH instance from any handle </DT
+><DT
+><A
+HREF="api-ra-meas-handle-from-any-handle.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_meas_handle_from_any_handle</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  retrive measurement-handle from any handle </DT
+><DT
+><A
+HREF="api-ra-lib-use-plugin.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_lib_use_plugin</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  set using a plugin (or not) </DT
+><DT
+><A
+HREF="api-ra-plugin-get-by-num.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_plugin_get_by_num</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  get plugin-handle </DT
+><DT
+><A
+HREF="api-ra-plugin-get-by-name.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_plugin_get_by_name</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  get plugin-handle </DT
+><DT
+><A
+HREF="api-ra-meas-find-first.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_meas_find_first</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  find libRASCH-handled measurements (return first one) </DT
+><DT
+><A
+HREF="api-ra-meas-find-next.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_meas_find_next</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  find libRASCH-handled measurements (returns next) </DT
+><DT
+><A
+HREF="api-ra-meas-close-find.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_meas_close_find</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  close the search for libRASCH-handled measurements </DT
+><DT
+><A
+HREF="api-ra-meas-open.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_meas_open</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  open a measurement </DT
+><DT
+><A
+HREF="api-ra-meas-new.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_meas_new</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  creates a new measurement </DT
+><DT
+><A
+HREF="api-ra-meas-save.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_meas_save</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  saves a measurement </DT
+><DT
+><A
+HREF="api-ra-meas-close.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_meas_close</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  close a measurement </DT
+><DT
+><A
+HREF="api-ra-info-get.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_info_get</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  get infos </DT
+><DT
+><A
+HREF="api-ra-info-get-by-name.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_info_get_by_name</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  get infos </DT
+><DT
+><A
+HREF="api-ra-info-get-by-idx.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_info_get_by_idx</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  get infos </DT
+><DT
+><A
+HREF="api-ra-info-set.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_info_set</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  set info </DT
+><DT
+><A
+HREF="api-ra-rec-get-first.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_rec_get_first</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  get root-recording </DT
+><DT
+><A
+HREF="api-ra-rec-get-next.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_rec_get_next</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  get next recording </DT
+><DT
+><A
+HREF="api-ra-rec-get-first-child.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_rec_get_first_child</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  get first sub-recording </DT
+><DT
+><A
+HREF="api-ra-rec-add.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_rec_add</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  add a recording </DT
+><DT
+><A
+HREF="api-ra-dev-add.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_dev_add</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  add a recording-device </DT
+><DT
+><A
+HREF="api-ra-ch-add.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_ch_add</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  add a recording-channel </DT
+><DT
+><A
+HREF="api-ra-session-new.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_session_new</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  start a new recording session </DT
+><DT
+><A
+HREF="api-ra-raw-add.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_raw_add</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  add raw data </DT
+><DT
+><A
+HREF="api-ra-raw-get.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_raw_get</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  get raw-signal data  </DT
+><DT
+><A
+HREF="api-ra-raw-get-unit.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_raw_get_unit</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  get raw-signal data scaled to 'unit'-values </DT
+><DT
+><A
+HREF="api-ra-gui-call.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_gui_call</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  shows GUI-element of a plugin (if avail.) </DT
+><DT
+><A
+HREF="api-ra-proc-get.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_proc_get</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  get a processing handle </DT
+><DT
+><A
+HREF="api-ra-proc-free.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_proc_free</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  free a processing handle </DT
+><DT
+><A
+HREF="api-ra-proc-do.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_proc_do</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  process the signal </DT
+><DT
+><A
+HREF="api-ra-proc-get-result.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_proc_get_result</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  get the processing results </DT
+><DT
+><A
+HREF="api-ra-view-get.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_view_get</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  create/show view of view-plugin </DT
+><DT
+><A
+HREF="api-ra-lib-get-option.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_lib_get_option</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  returns an option value </DT
+><DT
+><A
+HREF="api-ra-lib-set-option.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_lib_set_option</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  set an option </DT
+><DT
+><A
+HREF="api-ra-meas-copy.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_meas_copy</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  copy measurement </DT
+><DT
+><A
+HREF="api-ra-meas-move.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_meas_move</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  move measurement </DT
+><DT
+><A
+HREF="api-ra-meas-delete.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_meas_delete</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  delete measurement </DT
+><DT
+><A
+HREF="api-ra-value-malloc.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_malloc</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  allocate and initialize a value_handle </DT
+><DT
+><A
+HREF="api-ra-value-free.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_free</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  free value-handle </DT
+><DT
+><A
+HREF="api-ra-value-reset.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_reset</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  reset value-handle </DT
+><DT
+><A
+HREF="api-ra-value-get-type.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_get_type</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  return value-type </DT
+><DT
+><A
+HREF="api-ra-value-is-ok.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_is_ok</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  checks if value is valid </DT
+><DT
+><A
+HREF="api-ra-value-get-num-elem.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_get_num_elem</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  return number of elements of array values </DT
+><DT
+><A
+HREF="api-ra-value-get-info.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_get_info</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  returns id of info </DT
+><DT
+><A
+HREF="api-ra-value-get-name.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_get_name</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  returns name of info </DT
+><DT
+><A
+HREF="api-ra-value-get-desc.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_get_desc</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  returns description of info </DT
+><DT
+><A
+HREF="api-ra-value-set-number.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_set_number</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  set a number in a value-handle </DT
+><DT
+><A
+HREF="api-ra-value-get-number.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_get_number</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  get a number set in a value-handle </DT
+><DT
+><A
+HREF="api-ra-value-set-long.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_set_long</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  set long value in value-handle </DT
+><DT
+><A
+HREF="api-ra-value-set-double.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_set_double</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  set double value in value-handle </DT
+><DT
+><A
+HREF="api-ra-value-set-string.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_set_string</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  set a string in value-handle </DT
+><DT
+><A
+HREF="api-ra-value-set-string-utf8.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_set_string_utf8</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  set a UTF-8 encoded string in value-handle </DT
+><DT
+><A
+HREF="api-ra-value-set-long-array.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_set_long_array</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  set long-array values in value-handle </DT
+><DT
+><A
+HREF="api-ra-value-set-double-array.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_set_double_array</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  set double-array values in value-handle </DT
+><DT
+><A
+HREF="api-ra-value-set-string-array.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_set_string_array</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  set a string-array in value-handle </DT
+><DT
+><A
+HREF="api-ra-value-set-string-array-utf8.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_set_string_array_utf8</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  set a string-array (UTF-8 encoded) in value-handle </DT
+><DT
+><A
+HREF="api-ra-value-get-long.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_get_long</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  return long value from value-handle </DT
+><DT
+><A
+HREF="api-ra-value-get-double.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_get_double</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  return double value from value-handle </DT
+><DT
+><A
+HREF="api-ra-value-get-string.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_get_string</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  return character pointer from value-handle </DT
+><DT
+><A
+HREF="api-ra-value-get-string-utf8.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_get_string_utf8</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  return character pointer from value-handle (UTF-8 encoded) </DT
+><DT
+><A
+HREF="api-ra-value-get-long-array.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_get_long_array</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  return pointer to long array from value-handle </DT
+><DT
+><A
+HREF="api-ra-value-get-double-array.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_get_double_array</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  return pointer to double array from value-handle </DT
+><DT
+><A
+HREF="api-ra-value-get-string-array.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_get_string_array</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  return pointer to character pointer array from value-handle </DT
+><DT
+><A
+HREF="api-ra-value-get-string-array-utf8.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_get_string_array_utf8</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  return pointer to character pointer array from value-handle (UTF-8 encoded) </DT
+><DT
+><A
+HREF="api-ra-value-copy.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_value_copy</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  copy one value_handle to another value_handle </DT
+><DT
+><A
+HREF="api-ra-list-add.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_list_add</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  add an entry to a linked list </DT
+><DT
+><A
+HREF="api-ra-list-insert.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_list_insert</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  insert an entry to a linked list </DT
+><DT
+><A
+HREF="api-ra-list-del.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_list_del</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  delete an entry from a linked list </DT
+><DT
+><A
+HREF="api-ra-comm-add.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_comm_add</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  add a signal receiver </DT
+><DT
+><A
+HREF="api-ra-comm-del.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_comm_del</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  delete a signal receiver </DT
+><DT
+><A
+HREF="api-ra-comm-emit.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_comm_emit</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  emits a signal </DT
+><DT
+><A
+HREF="api-ra-eval-add.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_eval_add</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  adds an evaluation </DT
+><DT
+><A
+HREF="api-ra-eval-get.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_eval_get</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  returns an evaluation-handle </DT
+><DT
+><A
+HREF="api-ra-eval-get-def.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_eval_get_def</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  returns the default evaluation-handle </DT
+><DT
+><A
+HREF="api-ra-eval-get-orig.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_eval_get_orig</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  returns the original evaluation-handle </DT
+><DT
+><A
+HREF="api-ra-eval-delete.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_eval_delete</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  delete an evaluation </DT
+><DT
+><A
+HREF="api-ra-eval-set-def.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_eval_set_def</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  set an evaluation to the default evaluation </DT
+><DT
+><A
+HREF="api-ra-ev-insert.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_ev_insert</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  insert an event </DT
+><DT
+><A
+HREF="api-ra-ev-del.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_ev_del</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  delete an event </DT
+><DT
+><A
+HREF="api-ra-evset-get-num-events.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_evset_get_num_events</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  returns number of events </DT
+><DT
+><A
+HREF="api-ra-evset-set-start-end.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_evset_set_start_end</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  set start- and end-position of an event </DT
+><DT
+><A
+HREF="api-ra-evset-get-start-end.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_evset_get_start_end</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  get start- and end-position of an event </DT
+><DT
+><A
+HREF="api-ra-ev-get-value.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_ev_get_value</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  returns the property of an event </DT
+><DT
+><A
+HREF="api-ra-ev-set-value.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_ev_set_value</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  set the property of an event </DT
+><DT
+><A
+HREF="api-ra-ev-get-value-inf.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_ev_get_value_inf</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  returns the property of an event in a ra_info struct </DT
+><DT
+><A
+HREF="api-ra-ev-set-value-inf.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_ev_set_value_inf</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  set the property of an event to the value given in a ra_info struct </DT
+><DT
+><A
+HREF="api-ra-prop-add.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_prop_add</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  add a predefined event-property </DT
+><DT
+><A
+HREF="api-ra-prop-add-name.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_prop_add_name</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  add a predefined event-property (selected by name) </DT
+><DT
+><A
+HREF="api-ra-prop-add-custom.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_prop_add_custom</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  add an event-property </DT
+><DT
+><A
+HREF="api-ra-prop-del.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_prop_del</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  delete an event-property from an evaluation </DT
+><DT
+><A
+HREF="api-ra-prop-get-by-num.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_prop_get_by_num</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  returns an event-property handle </DT
+><DT
+><A
+HREF="api-ra-prop-get-by-name.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_prop_get_by_name</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  returns an event-property handle </DT
+><DT
+><A
+HREF="api-ra-evset-get-by-num.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_evset_get_by_num</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  returns an event-set handle </DT
+><DT
+><A
+HREF="api-ra-evset-get-by-name.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_evset_get_by_name</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  returns an event-set handle </DT
+><DT
+><A
+HREF="api-ra-evset-get-by-prop.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_evset_get_by_prop</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  returns an event-set handle </DT
+><DT
+><A
+HREF="api-ra-evset-get-flag-prop.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_evset_get_flag_prop</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  returns the event-property handling the event-set flags </DT
+><DT
+><A
+HREF="api-ra-eval-loadxml.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_eval_loadxml</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  load evalution in XML format </DT
+><DT
+><A
+HREF="api-ra-eval-savexml.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_eval_savexml</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  save evalution in XML format </DT
+><DT
+><A
+HREF="api-ra-templ-add.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_templ_add</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  adds a template </DT
+><DT
+><A
+HREF="api-ra-templ-del.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_templ_del</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  deletes all templates </DT
+><DT
+><A
+HREF="api-ra-templ-add-single.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_templ_add_single</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  adds a template </DT
+><DT
+><A
+HREF="api-ra-templ-del-single.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_templ_del_single</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  deletes a template </DT
+><DT
+><A
+HREF="api-ra-templ-get-raw.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ra_templ_get_raw</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;  returns template raw-data </DT
+></DL
+></DD
+><DT
+>2. <A
+HREF="c_struct_ref.html"
+>Structure Reference for C</A
+></DT
+><DT
+>3. <A
+HREF="perl_interface_ref.html"
+>Function Reference for Perl (OO-Interface)</A
+></DT
+><DT
+>4. <A
+HREF="python_interface_ref.html"
+>Function Reference for
+Python (OO-Interface)</A
+></DT
+><DT
+>5. <A
+HREF="mat_oct_interface_ref.html"
+>Function Reference for Matlab/Octave</A
+></DT
+><DT
+>6. <A
+HREF="infos.html"
+>Infos Reference</A
+></DT
+><DT
+>7. <A
+HREF="signals.html"
+>Signals for Inter Plugin Communication</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="r4585.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>select-event</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;select evens with a specific value</DT
+><DT
+><A
+HREF="r4618.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>highlight-event</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;highlight an event</DT
+><DT
+><A
+HREF="r4651.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>eval-change</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;evaluation has changed</DT
+><DT
+><A
+HREF="r4677.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>start-event-change</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;some event-change signals are coming</DT
+><DT
+><A
+HREF="r4703.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>end-event-change</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;close an start-event-change</DT
+><DT
+><A
+HREF="r4729.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>event-change</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;event-value has changed</DT
+><DT
+><A
+HREF="r4762.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>region-change</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;</DT
+><DT
+><A
+HREF="r4795.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>add-event</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;an event was added</DT
+><DT
+><A
+HREF="r4828.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>del-event-begin</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;start of an event-deletion</DT
+><DT
+><A
+HREF="r4861.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>del-event-end</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;end of an event-deletion</DT
+><DT
+><A
+HREF="r4894.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>template-delete</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;a template was deleted</DT
+><DT
+><A
+HREF="r4927.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>template-add</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;a template was added</DT
+><DT
+><A
+HREF="r4960.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>pos-change</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;set view to a new position</DT
+><DT
+><A
+HREF="r4993.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>gui-event-start</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;start of signal activated by GUI-event</DT
+><DT
+><A
+HREF="r5019.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>gui-event-end</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;end of signal activated by GUI-event</DT
+><DT
+><A
+HREF="r5045.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>x-resolution</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;set new resolution of x-axis</DT
+><DT
+><A
+HREF="r5078.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>y-resolution</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;set new mm/unit of a channel</DT
+></DL
+></DD
+><DT
+>8. <A
+HREF="plugins.html"
+>libRASCH Plugins</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="plugins.html#ACCESS-PLUGINS"
+>Access Plugins</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="plugin-art.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ART</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;Handle signals recorded for ART-Study</DT
+><DT
+><A
+HREF="plugin-cfs.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>cfs</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;Handle signals saved using the CED Filing System (CFS)</DT
+><DT
+><A
+HREF="plugin-ctg-rasch.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ctg-rasch</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;Handle cardiotocogram signals exported from GMT system</DT
+><DT
+><A
+HREF="plugin-dasylab.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>dasylab</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;Handle signals recorded using DasyLab</DT
+><DT
+><A
+HREF="plugin-edf-edfp.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>edf/edf+</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;Handle signals recorded using European Data Format(+)</DT
+><DT
+><A
+HREF="plugin-ishne-holter.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ishne-holter</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;Handle signals saved using ISHNE standard output for Holter ECG</DT
+><DT
+><A
+HREF="plugin-mit-bih.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>mit-bih</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;Handle signals recorded using the MIT/BIH Data Format (Physiobank data sets)</DT
+><DT
+><A
+HREF="plugin-portapres.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>portapres</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;Handle signals recorded with Portapres-System</DT
+><DT
+><A
+HREF="plugin-poly5-tms32.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>poly5/tms32</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;Handle signals recorded using TMS ADC system and PortiLab</DT
+><DT
+><A
+HREF="plugin-read-rri.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>read-rri</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;Handle RR interval-files (nearly the final design)</DT
+></DL
+></DD
+><DT
+><A
+HREF="process-plugins.html"
+>Process Plugins</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="plugin-ap-morphology.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ap-morphology</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;get systolic and diastolyc values and positions of aterial pressure waves</DT
+><DT
+><A
+HREF="plugin-calibration.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>calibration</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;measure calibration signals in a recording</DT
+><DT
+><A
+HREF="plugin-dawes-redman.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>dawes-redman</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;calculate FHR variations using the Dawes/Redman criteria</DT
+><DT
+><A
+HREF="plugin-detect-ctg.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>detect-ctg</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;perform detections in cardiotocograms</DT
+><DT
+><A
+HREF="plugin-detect-simple.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>detect-simple</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;a simple beat-detection algorithm</DT
+><DT
+><A
+HREF="plugin-ecg.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ecg</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;perform ecg specific actions after reading original evaluation or doing detect using libRASCH</DT
+><DT
+><A
+HREF="plugin-fiducial-point.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>fiducial-point</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;finds fiducial point of a QRS-complex</DT
+><DT
+><A
+HREF="plugin-freq-analysis.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>freq-analysis</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;perform frequency analysis</DT
+><DT
+><A
+HREF="plugin-hrv.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>hrv</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;calculate heart rate variability (HRV) parameters</DT
+><DT
+><A
+HREF="plugin-template.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>template</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;combine events in templates</DT
+><DT
+><A
+HREF="plugin-respiration.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>respiration</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;calculates respiration parameters</DT
+></DL
+></DD
+><DT
+><A
+HREF="gui-plugins.html"
+>GUI/View Plugins</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="plugin-ch-select-dlg.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ch-select-dlg</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;dialog for selecting channels which will be used for processing</DT
+><DT
+><A
+HREF="plugin-eval-dlg.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>eval-dlg</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;a dialog showing all evaluations for a measurement</DT
+><DT
+><A
+HREF="plugin-plugin-info-dlg.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>plugin-info-dlg</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;a dialog showing the list of all loaded plugins</DT
+><DT
+><A
+HREF="plugin-sig-sel-dlg.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>sig-sel-dlg</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;dialog to choose signales which can be handled with libRASCH</DT
+><DT
+><A
+HREF="plugin-simple-calc-dlg.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>simple-calc-dlg</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;dialog to perform calculations using process plugins</DT
+><DT
+><A
+HREF="plugin-cont-ap-view.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>cont-ap-view</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;view for continues arterial pressure recordings</DT
+><DT
+><A
+HREF="plugin-ctg-view.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ctg-view</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;view for cardiotocograms</DT
+><DT
+><A
+HREF="plugin-ecg-view.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ecg-view</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;view for ecg's</DT
+><DT
+><A
+HREF="plugin-plot-view.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>plot-view</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;plot evaluation data</DT
+><DT
+><A
+HREF="plugin-rasch-view.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>rasch-view</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;general view for libRASCH, handling all views</DT
+><DT
+><A
+HREF="plugin-template-view.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>template-view</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;view for templates</DT
+><DT
+><A
+HREF="plugin-ts-view.html"
+><SPAN
+CLASS="phrase"
+><SPAN
+CLASS="PHRASE"
+>ts-view</SPAN
+></SPAN
+></A
+>&nbsp;--&nbsp;view for time-series</DT
+></DL
+></DD
+></DL
+></DD
+></DL
+></DIV
+><DIV
+CLASS="LOT"
+><DL
+CLASS="LOT"
+><DT
+><B
+>List of Tables</B
+></DT
+><DT
+>6-1. <A
+HREF="infos.html#AEN3993"
+>List of info-names for library infos  --  ra_lib_get_info</A
+></DT
+><DT
+>6-2. <A
+HREF="infos.html#AEN4010"
+>List of info-names for measurement infos  --  ra_meas_get_info</A
+></DT
+><DT
+>6-3. <A
+HREF="infos.html#AEN4071"
+>List of info-names for measurement-object (person) infos  --  ra_obj_get_info</A
+></DT
+><DT
+>6-4. <A
+HREF="infos.html#AEN4144"
+>List of info-names for measurement-object (patient) infos  --  ra_obj_get_info</A
+></DT
+><DT
+>6-5. <A
+HREF="infos.html#AEN4197"
+>List of info-names for recording infos  --  ra_rec_get_info</A
+></DT
+><DT
+>6-6. <A
+HREF="infos.html#AEN4262"
+>List of info-names for device infos  --  ra_dev_get_info</A
+></DT
+><DT
+>6-7. <A
+HREF="infos.html#AEN4303"
+>List of info-names for channel infos  --  ra_ch_get_info</A
+></DT
+><DT
+>6-8. <A
+HREF="infos.html#AEN4364"
+>List of info-names for evaluation infos  --  ra_eval_get_info</A
+></DT
+><DT
+>6-9. <A
+HREF="infos.html#AEN4433"
+>List of info-names for event-property infos  --  ra_prop_get_info</A
+></DT
+><DT
+>6-10. <A
+HREF="infos.html#AEN4474"
+>List of info-names for template infos  --  not yet implemented</A
+></DT
+><DT
+>6-11. <A
+HREF="infos.html#AEN4499"
+>List of info-names for single-template infos  --  not yet implemented</A
+></DT
+><DT
+>6-12. <A
+HREF="infos.html#AEN4520"
+>List of info-names for plugin infos  --  ra_plugin_get_info</A
+></DT
+><DT
+>6-13. <A
+HREF="infos.html#AEN4561"
+>List of info-names for plugin-results infos  --  ra_proc_get_result_info</A
+></DT
+><DT
+>8-1. <A
+HREF="plugin-ap-morphology.html#AEN5296"
+>List of options for plugin ap-morphology</A
+></DT
+><DT
+>8-2. <A
+HREF="plugin-ap-morphology.html#AEN5319"
+>List of results of plugin ap-morphology</A
+></DT
+><DT
+>8-1. <A
+HREF="plugin-calibration.html#AEN5378"
+>List of options for plugin calibration</A
+></DT
+><DT
+>8-2. <A
+HREF="plugin-calibration.html#AEN5453"
+>List of results of plugin calibration</A
+></DT
+><DT
+>8-1. <A
+HREF="plugin-dawes-redman.html#AEN5516"
+>List of options for plugin dawes-redman</A
+></DT
+><DT
+>8-2. <A
+HREF="plugin-dawes-redman.html#AEN5559"
+>List of results of plugin dawes-redman</A
+></DT
+><DT
+>8-1. <A
+HREF="plugin-detect-ctg.html#AEN5641"
+>List of options for plugin detect-ctg</A
+></DT
+><DT
+>8-2. <A
+HREF="plugin-detect-ctg.html#AEN5660"
+>List of results of plugin detect-ctg</A
+></DT
+><DT
+>8-1. <A
+HREF="plugin-detect-simple.html#AEN5707"
+>List of options for plugin detect-simple</A
+></DT
+><DT
+>8-2. <A
+HREF="plugin-detect-simple.html#AEN5726"
+>List of results of plugin detect-simple</A
+></DT
+><DT
+>8-1. <A
+HREF="plugin-ecg.html#AEN5773"
+>List of options for plugin ecg</A
+></DT
+><DT
+>8-2. <A
+HREF="plugin-ecg.html#AEN5824"
+>List of results of plugin ecg</A
+></DT
+><DT
+>8-1. <A
+HREF="plugin-fiducial-point.html#AEN6187"
+>List of options for plugin fiducial-point</A
+></DT
+><DT
+>8-1. <A
+HREF="plugin-freq-analysis.html#AEN6234"
+>List of options for plugin freq-analysis</A
+></DT
+><DT
+>8-2. <A
+HREF="plugin-freq-analysis.html#AEN6369"
+>List of results of plugin freq-analysis</A
+></DT
+><DT
+>8-1. <A
+HREF="plugin-hrv.html#AEN6412"
+>List of options for plugin hrv</A
+></DT
+><DT
+>8-2. <A
+HREF="plugin-hrv.html#AEN6467"
+>List of results of plugin hrv</A
+></DT
+><DT
+>8-1. <A
+HREF="plugin-template.html#AEN6558"
+>List of options for plugin template</A
+></DT
+><DT
+>8-1. <A
+HREF="plugin-respiration.html#AEN6641"
+>List of options for plugin respiration</A
+></DT
+><DT
+>8-1. <A
+HREF="plugin-ch-select-dlg.html#AEN6698"
+>List of results of plugin ch-select-dlg</A
+></DT
+><DT
+>8-1. <A
+HREF="plugin-sig-sel-dlg.html#AEN6761"
+>List of options for plugin sig-sel-dlg</A
+></DT
+><DT
+>8-2. <A
+HREF="plugin-sig-sel-dlg.html#AEN6776"
+>List of results of plugin sig-sel-dlg</A
+></DT
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c_interface_ref.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Function Reference for C</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

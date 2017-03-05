@@ -1,0 +1,7 @@
+<appendix id="c_interface"><title>Function Reference for C</title>
+<para>
+This appendix list the functions provided by libRASCH for C.
+</para>
+&interface_auto;
+</appendix>
+

@@ -1,0 +1,7 @@
+Add a summary part; the part-id is returned.  
+    Input parameters:
+    sum_handle
+    events
+
+  Output parameters:
+    part_id

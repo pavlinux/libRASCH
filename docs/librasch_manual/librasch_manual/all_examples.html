@@ -1,0 +1,483 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Examples for all supported lanuages/systems</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="User Manual for libRASCH-0.7.2"
+HREF="book1.html"><LINK
+REL="PREVIOUS"
+TITLE="Usage of process-plugins"
+HREF="tut_process.html"><LINK
+REL="NEXT"
+TITLE="Open measurement"
+HREF="x437.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="APPENDIX"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>User Manual for libRASCH-0.7.2</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="tut_process.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x437.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="APPENDIX"
+><H1
+><A
+NAME="ALL_EXAMPLES"
+></A
+>Appendix A. Examples for all supported lanuages/systems</H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="all_examples.html#AEN413"
+>Init libRASCH</A
+></DT
+><DT
+><A
+HREF="x437.html"
+>Open measurement</A
+></DT
+><DT
+><A
+HREF="x461.html"
+>Handle recordings</A
+></DT
+><DT
+><A
+HREF="x485.html"
+>Access raw data</A
+></DT
+><DT
+><A
+HREF="x503.html"
+>Access evaluation</A
+></DT
+><DT
+><A
+HREF="x527.html"
+>Access events</A
+></DT
+><DT
+><A
+HREF="x545.html"
+>Use process-plugin</A
+></DT
+></DL
+></DIV
+><P
+>This appendix shows the examples presented in <A
+HREF="tutorial.html"
+>Chapter 3</A
+> for
+all supported languages/systems.</P
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="AEN413"
+>Init libRASCH</A
+></H1
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN415"
+>C Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>//
+#include &#60;stdio.h&#62;
+#include &#60;ra.h&#62;
+
+int main(int argc, char *argv[])
+{
+    ra_handle ra;
+    value_handle vh;
+    ra_find_handle f;
+    struct ra_find_struct fs;
+
+    /* initialize libRASCH */
+    ra = ra_lib_init();
+
+    /* check if init was successful */
+    if ((ra == NULL)
+        || (ra_lib_get_error(ra, NULL, 0) != RA_ERR_NONE))
+    {
+        if (!ra)
+            printf("error initializing libRASCH\n");
+        else
+        {
+            char err_t[200];
+            long err_num;
+
+            err_num = ra_lib_get_error(ra, err_t, 200);
+            printf("while initializing libRASCH, error #%d "
+                   "occured\n  %s\n", err_num, err_t);
+
+            ra_lib_close(ra);
+        }
+        return -1;
+    }
+
+    /* get some infos */
+    vh = ra_value_malloc();
+    if (ra_info_get(ra, RA_INFO_NUM_PLUGINS_L, vh) == 0)
+    {
+        printf("%s (%s): %d\n", ra_value_get_name(vh),
+               ra_value_get_desc(vh), ra_value_get_long(vh));
+    }
+    ra_value_free(vh);
+
+    /* find all measurements in a directory */
+    f = ra_meas_find_first(ra, argv[1], &#38;fs);
+    if (f)
+    {
+        int cnt = 1;
+
+        printf("measurements found in %s:\n", argv[1]);
+        do
+        {
+            printf("  %2d: %s\n", cnt, fs.name);
+            cnt++;
+        }
+        while (ra_meas_find_next(f, &#38;fs));
+
+        ra_meas_close_find(f);
+    }
+
+    /* close libRASCH */
+    ra_lib_close(ra);
+
+    return 0;
+}                               /* main() */
+
+//&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#plugins (): 28
+measurements found in ./database:
+   1: ./database/JesusOlivan2003-12-EMG2.edf
+   2: ./database/100s.hea&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN421"
+>Perl Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+use strict;
+use RASCH;
+
+# initialize libRASCH
+my $ra = new RASCH or die "error initializing libRASCH\n";
+my ($err_num, $err_text) = $ra-&#62;get_error ();
+if ($err_num != 1)
+{
+    print "while initializing libRASCH, error # $err_num " .
+        "occured:\n $err_text\n";
+    exit -1;
+}
+
+# get some infos
+my ($value, $name, $desc) = $ra-&#62;get_info (info =&#62;'num_plugins');
+if ($value)
+{
+    print "$name ($desc): $value\n";
+}
+
+# find all measurements in a directory
+my $meas = $ra-&#62;find_meas($ARGV[0]);
+print "measurements found in $ARGV[0]:\n";
+my $cnt = 1;
+for (@$meas)
+{
+    print "$cnt: $_-&#62;filename()\n";
+    $cnt++;
+}
+
+# ra_close() will be called when $ra is being destroyed
+
+exit 0;
+#&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+> (): RAvalue=HASH(0x816a510)
+measurements found in ./database:
+1: RAfind=HASH(0x822ef98)-&#62;filename()
+2: RAfind=HASH(0x822efbc)-&#62;filename()&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN427"
+>Python Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+import sys
+from RASCH import *
+
+# initialize libRASCH
+ra = RASCH()
+if not ra:
+    print "can't initialize libRASCH"
+    sys.exit()
+[err_num, err_text] = ra.get_error()
+if err_num != 1:
+    print "while initializing libRASCH, error #%d occured:\n " \
+          "%s\n" % err_num, err_text
+    sys.exit()
+    
+# get some infos
+[value, name, desc] = ra.get_info(info='num_plugins')
+if (value):
+    print name, "("+desc+"):", value
+
+# find all measurements in a directory
+meas = ra.get_all_meas(sys.argv[1])
+print "measurements found in " + sys.argv[1] + ":\n"
+cnt = 1
+for item in meas:
+    print "%d: %s" % (cnt, item)
+    cnt = cnt + 1
+
+#&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#plugins (): 28
+measurements found in ./database:
+
+1: ./database/JesusOlivan2003-12-EMG2.edf
+2: ./database/100s.hea&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN433"
+>Matlab/Octave Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>rasch@rasch:~&#62; octave
+GNU Octave, version 2.1.50 (i686-pc-linux-gnu).
+...
+
+octave:1&#62; ra=ra_lib_init
+ra = 145016336
+octave:2&#62; [err_num, err_text]=ra_lib_get_error(ra)
+err_num = 1
+err_text = libRASCH: no error
+octave:3&#62; [value, name, desc]=ra_lib_get_info(ra, 'num_plugins')
+value = 25
+name = #plugins
+desc =
+octave:4&#62; meas=ra_meas_find(ra, './database')
+meas =
+{
+  [1,1] = ./database/JesusOlivan2003-12-EMG2.edf
+  [2,1] = ./database/100s.hea
+}
+octave:5&#62;&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="tut_process.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x437.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Usage of process-plugins</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Open measurement</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,6128 @@
+<refentry id="API-ra-lib-init">
+<refmeta>
+<refentrytitle><phrase>ra_lib_init</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_lib_init</refname>
+ <refpurpose>
+  init libRASCH </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI ra_handle <function>ra_lib_init </function></funcdef>
+  <void>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <para>
+  None
+ </para>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Init libRASCH, read config-file and init plugins; returns ra_handle.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-lib-close">
+<refmeta>
+<refentrytitle><phrase>ra_lib_close</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_lib_close</refname>
+ <refpurpose>
+  close libRASCH </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI void <function>ra_lib_close </function></funcdef>
+   <paramdef>ra_handle <parameter>h</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>h</parameter></term>
+   <listitem>
+    <para>
+handle to ra instance    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Close libRASCH, close plugins and frees all allocated memory.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-lib-get-error">
+<refmeta>
+<refentrytitle><phrase>ra_lib_get_error</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_lib_get_error</refname>
+ <refpurpose>
+  get last error </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI long <function>ra_lib_get_error </function></funcdef>
+   <paramdef>ra_handle <parameter>h</parameter></paramdef>
+   <paramdef>char * <parameter>text</parameter></paramdef>
+   <paramdef>size_t <parameter>len</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>h</parameter></term>
+   <listitem>
+    <para>
+handle to ra instance    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>text</parameter></term>
+   <listitem>
+    <para>
+character buffer which receives error text    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>len</parameter></term>
+   <listitem>
+    <para>
+size of character buffer text    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function returns the last error occured in libRASCH (or in one of the plugins). See 'ra_error.h' for meaning of returned number. If the number is negative, the last error was an OS specific error and the error number comes from the OS (just remove the minus sign). If text is not NULL, a short error description will be returned in text.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-lib-handle-from-any-handle">
+<refmeta>
+<refentrytitle><phrase>ra_lib_handle_from_any_handle</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_lib_handle_from_any_handle</refname>
+ <refpurpose>
+  retrive handle of libRASCH instance from any handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI ra_handle <function>ra_lib_handle_from_any_handle </function></funcdef>
+   <paramdef>any_handle <parameter>h</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>h</parameter></term>
+   <listitem>
+    <para>
+handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Returns handle of libRASCH instance from any handle.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-meas-handle-from-any-handle">
+<refmeta>
+<refentrytitle><phrase>ra_meas_handle_from_any_handle</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_meas_handle_from_any_handle</refname>
+ <refpurpose>
+  retrive measurement-handle from any handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI meas_handle <function>ra_meas_handle_from_any_handle </function></funcdef>
+   <paramdef>any_handle <parameter>h</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>h</parameter></term>
+   <listitem>
+    <para>
+handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Returns measurement-handle.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-lib-use-plugin">
+<refmeta>
+<refentrytitle><phrase>ra_lib_use_plugin</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_lib_use_plugin</refname>
+ <refpurpose>
+  set using a plugin (or not) </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_lib_use_plugin </function></funcdef>
+   <paramdef>ra_handle <parameter>h</parameter></paramdef>
+   <paramdef>int <parameter>plugin_index</parameter></paramdef>
+   <paramdef>int <parameter>use_it</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>h</parameter></term>
+   <listitem>
+    <para>
+handle to libRASCH    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>plugin_index</parameter></term>
+   <listitem>
+    <para>
+index of plugin to change    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>use_it</parameter></term>
+   <listitem>
+    <para>
+flag using plugin (1: use plugin, !1: do not use plugin)    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Use or do not use plugin.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-plugin-get-by-num">
+<refmeta>
+<refentrytitle><phrase>ra_plugin_get_by_num</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_plugin_get_by_num</refname>
+ <refpurpose>
+  get plugin-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI plugin_handle <function>ra_plugin_get_by_num </function></funcdef>
+   <paramdef>ra_handle <parameter>h</parameter></paramdef>
+   <paramdef>int <parameter>plugin_num</parameter></paramdef>
+   <paramdef>int <parameter>search_all</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>h</parameter></term>
+   <listitem>
+    <para>
+handle to libRASCH    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>plugin_num</parameter></term>
+   <listitem>
+    <para>
+number of plugin    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>search_all</parameter></term>
+   <listitem>
+    <para>
+flag if all plugins should be searched (or only those with the use-it-flag enabled)    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Returns the plugin-handle for plugin #plugin_num.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-plugin-get-by-name">
+<refmeta>
+<refentrytitle><phrase>ra_plugin_get_by_name</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_plugin_get_by_name</refname>
+ <refpurpose>
+  get plugin-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI plugin_handle <function>ra_plugin_get_by_name </function></funcdef>
+   <paramdef>ra_handle <parameter>h</parameter></paramdef>
+   <paramdef>const char * <parameter>name</parameter></paramdef>
+   <paramdef>int <parameter>search_all</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>h</parameter></term>
+   <listitem>
+    <para>
+handle to libRASCH    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>name</parameter></term>
+   <listitem>
+    <para>
+name of plugin    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>search_all</parameter></term>
+   <listitem>
+    <para>
+flag if all plugins should be searched (or only those with the use-it-flag enabled)    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Returns the plugin-handle for plugin with name name.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-meas-find-first">
+<refmeta>
+<refentrytitle><phrase>ra_meas_find_first</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_meas_find_first</refname>
+ <refpurpose>
+  find libRASCH-handled measurements (return first one) </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI ra_find_handle <function>ra_meas_find_first </function></funcdef>
+   <paramdef>ra_handle <parameter>h</parameter></paramdef>
+   <paramdef>const char * <parameter>dir</parameter></paramdef>
+   <paramdef>struct ra_find_struct * <parameter>rfs</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>h</parameter></term>
+   <listitem>
+    <para>
+handle to libRASCH    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>dir</parameter></term>
+   <listitem>
+    <para>
+directory which should be scanned for measurements    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>rfs</parameter></term>
+   <listitem>
+    <para>
+pointer to ra_find_struct which will held the infos for the found measurement.    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Search for libRASCH-handled measurements in dir. If at least on measurement was found a valid (!NULL) ra_find_handle will be returned and the infos about the measurement is in mfs.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-meas-find-next">
+<refmeta>
+<refentrytitle><phrase>ra_meas_find_next</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_meas_find_next</refname>
+ <refpurpose>
+  find libRASCH-handled measurements (returns next) </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_meas_find_next </function></funcdef>
+   <paramdef>ra_find_handle <parameter>h</parameter></paramdef>
+   <paramdef>struct ra_find_struct * <parameter>rfs</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>h</parameter></term>
+   <listitem>
+    <para>
+find-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>rfs</parameter></term>
+   <listitem>
+    <para>
+pointer to ra_find_struct which will held the infos for the found measurement.    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Returns 1 if another measurement was found (the information will be in mfs) or 0 if there are no more measurements searched with ra_meas_find_first().</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-meas-close-find">
+<refmeta>
+<refentrytitle><phrase>ra_meas_close_find</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_meas_close_find</refname>
+ <refpurpose>
+  close the search for libRASCH-handled measurements </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI void <function>ra_meas_close_find </function></funcdef>
+   <paramdef>ra_find_handle <parameter>h</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>h</parameter></term>
+   <listitem>
+    <para>
+find-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+End a search for libRASCH-handled measurements (frees some memory). Must be called if the ra_find_handle h returned from ra_meas_find_first() will no be longer used.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-meas-open">
+<refmeta>
+<refentrytitle><phrase>ra_meas_open</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_meas_open</refname>
+ <refpurpose>
+  open a measurement </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI meas_handle <function>ra_meas_open </function></funcdef>
+   <paramdef>ra_handle <parameter>h</parameter></paramdef>
+   <paramdef>const char * <parameter>file</parameter></paramdef>
+   <paramdef>const char * <parameter>eval_file</parameter></paramdef>
+   <paramdef>int <parameter>fast</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>h</parameter></term>
+   <listitem>
+    <para>
+handle to libRASCH    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>file</parameter></term>
+   <listitem>
+    <para>
+file-name of the measurement    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>eval_file</parameter></term>
+   <listitem>
+    <para>
+file-name of the evaluation    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>fast</parameter></term>
+   <listitem>
+    <para>
+flag if some init-code should be done (=0) or not (=1)    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Opens the measurement file and returns a handle to the measurement. If the fast-flag is set, some initialisation-code (e.g. reading evaluation infos from the files) will not be done. This can be useful if only information about the measurment-object is needed but not about the evaluation. Getting the evaluation infos can be "very" time consuming.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-meas-new">
+<refmeta>
+<refentrytitle><phrase>ra_meas_new</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_meas_new</refname>
+ <refpurpose>
+  creates a new measurement </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI meas_handle <function>ra_meas_new </function></funcdef>
+   <paramdef>ra_handle <parameter>h</parameter></paramdef>
+   <paramdef>const char * <parameter>dir</parameter></paramdef>
+   <paramdef>const char * <parameter>name</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>h</parameter></term>
+   <listitem>
+    <para>
+handle to libRASCH    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>dir</parameter></term>
+   <listitem>
+    <para>
+directory where the measurement-files should be stored    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>name</parameter></term>
+   <listitem>
+    <para>
+name of the measurement    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Creates a new measurement with the name name in the directory dir. The function returns the handle to the measurement. The measurement will be stored using the libRASCH file-format. Not full implemented. !!!</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-meas-save">
+<refmeta>
+<refentrytitle><phrase>ra_meas_save</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_meas_save</refname>
+ <refpurpose>
+  saves a measurement </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_meas_save </function></funcdef>
+   <paramdef>meas_handle <parameter>mh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>mh</parameter></term>
+   <listitem>
+    <para>
+handle to measurement    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Saves the changes to a measurement (NOT to the evaluation). Plugin must support this. Not full implemented. !!!</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-meas-close">
+<refmeta>
+<refentrytitle><phrase>ra_meas_close</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_meas_close</refname>
+ <refpurpose>
+  close a measurement </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI void <function>ra_meas_close </function></funcdef>
+   <paramdef>meas_handle <parameter>mh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>mh</parameter></term>
+   <listitem>
+    <para>
+handle to measurement    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Close a measurement.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-info-get">
+<refmeta>
+<refentrytitle><phrase>ra_info_get</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_info_get</refname>
+ <refpurpose>
+  get infos </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_info_get </function></funcdef>
+   <paramdef>any_handle <parameter>h</parameter></paramdef>
+   <paramdef>int <parameter>id</parameter></paramdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>h</parameter></term>
+   <listitem>
+    <para>
+handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>id</parameter></term>
+   <listitem>
+    <para>
+id of information wanted    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value_handle receiving the info    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Returns 0 if the wanted information was found and != 0 if not. The information will be in vh. For usage of the function please see user-manual.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-info-get-by-name">
+<refmeta>
+<refentrytitle><phrase>ra_info_get_by_name</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_info_get_by_name</refname>
+ <refpurpose>
+  get infos </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_info_get_by_name </function></funcdef>
+   <paramdef>any_handle <parameter>h</parameter></paramdef>
+   <paramdef>const char * <parameter>name</parameter></paramdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>h</parameter></term>
+   <listitem>
+    <para>
+handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>name</parameter></term>
+   <listitem>
+    <para>
+name (text string) of information wanted    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value_handle receiving the info    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Returns 0 if the wanted information was found and != 0 if not. The information will be in vh. For usage of the function please see user-manual.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-info-get-by-idx">
+<refmeta>
+<refentrytitle><phrase>ra_info_get_by_idx</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_info_get_by_idx</refname>
+ <refpurpose>
+  get infos </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_info_get_by_idx </function></funcdef>
+   <paramdef>any_handle <parameter>h</parameter></paramdef>
+   <paramdef>int <parameter>info_type</parameter></paramdef>
+   <paramdef>int <parameter>idx</parameter></paramdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>h</parameter></term>
+   <listitem>
+    <para>
+measurement-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>info_type</parameter></term>
+   <listitem>
+    <para>
+type of information wanted    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>idx</parameter></term>
+   <listitem>
+    <para>
+index of information wanted    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value_handle receiving the info    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Returns 0 if the wanted information was found and != 0 if not. The information will be in vh. For usage of the function please see user-manual.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-info-set">
+<refmeta>
+<refentrytitle><phrase>ra_info_set</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_info_set</refname>
+ <refpurpose>
+  set info </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_info_set </function></funcdef>
+   <paramdef>any_handle <parameter>h</parameter></paramdef>
+   <paramdef>int <parameter>id</parameter></paramdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>h</parameter></term>
+   <listitem>
+    <para>
+handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>id</parameter></term>
+   <listitem>
+    <para>
+info id    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value_handle with the info    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Set info 'id' with the data found in 'vh'. At the moment only some measurement and recording infos can be set. In the future, other infos (e.g. eval-name, eval-desc etc.) can be set with this function also.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-rec-get-first">
+<refmeta>
+<refentrytitle><phrase>ra_rec_get_first</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_rec_get_first</refname>
+ <refpurpose>
+  get root-recording </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI rec_handle <function>ra_rec_get_first </function></funcdef>
+   <paramdef>meas_handle <parameter>mh</parameter></paramdef>
+   <paramdef>long <parameter>session</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>mh</parameter></term>
+   <listitem>
+    <para>
+measurement-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>session</parameter></term>
+   <listitem>
+    <para>
+session number    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Returns the first recording-handle of session session. </para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-rec-get-next">
+<refmeta>
+<refentrytitle><phrase>ra_rec_get_next</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_rec_get_next</refname>
+ <refpurpose>
+  get next recording </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI rec_handle <function>ra_rec_get_next </function></funcdef>
+   <paramdef>rec_handle <parameter>rh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>rh</parameter></term>
+   <listitem>
+    <para>
+recording-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Returns the next recording which follows recording rh.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-rec-get-first-child">
+<refmeta>
+<refentrytitle><phrase>ra_rec_get_first_child</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_rec_get_first_child</refname>
+ <refpurpose>
+  get first sub-recording </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI rec_handle <function>ra_rec_get_first_child </function></funcdef>
+   <paramdef>rec_handle <parameter>rh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>rh</parameter></term>
+   <listitem>
+    <para>
+recording-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Returns the first child-recording of recording rh.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-rec-add">
+<refmeta>
+<refentrytitle><phrase>ra_rec_add</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_rec_add</refname>
+ <refpurpose>
+  add a recording </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI rec_handle <function>ra_rec_add </function></funcdef>
+   <paramdef>meas_handle <parameter>mh</parameter></paramdef>
+   <paramdef>rec_handle <parameter>parent</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>mh</parameter></term>
+   <listitem>
+    <para>
+handle of the measurement    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>parent</parameter></term>
+   <listitem>
+    <para>
+handle of the parent recording (or NULL)    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Adds a recording to a measurement. The recording will be a child-recording of the parent-recording parent. The recording-handle will be returned. Not implemented yet. !!!</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-dev-add">
+<refmeta>
+<refentrytitle><phrase>ra_dev_add</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_dev_add</refname>
+ <refpurpose>
+  add a recording-device </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_dev_add </function></funcdef>
+   <paramdef>rec_handle <parameter>rh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>rh</parameter></term>
+   <listitem>
+    <para>
+handle of the recording    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Adds a device to the recording rh. The number of the device will be returned. Not implemented yet. !!!</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-ch-add">
+<refmeta>
+<refentrytitle><phrase>ra_ch_add</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_ch_add</refname>
+ <refpurpose>
+  add a recording-channel </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_ch_add </function></funcdef>
+   <paramdef>rec_handle <parameter>rh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>rh</parameter></term>
+   <listitem>
+    <para>
+handle of the recording    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Adds a channel to the recording rh. The number of the channel will be returned. Not implemented yet. !!!</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-session-new">
+<refmeta>
+<refentrytitle><phrase>ra_session_new</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_session_new</refname>
+ <refpurpose>
+  start a new recording session </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_session_new </function></funcdef>
+   <paramdef>meas_handle <parameter>mh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>mh</parameter></term>
+   <listitem>
+    <para>
+handle of the measurement    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Starts a new recording session and close the previous one. The function returns the new session number. Not implemented yet. !!!</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-raw-add">
+<refmeta>
+<refentrytitle><phrase>ra_raw_add</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_raw_add</refname>
+ <refpurpose>
+  add raw data </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI size_t <function>ra_raw_add </function></funcdef>
+   <paramdef>meas_handle <parameter>mh</parameter></paramdef>
+   <paramdef>unsigned int <parameter>ch</parameter></paramdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>mh</parameter></term>
+   <listitem>
+    <para>
+handle of the measurement    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>ch</parameter></term>
+   <listitem>
+    <para>
+channel where data should be added    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+data to be added    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Adds raw data to a measurement. The data is added to the current session. Not implemented yet. !!!</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-raw-get">
+<refmeta>
+<refentrytitle><phrase>ra_raw_get</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_raw_get</refname>
+ <refpurpose>
+  get raw-signal data  </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI size_t <function>ra_raw_get </function></funcdef>
+   <paramdef>rec_handle <parameter>rh</parameter></paramdef>
+   <paramdef>unsigned int <parameter>ch</parameter></paramdef>
+   <paramdef>size_t <parameter>start</parameter></paramdef>
+   <paramdef>size_t <parameter>num_data</parameter></paramdef>
+   <paramdef>DWORD * <parameter>data</parameter></paramdef>
+   <paramdef>DWORD * <parameter>data_high</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>rh</parameter></term>
+   <listitem>
+    <para>
+recording-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>ch</parameter></term>
+   <listitem>
+    <para>
+channel    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>start</parameter></term>
+   <listitem>
+    <para>
+first sample    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>num_data</parameter></term>
+   <listitem>
+    <para>
+number of samples    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>data</parameter></term>
+   <listitem>
+    <para>
+buffer for samples    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>data_high</parameter></term>
+   <listitem>
+    <para>
+buffer for higher 4 bytes of samples (if size of one sample > 4 bytes)    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function returns the sample's (raw-signal data) from the measurement mh and the recording rh. The first sample in data will be the sample number start (in sampleunits) and max. num_data are in data. The memory for buffer data must  be allocated in calling function. The samples returned in this function are the samples as stored in the file. If the size of one sample is greater than 4 bytes, the upper part of the samples are stored in the data_high buffer. If the size is not greater than 4 bytes, the buffer is not needed.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-raw-get-unit">
+<refmeta>
+<refentrytitle><phrase>ra_raw_get_unit</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_raw_get_unit</refname>
+ <refpurpose>
+  get raw-signal data scaled to 'unit'-values </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI size_t <function>ra_raw_get_unit </function></funcdef>
+   <paramdef>rec_handle <parameter>rh</parameter></paramdef>
+   <paramdef>unsigned int <parameter>ch</parameter></paramdef>
+   <paramdef>size_t <parameter>start</parameter></paramdef>
+   <paramdef>size_t <parameter>num_data</parameter></paramdef>
+   <paramdef>double * <parameter>data</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>rh</parameter></term>
+   <listitem>
+    <para>
+recording-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>ch</parameter></term>
+   <listitem>
+    <para>
+channel    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>start</parameter></term>
+   <listitem>
+    <para>
+first sample    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>num_data</parameter></term>
+   <listitem>
+    <para>
+number of samples    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>data</parameter></term>
+   <listitem>
+    <para>
+buffer for samples    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function returns the sample's (raw-signal data) from the measurement mh and the recording rh. The first sample in data will be the sample number start (in sampleunits) and max. num_data are in data. The memory for buffer data must  be allocated in calling function. The values are scaled to the unit of the  channel.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-gui-call">
+<refmeta>
+<refentrytitle><phrase>ra_gui_call</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_gui_call</refname>
+ <refpurpose>
+  shows GUI-element of a plugin (if avail.) </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_gui_call </function></funcdef>
+   <paramdef>any_handle <parameter>h</parameter></paramdef>
+   <paramdef>plugin_handle <parameter>pl</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>h</parameter></term>
+   <listitem>
+    <para>
+processing-handle or view-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>pl</parameter></term>
+   <listitem>
+    <para>
+plugin-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+If the plugin pl provides a GUI-element, this function shows this GUI-element and transfer control to it. The h variable contains some information, needed by the plugin. For more information if a plugin provides a GUI-element and what type/information is needed, please see the plugin specific documentation.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-proc-get">
+<refmeta>
+<refentrytitle><phrase>ra_proc_get</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_proc_get</refname>
+ <refpurpose>
+  get a processing handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI proc_handle <function>ra_proc_get </function></funcdef>
+   <paramdef>meas_handle <parameter>mh</parameter></paramdef>
+   <paramdef>plugin_handle <parameter>pl</parameter></paramdef>
+   <paramdef>void <parameter>(*callback</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>mh</parameter></term>
+   <listitem>
+    <para>
+    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>pl</parameter></term>
+   <listitem>
+    <para>
+plugin-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>(*callback</parameter></term>
+   <listitem>
+    <para>
+    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function returns a proc_handle for the plugin pl. The proc_handle will be returned initialized.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-proc-free">
+<refmeta>
+<refentrytitle><phrase>ra_proc_free</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_proc_free</refname>
+ <refpurpose>
+  free a processing handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI void <function>ra_proc_free </function></funcdef>
+   <paramdef>proc_handle <parameter>proc</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>proc</parameter></term>
+   <listitem>
+    <para>
+processing-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function frees a processing-handle and all associated memory.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-proc-do">
+<refmeta>
+<refentrytitle><phrase>ra_proc_do</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_proc_do</refname>
+ <refpurpose>
+  process the signal </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_proc_do </function></funcdef>
+   <paramdef>proc_handle <parameter>proc</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>proc</parameter></term>
+   <listitem>
+    <para>
+processing-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function calls the "processing" function of a process-plugin. For more information what information in proc is needed, please see the plugin specific documentation.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-proc-get-result">
+<refmeta>
+<refentrytitle><phrase>ra_proc_get_result</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_proc_get_result</refname>
+ <refpurpose>
+  get the processing results </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_proc_get_result </function></funcdef>
+   <paramdef>proc_handle <parameter>proc</parameter></paramdef>
+   <paramdef>long <parameter>res_num</parameter></paramdef>
+   <paramdef>long <parameter>res_set</parameter></paramdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>proc</parameter></term>
+   <listitem>
+    <para>
+processing-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>res_num</parameter></term>
+   <listitem>
+    <para>
+number (zero-based index) of the wanted result    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>res_set</parameter></term>
+   <listitem>
+    <para>
+number (zero-based index) of the wanted result-set    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function returns in vh one result from a processing perfomed with ra_proc_do.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-lib-get-option">
+<refmeta>
+<refentrytitle><phrase>ra_lib_get_option</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_lib_get_option</refname>
+ <refpurpose>
+  returns an option value </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_lib_get_option </function></funcdef>
+   <paramdef>any_handle <parameter>h</parameter></paramdef>
+   <paramdef>const char * <parameter>opt_name</parameter></paramdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>h</parameter></term>
+   <listitem>
+    <para>
+return option from this object    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>opt_name</parameter></term>
+   <listitem>
+    <para>
+name of the option    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+after function-call, contains option value    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function tries to return the option opt_name from the object h. At the moment only options for process-plugins (h needs to be a process-handle) are supported.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-lib-set-option">
+<refmeta>
+<refentrytitle><phrase>ra_lib_set_option</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_lib_set_option</refname>
+ <refpurpose>
+  set an option </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_lib_set_option </function></funcdef>
+   <paramdef>any_handle <parameter>h</parameter></paramdef>
+   <paramdef>const char * <parameter>opt_name</parameter></paramdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>h</parameter></term>
+   <listitem>
+    <para>
+option will be set in this object    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>opt_name</parameter></term>
+   <listitem>
+    <para>
+name of the option    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+option value    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function set the option opt_name in object h. At the moment only options for process-plugins (h needs to be a process-handle) are supported.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-meas-copy">
+<refmeta>
+<refentrytitle><phrase>ra_meas_copy</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_meas_copy</refname>
+ <refpurpose>
+  copy measurement </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_meas_copy </function></funcdef>
+   <paramdef>meas_handle <parameter>mh</parameter></paramdef>
+   <paramdef>const char * <parameter>dest_dir</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>mh</parameter></term>
+   <listitem>
+    <para>
+handle of measurement which should be copied    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>dest_dir</parameter></term>
+   <listitem>
+    <para>
+destination directory    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function copy the files of measurement mh to directory dest_dir. IMPORTANT!!! Function _not_ completely tested. Use at your own risk.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-meas-move">
+<refmeta>
+<refentrytitle><phrase>ra_meas_move</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_meas_move</refname>
+ <refpurpose>
+  move measurement </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI meas_handle <function>ra_meas_move </function></funcdef>
+   <paramdef>meas_handle <parameter>mh</parameter></paramdef>
+   <paramdef>const char * <parameter>dest_dir</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>mh</parameter></term>
+   <listitem>
+    <para>
+handle of measurement which should be moved    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>dest_dir</parameter></term>
+   <listitem>
+    <para>
+destination directory    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function move the files of measurement mh to directory dest_dir. After the move the measurement will be reopend (to be able to handle the new positions of the files) and the functions returns the new measurement-handle. IMPORTANT!!! Function _not_ completely tested. Use at your own risk.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-meas-delete">
+<refmeta>
+<refentrytitle><phrase>ra_meas_delete</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_meas_delete</refname>
+ <refpurpose>
+  delete measurement </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_meas_delete </function></funcdef>
+   <paramdef>meas_handle <parameter>mh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>mh</parameter></term>
+   <listitem>
+    <para>
+handle of measurement which should be deleted    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function deletes the files of measurement mh. The measurement mh will be closed after the deletion. Therefore mh is no longer a valid measurement-handle. IMPORTANT!!! Function _not_ completely tested. Use at your own risk.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-raw-process">
+<refmeta>
+<refentrytitle><phrase>ra_raw_process</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_raw_process</refname>
+ <refpurpose>
+  common processing tasks for raw-data (e.g. powerline-noise filter) </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_raw_process </function></funcdef>
+   <paramdef>long <parameter>task</parameter></paramdef>
+   <paramdef>value_handle <parameter>task_data</parameter></paramdef>
+   <paramdef>size_t <parameter>num_data</parameter></paramdef>
+   <paramdef>DWORD * <parameter>data</parameter></paramdef>
+   <paramdef>DWORD * <parameter>data_high</parameter></paramdef>
+   <paramdef>rec_handle <parameter>rh</parameter></paramdef>
+   <paramdef>unsigned int <parameter>ch</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>task</parameter></term>
+   <listitem>
+    <para>
+id of the processing task (see RA_RAW_PROC_* defines)    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>task_data</parameter></term>
+   <listitem>
+    <para>
+task specific data    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>num_data</parameter></term>
+   <listitem>
+    <para>
+number of raw-data samples    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>data</parameter></term>
+   <listitem>
+    <para>
+raw-data    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>data_high</parameter></term>
+   <listitem>
+    <para>
+upper 32bits of raw-data (if we have 64bit samples; not supported yet)    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>rh</parameter></term>
+   <listitem>
+    <para>
+recording handle the raw-data comes from    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>ch</parameter></term>
+   <listitem>
+    <para>
+channel of the raw-data    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function performs common processing tasks for the raw-data, the tasks are independent of signal-type. For example, one task is to filer powerline noise. For a complete set of available tasks, see the RA_RAW_PROC_* defines in the ra_defines.h header file.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+raw_process.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-est-ch-type">
+<refmeta>
+<refentrytitle><phrase>ra_est_ch_type</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_est_ch_type</refname>
+ <refpurpose>
+  estimate channel type </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_est_ch_type </function></funcdef>
+   <paramdef>ra_handle <parameter>ra</parameter></paramdef>
+   <paramdef>const char * <parameter>folder</parameter></paramdef>
+   <paramdef>const char * <parameter>filename</parameter></paramdef>
+   <paramdef>int <parameter>is_dir_based</parameter></paramdef>
+   <paramdef>const char * <parameter>name</parameter></paramdef>
+   <paramdef>struct ra_est_ch_infos * <parameter>inf</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>ra</parameter></term>
+   <listitem>
+    <para>
+ra-handle, needed to check for system-wide ch-map    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>folder</parameter></term>
+   <listitem>
+    <para>
+folder to look for the folder specific ch-map    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>filename</parameter></term>
+   <listitem>
+    <para>
+filename of the measurement, needed to look for the meas-specific ch-map    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>is_dir_based</parameter></term>
+   <listitem>
+    <para>
+flag if measurement files are stored in a folder    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>name</parameter></term>
+   <listitem>
+    <para>
+channel name    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>inf</parameter></term>
+   <listitem>
+    <para>
+this variable contains the estimated type    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function tries to estimate the type of a recording channel from the channel name.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+estimate_ch_infos.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-malloc">
+<refmeta>
+<refentrytitle><phrase>ra_value_malloc</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_malloc</refname>
+ <refpurpose>
+  allocate and initialize a value_handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI value_handle <function>ra_value_malloc </function></funcdef>
+  <void>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <para>
+  None
+ </para>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Returns a initialzed value-handle.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-free">
+<refmeta>
+<refentrytitle><phrase>ra_value_free</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_free</refname>
+ <refpurpose>
+  free value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI void <function>ra_value_free </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Frees the memory asocciated with vh.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-reset">
+<refmeta>
+<refentrytitle><phrase>ra_value_reset</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_reset</refname>
+ <refpurpose>
+  reset value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI void <function>ra_value_reset </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Reset value-handle vh.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-get-type">
+<refmeta>
+<refentrytitle><phrase>ra_value_get_type</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_get_type</refname>
+ <refpurpose>
+  return value-type </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI long <function>ra_value_get_type </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Return the type of the value stored in vh. Check in ra_defines.h for the meaning of the returned value (RA_VALUE_TYPE_*).</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-is-ok">
+<refmeta>
+<refentrytitle><phrase>ra_value_is_ok</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_is_ok</refname>
+ <refpurpose>
+  checks if value is valid </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_value_is_ok </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Returns '1' if value stored in vh is valid, '0' if not.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-get-num-elem">
+<refmeta>
+<refentrytitle><phrase>ra_value_get_num_elem</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_get_num_elem</refname>
+ <refpurpose>
+  return number of elements of array values </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI unsigned long <function>ra_value_get_num_elem </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+When an array is stored in vh, the number of elements of the array is returned.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-get-info">
+<refmeta>
+<refentrytitle><phrase>ra_value_get_info</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_get_info</refname>
+ <refpurpose>
+  returns id of info </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI long <function>ra_value_get_info </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Returns the id of the info set in vh. Check in ra_defines.h for for the meaning of info-id (RA_INFO_*).</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-set-info">
+<refmeta>
+<refentrytitle><phrase>ra_value_set_info</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_set_info</refname>
+ <refpurpose>
+  sets the RA_INFO_* id of info </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_value_set_info </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+   <paramdef>long <parameter>id</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>id</parameter></term>
+   <listitem>
+    <para>
+info-id    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Sets the id of the info in vh. Check in ra_defines.h for for the meaning of info-id (RA_INFO_*).</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-get-name">
+<refmeta>
+<refentrytitle><phrase>ra_value_get_name</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_get_name</refname>
+ <refpurpose>
+  returns name of info </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI const char * <function>ra_value_get_name </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Returns a character pointer to the name of the info set in vh. The pointer is valid until vh is free'd or a new info was retrived.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-get-desc">
+<refmeta>
+<refentrytitle><phrase>ra_value_get_desc</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_get_desc</refname>
+ <refpurpose>
+  returns description of info </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI const char * <function>ra_value_get_desc </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Returns a character pointer to the description of the info set in vh. The pointer is valid until vh is free'd or a new info was retrived.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-info-modifiable">
+<refmeta>
+<refentrytitle><phrase>ra_value_info_modifiable</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_info_modifiable</refname>
+ <refpurpose>
+  returns flag if info in measurement file(s) can be modified </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_value_info_modifiable </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Returns a flag if the info currently handled by the value-handle, can be modified in the measurement file(s).</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-info-set-modifiable">
+<refmeta>
+<refentrytitle><phrase>ra_value_info_set_modifiable</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_info_set_modifiable</refname>
+ <refpurpose>
+  set flag if info in measurement file(s) can be modified </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI void <function>ra_value_info_set_modifiable </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+   <paramdef>int <parameter>can_be_modified</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>can_be_modified</parameter></term>
+   <listitem>
+    <para>
+    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Sets the flag if the info currently handled by the value-handle, can be modified in the measurement file(s).</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-set-number">
+<refmeta>
+<refentrytitle><phrase>ra_value_set_number</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_set_number</refname>
+ <refpurpose>
+  set a number in a value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_value_set_number </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+   <paramdef>long <parameter>number</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>number</parameter></term>
+   <listitem>
+    <para>
+number    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Set the number number in the value-handle vh. This number is used when infos about channels, recording devices and plugins. number is also used when processing results are retrived.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-get-number">
+<refmeta>
+<refentrytitle><phrase>ra_value_get_number</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_get_number</refname>
+ <refpurpose>
+  get a number set in a value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI long <function>ra_value_get_number </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+Returns the number number set in the value-handle vh.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-set-short">
+<refmeta>
+<refentrytitle><phrase>ra_value_set_short</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_set_short</refname>
+ <refpurpose>
+  set short value in value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI void <function>ra_value_set_short </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+   <paramdef>const short <parameter>value</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>value</parameter></term>
+   <listitem>
+    <para>
+value to set in ra_info    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function set the value in vh.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-set-long">
+<refmeta>
+<refentrytitle><phrase>ra_value_set_long</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_set_long</refname>
+ <refpurpose>
+  set long value in value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI void <function>ra_value_set_long </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+   <paramdef>const long <parameter>value</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>value</parameter></term>
+   <listitem>
+    <para>
+value to set in ra_info    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function set the value in vh.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-set-double">
+<refmeta>
+<refentrytitle><phrase>ra_value_set_double</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_set_double</refname>
+ <refpurpose>
+  set double value in value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI void <function>ra_value_set_double </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+   <paramdef>const double <parameter>value</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>value</parameter></term>
+   <listitem>
+    <para>
+value to set in ra_info    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function set the value in vh.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-set-string">
+<refmeta>
+<refentrytitle><phrase>ra_value_set_string</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_set_string</refname>
+ <refpurpose>
+  set a string in value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI void <function>ra_value_set_string </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+   <paramdef>const char * <parameter>string</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>string</parameter></term>
+   <listitem>
+    <para>
+string to set in ra_info    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function set the string (`\\0`-ended char *) in vh.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-set-string-utf8">
+<refmeta>
+<refentrytitle><phrase>ra_value_set_string_utf8</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_set_string_utf8</refname>
+ <refpurpose>
+  set a UTF-8 encoded string in value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI void <function>ra_value_set_string_utf8 </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+   <paramdef>const char * <parameter>string</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>string</parameter></term>
+   <listitem>
+    <para>
+string to set in ra_info    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function set the string (`\\0`-ended char *) in vh.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-set-voidp">
+<refmeta>
+<refentrytitle><phrase>ra_value_set_voidp</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_set_voidp</refname>
+ <refpurpose>
+  set void-pointer value in value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI void <function>ra_value_set_voidp </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+   <paramdef>const void * <parameter>value</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>value</parameter></term>
+   <listitem>
+    <para>
+value to set in ra_info    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function set the value in vh.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-set-short-array">
+<refmeta>
+<refentrytitle><phrase>ra_value_set_short_array</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_set_short_array</refname>
+ <refpurpose>
+  set short-array values in value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI void <function>ra_value_set_short_array </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+   <paramdef>const short * <parameter>array</parameter></paramdef>
+   <paramdef>unsigned long <parameter>num</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>array</parameter></term>
+   <listitem>
+    <para>
+array to set in ra_info    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>num</parameter></term>
+   <listitem>
+    <para>
+number of array elements    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function set the short array array with num elements in vh.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-set-long-array">
+<refmeta>
+<refentrytitle><phrase>ra_value_set_long_array</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_set_long_array</refname>
+ <refpurpose>
+  set long-array values in value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI void <function>ra_value_set_long_array </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+   <paramdef>const long * <parameter>array</parameter></paramdef>
+   <paramdef>unsigned long <parameter>num</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>array</parameter></term>
+   <listitem>
+    <para>
+array to set in ra_info    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>num</parameter></term>
+   <listitem>
+    <para>
+number of array elements    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function set the long array array with num elements in vh.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-set-double-array">
+<refmeta>
+<refentrytitle><phrase>ra_value_set_double_array</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_set_double_array</refname>
+ <refpurpose>
+  set double-array values in value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI void <function>ra_value_set_double_array </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+   <paramdef>const double * <parameter>array</parameter></paramdef>
+   <paramdef>unsigned long <parameter>num</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>array</parameter></term>
+   <listitem>
+    <para>
+array to set in ra_info    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>num</parameter></term>
+   <listitem>
+    <para>
+number of array elements    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function set the double array array with num elements in vh.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-set-string-array">
+<refmeta>
+<refentrytitle><phrase>ra_value_set_string_array</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_set_string_array</refname>
+ <refpurpose>
+  set a string-array in value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI void <function>ra_value_set_string_array </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+   <paramdef>const char ** <parameter>*array</parameter></paramdef>
+   <paramdef>unsigned long <parameter>num</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>*array</parameter></term>
+   <listitem>
+    <para>
+    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>num</parameter></term>
+   <listitem>
+    <para>
+number of array elements    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function set the string-array array with num elements in vh. </para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-set-string-array-utf8">
+<refmeta>
+<refentrytitle><phrase>ra_value_set_string_array_utf8</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_set_string_array_utf8</refname>
+ <refpurpose>
+  set a string-array (UTF-8 encoded) in value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI void <function>ra_value_set_string_array_utf8 </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+   <paramdef>const char ** <parameter>*array</parameter></paramdef>
+   <paramdef>unsigned long <parameter>num</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>*array</parameter></term>
+   <listitem>
+    <para>
+    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>num</parameter></term>
+   <listitem>
+    <para>
+number of array elements    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function set the string-array 'array' with 'num' elements in vh. The strings in 'array' are expected to be UTF-8 encoded.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-set-voidp-array">
+<refmeta>
+<refentrytitle><phrase>ra_value_set_voidp_array</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_set_voidp_array</refname>
+ <refpurpose>
+  set void-pointer-array values in value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI void <function>ra_value_set_voidp_array </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+   <paramdef>const void ** <parameter>*array</parameter></paramdef>
+   <paramdef>unsigned long <parameter>num</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>*array</parameter></term>
+   <listitem>
+    <para>
+    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>num</parameter></term>
+   <listitem>
+    <para>
+number of array elements    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function set the long array array with num elements in vh.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-set-vh-array">
+<refmeta>
+<refentrytitle><phrase>ra_value_set_vh_array</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_set_vh_array</refname>
+ <refpurpose>
+  set value-handle-array values in value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI void <function>ra_value_set_vh_array </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+   <paramdef>const value_handle * <parameter>array</parameter></paramdef>
+   <paramdef>unsigned long <parameter>num</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>array</parameter></term>
+   <listitem>
+    <para>
+array to set in ra_value    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>num</parameter></term>
+   <listitem>
+    <para>
+number of array elements    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function set the value-handle array 'array' with num elements in vh.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-get-short">
+<refmeta>
+<refentrytitle><phrase>ra_value_get_short</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_get_short</refname>
+ <refpurpose>
+  return short value from value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI short <function>ra_value_get_short </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function returns the short value set in vh.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-get-long">
+<refmeta>
+<refentrytitle><phrase>ra_value_get_long</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_get_long</refname>
+ <refpurpose>
+  return long value from value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI long <function>ra_value_get_long </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function returns the long value set in vh.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-get-double">
+<refmeta>
+<refentrytitle><phrase>ra_value_get_double</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_get_double</refname>
+ <refpurpose>
+  return double value from value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI double <function>ra_value_get_double </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function returns the double value set in vh.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-get-string">
+<refmeta>
+<refentrytitle><phrase>ra_value_get_string</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_get_string</refname>
+ <refpurpose>
+  return character pointer from value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI const char * <function>ra_value_get_string </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function returns a character pointer to the string set in vh. The pointer is valid until vh is used in another function or vh is freed.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-get-string-utf8">
+<refmeta>
+<refentrytitle><phrase>ra_value_get_string_utf8</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_get_string_utf8</refname>
+ <refpurpose>
+  return character pointer from value-handle (UTF-8 encoded) </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI const char * <function>ra_value_get_string_utf8 </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function returns a character pointer to the string set in vh. The string is UTF-8 encoded. The pointer is valid until vh is used in another function or vh is freed.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-get-voidp">
+<refmeta>
+<refentrytitle><phrase>ra_value_get_voidp</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_get_voidp</refname>
+ <refpurpose>
+  return void-pointer from value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI const void * <function>ra_value_get_voidp </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function returns the void-pointer set in vh.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-get-short-array">
+<refmeta>
+<refentrytitle><phrase>ra_value_get_short_array</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_get_short_array</refname>
+ <refpurpose>
+  return pointer to short array from value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI const short * <function>ra_value_get_short_array </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function returns a pointer to the short array stored in vh. The pointer is valid until vh is used in another function or vh is freed. The number of elements of the array can be get by calling ra_value_get_num_elem().</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-get-long-array">
+<refmeta>
+<refentrytitle><phrase>ra_value_get_long_array</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_get_long_array</refname>
+ <refpurpose>
+  return pointer to long array from value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI const long * <function>ra_value_get_long_array </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function returns a pointer to the long array stored in vh. The pointer is valid until vh is used in another function or vh is freed. The number of elements of the array can be get by calling ra_value_get_num_elem().</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-get-double-array">
+<refmeta>
+<refentrytitle><phrase>ra_value_get_double_array</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_get_double_array</refname>
+ <refpurpose>
+  return pointer to double array from value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI const double * <function>ra_value_get_double_array </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function returns a pointer to the double array stored in vh. The pointer is valid until vh is used in another function or vh is freed. The number of elements of the array can be get by calling ra_value_get_num_elem().</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-get-string-array">
+<refmeta>
+<refentrytitle><phrase>ra_value_get_string_array</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_get_string_array</refname>
+ <refpurpose>
+  return pointer to character pointer array from value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI const char ** <function>ra_value_get_string_array </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function returns a pointer to the character pointer array stored in vh. The pointer is valid until vh is used in another function or vh is freed. The number of elements of the array can be get by calling ra_value_get_num_elem().</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-get-string-array-utf8">
+<refmeta>
+<refentrytitle><phrase>ra_value_get_string_array_utf8</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_get_string_array_utf8</refname>
+ <refpurpose>
+  return pointer to character pointer array from value-handle (UTF-8 encoded) </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI const char ** <function>ra_value_get_string_array_utf8 </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function returns a pointer to the character pointer array stored in vh. The strings are UTF-8 encoded. The pointer is valid until vh is used in another function or vh is freed. The number of elements of the array can be get by calling ra_value_get_num_elem().</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-get-voidp-array">
+<refmeta>
+<refentrytitle><phrase>ra_value_get_voidp_array</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_get_voidp_array</refname>
+ <refpurpose>
+  return pointer to void-pointer array from value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI const void ** <function>ra_value_get_voidp_array </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function returns a pointer to the void-pointer array stored in vh. The pointer is valid until vh is used in another function or vh is freed. The number of elements of the array can be get by calling ra_value_get_num_elem().</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-get-vh-array">
+<refmeta>
+<refentrytitle><phrase>ra_value_get_vh_array</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_get_vh_array</refname>
+ <refpurpose>
+  return pointer to long array from value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI const value_handle * <function>ra_value_get_vh_array </function></funcdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function returns a pointer to the value-handle array stored in vh. The pointer is valid until vh is used in another function or vh is freed. The number of elements of the array can be get by calling ra_value_get_num_elem().</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-copy">
+<refmeta>
+<refentrytitle><phrase>ra_value_copy</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_copy</refname>
+ <refpurpose>
+  copy one value_handle to another value_handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_value_copy </function></funcdef>
+   <paramdef>value_handle <parameter>dest</parameter></paramdef>
+   <paramdef>value_handle <parameter>src</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>dest</parameter></term>
+   <listitem>
+    <para>
+destination value-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>src</parameter></term>
+   <listitem>
+    <para>
+source value-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function copies the values from one value-handle to another value-handle and the name and description. The remaining fields are not copied.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-value-get-single-elem">
+<refmeta>
+<refentrytitle><phrase>ra_value_get_single_elem</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_value_get_single_elem</refname>
+ <refpurpose>
+  copy one element from a value-handle in another value-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_value_get_single_elem </function></funcdef>
+   <paramdef>value_handle <parameter>dest</parameter></paramdef>
+   <paramdef>value_handle <parameter>src</parameter></paramdef>
+   <paramdef>size_t <parameter>elem_num</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>dest</parameter></term>
+   <listitem>
+    <para>
+destination value-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>src</parameter></term>
+   <listitem>
+    <para>
+source value-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>elem_num</parameter></term>
+   <listitem>
+    <para>
+zero-based index of the value which has to be copied    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function copies one element from value-handle to another value-handle and the name and description. The remaining fields are not copied. The function is helpfull when a single value from an array, stored in a value-handle, is needed for another function expecting a single value in a value-handle.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+value.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-list-add">
+<refmeta>
+<refentrytitle><phrase>ra_list_add</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_list_add</refname>
+ <refpurpose>
+  add an entry to a linked list </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>int <function>ra_list_add </function></funcdef>
+   <paramdef>void ** <parameter>*head</parameter></paramdef>
+   <paramdef>void * <parameter>item</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>*head</parameter></term>
+   <listitem>
+    <para>
+    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>item</parameter></term>
+   <listitem>
+    <para>
+item to be added    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function adds 'item' to the linked list identified by 'head' (head of list).</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+linked_list.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-list-insert">
+<refmeta>
+<refentrytitle><phrase>ra_list_insert</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_list_insert</refname>
+ <refpurpose>
+  insert an entry to a linked list </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>int <function>ra_list_insert </function></funcdef>
+   <paramdef>void ** <parameter>*head</parameter></paramdef>
+   <paramdef>void * <parameter>prev</parameter></paramdef>
+   <paramdef>void * <parameter>item</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>*head</parameter></term>
+   <listitem>
+    <para>
+    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>prev</parameter></term>
+   <listitem>
+    <para>
+previous item    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>item</parameter></term>
+   <listitem>
+    <para>
+item to be added    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function inserts 'item' in a linked list (identified by 'head'). The item will come directly after 'prev'.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+linked_list.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-list-del">
+<refmeta>
+<refentrytitle><phrase>ra_list_del</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_list_del</refname>
+ <refpurpose>
+  delete an entry from a linked list </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>int <function>ra_list_del </function></funcdef>
+   <paramdef>void ** <parameter>*head</parameter></paramdef>
+   <paramdef>void * <parameter>item</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>*head</parameter></term>
+   <listitem>
+    <para>
+    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>item</parameter></term>
+   <listitem>
+    <para>
+item to be deleted    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function deletes 'item' from a linked list (identified by 'head').</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+linked_list.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-comm-add">
+<refmeta>
+<refentrytitle><phrase>ra_comm_add</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_comm_add</refname>
+ <refpurpose>
+  add a signal receiver </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_comm_add </function></funcdef>
+   <paramdef>meas_handle <parameter>mh</parameter></paramdef>
+   <paramdef>plugin_handle <parameter>p</parameter></paramdef>
+   <paramdef>dest_handle <parameter>dh</parameter></paramdef>
+   <paramdef>const char * <parameter>sig_name</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>mh</parameter></term>
+   <listitem>
+    <para>
+measurement handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>p</parameter></term>
+   <listitem>
+    <para>
+plugin handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>dh</parameter></term>
+   <listitem>
+    <para>
+destination handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>sig_name</parameter></term>
+   <listitem>
+    <para>
+name of the signal    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function adds a new signal receiver p and dh for the signal sig_name to the inter-plugin-communication. Whenever the signal sig_name is emitted, the signal will be send to the plugin p. The plugin-instance will be identified with the help of dh.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+pl_comm.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-comm-del">
+<refmeta>
+<refentrytitle><phrase>ra_comm_del</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_comm_del</refname>
+ <refpurpose>
+  delete a signal receiver </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI void <function>ra_comm_del </function></funcdef>
+   <paramdef>meas_handle <parameter>mh</parameter></paramdef>
+   <paramdef>dest_handle <parameter>dh</parameter></paramdef>
+   <paramdef>const char * <parameter>sig_name</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>mh</parameter></term>
+   <listitem>
+    <para>
+measurement handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>dh</parameter></term>
+   <listitem>
+    <para>
+destination handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>sig_name</parameter></term>
+   <listitem>
+    <para>
+name of the signal    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function deletes the signal receiver dh for the signal sig_name.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+pl_comm.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-comm-emit">
+<refmeta>
+<refentrytitle><phrase>ra_comm_emit</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_comm_emit</refname>
+ <refpurpose>
+  emits a signal </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI void <function>ra_comm_emit </function></funcdef>
+   <paramdef>meas_handle <parameter>mh</parameter></paramdef>
+   <paramdef>const char * <parameter>sender</parameter></paramdef>
+   <paramdef>const char * <parameter>sig_name</parameter></paramdef>
+   <paramdef>int <parameter>num_para</parameter></paramdef>
+   <paramdef>struct comm_para * <parameter>para</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>mh</parameter></term>
+   <listitem>
+    <para>
+measurement handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>sender</parameter></term>
+   <listitem>
+    <para>
+name of the sender (needed for debug, can be NULL)    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>sig_name</parameter></term>
+   <listitem>
+    <para>
+name of the signal    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>num_para</parameter></term>
+   <listitem>
+    <para>
+number of signal parameters    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>para</parameter></term>
+   <listitem>
+    <para>
+signal parameters    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function emits the signal sig_name wit num_para parameters.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+pl_comm.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-get-filename">
+<refmeta>
+<refentrytitle><phrase>ra_get_filename</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_get_filename</refname>
+ <refpurpose>
+  return "case-corrected" filename </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>int <function>ra_get_filename </function></funcdef>
+   <paramdef>const char * <parameter>fn</parameter></paramdef>
+   <paramdef>int <parameter>dir_based</parameter></paramdef>
+   <paramdef>char * <parameter>buf</parameter></paramdef>
+   <paramdef>int <parameter>buf_len</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>fn</parameter></term>
+   <listitem>
+    <para>
+input filename    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>dir_based</parameter></term>
+   <listitem>
+    <para>
+    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>buf</parameter></term>
+   <listitem>
+    <para>
+buffer for "case-corrected" filename    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>buf_len</parameter></term>
+   <listitem>
+    <para>
+length of buffer 'buf'    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function tries to find how the given filename is used on the current system (case wise) and returns the filename case corrected.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra_file.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-fopen">
+<refmeta>
+<refentrytitle><phrase>ra_fopen</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_fopen</refname>
+ <refpurpose>
+  opens a file </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>FILE * <function>ra_fopen </function></funcdef>
+   <paramdef>const char * <parameter>fn</parameter></paramdef>
+   <paramdef>const char * <parameter>mode</parameter></paramdef>
+   <paramdef>int <parameter>dir_based</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>fn</parameter></term>
+   <listitem>
+    <para>
+filename    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>mode</parameter></term>
+   <listitem>
+    <para>
+the fopen file-open mode characters    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>dir_based</parameter></term>
+   <listitem>
+    <para>
+flag if measurement-files are stored in a directory (=1) or not (!=1)    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function tries different case combinations to open the file if the given filename can not be found.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+ra_file.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-eval-attribute-list">
+<refmeta>
+<refentrytitle><phrase>ra_eval_attribute_list</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_eval_attribute_list</refname>
+ <refpurpose>
+  get from 'h' a list of available attributes </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_eval_attribute_list </function></funcdef>
+   <paramdef>any_handle <parameter>h</parameter></paramdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>h</parameter></term>
+   <listitem>
+    <para>
+an eval-/event-class-/event-prop-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle receiving the attribute list    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function returns a list of all attributes associated to handle 'h'.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-eval-attribute-get">
+<refmeta>
+<refentrytitle><phrase>ra_eval_attribute_get</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_eval_attribute_get</refname>
+ <refpurpose>
+  get from 'h' the value of the attribute 'name' </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_eval_attribute_get </function></funcdef>
+   <paramdef>any_handle <parameter>h</parameter></paramdef>
+   <paramdef>const char * <parameter>id</parameter></paramdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>h</parameter></term>
+   <listitem>
+    <para>
+an eval-/event-class-/event-prop-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>id</parameter></term>
+   <listitem>
+    <para>
+ASCII-id of the attribute    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle receiving the value    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function returns the value stored in the attribute 'name'.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-eval-attribute-set">
+<refmeta>
+<refentrytitle><phrase>ra_eval_attribute_set</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_eval_attribute_set</refname>
+ <refpurpose>
+  set the value of the attribute 'name' in 'h' </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_eval_attribute_set </function></funcdef>
+   <paramdef>any_handle <parameter>h</parameter></paramdef>
+   <paramdef>const char * <parameter>id</parameter></paramdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>h</parameter></term>
+   <listitem>
+    <para>
+an eval-/event-class-/event-prop-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>id</parameter></term>
+   <listitem>
+    <para>
+ASCII-id of the attribute    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle with the value    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function sets the value of the attribute 'name'.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-eval-attribute-unset">
+<refmeta>
+<refentrytitle><phrase>ra_eval_attribute_unset</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_eval_attribute_unset</refname>
+ <refpurpose>
+  removes the attribute 'name' in 'h' </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_eval_attribute_unset </function></funcdef>
+   <paramdef>any_handle <parameter>h</parameter></paramdef>
+   <paramdef>const char * <parameter>id</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>h</parameter></term>
+   <listitem>
+    <para>
+an eval-/event-class-/event-prop-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>id</parameter></term>
+   <listitem>
+    <para>
+ASCII-id of the attribute    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function removes the attribute 'name'.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-eval-add">
+<refmeta>
+<refentrytitle><phrase>ra_eval_add</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_eval_add</refname>
+ <refpurpose>
+  adds an evaluation </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI eval_handle <function>ra_eval_add </function></funcdef>
+   <paramdef>meas_handle <parameter>mh</parameter></paramdef>
+   <paramdef>const char * <parameter>name</parameter></paramdef>
+   <paramdef>const char * <parameter>desc</parameter></paramdef>
+   <paramdef>int <parameter>original</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>mh</parameter></term>
+   <listitem>
+    <para>
+measurement-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>name</parameter></term>
+   <listitem>
+    <para>
+a short name of the evaluation    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>desc</parameter></term>
+   <listitem>
+    <para>
+a short description of the evaluation    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>original</parameter></term>
+   <listitem>
+    <para>
+flag if evaluation is the original evaluation    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function adds an evaluation to a measurement.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-eval-copy">
+<refmeta>
+<refentrytitle><phrase>ra_eval_copy</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_eval_copy</refname>
+ <refpurpose>
+  copy evaluation </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI eval_handle <function>ra_eval_copy </function></funcdef>
+   <paramdef>eval_handle <parameter>eh</parameter></paramdef>
+   <paramdef>const char * <parameter>name</parameter></paramdef>
+   <paramdef>const char * <parameter>desc</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>eh</parameter></term>
+   <listitem>
+    <para>
+source evaluation handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>name</parameter></term>
+   <listitem>
+    <para>
+name of the copied evaluation     </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>desc</parameter></term>
+   <listitem>
+    <para>
+description of the copied evaluation    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function copies the evaluation given by 'eh', the handle of the copy will be returned. If the parameter "name" is NULL or an empty string, the name of the source evaluation will be used and the prefix 'copy-' will be added.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-eval-delete">
+<refmeta>
+<refentrytitle><phrase>ra_eval_delete</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_eval_delete</refname>
+ <refpurpose>
+  delete evaluation </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_eval_delete </function></funcdef>
+   <paramdef>eval_handle <parameter>eh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>eh</parameter></term>
+   <listitem>
+    <para>
+evaluation handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function deletes the evaluation given by 'eh'.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-eval-get-all">
+<refmeta>
+<refentrytitle><phrase>ra_eval_get_all</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_eval_get_all</refname>
+ <refpurpose>
+  returns all evaluation-handles </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_eval_get_all </function></funcdef>
+   <paramdef>meas_handle <parameter>mh</parameter></paramdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>mh</parameter></term>
+   <listitem>
+    <para>
+measurement-handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value-handle receiving the evaluation-handles    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function returns all evaluation-handles in the evaluation file associated with mh.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-eval-get-original">
+<refmeta>
+<refentrytitle><phrase>ra_eval_get_original</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_eval_get_original</refname>
+ <refpurpose>
+  returns the original evaluation-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI eval_handle <function>ra_eval_get_original </function></funcdef>
+   <paramdef>meas_handle <parameter>mh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>mh</parameter></term>
+   <listitem>
+    <para>
+measurement-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function returns the original evaluation-handle.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-eval-get-default">
+<refmeta>
+<refentrytitle><phrase>ra_eval_get_default</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_eval_get_default</refname>
+ <refpurpose>
+  returns the default evaluation-handle </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI eval_handle <function>ra_eval_get_default </function></funcdef>
+   <paramdef>meas_handle <parameter>mh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>mh</parameter></term>
+   <listitem>
+    <para>
+measurement-handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+This function returns the default evaluation-handle.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-eval-set-default">
+<refmeta>
+<refentrytitle><phrase>ra_eval_set_default</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_eval_set_default</refname>
+ <refpurpose>
+  set an evaluation to the default one </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_eval_set_default </function></funcdef>
+   <paramdef>eval_handle <parameter>eh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>eh</parameter></term>
+   <listitem>
+    <para>
+evaluation handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function sets the evaluation given by 'eh' to the default one.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-eval-get-handle">
+<refmeta>
+<refentrytitle><phrase>ra_eval_get_handle</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_eval_get_handle</refname>
+ <refpurpose>
+  returns the evaluation handle an event-class belongs to </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI eval_handle <function>ra_eval_get_handle </function></funcdef>
+   <paramdef>class_handle <parameter>clh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>clh</parameter></term>
+   <listitem>
+    <para>
+event-class handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function returns the evaluation handle which the evant-class given by 'clh' belongs to.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-class-add">
+<refmeta>
+<refentrytitle><phrase>ra_class_add</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_class_add</refname>
+ <refpurpose>
+  adds an user-defined event-class to an evaluation </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI class_handle <function>ra_class_add </function></funcdef>
+   <paramdef>eval_handle <parameter>eh</parameter></paramdef>
+   <paramdef>const char * <parameter>id</parameter></paramdef>
+   <paramdef>const char * <parameter>name</parameter></paramdef>
+   <paramdef>const char * <parameter>desc</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>eh</parameter></term>
+   <listitem>
+    <para>
+evaluation handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>id</parameter></term>
+   <listitem>
+    <para>
+ASCII-id of the event-class    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>name</parameter></term>
+   <listitem>
+    <para>
+a short name for the event-class    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>desc</parameter></term>
+   <listitem>
+    <para>
+a short description of the event-class    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function adds an event-class to the evaluation 'eh'. The parameter 'id' is used to identifiy the event-class and must contain only ASCII characters. The parameters 'name' and 'desc' are used to describe the  event-class. If you want to use a pre-defined event-class, use ra_class_add_predef().</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-class-add-predef">
+<refmeta>
+<refentrytitle><phrase>ra_class_add_predef</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_class_add_predef</refname>
+ <refpurpose>
+  adds an pre-defined event-class to an evaluation </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI class_handle <function>ra_class_add_predef </function></funcdef>
+   <paramdef>eval_handle <parameter>eh</parameter></paramdef>
+   <paramdef>const char * <parameter>id</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>eh</parameter></term>
+   <listitem>
+    <para>
+evaluation handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>id</parameter></term>
+   <listitem>
+    <para>
+ASCII-id of the event-class    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function adds the event-class 'id' to the evaluation 'eh'. 'id' is one of the pre-defined event-classes in libRASCH. If you want to add not a pre-defined event-class, use ra_class_add().</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-class-delete">
+<refmeta>
+<refentrytitle><phrase>ra_class_delete</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_class_delete</refname>
+ <refpurpose>
+  deletes an event-class </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_class_delete </function></funcdef>
+   <paramdef>class_handle <parameter>clh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>clh</parameter></term>
+   <listitem>
+    <para>
+event-class handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function deletes the event-class 'clh'.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-class-get">
+<refmeta>
+<refentrytitle><phrase>ra_class_get</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_class_get</refname>
+ <refpurpose>
+  return event-class  </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_class_get </function></funcdef>
+   <paramdef>eval_handle <parameter>eh</parameter></paramdef>
+   <paramdef>const char * <parameter>id</parameter></paramdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>eh</parameter></term>
+   <listitem>
+    <para>
+evaluation handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>id</parameter></term>
+   <listitem>
+    <para>
+event-class ASCII-id    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function returns all event-classes with the id 'id'. If 'id' is NULL (or is an empty string), all event-classes in the evaluation 'eh' are given.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-class-add-event">
+<refmeta>
+<refentrytitle><phrase>ra_class_add_event</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_class_add_event</refname>
+ <refpurpose>
+  add an event </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI long <function>ra_class_add_event </function></funcdef>
+   <paramdef>class_handle <parameter>clh</parameter></paramdef>
+   <paramdef>long <parameter>start</parameter></paramdef>
+   <paramdef>long <parameter>end</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>clh</parameter></term>
+   <listitem>
+    <para>
+event-class handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>start</parameter></term>
+   <listitem>
+    <para>
+start position of the event in sample-units    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>end</parameter></term>
+   <listitem>
+    <para>
+end position of the event in sample-units    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function adds an event to the event-class 'clh'. The start and end of the event are given by 'start' and 'end' respectively. If the event is a point in time, use for 'end' the same value as 'start'. A unique event-id is returned.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-class-add-event-mass">
+<refmeta>
+<refentrytitle><phrase>ra_class_add_event_mass</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_class_add_event_mass</refname>
+ <refpurpose>
+  add a list of events </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_class_add_event_mass </function></funcdef>
+   <paramdef>class_handle <parameter>clh</parameter></paramdef>
+   <paramdef>unsigned long <parameter>num_events</parameter></paramdef>
+   <paramdef>const long * <parameter>start</parameter></paramdef>
+   <paramdef>const long * <parameter>end</parameter></paramdef>
+   <paramdef>long * <parameter>ev_ids</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>clh</parameter></term>
+   <listitem>
+    <para>
+event-class handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>num_events</parameter></term>
+   <listitem>
+    <para>
+number of events to add    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>start</parameter></term>
+   <listitem>
+    <para>
+array with the start positions of the event in sample-units    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>end</parameter></term>
+   <listitem>
+    <para>
+array with the end positions of the event in sample-units    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>ev_ids</parameter></term>
+   <listitem>
+    <para>
+array receiving the event-ids    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function adds a list of events to the event-class 'clh'. The start and end of the events are given by 'start' and 'end' respectively. The event-ids are returned in the array 'ev_ids'.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-class-del-event">
+<refmeta>
+<refentrytitle><phrase>ra_class_del_event</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_class_del_event</refname>
+ <refpurpose>
+  delete an event </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_class_del_event </function></funcdef>
+   <paramdef>class_handle <parameter>clh</parameter></paramdef>
+   <paramdef>long <parameter>event_id</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>clh</parameter></term>
+   <listitem>
+    <para>
+event-class handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>event_id</parameter></term>
+   <listitem>
+    <para>
+event-id of the event    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function deletes the event 'event_id' from the event-class 'clh'.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-class-get-event-pos">
+<refmeta>
+<refentrytitle><phrase>ra_class_get_event_pos</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_class_get_event_pos</refname>
+ <refpurpose>
+  get the start and end position of an event </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_class_get_event_pos </function></funcdef>
+   <paramdef>class_handle <parameter>clh</parameter></paramdef>
+   <paramdef>long <parameter>event_id</parameter></paramdef>
+   <paramdef>long * <parameter>start</parameter></paramdef>
+   <paramdef>long * <parameter>end</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>clh</parameter></term>
+   <listitem>
+    <para>
+event-class handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>event_id</parameter></term>
+   <listitem>
+    <para>
+event-id of the event    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>start</parameter></term>
+   <listitem>
+    <para>
+here the start position will be returned    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>end</parameter></term>
+   <listitem>
+    <para>
+here the end position will be returned    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function returns in 'start' and 'end' the position of the evvent 'event_id' from the event-class 'clh'. The positions are in sample-units.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-class-set-event-pos">
+<refmeta>
+<refentrytitle><phrase>ra_class_set_event_pos</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_class_set_event_pos</refname>
+ <refpurpose>
+  set the start and end position of an event </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_class_set_event_pos </function></funcdef>
+   <paramdef>class_handle <parameter>clh</parameter></paramdef>
+   <paramdef>long <parameter>event_id</parameter></paramdef>
+   <paramdef>long <parameter>start</parameter></paramdef>
+   <paramdef>long <parameter>end</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>clh</parameter></term>
+   <listitem>
+    <para>
+event-class handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>event_id</parameter></term>
+   <listitem>
+    <para>
+event-id of the event    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>start</parameter></term>
+   <listitem>
+    <para>
+the start position of the event    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>end</parameter></term>
+   <listitem>
+    <para>
+the end position of the event    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function sets the start and end position of the event 'event_id' in the event-class 'clh' to the values 'start' and 'end'.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-class-get-events">
+<refmeta>
+<refentrytitle><phrase>ra_class_get_events</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_class_get_events</refname>
+ <refpurpose>
+  returns the events in a specific region </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_class_get_events </function></funcdef>
+   <paramdef>class_handle <parameter>clh</parameter></paramdef>
+   <paramdef>long <parameter>start</parameter></paramdef>
+   <paramdef>long <parameter>end</parameter></paramdef>
+   <paramdef>int <parameter>complete</parameter></paramdef>
+   <paramdef>int <parameter>sort</parameter></paramdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>clh</parameter></term>
+   <listitem>
+    <para>
+event-class handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>start</parameter></term>
+   <listitem>
+    <para>
+start of the region of interest    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>end</parameter></term>
+   <listitem>
+    <para>
+end of the region of interest    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>complete</parameter></term>
+   <listitem>
+    <para>
+flag if the events have to be complete in the region of interest    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>sort</parameter></term>
+   <listitem>
+    <para>
+flag if the found events should be sorted according their start position    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+value handle receiving the event-id's asked for    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function returns in 'vh' the events which are inside a specific region. The region of interest (ROI)is given by 'start' and 'end'. If the 'complete' flag is set, the events have to be complete inside the ROI. If it is not set, all events are returned which starts or ends inside the ROI.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-class-get-prev-event">
+<refmeta>
+<refentrytitle><phrase>ra_class_get_prev_event</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_class_get_prev_event</refname>
+ <refpurpose>
+  returns the event-id preceeding the given one </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI long <function>ra_class_get_prev_event </function></funcdef>
+   <paramdef>class_handle <parameter>clh</parameter></paramdef>
+   <paramdef>long <parameter>event_id</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>clh</parameter></term>
+   <listitem>
+    <para>
+event-class handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>event_id</parameter></term>
+   <listitem>
+    <para>
+event-id    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function returns the id of the event preceeding the one given in 'event_id'. If the given event is the first one '-1' is returned.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-class-get-next-event">
+<refmeta>
+<refentrytitle><phrase>ra_class_get_next_event</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_class_get_next_event</refname>
+ <refpurpose>
+  returns the event-id following the given one </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI long <function>ra_class_get_next_event </function></funcdef>
+   <paramdef>class_handle <parameter>clh</parameter></paramdef>
+   <paramdef>long <parameter>event_id</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>clh</parameter></term>
+   <listitem>
+    <para>
+event-class handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>event_id</parameter></term>
+   <listitem>
+    <para>
+event-id    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function returns the id of the event following the one given in 'event_id'. If the given event is the first one '-1' is returned.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-class-get-handle">
+<refmeta>
+<refentrytitle><phrase>ra_class_get_handle</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_class_get_handle</refname>
+ <refpurpose>
+  returns the event-class handle the event-property belongs to </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI class_handle <function>ra_class_get_handle </function></funcdef>
+   <paramdef>any_handle <parameter>h</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>h</parameter></term>
+   <listitem>
+    <para>
+    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function returns the event-class handle the event-property 'ph' belongs to.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-prop-add">
+<refmeta>
+<refentrytitle><phrase>ra_prop_add</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_prop_add</refname>
+ <refpurpose>
+  adds an user-defined event-property to an event-class </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI prop_handle <function>ra_prop_add </function></funcdef>
+   <paramdef>class_handle <parameter>clh</parameter></paramdef>
+   <paramdef>const char * <parameter>id</parameter></paramdef>
+   <paramdef>long <parameter>value_type</parameter></paramdef>
+   <paramdef>const char * <parameter>name</parameter></paramdef>
+   <paramdef>const char * <parameter>desc</parameter></paramdef>
+   <paramdef>const char * <parameter>unit</parameter></paramdef>
+   <paramdef>int <parameter>use_minmax</parameter></paramdef>
+   <paramdef>double <parameter>min</parameter></paramdef>
+   <paramdef>double <parameter>max</parameter></paramdef>
+   <paramdef>int <parameter>has_ignore_value</parameter></paramdef>
+   <paramdef>double <parameter>ignore_value</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>clh</parameter></term>
+   <listitem>
+    <para>
+event-class handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>id</parameter></term>
+   <listitem>
+    <para>
+ASCII-id of the event-property    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>value_type</parameter></term>
+   <listitem>
+    <para>
+RA_VALUE_TYPE_* of the values stored in the event-property    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>name</parameter></term>
+   <listitem>
+    <para>
+a short name for the event-property    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>desc</parameter></term>
+   <listitem>
+    <para>
+a short description of the event-property    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>unit</parameter></term>
+   <listitem>
+    <para>
+unit of the values stored in the event-property    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>use_minmax</parameter></term>
+   <listitem>
+    <para>
+flag if min-/max-values are valid    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>min</parameter></term>
+   <listitem>
+    <para>
+minimum value    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>max</parameter></term>
+   <listitem>
+    <para>
+maximum value    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>has_ignore_value</parameter></term>
+   <listitem>
+    <para>
+flag if 'ignore_value' is valid    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>ignore_value</parameter></term>
+   <listitem>
+    <para>
+a value which is interpreted as non-valid and can be ignored    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function adds an event-property to the event-class 'clh'. The parameter 'id' is used to identifiy the event-property and must contain only ASCII characters. The parameters 'name' and 'desc' are used to describe the  event-class. If you want to use a pre-defined event-property, use ra_prop_add_predef().</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-prop-add-predef">
+<refmeta>
+<refentrytitle><phrase>ra_prop_add_predef</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_prop_add_predef</refname>
+ <refpurpose>
+  adds an pre-defined event-property to an event-class </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI prop_handle <function>ra_prop_add_predef </function></funcdef>
+   <paramdef>class_handle <parameter>clh</parameter></paramdef>
+   <paramdef>const char * <parameter>id</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>clh</parameter></term>
+   <listitem>
+    <para>
+event-class handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>id</parameter></term>
+   <listitem>
+    <para>
+ASCII-id of the event-property    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function adds the event-property 'id' to the event-class 'clh'. 'id' is one of the pre-defined event-properties in libRASCH. If you want to add not a pre-defined event-property, use ra_prop_add().</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-prop-delete">
+<refmeta>
+<refentrytitle><phrase>ra_prop_delete</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_prop_delete</refname>
+ <refpurpose>
+  deletes an event-property </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_prop_delete </function></funcdef>
+   <paramdef>prop_handle <parameter>ph</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>ph</parameter></term>
+   <listitem>
+    <para>
+event-property handle    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function deletes the event-property 'ph'.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-prop-get-all">
+<refmeta>
+<refentrytitle><phrase>ra_prop_get_all</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_prop_get_all</refname>
+ <refpurpose>
+  returns all event-properties of an event-class </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_prop_get_all </function></funcdef>
+   <paramdef>class_handle <parameter>clh</parameter></paramdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>clh</parameter></term>
+   <listitem>
+    <para>
+    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+ra-value handle receiving the event-property handles    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function returns in 'vh' all event-properties available in event-class 'clh'.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-prop-get">
+<refmeta>
+<refentrytitle><phrase>ra_prop_get</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_prop_get</refname>
+ <refpurpose>
+  returns event-property 'id' </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI prop_handle <function>ra_prop_get </function></funcdef>
+   <paramdef>class_handle <parameter>clh</parameter></paramdef>
+   <paramdef>const char * <parameter>id</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>clh</parameter></term>
+   <listitem>
+    <para>
+event-class handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>id</parameter></term>
+   <listitem>
+    <para>
+ASCII id of the wanted event-property    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function returns a handle to the event-property 'id' from event-class 'clh'. If the event-property is not available 'NULL' is returned.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-prop-set-value">
+<refmeta>
+<refentrytitle><phrase>ra_prop_set_value</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_prop_set_value</refname>
+ <refpurpose>
+  set value in event-property </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_prop_set_value </function></funcdef>
+   <paramdef>prop_handle <parameter>ph</parameter></paramdef>
+   <paramdef>long <parameter>event_id</parameter></paramdef>
+   <paramdef>long <parameter>ch</parameter></paramdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>ph</parameter></term>
+   <listitem>
+    <para>
+event-property handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>event_id</parameter></term>
+   <listitem>
+    <para>
+event-id    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>ch</parameter></term>
+   <listitem>
+    <para>
+channel number    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+contains value which should be set    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function set the value stored in 'vh' in event-property 'ph' for event-id 'event_id' and channel 'ch'. If the value is channel independent use '-1' for the channel number.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-prop-set-value-mass">
+<refmeta>
+<refentrytitle><phrase>ra_prop_set_value_mass</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_prop_set_value_mass</refname>
+ <refpurpose>
+  set multiple values in event-property </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_prop_set_value_mass </function></funcdef>
+   <paramdef>prop_handle <parameter>ph</parameter></paramdef>
+   <paramdef>const long * <parameter>event_id</parameter></paramdef>
+   <paramdef>const long * <parameter>ch</parameter></paramdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>ph</parameter></term>
+   <listitem>
+    <para>
+event-property handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>event_id</parameter></term>
+   <listitem>
+    <para>
+array containing event-id's    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>ch</parameter></term>
+   <listitem>
+    <para>
+array containing channel number's    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+contains values to be set    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function set the values stored in 'vh' in event-property 'ph' for the event-id's 'event_id' and channel's 'ch'. If the value is channel independent use '-1' for the channel numbers. The length of 'event_id' and 'ch' has to be the same. And the number of values in 'vh' has to be the same as in 'event_id'/'ch'.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-prop-get-ch">
+<refmeta>
+<refentrytitle><phrase>ra_prop_get_ch</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_prop_get_ch</refname>
+ <refpurpose>
+  returns the channels for which data is available </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_prop_get_ch </function></funcdef>
+   <paramdef>prop_handle <parameter>ph</parameter></paramdef>
+   <paramdef>long <parameter>event_id</parameter></paramdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>ph</parameter></term>
+   <listitem>
+    <para>
+event-property handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>event_id</parameter></term>
+   <listitem>
+    <para>
+event-id    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+ra-value receiving the channel-list    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function return in 'vh' the list of channels where values are available for event-id 'event_id' and event-property 'ph'.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-prop-get-value">
+<refmeta>
+<refentrytitle><phrase>ra_prop_get_value</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_prop_get_value</refname>
+ <refpurpose>
+  get value from event-property </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_prop_get_value </function></funcdef>
+   <paramdef>prop_handle <parameter>ph</parameter></paramdef>
+   <paramdef>long <parameter>event_id</parameter></paramdef>
+   <paramdef>long <parameter>ch</parameter></paramdef>
+   <paramdef>value_handle <parameter>vh</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>ph</parameter></term>
+   <listitem>
+    <para>
+event-property handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>event_id</parameter></term>
+   <listitem>
+    <para>
+event-id    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>ch</parameter></term>
+   <listitem>
+    <para>
+channel number    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>vh</parameter></term>
+   <listitem>
+    <para>
+receives value    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+The function returns a value in 'vh' from event-property 'ph' for event-id 'event_id' and channel 'ch'. If you interested in the channel independent value use '-1' for the channel number.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+eval.c</para>
+</refsect1></refentry>
+
+<refentry id="API-ra-eval-save">
+<refmeta>
+<refentrytitle><phrase>ra_eval_save</phrase></refentrytitle>
+</refmeta>
+<refnamediv>
+ <refname>ra_eval_save</refname>
+ <refpurpose>
+  save evalution </refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+ <title>Synopsis</title>
+  <funcsynopsis><funcprototype>
+   <funcdef>LIBRAAPI int <function>ra_eval_save </function></funcdef>
+   <paramdef>meas_handle <parameter>mh</parameter></paramdef>
+   <paramdef>const char * <parameter>file</parameter></paramdef>
+   <paramdef>int <parameter>use_ascii</parameter></paramdef>
+  </funcprototype></funcsynopsis>
+</refsynopsisdiv>
+<refsect1>
+ <title>Arguments</title>
+ <variablelist>
+  <varlistentry>
+   <term><parameter>mh</parameter></term>
+   <listitem>
+    <para>
+measurement handle    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>file</parameter></term>
+   <listitem>
+    <para>
+name of the evaluation file (optional)    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><parameter>use_ascii</parameter></term>
+   <listitem>
+    <para>
+flag if event-values should be stored as ASCII-text (=1) or as    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</refsect1>
+<refsect1>
+<title>Description</title>
+<para>
+binary MIME64 encoded data (=0) This function saves the evaluation(s) that belongs to the measurement mh. If no filename file is given, the default-filename will be used. If use_ascii is !=0 than the event values are stored as ASCII text.</para>
+</refsect1><refsect1>
+<title>source file</title>
+<para>
+save_eval_v1.c</para>
+</refsect1></refentry>
+

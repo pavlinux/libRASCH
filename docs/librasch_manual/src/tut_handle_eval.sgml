@@ -1,0 +1,67 @@
+<section id="tut-handle-eval"><title>Access Evaluations</title>
+
+<para>
+The example will show how to get the evaluation belonging to a
+measurement and to get some information about it. We will perform the following steps:
+<itemizedlist mark=bullet>
+<listitem><para>get default evaluation</para></listitem>
+<listitem><para>get some general infos about the evaluation</para></listitem>
+<listitem><para>get a list of event-properties</para></listitem>
+</itemizedlist>
+</para>
+
+<para>
+libRASCH supports different "types" of evaluations, these are
+'original evaluation', 'default evaluation' and '"old" evaluations. The
+'original evaluation' is the evaluation performed with the recording
+system (e.g. commercial Holter systems). In a measurement there can be
+only one 'original evaluation', but there can be none.
+</para>
+<para>
+The 'default evaluation' is the evaluation which should be used as
+default. If a measurement has only a 'original evaluation', than this
+will also be the 'default evaluation'.
+</para>
+<para>
+Old evaluations are like a history of evaluations. When a new
+evaluation is added to a measurement, than this will be the new
+'default evaluation' and the previous 'default evaluation' will become
+a 'old evaluation'. This enables the user to go back to a previous
+evaluation, if the current evalution went wrong.
+</para>
+
+<programlistingco>
+<areaspec>
+<areaset id="handle-eval-c.const" coords="">
+<area id="handle-eval-c.get-eval"  units="LineColumn" coords="30 35">
+</areaset>
+<area id="handle-eval-c.info"  units="LineColumn" coords="51 31">
+</areaspec>
+<programlisting>
+&handle-eval.c;
+</programlisting>
+<calloutlist>
+<callout arearefs="handle-eval-c.get-eval">
+<para>
+Returns the 'default evaluation'.
+</para>
+</callout>
+</calloutlist>
+<calloutlist>
+<callout arearefs="handle-eval-c.info">
+<para>
+In the function ra_info_get() we got the number of available event
+properties. Now we return some informations about each event property.
+</para>
+</callout>
+</calloutlist>
+</programlistingco>
+
+<para>
+The output of the above example for ECG '100s'
+is shown here:
+</para>
+<programlisting>
+&handle-eval.c.out;
+</programlisting>
+</section>

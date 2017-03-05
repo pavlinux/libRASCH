@@ -1,0 +1,199 @@
+<func name="ra_lib_init">
+  <para type="out" num="1">ra_handle</para>
+  <purpose>initialize libRASCH</purpose>
+  <description>Initialize libRASCH and read all plugins. Must be called
+    before any other function for libRASCH can be used.
+  </description>
+  <perl-code>
+    CODE:
+     RETVAL = ra_lib_init();
+  </perl-code>
+  <perl-out>void *</perl-out>
+  <python-code-init>
+    ra_handle ra;
+  </python-code-init>
+  <python-code>
+    ra = ra_lib_init();
+    return Py_BuildValue("l", ra);
+  </python-code>
+</func>
+
+<func name="ra_lib_close">
+  <para type="in" num="1" perl-type="void *" desc="handle to an instance of libRASCH">ra_handle</para>
+  <purpose>close libRASCH</purpose>
+  <description>Unload plugins and free memory.
+  </description>
+  <perl-code>
+    CODE:
+      ra_lib_close(p_ra_handle);
+  </perl-code>
+  <python-code>
+    ra_lib_close(p_ra_handle);
+  
+    Py_INCREF(Py_None);
+    return Py_None;
+  </python-code>
+</func>
+
+
+<func name="ra_lib_get_error">
+<para type="in" num="1" perl-type="void *" desc="libRASCH handle">ra_handle</para>
+<para type="out" num="1">error_number</para>
+<para type="out" num="2">error_text</para>
+<purpose>get libRASCH error</purpose>
+<description>Returns the last error occured inside of libRASCH.
+</description>
+<perl-code>
+PPCODE:
+  long err_num;
+  char err_text[200];
+
+  err_num = ra_lib_get_error(p_ra_handle, err_text, 200);
+
+  PUSHs(sv_2mortal(newSViv(err_num)));
+  PUSHs(sv_2mortal(newSVpv(err_text, strlen(err_text))));
+</perl-code>
+<python-code-init>
+  long err_num;
+  char err_text[200];
+  PyObject *list = PyList_New(2);
+</python-code-init>
+<python-code>
+  err_num = ra_lib_get_error(p_ra_handle, err_text, 200);
+
+  PyList_SetItem(list, 0, Py_BuildValue("l", err_num));
+  PyList_SetItem(list, 1, Py_BuildValue("s", err_text));
+
+  return list;
+</python-code>
+</func>
+
+
+<func name="ra_lib_handle_from_any_handle">
+<para type="in" num="1" perl-type="void *" desc="any libRASCH handle">any_handle</para>
+<para type="out" num="1">ra_handle</para>
+<purpose>get ra-handle from any handle</purpose>
+<description>Returns the ra-handle from any handle.
+</description>
+<perl-code>
+CODE:
+  RETVAL = ra_lib_handle_from_any_handle(p_any_handle);
+</perl-code>
+<perl-out>void *</perl-out>
+<python-code-init>
+  ra_handle ra;
+</python-code-init>
+<python-code>
+  ra = ra_lib_handle_from_any_handle(p_any_handle);
+  return Py_BuildValue("l", ra);
+</python-code>
+</func>
+
+
+<func name="ra_lib_set_option">
+<para type="in" num="1" perl-type="void *" desc="handle returned from ra_proc_init()">handle</para>
+<para type="in" num="2" perl-type="char *" desc="option-name">option_name</para>
+<para type="in" num="3" perl-type="char *" desc="option type">option_type</para>
+<para type="in" num="4" perl-type="SV *" desc="option value">option_value</para>
+<para type="out" num="1">ret</para>
+<purpose>set plugin-option</purpose>
+<description>
+Set an option.
+</description>
+<perl-code><![CDATA[
+PPCODE:
+  int ret;
+  value_handle vh;
+
+  vh = ra_value_malloc();
+
+  ret = sv_to_value(p_option_value, p_option_type, vh);
+  if (ret == 0)
+    ret = ra_lib_set_option(p_handle, p_option_name, vh);
+
+  ra_value_free(vh);
+
+  PUSHs(sv_2mortal(newSViv(ret)));
+]]>
+</perl-code>
+<python-code-init>
+  value_handle vh;
+  int ret;
+</python-code-init>
+<python-code><![CDATA[
+  vh = ra_value_malloc();
+
+  ret = py_object_to_value(p_option_value, p_option_type, vh);
+  if (ret == 0)
+    ret = ra_lib_set_option(p_handle, p_option_name, vh);
+
+  ra_value_free(vh);
+
+  return Py_BuildValue("l", (long)ret);
+]]>
+</python-code>
+</func>
+
+
+<func name="ra_lib_get_option">
+<para type="in" num="1" perl-type="void *" desc="handle returned from ra_proc_init()">handle</para>
+<para type="in" num="2" perl-type="char *" desc="option-name">option_name</para>
+<para type="out" num="1">option_value</para>
+<purpose>get plugin-option</purpose>
+<description>
+Get an option.
+</description>
+<perl-code><![CDATA[
+PPCODE:
+    value_handle vh;
+    SV *value;
+
+    vh = ra_value_malloc();
+    if (ra_lib_get_option(p_handle, p_option_name, vh) != 0)
+    {
+        ra_value_free(vh);
+	PUSHs(&PL_sv_undef);
+        return;
+    }
+    if (!ra_value_is_ok(vh))
+    {
+        ra_value_free(vh);
+	PUSHs(&PL_sv_undef);
+        return;
+    }
+
+    value = value_to_sv(vh);
+
+    ra_value_free(vh);
+
+    PUSHs(value);
+]]>
+</perl-code>
+<python-code-init>
+  value_handle vh;
+  PyObject *value;
+</python-code-init>
+<python-code><![CDATA[
+    vh = ra_value_malloc();
+
+    if (ra_lib_get_option(p_handle, p_option_name, vh) != 0)
+    {
+        ra_value_free(vh);
+        return Py_None;
+    }
+    if (!ra_value_is_ok(vh))
+    {
+        ra_value_free(vh);
+        return Py_None;
+    }
+
+    value = value_to_py_object(vh);
+
+    ra_value_free(vh);
+
+    return value;
+]]>
+</python-code>
+</func>
+
+

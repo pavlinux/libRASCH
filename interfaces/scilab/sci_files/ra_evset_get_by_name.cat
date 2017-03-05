@@ -1,0 +1,7 @@
+Returns the evaluation-set-handle with the name 'name'.
+  Input parameters:
+    eval_handle
+    name
+
+  Output parameters:
+    evset_handle

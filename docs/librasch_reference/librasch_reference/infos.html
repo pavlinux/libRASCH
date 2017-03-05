@@ -1,0 +1,1451 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Infos Reference</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="Reference Manual for libRASCH-0.7.2"
+HREF="book1.html"><LINK
+REL="PREVIOUS"
+TITLE="Function Reference for Matlab/Octave"
+HREF="mat_oct_interface_ref.html"><LINK
+REL="NEXT"
+TITLE="Signals for Inter Plugin Communication"
+HREF="signals.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="CHAPTER"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Reference Manual for libRASCH-0.7.2</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="mat_oct_interface_ref.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="signals.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="INFOS"
+></A
+>Chapter 6. Infos Reference</H1
+><P
+>The tables in this section list the informations, which are available
+from libRASCH. For measurements, recordings and measurement objects
+not all informations must be available.</P
+><P
+>The first column ('Info Name') list the info-name which must be used in
+the Perl, Python, Matlab, Octave functions to get informations. The
+second column ('Info Constant') list the constants used in C/C++
+programs to get informations. The third column ('Info Description')
+gives a short description of the information returned from libRASCH.</P
+><DIV
+CLASS="TABLE"
+><A
+NAME="AEN3993"
+></A
+><P
+><B
+>Table 6-1. List of info-names for library infos  --  ra_lib_get_info</B
+></P
+><TABLE
+BORDER="1"
+FRAME="border"
+RULES="all"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>Info Name</TH
+><TH
+>Info Constant</TH
+><TH
+>Info Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>num_plugins</TD
+><TD
+>RA_INFO_NUM_PLUGINS_L</TD
+><TD
+>number of plugins</TD
+></TR
+><TR
+><TD
+>lib_version</TD
+><TD
+>RA_INFO_VERSION_C</TD
+><TD
+>version of libRASCH</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><DIV
+CLASS="TABLE"
+><A
+NAME="AEN4010"
+></A
+><P
+><B
+>Table 6-2. List of info-names for measurement infos  --  ra_meas_get_info</B
+></P
+><TABLE
+BORDER="1"
+FRAME="border"
+RULES="all"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>Info Name</TH
+><TH
+>Info Constant</TH
+><TH
+>Info Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>num_sessions</TD
+><TD
+>RA_INFO_NUM_SESSIONS_L</TD
+><TD
+>number of sessions in a measurement</TD
+></TR
+><TR
+><TD
+>num_obj_infos</TD
+><TD
+>RA_INFO_NUM_OBJ_INFOS_L</TD
+><TD
+>number of infos about a measurment object</TD
+></TR
+><TR
+><TD
+>num_rec_gen_infos</TD
+><TD
+>RA_INFO_NUM_REC_GEN_INFOS_L</TD
+><TD
+>number of general infos</TD
+></TR
+><TR
+><TD
+>num_rec_dev_infos</TD
+><TD
+>RA_INFO_NUM_REC_DEV_INFOS_L</TD
+><TD
+>number of infos about a recording device</TD
+></TR
+><TR
+><TD
+>num_rec_ch_infos</TD
+><TD
+>RA_INFO_NUM_REC_CH_INFOS_L</TD
+><TD
+>number of infos about a channel</TD
+></TR
+><TR
+><TD
+>num_eval_infos</TD
+><TD
+>RA_INFO_NUM_EVAL_INFOS_L</TD
+><TD
+>number of infos about an evaluation</TD
+></TR
+><TR
+><TD
+>num_eval</TD
+><TD
+>RA_INFO_EVAL_NUM_L</TD
+><TD
+>number of evaluations</TD
+></TR
+><TR
+><TD
+>max_samplerate</TD
+><TD
+>RA_INFO_MAX_SAMPLERATE_D</TD
+><TD
+>maximum samplerate used in the recording</TD
+></TR
+><TR
+><TD
+>ch_xscale</TD
+><TD
+>RA_INFO_CH_XSCALE_D</TD
+><TD
+>position scale-factor for a channel</TD
+></TR
+><TR
+><TD
+>meas_size</TD
+><TD
+>RA_INFO_SIZE_L</TD
+><TD
+>size needed on disc of measurement in Bytes</TD
+></TR
+><TR
+><TD
+>meas_file</TD
+><TD
+>RA_INFO_FILES_CA</TD
+><TD
+>files belonging to measurement</TD
+></TR
+><TR
+><TD
+>meas_path</TD
+><TD
+>RA_INFO_PATH_C</TD
+><TD
+>full path of measurement incl. measurement name</TD
+></TR
+><TR
+><TD
+>meas_in_dir</TD
+><TD
+>RA_INFO_DIR_L</TD
+><TD
+>flag if measurement was saved in directory</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><DIV
+CLASS="TABLE"
+><A
+NAME="AEN4071"
+></A
+><P
+><B
+>Table 6-3. List of info-names for measurement-object (person) infos  --  ra_obj_get_info</B
+></P
+><TABLE
+BORDER="1"
+FRAME="border"
+RULES="all"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>Info Name</TH
+><TH
+>Info Constant</TH
+><TH
+>Info Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>person_name</TD
+><TD
+>RA_INFO_OBJ_PERSON_NAME_C</TD
+><TD
+>last name of the measurement object</TD
+></TR
+><TR
+><TD
+>person_forename</TD
+><TD
+>RA_INFO_OBJ_PERSON_FORENAME_C</TD
+><TD
+>first name of the measurement object</TD
+></TR
+><TR
+><TD
+>person_birthday</TD
+><TD
+>RA_INFO_OBJ_PERSON_BIRTHDAY_C</TD
+><TD
+>birthday of the measurement object</TD
+></TR
+><TR
+><TD
+>person_height</TD
+><TD
+>RA_INFO_OBJ_PERSON_HEIGHT_L</TD
+><TD
+>height of the measurement object</TD
+></TR
+><TR
+><TD
+>person_weight</TD
+><TD
+>RA_INFO_OBJ_PERSON_WEIGHT_L</TD
+><TD
+>weight of the measurement object</TD
+></TR
+><TR
+><TD
+>person_street</TD
+><TD
+>RA_INFO_OBJ_PERSON_STREET_C</TD
+><TD
+>street of the address of the measurement object</TD
+></TR
+><TR
+><TD
+>person_city</TD
+><TD
+>RA_INFO_OBJ_PERSON_CITY_C</TD
+><TD
+>city of the address the measurement object</TD
+></TR
+><TR
+><TD
+>person_postalcode</TD
+><TD
+>RA_INFO_OBJ_PERSON_POSTALCODE_C</TD
+><TD
+>postalcode of the address the measurement object</TD
+></TR
+><TR
+><TD
+>person_country</TD
+><TD
+>RA_INFO_OBJ_PERSON_COUNTRY_C</TD
+><TD
+>country of the address the measurement object</TD
+></TR
+><TR
+><TD
+>person_address</TD
+><TD
+>RA_INFO_OBJ_PERSON_ADDRESS_C</TD
+><TD
+>address the measurement object (sometimes this field contains the whole address)</TD
+></TR
+><TR
+><TD
+>person_phone1</TD
+><TD
+>RA_INFO_OBJ_PERSON_PHONE1_C</TD
+><TD
+>phone-number of the measurement object</TD
+></TR
+><TR
+><TD
+>person_phone2</TD
+><TD
+>RA_INFO_OBJ_PERSON_PHONE2_C</TD
+><TD
+>phone-number 2 of the measurement object</TD
+></TR
+><TR
+><TD
+>person_fax</TD
+><TD
+>RA_INFO_OBJ_PERSON_FAX_C</TD
+><TD
+>fax-number of the measurement object</TD
+></TR
+><TR
+><TD
+>person_email</TD
+><TD
+>RA_INFO_OBJ_PERSON_EMAIL_C</TD
+><TD
+>email-address of the measurement object</TD
+></TR
+><TR
+><TD
+>person_website</TD
+><TD
+>RA_INFO_OBJ_PERSON_WEBSITE_C</TD
+><TD
+>website of the measurement object</TD
+></TR
+><TR
+><TD
+>person_comment</TD
+><TD
+>RA_INFO_OBJ_PERSON_COMMENT_C</TD
+><TD
+>a comment about the measurement object</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><DIV
+CLASS="TABLE"
+><A
+NAME="AEN4144"
+></A
+><P
+><B
+>Table 6-4. List of info-names for measurement-object (patient) infos  --  ra_obj_get_info</B
+></P
+><TABLE
+BORDER="1"
+FRAME="border"
+RULES="all"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>Info Name</TH
+><TH
+>Info Constant</TH
+><TH
+>Info Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>patient_id</TD
+><TD
+>RA_INFO_OBJ_PATIENT_ID_C</TD
+><TD
+>ID of the patient</TD
+></TR
+><TR
+><TD
+>patient_reason</TD
+><TD
+>RA_INFO_OBJ_PATIENT_REASON_C</TD
+><TD
+>reasonf of the recording</TD
+></TR
+><TR
+><TD
+>patient_diagnosis</TD
+><TD
+>RA_INFO_OBJ_PATIENT_DIAGNOSIS_C</TD
+><TD
+>diagnosis</TD
+></TR
+><TR
+><TD
+>patient_therapy</TD
+><TD
+>RA_INFO_OBJ_PATIENT_THERAPY_C</TD
+><TD
+>therapy</TD
+></TR
+><TR
+><TD
+>patient_medication</TD
+><TD
+>RA_INFO_OBJ_PATIENT_MEDICATION_C</TD
+><TD
+>medication of the patient</TD
+></TR
+><TR
+><TD
+>patient_hospital</TD
+><TD
+>RA_INFO_OBJ_PATIENT_HOSPITAL_C</TD
+><TD
+>Hospital where the recording was performed</TD
+></TR
+><TR
+><TD
+>patient_department</TD
+><TD
+>RA_INFO_OBJ_PATIENT_DEPARTMENT_C</TD
+><TD
+>Department where the recording was performed</TD
+></TR
+><TR
+><TD
+>patient_doctor</TD
+><TD
+>RA_INFO_OBJ_PATIENT_DOCTOR_C</TD
+><TD
+>Doctor who analyze the evaluation of the recording</TD
+></TR
+><TR
+><TD
+>patient_examiner</TD
+><TD
+>RA_INFO_OBJ_PATIENT_EXAMINER_C</TD
+><TD
+>Person who evaluate the recording</TD
+></TR
+><TR
+><TD
+>preg_num_fetus</TD
+><TD
+>RA_INFO_OBJ_PREG_WOMAN_NUM_FETUS_L</TD
+><TD
+>number fetus</TD
+></TR
+><TR
+><TD
+>preg_gestation_date</TD
+><TD
+>RA_INFO_OBJ_PREG_WOMAN_GESTATION_DATE_C</TD
+><TD
+>gestation date</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><DIV
+CLASS="TABLE"
+><A
+NAME="AEN4197"
+></A
+><P
+><B
+>Table 6-5. List of info-names for recording infos  --  ra_rec_get_info</B
+></P
+><TABLE
+BORDER="1"
+FRAME="border"
+RULES="all"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>Info Name</TH
+><TH
+>Info Constant</TH
+><TH
+>Info Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>rec_type</TD
+><TD
+>RA_INFO_REC_GEN_TYPE_L</TD
+><TD
+>type of recording (see RA_REC_TYPE_*)</TD
+></TR
+><TR
+><TD
+>rec_name</TD
+><TD
+>RA_INFO_REC_GEN_NAME_C</TD
+><TD
+>name of recording</TD
+></TR
+><TR
+><TD
+>rec_desc</TD
+><TD
+>RA_INFO_REC_GEN_DESC_C</TD
+><TD
+>description of the recording</TD
+></TR
+><TR
+><TD
+>rec_comment</TD
+><TD
+>RA_INFO_REC_GEN_COMMENT_C</TD
+><TD
+>comment about the recording</TD
+></TR
+><TR
+><TD
+>rec_time</TD
+><TD
+>RA_INFO_REC_GEN_TIME_C</TD
+><TD
+>start time of recording (hh:mm:ss)</TD
+></TR
+><TR
+><TD
+>rec_date</TD
+><TD
+>RA_INFO_REC_GEN_DATE_C</TD
+><TD
+>start date of recording (dd.mm.yyyy)</TD
+></TR
+><TR
+><TD
+>rec_duration_sec</TD
+><TD
+>RA_INFO_REC_GEN_DURATION_SEC_D</TD
+><TD
+>duration of the recording in seconds</TD
+></TR
+><TR
+><TD
+>rec_number</TD
+><TD
+>RA_INFO_REC_GEN_NUMBER_L</TD
+><TD
+>number of recording (0: main recording)</TD
+></TR
+><TR
+><TD
+>rec_num_sub_rec</TD
+><TD
+>RA_INFO_REC_GEN_NUM_SUB_REC_L</TD
+><TD
+>number of sub-recordings</TD
+></TR
+><TR
+><TD
+>rec_num_devices</TD
+><TD
+>RA_INFO_REC_GEN_NUM_DEVICES_L</TD
+><TD
+>number of devices used for recording</TD
+></TR
+><TR
+><TD
+>rec_num_channel</TD
+><TD
+>RA_INFO_REC_GEN_NUM_CHANNEL_L</TD
+><TD
+>number of channels</TD
+></TR
+><TR
+><TD
+>rec_path</TD
+><TD
+>RA_INFO_REC_GEN_PATH_C</TD
+><TD
+>full path of recording incl. recording name</TD
+></TR
+><TR
+><TD
+>rec_is_directory</TD
+><TD
+>RA_INFO_REC_GEN_DIR_L</TD
+><TD
+>flag if recording was saved in directory</TD
+></TR
+><TR
+><TD
+>rec_mm_per_sec</TD
+><TD
+>RA_INFO_REC_GEN_MM_SEC_D</TD
+><TD
+>mm per second (hint for displaing signal)</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><DIV
+CLASS="TABLE"
+><A
+NAME="AEN4262"
+></A
+><P
+><B
+>Table 6-6. List of info-names for device infos  --  ra_dev_get_info</B
+></P
+><TABLE
+BORDER="1"
+FRAME="border"
+RULES="all"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>Info Name</TH
+><TH
+>Info Constant</TH
+><TH
+>Info Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>dev_hw_name</TD
+><TD
+>RA_INFO_REC_DEV_HW_NAME_C</TD
+><TD
+>name of the recording device</TD
+></TR
+><TR
+><TD
+>dev_hw_manufacturer</TD
+><TD
+>RA_INFO_REC_DEV_HW_MANUFACTURER_C</TD
+><TD
+>manufacturer of the recording device</TD
+></TR
+><TR
+><TD
+>dev_hw_serial_no</TD
+><TD
+>RA_INFO_REC_DEV_HW_SERIAL_NO_C</TD
+><TD
+>serial-number of the recording device</TD
+></TR
+><TR
+><TD
+>dev_hw_version</TD
+><TD
+>RA_INFO_REC_DEV_HW_VERSION_C</TD
+><TD
+>hardware-version of the recording device</TD
+></TR
+><TR
+><TD
+>dev_sw_name</TD
+><TD
+>RA_INFO_REC_DEV_SW_NAME_C</TD
+><TD
+>software-name of the recording device</TD
+></TR
+><TR
+><TD
+>dev_sw_manufacturer</TD
+><TD
+>RA_INFO_REC_DEV_SW_MANUFACTURER_C</TD
+><TD
+>manufturer of the software of the recording device</TD
+></TR
+><TR
+><TD
+>dev_sw_serial_no</TD
+><TD
+>RA_INFO_REC_DEV_SW_SERIAL_NO_C</TD
+><TD
+>serial-number of the software of the recording device</TD
+></TR
+><TR
+><TD
+>dev_sw_version</TD
+><TD
+>RA_INFO_REC_DEV_SW_VERSION_C</TD
+><TD
+>version of the software of the recording device</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><DIV
+CLASS="TABLE"
+><A
+NAME="AEN4303"
+></A
+><P
+><B
+>Table 6-7. List of info-names for channel infos  --  ra_ch_get_info</B
+></P
+><TABLE
+BORDER="1"
+FRAME="border"
+RULES="all"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>Info Name</TH
+><TH
+>Info Constant</TH
+><TH
+>Info Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>ch_name</TD
+><TD
+>RA_INFO_REC_CH_NAME_C</TD
+><TD
+>name of the channel</TD
+></TR
+><TR
+><TD
+>ch_desc</TD
+><TD
+>RA_INFO_REC_CH_DESC_C</TD
+><TD
+>description of the channel</TD
+></TR
+><TR
+><TD
+>ch_num_samples</TD
+><TD
+>RA_INFO_REC_CH_NUM_SAMPLES_L</TD
+><TD
+>number of samples recorded in the channel</TD
+></TR
+><TR
+><TD
+>ch_samplerate</TD
+><TD
+>RA_INFO_REC_CH_SAMPLERATE_D</TD
+><TD
+>samplerate used in the channel</TD
+></TR
+><TR
+><TD
+>ch_num_bits</TD
+><TD
+>RA_INFO_REC_CH_NUM_BITS_L</TD
+><TD
+>number of bits used for one sample</TD
+></TR
+><TR
+><TD
+>ch_amp_res</TD
+><TD
+>RA_INFO_REC_CH_AMP_RESOLUTION_D</TD
+><TD
+>value in 'bits' representing one unit</TD
+></TR
+><TR
+><TD
+>ch_unit</TD
+><TD
+>RA_INFO_REC_CH_UNIT_C</TD
+><TD
+>unit of the channel</TD
+></TR
+><TR
+><TD
+>ch_center_value</TD
+><TD
+>RA_INFO_REC_CH_CENTER_VALUE_D</TD
+><TD
+>value[unit] signal is centered</TD
+></TR
+><TR
+><TD
+>ch_center_sample</TD
+><TD
+>RA_INFO_REC_CH_CENTER_SAMPLE_D</TD
+><TD
+>center value as sample-value</TD
+></TR
+><TR
+><TD
+>ch_min_unit</TD
+><TD
+>RA_INFO_REC_CH_MIN_UNIT_D</TD
+><TD
+>minimum value in units</TD
+></TR
+><TR
+><TD
+>ch_max_unit</TD
+><TD
+>RA_INFO_REC_CH_MAX_UNIT_D</TD
+><TD
+>maximum value in units</TD
+></TR
+><TR
+><TD
+>ch_mm_per_unit</TD
+><TD
+>RA_INFO_REC_CH_MM_UNIT_D</TD
+><TD
+>mm per unit (hint for displaing signal)</TD
+></TR
+><TR
+><TD
+>ch_type</TD
+><TD
+>RA_INFO_REC_CH_TYPE_L</TD
+><TD
+>type of channel (see above RA_CH_TYPE_*)</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><DIV
+CLASS="TABLE"
+><A
+NAME="AEN4364"
+></A
+><P
+><B
+>Table 6-8. List of info-names for evaluation infos  --  ra_eval_get_info</B
+></P
+><TABLE
+BORDER="1"
+FRAME="border"
+RULES="all"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>Info Name</TH
+><TH
+>Info Constant</TH
+><TH
+>Info Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>eval_name</TD
+><TD
+>RA_INFO_EVAL_NAME_C</TD
+><TD
+>name of evaluation (if any)</TD
+></TR
+><TR
+><TD
+>eval_comment</TD
+><TD
+>RA_INFO_EVAL_COMMENT_C</TD
+><TD
+>comment of evaluation</TD
+></TR
+><TR
+><TD
+>eval_add_timestamp</TD
+><TD
+>RA_INFO_EVAL_ADD_TS_C</TD
+><TD
+>timestamp when eval was added</TD
+></TR
+><TR
+><TD
+>eval_modify_timestamp</TD
+><TD
+>RA_INFO_EVAL_MODIFY_TS_C</TD
+><TD
+>timestamp when eval was last modified</TD
+></TR
+><TR
+><TD
+>eval_user</TD
+><TD
+>RA_INFO_EVAL_USER_C</TD
+><TD
+>user who added eval</TD
+></TR
+><TR
+><TD
+>eval_host</TD
+><TD
+>RA_INFO_EVAL_HOST_C</TD
+><TD
+>machine on which eval was added</TD
+></TR
+><TR
+><TD
+>eval_program</TD
+><TD
+>RA_INFO_EVAL_PROG_C</TD
+><TD
+>program which added eval</TD
+></TR
+><TR
+><TD
+>eval_is_original</TD
+><TD
+>RA_INFO_EVAL_ORIGINAL_L</TD
+><TD
+>evaluation done in recording system</TD
+></TR
+><TR
+><TD
+>eval_is_default</TD
+><TD
+>RA_INFO_EVAL_DEFAULT_L</TD
+><TD
+>evaluation which should be used</TD
+></TR
+><TR
+><TD
+>eval_num_sets</TD
+><TD
+>RA_INFO_EVAL_SET_NUM_L</TD
+><TD
+>number of event-sets</TD
+></TR
+><TR
+><TD
+>eval_num_properties</TD
+><TD
+>RA_INFO_EVAL_PROP_NUM_L</TD
+><TD
+>number of different event properties</TD
+></TR
+><TR
+><TD
+>eval_set_name</TD
+><TD
+>RA_INFO_EVSET_NAME_C</TD
+><TD
+>name of event-set</TD
+></TR
+><TR
+><TD
+>eval_set_desc</TD
+><TD
+>RA_INFO_EVSET_DESC_C</TD
+><TD
+>description of event-set</TD
+></TR
+><TR
+><TD
+>eval_set_type</TD
+><TD
+>RA_INFO_EVSET_TYPE_L</TD
+><TD
+>type of event-set (e.g. discrete, continues)</TD
+></TR
+><TR
+><TD
+>eval_set_num_events</TD
+><TD
+>RA_INFO_EVSET_EV_NUM_L</TD
+><TD
+>number of events in event-set</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><DIV
+CLASS="TABLE"
+><A
+NAME="AEN4433"
+></A
+><P
+><B
+>Table 6-9. List of info-names for event-property infos  --  ra_prop_get_info</B
+></P
+><TABLE
+BORDER="1"
+FRAME="border"
+RULES="all"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>Info Name</TH
+><TH
+>Info Constant</TH
+><TH
+>Info Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>eval_prop_name</TD
+><TD
+>RA_INFO_EVPROP_NAME_C</TD
+><TD
+>name of event-property, must be unique</TD
+></TR
+><TR
+><TD
+>eval_prop_desc</TD
+><TD
+>RA_INFO_EVPROP_DESC_C</TD
+><TD
+>description of event property</TD
+></TR
+><TR
+><TD
+>eval_prop_value_type</TD
+><TD
+>RA_INFO_EVPROP_VALTYPE_L</TD
+><TD
+>type of the event-property values (short, long, double)</TD
+></TR
+><TR
+><TD
+>eval_prop_handle_template</TD
+><TD
+>RA_INFO_EVPROP_TEMPLATE_L</TD
+><TD
+>flag if property handles template numbers (0: no, 1: yes)</TD
+></TR
+><TR
+><TD
+>eval_prop_has_minmax</TD
+><TD
+>RA_INFO_EVPROP_HAS_MINMAX_L</TD
+><TD
+>flag if property has min-/max-values</TD
+></TR
+><TR
+><TD
+>eval_prop_min</TD
+><TD
+>RA_INFO_EVPROP_MIN_D</TD
+><TD
+>normal min-value of the property</TD
+></TR
+><TR
+><TD
+>eval_prop_max</TD
+><TD
+>RA_INFO_EVPROP_MAX_D</TD
+><TD
+>normal max-value of the property</TD
+></TR
+><TR
+><TD
+>eval_prop_unit</TD
+><TD
+>RA_INFO_EVPROP_UNIT_C</TD
+><TD
+>unit of the property</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><DIV
+CLASS="TABLE"
+><A
+NAME="AEN4474"
+></A
+><P
+><B
+>Table 6-10. List of info-names for template infos  --  not yet implemented</B
+></P
+><TABLE
+BORDER="1"
+FRAME="border"
+RULES="all"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>Info Name</TH
+><TH
+>Info Constant</TH
+><TH
+>Info Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>templ_num</TD
+><TD
+>RA_INFO_TEMPL_NUM_L</TD
+><TD
+>number of templates</TD
+></TR
+><TR
+><TD
+>templ_ch_list</TD
+><TD
+>RA_INFO_TEMPL_NUM_CH_L</TD
+><TD
+>number of channels where templates where got</TD
+></TR
+><TR
+><TD
+>templ_ch</TD
+><TD
+>RA_INFO_TEMPL_CH_NUM_L</TD
+><TD
+>channel-number used</TD
+></TR
+><TR
+><TD
+>templ_ch_size</TD
+><TD
+>RA_INFO_TEMPL_CH_SIZE_L</TD
+><TD
+>number of data used for template in this channel</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><DIV
+CLASS="TABLE"
+><A
+NAME="AEN4499"
+></A
+><P
+><B
+>Table 6-11. List of info-names for single-template infos  --  not yet implemented</B
+></P
+><TABLE
+BORDER="1"
+FRAME="border"
+RULES="all"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>Info Name</TH
+><TH
+>Info Constant</TH
+><TH
+>Info Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>templ_single_number</TD
+><TD
+>RA_INFO_TS_NUMBER_L</TD
+><TD
+>template number</TD
+></TR
+><TR
+><TD
+>templ_single_fiducial</TD
+><TD
+>RA_INFO_TS_FIDUCIAL_L</TD
+><TD
+>offset of fiducial point (-1 if none)</TD
+></TR
+><TR
+><TD
+>templ_single_type</TD
+><TD
+>RA_INFO_TS_TYPE_L</TD
+><TD
+>type of template (e.g. classification when ecg is used)</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><DIV
+CLASS="TABLE"
+><A
+NAME="AEN4520"
+></A
+><P
+><B
+>Table 6-12. List of info-names for plugin infos  --  ra_plugin_get_info</B
+></P
+><TABLE
+BORDER="1"
+FRAME="border"
+RULES="all"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>Info Name</TH
+><TH
+>Info Constant</TH
+><TH
+>Info Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>pl_name</TD
+><TD
+>RA_INFO_PL_NAME_C</TD
+><TD
+>name of plugin, used for identification</TD
+></TR
+><TR
+><TD
+>pl_desc</TD
+><TD
+>RA_INFO_PL_DESC_C</TD
+><TD
+>description of plugin</TD
+></TR
+><TR
+><TD
+>pl_file</TD
+><TD
+>RA_INFO_PL_FILE_C</TD
+><TD
+>filename with path of the plugin</TD
+></TR
+><TR
+><TD
+>pl_use_it</TD
+><TD
+>RA_INFO_PL_USE_IT_L</TD
+><TD
+>flag if plugin shoul be used or not</TD
+></TR
+><TR
+><TD
+>pl_version</TD
+><TD
+>RA_INFO_PL_VERSION_C</TD
+><TD
+>version of plugin</TD
+></TR
+><TR
+><TD
+>pl_build_ts</TD
+><TD
+>RA_INFO_PL_BUILD_TS_C</TD
+><TD
+>build timestamp of plugin</TD
+></TR
+><TR
+><TD
+>pl_license</TD
+><TD
+>RA_INFO_PL_LICENSE_L</TD
+><TD
+>license used for plugin</TD
+></TR
+><TR
+><TD
+>pl_num_results</TD
+><TD
+>RA_INFO_PL_NUM_RESULTS_L</TD
+><TD
+>number of values returned from plugin</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><DIV
+CLASS="TABLE"
+><A
+NAME="AEN4561"
+></A
+><P
+><B
+>Table 6-13. List of info-names for plugin-results infos  --  ra_proc_get_result_info</B
+></P
+><TABLE
+BORDER="1"
+FRAME="border"
+RULES="all"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>Info Name</TH
+><TH
+>Info Constant</TH
+><TH
+>Info Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>res_name</TD
+><TD
+>RA_INFO_PL_RES_NAME_C</TD
+><TD
+>short name of result (can be used as table header)</TD
+></TR
+><TR
+><TD
+>res_desc</TD
+><TD
+>RA_INFO_PL_RES_DESC_C</TD
+><TD
+>description of result</TD
+></TR
+><TR
+><TD
+>res_default</TD
+><TD
+>RA_INFO_PL_RES_DEFAULT_L</TD
+><TD
+>flag if result belongs to default-values (=1)</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="mat_oct_interface_ref.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="signals.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Function Reference for Matlab/Octave</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Signals for Inter Plugin Communication</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

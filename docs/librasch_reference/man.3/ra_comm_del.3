@@ -1,0 +1,21 @@
+.TH "ra_comm_del" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_comm_del \- delete a signal receiver
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_comm_del
+.BI "(meas_handle " mh ","
+.BI "dest_handle " dh ","
+.BI "const char * " sig_name ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ measurement handle
+.IP "dh" 12
+ destination handle
+.IP "sig_name" 12
+ name of the signal
+.SH "DESCRIPTION"
+This function deletes the signal receiver dh for the signal sig_name.
+.SH "SOURCE FILE"
+pl_comm.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

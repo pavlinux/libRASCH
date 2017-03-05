@@ -1,0 +1,34 @@
+all:
+	@cd adi_ascii && $(MAKE) -f adi_ascii.mak
+	@cd ART && $(MAKE) -f ART.mak
+	@cd cfs && $(MAKE) -f cfs.mak
+	@cd ctg_rasch && $(MAKE) -f ctg.mak
+	@cd ctg_sonicaid && $(MAKE) -f Makefile.w32
+	@cd dadisp && $(MAKE) -f Makefile.w32
+	@cd dasylab && $(MAKE) -f dasylab.mak
+	@cd edf && $(MAKE) -f edf.mak
+	@cd ishne && $(MAKE) -f ishne.mak
+	@cd ideeq_ascii && $(MAKE) -f Makefile.w32
+	@cd mit_bih && $(MAKE) -f mit_bih.mak
+	@cd mortara_sparc && $(MAKE) -f mortara_sparc.mak
+	@cd portapres && $(MAKE) -f portapres.mak
+	@cd portilab && $(MAKE) -f portilab.mak
+	@cd read_rri && $(MAKE) -f Makefile.w32
+
+clean:
+	@cd adi_ascii && $(MAKE) -f adi_ascii.mak clean
+	@cd ART && $(MAKE) -f ART.mak clean
+	@cd cfs && $(MAKE) -f cfs.mak clean
+	@cd ctg_rasch && $(MAKE) -f ctg.mak clean
+	@cd ctg_sonicaid && $(MAKE) -f Makefile.w32 clean
+	@cd dadisp && $(MAKE) -f Makefile.w32 clean
+	@cd dasylab && $(MAKE) -f dasylab.mak clean
+	@cd edf && $(MAKE) -f edf.mak clean
+	@cd ishne && $(MAKE) -f ishne.mak clean
+	@cd ideeq_ascii && $(MAKE) -f Makefile.w32 clean
+	@cd mit_bih && $(MAKE) -f mit_bih.mak clean
+	@cd mortara_sparc && $(MAKE) -f mortara_sparc.mak clean
+	@cd portapres && $(MAKE) -f portapres.mak clean
+	@cd portilab && $(MAKE) -f portilab.mak clean
+	@cd read_rri && $(MAKE) -f Makefile.w32 clean
+

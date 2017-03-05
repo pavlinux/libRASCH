@@ -1,0 +1,32 @@
+all:
+	@cd shared && $(MAKE) -f Makefile.w32
+	@cd ts_view && $(MAKE) -f ts_view.mak
+	@cd annot_comment_view && $(MAKE) -f Makefile.w32
+	@cd ch_sel_dlg && $(MAKE) -f ch_sel_dlg.mak
+	@cd cont_ap_view && $(MAKE) -f cont_ap_view.mak
+	@cd ctg_view && $(MAKE) -f ctg_view.mak
+	@cd ecg_view && $(MAKE) -f ecg_view.mak
+	@cd eval_dlg && $(MAKE) -f eval_dlg.mak
+	@cd ev_summary_view && $(MAKE) -f ev_summary_view.mak
+	@cd plot_view && $(MAKE) -f plot_view.mak
+	@cd plugin_info_dlg && $(MAKE) -f plugin_info_dlg.mak
+	@cd ra_view && $(MAKE) -f ra_view.mak
+	@cd sig_sel_dlg && $(MAKE) -f sig_sel_dlg.mak
+	@cd simple_calc_dlg && $(MAKE) -f simple_calc_dlg.mak
+
+clean:
+	@cd shared && $(MAKE) -f Makefile.w32 clean
+	@cd ts_view && $(MAKE) -f ts_view.mak clean
+	@cd annot_comment_view && $(MAKE) -f Makefile.w32 clean
+	@cd ch_sel_dlg && $(MAKE) -f ch_sel_dlg.mak clean
+	@cd cont_ap_view && $(MAKE) -f cont_ap_view.mak clean
+	@cd ctg_view && $(MAKE) -f ctg_view.mak clean
+	@cd ecg_view && $(MAKE) -f ecg_view.mak clean
+	@cd eval_dlg && $(MAKE) -f eval_dlg.mak clean
+	@cd ev_summary_view && $(MAKE) -f ev_summary_view.mak clean
+	@cd plot_view && $(MAKE) -f plot_view.mak clean
+	@cd plugin_info_dlg && $(MAKE) -f plugin_info_dlg.mak clean
+	@cd ra_view && $(MAKE) -f ra_view.mak clean
+	@cd sig_sel_dlg && $(MAKE) -f sig_sel_dlg.mak clean
+	@cd simple_calc_dlg && $(MAKE) -f simple_calc_dlg.mak clean
+

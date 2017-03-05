@@ -1,0 +1,2517 @@
+---function ra_lib_init.3
+.TH "ra_lib_init" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_lib_init \- init libRASCH
+.SH SYNOPSIS
+.B "LIBRAAPI ra_handle" ra_lib_init
+.SH ARGUMENTS
+.SH "DESCRIPTION"
+Init libRASCH, read config-file and init plugins; returns ra_handle.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_lib_close.3
+.TH "ra_lib_close" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_lib_close \- close libRASCH
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_lib_close
+.BI "(ra_handle " h ");"
+.SH ARGUMENTS
+.IP "h" 12
+ handle to ra instance
+.SH "DESCRIPTION"
+Close libRASCH, close plugins and frees all allocated memory.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_lib_get_error.3
+.TH "ra_lib_get_error" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_lib_get_error \- get last error
+.SH SYNOPSIS
+.B "LIBRAAPI long" ra_lib_get_error
+.BI "(ra_handle " h ","
+.BI "char * " text ","
+.BI "size_t " len ");"
+.SH ARGUMENTS
+.IP "h" 12
+ handle to ra instance
+.IP "text" 12
+ character buffer which receives error text
+.IP "len" 12
+ size of character buffer text
+.SH "DESCRIPTION"
+This function returns the last error occured in libRASCH (or in one of the plugins). See 'ra_error.h' for meaning of returned number. If the number is negative, the last error was an OS specific error and the error number comes from the OS (just remove the minus sign). If text is not NULL, a short error description will be returned in text.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_lib_handle_from_any_handle.3
+.TH "ra_lib_handle_from_any_handle" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_lib_handle_from_any_handle \- retrive handle of libRASCH instance from any handle
+.SH SYNOPSIS
+.B "LIBRAAPI ra_handle" ra_lib_handle_from_any_handle
+.BI "(any_handle " h ");"
+.SH ARGUMENTS
+.IP "h" 12
+ handle
+.SH "DESCRIPTION"
+Returns handle of libRASCH instance from any handle.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_meas_handle_from_any_handle.3
+.TH "ra_meas_handle_from_any_handle" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_meas_handle_from_any_handle \- retrive measurement-handle from any handle
+.SH SYNOPSIS
+.B "LIBRAAPI meas_handle" ra_meas_handle_from_any_handle
+.BI "(any_handle " h ");"
+.SH ARGUMENTS
+.IP "h" 12
+ handle
+.SH "DESCRIPTION"
+Returns measurement-handle.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_lib_use_plugin.3
+.TH "ra_lib_use_plugin" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_lib_use_plugin \- set using a plugin (or not)
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_lib_use_plugin
+.BI "(ra_handle " h ","
+.BI "int " plugin_index ","
+.BI "int " use_it ");"
+.SH ARGUMENTS
+.IP "h" 12
+ handle to libRASCH
+.IP "plugin_index" 12
+ index of plugin to change
+.IP "use_it" 12
+ flag using plugin (1: use plugin, !1: do not use plugin)
+.SH "DESCRIPTION"
+Use or do not use plugin.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_plugin_get_by_num.3
+.TH "ra_plugin_get_by_num" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_plugin_get_by_num \- get plugin-handle
+.SH SYNOPSIS
+.B "LIBRAAPI plugin_handle" ra_plugin_get_by_num
+.BI "(ra_handle " h ","
+.BI "int " plugin_num ","
+.BI "int " search_all ");"
+.SH ARGUMENTS
+.IP "h" 12
+ handle to libRASCH
+.IP "plugin_num" 12
+ number of plugin
+.IP "search_all" 12
+ flag if all plugins should be searched (or only those with the use-it-flag enabled)
+.SH "DESCRIPTION"
+Returns the plugin-handle for plugin #plugin_num.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_plugin_get_by_name.3
+.TH "ra_plugin_get_by_name" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_plugin_get_by_name \- get plugin-handle
+.SH SYNOPSIS
+.B "LIBRAAPI plugin_handle" ra_plugin_get_by_name
+.BI "(ra_handle " h ","
+.BI "const char * " name ","
+.BI "int " search_all ");"
+.SH ARGUMENTS
+.IP "h" 12
+ handle to libRASCH
+.IP "name" 12
+ name of plugin
+.IP "search_all" 12
+ flag if all plugins should be searched (or only those with the use-it-flag enabled)
+.SH "DESCRIPTION"
+Returns the plugin-handle for plugin with name name.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_meas_find_first.3
+.TH "ra_meas_find_first" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_meas_find_first \- find libRASCH-handled measurements (return first one)
+.SH SYNOPSIS
+.B "LIBRAAPI ra_find_handle" ra_meas_find_first
+.BI "(ra_handle " h ","
+.BI "const char * " dir ","
+.BI "struct ra_find_struct * " rfs ");"
+.SH ARGUMENTS
+.IP "h" 12
+ handle to libRASCH
+.IP "dir" 12
+ directory which should be scanned for measurements
+.IP "rfs" 12
+ pointer to ra_find_struct which will held the infos for the found measurement.
+.SH "DESCRIPTION"
+Search for libRASCH-handled measurements in dir. If at least on measurement was found a valid (!NULL) ra_find_handle will be returned and the infos about the measurement is in mfs.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_meas_find_next.3
+.TH "ra_meas_find_next" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_meas_find_next \- find libRASCH-handled measurements (returns next)
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_meas_find_next
+.BI "(ra_find_handle " h ","
+.BI "struct ra_find_struct * " rfs ");"
+.SH ARGUMENTS
+.IP "h" 12
+ find-handle
+.IP "rfs" 12
+ pointer to ra_find_struct which will held the infos for the found measurement.
+.SH "DESCRIPTION"
+Returns 1 if another measurement was found (the information will be in mfs) or 0 if there are no more measurements searched with ra_meas_find_first().
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_meas_close_find.3
+.TH "ra_meas_close_find" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_meas_close_find \- close the search for libRASCH-handled measurements
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_meas_close_find
+.BI "(ra_find_handle " h ");"
+.SH ARGUMENTS
+.IP "h" 12
+ find-handle
+.SH "DESCRIPTION"
+End a search for libRASCH-handled measurements (frees some memory). Must be called if the ra_find_handle h returned from ra_meas_find_first() will no be longer used.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_meas_open.3
+.TH "ra_meas_open" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_meas_open \- open a measurement
+.SH SYNOPSIS
+.B "LIBRAAPI meas_handle" ra_meas_open
+.BI "(ra_handle " h ","
+.BI "const char * " file ","
+.BI "const char * " eval_file ","
+.BI "int " fast ");"
+.SH ARGUMENTS
+.IP "h" 12
+ handle to libRASCH
+.IP "file" 12
+ file-name of the measurement
+.IP "eval_file" 12
+ file-name of the evaluation
+.IP "fast" 12
+ flag if some init-code should be done (=0) or not (=1)
+.SH "DESCRIPTION"
+Opens the measurement file and returns a handle to the measurement. If the fast-flag is set, some initialisation-code (e.g. reading evaluation infos from the files) will not be done. This can be useful if only information about the measurment-object is needed but not about the evaluation. Getting the evaluation infos can be "very" time consuming.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_meas_new.3
+.TH "ra_meas_new" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_meas_new \- creates a new measurement
+.SH SYNOPSIS
+.B "LIBRAAPI meas_handle" ra_meas_new
+.BI "(ra_handle " h ","
+.BI "const char * " dir ","
+.BI "const char * " name ");"
+.SH ARGUMENTS
+.IP "h" 12
+ handle to libRASCH
+.IP "dir" 12
+ directory where the measurement-files should be stored
+.IP "name" 12
+ name of the measurement
+.SH "DESCRIPTION"
+Creates a new measurement with the name name in the directory dir. The function returns the handle to the measurement. The measurement will be stored using the libRASCH file-format. Not full implemented. !!!
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_meas_save.3
+.TH "ra_meas_save" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_meas_save \- saves a measurement
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_meas_save
+.BI "(meas_handle " mh ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ handle to measurement
+.SH "DESCRIPTION"
+Saves the changes to a measurement (NOT to the evaluation). Plugin must support this. Not full implemented. !!!
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_meas_close.3
+.TH "ra_meas_close" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_meas_close \- close a measurement
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_meas_close
+.BI "(meas_handle " mh ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ handle to measurement
+.SH "DESCRIPTION"
+Close a measurement.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_info_get.3
+.TH "ra_info_get" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_info_get \- get infos
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_info_get
+.BI "(any_handle " h ","
+.BI "int " id ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "h" 12
+ handle
+.IP "id" 12
+ id of information wanted
+.IP "vh" 12
+ value_handle receiving the info
+.SH "DESCRIPTION"
+Returns 0 if the wanted information was found and != 0 if not. The information will be in vh. For usage of the function please see user-manual.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_info_get_by_name.3
+.TH "ra_info_get_by_name" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_info_get_by_name \- get infos
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_info_get_by_name
+.BI "(any_handle " h ","
+.BI "const char * " name ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "h" 12
+ handle
+.IP "name" 12
+ name (text string) of information wanted
+.IP "vh" 12
+ value_handle receiving the info
+.SH "DESCRIPTION"
+Returns 0 if the wanted information was found and != 0 if not. The information will be in vh. For usage of the function please see user-manual.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_info_get_by_idx.3
+.TH "ra_info_get_by_idx" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_info_get_by_idx \- get infos
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_info_get_by_idx
+.BI "(any_handle " h ","
+.BI "int " info_type ","
+.BI "int " idx ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "h" 12
+ measurement-handle
+.IP "info_type" 12
+ type of information wanted
+.IP "idx" 12
+ index of information wanted
+.IP "vh" 12
+ value_handle receiving the info
+.SH "DESCRIPTION"
+Returns 0 if the wanted information was found and != 0 if not. The information will be in vh. For usage of the function please see user-manual.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_info_set.3
+.TH "ra_info_set" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_info_set \- set info
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_info_set
+.BI "(any_handle " h ","
+.BI "int " id ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "h" 12
+ handle
+.IP "id" 12
+ info id
+.IP "vh" 12
+ value_handle with the info
+.SH "DESCRIPTION"
+Set info 'id' with the data found in 'vh'. At the moment only some measurement and recording infos can be set. In the future, other infos (e.g. eval-name, eval-desc etc.) can be set with this function also.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_rec_get_first.3
+.TH "ra_rec_get_first" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_rec_get_first \- get root-recording
+.SH SYNOPSIS
+.B "LIBRAAPI rec_handle" ra_rec_get_first
+.BI "(meas_handle " mh ","
+.BI "long " session ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ measurement-handle
+.IP "session" 12
+ session number
+.SH "DESCRIPTION"
+Returns the first recording-handle of session session. 
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_rec_get_next.3
+.TH "ra_rec_get_next" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_rec_get_next \- get next recording
+.SH SYNOPSIS
+.B "LIBRAAPI rec_handle" ra_rec_get_next
+.BI "(rec_handle " rh ");"
+.SH ARGUMENTS
+.IP "rh" 12
+ recording-handle
+.SH "DESCRIPTION"
+Returns the next recording which follows recording rh.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_rec_get_first_child.3
+.TH "ra_rec_get_first_child" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_rec_get_first_child \- get first sub-recording
+.SH SYNOPSIS
+.B "LIBRAAPI rec_handle" ra_rec_get_first_child
+.BI "(rec_handle " rh ");"
+.SH ARGUMENTS
+.IP "rh" 12
+ recording-handle
+.SH "DESCRIPTION"
+Returns the first child-recording of recording rh.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_rec_add.3
+.TH "ra_rec_add" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_rec_add \- add a recording
+.SH SYNOPSIS
+.B "LIBRAAPI rec_handle" ra_rec_add
+.BI "(meas_handle " mh ","
+.BI "rec_handle " parent ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ handle of the measurement
+.IP "parent" 12
+ handle of the parent recording (or NULL)
+.SH "DESCRIPTION"
+Adds a recording to a measurement. The recording will be a child-recording of the parent-recording parent. The recording-handle will be returned. Not implemented yet. !!!
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_dev_add.3
+.TH "ra_dev_add" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_dev_add \- add a recording-device
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_dev_add
+.BI "(rec_handle " rh ");"
+.SH ARGUMENTS
+.IP "rh" 12
+ handle of the recording
+.SH "DESCRIPTION"
+Adds a device to the recording rh. The number of the device will be returned. Not implemented yet. !!!
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_ch_add.3
+.TH "ra_ch_add" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_ch_add \- add a recording-channel
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_ch_add
+.BI "(rec_handle " rh ");"
+.SH ARGUMENTS
+.IP "rh" 12
+ handle of the recording
+.SH "DESCRIPTION"
+Adds a channel to the recording rh. The number of the channel will be returned. Not implemented yet. !!!
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_session_new.3
+.TH "ra_session_new" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_session_new \- start a new recording session
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_session_new
+.BI "(meas_handle " mh ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ handle of the measurement
+.SH "DESCRIPTION"
+Starts a new recording session and close the previous one. The function returns the new session number. Not implemented yet. !!!
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_raw_add.3
+.TH "ra_raw_add" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_raw_add \- add raw data
+.SH SYNOPSIS
+.B "LIBRAAPI size_t" ra_raw_add
+.BI "(meas_handle " mh ","
+.BI "unsigned int " ch ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ handle of the measurement
+.IP "ch" 12
+ channel where data should be added
+.IP "vh" 12
+ data to be added
+.SH "DESCRIPTION"
+Adds raw data to a measurement. The data is added to the current session. Not implemented yet. !!!
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_raw_get.3
+.TH "ra_raw_get" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_raw_get \- get raw-signal data 
+.SH SYNOPSIS
+.B "LIBRAAPI size_t" ra_raw_get
+.BI "(rec_handle " rh ","
+.BI "unsigned int " ch ","
+.BI "size_t " start ","
+.BI "size_t " num_data ","
+.BI "DWORD * " data ","
+.BI "DWORD * " data_high ");"
+.SH ARGUMENTS
+.IP "rh" 12
+ recording-handle
+.IP "ch" 12
+ channel
+.IP "start" 12
+ first sample
+.IP "num_data" 12
+ number of samples
+.IP "data" 12
+ buffer for samples
+.IP "data_high" 12
+ buffer for higher 4 bytes of samples (if size of one sample > 4 bytes)
+.SH "DESCRIPTION"
+This function returns the sample's (raw-signal data) from the measurement mh and the recording rh. The first sample in data will be the sample number start (in sampleunits) and max. num_data are in data. The memory for buffer data must  be allocated in calling function. The samples returned in this function are the samples as stored in the file. If the size of one sample is greater than 4 bytes, the upper part of the samples are stored in the data_high buffer. If the size is not greater than 4 bytes, the buffer is not needed.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_raw_get_unit.3
+.TH "ra_raw_get_unit" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_raw_get_unit \- get raw-signal data scaled to 'unit'-values
+.SH SYNOPSIS
+.B "LIBRAAPI size_t" ra_raw_get_unit
+.BI "(rec_handle " rh ","
+.BI "unsigned int " ch ","
+.BI "size_t " start ","
+.BI "size_t " num_data ","
+.BI "double * " data ");"
+.SH ARGUMENTS
+.IP "rh" 12
+ recording-handle
+.IP "ch" 12
+ channel
+.IP "start" 12
+ first sample
+.IP "num_data" 12
+ number of samples
+.IP "data" 12
+ buffer for samples
+.SH "DESCRIPTION"
+This function returns the sample's (raw-signal data) from the measurement mh and the recording rh. The first sample in data will be the sample number start (in sampleunits) and max. num_data are in data. The memory for buffer data must  be allocated in calling function. The values are scaled to the unit of the  channel.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_gui_call.3
+.TH "ra_gui_call" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_gui_call \- shows GUI-element of a plugin (if avail.)
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_gui_call
+.BI "(any_handle " h ","
+.BI "plugin_handle " pl ");"
+.SH ARGUMENTS
+.IP "h" 12
+ processing-handle or view-handle
+.IP "pl" 12
+ plugin-handle
+.SH "DESCRIPTION"
+If the plugin pl provides a GUI-element, this function shows this GUI-element and transfer control to it. The h variable contains some information, needed by the plugin. For more information if a plugin provides a GUI-element and what type/information is needed, please see the plugin specific documentation.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_proc_get.3
+.TH "ra_proc_get" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_proc_get \- get a processing handle
+.SH SYNOPSIS
+.B "LIBRAAPI proc_handle" ra_proc_get
+.BI "(meas_handle " mh ","
+.BI "plugin_handle " pl ","
+.BI "void " (*callback ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ 
+.IP "pl" 12
+ plugin-handle
+.IP "(*callback" 12
+ 
+.SH "DESCRIPTION"
+This function returns a proc_handle for the plugin pl. The proc_handle will be returned initialized.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_proc_free.3
+.TH "ra_proc_free" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_proc_free \- free a processing handle
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_proc_free
+.BI "(proc_handle " proc ");"
+.SH ARGUMENTS
+.IP "proc" 12
+ processing-handle
+.SH "DESCRIPTION"
+This function frees a processing-handle and all associated memory.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_proc_do.3
+.TH "ra_proc_do" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_proc_do \- process the signal
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_proc_do
+.BI "(proc_handle " proc ");"
+.SH ARGUMENTS
+.IP "proc" 12
+ processing-handle
+.SH "DESCRIPTION"
+This function calls the "processing" function of a process-plugin. For more information what information in proc is needed, please see the plugin specific documentation.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_proc_get_result.3
+.TH "ra_proc_get_result" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_proc_get_result \- get the processing results
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_proc_get_result
+.BI "(proc_handle " proc ","
+.BI "long " res_num ","
+.BI "long " res_set ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "proc" 12
+ processing-handle
+.IP "res_num" 12
+ number (zero-based index) of the wanted result
+.IP "res_set" 12
+ number (zero-based index) of the wanted result-set
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+This function returns in vh one result from a processing perfomed with ra_proc_do.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_lib_get_option.3
+.TH "ra_lib_get_option" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_lib_get_option \- returns an option value
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_lib_get_option
+.BI "(any_handle " h ","
+.BI "const char * " opt_name ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "h" 12
+ return option from this object
+.IP "opt_name" 12
+ name of the option
+.IP "vh" 12
+ after function-call, contains option value
+.SH "DESCRIPTION"
+The function tries to return the option opt_name from the object h. At the moment only options for process-plugins (h needs to be a process-handle) are supported.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_lib_set_option.3
+.TH "ra_lib_set_option" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_lib_set_option \- set an option
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_lib_set_option
+.BI "(any_handle " h ","
+.BI "const char * " opt_name ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "h" 12
+ option will be set in this object
+.IP "opt_name" 12
+ name of the option
+.IP "vh" 12
+ option value
+.SH "DESCRIPTION"
+The function set the option opt_name in object h. At the moment only options for process-plugins (h needs to be a process-handle) are supported.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_meas_copy.3
+.TH "ra_meas_copy" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_meas_copy \- copy measurement
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_meas_copy
+.BI "(meas_handle " mh ","
+.BI "const char * " dest_dir ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ handle of measurement which should be copied
+.IP "dest_dir" 12
+ destination directory
+.SH "DESCRIPTION"
+The function copy the files of measurement mh to directory dest_dir. IMPORTANT!!! Function _not_ completely tested. Use at your own risk.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_meas_move.3
+.TH "ra_meas_move" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_meas_move \- move measurement
+.SH SYNOPSIS
+.B "LIBRAAPI meas_handle" ra_meas_move
+.BI "(meas_handle " mh ","
+.BI "const char * " dest_dir ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ handle of measurement which should be moved
+.IP "dest_dir" 12
+ destination directory
+.SH "DESCRIPTION"
+The function move the files of measurement mh to directory dest_dir. After the move the measurement will be reopend (to be able to handle the new positions of the files) and the functions returns the new measurement-handle. IMPORTANT!!! Function _not_ completely tested. Use at your own risk.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_meas_delete.3
+.TH "ra_meas_delete" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_meas_delete \- delete measurement
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_meas_delete
+.BI "(meas_handle " mh ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ handle of measurement which should be deleted
+.SH "DESCRIPTION"
+The function deletes the files of measurement mh. The measurement mh will be closed after the deletion. Therefore mh is no longer a valid measurement-handle. IMPORTANT!!! Function _not_ completely tested. Use at your own risk.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_raw_process.3
+.TH "ra_raw_process" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_raw_process \- common processing tasks for raw-data (e.g. powerline-noise filter)
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_raw_process
+.BI "(long " task ","
+.BI "value_handle " task_data ","
+.BI "size_t " num_data ","
+.BI "DWORD * " data ","
+.BI "DWORD * " data_high ","
+.BI "rec_handle " rh ","
+.BI "unsigned int " ch ");"
+.SH ARGUMENTS
+.IP "task" 12
+ id of the processing task (see RA_RAW_PROC_* defines)
+.IP "task_data" 12
+ task specific data
+.IP "num_data" 12
+ number of raw-data samples
+.IP "data" 12
+ raw-data
+.IP "data_high" 12
+ upper 32bits of raw-data (if we have 64bit samples; not supported yet)
+.IP "rh" 12
+ recording handle the raw-data comes from
+.IP "ch" 12
+ channel of the raw-data
+.SH "DESCRIPTION"
+This function performs common processing tasks for the raw-data, the tasks are independent of signal-type. For example, one task is to filer powerline noise. For a complete set of available tasks, see the RA_RAW_PROC_* defines in the ra_defines.h header file.
+.SH "SOURCE FILE"
+raw_process.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_est_ch_type.3
+.TH "ra_est_ch_type" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_est_ch_type \- estimate channel type
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_est_ch_type
+.BI "(ra_handle " ra ","
+.BI "const char * " folder ","
+.BI "const char * " filename ","
+.BI "int " is_dir_based ","
+.BI "const char * " name ","
+.BI "struct ra_est_ch_infos * " inf ");"
+.SH ARGUMENTS
+.IP "ra" 12
+ ra-handle, needed to check for system-wide ch-map
+.IP "folder" 12
+ folder to look for the folder specific ch-map
+.IP "filename" 12
+ filename of the measurement, needed to look for the meas-specific ch-map
+.IP "is_dir_based" 12
+ flag if measurement files are stored in a folder
+.IP "name" 12
+ channel name
+.IP "inf" 12
+ this variable contains the estimated type
+.SH "DESCRIPTION"
+This function tries to estimate the type of a recording channel from the channel name.
+.SH "SOURCE FILE"
+estimate_ch_infos.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_malloc.3
+.TH "ra_value_malloc" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_malloc \- allocate and initialize a value_handle
+.SH SYNOPSIS
+.B "LIBRAAPI value_handle" ra_value_malloc
+.SH ARGUMENTS
+.SH "DESCRIPTION"
+Returns a initialzed value-handle.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_free.3
+.TH "ra_value_free" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_free \- free value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_value_free
+.BI "(value_handle " vh ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+Frees the memory asocciated with vh.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_reset.3
+.TH "ra_value_reset" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_reset \- reset value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_value_reset
+.BI "(value_handle " vh ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+Reset value-handle vh.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_get_type.3
+.TH "ra_value_get_type" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_get_type \- return value-type
+.SH SYNOPSIS
+.B "LIBRAAPI long" ra_value_get_type
+.BI "(value_handle " vh ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+Return the type of the value stored in vh. Check in ra_defines.h for the meaning of the returned value (RA_VALUE_TYPE_*).
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_is_ok.3
+.TH "ra_value_is_ok" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_is_ok \- checks if value is valid
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_value_is_ok
+.BI "(value_handle " vh ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+Returns '1' if value stored in vh is valid, '0' if not.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_get_num_elem.3
+.TH "ra_value_get_num_elem" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_get_num_elem \- return number of elements of array values
+.SH SYNOPSIS
+.B "LIBRAAPI unsigned long" ra_value_get_num_elem
+.BI "(value_handle " vh ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+When an array is stored in vh, the number of elements of the array is returned.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_get_info.3
+.TH "ra_value_get_info" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_get_info \- returns id of info
+.SH SYNOPSIS
+.B "LIBRAAPI long" ra_value_get_info
+.BI "(value_handle " vh ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+Returns the id of the info set in vh. Check in ra_defines.h for for the meaning of info-id (RA_INFO_*).
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_set_info.3
+.TH "ra_value_set_info" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_set_info \- sets the RA_INFO_* id of info
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_value_set_info
+.BI "(value_handle " vh ","
+.BI "long " id ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.IP "id" 12
+ info-id
+.SH "DESCRIPTION"
+Sets the id of the info in vh. Check in ra_defines.h for for the meaning of info-id (RA_INFO_*).
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_get_name.3
+.TH "ra_value_get_name" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_get_name \- returns name of info
+.SH SYNOPSIS
+.B "LIBRAAPI const char *" ra_value_get_name
+.BI "(value_handle " vh ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+Returns a character pointer to the name of the info set in vh. The pointer is valid until vh is free'd or a new info was retrived.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_get_desc.3
+.TH "ra_value_get_desc" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_get_desc \- returns description of info
+.SH SYNOPSIS
+.B "LIBRAAPI const char *" ra_value_get_desc
+.BI "(value_handle " vh ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+Returns a character pointer to the description of the info set in vh. The pointer is valid until vh is free'd or a new info was retrived.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_info_modifiable.3
+.TH "ra_value_info_modifiable" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_info_modifiable \- returns flag if info in measurement file(s) can be modified
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_value_info_modifiable
+.BI "(value_handle " vh ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+Returns a flag if the info currently handled by the value-handle, can be modified in the measurement file(s).
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_info_set_modifiable.3
+.TH "ra_value_info_set_modifiable" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_info_set_modifiable \- set flag if info in measurement file(s) can be modified
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_value_info_set_modifiable
+.BI "(value_handle " vh ","
+.BI "int " can_be_modified ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.IP "can_be_modified" 12
+ 
+.SH "DESCRIPTION"
+Sets the flag if the info currently handled by the value-handle, can be modified in the measurement file(s).
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_set_number.3
+.TH "ra_value_set_number" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_set_number \- set a number in a value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_value_set_number
+.BI "(value_handle " vh ","
+.BI "long " number ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.IP "number" 12
+ number
+.SH "DESCRIPTION"
+Set the number number in the value-handle vh. This number is used when infos about channels, recording devices and plugins. number is also used when processing results are retrived.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_get_number.3
+.TH "ra_value_get_number" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_get_number \- get a number set in a value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI long" ra_value_get_number
+.BI "(value_handle " vh ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+Returns the number number set in the value-handle vh.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_set_short.3
+.TH "ra_value_set_short" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_set_short \- set short value in value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_value_set_short
+.BI "(value_handle " vh ","
+.BI "const short " value ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.IP "value" 12
+ value to set in ra_info
+.SH "DESCRIPTION"
+This function set the value in vh.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_set_long.3
+.TH "ra_value_set_long" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_set_long \- set long value in value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_value_set_long
+.BI "(value_handle " vh ","
+.BI "const long " value ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.IP "value" 12
+ value to set in ra_info
+.SH "DESCRIPTION"
+This function set the value in vh.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_set_double.3
+.TH "ra_value_set_double" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_set_double \- set double value in value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_value_set_double
+.BI "(value_handle " vh ","
+.BI "const double " value ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.IP "value" 12
+ value to set in ra_info
+.SH "DESCRIPTION"
+This function set the value in vh.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_set_string.3
+.TH "ra_value_set_string" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_set_string \- set a string in value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_value_set_string
+.BI "(value_handle " vh ","
+.BI "const char * " string ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.IP "string" 12
+ string to set in ra_info
+.SH "DESCRIPTION"
+This function set the string (`\\0`-ended char *) in vh.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_set_string_utf8.3
+.TH "ra_value_set_string_utf8" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_set_string_utf8 \- set a UTF-8 encoded string in value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_value_set_string_utf8
+.BI "(value_handle " vh ","
+.BI "const char * " string ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.IP "string" 12
+ string to set in ra_info
+.SH "DESCRIPTION"
+This function set the string (`\\0`-ended char *) in vh.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_set_voidp.3
+.TH "ra_value_set_voidp" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_set_voidp \- set void-pointer value in value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_value_set_voidp
+.BI "(value_handle " vh ","
+.BI "const void * " value ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.IP "value" 12
+ value to set in ra_info
+.SH "DESCRIPTION"
+This function set the value in vh.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_set_short_array.3
+.TH "ra_value_set_short_array" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_set_short_array \- set short-array values in value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_value_set_short_array
+.BI "(value_handle " vh ","
+.BI "const short * " array ","
+.BI "unsigned long " num ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.IP "array" 12
+ array to set in ra_info
+.IP "num" 12
+ number of array elements
+.SH "DESCRIPTION"
+This function set the short array array with num elements in vh.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_set_long_array.3
+.TH "ra_value_set_long_array" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_set_long_array \- set long-array values in value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_value_set_long_array
+.BI "(value_handle " vh ","
+.BI "const long * " array ","
+.BI "unsigned long " num ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.IP "array" 12
+ array to set in ra_info
+.IP "num" 12
+ number of array elements
+.SH "DESCRIPTION"
+This function set the long array array with num elements in vh.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_set_double_array.3
+.TH "ra_value_set_double_array" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_set_double_array \- set double-array values in value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_value_set_double_array
+.BI "(value_handle " vh ","
+.BI "const double * " array ","
+.BI "unsigned long " num ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.IP "array" 12
+ array to set in ra_info
+.IP "num" 12
+ number of array elements
+.SH "DESCRIPTION"
+This function set the double array array with num elements in vh.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_set_string_array.3
+.TH "ra_value_set_string_array" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_set_string_array \- set a string-array in value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_value_set_string_array
+.BI "(value_handle " vh ","
+.BI "const char ** " *array ","
+.BI "unsigned long " num ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.IP "*array" 12
+ 
+.IP "num" 12
+ number of array elements
+.SH "DESCRIPTION"
+This function set the string-array array with num elements in vh. 
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_set_string_array_utf8.3
+.TH "ra_value_set_string_array_utf8" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_set_string_array_utf8 \- set a string-array (UTF-8 encoded) in value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_value_set_string_array_utf8
+.BI "(value_handle " vh ","
+.BI "const char ** " *array ","
+.BI "unsigned long " num ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.IP "*array" 12
+ 
+.IP "num" 12
+ number of array elements
+.SH "DESCRIPTION"
+This function set the string-array 'array' with 'num' elements in vh. The strings in 'array' are expected to be UTF-8 encoded.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_set_voidp_array.3
+.TH "ra_value_set_voidp_array" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_set_voidp_array \- set void-pointer-array values in value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_value_set_voidp_array
+.BI "(value_handle " vh ","
+.BI "const void ** " *array ","
+.BI "unsigned long " num ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.IP "*array" 12
+ 
+.IP "num" 12
+ number of array elements
+.SH "DESCRIPTION"
+This function set the long array array with num elements in vh.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_set_vh_array.3
+.TH "ra_value_set_vh_array" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_set_vh_array \- set value-handle-array values in value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_value_set_vh_array
+.BI "(value_handle " vh ","
+.BI "const value_handle * " array ","
+.BI "unsigned long " num ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.IP "array" 12
+ array to set in ra_value
+.IP "num" 12
+ number of array elements
+.SH "DESCRIPTION"
+This function set the value-handle array 'array' with num elements in vh.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_get_short.3
+.TH "ra_value_get_short" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_get_short \- return short value from value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI short" ra_value_get_short
+.BI "(value_handle " vh ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+This function returns the short value set in vh.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_get_long.3
+.TH "ra_value_get_long" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_get_long \- return long value from value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI long" ra_value_get_long
+.BI "(value_handle " vh ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+This function returns the long value set in vh.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_get_double.3
+.TH "ra_value_get_double" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_get_double \- return double value from value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI double" ra_value_get_double
+.BI "(value_handle " vh ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+This function returns the double value set in vh.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_get_string.3
+.TH "ra_value_get_string" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_get_string \- return character pointer from value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI const char *" ra_value_get_string
+.BI "(value_handle " vh ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+This function returns a character pointer to the string set in vh. The pointer is valid until vh is used in another function or vh is freed.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_get_string_utf8.3
+.TH "ra_value_get_string_utf8" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_get_string_utf8 \- return character pointer from value-handle (UTF-8 encoded)
+.SH SYNOPSIS
+.B "LIBRAAPI const char *" ra_value_get_string_utf8
+.BI "(value_handle " vh ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+This function returns a character pointer to the string set in vh. The string is UTF-8 encoded. The pointer is valid until vh is used in another function or vh is freed.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_get_voidp.3
+.TH "ra_value_get_voidp" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_get_voidp \- return void-pointer from value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI const void *" ra_value_get_voidp
+.BI "(value_handle " vh ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+This function returns the void-pointer set in vh.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_get_short_array.3
+.TH "ra_value_get_short_array" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_get_short_array \- return pointer to short array from value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI const short *" ra_value_get_short_array
+.BI "(value_handle " vh ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+This function returns a pointer to the short array stored in vh. The pointer is valid until vh is used in another function or vh is freed. The number of elements of the array can be get by calling ra_value_get_num_elem().
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_get_long_array.3
+.TH "ra_value_get_long_array" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_get_long_array \- return pointer to long array from value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI const long *" ra_value_get_long_array
+.BI "(value_handle " vh ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+This function returns a pointer to the long array stored in vh. The pointer is valid until vh is used in another function or vh is freed. The number of elements of the array can be get by calling ra_value_get_num_elem().
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_get_double_array.3
+.TH "ra_value_get_double_array" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_get_double_array \- return pointer to double array from value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI const double *" ra_value_get_double_array
+.BI "(value_handle " vh ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+This function returns a pointer to the double array stored in vh. The pointer is valid until vh is used in another function or vh is freed. The number of elements of the array can be get by calling ra_value_get_num_elem().
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_get_string_array.3
+.TH "ra_value_get_string_array" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_get_string_array \- return pointer to character pointer array from value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI const char **" ra_value_get_string_array
+.BI "(value_handle " vh ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+This function returns a pointer to the character pointer array stored in vh. The pointer is valid until vh is used in another function or vh is freed. The number of elements of the array can be get by calling ra_value_get_num_elem().
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_get_string_array_utf8.3
+.TH "ra_value_get_string_array_utf8" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_get_string_array_utf8 \- return pointer to character pointer array from value-handle (UTF-8 encoded)
+.SH SYNOPSIS
+.B "LIBRAAPI const char **" ra_value_get_string_array_utf8
+.BI "(value_handle " vh ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+This function returns a pointer to the character pointer array stored in vh. The strings are UTF-8 encoded. The pointer is valid until vh is used in another function or vh is freed. The number of elements of the array can be get by calling ra_value_get_num_elem().
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_get_voidp_array.3
+.TH "ra_value_get_voidp_array" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_get_voidp_array \- return pointer to void-pointer array from value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI const void **" ra_value_get_voidp_array
+.BI "(value_handle " vh ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+This function returns a pointer to the void-pointer array stored in vh. The pointer is valid until vh is used in another function or vh is freed. The number of elements of the array can be get by calling ra_value_get_num_elem().
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_get_vh_array.3
+.TH "ra_value_get_vh_array" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_get_vh_array \- return pointer to long array from value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI const value_handle *" ra_value_get_vh_array
+.BI "(value_handle " vh ");"
+.SH ARGUMENTS
+.IP "vh" 12
+ value-handle
+.SH "DESCRIPTION"
+This function returns a pointer to the value-handle array stored in vh. The pointer is valid until vh is used in another function or vh is freed. The number of elements of the array can be get by calling ra_value_get_num_elem().
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_copy.3
+.TH "ra_value_copy" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_copy \- copy one value_handle to another value_handle
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_value_copy
+.BI "(value_handle " dest ","
+.BI "value_handle " src ");"
+.SH ARGUMENTS
+.IP "dest" 12
+ destination value-handle
+.IP "src" 12
+ source value-handle
+.SH "DESCRIPTION"
+This function copies the values from one value-handle to another value-handle and the name and description. The remaining fields are not copied.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_value_get_single_elem.3
+.TH "ra_value_get_single_elem" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_value_get_single_elem \- copy one element from a value-handle in another value-handle
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_value_get_single_elem
+.BI "(value_handle " dest ","
+.BI "value_handle " src ","
+.BI "size_t " elem_num ");"
+.SH ARGUMENTS
+.IP "dest" 12
+ destination value-handle
+.IP "src" 12
+ source value-handle
+.IP "elem_num" 12
+ zero-based index of the value which has to be copied
+.SH "DESCRIPTION"
+This function copies one element from value-handle to another value-handle and the name and description. The remaining fields are not copied. The function is helpfull when a single value from an array, stored in a value-handle, is needed for another function expecting a single value in a value-handle.
+.SH "SOURCE FILE"
+value.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_list_add.3
+.TH "ra_list_add" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_list_add \- add an entry to a linked list
+.SH SYNOPSIS
+.B "int" ra_list_add
+.BI "(void ** " *head ","
+.BI "void * " item ");"
+.SH ARGUMENTS
+.IP "*head" 12
+ 
+.IP "item" 12
+ item to be added
+.SH "DESCRIPTION"
+This function adds 'item' to the linked list identified by 'head' (head of list).
+.SH "SOURCE FILE"
+linked_list.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_list_insert.3
+.TH "ra_list_insert" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_list_insert \- insert an entry to a linked list
+.SH SYNOPSIS
+.B "int" ra_list_insert
+.BI "(void ** " *head ","
+.BI "void * " prev ","
+.BI "void * " item ");"
+.SH ARGUMENTS
+.IP "*head" 12
+ 
+.IP "prev" 12
+ previous item
+.IP "item" 12
+ item to be added
+.SH "DESCRIPTION"
+This function inserts 'item' in a linked list (identified by 'head'). The item will come directly after 'prev'.
+.SH "SOURCE FILE"
+linked_list.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_list_del.3
+.TH "ra_list_del" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_list_del \- delete an entry from a linked list
+.SH SYNOPSIS
+.B "int" ra_list_del
+.BI "(void ** " *head ","
+.BI "void * " item ");"
+.SH ARGUMENTS
+.IP "*head" 12
+ 
+.IP "item" 12
+ item to be deleted
+.SH "DESCRIPTION"
+This function deletes 'item' from a linked list (identified by 'head').
+.SH "SOURCE FILE"
+linked_list.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_comm_add.3
+.TH "ra_comm_add" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_comm_add \- add a signal receiver
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_comm_add
+.BI "(meas_handle " mh ","
+.BI "plugin_handle " p ","
+.BI "dest_handle " dh ","
+.BI "const char * " sig_name ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ measurement handle
+.IP "p" 12
+ plugin handle
+.IP "dh" 12
+ destination handle
+.IP "sig_name" 12
+ name of the signal
+.SH "DESCRIPTION"
+This function adds a new signal receiver p and dh for the signal sig_name to the inter-plugin-communication. Whenever the signal sig_name is emitted, the signal will be send to the plugin p. The plugin-instance will be identified with the help of dh.
+.SH "SOURCE FILE"
+pl_comm.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_comm_del.3
+.TH "ra_comm_del" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_comm_del \- delete a signal receiver
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_comm_del
+.BI "(meas_handle " mh ","
+.BI "dest_handle " dh ","
+.BI "const char * " sig_name ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ measurement handle
+.IP "dh" 12
+ destination handle
+.IP "sig_name" 12
+ name of the signal
+.SH "DESCRIPTION"
+This function deletes the signal receiver dh for the signal sig_name.
+.SH "SOURCE FILE"
+pl_comm.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_comm_emit.3
+.TH "ra_comm_emit" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_comm_emit \- emits a signal
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_comm_emit
+.BI "(meas_handle " mh ","
+.BI "const char * " sender ","
+.BI "const char * " sig_name ","
+.BI "int " num_para ","
+.BI "struct comm_para * " para ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ measurement handle
+.IP "sender" 12
+ name of the sender (needed for debug, can be NULL)
+.IP "sig_name" 12
+ name of the signal
+.IP "num_para" 12
+ number of signal parameters
+.IP "para" 12
+ signal parameters
+.SH "DESCRIPTION"
+This function emits the signal sig_name wit num_para parameters.
+.SH "SOURCE FILE"
+pl_comm.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_get_filename.3
+.TH "ra_get_filename" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_get_filename \- return "case-corrected" filename
+.SH SYNOPSIS
+.B "int" ra_get_filename
+.BI "(const char * " fn ","
+.BI "int " dir_based ","
+.BI "char * " buf ","
+.BI "int " buf_len ");"
+.SH ARGUMENTS
+.IP "fn" 12
+ input filename
+.IP "dir_based" 12
+ 
+.IP "buf" 12
+ buffer for "case-corrected" filename
+.IP "buf_len" 12
+ length of buffer 'buf'
+.SH "DESCRIPTION"
+The function tries to find how the given filename is used on the current system (case wise) and returns the filename case corrected.
+.SH "SOURCE FILE"
+ra_file.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_fopen.3
+.TH "ra_fopen" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_fopen \- opens a file
+.SH SYNOPSIS
+.B "FILE *" ra_fopen
+.BI "(const char * " fn ","
+.BI "const char * " mode ","
+.BI "int " dir_based ");"
+.SH ARGUMENTS
+.IP "fn" 12
+ filename
+.IP "mode" 12
+ the fopen file-open mode characters
+.IP "dir_based" 12
+ flag if measurement-files are stored in a directory (=1) or not (!=1)
+.SH "DESCRIPTION"
+The function tries different case combinations to open the file if the given filename can not be found.
+.SH "SOURCE FILE"
+ra_file.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_eval_attribute_list.3
+.TH "ra_eval_attribute_list" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_eval_attribute_list \- get from 'h' a list of available attributes
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_eval_attribute_list
+.BI "(any_handle " h ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "h" 12
+ an eval-/event-class-/event-prop-handle
+.IP "vh" 12
+ value-handle receiving the attribute list
+.SH "DESCRIPTION"
+This function returns a list of all attributes associated to handle 'h'.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_eval_attribute_get.3
+.TH "ra_eval_attribute_get" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_eval_attribute_get \- get from 'h' the value of the attribute 'name'
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_eval_attribute_get
+.BI "(any_handle " h ","
+.BI "const char * " id ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "h" 12
+ an eval-/event-class-/event-prop-handle
+.IP "id" 12
+ ASCII-id of the attribute
+.IP "vh" 12
+ value-handle receiving the value
+.SH "DESCRIPTION"
+This function returns the value stored in the attribute 'name'.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_eval_attribute_set.3
+.TH "ra_eval_attribute_set" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_eval_attribute_set \- set the value of the attribute 'name' in 'h'
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_eval_attribute_set
+.BI "(any_handle " h ","
+.BI "const char * " id ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "h" 12
+ an eval-/event-class-/event-prop-handle
+.IP "id" 12
+ ASCII-id of the attribute
+.IP "vh" 12
+ value-handle with the value
+.SH "DESCRIPTION"
+This function sets the value of the attribute 'name'.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_eval_attribute_unset.3
+.TH "ra_eval_attribute_unset" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_eval_attribute_unset \- removes the attribute 'name' in 'h'
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_eval_attribute_unset
+.BI "(any_handle " h ","
+.BI "const char * " id ");"
+.SH ARGUMENTS
+.IP "h" 12
+ an eval-/event-class-/event-prop-handle
+.IP "id" 12
+ ASCII-id of the attribute
+.SH "DESCRIPTION"
+This function removes the attribute 'name'.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_eval_add.3
+.TH "ra_eval_add" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_eval_add \- adds an evaluation
+.SH SYNOPSIS
+.B "LIBRAAPI eval_handle" ra_eval_add
+.BI "(meas_handle " mh ","
+.BI "const char * " name ","
+.BI "const char * " desc ","
+.BI "int " original ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ measurement-handle
+.IP "name" 12
+ a short name of the evaluation
+.IP "desc" 12
+ a short description of the evaluation
+.IP "original" 12
+ flag if evaluation is the original evaluation
+.SH "DESCRIPTION"
+This function adds an evaluation to a measurement.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_eval_copy.3
+.TH "ra_eval_copy" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_eval_copy \- copy evaluation
+.SH SYNOPSIS
+.B "LIBRAAPI eval_handle" ra_eval_copy
+.BI "(eval_handle " eh ","
+.BI "const char * " name ","
+.BI "const char * " desc ");"
+.SH ARGUMENTS
+.IP "eh" 12
+ source evaluation handle
+.IP "name" 12
+ name of the copied evaluation 
+.IP "desc" 12
+ description of the copied evaluation
+.SH "DESCRIPTION"
+The function copies the evaluation given by 'eh', the handle of the copy will be returned. If the parameter "name" is NULL or an empty string, the name of the source evaluation will be used and the prefix 'copy-' will be added.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_eval_delete.3
+.TH "ra_eval_delete" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_eval_delete \- delete evaluation
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_eval_delete
+.BI "(eval_handle " eh ");"
+.SH ARGUMENTS
+.IP "eh" 12
+ evaluation handle
+.SH "DESCRIPTION"
+The function deletes the evaluation given by 'eh'.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_eval_get_all.3
+.TH "ra_eval_get_all" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_eval_get_all \- returns all evaluation-handles
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_eval_get_all
+.BI "(meas_handle " mh ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ measurement-handle
+.IP "vh" 12
+ value-handle receiving the evaluation-handles
+.SH "DESCRIPTION"
+This function returns all evaluation-handles in the evaluation file associated with mh.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_eval_get_original.3
+.TH "ra_eval_get_original" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_eval_get_original \- returns the original evaluation-handle
+.SH SYNOPSIS
+.B "LIBRAAPI eval_handle" ra_eval_get_original
+.BI "(meas_handle " mh ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ measurement-handle
+.SH "DESCRIPTION"
+This function returns the original evaluation-handle.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_eval_get_default.3
+.TH "ra_eval_get_default" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_eval_get_default \- returns the default evaluation-handle
+.SH SYNOPSIS
+.B "LIBRAAPI eval_handle" ra_eval_get_default
+.BI "(meas_handle " mh ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ measurement-handle
+.SH "DESCRIPTION"
+This function returns the default evaluation-handle.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_eval_set_default.3
+.TH "ra_eval_set_default" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_eval_set_default \- set an evaluation to the default one
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_eval_set_default
+.BI "(eval_handle " eh ");"
+.SH ARGUMENTS
+.IP "eh" 12
+ evaluation handle
+.SH "DESCRIPTION"
+The function sets the evaluation given by 'eh' to the default one.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_eval_get_handle.3
+.TH "ra_eval_get_handle" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_eval_get_handle \- returns the evaluation handle an event-class belongs to
+.SH SYNOPSIS
+.B "LIBRAAPI eval_handle" ra_eval_get_handle
+.BI "(class_handle " clh ");"
+.SH ARGUMENTS
+.IP "clh" 12
+ event-class handle
+.SH "DESCRIPTION"
+The function returns the evaluation handle which the evant-class given by 'clh' belongs to.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_class_add.3
+.TH "ra_class_add" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_class_add \- adds an user-defined event-class to an evaluation
+.SH SYNOPSIS
+.B "LIBRAAPI class_handle" ra_class_add
+.BI "(eval_handle " eh ","
+.BI "const char * " id ","
+.BI "const char * " name ","
+.BI "const char * " desc ");"
+.SH ARGUMENTS
+.IP "eh" 12
+ evaluation handle
+.IP "id" 12
+ ASCII-id of the event-class
+.IP "name" 12
+ a short name for the event-class
+.IP "desc" 12
+ a short description of the event-class
+.SH "DESCRIPTION"
+The function adds an event-class to the evaluation 'eh'. The parameter 'id' is used to identifiy the event-class and must contain only ASCII characters. The parameters 'name' and 'desc' are used to describe the  event-class. If you want to use a pre-defined event-class, use ra_class_add_predef().
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_class_add_predef.3
+.TH "ra_class_add_predef" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_class_add_predef \- adds an pre-defined event-class to an evaluation
+.SH SYNOPSIS
+.B "LIBRAAPI class_handle" ra_class_add_predef
+.BI "(eval_handle " eh ","
+.BI "const char * " id ");"
+.SH ARGUMENTS
+.IP "eh" 12
+ evaluation handle
+.IP "id" 12
+ ASCII-id of the event-class
+.SH "DESCRIPTION"
+The function adds the event-class 'id' to the evaluation 'eh'. 'id' is one of the pre-defined event-classes in libRASCH. If you want to add not a pre-defined event-class, use ra_class_add().
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_class_delete.3
+.TH "ra_class_delete" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_class_delete \- deletes an event-class
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_class_delete
+.BI "(class_handle " clh ");"
+.SH ARGUMENTS
+.IP "clh" 12
+ event-class handle
+.SH "DESCRIPTION"
+The function deletes the event-class 'clh'.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_class_get.3
+.TH "ra_class_get" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_class_get \- return event-class 
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_class_get
+.BI "(eval_handle " eh ","
+.BI "const char * " id ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "eh" 12
+ evaluation handle
+.IP "id" 12
+ event-class ASCII-id
+.IP "vh" 12
+ value handle
+.SH "DESCRIPTION"
+The function returns all event-classes with the id 'id'. If 'id' is NULL (or is an empty string), all event-classes in the evaluation 'eh' are given.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_class_add_event.3
+.TH "ra_class_add_event" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_class_add_event \- add an event
+.SH SYNOPSIS
+.B "LIBRAAPI long" ra_class_add_event
+.BI "(class_handle " clh ","
+.BI "long " start ","
+.BI "long " end ");"
+.SH ARGUMENTS
+.IP "clh" 12
+ event-class handle
+.IP "start" 12
+ start position of the event in sample-units
+.IP "end" 12
+ end position of the event in sample-units
+.SH "DESCRIPTION"
+The function adds an event to the event-class 'clh'. The start and end of the event are given by 'start' and 'end' respectively. If the event is a point in time, use for 'end' the same value as 'start'. A unique event-id is returned.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_class_add_event_mass.3
+.TH "ra_class_add_event_mass" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_class_add_event_mass \- add a list of events
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_class_add_event_mass
+.BI "(class_handle " clh ","
+.BI "unsigned long " num_events ","
+.BI "const long * " start ","
+.BI "const long * " end ","
+.BI "long * " ev_ids ");"
+.SH ARGUMENTS
+.IP "clh" 12
+ event-class handle
+.IP "num_events" 12
+ number of events to add
+.IP "start" 12
+ array with the start positions of the event in sample-units
+.IP "end" 12
+ array with the end positions of the event in sample-units
+.IP "ev_ids" 12
+ array receiving the event-ids
+.SH "DESCRIPTION"
+The function adds a list of events to the event-class 'clh'. The start and end of the events are given by 'start' and 'end' respectively. The event-ids are returned in the array 'ev_ids'.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_class_del_event.3
+.TH "ra_class_del_event" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_class_del_event \- delete an event
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_class_del_event
+.BI "(class_handle " clh ","
+.BI "long " event_id ");"
+.SH ARGUMENTS
+.IP "clh" 12
+ event-class handle
+.IP "event_id" 12
+ event-id of the event
+.SH "DESCRIPTION"
+The function deletes the event 'event_id' from the event-class 'clh'.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_class_get_event_pos.3
+.TH "ra_class_get_event_pos" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_class_get_event_pos \- get the start and end position of an event
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_class_get_event_pos
+.BI "(class_handle " clh ","
+.BI "long " event_id ","
+.BI "long * " start ","
+.BI "long * " end ");"
+.SH ARGUMENTS
+.IP "clh" 12
+ event-class handle
+.IP "event_id" 12
+ event-id of the event
+.IP "start" 12
+ here the start position will be returned
+.IP "end" 12
+ here the end position will be returned
+.SH "DESCRIPTION"
+The function returns in 'start' and 'end' the position of the evvent 'event_id' from the event-class 'clh'. The positions are in sample-units.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_class_set_event_pos.3
+.TH "ra_class_set_event_pos" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_class_set_event_pos \- set the start and end position of an event
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_class_set_event_pos
+.BI "(class_handle " clh ","
+.BI "long " event_id ","
+.BI "long " start ","
+.BI "long " end ");"
+.SH ARGUMENTS
+.IP "clh" 12
+ event-class handle
+.IP "event_id" 12
+ event-id of the event
+.IP "start" 12
+ the start position of the event
+.IP "end" 12
+ the end position of the event
+.SH "DESCRIPTION"
+The function sets the start and end position of the event 'event_id' in the event-class 'clh' to the values 'start' and 'end'.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_class_get_events.3
+.TH "ra_class_get_events" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_class_get_events \- returns the events in a specific region
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_class_get_events
+.BI "(class_handle " clh ","
+.BI "long " start ","
+.BI "long " end ","
+.BI "int " complete ","
+.BI "int " sort ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "clh" 12
+ event-class handle
+.IP "start" 12
+ start of the region of interest
+.IP "end" 12
+ end of the region of interest
+.IP "complete" 12
+ flag if the events have to be complete in the region of interest
+.IP "sort" 12
+ flag if the found events should be sorted according their start position
+.IP "vh" 12
+ value handle receiving the event-id's asked for
+.SH "DESCRIPTION"
+The function returns in 'vh' the events which are inside a specific region. The region of interest (ROI)is given by 'start' and 'end'. If the 'complete' flag is set, the events have to be complete inside the ROI. If it is not set, all events are returned which starts or ends inside the ROI.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_class_get_prev_event.3
+.TH "ra_class_get_prev_event" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_class_get_prev_event \- returns the event-id preceeding the given one
+.SH SYNOPSIS
+.B "LIBRAAPI long" ra_class_get_prev_event
+.BI "(class_handle " clh ","
+.BI "long " event_id ");"
+.SH ARGUMENTS
+.IP "clh" 12
+ event-class handle
+.IP "event_id" 12
+ event-id
+.SH "DESCRIPTION"
+The function returns the id of the event preceeding the one given in 'event_id'. If the given event is the first one '-1' is returned.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_class_get_next_event.3
+.TH "ra_class_get_next_event" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_class_get_next_event \- returns the event-id following the given one
+.SH SYNOPSIS
+.B "LIBRAAPI long" ra_class_get_next_event
+.BI "(class_handle " clh ","
+.BI "long " event_id ");"
+.SH ARGUMENTS
+.IP "clh" 12
+ event-class handle
+.IP "event_id" 12
+ event-id
+.SH "DESCRIPTION"
+The function returns the id of the event following the one given in 'event_id'. If the given event is the first one '-1' is returned.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_class_get_handle.3
+.TH "ra_class_get_handle" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_class_get_handle \- returns the event-class handle the event-property belongs to
+.SH SYNOPSIS
+.B "LIBRAAPI class_handle" ra_class_get_handle
+.BI "(any_handle " h ");"
+.SH ARGUMENTS
+.IP "h" 12
+ 
+.SH "DESCRIPTION"
+The function returns the event-class handle the event-property 'ph' belongs to.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_prop_add.3
+.TH "ra_prop_add" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_prop_add \- adds an user-defined event-property to an event-class
+.SH SYNOPSIS
+.B "LIBRAAPI prop_handle" ra_prop_add
+.BI "(class_handle " clh ","
+.BI "const char * " id ","
+.BI "long " value_type ","
+.BI "const char * " name ","
+.BI "const char * " desc ","
+.BI "const char * " unit ","
+.BI "int " use_minmax ","
+.BI "double " min ","
+.BI "double " max ","
+.BI "int " has_ignore_value ","
+.BI "double " ignore_value ");"
+.SH ARGUMENTS
+.IP "clh" 12
+ event-class handle
+.IP "id" 12
+ ASCII-id of the event-property
+.IP "value_type" 12
+ RA_VALUE_TYPE_* of the values stored in the event-property
+.IP "name" 12
+ a short name for the event-property
+.IP "desc" 12
+ a short description of the event-property
+.IP "unit" 12
+ unit of the values stored in the event-property
+.IP "use_minmax" 12
+ flag if min-/max-values are valid
+.IP "min" 12
+ minimum value
+.IP "max" 12
+ maximum value
+.IP "has_ignore_value" 12
+ flag if 'ignore_value' is valid
+.IP "ignore_value" 12
+ a value which is interpreted as non-valid and can be ignored
+.SH "DESCRIPTION"
+The function adds an event-property to the event-class 'clh'. The parameter 'id' is used to identifiy the event-property and must contain only ASCII characters. The parameters 'name' and 'desc' are used to describe the  event-class. If you want to use a pre-defined event-property, use ra_prop_add_predef().
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_prop_add_predef.3
+.TH "ra_prop_add_predef" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_prop_add_predef \- adds an pre-defined event-property to an event-class
+.SH SYNOPSIS
+.B "LIBRAAPI prop_handle" ra_prop_add_predef
+.BI "(class_handle " clh ","
+.BI "const char * " id ");"
+.SH ARGUMENTS
+.IP "clh" 12
+ event-class handle
+.IP "id" 12
+ ASCII-id of the event-property
+.SH "DESCRIPTION"
+The function adds the event-property 'id' to the event-class 'clh'. 'id' is one of the pre-defined event-properties in libRASCH. If you want to add not a pre-defined event-property, use ra_prop_add().
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_prop_delete.3
+.TH "ra_prop_delete" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_prop_delete \- deletes an event-property
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_prop_delete
+.BI "(prop_handle " ph ");"
+.SH ARGUMENTS
+.IP "ph" 12
+ event-property handle
+.SH "DESCRIPTION"
+The function deletes the event-property 'ph'.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_prop_get_all.3
+.TH "ra_prop_get_all" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_prop_get_all \- returns all event-properties of an event-class
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_prop_get_all
+.BI "(class_handle " clh ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "clh" 12
+ 
+.IP "vh" 12
+ ra-value handle receiving the event-property handles
+.SH "DESCRIPTION"
+The function returns in 'vh' all event-properties available in event-class 'clh'.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_prop_get.3
+.TH "ra_prop_get" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_prop_get \- returns event-property 'id'
+.SH SYNOPSIS
+.B "LIBRAAPI prop_handle" ra_prop_get
+.BI "(class_handle " clh ","
+.BI "const char * " id ");"
+.SH ARGUMENTS
+.IP "clh" 12
+ event-class handle
+.IP "id" 12
+ ASCII id of the wanted event-property
+.SH "DESCRIPTION"
+The function returns a handle to the event-property 'id' from event-class 'clh'. If the event-property is not available 'NULL' is returned.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_prop_set_value.3
+.TH "ra_prop_set_value" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_prop_set_value \- set value in event-property
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_prop_set_value
+.BI "(prop_handle " ph ","
+.BI "long " event_id ","
+.BI "long " ch ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "ph" 12
+ event-property handle
+.IP "event_id" 12
+ event-id
+.IP "ch" 12
+ channel number
+.IP "vh" 12
+ contains value which should be set
+.SH "DESCRIPTION"
+The function set the value stored in 'vh' in event-property 'ph' for event-id 'event_id' and channel 'ch'. If the value is channel independent use '-1' for the channel number.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_prop_set_value_mass.3
+.TH "ra_prop_set_value_mass" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_prop_set_value_mass \- set multiple values in event-property
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_prop_set_value_mass
+.BI "(prop_handle " ph ","
+.BI "const long * " event_id ","
+.BI "const long * " ch ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "ph" 12
+ event-property handle
+.IP "event_id" 12
+ array containing event-id's
+.IP "ch" 12
+ array containing channel number's
+.IP "vh" 12
+ contains values to be set
+.SH "DESCRIPTION"
+The function set the values stored in 'vh' in event-property 'ph' for the event-id's 'event_id' and channel's 'ch'. If the value is channel independent use '-1' for the channel numbers. The length of 'event_id' and 'ch' has to be the same. And the number of values in 'vh' has to be the same as in 'event_id'/'ch'.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_prop_get_ch.3
+.TH "ra_prop_get_ch" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_prop_get_ch \- returns the channels for which data is available
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_prop_get_ch
+.BI "(prop_handle " ph ","
+.BI "long " event_id ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "ph" 12
+ event-property handle
+.IP "event_id" 12
+ event-id
+.IP "vh" 12
+ ra-value receiving the channel-list
+.SH "DESCRIPTION"
+The function return in 'vh' the list of channels where values are available for event-id 'event_id' and event-property 'ph'.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_prop_get_value.3
+.TH "ra_prop_get_value" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_prop_get_value \- get value from event-property
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_prop_get_value
+.BI "(prop_handle " ph ","
+.BI "long " event_id ","
+.BI "long " ch ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "ph" 12
+ event-property handle
+.IP "event_id" 12
+ event-id
+.IP "ch" 12
+ channel number
+.IP "vh" 12
+ receives value
+.SH "DESCRIPTION"
+The function returns a value in 'vh' from event-property 'ph' for event-id 'event_id' and channel 'ch'. If you interested in the channel independent value use '-1' for the channel number.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>
+---function ra_eval_save.3
+.TH "ra_eval_save" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_eval_save \- save evalution
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_eval_save
+.BI "(meas_handle " mh ","
+.BI "const char * " file ","
+.BI "int " use_ascii ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ measurement handle
+.IP "file" 12
+ name of the evaluation file (optional)
+.IP "use_ascii" 12
+ flag if event-values should be stored as ASCII-text (=1) or as
+.SH "DESCRIPTION"
+binary MIME64 encoded data (=0) This function saves the evaluation(s) that belongs to the measurement mh. If no filename file is given, the default-filename will be used. If use_ascii is !=0 than the event values are stored as ASCII text.
+.SH "SOURCE FILE"
+save_eval_v1.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

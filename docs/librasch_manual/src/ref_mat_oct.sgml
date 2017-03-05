@@ -1,0 +1,7 @@
+<appendix id="mat_oct_interface_ref"><title>Function Reference for Matlab/Octave</title>
+<para>
+This appendix list the functions provided by libRASCH for Matlab/Octave.
+</para>
+&mat_oct_interface_auto;
+</appendix>
+

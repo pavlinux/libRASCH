@@ -1,0 +1,433 @@
+Installation of libRASCH and RASCHlab
+=====================================
+
+
+LIBRASCH_HOME is the top most directory of the libRASCH source code
+directory.
+
+The following topics are described below
+* prerequisites for libRASCH
+* Installation Linux
+* Installation Windows (source code)
+* Installation Windows (binary distribution)
+* Installation of the Perl and Python interfaces
+* Installation of the Octave, Matlab (and Scilab) interfaces
+
+
+-----------------------------------------------------------------------
+
+
+PREREQUISITES FOR libRASCH
+--------------------------
+
+On Windows, you need to install the libraries listed below only, if
+you want to compile libRASCH and RASCHlab. If you are using the binary
+distribution, the needed dll's will be installed when installing
+libRASCH.
+
+During the installation of the libRASCH binary distribution on
+Windows, the following dll's are installed in the Windows system
+directory:
+- zlib.dll
+- intl.dll
+- iconv.dll
+- libxml2.dll
+- libxslt.dll
+- QtCore4.dll
+- QtCored4.dll
+- QtGui4.dll
+- QtGuid4.dll
+
+!!! Attention !!!
+If one of these dll's is already in the Windows system directory, then
+this dll will be overwritten (with the one coming in the libRASCH
+install file). 
+
+
+If you are using a modern Linux distribution, the following libraries
+should be already installed. If you have problems compiling libRASCH
+please check if an accompanying *-devel package is available and that
+it is installed.
+
+zlib:
+-----
+At the web-site of the zlib project - http://www.gzip.org/zlib/ - you
+will find pre-compiled binaries for Win32.
+
+
+gettext & libiconv:
+-------------------
+At the web-site of the gettext-win32 project -
+http://sourceforge.net/projects/gettext - you will find pre-compiled
+binaries for Win32. Please get the 'gettext' AND 'libiconv'
+distribution. For gettext, the runtime distribution is sufficient.
+
+libxml2:
+--------
+At the web-site of the libxml2 project - www.xmlsoft.org - you will
+find pre-compiled binaries for Win32. 
+
+
+Qt
+----------------
+For the view-plugins Qt4 is used as the GUI environment. Please check
+that Qt4 and the Qt4-devel packages are installed. These can be found
+at www.trolltech.com .
+
+
+Preparing the libraries on Windows:
+-----------------------------------
+After the above mentioned libraries are downloaded and un-zipped, you
+have to tell the C-compiler where it can find the header-, lib- and
+dll-files. On my system I created the directories 'c:\usr\include',
+'c:\usr\lib'. In these directories I copied the header-files
+('include') and the lib- and dll-files ('lib'). Then I added these
+directories to the include-path and library-path in VisualStudio.
+
+Qt4 on Windows
+--------------
+Because starting with libRASCH 0.8, Qt4 is used on Windows also. Because
+the GPL version of Qt4 is not supported to be used with VisualStudio,
+the binary version libRASCH for Windows comes with the needed Qt DLLs.
+To make Qt4-GPL working with VisualStudio, a patch from SourceForge is
+needed (http://sourceforge.net/projects/qtwin). Please follow the
+instructions there to build a Qt4 version for VisualStudio.
+
+
+-----------------------------------------------------------------------
+
+
+INSTALLATION LINUX
+------------------
+
+The build-system for libRASCH works with the usual commands:
+
+  ./configure
+  make
+  make install (as root)
+
+
+At the moment there are no installation routines for the interfaces for
+Matlab and Scilab. See below for the installation instructions for
+these interfaces. 
+
+
+Configure libRASCH:
+-------------------
+
+Configuration:
+--------------
+Run './configure' in LIBRASCH_HOME to set the default configuration.
+
+Available options to configure:
+	--prefix=DIR             install directory (default: /usr/local)
+	--plugins=DIR            install plugins in DIR
+                                 (default: $prefix/lib/librasch/plugins)
+        --dont-write-config      do not create librasch.conf
+        --local-config           write librasch.conf in $HOME directory
+                                 instead of '/etc'
+	--with-qt-dir=DIR        directory where Qt is installed
+	--with-qt-includes=DIR   directory where the Qt header files are
+                                 installed
+	--with-qt-bin-dir=DIR    directory where the Qt binary files are
+                                 installed
+        --oct-dir=DIR            directory where libRASCH octave-files are
+                                 installed
+                                 (default: depends on octave installation)
+        --no-raschlab            do not compile and install RASCHlab
+        --raschlab_prefix=DIR    install directory for RASCHlab
+                                 (default: /usr/local/bin)
+        --doc-prefix=DIR         directory where doc's will be installed
+                                 (default: /usr/share/doc)
+        --dont-install-doc       do not install documentation
+        --force                  write files even an error occurred
+        --help                   list the available options
+
+
+Build libRASCH, libRASCH interfaces and RASCHlab:
+-------------------------------------------------
+The './configure' script tries to check what languages (Perl and
+Python) and what programs (Octave, Scilab and Matlab) are
+installed. For the found languages/systems, the interfaces will be
+build when building libRASCH.
+
+Additional to libRASCH, RASCHlab is build. If you do not want to build
+RASCHlab, use the '--no-raschlab' option when calling
+'./configure'. The default installation place of RASCHlab is
+'/usr/local/bin'. This can be overwritten using the '--raschlab_prefix'
+option. 
+
+Just type 'make' in LIBRASCH_HOME to compile the library, all plugins,
+the interfaces and RASCHlab.
+
+The library-files (librasch.so*) will be at LIBRASCH_HOME.
+The plugin-files will be at 'LIBRASCH_HOME/plugins/bin'.
+
+(If you don't want to compile the view-plugins, use
+'make skipgui'. This makes no sense when you plan to use RASCHlab.)
+
+
+Installation:
+-------------
+With 'make install' in LIBRASCH_HOME you install libRASCH and RASCHlab
+in the directories selected with './configure'. If you choose to install
+libRASCH and/or RASCHlab in a system directory (e.g. in
+'/usr/local/...'), you have to be 'root'.
+
+If the installation path of libRASCH (e.g. '/usr/local/lib') is not in
+your library path (LD_LIBRARY_PATH or set in '/etc/ld.so.conf'), add
+this path to LD_LIBRARY_PATH or add it to '/etc/ld.so.conf'. If you
+added the path to the file '/etc/ld.so.conf' you have to run ldconfig
+(as root; when using a RedHat distribution, you have to type
+'/sbin/ldconfig' to run ldconfig). 
+
+Additionally, the interfaces for Perl, Python and Octave are
+installed. For the installation of the Matlab and Scilab interfaces,
+see below. 
+
+
+Compiler/Linker options:
+------------------------
+After the installation, the script 'librasch-config' will be installed
+in the 'PREFIX/bin' directory (PREFIX chosen during 'configure',
+default: '/usr/local/bin'). The script returns the needed options for
+the compiler and linker. The following options are available:
+    --cflags      returns the C compiler options for libRASCH
+    --libs        returns the linker options for libRASCH
+    --prefix      returns installation directory
+    --plugin-dir  returns directory where plugins were installed
+    --version     returns the number of the installed libRASCH version
+
+
+-----------------------------------------------------------------------
+
+
+INSTALLATION WINDOWS (source code)
+----------------------------------
+
+Build libRASCH:
+---------------
+For building libRASCH under Windows, the Compiler from Microsoft is
+needed. The VisualStudio project files are included.
+
+In VisualStudio, open the project-file 'librasch.dsw' in
+LIBRASCH_HOME. To compile libRASCH and the plugins select
+'Erstellen->Erstellen in Stapelverarbeitung...' (don't know the
+English menu names, something like 'create->create in batch
+mode...'). If you don't have Matlab installed, don't select the Matlab
+sub-project. Additionally you need to add the directory
+'LIBRASCH_HOME' to your library directories and
+'LIBRASCH_HOME/include' to your include directories (under menu
+'Extras->Options->Directories'). 
+
+!!! Also be sure that you installed the libraries mentioned above (in
+the section 'Prerequisites') and that you told your compiler/linker
+where it can find the header- and lib-files of the libraries.
+
+[**********************************************************************
+ * (not working at the moment, will be fixed in the next version)
+ *
+ * If you prefer to compile libRASCH with nmake from the command line,
+ * you need first to compile libRASCH and all plugins in VisualStudio,
+ * and than create the Makefiles ('Projects->export Makefiles'). After
+ * performing these steps, the following call should work
+ *
+ *   nmake -f Makefile.w32
+ *
+ * to build libRASCH and all plugin. This will build the debug version of
+ * libRASCH and the plugins. (For this you need to put 'LIBRASCH_HOME' in
+ * your 'lib' and 'LIBRASCH_HOME/include' in your 'include' environment
+ * variable.)
+**********************************************************************]
+
+librasch.dll (or libraschd.dll when building the debug version) are
+saved in LIBRASCH_HOME. The plugins are in
+'LIBRASCH_HOME\plugins\bin\Debug' or
+'LIBRASCH_HOME\plugins\bin\Release'. 
+
+
+Installation:
+-------------
+Copy the dll-file(s) to the Windows system directory. You need also to
+copy the dll-files of the libraries (mentioned in section
+'Prerequisites') to the Windows system directory (or add the
+directories to search path for dll's).
+
+
+Configuration:
+--------------
+The file librasch.conf (initial version can be found in LIBRASCH_HOME)
+is the configuration file for libRASCH. The config-file use XML to
+store the configuration options.
+
+At the moment the only configuration which is needed is the path of
+the plugins ('LIBRASCH_HOME\plugins\bin\[Debug|Release]').
+
+When libRASCH is initialized, it will look for the file in 1) the
+current directory and 2) in the Windows directory. Choose whatever
+directory you like to store librasch.conf.
+
+When libRASCH was installed using the binary distribution (see below),
+the path of the plugins will be set in the Registry. The windows
+version of libRASCH looks first in the Registry. If no Registry entry
+is found, the above described directories are used to search for
+'librasch.conf'.
+
+
+-----------------------------------------------------------------------
+
+
+INSTALLATION WINDOWS (binary distribution)
+------------------------------------------
+
+The binary distribution of libRASCH consists of:
+- librasch.dll (the core library)
+- libRASCH plugins
+- m-files and interface-DLL for usage of libRASCH in Matlab
+- RASCHlab
+- documentation
+- libxml2.dll and libxslt.dll (from the libxml2 project)
+- intl.dll and iconv.dll (from the gettext-win32 project)
+- zlib.dll (from the zlib project)
+- QtCore4.dll (patch Qt4 GPL Windows Version working with VisualStudio)
+- QtCored4.dll ( -"- )
+- QtGui4.dll   ( -"- )
+- QtGuid4.dll  ( -"- )
+
+The binary distribution is an executable installing all files.
+
+To install libRASCH and RASCHlab, just run the file downloaded (with
+extension '.exe'). If a version previous to 0.5.3 was installed,
+please remove this version before installing the new version.
+
+The dll's 'librasch', 'libxml2', 'libxslt', 'intl', iconv', 'zlib',
+'QtCore4.dll', 'QtCored4.dll', 'QtGui4' and 'QtGuid4.dll' will be installed
+in the Windows System directory (e.g. 'C:\WINNT\System32'). The remaining
+files will be installed in the directory selected during the installation
+process. In the start menu of the current user, an 'libRASCH' entry is added.
+There you will find entries to RASCHlab and the documentation.
+
+The configuration of libRASCH is done by the installer. In the
+Registry the path of the plugins will be set
+(HKEY_LOCAL_MACHINE/Software/libRASCH/plugin_path). No further
+configuration is needed.
+
+
+-----------------------------------------------------------------------
+
+
+INSTALLATION OF THE PERL AND PYTHON INTERFACES
+----------------------------------------------
+
+Linux:
+------
+The interfaces are compile and installed during building and installing
+libRASCH.
+
+
+Windows:
+--------
+libRASCH is build with VisualStudio 6.
+
+Perl:
+-----
+Go to LIBRASCH_HOME/interfaces/perl and do the following steps
+
+perl Makefile.PL
+nmake
+nmake install
+
+
+Python:
+-------
+Go to LIBRASCH_HOME/interfaces/python and do the following steps
+
+python setup.py build
+python setup.py install
+
+
+-----------------------------------------------------------------------
+
+
+INSTALLATION OF THE OCTAVE, MATLAB (AND SCILAB) INTERFACES
+----------------------------------------------------------
+
+Octave:
+-------
+Note: At the moment only the Linux version is supported because there
+is no support for shared libraries in the Windows version of Octave.
+
+The interface is compiled when building libRASCH and installed when
+libRASCH is installed. The m- and oct-file are installed in the
+$localoctfiledir (set by Octave).
+
+If you want to install the files in a different directory, set the
+directory when calling configure with the option --oct-dir. In this
+case, you need to add this directory to your Octave LOADPATH.
+I have a '.octaverc' file with the following entry in my HOME
+directory: 
+LOADPATH = [".:/home/rasch/src/librasch/interfaces/octave/m_files//:",
+            LOADPATH  ];
+
+
+MATLAB:
+-------
+
+Windows:
+--------
+When libRASCH was installed using the binary distribution, only the
+path to the m-files has to be set in Matlab ('File->Set Path...'). The
+path is 'INSTALL_DIR\matlab'. INSTALL_DIR is the directory chosen
+during installation. 
+
+If the source code distribution is used, the Matlab sub-project has to
+be compiled in VisualStudio and in Matlab the path to the m-files
+('LIBRASCH_HOME\interfaces\matlab\m_files') has to be set.
+
+Linux:
+------
+The interface is compiled when building libRASCH. The interface files are
+saved in LIBRASCH_HOME/interfaces/matlab/m_files.
+
+To use libRASCH in Matlab, you need to add the path to the 'm_files'
+directory ('LIBRASCH_HOME/interfaces/matlab/m_files') in Matlab
+('File->Set Path...').
+
+
+
+!!!!!!!!!! At the Moment Scilab is no longer supported !!!!!!!!!!
+SCILAB:
+-------
+Note: Only Scilab 2.7 and up is supported. Additionally, at the moment
+only the Linux version is supported, the Windows version will be
+supported in the near future.
+
+The path of the Scilab directory was set when running the configure
+script. If the configure script prints a message, that Scilab was not
+found, you have to set the path by hand. In the file
+LIBRASCH_HOME/Makefile.incl, set the variable 'SCILAB_PATH' to the
+path where Scilab was installed on your system. To get this
+information, start Scilab and print the value of the variable 'SCI'
+(just type SCI on the Scilab prompt). 
+
+The interface files are build when building libRASCH and saved in the
+directory LIBRASCH_HOME/interfaces/scilab/sci_files.
+
+To use libRASCH in Scilab, go to the 'sci_files' directory and enter
+Scilab. On the first time, you need to create a Scilab library. This
+is done with the following command:
+
+  genlib('librasch', './');  // this is only needed the first time
+
+To use libRASCH, you need to perform the following commands after
+starting Scilab (assuming you are in the directory
+'LIBRASCH_HOME/interfaces/scilab/sci_files'):
+ 
+  exec loader.sce;
+  lib('./'); 
+!!!!!!!!!! At the Moment Scilab is no longer supported !!!!!!!!!!
+
+
+
+
+$Id$

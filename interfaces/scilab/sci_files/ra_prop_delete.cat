@@ -1,0 +1,6 @@
+Delete the event-property given by 'prop_handle'.
+    Input parameters:
+    prop_handle
+
+  Output parameters:
+    ok

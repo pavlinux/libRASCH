@@ -1,0 +1,69 @@
+<section id="tut-handle-recs"><title>Access Recordings</title>
+<para>
+The example will show how to get the root recording and some
+information about it. We will perform the following steps:
+<itemizedlist mark=bullet>
+<listitem><para>get root recording</para></listitem>
+<listitem><para>get some general informations about the recording</para></listitem>
+<listitem><para>get some infos about all used recording devices</para></listitem>
+<listitem><para>get some infos about all recorded channels</para></listitem>
+</itemizedlist>
+</para>
+
+<para>
+When more than one recording device was used, the root recording
+provides access to the channels as if they were recorded with one
+device.
+</para>
+
+<programlistingco>
+<areaspec>
+<areaset id="handle-recs-pl.const" coords="">
+<area id="handle-recs-pl.get-rec"  units="LineColumn" coords="13 38">
+</areaset>
+<area id="handle-recs-pl.get-info-dev"  units="LineColumn" coords="32 60">
+<area id="handle-recs-pl.get-info-ch"  units="LineColumn" coords="42 55">
+</areaspec>
+<programlisting>
+&handle-recs.pl;
+</programlisting>
+<calloutlist>
+<callout arearefs="handle-recs-pl.get-rec">
+<para>
+The function get_first_rec(s_num) returns the root-recording of
+the session s_num. The sessions start with number 0.
+</para>
+</callout>
+</calloutlist>
+<calloutlist>
+<callout arearefs="handle-recs-pl.get-info-dev">
+<para>
+When asking for information about recording devices you need to set
+the device number. In Perl and Python this is done by setting the argument 'dev'
+to the device number. In C the device number is set in the
+value_handle (using ra_value_set_number()) used to receive the
+information when calling ra_info_get().
+</para>
+</callout>
+</calloutlist>
+<calloutlist>
+<callout arearefs="handle-recs-pl.get-info-ch">
+<para>
+When asking for information about a channel you need to set
+the channel number. In Perl and Python this is done by setting the argument 'ch'
+to the device number. In C the device number is set in the
+value_handle (using ra_value_set_number()) used to receive the
+information when calling ra_info_get()
+</para>
+</callout>
+</calloutlist>
+</programlistingco>
+
+<para>
+The output of the above example for the measurement '100s'
+is shown here:
+</para>
+<programlisting>
+&handle-recs.pl.out;
+</programlisting>
+</section>

@@ -1,0 +1,5 @@
+Close the measurement with the measurement-handle 'meas_handle'.
+  Input parameters:
+    meas_handle
+
+  Output parameters:

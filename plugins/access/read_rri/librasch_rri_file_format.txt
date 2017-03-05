@@ -1,0 +1,77 @@
+libRASCH RRI File Format Version 0 (06.07.2004)
+===============================================
+Author: Raphael Schneider <rasch@med1.med.tum.de>
+
+
+This is the first description of the RRI file format used in
+libRASCH. Chances are high that it will be modified soon. So do NOT
+rely on this description. If you have any comments/suggestions, please
+send me these directly or to the libRASCH mailing list.
+
+
+
+General design:
+---------------
+  * two parts: header and rr intervals
+
+  * the two parts are seperated by '-' characters; the first character
+    in a line MUST be a '-' character, the remaining characters can be
+    choosen by the programmer; a line of 50 '-' characters is
+    recommended
+
+  * comments are allowed ONLY in the header section; comments MUST
+    start with the '#' character at the first position of a line
+
+  * for character encoding, UTF-8 is recommended
+
+  * the rr-interval section starts IMMEDIATELY after the seperator
+    line; NO empty lines are allowed in the rr-interval section
+    (except the last one (if any), but in this line, only the new-line
+    character is allowed)
+
+
+header:
+-------
+  * first line MUST be of form: 'librasch-rri-Vx', 'x' is the current
+    version number (current version is 0); the first line MUST be
+    ASCII (or UTF-8, where the first 128 char's correspond to ASCII)
+
+  * the next lines give further information, the general format is:
+     
+    info-name=info-value
+
+      - no space after info-name and before info-value
+      - info-name can NOT contain the '=' character
+      - info-name can NOT start with the '-' character
+
+  * the currently supported informations are:
+
+      - number-qrs:
+      - name:
+      - forename:
+      - birthday:
+      - rec-date:
+      - rec-time:
+      - samplerate:
+    
+
+rr intervals:
+-------------  
+  * the remaining lines are holding the information about the QRS
+    complexs
+
+  * each line is of the format:
+
+    qrs-position\tannotation  (with \t = tab-character)
+
+      - qrs-position in sample units (if no samplerate was set in the
+        header, 1000Hz is assumed)
+      - annotation is one character describing the type of the qrs
+        complex; the following annotations are supported:
+
+	+ N: normal qrs complex
+	+ V: ventricular qrs complex
+	+ P: paced qrs complex
+	+ X or anything else: artifact
+
+$Header: /home/cvs_repos.bak/librasch/plugins/access/read_rri/librasch_rri_file_format.txt,v 1.1 2004/08/11 14:40:26 rasch Exp $

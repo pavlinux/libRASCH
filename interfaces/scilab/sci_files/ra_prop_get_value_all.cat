@@ -1,0 +1,8 @@
+Returns all event-property values and the corresponding event-ids channels.
+  Input parameters:
+    prop_handle
+
+  Output parameters:
+    event_ids
+    ch
+    values

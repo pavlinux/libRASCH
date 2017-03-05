@@ -1,0 +1,18 @@
+.TH "ra_prop_add_predef" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_prop_add_predef \- adds an pre-defined event-property to an event-class
+.SH SYNOPSIS
+.B "LIBRAAPI prop_handle" ra_prop_add_predef
+.BI "(class_handle " clh ","
+.BI "const char * " id ");"
+.SH ARGUMENTS
+.IP "clh" 12
+ event-class handle
+.IP "id" 12
+ ASCII-id of the event-property
+.SH "DESCRIPTION"
+The function adds the event-property 'id' to the event-class 'clh'. 'id' is one of the pre-defined event-properties in libRASCH. If you want to add not a pre-defined event-property, use ra_prop_add().
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

@@ -1,0 +1,18 @@
+.TH "ra_meas_copy" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_meas_copy \- copy measurement
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_meas_copy
+.BI "(meas_handle " mh ","
+.BI "const char * " dest_dir ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ handle of measurement which should be copied
+.IP "dest_dir" 12
+ destination directory
+.SH "DESCRIPTION"
+The function copy the files of measurement mh to directory dest_dir. IMPORTANT!!! Function _not_ completely tested. Use at your own risk.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

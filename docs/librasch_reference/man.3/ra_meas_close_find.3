@@ -1,0 +1,15 @@
+.TH "ra_meas_close_find" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_meas_close_find \- close the search for libRASCH-handled measurements
+.SH SYNOPSIS
+.B "LIBRAAPI void" ra_meas_close_find
+.BI "(ra_find_handle " h ");"
+.SH ARGUMENTS
+.IP "h" 12
+ find-handle
+.SH "DESCRIPTION"
+End a search for libRASCH-handled measurements (frees some memory). Must be called if the ra_find_handle h returned from ra_meas_find_first() will no be longer used.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

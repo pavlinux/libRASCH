@@ -1,0 +1,81 @@
+<chapter id="infos"><title>Information Dialog Boxes</title>
+
+<para>
+RASCHlab provides the possibility to get informations about the loaded
+libRASCH plugins. To get the plugin info dialog box, select the menu
+entry 'General->Plugin infos...' and a dialog like the one shown in
+<xref linkend="raschlab-plugin-dlg-fig"> opens. In the upper half of
+the dialog, the loaded plugins are shown. The name, type and license
+of each plugin is listed. In the bottom half of the dialog,
+informations about the current select plugin is shown: the name and
+the version of the plugin, a short description,
+the location of the plugin on the system, if the plugin should be used
+and the time stamp when the plugin was build.
+</para>
+
+<figure id="raschlab-plugin-dlg-fig">
+<title>
+Dialog box for libRASCH plugin management.
+</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="pics/raschlab_plugin_dlg.png" scale="50">
+</imageobject>
+</mediaobject>
+</figure>
+
+<para>
+When you are interested about the evaluations in a measurement, you
+can get informations about them by selecting the menu entry
+'General->Evaluation infos...'. An evaluation dialog box like the one
+shown in <xref linkend="raschlab-eval-dlg-fig"> is opened. In the
+upper half, a list of the evaluations in the current openend
+measurement is shown. You can delete the current selected evaluation
+by pressing the 'delete' button right to the list. In the bottom half,
+informations about the current selected evaluation is shown: a short
+description, if this is the default evaluation (see <xref
+linkend="evaluation"> in <xref linkend="term">), if this is the original evalution (again, see
+<xref linkend="evaluation"> in <xref linkend="term">), when 
+the evaluation was created, in which program, by which
+user and on which computer it was created and finally when was the last
+modification. The event properties of the current evaluation are
+shown in the event-property dialog box, which opens when the
+'event-prop's' button is pressed.
+</para>
+
+<figure id="raschlab-eval-dlg-fig">
+<title>
+Dialog box for evaluation management.
+</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="pics/raschlab_eval_dlg.png" scale="50">
+</imageobject>
+</mediaobject>
+</figure>
+
+<para>
+The event-properties dialog box (<xref
+linkend="raschlab-evprop-dlg-fig">) lists the event properties of an
+evaluation. In the upper half the available event properties are
+listed. If you (really) want to delete an event property, you can do
+it by pressing the 'delete' button. In the bottom half of the dialog
+box, informations about the current selected event property is shown:
+the name and how many events are stored in the property, a short
+description, the type of the value (e.g. long integer, double, string)
+and what type of event property it is (discrete like heart beats or
+continuous like periods of noise).
+</para>
+
+<figure id="raschlab-evprop-dlg-fig">
+<title>
+Dialog box showing the event-properties stored in an evaluation.
+</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="pics/raschlab_eval_evprop_dlg.png" scale="50">
+</imageobject>
+</mediaobject>
+</figure>
+
+</chapter>

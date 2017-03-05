@@ -1,0 +1,280 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Tutorial for RASCHlab-0.2.4</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="NEXT"
+TITLE="Introduction"
+HREF="introduction.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="BOOK"
+><DIV
+CLASS="BOOK"
+><A
+NAME="AEN1"
+></A
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="TITLE"
+><A
+NAME="AEN1"
+>Tutorial for RASCHlab-0.2.4</A
+></H1
+><H3
+CLASS="AUTHOR"
+><A
+NAME="AEN4"
+></A
+>Raphael Schneider</H3
+><P
+CLASS="COPYRIGHT"
+>Copyright &copy; 2004 Raphael Schneider</P
+><HR></DIV
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>1. <A
+HREF="introduction.html"
+>Introduction</A
+></DT
+><DT
+>2. <A
+HREF="term.html"
+>Terminology</A
+></DT
+><DT
+>3. <A
+HREF="install.html"
+>Installation</A
+></DT
+><DT
+>4. <A
+HREF="open-signal.html"
+>Open a Signal</A
+></DT
+><DT
+>5. <A
+HREF="process-signal.html"
+>Process a Signal</A
+></DT
+><DT
+>6. <A
+HREF="navigation.html"
+>Navigation</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="navigation.html#AEN142"
+>Navigation in the signal window</A
+></DT
+><DT
+><A
+HREF="x161.html"
+>Selections</A
+></DT
+><DT
+><A
+HREF="x188.html"
+>Inter Plugin Communication</A
+></DT
+></DL
+></DD
+><DT
+>7. <A
+HREF="comments.html"
+>Signal Comments</A
+></DT
+><DT
+>8. <A
+HREF="settings.html"
+>Change Settings</A
+></DT
+><DT
+>9. <A
+HREF="edit.html"
+>View-Plugin specific controls</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="edit.html#RASCHLAB-ECG-VIEW-DESC"
+>ECG View-Plugin</A
+></DT
+><DT
+><A
+HREF="raschlab-abp-view-desc.html"
+>Blood Pressure View-Plugin</A
+></DT
+></DL
+></DD
+><DT
+>10. <A
+HREF="infos.html"
+>Information Dialog Boxes</A
+></DT
+></DL
+></DIV
+><DIV
+CLASS="LOT"
+><DL
+CLASS="LOT"
+><DT
+><B
+>List of Figures</B
+></DT
+><DT
+>4-1. <A
+HREF="open-signal.html#RASCHLAB-SIG-SEL-FIG"
+>Signal selection dialog box.</A
+></DT
+><DT
+>4-2. <A
+HREF="open-signal.html#RASCHLAB-PLAIN-ECG-FIG"
+>Screen shot of RASCHlab showing the ECG 100s.</A
+></DT
+><DT
+>5-1. <A
+HREF="process-signal.html#RASCHLAB-SEL-DETECT-CH-FIG"
+>Channel selection dialog box.</A
+></DT
+><DT
+>5-2. <A
+HREF="process-signal.html#RASCHLAB-SEL-DETECT-CH-2-FIG"
+>Channel selection dialog box after selecting the channels.</A
+></DT
+><DT
+>5-3. <A
+HREF="process-signal.html#RASCHLAB-ECG-WITH-ANNOT-FIG"
+>ECG after beat detection performed.</A
+></DT
+><DT
+>6-1. <A
+HREF="navigation.html#RASCHLAB-MORE-SIGS-FIG"
+>Screen shot of a measurement with different kind of signal types.</A
+></DT
+><DT
+>6-2. <A
+HREF="x161.html#RASCHLAB-CONTEXT-MENU-FIG"
+>Context menu for the selection of beat types (e.g. normal beats,
+ventricular beats).</A
+></DT
+><DT
+>6-3. <A
+HREF="x161.html#RASCHLAB-CONTEXT-MENU-2-FIG"
+>Context menu for the selection of beats belonging to a specific template.</A
+></DT
+><DT
+>6-4. <A
+HREF="x188.html#RASCHLAB-SEL-TACHO-POS-FIG"
+>Select position in tachogram.</A
+></DT
+><DT
+>6-5. <A
+HREF="x188.html#RASCHLAB-SEL-TEMPLATE-FIG"
+>Select beats belonging to a specific template in the template window.</A
+></DT
+><DT
+>7-1. <A
+HREF="comments.html#RASCHLAB-ADD-COMMENT-FIG"
+>Add a comment.</A
+></DT
+><DT
+>7-2. <A
+HREF="comments.html#RASCHLAB-WITH-COMMENT-FIG"
+>Screen shot of the signal showing four comments.</A
+></DT
+><DT
+>8-1. <A
+HREF="settings.html#RASCHLAB-GENERAL-OPTIONS-FIG"
+>Dialog box to set general options.</A
+></DT
+><DT
+>8-2. <A
+HREF="settings.html#RASCHLAB-CHANNEL-OPTIONS-FIG"
+>Dialog box to set channel specific options.</A
+></DT
+><DT
+>10-1. <A
+HREF="infos.html#RASCHLAB-PLUGIN-DLG-FIG"
+>Dialog box for libRASCH plugin management.</A
+></DT
+><DT
+>10-2. <A
+HREF="infos.html#RASCHLAB-EVAL-DLG-FIG"
+>Dialog box for evaluation management.</A
+></DT
+><DT
+>10-3. <A
+HREF="infos.html#RASCHLAB-EVPROP-DLG-FIG"
+>Dialog box showing the event-properties stored in an evaluation.</A
+></DT
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="introduction.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Introduction</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

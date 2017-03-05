@@ -1,0 +1,21 @@
+.TH "ra_lib_get_error" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_lib_get_error \- get last error
+.SH SYNOPSIS
+.B "LIBRAAPI long" ra_lib_get_error
+.BI "(ra_handle " h ","
+.BI "char * " text ","
+.BI "size_t " len ");"
+.SH ARGUMENTS
+.IP "h" 12
+ handle to ra instance
+.IP "text" 12
+ character buffer which receives error text
+.IP "len" 12
+ size of character buffer text
+.SH "DESCRIPTION"
+This function returns the last error occured in libRASCH (or in one of the plugins). See 'ra_error.h' for meaning of returned number. If the number is negative, the last error was an OS specific error and the error number comes from the OS (just remove the minus sign). If text is not NULL, a short error description will be returned in text.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

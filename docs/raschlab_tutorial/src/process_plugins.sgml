@@ -1,0 +1,26 @@
+<chapter id="process-plugin"><title>Process Plugins</title>
+
+<para>
+The processing possibilities described in this chapter are at the
+moment mainly for development. Calling one of the process plugins can
+crash the program or can destroy (very unlikely but possible) the
+evaluation(s) of the current measurement. So you are using it at the
+moment at your own risk.
+</para>
+
+<para>
+In RASCHlab, you can process the current open signal. 
+</para>
+
+<figure id="raschlab-process-dlg-fig">
+<title>
+Process dialog box.
+</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="pics/raschlab_process_dlg.png">
+</imageobject>
+</mediaobject>
+</figure>
+
+</chapter>

@@ -1,0 +1,182 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Deutsch (Deutschland) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ANNOT_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 216
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 192
+    END
+
+    IDD_CH_OPT_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 277
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 198
+    END
+
+    IDD_GENERAL_OPT_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 242
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 95
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ANNOT_DLG DIALOG DISCARDABLE  0, 0, 223, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Edit Annotations"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,166,178,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,87,178,50,14
+    PUSHBUTTON      "Delete",IDC_DEL_BTN,8,178,50,14
+    LTEXT           "Annotation for Channel",IDC_TXT_ANNOT_FOR_CH,7,9,209,8
+    COMBOBOX        IDC_CH_LIST,7,20,209,62,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Indicators",IDC_TXT_INDICATORS,7,41,209,8
+    CONTROL         "Noise",IDC_NOISE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    7,53,209,10
+    CONTROL         "Ignore",IDC_IGNORE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,65,209,10
+    LTEXT           "pre-defined Annotations",IDC_TXT_PRE_DEF_ANNOT,7,84,209,
+                    8
+    COMBOBOX        IDC_ANNOT_LIST,7,96,209,75,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Annotation",IDC_TXT_ANNOT,7,115,209,8
+    EDITTEXT        IDC_ANNOT,7,127,209,40,ES_MULTILINE | ES_AUTOHSCROLL | 
+                    ES_WANTRETURN
+END
+
+IDD_CH_OPT_DLG DIALOG DISCARDABLE  0, 0, 284, 205
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Set Channel Draw-Options"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,181,184,50,14
+    PUSHBUTTON      "Abbrechen",IDCANCEL,52,184,50,14
+    LTEXT           "select channel",IDC_TXT_SEL_CH,7,9,262,8
+    COMBOBOX        IDC_CH_LIST,7,21,270,57,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    GROUPBOX        "Position",IDC_FRAME_POS,7,79,270,98
+    CONTROL         "centerd",IDC_POS_CENTER,"Button",BS_AUTORADIOBUTTON,14,
+                    91,119,10
+    LTEXT           "position [%]",IDC_POS_PERCENT_TEXT,26,102,90,8
+    EDITTEXT        IDC_POS_PERCENT,26,113,91,14,ES_AUTOHSCROLL
+    CONTROL         "min/max [uV]",IDC_POS_MINMAX,"Button",
+                    BS_AUTORADIOBUTTON,141,92,130,10
+    LTEXT           "min",IDC_MIN_TEXT,153,105,108,8
+    LTEXT           "max",IDC_MAX_TEXT,153,132,66,8
+    EDITTEXT        IDC_MIN,153,114,69,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_MAX,153,142,70,14,ES_AUTOHSCROLL
+    CONTROL         "use Res.",IDC_USE_RES,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,153,162,118,10
+    CONTROL         "show channel",IDC_SHOW_CHANNEL,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,14,43,120,10
+    CONTROL         "invert channel",IDC_INVERT,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,14,56,120,10
+    LTEXT           "Resolution",IDC_TXT_RESOLUTION,144,43,120,8
+    EDITTEXT        IDC_RES,151,54,54,14,ES_AUTOHSCROLL
+    LTEXT           "mm/uV",IDC_RES_UNIT,209,57,55,8
+END
+
+IDD_GENERAL_OPT_DLG DIALOG DISCARDABLE  0, 0, 249, 102
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Set General Draw-Options"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,154,81,50,14
+    PUSHBUTTON      "Abbrechen",IDCANCEL,45,81,50,14
+    CONTROL         "show statusline",IDC_SHOW_STATUS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,7,102,10
+    CONTROL         "show channel info",IDC_SHOW_CH_INFO,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,20,104,10
+    CONTROL         "show grid",IDC_SHOW_GRID,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,33,103,10
+    CONTROL         "use fixed channel-height",IDC_USE_FIX_CH_HEIGHT,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,130,7,112,10
+    LTEXT           "channel-height [pixel]",IDC_CH_HEIGHT_TEXT,140,20,102,8
+    EDITTEXT        IDC_CH_HEIGHT,139,31,103,14,ES_AUTOHSCROLL
+    LTEXT           """speed"" [mm/sec]",IDC_TXT_SPEED,7,49,95,8
+    EDITTEXT        IDC_SPEED,7,60,101,14,ES_AUTOHSCROLL
+END
+
+#endif    // Deutsch (Deutschland) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

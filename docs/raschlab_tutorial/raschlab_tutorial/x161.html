@@ -1,0 +1,240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Selections</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="Tutorial for RASCHlab-0.2.4"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Navigation"
+HREF="navigation.html"><LINK
+REL="PREVIOUS"
+TITLE="Navigation"
+HREF="navigation.html"><LINK
+REL="NEXT"
+TITLE="Inter Plugin Communication"
+HREF="x188.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="SECTION"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Tutorial for RASCHlab-0.2.4</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="navigation.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 6. Navigation</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x188.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="AEN161"
+>Selections</A
+></H1
+><P
+>In the signal-view-plugins, libRASCH supports the concept of
+selections. Selections are a subset of events which have one common
+property. For example you can select all heart beats which belongs
+to the same template (i.e. all heart beats with similar morphology)
+or you can select all ventricular beats. </P
+><P
+>In these selctions, you can step back and forth with the following keys:
+<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>'space bar': go to the next item in the selection</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>'b': go to the previous item in the selection</P
+></LI
+></UL
+>
+When a selection is "active", then the number of selected events and
+the current position in the selection is shown in the signal view in
+the lower right corner. The figure "12/456" means that you are
+currently at the 12th event from 456 selected events. For example the
+numbers inside the red circle in <A
+HREF="x188.html#RASCHLAB-SEL-TEMPLATE-FIG"
+>Figure 6-5</A
+>.</P
+><P
+>Selections are implemented in the signal-specific view
+plugins. Therefore the type of selections will differ from signal to
+signal but the concept will be always the same independent of the
+signal type. (Because at the moment there are not so much signal
+specific view plugins, the examples shown here are all for ECG's.)</P
+><P
+><A
+HREF="x161.html#RASCHLAB-CONTEXT-MENU-FIG"
+>Figure 6-2</A
+> shows the context menu which
+pops up when pressing the right mouse button inside an ecg view. The
+main context menu has three entries: (1) General Options, (2) Channel
+Options and (3) ecg. The first two entries are available in all
+view-plugins and will be described in <A
+HREF="settings.html"
+>Chapter 8</A
+>. The
+third entry (ecg) is only available in ecg views. The ecg entry has
+two sub entries: (1) sort and (2) templates. <A
+HREF="x161.html#RASCHLAB-CONTEXT-MENU-FIG"
+>Figure 6-2</A
+> shows the sub menu of the sort entry
+and <A
+HREF="x161.html#RASCHLAB-CONTEXT-MENU-2-FIG"
+>Figure 6-3</A
+> shows the sub menu of the
+template entry.</P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="RASCHLAB-CONTEXT-MENU-FIG"
+></A
+><P
+><B
+>Figure 6-2. Context menu for the selection of beat types (e.g. normal beats,
+ventricular beats).</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/raschlab_context_menu_2.png"></P
+></DIV
+></DIV
+><DIV
+CLASS="FIGURE"
+><A
+NAME="RASCHLAB-CONTEXT-MENU-2-FIG"
+></A
+><P
+><B
+>Figure 6-3. Context menu for the selection of beats belonging to a specific template.</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/raschlab_context_menu1_2.png"></P
+></DIV
+></DIV
+><P
+>When you are interested in specific beat types (e.g. all ventricular
+beats or all artifacts) then you have to choose the wanted beat type
+from the sort menu. If you are interested in a specific template, then
+you have to choose the template from the template menu. After the
+selection of the selection criteria, the first beat in the selection
+is shown in the signal window. The selection is sorted chronological.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="navigation.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x188.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Navigation</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="navigation.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Inter Plugin Communication</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

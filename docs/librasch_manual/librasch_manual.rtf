@@ -1,0 +1,2855 @@
+{\rtf1\ansi\deff0
+{\fonttbl{\f2\fnil\fcharset0 Courier New;}
+{\f1\fnil\fcharset0 Arial;}
+{\f0\fnil\fcharset0 Times New Roman;}
+{\f3\fnil\fcharset2 Wingdings;}
+}
+{\colortbl;}{\stylesheet{\s0 "Normal;}{\s1 Heading 1;}{\s2 Heading 2;}{\s3 Heading 3;}{\s4 Heading 4;}{\s5 Heading 5;}{\s6 Heading 6;}{\s7 Heading 7;}{\s8 Heading 8;}{\s9 Heading 9;}}
+\deflang1024\notabind\facingp\hyphauto1\widowctrl
+\sectd\plain\pgwsxn12240\pghsxn15840\marglsxn1440\margrsxn1440\margtsxn1440\margbsxn1920\headery0\footery0\pgndec{\headerl\pard\sl-240\sb770\sa430\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {}\par}{\footerl\pard\sl-240\sb770\sa910\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {}\par}{\headerr\pard\sl-240\sb770\sa430\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {}\par}{\footerr\pard\sl-240\sb770\sa910\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {}\par}\pard\sl20 \fs20 \hyphpar0\par\pard\sb373\s1\sl647\qc \b\fs49\f1 User Manual for libRASCH-0.8.29\keepn\hyphpar0\par\pard\sl260 \b0\fs20\f0 \~\hyphpar0\par\pard\sb796\sl449\qc \b\fs34\f1 Raphael Schneider\hyphpar0\par\page\pard\sl20 \b0\fs20\f0 \hyphpar0\par\pard\sl-240 \b\f1 User Manual for libRASCH-0.8.29\hyphpar0\par\pard\sl260 \b0\f0 by\~Raphael Schneider\hyphpar0\par\pard\sb260\sl260 libRASCH User Manual Version 0.1\~Edition \hyphpar0\par\pard\sl260 Published 2006\hyphpar0\par\pard\sl260 Copyright\~\'a9\~2004-2006 Raphael Schneider\hyphpar0\par\sect\sectd\plain\pgwsxn12240\pghsxn15840\marglsxn1440\margrsxn1440\margtsxn1440\margbsxn1920\headery0\footery0\pgnlcrm{\headerl\pard\sl-240\sb770\sa430\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {}\par}{\footerl\pard\sl-240\sb770\sa910\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 \chpgn }\par}{\headerr\pard\sl-240\sb770\sa430\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {}\par}{\footerr\pard\sl-240\sb770\sa910\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 \chpgn }\par}\pard\sb311\s1\sl539 \b\fs41\f1 Table of Contents\keepn\hyphpar0\par\pard\sb83\li1440\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _11 }{\fldrslt \fs20\f0 Forword}}\fs20\f0 \tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _11 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _11}{\fldrslt 000}}}}\keepn\hyphpar0\par\pard\sb48\li1440\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l ID_INTRODUCTION}{\fldrslt 1. Introduction}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l ID_INTRODUCTION}{\fldrslt {\field\flddirty{\*\fldinst PAGEREF ID_INTRODUCTION}{\fldrslt 000}}}}\keepn\hyphpar0\par\pard\sb48\li1920\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l ID_INTRO_45_CHAPTER_45_DESC}{\fldrslt \b0 1.1. Overview of the next chapters}}\b0 \tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l ID_INTRO_45_CHAPTER_45_DESC}{\fldrslt {\field\flddirty{\*\fldinst PAGEREF ID_INTRO_45_CHAPTER_45_DESC}{\fldrslt 000}}}}\hyphpar0\par\pard\sb48\li1440\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l ID_CONCEPT_45_TERMINOLOGY}{\fldrslt \b 2. Concepts and Terminology}}\b \tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l ID_CONCEPT_45_TERMINOLOGY}{\fldrslt {\field\flddirty{\*\fldinst PAGEREF ID_CONCEPT_45_TERMINOLOGY}{\fldrslt 000}}}}\keepn\hyphpar0\par\pard\sb48\li1920\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l ID_GENERAL_45_LIBRASCH_45_STRUCT}{\fldrslt \b0 2.1. General Structure of libRASCH}}\b0 \tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l ID_GENERAL_45_LIBRASCH_45_STRUCT}{\fldrslt {\field\flddirty{\*\fldinst PAGEREF ID_GENERAL_45_LIBRASCH_45_STRUCT}{\fldrslt 000}}}}\hyphpar0\par\pard\li1920\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l ID_TERMINOLOGY}{\fldrslt 2.2. Terminology}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l ID_TERMINOLOGY}{\fldrslt {\field\flddirty{\*\fldinst PAGEREF ID_TERMINOLOGY}{\fldrslt 000}}}}\hyphpar0\par\pard\sb48\li1440\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l ID_TUTORIAL}{\fldrslt \b 3. A Tutorial}}\b \tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l ID_TUTORIAL}{\fldrslt {\field\flddirty{\*\fldinst PAGEREF ID_TUTORIAL}{\fldrslt 000}}}}\keepn\hyphpar0\par\pard\sb48\li1920\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l ID_TUT_45_INIT_45_LIB}{\fldrslt \b0 3.1. Initialize libRASCH and Basic Usage}}\b0 \tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l ID_TUT_45_INIT_45_LIB}{\fldrslt {\field\flddirty{\*\fldinst PAGEREF ID_TUT_45_INIT_45_LIB}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l ID_INIT_45_LIB_45_C}{\fldrslt 3.1.1. C Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l ID_INIT_45_LIB_45_C}{\fldrslt {\field\flddirty{\*\fldinst PAGEREF ID_INIT_45_LIB_45_C}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l ID_INIT_45_LIB_45_PL}{\fldrslt 3.1.2. Perl Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l ID_INIT_45_LIB_45_PL}{\fldrslt {\field\flddirty{\*\fldinst PAGEREF ID_INIT_45_LIB_45_PL}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l ID_INIT_45_LIB_45_PY}{\fldrslt 3.1.3. Python Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l ID_INIT_45_LIB_45_PY}{\fldrslt {\field\flddirty{\*\fldinst PAGEREF ID_INIT_45_LIB_45_PY}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l ID_INIT_45_LIB_45_MAT}{\fldrslt 3.1.4. Matlab/Octave Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l ID_INIT_45_LIB_45_MAT}{\fldrslt {\field\flddirty{\*\fldinst PAGEREF ID_INIT_45_LIB_45_MAT}{\fldrslt 000}}}}\hyphpar0\par\pard\li1920\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l ID_TUT_45_OPEN_45_MEAS}{\fldrslt 3.2. Access Measurements}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l ID_TUT_45_OPEN_45_MEAS}{\fldrslt {\field\flddirty{\*\fldinst PAGEREF ID_TUT_45_OPEN_45_MEAS}{\fldrslt 000}}}}\hyphpar0\par\pard\li1920\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l ID_TUT_45_HANDLE_45_RECS}{\fldrslt 3.3. Access Recordings}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l ID_TUT_45_HANDLE_45_RECS}{\fldrslt {\field\flddirty{\*\fldinst PAGEREF ID_TUT_45_HANDLE_45_RECS}{\fldrslt 000}}}}\hyphpar0\par\pard\li1920\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l ID_TUT_45_GET_45_RAW}{\fldrslt 3.4. Get Sample Data}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l ID_TUT_45_GET_45_RAW}{\fldrslt {\field\flddirty{\*\fldinst PAGEREF ID_TUT_45_GET_45_RAW}{\fldrslt 000}}}}\hyphpar0\par\pard\li1920\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l ID_TUT_45_HANDLE_45_EVAL}{\fldrslt 3.5. Access Evaluations}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l ID_TUT_45_HANDLE_45_EVAL}{\fldrslt {\field\flddirty{\*\fldinst PAGEREF ID_TUT_45_HANDLE_45_EVAL}{\fldrslt 000}}}}\hyphpar0\par\pard\li1920\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l ID_TUT_45_GET_45_EVENTS}{\fldrslt 3.6. Get Events}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l ID_TUT_45_GET_45_EVENTS}{\fldrslt {\field\flddirty{\*\fldinst PAGEREF ID_TUT_45_GET_45_EVENTS}{\fldrslt 000}}}}\hyphpar0\par\pard\li1920\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l ID_TUT_45_PROCESS}{\fldrslt 3.7. Usage of process-plugins}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l ID_TUT_45_PROCESS}{\fldrslt {\field\flddirty{\*\fldinst PAGEREF ID_TUT_45_PROCESS}{\fldrslt 000}}}}\hyphpar0\par\pard\sb48\li1440\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l ID_ALL_45_EXAMPLES}{\fldrslt \b A. Examples for all supported lanuages/systems}}\b \tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l ID_ALL_45_EXAMPLES}{\fldrslt {\field\flddirty{\*\fldinst PAGEREF ID_ALL_45_EXAMPLES}{\fldrslt 000}}}}\keepn\hyphpar0\par\pard\sb48\li1920\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _420 }{\fldrslt \b0 A.1. Init libRASCH}}\b0 \tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _420 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _420}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _422 }{\fldrslt A.1.1. C Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _422 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _422}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _428 }{\fldrslt A.1.2. Perl Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _428 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _428}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _434 }{\fldrslt A.1.3. Python Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _434 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _434}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _440 }{\fldrslt A.1.4. Matlab/Octave Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _440 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _440}{\fldrslt 000}}}}\hyphpar0\par\pard\li1920\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _444 }{\fldrslt A.2. Open measurement}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _444 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _444}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _446 }{\fldrslt A.2.1. C Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _446 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _446}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _452 }{\fldrslt A.2.2. Perl Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _452 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _452}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _458 }{\fldrslt A.2.3. Python Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _458 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _458}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _464 }{\fldrslt A.2.4. Matlab/Octave Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _464 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _464}{\fldrslt 000}}}}\hyphpar0\par\pard\li1920\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _468 }{\fldrslt A.3. Handle recordings}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _468 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _468}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _470 }{\fldrslt A.3.1. C Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _470 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _470}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _476 }{\fldrslt A.3.2. Perl Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _476 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _476}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _482 }{\fldrslt A.3.3. Python Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _482 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _482}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _488 }{\fldrslt A.3.4. Matlab/Octave Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _488 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _488}{\fldrslt 000}}}}\hyphpar0\par\pard\li1920\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _492 }{\fldrslt A.4. Access raw data}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _492 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _492}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _494 }{\fldrslt A.4.1. C Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _494 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _494}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _498 }{\fldrslt A.4.2. Perl Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _498 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _498}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _502 }{\fldrslt A.4.3. Python Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _502 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _502}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _506 }{\fldrslt A.4.4. Matlab/Octave Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _506 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _506}{\fldrslt 000}}}}\hyphpar0\par\pard\li1920\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _510 }{\fldrslt A.5. Access evaluation}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _510 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _510}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _512 }{\fldrslt A.5.1. C Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _512 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _512}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _518 }{\fldrslt A.5.2. Perl Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _518 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _518}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _524 }{\fldrslt A.5.3. Python Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _524 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _524}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _530 }{\fldrslt A.5.4. Matlab/Octave Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _530 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _530}{\fldrslt 000}}}}\hyphpar0\par\pard\li1920\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _534 }{\fldrslt A.6. Access events}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _534 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _534}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _536 }{\fldrslt A.6.1. C Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _536 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _536}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _540 }{\fldrslt A.6.2. Perl Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _540 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _540}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _544 }{\fldrslt A.6.3. Python Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _544 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _544}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _548 }{\fldrslt A.6.4. Matlab/Octave Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _548 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _548}{\fldrslt 000}}}}\hyphpar0\par\pard\li1920\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _552 }{\fldrslt A.7. Use process-plugin}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _552 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _552}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _554 }{\fldrslt A.7.1. C Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _554 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _554}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _560 }{\fldrslt A.7.2. Perl Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _560 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _560}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _566 }{\fldrslt A.7.3. Python Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _566 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _566}{\fldrslt 000}}}}\hyphpar0\par\pard\li2400\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l _572 }{\fldrslt A.7.4. Matlab/Octave Version}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l _572 }{\fldrslt {\field\flddirty{\*\fldinst PAGEREF _572}{\fldrslt 000}}}}\hyphpar0\par\sect\sectd\plain\pgwsxn12240\pghsxn15840\marglsxn1440\margrsxn1440\margtsxn1440\margbsxn1920\headery0\footery0\pgnlcrm{\headerl\pard\sl-240\sb770\sa430\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {}\par}{\footerl\pard\sl-240\sb770\sa910\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 \chpgn }\par}{\headerr\pard\sl-240\sb770\sa430\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {}\par}{\footerr\pard\sl-240\sb770\sa910\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 \chpgn }\par}\pard\sb311\s1\sl539 \b\fs41\f1 List of Figures\keepn\hyphpar0\par\pard\sb83\li1440\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l ID_LIBRASCH_45_STRUCT_45_FIG}{\fldrslt \b0\fs20\f0 2-1. Structure of libRASCH.}}\b0\fs20\f0 \tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l ID_LIBRASCH_45_STRUCT_45_FIG}{\fldrslt {\field\flddirty{\*\fldinst PAGEREF ID_LIBRASCH_45_STRUCT_45_FIG}{\fldrslt 000}}}}\hyphpar0\par\pard\li1440\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l ID_GET_45_RAW_45_FIG}{\fldrslt 3-1. Screenshot after performing the commands in Octave as shown in the Octave session above (and on the left side in the screenshot).}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l ID_GET_45_RAW_45_FIG}{\fldrslt {\field\flddirty{\*\fldinst PAGEREF ID_GET_45_RAW_45_FIG}{\fldrslt 000}}}}\hyphpar0\par\pard\li1440\sl260\fi-480 {\field{\*\fldinst   HYPERLINK  \\l ID_GET_45_EVENTS_45_FIG}{\fldrslt 3-2. Screenshot after performing the commands in Octave as shown in the Octave session above (and on the left side in the screenshot).}}\tqr\tldot\tx9360\tab {\field{\*\fldinst   HYPERLINK  \\l ID_GET_45_EVENTS_45_FIG}{\fldrslt {\field\flddirty{\*\fldinst PAGEREF ID_GET_45_EVENTS_45_FIG}{\fldrslt 000}}}}\hyphpar0\par\sect\sectd\plain\pgwsxn12240\pghsxn15840\marglsxn1440\margrsxn1440\margtsxn1440\margbsxn1920\headery0\footery0\pgnlcrm\titlepg{\headerf\pard\sl-240\sb770\sa430\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {}\par}{\footerf\pard\sl-240\sb770\sa910\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 \chpgn }\par}{\headerl\pard\sl-240\sb770\sa430\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 Forword}\par}{\footerl\pard\sl-240\sb770\sa910\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 \chpgn }\par}{\headerr\pard\sl-240\sb770\sa430\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 Forword}\par}{\footerr\pard\sl-240\sb770\sa910\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 \chpgn }\par}\pard\sb311\s1\sl539 {\*\bkmkstart _11}{\*\bkmkend _11}\b\fs41\f1 Forword\keepn\hyphpar0\par\pard\sb400\li960\sl260 \b0\fs20\lang1033\f0 Nothing yet.\hyphpar0\par\sect\sectd\plain\pgwsxn12240\pghsxn15840\marglsxn1440\margrsxn1440\margtsxn1440\margbsxn1920\headery0\footery0\pgndec\pgnrestart\titlepg{\headerf\pard\sl-240\sb770\sa430\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {}\par}{\footerf\pard\sl-240\sb770\sa910\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 \chpgn }\par}{\headerl\pard\sl-240\sb770\sa430\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 Chapter 1. Introduction}\par}{\footerl\pard\sl-240\sb770\sa910\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 \chpgn }\par}{\headerr\pard\sl-240\sb770\sa430\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 Chapter 1. Introduction}\par}{\footerr\pard\sl-240\sb770\sa910\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 \chpgn }\par}\pard\sb311\s1\sl539 {\*\bkmkstart ID_INTRODUCTION}{\*\bkmkend ID_INTRODUCTION}\b\fs41\f1 Chapter 1. Introduction\keepn\hyphpar0\par\pard\sb400\li960\sl260 \b0\fs20\lang1033\f0 When analyzing biological signals, access to the raw data is mandatory. Because of different demands, both, the industry and the research community created a high number of different data formats for signal storage and signal distribution. To analyze data stored in a new data format, either a conversion program has to be written or the access functionality for the new data format has to be added to the analyzing program(s).\hyphpar0\par\pard\sb400\li960\sl260 One way to solve this problem is the use of a standard file format, which is powerful enough to handle all needs for storing and distributing signals. For physiological signals, the 'File Exchange Format for Vital Signs' (FEF) tries to accomplish this task. If this format (or a similar one) is accepted by the research community and if the industry provides the possibility to export the signal data in this format, the data access will be facilitated.\hyphpar0\par\pard\sb400\li960\sl260 Our approach, moreover, is different. We assume that there will be always different data formats (some 'standard' formats and a lot of proprietary formats). Therefore libRASCH, a programming library, was developed, which hides the differences of the data formats behind a common application programming interface (API).\hyphpar0\par\pard\sb400\li960\sl260 Programs using libRASCH, no longer need to be adapted to each new data format. The implementation of a new data format needs only to be done once for libRASCH. Than all libRASCH based programs can handle the new format. \hyphpar0\par\pard\sb400\li960\sl260 Additionally, libRASCH provides the infrastructure to perform processing algorithms in a standardized way and provide support to display the signal data on the computer screen. \hyphpar0\par\pard\sb259\s2\sl449 {\*\bkmkstart ID_INTRO_45_CHAPTER_45_DESC}{\*\bkmkend ID_INTRO_45_CHAPTER_45_DESC}\b\fs34\lang1024\f1 1.1. Overview of the next chapters\keepn\hyphpar0\par\pard\sb400\li960\sl260 \b0\fs20\lang1033\f0 concept/terminology: describes how a measurement is seen in libRASCH and describes the words used in libRASCH\hyphpar0\par\pard\sb400\li960\sl260 installation: more or less the INSTALL file (use one source for both files)\hyphpar0\par\pard\sb400\li960\sl260 tutorial: short examples describing the primary functions of libRASCH\hyphpar0\par\sect\sectd\plain\pgwsxn12240\pghsxn15840\marglsxn1440\margrsxn1440\margtsxn1440\margbsxn1920\headery0\footery0\pgndec\titlepg{\headerf\pard\sl-240\sb770\sa430\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {}\par}{\footerf\pard\sl-240\sb770\sa910\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 \chpgn }\par}{\headerl\pard\sl-240\sb770\sa430\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 Chapter 2. Concepts and Terminology}\par}{\footerl\pard\sl-240\sb770\sa910\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 \chpgn }\par}{\headerr\pard\sl-240\sb770\sa430\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 Chapter 2. Concepts and Terminology}\par}{\footerr\pard\sl-240\sb770\sa910\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 \chpgn }\par}\pard\sb311\s1\sl539 {\*\bkmkstart ID_CONCEPT_45_TERMINOLOGY}{\*\bkmkend ID_CONCEPT_45_TERMINOLOGY}\b\fs41\f1 Chapter 2. Concepts and Terminology\keepn\hyphpar0\par\pard\sb400\li960\sl260 \b0\fs20\lang1033\f0 This section gives a short overview about the concepts and terminology used in the manual.\hyphpar0\par\pard\sb400\s2\sl449 {\*\bkmkstart ID_GENERAL_45_LIBRASCH_45_STRUCT}{\*\bkmkend ID_GENERAL_45_LIBRASCH_45_STRUCT}\b\fs34\lang1024\f1 2.1. General Structure of libRASCH\keepn\hyphpar0\par\pard\sb400\li960\sl260 {\field{\*\fldinst   HYPERLINK  \\l ID_LIBRASCH_45_STRUCT_45_FIG}{\fldrslt \b0\fs20\lang1033\f0 Figure 2-1}}\b0\fs20\lang1033\f0  shows the operational area of libRASCH. Programs from User-space will call libRASCH to access measurements stored in files, to display signals on the screen and to process the signal. In the following "User-space" means all programs, which use the external interface of libRASCH (the API of libRASCH). Also programs like Matlab or Octave, for which an interface is available, are user-space programs (and the scripts used in this programs). "Library-space" describes the internal interfaces used in libRASCH. And "Filesystem" describes the real files used to store the measurement data on disk.\hyphpar0\par\pard\sb200\li960\sl260 {\*\bkmkstart ID_LIBRASCH_45_STRUCT_45_FIG}{\*\bkmkend ID_LIBRASCH_45_STRUCT_45_FIG}\b\lang1024 Figure 2-1. Structure of libRASCH.\keepn\hyphpar0\par\pard\sb259\s2\sl449 {\*\bkmkstart ID_TERMINOLOGY}{\*\bkmkend ID_TERMINOLOGY}\fs34\f1 2.2. Terminology\keepn\hyphpar0\par\pard\sb200\li960\sl260 \b0\fs20\f0 Measurement\keepn\hyphpar0\par\pard\sb100\li1360\sl260\fi-400 \tx1360 \~\tab A measurement is the topmost object in libRASCH. Measurements consists of one or more sessions, information about the measurement object (e.g. name, forename and birthday if the measurement object is a person) and zero or more evaluations.\hyphpar0\par\pard\sb200\li960\sl260 Session\keepn\hyphpar0\par\pard\sb100\li1360\sl260\fi-400 \tx1360 \~\tab A Session is a recording for a specific time interval without any interruptions during this time interval. In a measurement can be more than one session, but the layout of the recording (see below) must not be changed.\hyphpar0\par\pard\sb200\li960\sl260 Recording\keepn\hyphpar0\par\pard\sb100\li1360\sl260\fi-400 \tx1360 \~\tab A recording contains the measured data (e.g. ecg-leads V1-V6). A recording has one or more channels or two or more sub-recordings. Sub-recordings are used if more than one recording device is used. For example when one ADC-system records 3 ecg-leads and one bloodpressure channel and another system records 12 eeg-leeds, the measurement consists of one top recording with two sub-recordings. The first sub-recording contains 4 channels (3 ecg and 1 bloodpressure channel) and the second sub-recording contains 12 channels (12 eeg channels).\hyphpar0\par\pard\sb200\li960\sl260 Evaluation\keepn\hyphpar0\par\pard\sb100\li1360\sl260\fi-400 \tx1360 \~\tab The results of an analysis (e.g. detection of qrs-complexes in ecg's) are stored in an evaluation. An evaluation contains zero or more discrete events (like 'occurence of a qrs-complex') and/or zero or more continous events (like 'time interval with noise').\hyphpar0\par\pard\sb200\li960\sl260 Event\keepn\hyphpar0\par\pard\sb100\li1360\sl260\fi-400 \tx1360 \~\tab An event describes the occurence of something in a recording (e.g. a heartbeat in an ecg). An event has one or more event-properties.\hyphpar0\par\pard\sb200\li960\sl260 Event-Property\keepn\hyphpar0\par\pard\sb100\li1360\sl260\fi-400 \tx1360 \~\tab An event-property is a specific property of the event (e.g. the position of the event, the type of the event). A specific event-property is allowed only once in an evaluation, for example there can be not more than one 'qrs-position' property.\hyphpar0\par\pard\sb200\li960\sl260 Event-Set\keepn\hyphpar0\par\pard\sb100\li1360\sl260\fi-400 \tx1360 \~\tab An event-set describes a group of event-properties. For example the event-set 'heartbeat' contains all properties which belongs to a heart beat (like position of qrs-complex, RR interval, type of qrs-complex, systolic bloodpressure).\hyphpar0\par\pard\sb200\li960\sl260 Plugins\keepn\hyphpar0\par\pard\sb100\li1360\sl260\fi-400 \tx1360 \~\tab libRASCH makes heavy use of plugins. Plugins are small "programs" which are loaded when libRASCH is initialized. In the plugins the real work is done, the library-code coordinates that the correct plugin is used and does some other administrative tasks. In libRASCH exits three principal types of plugins: \hyphpar0\par\pard\sb100\li1560\sl260\fi-200 \tx1560 \fs16 \'95\tab \fs20 signal plugins\hyphpar0\par\pard\sb100\li1560\sl260\fi-200 \tx1560 \fs16 \'95\tab \fs20 view plugins\hyphpar0\par\pard\sb100\li1560\sl260\fi-200 \tx1560 \fs16 \'95\tab \fs20 process plugins\hyphpar0\par\pard\sb200\li960\sl260 Access-Plugin\keepn\hyphpar0\par\pard\sb100\li1360\sl260\fi-400 \tx1360 \~\tab Access plugins handle the access to measurement files. They hide the differences of the various types of formats and offer an consistent interface to the measurements\up8\fs12 1\up0\fs20 . Most of the times, the direct usage of access-plugins with the libRASCH-API is not needed.\hyphpar0\par\pard\sb200\li960\sl260 Process-Plugin\keepn\hyphpar0\par\pard\sb100\li1360\sl260\fi-400 \tx1360 \~\tab Process plugins perform a specifc task on the measurement (e.g. the HRT-plugin calculates the Heart-Rate Turbulence parameters for an ecg or the detect plugin performs a simple beat detection in ecg's). The usage of these plugins\hyphpar0\par\pard\sb200\li960\sl260 View-Plugin\keepn\hyphpar0\par\pard\sb100\li1360\sl260\fi-400 \tx1360 \~\tab View plugins allow to display the measurements on the screen. If you develop a program using a graphical user interface (GUI) all you need to display signals is to call the apropriate plugin. At the moment the following GUI's are supported: \hyphpar0\par\pard\sb100\li1560\sl260\fi-200 \tx1560 \fs16 \'95\tab \fs20 Qt from Trolltech (for Linux)\hyphpar0\par\pard\sb100\li1560\sl260\fi-200 \tx1560 \fs16 \'95\tab \fs20 MFC from Microsoft (for Windows)\hyphpar0\par\pard\sb259\sl449 \b\fs34\f1 Notes\keepn\hyphpar0\par\pard\sb100\li1280\sl260\fi-320 \tx1280 \b0\fs20\f0 1. \tab The signal plugins can be compared with device drivers in operating systems.\hyphpar0\par\sect\sectd\plain\pgwsxn12240\pghsxn15840\marglsxn1440\margrsxn1440\margtsxn1440\margbsxn1920\headery0\footery0\pgndec\titlepg{\headerf\pard\sl-240\sb770\sa430\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {}\par}{\footerf\pard\sl-240\sb770\sa910\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 \chpgn }\par}{\headerl\pard\sl-240\sb770\sa430\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 Chapter 3. A Tutorial}\par}{\footerl\pard\sl-240\sb770\sa910\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 \chpgn }\par}{\headerr\pard\sl-240\sb770\sa430\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 Chapter 3. A Tutorial}\par}{\footerr\pard\sl-240\sb770\sa910\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 \chpgn }\par}\pard\sb311\s1\sl539 {\*\bkmkstart ID_TUTORIAL}{\*\bkmkend ID_TUTORIAL}\b\fs41\f1 Chapter 3. A Tutorial\keepn\hyphpar0\par\pard\sb400\li960\sl260 \b0\fs20\lang1033\f0 The handling of evaluations will be changed in the next version of libRASCH. Because we are working already on it, the sections about evaluations, event-sets and event-propertiey may not work with the current version (0.7.0). If you have any questions about the changes, please send them to the mailing list.\hyphpar0\par\pard\sb259\s2\sl449 {\*\bkmkstart ID_TUT_45_INIT_45_LIB}{\*\bkmkend ID_TUT_45_INIT_45_LIB}\b\fs34\lang1024\f1 3.1. Initialize libRASCH and Basic Usage\keepn\hyphpar0\par\pard\sb400\li960\sl260 \b0\fs20\lang1033\f0 This section will show you how to start using libRASCH. We will initialize the library and get some information about it.\hyphpar0\par\pard\sb400\li960\sl260 So let's start with the first example. We will perform the following steps: \hyphpar0\par\pard\sb100\li1160\sl260\fi-200 \tx1160 \fs16 \'95\tab \fs20 init libRASCH\hyphpar0\par\pard\sb100\li1160\sl260\fi-200 \tx1160 \fs16 \'95\tab \fs20 get number of plugins\hyphpar0\par\pard\sb100\li1160\sl260\fi-200 \tx1160 \fs16 \'95\tab \fs20 find all measurements in a directory\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart ID_INIT_45_LIB_45_C}{\*\bkmkend ID_INIT_45_LIB_45_C}\b\fs28\lang1024\f1 3.1.1. C Version\keepn\hyphpar0\par\pard\sb200\li960\sl234 \b0\fs18\f2 //\sa0\par\fi0\sb0
+#include <stdio.h>\sa0\par\fi0\sb0
+#include <ra.h>\~{\f3\'8c}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+int main(int argc, char *argv[])\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    ra_handle ra;\sa0\par\fi0\sb0
+    value_handle vh;\sa0\par\fi0\sb0
+    ra_find_handle f;\sa0\par\fi0\sb0
+    struct ra_find_struct fs;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* initialize libRASCH */\sa0\par\fi0\sb0
+    ra = ra_lib_init();\~{\f3\'8d}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* check if init was successful */\sa0\par\fi0\sb0
+    if ((ra == NULL)\sa0\par\fi0\sb0
+        || (ra_lib_get_error(ra, NULL, 0) != RA_ERR_NONE))\~{\f3\'8e}\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        if (!ra)\sa0\par\fi0\sb0
+            printf("error initializing libRASCH\\n");\sa0\par\fi0\sb0
+        else\sa0\par\fi0\sb0
+        \{\sa0\par\fi0\sb0
+            char err_t[200];\sa0\par\fi0\sb0
+            long err_num;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+            err_num = ra_lib_get_error(ra, err_t, 200);\sa0\par\fi0\sb0
+            printf("while initializing libRASCH, error #%d "\sa0\par\fi0\sb0
+                   "occured\\n  %s\\n", err_num, err_t);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+            ra_lib_close(ra);\sa0\par\fi0\sb0
+        \}\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* get some infos */\sa0\par\fi0\sb0
+    vh = ra_value_malloc();\~{\f3\'8f}\sa0\par\fi0\sb0
+    if (ra_info_get(ra, RA_INFO_NUM_PLUGINS_L, vh) == 0)\~{\f3\'90}\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("%s (%s): %d\\n", ra_value_get_name(vh),\sa0\par\fi0\sb0
+               ra_value_get_desc(vh), ra_value_get_long(vh));\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+    ra_value_free(vh);\~{\f3\'91}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* find all measurements in a directory */\sa0\par\fi0\sb0
+    f = ra_meas_find_first(ra, argv[1], &fs);\~{\f3\'92}\sa0\par\fi0\sb0
+    if (f)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        int cnt = 1;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        printf("measurements found in %s:\\n", argv[1]);\sa0\par\fi0\sb0
+        do\sa0\par\fi0\sb0
+        \{\sa0\par\fi0\sb0
+            printf("  %2d: %s\\n", cnt, fs.name);\sa0\par\fi0\sb0
+            cnt++;\sa0\par\fi0\sb0
+        \}\sa0\par\fi0\sb0
+        while (ra_meas_find_next(f, &fs));\~{\f3\'93}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        ra_meas_close_find(f);\~{\f3\'94}\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* close libRASCH */\sa0\par\fi0\sb0
+    ra_lib_close(ra);\~\b (10)\b0 \sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    return 0;\sa0\par\fi0\sb0
+\}                               /* main() */\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+//\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 \fs20\f0 {\f3\'8c}\tab To use libRASCH, the header-file ra.h must be included. In this example the include-directory of libRASCH is in the INCLUDE path of the C compiler. In ra.h you will find all function prototypes of the API of libRASCH. ra.h includes the header-file ra_defines.h, there you will find all define's and structure's needed for the libRASCH API.\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'8d}\tab ra_lib_init() initialize libRASCH. The function returns an ra_handle. \hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'8e}\tab ra_lib_get_error() returns the last error occured in libRASCH. To check if the initialization was successful, check that no error occured. If an error occured, a short description of the error can be retrieved with the function ra_lib_get_error().\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'8f}\tab ra_value_malloc() returns an value object. This object will be used in libRASCH to handle data. To set/get the data and to get informations about the stored data, API functions in libRASCH are available. The functions start with 'ra_value_*'.\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'90}\tab ra_info_get() returns information about libRASCH and all objects handled by libRASCH. RA_INFO_NUM_PLUGINS_L asks libRASCH for the the number of loaded plugins. The last character of the info-id ('L') indicates that the returned value will be a long-value. Therefore the number of plugins will be returned by using the function ra_value_get_long(). (See the descriptions of the ra_value_* functions in the reference manual what else can be done with an value object.)\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'91}\tab ra_value_free() frees the memory associated with the value object allocated above.\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'92}\tab ra_meas_find_first() returns a valid handle (not NULL) if at least one supported measurement (this means that at least one measurement in the directory can be handled with one of the loaded access-plugins). The information about the found measurement will be set in the ra_find_struct (for definition of structure see ra_defines.h).\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'93}\tab ra_meas_find_next() returns true (!= 0) if another measurement is available. Again, the info about the measurement will be in the ra_find_struct. This function iterates over all found measurements.\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'94}\tab ra_meas_close_find() frees all memory allocated during ra_meas_find_first() and ra_meas_find_next().\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 \b (10)\tab \b0 ra_lib_close() unloads all plugins and frees all allocated memory.\hyphpar0\par\pard\sb400\li960\sl260 \lang1033 Running the example in the examples directory with the command \b init_lib ./database\b0  produced the following output.\hyphpar0\par\pard\sb200\li960\sl234 \fs18\lang1024\f2 #plugins (): 37\sa0\par\fi0\sb0
+measurements found in ./database:\sa0\par\fi0\sb0
+   1: ./database/100s.hea\sa0\par\fi0\sb0
+   2: ./database/JesusOlivan2003-12-EMG2.edf\sa0\par\fi0\sb0
+   3: ./database/100s.dat\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart ID_INIT_45_LIB_45_PL}{\*\bkmkend ID_INIT_45_LIB_45_PL}\b\fs28\f1 3.1.2. Perl Version\keepn\hyphpar0\par\pard\sb400\li960\sl260 \b0\fs20\lang1033\f0 The Perl script shown below produces exactly the same output as the C version, therefore the output is not shown.\hyphpar0\par\pard\sb200\li960\sl234 \fs18\lang1024\f2 #\sa0\par\fi0\sb0
+use strict;\sa0\par\fi0\sb0
+use RASCH;\~{\f3\'8c}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# initialize libRASCH\sa0\par\fi0\sb0
+my $ra = new RASCH or die "error initializing libRASCH\\n";\~{\f3\'8d}\sa0\par\fi0\sb0
+my ($err_num, $err_text) = $ra->get_error ();\sa0\par\fi0\sb0
+if ($err_num != 1)\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    print "while initializing libRASCH, error # $err_num " .\sa0\par\fi0\sb0
+        "occured:\\n $err_text\\n";\sa0\par\fi0\sb0
+    exit -1;\sa0\par\fi0\sb0
+\}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get some infos\sa0\par\fi0\sb0
+my $value = $ra->get_info(info =>'num_plugins');\~{\f3\'8e}\sa0\par\fi0\sb0
+if ($value->is_ok())\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    print $value->name() . " (" . $value->desc() . "): " . $value->value() . "\\n";\~{\f3\'8f}\sa0\par\fi0\sb0
+\}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# find all measurements in a directory\sa0\par\fi0\sb0
+my $meas = $ra->find_meas($ARGV[0]);\~{\f3\'90}\sa0\par\fi0\sb0
+print "measurements found in $ARGV[0]:\\n";\sa0\par\fi0\sb0
+my $cnt = 1;\sa0\par\fi0\sb0
+for (@$meas)\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    print "$cnt: " . $_->filename() . "\\n";\sa0\par\fi0\sb0
+    $cnt++;\sa0\par\fi0\sb0
+\}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# ra_close() will be called when $ra is being destroyed\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+exit 0;\sa0\par\fi0\sb0
+#\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 \fs20\f0 {\f3\'8c}\tab After installing the Perl support for libRASCH, the package RASCH.pm is available.\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'8d}\tab Create a new RASCH object.\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'8e}\tab The function get_info() returns an RAvalue object.\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'8f}\tab The function value() returns the value stored in a RAvalue object. The functions name() and desc() returns the name and a short description of the info, respectively.\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'90}\tab get_all_meas() returns an array with all the measurements found.\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart ID_INIT_45_LIB_45_PY}{\*\bkmkend ID_INIT_45_LIB_45_PY}\b\fs28\f1 3.1.3. Python Version\keepn\hyphpar0\par\pard\sb400\li960\sl260 \b0\fs20\lang1033\f0 The Python script shown below produces exactly the same output as the C and Perl version, therefore the output is not shown.\hyphpar0\par\pard\sb200\li960\sl234 \fs18\lang1024\f2 #\sa0\par\fi0\sb0
+import sys\sa0\par\fi0\sb0
+from RASCH import *\~{\f3\'8c}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# initialize libRASCH\sa0\par\fi0\sb0
+ra = RASCH()\~{\f3\'8d}\sa0\par\fi0\sb0
+if not ra:\sa0\par\fi0\sb0
+    print "can't initialize libRASCH"\sa0\par\fi0\sb0
+    sys.exit()\sa0\par\fi0\sb0
+[err_num, err_text] = ra.get_error()\sa0\par\fi0\sb0
+if err_num != 1:\sa0\par\fi0\sb0
+    print "while initializing libRASCH, error #%d occured:\\n " \\\sa0\par\fi0\sb0
+          "%s\\n" % err_num, err_text\sa0\par\fi0\sb0
+    sys.exit()\sa0\par\fi0\sb0
+    \sa0\par\fi0\sb0
+# get some infos\sa0\par\fi0\sb0
+value = ra.get_info(info='num_plugins')\~\~{\f3\'8e}\sa0\par\fi0\sb0
+if (value.is_ok()):\sa0\par\fi0\sb0
+    print value.name(), "("+value.desc()+"):", value.value()\~{\f3\'8f}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# find all measurements in a directory\sa0\par\fi0\sb0
+meas = ra.find_meas(sys.argv[1])\~{\f3\'90}\sa0\par\fi0\sb0
+print "measurements found in " + sys.argv[1] + ":\\n"\sa0\par\fi0\sb0
+cnt = 1\sa0\par\fi0\sb0
+for item in meas:\sa0\par\fi0\sb0
+    print "%d: %s" % (cnt, item.filename())\sa0\par\fi0\sb0
+    cnt = cnt + 1\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+#\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 \fs20\f0 {\f3\'8c}\tab After installing the Python support for libRASCH, the module 'RASCH' is available.\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'8d}\tab Create a new RASCH object.\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'8e}\tab The function get_info() returns a RAvalue object.\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'8f}\tab The function value() returns the value stored in a RAvalue object. The functions name() and desc() returns the name and a short description of the info, respectively.\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'90}\tab get_all_meas() returns an array with all the measurements found.\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart ID_INIT_45_LIB_45_MAT}{\*\bkmkend ID_INIT_45_LIB_45_MAT}\b\fs28\f1 3.1.4. Matlab/Octave Version\keepn\hyphpar0\par\pard\sb400\li960\sl260 \b0\fs20\lang1033\f0 Here an Octave session using the libRASCH support is shown. The same tasks are performed as in the previous examples. Most of the functions have in Matlab and Octave the same behaviour. Differences are listed in the function reference section for Matlab and Octave.\hyphpar0\par\pard\sb200\li960\sl234 \fs18\lang1024\f2 GNU Octave, version 3.0.5\sa0\par\fi0\sb0
+Copyright (C) 2008 John W. Eaton and others.\sa0\par\fi0\sb0
+This is free software; see the source code for copying\sa0\par\fi0\sb0
+conditions.\sa0\par\fi0\sb0
+There is ABSOLUTELY NO WA{\f3\'8c}RRANTY; not even for MERCHANTABILITY or\sa0\par\fi0\sb0
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Octave was configured for "i486-pc-linux-gnu".\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Additional information about Octave is available at\~\~\~\~\~\~\~\~\~\~\~\~\~\~{\f3\'8d}\sa0\par\fi0\sb0
+http://www.octave.org.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Please contribute if you find this software useful.\sa0\par\fi0\sb0
+For more information, visit\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~{\f3\'8e}\sa0\par\fi0\sb0
+http://www.octave.org/help-wanted.html\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Report bugs to <bug@octave.org> (but first, please read\sa0\par\fi0\sb0
+http://www.octave.org/bugs.html to learn how to write a\sa0\par\fi0\sb0
+helpful report).\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+For information about changes from previous versions, type\sa0\par\fi0\sb0
+`news'.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
++ ra=ra_lib_init\sa0\par\fi0\sb0
+ra =  162635120\sa0\par\fi0\sb0
++ [err_num, err_text]=ra_lib_get_error(ra)\sa0\par\fi0\sb0
+err_num =  1\sa0\par\fi0\sb0
+err_text = libRASCH (ra.c:109): no error\sa0\par\fi0\sb0
++ [value, name, desc]=ra_lib_info_get(ra, 'num_plugins')\sa0\par\fi0\sb0
+value =  37\sa0\par\fi0\sb0
+name = #plugins\sa0\par\fi0\sb0
+desc =\sa0\par\fi0\sb0
++ meas=ra_meas_find(ra, './database')\sa0\par\fi0\sb0
+meas =\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+  [1,1] = ./database/100s.hea\sa0\par\fi0\sb0
+  [2,1] = ./database/JesusOlivan2003-12-EMG2.edf\sa0\par\fi0\sb0
+  [3,1] = ./database/100s.dat\sa0\par\fi0\sb0
+\}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
++ ra_lib_close(ra);\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 \fs20\f0 {\f3\'8c}\tab Initialize libRASCH. If function call is successfull, a value not 0 will be returned.\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'8d}\tab The function returns an array including (1) the value, (2) the name and (3) a short description of the wanted information.\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'8e}\tab The function returns a cell-array with all the measurements found.\hyphpar0\par\pard\sb259\s2\sl449 {\*\bkmkstart ID_TUT_45_OPEN_45_MEAS}{\*\bkmkend ID_TUT_45_OPEN_45_MEAS}\b\fs34\f1 3.2. Access Measurements\keepn\hyphpar0\par\pard\sb400\li960\sl260 \b0\fs20\lang1033\f0 The example will show how to open a measurement and how to get some information from a measurement. We will perform the following steps: \hyphpar0\par\pard\sb100\li1160\sl260\fi-200 \tx1160 \fs16 \'95\tab \fs20 open a measurement\hyphpar0\par\pard\sb100\li1160\sl260\fi-200 \tx1160 \fs16 \'95\tab \fs20 get the number of sessions and the maximum samplerate\hyphpar0\par\pard\sb100\li1160\sl260\fi-200 \tx1160 \fs16 \'95\tab \fs20 print all available infos about the measurement object (in this example it is a patient)\hyphpar0\par\pard\sb200\li960\sl234 \fs18\lang1024\f2 //\sa0\par\fi0\sb0
+#include <stdio.h>\sa0\par\fi0\sb0
+#include <ra.h>\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+int main(int argc, char *argv[])\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    ra_handle ra;\sa0\par\fi0\sb0
+    value_handle vh;\sa0\par\fi0\sb0
+    meas_handle meas;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* initialize libRASCH */\sa0\par\fi0\sb0
+    ra = ra_lib_init();\sa0\par\fi0\sb0
+    if ((ra == NULL)\sa0\par\fi0\sb0
+        || (ra_lib_get_error(ra, NULL, 0) != RA_ERR_NONE))\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        if (!ra)\sa0\par\fi0\sb0
+            printf("error initializing libRASCH\\n");\sa0\par\fi0\sb0
+        else\sa0\par\fi0\sb0
+        \{\sa0\par\fi0\sb0
+            char err_t[200];\sa0\par\fi0\sb0
+            long err_num;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+            err_num = ra_lib_get_error(ra, err_t, 200);\sa0\par\fi0\sb0
+            printf("while initializing libRASCH, error #%d "\sa0\par\fi0\sb0
+                   "occured\\n  %s\\n", err_num, err_t);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+            ra_lib_close(ra);\sa0\par\fi0\sb0
+        \}\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* open measurement */\sa0\par\fi0\sb0
+    meas = ra_meas_open(ra, argv[1], NULL, 0);\~{\f3\'8c}\sa0\par\fi0\sb0
+    if (meas == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        char err_t[200];\sa0\par\fi0\sb0
+        long err_num;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        err_num = ra_lib_get_error(ra, err_t, 200);\sa0\par\fi0\sb0
+        printf("can't open measurement %s\\nerror #%d: %s\\n",\sa0\par\fi0\sb0
+               argv[1], err_num, err_t);\sa0\par\fi0\sb0
+        ra_lib_close(ra);\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* get some infos */\sa0\par\fi0\sb0
+    vh = ra_value_malloc();\sa0\par\fi0\sb0
+    if (ra_info_get(meas, RA_INFO_NUM_SESSIONS_L, vh) == 0)\sa0\par\fi0\sb0
+        printf("%s (%s): %d\\n", ra_value_get_name(vh),\sa0\par\fi0\sb0
+               ra_value_get_desc(vh), ra_value_get_long(vh));\sa0\par\fi0\sb0
+    if (ra_info_get(meas, RA_INFO_MAX_SAMPLERATE_D, vh) == 0)\sa0\par\fi0\sb0
+        printf("%s (%s): %f\\n", ra_value_get_name(vh),\sa0\par\fi0\sb0
+               ra_value_get_desc(vh), ra_value_get_double(vh));\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* get all measurement-object infos */\sa0\par\fi0\sb0
+    if (ra_info_get(meas, RA_INFO_NUM_OBJ_INFOS_L, vh) == 0)\~{\f3\'8d}\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        long l;\sa0\par\fi0\sb0
+        long n = ra_value_get_long(vh);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        for (l = 0; l < n; l++)\sa0\par\fi0\sb0
+        \{\sa0\par\fi0\sb0
+            ra_info_get_by_idx(meas, RA_INFO_OBJECT, l, vh);\~{\f3\'8e}\sa0\par\fi0\sb0
+            printf("%s (%s): ", ra_value_get_name(vh),\sa0\par\fi0\sb0
+                   ra_value_get_desc(vh));\sa0\par\fi0\sb0
+            switch (ra_value_get_type(vh))\~{\f3\'8f}\sa0\par\fi0\sb0
+            \{\sa0\par\fi0\sb0
+            case RA_VALUE_TYPE_LONG:\sa0\par\fi0\sb0
+                printf("%d\\n", ra_value_get_long(vh));\sa0\par\fi0\sb0
+                break;\sa0\par\fi0\sb0
+            case RA_VALUE_TYPE_DOUBLE:\sa0\par\fi0\sb0
+                printf("%f\\n", ra_value_get_double(vh));\sa0\par\fi0\sb0
+                break;\sa0\par\fi0\sb0
+            case RA_VALUE_TYPE_CHAR:\sa0\par\fi0\sb0
+                printf("%s\\n", ra_value_get_string(vh));\sa0\par\fi0\sb0
+                break;\sa0\par\fi0\sb0
+            default:\sa0\par\fi0\sb0
+                printf("not supported type\\n");\sa0\par\fi0\sb0
+                break;\sa0\par\fi0\sb0
+            \}\sa0\par\fi0\sb0
+        \}\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* close */\sa0\par\fi0\sb0
+    ra_value_free(vh);\sa0\par\fi0\sb0
+    ra_meas_close(meas);\sa0\par\fi0\sb0
+    ra_lib_close(ra);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    return 0;\sa0\par\fi0\sb0
+\}                               /* main() */\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+//\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 \fs20\f0 {\f3\'8c}\tab ra_open_meas() opens a measurement. The user do not need to specify the format in which the measurement was saved, libRASCH selects the access plugin which can handle the format. If no access plugin can handle the measurement, the function fails. The third parameter (here it is set to '0') controls if a fast-open should be done (set to '1'). When a fast-open is selected, some "time-consuming" initialization is skipped and only the object informations and some basic recording informations (e.g. recording date) are available. \up8\fs12 1\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 \up0\fs20 {\f3\'8d}\tab With this call, the number of available measurement objects is returned. In the following loop, we will get all available informations about the measurement object.\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'8e}\tab With the function ra_info_get_by_idx() we select the information we want by a number. Because we do not know which number is which information, this function is only useful to display all available data in a list.\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'8f}\tab Because we do not know which information is returned, we do not know the type of the information. Therefore we have to get the type of the information so we use the correct way to display the information.\hyphpar0\par\pard\sb400\li960\sl260 \lang1033 The output of the above example for the measurement '100s' is shown here:\hyphpar0\par\pard\sb200\li960\sl234 \fs18\lang1024\f2 #sessions (): 1\sa0\par\fi0\sb0
+max. samplerate (maximum samplrate used in measurement):\sa0\par\fi0\sb0
+360.000000\sa0\par\fi0\sb0
+ID (Patient-ID): 100s\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb259\s2\sl449 {\*\bkmkstart ID_TUT_45_HANDLE_45_RECS}{\*\bkmkend ID_TUT_45_HANDLE_45_RECS}\b\fs34\f1 3.3. Access Recordings\keepn\hyphpar0\par\pard\sb400\li960\sl260 \b0\fs20\lang1033\f0 The example will show how to get the root recording and some information about it. We will perform the following steps: \hyphpar0\par\pard\sb100\li1160\sl260\fi-200 \tx1160 \fs16 \'95\tab \fs20 get root recording\hyphpar0\par\pard\sb100\li1160\sl260\fi-200 \tx1160 \fs16 \'95\tab \fs20 get some general informations about the recording\hyphpar0\par\pard\sb100\li1160\sl260\fi-200 \tx1160 \fs16 \'95\tab \fs20 get some infos about all used recording devices\hyphpar0\par\pard\sb100\li1160\sl260\fi-200 \tx1160 \fs16 \'95\tab \fs20 get some infos about all recorded channels\hyphpar0\par\pard\sb400\li960\sl260 When more than one recording device was used, the root recording provides access to the channels as if they were recorded with one device.\hyphpar0\par\pard\sb200\li960\sl234 \fs18\lang1024\f2 #\sa0\par\fi0\sb0
+use strict;\sa0\par\fi0\sb0
+use RASCH;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# initialize libRASCH\sa0\par\fi0\sb0
+my $ra = new RASCH or die "error initializing libRASCH\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# open measurement\sa0\par\fi0\sb0
+my $meas = $ra->open_meas($ARGV[0], '', 0) or\sa0\par\fi0\sb0
+    die "can't open measurement $ARGV[0]\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get root recording\sa0\par\fi0\sb0
+my $rec = $meas->get_first_rec(0) or\~{\f3\'8c}\sa0\par\fi0\sb0
+    die "can't get root recording\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get some infos about recording\sa0\par\fi0\sb0
+my $v = $rec->get_info(info => 'rec_num_devices');\sa0\par\fi0\sb0
+my $num_dev = $v->value();\sa0\par\fi0\sb0
+$v = $rec->get_info(info => 'rec_num_channel');\sa0\par\fi0\sb0
+my $num_ch = $v->value();\sa0\par\fi0\sb0
+$v = $rec->get_info(info => 'rec_name');\sa0\par\fi0\sb0
+my $rec_name = $v->value();\sa0\par\fi0\sb0
+$v = $rec->get_info(info => 'rec_date');\sa0\par\fi0\sb0
+my $rec_date = $v->value;\sa0\par\fi0\sb0
+print "measurement $rec_name\\nrecorded at $rec_date\\n" .\sa0\par\fi0\sb0
+    "#devices=$num_dev\\n#channels=$num_ch\\n\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# print name for every device\sa0\par\fi0\sb0
+print "infos about the recording devices used:\\n";\sa0\par\fi0\sb0
+for (my $i = 0; $i < $num_dev; $i++)\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    $v = $rec->get_info(dev => $i, info => 'dev_hw_name');\~{\f3\'8d}\sa0\par\fi0\sb0
+    my $name = $v->value();\sa0\par\fi0\sb0
+    print "  device #$i: $name\\n";\sa0\par\fi0\sb0
+\}\sa0\par\fi0\sb0
+print "\\n";\sa0\par\fi0\sb0
+        \sa0\par\fi0\sb0
+# print name for every channel\sa0\par\fi0\sb0
+print "infos about the channels:\\n";\sa0\par\fi0\sb0
+for (my $i = 0; $i < $num_ch; $i++)\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    $v = $rec->get_info(ch => $i, info => 'ch_name');\~{\f3\'8e}\sa0\par\fi0\sb0
+    my $name = $v->value();\sa0\par\fi0\sb0
+    $v = $rec->get_info(ch => $i, info => 'ch_unit');\sa0\par\fi0\sb0
+    my $unit = $v->value();\sa0\par\fi0\sb0
+    print "  channel #$i: $name [$unit]\\n";\sa0\par\fi0\sb0
+\}\sa0\par\fi0\sb0
+print "\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+exit 0;\sa0\par\fi0\sb0
+#\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 \fs20\f0 {\f3\'8c}\tab The function get_first_rec(s_num) returns the root-recording of the session s_num. The sessions start with number 0.\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'8d}\tab When asking for information about recording devices you need to set the device number. In Perl and Python this is done by setting the argument 'dev' to the device number. In C the device number is set in the value_handle (using ra_value_set_number()) used to receive the information when calling ra_info_get().\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'8e}\tab When asking for information about a channel you need to set the channel number. In Perl and Python this is done by setting the argument 'ch' to the device number. In C the device number is set in the value_handle (using ra_value_set_number()) used to receive the information when calling ra_info_get()\hyphpar0\par\pard\sb400\li960\sl260 \lang1033 The output of the above example for the measurement '100s' is shown here:\hyphpar0\par\pard\sb200\li960\sl234 \fs18\lang1024\f2 measurement 100s\sa0\par\fi0\sb0
+recorded at 00.00.0\sa0\par\fi0\sb0
+#devices=\sa0\par\fi0\sb0
+#channels=2\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+infos about the recording devices used:\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+infos about the channels:\sa0\par\fi0\sb0
+  channel #0: MLII []\sa0\par\fi0\sb0
+  channel #1: V5 []\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb259\s2\sl449 {\*\bkmkstart ID_TUT_45_GET_45_RAW}{\*\bkmkend ID_TUT_45_GET_45_RAW}\b\fs34\f1 3.4. Get Sample Data\keepn\hyphpar0\par\pard\sb400\li960\sl260 \b0\fs20\lang1033\f0 The example will show how to get the root recording and some information about it. We will perform the following steps: \hyphpar0\par\pard\sb100\li1160\sl260\fi-200 \tx1160 \fs16 \'95\tab \fs20 get root recording\hyphpar0\par\pard\sb100\li1160\sl260\fi-200 \tx1160 \fs16 \'95\tab \fs20 get some general informations about the recording\hyphpar0\par\pard\sb100\li1160\sl260\fi-200 \tx1160 \fs16 \'95\tab \fs20 get some infos about all used recording devices\hyphpar0\par\pard\sb100\li1160\sl260\fi-200 \tx1160 \fs16 \'95\tab \fs20 get some infos about all recorded channels\hyphpar0\par\pard\sb400\li960\sl260 When more than one recording device was used, the root recording provides access to the channels as if they were recorded with one device.\hyphpar0\par\pard\sb200\li960\sl234 \fs18\lang1024\f2 GNU Octave, version 3.0.5\sa0\par\fi0\sb0
+Copyright (C) 2008 John W. Eaton and others.\sa0\par\fi0\sb0
+This is free software; see the source code for copying\sa0\par\fi0\sb0
+conditions.\sa0\par\fi0\sb0
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or\sa0\par\fi0\sb0
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Octave was configured for "i486-pc-linux-gnu".\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Additional information about Octave is available at\sa0\par\fi0\sb0
+http://www.octave.org.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Please contribute if you find this software useful.\sa0\par\fi0\sb0
+For more information, visit\sa0\par\fi0\sb0
+http://www.octave.org/help-wanted.h{\f3\'8c}tml\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Report bugs to <bug@octave.org> (but first, please read\sa0\par\fi0\sb0
+http://www.octave.org/bugs.html to learn how to write a\sa0\par\fi0\sb0
+helpful report).\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+For information about changes from previous versions, type\sa0\par\fi0\sb0
+`news'.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
++ ra=ra_lib_init\sa0\par\fi0\sb0
+ra =  185012408\sa0\par\fi0\sb0
++ meas=ra_meas_open(ra, './database/100s.hea', '', 0)\sa0\par\fi0\sb0
+meas =  185820352\sa0\par\fi0\sb0
++ rec=ra_rec_get_first(meas, 0)\sa0\par\fi0\sb0
+rec =  184808528\sa0\par\fi0\sb0
++ num_ch=ra_rec_info_get(rec, 'rec_num_channel')\sa0\par\fi0\sb0
+num_ch =  2\sa0\par\fi0\sb0
++ ch_all=[];\sa0\par\fi0\sb0
++ for i=0:(num_ch-1)\sa0\par\fi0\sb0
++   ch=ra_raw_get_unit(rec, i, 0, 10000);\sa0\par\fi0\sb0
++   ch_all=[ch_all ch'];\sa0\par\fi0\sb0
++ endfor\sa0\par\fi0\sb0
++ whos ch_all\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+*** local user variables:\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  Prot Name        Size                     Bytes  Class\sa0\par\fi0\sb0
+  ==== ====        ====                     =====  =====\sa0\par\fi0\sb0
+   rwd ch_all  10000x2                     160000  double\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Total is 20000 elements using 160000 bytes\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
++ samplerate=ra_ch_info_get(rec, 0, 'ch_samplerate')\sa0\par\fi0\sb0
+samplerate =  360\sa0\par\fi0\sb0
++ x=0:9999;\sa0\par\fi0\sb0
++ x = x / samplerate;\sa0\par\fi0\sb0
++\sa0\par\fi0\sb0
++ figure();\sa0\par\fi0\sb0
++ for i=1:num_ch\sa0\par\fi0\sb0
++   subplot(num_ch,1,i)\sa0\par\fi0\sb0
++   plot(x,ch_all(:,i))\sa0\par\fi0\sb0
++ endfor\sa0\par\fi0\sb0
++\sa0\par\fi0\sb0
++ ra_meas_close(meas);\sa0\par\fi0\sb0
++ ra_lib_close(ra);\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 \fs20\f0 {\f3\'8c}\tab Returns 10,000 samples for channels 0..4, starting with sample 0 in each channel.\hyphpar0\par\pard\sb400\li960\sl260 {\field{\*\fldinst   HYPERLINK  \\l ID_GET_45_RAW_45_FIG}{\fldrslt \lang1033 Figure 3-1}}\lang1033  shows a screenshot of Octave after performing the above steps. Each plot window on the right side shows a recording channel. The x-axis is in seconds.\hyphpar0\par\pard\sb200\li960\sl260 {\*\bkmkstart ID_GET_45_RAW_45_FIG}{\*\bkmkend ID_GET_45_RAW_45_FIG}\b\lang1024 Figure 3-1. Screenshot after performing the commands in Octave as shown in the Octave session above (and on the left side in the screenshot).\keepn\hyphpar0\par\pard\sb259\s2\sl449 {\*\bkmkstart ID_TUT_45_HANDLE_45_EVAL}{\*\bkmkend ID_TUT_45_HANDLE_45_EVAL}\fs34\f1 3.5. Access Evaluations\keepn\hyphpar0\par\pard\sb400\li960\sl260 \b0\fs20\lang1033\f0 The example will show how to get the evaluation belonging to a measurement and to get some information about it. We will perform the following steps: \hyphpar0\par\pard\sb100\li1160\sl260\fi-200 \tx1160 \fs16 \'95\tab \fs20 get default evaluation\hyphpar0\par\pard\sb100\li1160\sl260\fi-200 \tx1160 \fs16 \'95\tab \fs20 get some general infos about the evaluation\hyphpar0\par\pard\sb100\li1160\sl260\fi-200 \tx1160 \fs16 \'95\tab \fs20 get a list of event-properties\hyphpar0\par\pard\sb400\li960\sl260 libRASCH supports different "types" of evaluations, these are 'original evaluation', 'default evaluation' and '"old" evaluations. The 'original evaluation' is the evaluation performed with the recording system (e.g. commercial Holter systems). In a measurement there can be only one 'original evaluation', but there can be none.\hyphpar0\par\pard\sb400\li960\sl260 The 'default evaluation' is the evaluation which should be used as default. If a measurement has only a 'original evaluation', than this will also be the 'default evaluation'.\hyphpar0\par\pard\sb400\li960\sl260 Old evaluations are like a history of evaluations. When a new evaluation is added to a measurement, than this will be the new 'default evaluation' and the previous 'default evaluation' will become a 'old evaluation'. This enables the user to go back to a previous evaluation, if the current evalution went wrong.\hyphpar0\par\pard\sb200\li960\sl234 \fs18\lang1024\f2 //\sa0\par\fi0\sb0
+#include <stdio.h>\sa0\par\fi0\sb0
+#include <stdlib.h>\sa0\par\fi0\sb0
+#include <string.h>\sa0\par\fi0\sb0
+#include <ra.h>\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+int main(int argc, char *argv[])\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    ra_handle ra;\sa0\par\fi0\sb0
+    value_handle vh;\sa0\par\fi0\sb0
+    meas_handle meas;\sa0\par\fi0\sb0
+    eval_handle eval;\sa0\par\fi0\sb0
+    long l, m, num_class, num_prop;\sa0\par\fi0\sb0
+    class_handle *clh = NULL;\sa0\par\fi0\sb0
+    prop_handle *ph = NULL;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* initialize libRASCH */\sa0\par\fi0\sb0
+    ra = ra_lib_init();\sa0\par\fi0\sb0
+    if (ra == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("error initializing libRASCH\\n");\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* open measurement */\sa0\par\fi0\sb0
+    meas = ra_meas_open(ra, argv[1], NULL, 0);\sa0\par\fi0\sb0
+    if (meas == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("can't open measurement %s\\n", argv[1]);\sa0\par\fi0\sb0
+        return -1;\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~{\f3\'8c}\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* get default evaluation */\sa0\par\fi0\sb0
+    eval = ra_eval_get_default(meas);\sa0\par\fi0\sb0
+    if (eval == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("no evaluation in measurement %s\\n", argv[1]);\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* get some infos about evaluation */\sa0\par\fi0\sb0
+    vh = ra_value_malloc();\sa0\par\fi0\sb0
+    if (ra_info_get(eval, RA_INFO_EVAL_NAME_C, vh) == 0)\sa0\par\fi0\sb0
+        printf("evaluation %s ", ra_value_get_string(vh));\sa0\par\fi0\sb0
+    if (ra_info_get(eval, RA_INFO_EVAL_ADD_TS_C, vh) == 0)\sa0\par\fi0\sb0
+        printf("was added at %s ", ra_value_get_string(vh));\sa0\par\fi0\sb0
+    if (ra_info_get(eval, RA_INFO_EVAL_PROG_C, vh) == 0)\sa0\par\fi0\sb0
+        printf("using the program %s", ra_value_get_string(vh));\sa0\par\fi0\sb0
+    printf("\\n\\n");\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* list event-class's */\~\~{\f3\'8d}\sa0\par\fi0\sb0
+    num_class = 0;\sa0\par\fi0\sb0
+    if (ra_class_get(eval, NULL, vh) == 0)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        num_class = ra_value_get_num_elem(vh);\sa0\par\fi0\sb0
+        clh = malloc(sizeof(class_handle) * num_class);\sa0\par\fi0\sb0
+        memcpy(clh, (void *)ra_value_get_voidp_array(vh),\sa0\par\fi0\sb0
+               sizeof(class_handle) * num_class);\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    for (l = 0; l < num_class; l++)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        if (ra_info_get(clh[l], RA_INFO_CLASS_NAME_C, vh) == 0)\sa0\par\fi0\sb0
+            printf("event-class %s", ra_value_get_string(vh));\sa0\par\fi0\sb0
+        if (ra_info_get(clh[l], RA_INFO_CLASS_EV_NUM_L, vh) == 0)\sa0\par\fi0\sb0
+            printf(" with %d events", ra_value_get_long(vh));\sa0\par\fi0\sb0
+        printf(":\\n");\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        /* list event-properties */\sa0\par\fi0\sb0
+        num_prop = 0;\sa0\par\fi0\sb0
+        if (ra_prop_get_all(clh[l], vh) == 0)\sa0\par\fi0\sb0
+        \{\sa0\par\fi0\sb0
+            num_prop = ra_value_get_num_elem(vh);\sa0\par\fi0\sb0
+            ph = malloc(sizeof(prop_handle) * num_prop);\sa0\par\fi0\sb0
+            memcpy(ph, (void *)ra_value_get_voidp_array(vh),\sa0\par\fi0\sb0
+                   sizeof(prop_handle) * num_prop);\sa0\par\fi0\sb0
+        \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        for (m = 0; m < num_prop; m++)\sa0\par\fi0\sb0
+        \{\sa0\par\fi0\sb0
+            if (ra_info_get(ph[m], RA_INFO_PROP_ASCII_ID_C, vh)\sa0\par\fi0\sb0
+                == 0)\sa0\par\fi0\sb0
+                printf("  %s\\n", ra_value_get_string(vh));\sa0\par\fi0\sb0
+            if (ra_info_get(ph[m], RA_INFO_PROP_DESC_C, vh) == 0)\sa0\par\fi0\sb0
+                printf("    %s", ra_value_get_string(vh));\sa0\par\fi0\sb0
+            printf("\\n");\sa0\par\fi0\sb0
+        \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        free(ph);\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+    free(clh);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* close */\sa0\par\fi0\sb0
+    ra_value_free(vh);\sa0\par\fi0\sb0
+    ra_meas_close(meas);\sa0\par\fi0\sb0
+    ra_lib_close(ra);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    return 0;\sa0\par\fi0\sb0
+\}                               /* main() */\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+//\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 \fs20\f0 {\f3\'8c}\tab Returns the 'default evaluation'.\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'8d}\tab In the function ra_info_get() we got the number of available event properties. Now we return some informations about each event property.\hyphpar0\par\pard\sb400\li960\sl260 \lang1033 The output of the above example for ECG '100s' is shown here:\hyphpar0\par\pard\sb200\li960\sl234 \fs18\lang1024\f2 evaluation RASCHlab was added at 15.11.2009  11:48:00 using\sa0\par\fi0\sb0
+the program raschlab_qt\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+event-class heartbeat with 75 events:\sa0\par\fi0\sb0
+  qrs-pos\sa0\par\fi0\sb0
+    position of fiducial point of QRS-complex in sampleunits\sa0\par\fi0\sb0
+  qrs-annot\sa0\par\fi0\sb0
+    annotation of QRS complex\sa0\par\fi0\sb0
+  ecg-noise\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-morph-flags\sa0\par\fi0\sb0
+    flags for the morphology values\sa0\par\fi0\sb0
+  ecg-p-type\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-qrs-type\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-t-type\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-p-start\sa0\par\fi0\sb0
+    offset of p-wave begin from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-p-end\sa0\par\fi0\sb0
+    offset of p-wave end from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-p-width\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-p-peak-1\sa0\par\fi0\sb0
+    offset of p-wave peak from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-p-peak-2\sa0\par\fi0\sb0
+    offset of 2nd p-wave peak (if biphasic) from qrs-pos\sa0\par\fi0\sb0
+    in sampleunits\sa0\par\fi0\sb0
+  ecg-qrs-start\sa0\par\fi0\sb0
+    offset of start of qrs complex from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-qrs-end\sa0\par\fi0\sb0
+    offset of end of qrs complex from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-qrs-width\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-q-peak\sa0\par\fi0\sb0
+    offset of q-wave from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-r-peak\sa0\par\fi0\sb0
+    offset of r-wave from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-s-peak\sa0\par\fi0\sb0
+    offset of s-wave from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-rs-peak\sa0\par\fi0\sb0
+    offset of r'-wave from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-t-start\sa0\par\fi0\sb0
+    offset of t-wave begin from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-t-end\sa0\par\fi0\sb0
+    offset of t-wave end from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-t-width\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-t-peak-1\sa0\par\fi0\sb0
+    offset of t-wave peak from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-t-peak-2\sa0\par\fi0\sb0
+    offset of 2nd t-wave peak (if biphasic) from qrs-pos\sa0\par\fi0\sb0
+    in sampleunits\sa0\par\fi0\sb0
+  ecg-pq\sa0\par\fi0\sb0
+    PQ interval\sa0\par\fi0\sb0
+  ecg-qt\sa0\par\fi0\sb0
+    QT interval\sa0\par\fi0\sb0
+  ecg-qtc\sa0\par\fi0\sb0
+    QTc interval\sa0\par\fi0\sb0
+  qrs-temporal\sa0\par\fi0\sb0
+    temporal setting of beat\sa0\par\fi0\sb0
+  ecg-flags\sa0\par\fi0\sb0
+    ECG releated flags\sa0\par\fi0\sb0
+  rri\sa0\par\fi0\sb0
+    RR interval\sa0\par\fi0\sb0
+  rri-annot\sa0\par\fi0\sb0
+    annoation of RR interval\sa0\par\fi0\sb0
+  rri-refvalue\sa0\par\fi0\sb0
+    reference rri representing the current heart-rate\sa0\par\fi0\sb0
+  rri-num-refvalue\sa0\par\fi0\sb0
+    number of rri's used for calculation of reference value\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb259\s2\sl449 {\*\bkmkstart ID_TUT_45_GET_45_EVENTS}{\*\bkmkend ID_TUT_45_GET_45_EVENTS}\b\fs34\f1 3.6. Get Events\keepn\hyphpar0\par\pard\sb400\li960\sl260 \b0\fs20\lang1033\f0 The example will show how to get values associated with an event. We will perform the following steps: \hyphpar0\par\pard\sb100\li1160\sl260\fi-200 \tx1160 \fs16 \'95\tab \fs20 get RR intervals and the postion of the QRS-complexes\hyphpar0\par\pard\sb100\li1160\sl260\fi-200 \tx1160 \fs16 \'95\tab \fs20 plot the tachogram of the measurement\hyphpar0\par\pard\sb200\li960\sl234 \fs18\lang1024\f2 GNU Octave, version 3.0.5\sa0\par\fi0\sb0
+Copyright (C) 2008 John W. Eaton and others.\sa0\par\fi0\sb0
+This is free software; see the source code for copying\sa0\par\fi0\sb0
+conditions.\sa0\par\fi0\sb0
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or\sa0\par\fi0\sb0
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Octave was configured for "i486-pc-linux-gnu".\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Additional information about Octave is available at\sa0\par\fi0\sb0
+http://www.octave.org.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Please contribute if you find this software usefu{\f3\'8c}l.\sa0\par\fi0\sb0
+For more information, visit\sa0\par\fi0\sb0
+http://www.octave.org/help-wanted.html\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Report bugs to <bug@octave.org> (but first, please read\sa0\par\fi0\sb0
+http://www.octave.org/bugs.html to learn how to write a\sa0\par\fi0\sb0
+helpful report).\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+For information about changes from previous versions, type\sa0\par\fi0\sb0
+`news'.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
++ ra=ra_lib_init\sa0\par\fi0\sb0
+ra =  184868040\sa0\par\fi0\sb0
++ meas=ra_meas_open(ra, './database/100s.hea', '', 0)\sa0\par\fi0\sb0
+meas =  185403952\sa0\par\fi0\sb0
++ eva=ra_eval_get_default(meas)\sa0\par\fi0\sb0
+eva =  185920976\sa0\par\fi0\sb0
++\sa0\par\fi0\sb0
++ samplerate=ra_meas_info_get(meas, 'max_samplerate')\sa0\par\fi0\sb0
+samplerate =  360\sa0\par\fi0\sb0
++\sa0\par\fi0\sb0
++ cl = ra_class_get(eva, 'heartbeat')\sa0\par\fi0\sb0
+cl =  185834776\sa0\par\fi0\sb0
++ num_hb = length(cl)\sa0\par\fi0\sb0
+num_hb =  1\sa0\par\fi0\sb0
++ for i = 1:num_hb\sa0\par\fi0\sb0
++   ev = ra_class_get_events(cl(i), -1, -1, 0, 1);\sa0\par\fi0\sb0
++   num_ev = length(ev)\sa0\par\fi0\sb0
++\sa0\par\fi0\sb0
++   prop_rri = ra_prop_get(cl(i), 'rri')\sa0\par\fi0\sb0
++   prop_qrs_pos = ra_prop_get(cl(i), 'qrs-pos')\sa0\par\fi0\sb0
++\sa0\par\fi0\sb0
++   rri = [];\sa0\par\fi0\sb0
++   qrs_pos = [];\sa0\par\fi0\sb0
++   for j = 1:num_ev\sa0\par\fi0\sb0
++     r = ra_prop_get_value(prop_rri, ev(j), -1);\sa0\par\fi0\sb0
++     p = ra_prop_get_value(prop_qrs_pos, ev(j), -1);\sa0\par\fi0\sb0
++\sa0\par\fi0\sb0
++     rri = [rri r];\sa0\par\fi0\sb0
++     qrs_pos = [qrs_pos p];\sa0\par\fi0\sb0
++   endfor\sa0\par\fi0\sb0
++\sa0\par\fi0\sb0
++   %% To get all property values within one function call\sa0\par\fi0\sb0
++   %% use ra_prop_get_value_all():\sa0\par\fi0\sb0
++   % [ev_ids, chs, rri] = ra_prop_get_value_all(prop_rri);\sa0\par\fi0\sb0
++   % [ev_ids, chs, qrs_pos] =\sa0\par\fi0\sb0
+ra_prop_get_value_all(prop_qrs_pos);\sa0\par\fi0\sb0
++   %\sa0\par\fi0\sb0
++   %% !!! This function returns also the event-id's and channel\sa0\par\fi0\sb0
++   %% !!! numbers the value belongs to. The order of returned\sa0\par\fi0\sb0
+values\sa0\par\fi0\sb0
++   %% !!! is not guaranteed to be in chronological order.\sa0\par\fi0\sb0
++\sa0\par\fi0\sb0
++   whos rri\sa0\par\fi0\sb0
++   whos qrs_pos\sa0\par\fi0\sb0
++\sa0\par\fi0\sb0
++   figure();\sa0\par\fi0\sb0
++   x=(qrs_pos/samplerate) / 60;\sa0\par\fi0\sb0
++   plot(x, rri);\sa0\par\fi0\sb0
++ endfor\sa0\par\fi0\sb0
+num_ev =  75\sa0\par\fi0\sb0
+prop_rri =  186329584\sa0\par\fi0\sb0
+prop_qrs_pos =  186289912\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+*** local user variables:\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  Prot Name        Size                     Bytes  Class\sa0\par\fi0\sb0
+  ==== ====        ====                     =====  =====\sa0\par\fi0\sb0
+   rwd rri         1x75                       600  double\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Total is 75 elements using 600 bytes\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+*** local user variables:\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  Prot Name         Size                     Bytes  Class\sa0\par\fi0\sb0
+  ==== ====         ====                     =====  =====\sa0\par\fi0\sb0
+   rwd qrs_pos      1x75                       600  double\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Total is 75 elements using 600 bytes\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
++\sa0\par\fi0\sb0
++ ra_meas_close(meas);\sa0\par\fi0\sb0
++ ra_lib_close(ra);\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 \fs20\f0 {\f3\'8c}\tab \hyphpar0\par\pard\sb400\li960\sl260 {\field{\*\fldinst   HYPERLINK  \\l ID_GET_45_EVENTS_45_FIG}{\fldrslt \lang1033 Figure 3-2}}\lang1033  shows a screenshot of Octave after performing the above steps. \hyphpar0\par\pard\sb200\li960\sl260 {\*\bkmkstart ID_GET_45_EVENTS_45_FIG}{\*\bkmkend ID_GET_45_EVENTS_45_FIG}\b\lang1024 Figure 3-2. Screenshot after performing the commands in Octave as shown in the Octave session above (and on the left side in the screenshot).\keepn\hyphpar0\par\pard\sb259\s2\sl449 {\*\bkmkstart ID_TUT_45_PROCESS}{\*\bkmkend ID_TUT_45_PROCESS}\fs34\f1 3.7. Usage of process-plugins\keepn\hyphpar0\par\pard\sb400\li960\sl260 \b0\fs20\lang1033\f0 The example will show how to calculate Heart-Rate-Variability (HRV) using the process-plugin 'hrv'. We will perform the following steps: \hyphpar0\par\pard\sb100\li1160\sl260\fi-200 \tx1160 \fs16 \'95\tab \fs20 get 'hrv' plugin\hyphpar0\par\pard\sb100\li1160\sl260\fi-200 \tx1160 \fs16 \'95\tab \fs20 calculate HRV using the plugin\hyphpar0\par\pard\sb100\li1160\sl260\fi-200 \tx1160 \fs16 \'95\tab \fs20 print the calculation results\hyphpar0\par\pard\sb200\li960\sl234 \fs18\lang1024\f2 //\sa0\par\fi0\sb0
+#include <stdio.h>\sa0\par\fi0\sb0
+#include <string.h>\sa0\par\fi0\sb0
+#include <ra.h>\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+int main(int argc, char *argv[])\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    ra_handle ra;\sa0\par\fi0\sb0
+    struct ra_info *inf;\sa0\par\fi0\sb0
+    meas_handle meas;\sa0\par\fi0\sb0
+    eval_handle eval;\sa0\par\fi0\sb0
+    plugin_handle pl;\sa0\par\fi0\sb0
+    struct proc_info *pi;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* initialize libRASCH */\sa0\par\fi0\sb0
+    ra = ra_lib_init();\sa0\par\fi0\sb0
+    if (ra == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("error initializing libRASCH\\n");\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* open measurement */\sa0\par\fi0\sb0
+    meas = ra_meas_open(ra, argv[1], NULL, 0);\sa0\par\fi0\sb0
+    if (meas == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("can't open measurement %s\\n", argv[1]);\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* get default evaluation */\sa0\par\fi0\sb0
+    eval = ra_eval_get_default(meas);\sa0\par\fi0\sb0
+    if (eval == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("no evaluation in measurement %s\\n", argv[1]);\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* get plugin-handle for hrv-plugin */\~\~\~\~{\f3\'8c}\sa0\par\fi0\sb0
+    pl = ra_plugin_get_by_name(ra, "hrv", 0);\sa0\par\fi0\sb0
+    if (pl == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("can't find plugin 'hrv'\\n");\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* calculate hrv-values using the hrv-plug{\f3\'8d}in */\sa0\par\fi0\sb0
+    pi = (struct proc_info *)ra_proc_get(meas, pl, NULL);\sa0\par\fi0\sb0
+    if (ra_proc_do(pi) == 0)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        long num_res_sets, nu{\f3\'8e}m_results, m, l;\sa0\par\fi0\sb0
+        value_handle vh;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        /* get number of result-sets */\sa0\par\fi0\sb0
+        vh = ra_value_malloc();\sa0\par\fi0\sb0
+        if (ra_info_get(pi, RA_INFO_PROC_NUM_RES_SETS_L, vh) !=\sa0\par\fi0\sb0
+            0)\sa0\par\fi0\sb0
+        \{\sa0\par\fi0\sb0
+            printf("no result-sets\\n");\sa0\par\fi0\sb0
+            return -1;\sa0\par\fi0\sb0
+        \}\sa0\par\fi0\sb0
+        num_res_sets = ra_value_get_long(vh);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        /* get number of results */\sa0\par\fi0\sb0
+        if (ra_info_get(pi, RA_INFO_PROC_NUM_RES_L, vh) != 0)\sa0\par\fi0\sb0
+        \{\sa0\par\fi0\sb0
+            printf("no results\\n");\sa0\par\fi0\sb0
+            return -1;\sa0\par\fi0\sb0
+        \}\sa0\par\fi0\sb0
+        num_results = ra_value_get_long({\f3\'8f}vh);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        for (m = 0; m < num_res_sets; m++)\sa0\par\fi0\sb0
+        \{\sa0\par\fi0\sb0
+            printf("result-set #%d:\\n", m + 1);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+            for (l = 0; l < num_results; l++)\sa0\par\fi0\sb0
+            \{\sa0\par\fi0\sb0
+                char out[200], t[100];\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+                /* set number of result in which we are interested */\sa0\par\fi0\sb0
+                ra_value_set_number(vh, l);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+                /* test if result is a default value (some\sa0\par\fi0\sb0
+                   non-default results are arrays which we skip in\sa0\par\fi0\sb0
+                   this example) */\sa0\par\fi0\sb0
+                ra_info_get(pl, RA_INFO_PL_RES_DEFAULT_L, vh);\sa0\par\fi0\sb0
+                if (ra_value_get_long(vh) == 0)\sa0\par\fi0\sb0
+                    continue;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+                out[0] = '\\0';\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~{\f3\'90}\sa0\par\fi0\sb0
+                if (ra_info_get(pl, RA_INFO_PL_RES_NAME_C, vh) ==\sa0\par\fi0\sb0
+                    0)\sa0\par\fi0\sb0
+                \{\sa0\par\fi0\sb0
+                    strcpy(t, ra_value_get_string(vh));\sa0\par\fi0\sb0
+                    strcat(out, t);\sa0\par\fi0\sb0
+                \}\sa0\par\fi0\sb0
+                if (ra_info_get(pl, RA_INFO_PL_RES_DESC_C, vh) ==\sa0\par\fi0\sb0
+                    0)\sa0\par\fi0\sb0
+                \{\sa0\par\fi0\sb0
+                    sprintf(t, " (%s)", ra_value_get_string(vh));\sa0\par\fi0\sb0
+                    strcat(out, t);\sa0\par\fi0\sb0
+                \}\sa0\par\fi0\sb0
+                if (ra_proc_get_result(pi, l, m, vh) == 0)\sa0\par\fi0\sb0
+                \{\sa0\par\fi0\sb0
+                    sprintf(t, ": %lf", ra_value_get_double(vh));\sa0\par\fi0\sb0
+                    strcat(out, t);\sa0\par\fi0\sb0
+                \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+                printf("  %s\\n", out);\sa0\par\fi0\sb0
+            \}\sa0\par\fi0\sb0
+        \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        ra_value_free(vh);\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* close */\sa0\par\fi0\sb0
+    ra_proc_free(pi);\sa0\par\fi0\sb0
+    ra_meas_close(meas);\sa0\par\fi0\sb0
+    ra_lib_close(ra);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    return 0;\sa0\par\fi0\sb0
+\}                               /* main() */\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+//\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 \fs20\f0 {\f3\'8c}\tab Returns the plugin-handle for the plugin 'hrv'.\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'8d}\tab Initialize the proc_info structure (defined in ra_defines.h). In this structure must be the information set, which will be needed for the processing (the next 3 lines).\hyphpar0\par\pard\sb400\li1320\sl260 \lang1033 Not all process-plugins need the information of the recording and/or the evaluation. Please check the plugin-reference section which information is needed. In case of doubt set all variables.\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 \lang1024 {\f3\'8e}\tab This function-call starts the processing. If the processing is successfull, the function returns 0.\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'8f}\tab To select the result, in which you are interessted, the variable 'res_num' in the ra_info structure must be set. The value of the result as well as information about the result will be returned using a ra_info structure.\hyphpar0\par\pard\sb100\li1320\sl260\fi-360 \tx1320 {\f3\'90}\tab Information about a result will be obtained using ra_get_info_id(). The value of the result will be obtained using ra_get_result().\hyphpar0\par\pard\sb400\li960\sl260 \lang1033 The output of the above example for the ECG '100s' is shown here:\hyphpar0\par\pard\sb200\li960\sl234 \fs18\lang1024\f2 result-set #1:\sa0\par\fi0\sb0
+  SDNN (standard deviation of normal-to-normal intervals):\sa0\par\fi0\sb0
+  30.238227\sa0\par\fi0\sb0
+  HRVI (HRV-Index): 7.200000\sa0\par\fi0\sb0
+  SDANN (standard deviation of averaged normal-to-normal\sa0\par\fi0\sb0
+  intervals): nan\sa0\par\fi0\sb0
+  rmssd (root mean of squared sucsessive differences): 32.494403\sa0\par\fi0\sb0
+  pNN50 (): 7.142857\sa0\par\fi0\sb0
+  TP (total power): 476.707920\sa0\par\fi0\sb0
+  ULF (ultra low frequency power): 0.000000\sa0\par\fi0\sb0
+  VLF (very low frequency power of short-term recordings):\sa0\par\fi0\sb0
+  31.580847\sa0\par\fi0\sb0
+  LF (low frequency power): 157.664788\sa0\par\fi0\sb0
+  LF_NORM (normalised low frequency power): 35.420175\sa0\par\fi0\sb0
+  HF (high freuqency power): 287.462286\sa0\par\fi0\sb0
+  HF_NORM (normalised high frequency power): 64.579825\sa0\par\fi0\sb0
+  LF_HF_RATIO (LF/HF ratio): 0.548471\sa0\par\fi0\sb0
+  POWER_LAW (power law behavior): 0.000000\sa0\par\fi0\sb0
+  SD1 (SD1 of the Poincare Plot): 15.845239\sa0\par\fi0\sb0
+  SD2 (SD2 of the Poincare Plot): 17.873049\sa0\par\fi0\sb0
+  DFA (overall DFA Alpha): nan\sa0\par\fi0\sb0
+  DFA_OFFSET (offset of the overall DFA Alpha slope): nan\sa0\par\fi0\sb0
+  DFA1 (DFA Alpha1): 0.242035\sa0\par\fi0\sb0
+  DFA1_OFFSET (offset of the DFA Alpha-1 slope): 1.404195\sa0\par\fi0\sb0
+  DFA2 (DFA Alpha2): nan\sa0\par\fi0\sb0
+  DFA2_OFFSET (offset of the DFA Alpha-2 slope): nan\sa0\par\fi0\sb0
+  DFA_USER (DFA Alpha of user-defined range)\sa0\par\fi0\sb0
+  DFA_USER_OFFSET (offset of the user-defined DFA Alpha slope)\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb259\sl449 \b\fs34\f1 Notes\keepn\hyphpar0\par\pard\sb100\li1280\sl260\fi-320 \tx1280 \b0\fs20\f0 1. \tab Some access plugins do not differ between fast and normal open. But it is recommended, when writing access plugins, to skip time consuming tasks when fast-open was selected. This decreases the time needed to list all measurements in a directory.\hyphpar0\par\sect\sectd\plain\pgwsxn12240\pghsxn15840\marglsxn1440\margrsxn1440\margtsxn1440\margbsxn1920\headery0\footery0\pgndec\titlepg{\headerf\pard\sl-240\sb770\sa430\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {}\par}{\footerf\pard\sl-240\sb770\sa910\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 \chpgn }\par}{\headerl\pard\sl-240\sb770\sa430\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 Appendix A. Examples for all supported lanuages/systems}\par}{\footerl\pard\sl-240\sb770\sa910\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 \chpgn }\par}{\headerr\pard\sl-240\sb770\sa430\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 Appendix A. Examples for all supported lanuages/systems}\par}{\footerr\pard\sl-240\sb770\sa910\plain\tqc\tx4680\tqr\tx9360 {}\tab {}\tab {\i\fs20 \chpgn }\par}\pard\sb311\s1\sl539 {\*\bkmkstart ID_ALL_45_EXAMPLES}{\*\bkmkend ID_ALL_45_EXAMPLES}\b\fs41\f1 Appendix A. Examples for all supported lanuages/systems\keepn\hyphpar0\par\pard\sb400\li960\sl260 \b0\fs20\lang1033\f0 This appendix shows the examples presented in {\field{\*\fldinst   HYPERLINK  \\l ID_TUTORIAL}{\fldrslt Chapter 3}} for all supported languages/systems.\hyphpar0\par\pard\sb259\s2\sl449 {\*\bkmkstart _420}{\*\bkmkend _420}\b\fs34\lang1024\f1 A.1. Init libRASCH\keepn\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _422}{\*\bkmkend _422}\fs28 A.1.1. C Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 //\sa0\par\fi0\sb0
+#include <stdio.h>\sa0\par\fi0\sb0
+#include <ra.h>\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+int main(int argc, char *argv[])\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    ra_handle ra;\sa0\par\fi0\sb0
+    value_handle vh;\sa0\par\fi0\sb0
+    ra_find_handle f;\sa0\par\fi0\sb0
+    struct ra_find_struct fs;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* initialize libRASCH */\sa0\par\fi0\sb0
+    ra = ra_lib_init();\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* check if init was successful */\sa0\par\fi0\sb0
+    if ((ra == NULL)\sa0\par\fi0\sb0
+        || (ra_lib_get_error(ra, NULL, 0) != RA_ERR_NONE))\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        if (!ra)\sa0\par\fi0\sb0
+            printf("error initializing libRASCH\\n");\sa0\par\fi0\sb0
+        else\sa0\par\fi0\sb0
+        \{\sa0\par\fi0\sb0
+            char err_t[200];\sa0\par\fi0\sb0
+            long err_num;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+            err_num = ra_lib_get_error(ra, err_t, 200);\sa0\par\fi0\sb0
+            printf("while initializing libRASCH, error #%d "\sa0\par\fi0\sb0
+                   "occured\\n  %s\\n", err_num, err_t);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+            ra_lib_close(ra);\sa0\par\fi0\sb0
+        \}\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* get some infos */\sa0\par\fi0\sb0
+    vh = ra_value_malloc();\sa0\par\fi0\sb0
+    if (ra_info_get(ra, RA_INFO_NUM_PLUGINS_L, vh) == 0)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("%s (%s): %d\\n", ra_value_get_name(vh),\sa0\par\fi0\sb0
+               ra_value_get_desc(vh), ra_value_get_long(vh));\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+    ra_value_free(vh);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* find all measurements in a directory */\sa0\par\fi0\sb0
+    f = ra_meas_find_first(ra, argv[1], &fs);\sa0\par\fi0\sb0
+    if (f)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        int cnt = 1;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        printf("measurements found in %s:\\n", argv[1]);\sa0\par\fi0\sb0
+        do\sa0\par\fi0\sb0
+        \{\sa0\par\fi0\sb0
+            printf("  %2d: %s\\n", cnt, fs.name);\sa0\par\fi0\sb0
+            cnt++;\sa0\par\fi0\sb0
+        \}\sa0\par\fi0\sb0
+        while (ra_meas_find_next(f, &fs));\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        ra_meas_close_find(f);\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* close libRASCH */\sa0\par\fi0\sb0
+    ra_lib_close(ra);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    return 0;\sa0\par\fi0\sb0
+\}                               /* main() */\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+//\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb400\li960\sl234 #plugins (): 37\sa0\par\fi0\sb0
+measurements found in ./database:\sa0\par\fi0\sb0
+   1: ./database/100s.hea\sa0\par\fi0\sb0
+   2: ./database/JesusOlivan2003-12-EMG2.edf\sa0\par\fi0\sb0
+   3: ./database/100s.dat\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _428}{\*\bkmkend _428}\b\fs28\lang1024\f1 A.1.2. Perl Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 #\sa0\par\fi0\sb0
+use strict;\sa0\par\fi0\sb0
+use RASCH;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# initialize libRASCH\sa0\par\fi0\sb0
+my $ra = new RASCH or die "error initializing libRASCH\\n";\sa0\par\fi0\sb0
+my ($err_num, $err_text) = $ra->get_error ();\sa0\par\fi0\sb0
+if ($err_num != 1)\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    print "while initializing libRASCH, error # $err_num " .\sa0\par\fi0\sb0
+        "occured:\\n $err_text\\n";\sa0\par\fi0\sb0
+    exit -1;\sa0\par\fi0\sb0
+\}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get some infos\sa0\par\fi0\sb0
+my $value = $ra->get_info(info =>'num_plugins');\sa0\par\fi0\sb0
+if ($value->is_ok())\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    print $value->name() . " (" . $value->desc() . "): " . $value->value() . "\\n";\sa0\par\fi0\sb0
+\}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# find all measurements in a directory\sa0\par\fi0\sb0
+my $meas = $ra->find_meas($ARGV[0]);\sa0\par\fi0\sb0
+print "measurements found in $ARGV[0]:\\n";\sa0\par\fi0\sb0
+my $cnt = 1;\sa0\par\fi0\sb0
+for (@$meas)\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    print "$cnt: " . $_->filename() . "\\n";\sa0\par\fi0\sb0
+    $cnt++;\sa0\par\fi0\sb0
+\}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# ra_close() will be called when $ra is being destroyed\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+exit 0;\sa0\par\fi0\sb0
+#\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb400\li960\sl234 #plugins (): 37\sa0\par\fi0\sb0
+measurements found in ./database:\sa0\par\fi0\sb0
+1: ./database/100s.dat\sa0\par\fi0\sb0
+2: ./database/100s.hea\sa0\par\fi0\sb0
+3: ./database/JesusOlivan2003-12-EMG2.edf\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _434}{\*\bkmkend _434}\b\fs28\lang1024\f1 A.1.3. Python Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 #\sa0\par\fi0\sb0
+import sys\sa0\par\fi0\sb0
+from RASCH import *\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# initialize libRASCH\sa0\par\fi0\sb0
+ra = RASCH()\sa0\par\fi0\sb0
+if not ra:\sa0\par\fi0\sb0
+    print "can't initialize libRASCH"\sa0\par\fi0\sb0
+    sys.exit()\sa0\par\fi0\sb0
+[err_num, err_text] = ra.get_error()\sa0\par\fi0\sb0
+if err_num != 1:\sa0\par\fi0\sb0
+    print "while initializing libRASCH, error #%d occured:\\n " \\\sa0\par\fi0\sb0
+          "%s\\n" % err_num, err_text\sa0\par\fi0\sb0
+    sys.exit()\sa0\par\fi0\sb0
+    \sa0\par\fi0\sb0
+# get some infos\sa0\par\fi0\sb0
+value = ra.get_info(info='num_plugins')\sa0\par\fi0\sb0
+if (value.is_ok()):\sa0\par\fi0\sb0
+    print value.name(), "("+value.desc()+"):", value.value()\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# find all measurements in a directory\sa0\par\fi0\sb0
+meas = ra.find_meas(sys.argv[1])\sa0\par\fi0\sb0
+print "measurements found in " + sys.argv[1] + ":\\n"\sa0\par\fi0\sb0
+cnt = 1\sa0\par\fi0\sb0
+for item in meas:\sa0\par\fi0\sb0
+    print "%d: %s" % (cnt, item.filename())\sa0\par\fi0\sb0
+    cnt = cnt + 1\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+#\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb400\li960\sl234 #plugins (): 37\sa0\par\fi0\sb0
+measurements found in ./database:\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+1: ./database/100s.dat\sa0\par\fi0\sb0
+2: ./database/100s.hea\sa0\par\fi0\sb0
+3: ./database/JesusOlivan2003-12-EMG2.edf\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _440}{\*\bkmkend _440}\b\fs28\lang1024\f1 A.1.4. Matlab/Octave Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 GNU Octave, version 3.0.5\sa0\par\fi0\sb0
+Copyright (C) 2008 John W. Eaton and others.\sa0\par\fi0\sb0
+This is free software; see the source code for copying\sa0\par\fi0\sb0
+conditions.\sa0\par\fi0\sb0
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or\sa0\par\fi0\sb0
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Octave was configured for "i486-pc-linux-gnu".\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Additional information about Octave is available at\sa0\par\fi0\sb0
+http://www.octave.org.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Please contribute if you find this software useful.\sa0\par\fi0\sb0
+For more information, visit\sa0\par\fi0\sb0
+http://www.octave.org/help-wanted.html\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Report bugs to <bug@octave.org> (but first, please read\sa0\par\fi0\sb0
+http://www.octave.org/bugs.html to learn how to write a\sa0\par\fi0\sb0
+helpful report).\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+For information about changes from previous versions, type\sa0\par\fi0\sb0
+`news'.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
++ ra=ra_lib_init\sa0\par\fi0\sb0
+ra =  162635120\sa0\par\fi0\sb0
++ [err_num, err_text]=ra_lib_get_error(ra)\sa0\par\fi0\sb0
+err_num =  1\sa0\par\fi0\sb0
+err_text = libRASCH (ra.c:109): no error\sa0\par\fi0\sb0
++ [value, name, desc]=ra_lib_info_get(ra, 'num_plugins')\sa0\par\fi0\sb0
+value =  37\sa0\par\fi0\sb0
+name = #plugins\sa0\par\fi0\sb0
+desc =\sa0\par\fi0\sb0
++ meas=ra_meas_find(ra, './database')\sa0\par\fi0\sb0
+meas =\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+  [1,1] = ./database/100s.hea\sa0\par\fi0\sb0
+  [2,1] = ./database/JesusOlivan2003-12-EMG2.edf\sa0\par\fi0\sb0
+  [3,1] = ./database/100s.dat\sa0\par\fi0\sb0
+\}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
++ ra_lib_close(ra);\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb259\s2\sl449 {\*\bkmkstart _444}{\*\bkmkend _444}\b\fs34\lang1024\f1 A.2. Open measurement\keepn\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _446}{\*\bkmkend _446}\fs28 A.2.1. C Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 //\sa0\par\fi0\sb0
+#include <stdio.h>\sa0\par\fi0\sb0
+#include <ra.h>\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+int main(int argc, char *argv[])\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    ra_handle ra;\sa0\par\fi0\sb0
+    value_handle vh;\sa0\par\fi0\sb0
+    meas_handle meas;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* initialize libRASCH */\sa0\par\fi0\sb0
+    ra = ra_lib_init();\sa0\par\fi0\sb0
+    if ((ra == NULL)\sa0\par\fi0\sb0
+        || (ra_lib_get_error(ra, NULL, 0) != RA_ERR_NONE))\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        if (!ra)\sa0\par\fi0\sb0
+            printf("error initializing libRASCH\\n");\sa0\par\fi0\sb0
+        else\sa0\par\fi0\sb0
+        \{\sa0\par\fi0\sb0
+            char err_t[200];\sa0\par\fi0\sb0
+            long err_num;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+            err_num = ra_lib_get_error(ra, err_t, 200);\sa0\par\fi0\sb0
+            printf("while initializing libRASCH, error #%d "\sa0\par\fi0\sb0
+                   "occured\\n  %s\\n", err_num, err_t);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+            ra_lib_close(ra);\sa0\par\fi0\sb0
+        \}\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* open measurement */\sa0\par\fi0\sb0
+    meas = ra_meas_open(ra, argv[1], NULL, 0);\sa0\par\fi0\sb0
+    if (meas == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        char err_t[200];\sa0\par\fi0\sb0
+        long err_num;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        err_num = ra_lib_get_error(ra, err_t, 200);\sa0\par\fi0\sb0
+        printf("can't open measurement %s\\nerror #%d: %s\\n",\sa0\par\fi0\sb0
+               argv[1], err_num, err_t);\sa0\par\fi0\sb0
+        ra_lib_close(ra);\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* get some infos */\sa0\par\fi0\sb0
+    vh = ra_value_malloc();\sa0\par\fi0\sb0
+    if (ra_info_get(meas, RA_INFO_NUM_SESSIONS_L, vh) == 0)\sa0\par\fi0\sb0
+        printf("%s (%s): %d\\n", ra_value_get_name(vh),\sa0\par\fi0\sb0
+               ra_value_get_desc(vh), ra_value_get_long(vh));\sa0\par\fi0\sb0
+    if (ra_info_get(meas, RA_INFO_MAX_SAMPLERATE_D, vh) == 0)\sa0\par\fi0\sb0
+        printf("%s (%s): %f\\n", ra_value_get_name(vh),\sa0\par\fi0\sb0
+               ra_value_get_desc(vh), ra_value_get_double(vh));\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* get all measurement-object infos */\sa0\par\fi0\sb0
+    if (ra_info_get(meas, RA_INFO_NUM_OBJ_INFOS_L, vh) == 0)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        long l;\sa0\par\fi0\sb0
+        long n = ra_value_get_long(vh);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        for (l = 0; l < n; l++)\sa0\par\fi0\sb0
+        \{\sa0\par\fi0\sb0
+            ra_info_get_by_idx(meas, RA_INFO_OBJECT, l, vh);\sa0\par\fi0\sb0
+            printf("%s (%s): ", ra_value_get_name(vh),\sa0\par\fi0\sb0
+                   ra_value_get_desc(vh));\sa0\par\fi0\sb0
+            switch (ra_value_get_type(vh))\sa0\par\fi0\sb0
+            \{\sa0\par\fi0\sb0
+            case RA_VALUE_TYPE_LONG:\sa0\par\fi0\sb0
+                printf("%d\\n", ra_value_get_long(vh));\sa0\par\fi0\sb0
+                break;\sa0\par\fi0\sb0
+            case RA_VALUE_TYPE_DOUBLE:\sa0\par\fi0\sb0
+                printf("%f\\n", ra_value_get_double(vh));\sa0\par\fi0\sb0
+                break;\sa0\par\fi0\sb0
+            case RA_VALUE_TYPE_CHAR:\sa0\par\fi0\sb0
+                printf("%s\\n", ra_value_get_string(vh));\sa0\par\fi0\sb0
+                break;\sa0\par\fi0\sb0
+            default:\sa0\par\fi0\sb0
+                printf("not supported type\\n");\sa0\par\fi0\sb0
+                break;\sa0\par\fi0\sb0
+            \}\sa0\par\fi0\sb0
+        \}\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* close */\sa0\par\fi0\sb0
+    ra_value_free(vh);\sa0\par\fi0\sb0
+    ra_meas_close(meas);\sa0\par\fi0\sb0
+    ra_lib_close(ra);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    return 0;\sa0\par\fi0\sb0
+\}                               /* main() */\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+//\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb400\li960\sl234 #sessions (): 1\sa0\par\fi0\sb0
+max. samplerate (maximum samplrate used in measurement):\sa0\par\fi0\sb0
+360.000000\sa0\par\fi0\sb0
+ID (Patient-ID): 100s\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _452}{\*\bkmkend _452}\b\fs28\lang1024\f1 A.2.2. Perl Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 #\sa0\par\fi0\sb0
+use strict;\sa0\par\fi0\sb0
+use RASCH;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# initialize libRASCH\sa0\par\fi0\sb0
+my $ra = new RASCH or die "error initializing libRASCH\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# open measurement\sa0\par\fi0\sb0
+my $meas = $ra->open_meas($ARGV[0], '', 0) or\sa0\par\fi0\sb0
+    die "can't open measurement $ARGV[0]\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get some infos\sa0\par\fi0\sb0
+my $v = $meas->get_info(info => 'num_sessions');\sa0\par\fi0\sb0
+print $v->name() . ' (' . $v->desc() . '): ' . $v->value() ."\\n" if (defined($v));\sa0\par\fi0\sb0
+$v = $meas->get_info(info => 'max_samplerate');\sa0\par\fi0\sb0
+print $v->name() . ' (' . $v->desc() . '): ' . $v->value() ."\\n" if (defined($v));\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get all measurement-object infos\sa0\par\fi0\sb0
+$v = $meas->get_info(info => 'num_obj_infos');\sa0\par\fi0\sb0
+my $num = $v->value();\sa0\par\fi0\sb0
+for (my $i = 0; $i < $num; $i++)\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    $v = $meas->get_info_idx(index => $i);\sa0\par\fi0\sb0
+    print $v->name() . ' (' . $v->desc() . '): ' . $v->value() ."\\n" if (defined($v));\sa0\par\fi0\sb0
+\}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+exit 0;\sa0\par\fi0\sb0
+#\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb400\li960\sl234 #sessions (): 1\sa0\par\fi0\sb0
+max. samplerate (maximum samplrate used in measurement): 360\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _458}{\*\bkmkend _458}\b\fs28\lang1024\f1 A.2.3. Python Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 #\sa0\par\fi0\sb0
+import sys\sa0\par\fi0\sb0
+from RASCH import *\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# initialize libRASCH\sa0\par\fi0\sb0
+ra = RASCH()\sa0\par\fi0\sb0
+if not ra:\sa0\par\fi0\sb0
+    print "can't initialize libRASCH"\sa0\par\fi0\sb0
+    sys.exit()\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# open measurement\sa0\par\fi0\sb0
+meas = ra.open_meas(sys.argv[1], '', 0)\sa0\par\fi0\sb0
+if not meas:\sa0\par\fi0\sb0
+    print "can't open measurement", sys.argv[1]\sa0\par\fi0\sb0
+    sys.exit()\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get some infos\sa0\par\fi0\sb0
+value = meas.get_info(info='num_sessions')\sa0\par\fi0\sb0
+if value.is_ok():\sa0\par\fi0\sb0
+    print value.name(), "("+value.desc()+"):", value.value()\sa0\par\fi0\sb0
+value = meas.get_info(info='max_samplerate')\sa0\par\fi0\sb0
+if value.is_ok():\sa0\par\fi0\sb0
+    print value.name(), "("+value.desc()+"):", value.value()\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get all measurement-object infos\sa0\par\fi0\sb0
+num = meas.get_info(info='num_obj_infos')\sa0\par\fi0\sb0
+for i in range(num.value()):\sa0\par\fi0\sb0
+    value = meas.get_info_idx(index=i)\sa0\par\fi0\sb0
+    if value.is_ok():\sa0\par\fi0\sb0
+        print value.name(), "("+value.desc()+"):", value.value()\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+#\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb400\li960\sl234 #sessions (): 1\sa0\par\fi0\sb0
+max. samplerate (maximum samplrate used in measurement): 360.0\sa0\par\fi0\sb0
+ID (Patient-ID): 100s\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _464}{\*\bkmkend _464}\b\fs28\lang1024\f1 A.2.4. Matlab/Octave Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 GNU Octave, version 3.0.5\sa0\par\fi0\sb0
+Copyright (C) 2008 John W. Eaton and others.\sa0\par\fi0\sb0
+This is free software; see the source code for copying\sa0\par\fi0\sb0
+conditions.\sa0\par\fi0\sb0
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or\sa0\par\fi0\sb0
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Octave was configured for "i486-pc-linux-gnu".\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Additional information about Octave is available at\sa0\par\fi0\sb0
+http://www.octave.org.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Please contribute if you find this software useful.\sa0\par\fi0\sb0
+For more information, visit\sa0\par\fi0\sb0
+http://www.octave.org/help-wanted.html\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Report bugs to <bug@octave.org> (but first, please read\sa0\par\fi0\sb0
+http://www.octave.org/bugs.html to learn how to write a\sa0\par\fi0\sb0
+helpful report).\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+For information about changes from previous versions, type\sa0\par\fi0\sb0
+`news'.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
++ ra=ra_lib_init\sa0\par\fi0\sb0
+ra =  177749312\sa0\par\fi0\sb0
++ meas=ra_meas_open(ra, './database/100s.hea', '', 0)\sa0\par\fi0\sb0
+meas =  178286696\sa0\par\fi0\sb0
++ [v, n, d]=ra_meas_info_get(meas, 'num_sessions')\sa0\par\fi0\sb0
+v =  1\sa0\par\fi0\sb0
+n = #sessions\sa0\par\fi0\sb0
+d =\sa0\par\fi0\sb0
++ [v, n, d]=ra_meas_info_get(meas, 'max_samplerate')\sa0\par\fi0\sb0
+v =  360\sa0\par\fi0\sb0
+n = max. samplerate\sa0\par\fi0\sb0
+d = maximum samplrate used in measurement\sa0\par\fi0\sb0
++ num=ra_meas_info_get(meas, 'num_obj_infos')\sa0\par\fi0\sb0
+num =  1\sa0\par\fi0\sb0
++ for i=0:(num-1)\sa0\par\fi0\sb0
++     [v,n,d]=ra_info_get_by_idx(meas, 'meas', i)\sa0\par\fi0\sb0
++ endfor\sa0\par\fi0\sb0
+v = 100s\sa0\par\fi0\sb0
+n = ID\sa0\par\fi0\sb0
+d = Patient-ID\sa0\par\fi0\sb0
++ ra_meas_close(meas);\sa0\par\fi0\sb0
++ ra_lib_close(ra);\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb259\s2\sl449 {\*\bkmkstart _468}{\*\bkmkend _468}\b\fs34\lang1024\f1 A.3. Handle recordings\keepn\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _470}{\*\bkmkend _470}\fs28 A.3.1. C Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 //\sa0\par\fi0\sb0
+#include <stdio.h>\sa0\par\fi0\sb0
+#include <ra.h>\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+int main(int argc, char *argv[])\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    ra_handle ra;\sa0\par\fi0\sb0
+    value_handle vh;\sa0\par\fi0\sb0
+    meas_handle meas;\sa0\par\fi0\sb0
+    rec_handle rec;\sa0\par\fi0\sb0
+    long l, num_dev, num_ch;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* initialize libRASCH */\sa0\par\fi0\sb0
+    ra = ra_lib_init();\sa0\par\fi0\sb0
+    if (ra == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("error initializing libRASCH\\n");\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* open measurement */\sa0\par\fi0\sb0
+    meas = ra_meas_open(ra, argv[1], NULL, 0);\sa0\par\fi0\sb0
+    if (meas == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("can't open measurement %s\\n", argv[1]);\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* get root recording */\sa0\par\fi0\sb0
+    rec = ra_rec_get_first(meas, 0);\sa0\par\fi0\sb0
+    if (rec == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("can't get recording-handle\\n");\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* get some infos about recording */\sa0\par\fi0\sb0
+    num_dev = num_ch = 0;\sa0\par\fi0\sb0
+    vh = ra_value_malloc();\sa0\par\fi0\sb0
+    if (ra_info_get(rec, RA_INFO_REC_GEN_NUM_DEVICES_L, vh) == 0)\sa0\par\fi0\sb0
+        num_dev = ra_value_get_long(vh);\sa0\par\fi0\sb0
+    if (ra_info_get(rec, RA_INFO_REC_GEN_NUM_CHANNEL_L, vh) == 0)\sa0\par\fi0\sb0
+        num_ch = ra_value_get_long(vh);\sa0\par\fi0\sb0
+    if (ra_info_get(rec, RA_INFO_REC_GEN_NAME_C, vh) == 0)\sa0\par\fi0\sb0
+        printf("measurement %s\\n", ra_value_get_string(vh));\sa0\par\fi0\sb0
+    if (ra_info_get(rec, RA_INFO_REC_GEN_DATE_C, vh) == 0)\sa0\par\fi0\sb0
+        printf("recorded at %s\\n", ra_value_get_string(vh));\sa0\par\fi0\sb0
+    printf("#devices=%d\\n#channels=%d\\n\\n", num_dev, num_ch);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* print name for every device */\sa0\par\fi0\sb0
+    printf("infos about the recording devices used:\\n");\sa0\par\fi0\sb0
+    for (l = 0; l < num_dev; l++)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        /* set number of device from which the info is wanted */\sa0\par\fi0\sb0
+        ra_value_set_number(vh, l);\sa0\par\fi0\sb0
+        if (ra_info_get(rec, RA_INFO_REC_DEV_HW_NAME_C, vh) == 0)\sa0\par\fi0\sb0
+            printf("  device #%d: %s\\n", l,\sa0\par\fi0\sb0
+                   ra_value_get_string(vh));\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+    printf("\\n");\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* print name and unit of every channel */\sa0\par\fi0\sb0
+    printf("infos about the channels:\\n");\sa0\par\fi0\sb0
+    for (l = 0; l < num_ch; l++)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        /* set number of channel */\sa0\par\fi0\sb0
+        ra_value_set_number(vh, l);\sa0\par\fi0\sb0
+        if (ra_info_get(rec, RA_INFO_REC_CH_NAME_C, vh) == 0)\sa0\par\fi0\sb0
+            printf("  ch #%d: %s", l, ra_value_get_string(vh));\sa0\par\fi0\sb0
+        if (ra_info_get(rec, RA_INFO_REC_CH_UNIT_C, vh) == 0)\sa0\par\fi0\sb0
+            printf(" [%s]", ra_value_get_string(vh));\sa0\par\fi0\sb0
+        printf("\\n");\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+    printf("\\n");\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* close */\sa0\par\fi0\sb0
+    ra_value_free(vh);\sa0\par\fi0\sb0
+    ra_meas_close(meas);\sa0\par\fi0\sb0
+    ra_lib_close(ra);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    return 0;\sa0\par\fi0\sb0
+\}                               /* main() */\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+//\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb400\li960\sl234 measurement 100s\sa0\par\fi0\sb0
+recorded at 00.00.0\sa0\par\fi0\sb0
+#devices=0\sa0\par\fi0\sb0
+#channels=2\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+infos about the recording devices used:\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+infos about the channels:\sa0\par\fi0\sb0
+  ch #0: MLII []\sa0\par\fi0\sb0
+  ch #1: V5 []\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _476}{\*\bkmkend _476}\b\fs28\lang1024\f1 A.3.2. Perl Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 #\sa0\par\fi0\sb0
+use strict;\sa0\par\fi0\sb0
+use RASCH;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# initialize libRASCH\sa0\par\fi0\sb0
+my $ra = new RASCH or die "error initializing libRASCH\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# open measurement\sa0\par\fi0\sb0
+my $meas = $ra->open_meas($ARGV[0], '', 0) or\sa0\par\fi0\sb0
+    die "can't open measurement $ARGV[0]\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get root recording\sa0\par\fi0\sb0
+my $rec = $meas->get_first_rec(0) or\sa0\par\fi0\sb0
+    die "can't get root recording\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get some infos about recording\sa0\par\fi0\sb0
+my $v = $rec->get_info(info => 'rec_num_devices');\sa0\par\fi0\sb0
+my $num_dev = $v->value();\sa0\par\fi0\sb0
+$v = $rec->get_info(info => 'rec_num_channel');\sa0\par\fi0\sb0
+my $num_ch = $v->value();\sa0\par\fi0\sb0
+$v = $rec->get_info(info => 'rec_name');\sa0\par\fi0\sb0
+my $rec_name = $v->value();\sa0\par\fi0\sb0
+$v = $rec->get_info(info => 'rec_date');\sa0\par\fi0\sb0
+my $rec_date = $v->value;\sa0\par\fi0\sb0
+print "measurement $rec_name\\nrecorded at $rec_date\\n" .\sa0\par\fi0\sb0
+    "#devices=$num_dev\\n#channels=$num_ch\\n\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# print name for every device\sa0\par\fi0\sb0
+print "infos about the recording devices used:\\n";\sa0\par\fi0\sb0
+for (my $i = 0; $i < $num_dev; $i++)\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    $v = $rec->get_info(dev => $i, info => 'dev_hw_name');\sa0\par\fi0\sb0
+    my $name = $v->value();\sa0\par\fi0\sb0
+    print "  device #$i: $name\\n";\sa0\par\fi0\sb0
+\}\sa0\par\fi0\sb0
+print "\\n";\sa0\par\fi0\sb0
+        \sa0\par\fi0\sb0
+# print name for every channel\sa0\par\fi0\sb0
+print "infos about the channels:\\n";\sa0\par\fi0\sb0
+for (my $i = 0; $i < $num_ch; $i++)\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    $v = $rec->get_info(ch => $i, info => 'ch_name');\sa0\par\fi0\sb0
+    my $name = $v->value();\sa0\par\fi0\sb0
+    $v = $rec->get_info(ch => $i, info => 'ch_unit');\sa0\par\fi0\sb0
+    my $unit = $v->value();\sa0\par\fi0\sb0
+    print "  channel #$i: $name [$unit]\\n";\sa0\par\fi0\sb0
+\}\sa0\par\fi0\sb0
+print "\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+exit 0;\sa0\par\fi0\sb0
+#\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb400\li960\sl234 measurement 100s\sa0\par\fi0\sb0
+recorded at 00.00.0\sa0\par\fi0\sb0
+#devices=\sa0\par\fi0\sb0
+#channels=2\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+infos about the recording devices used:\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+infos about the channels:\sa0\par\fi0\sb0
+  channel #0: MLII []\sa0\par\fi0\sb0
+  channel #1: V5 []\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _482}{\*\bkmkend _482}\b\fs28\lang1024\f1 A.3.3. Python Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 #\sa0\par\fi0\sb0
+import sys\sa0\par\fi0\sb0
+from RASCH import *\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# initialize libRASCH\sa0\par\fi0\sb0
+ra = RASCH()\sa0\par\fi0\sb0
+if not ra:\sa0\par\fi0\sb0
+    print "can't initialize libRASCH"\sa0\par\fi0\sb0
+    sys.exit()\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# open measurement\sa0\par\fi0\sb0
+meas = ra.open_meas(sys.argv[1], '', 0)\sa0\par\fi0\sb0
+if not meas:\sa0\par\fi0\sb0
+    print "can't open measurement", sys.argv[1]\sa0\par\fi0\sb0
+    sys.exit()\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get root recording\sa0\par\fi0\sb0
+rec = meas.get_first_rec(0)\sa0\par\fi0\sb0
+if not rec:\sa0\par\fi0\sb0
+    print "can't get root recording"\sa0\par\fi0\sb0
+    sys.exit()\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get some infos about recording\sa0\par\fi0\sb0
+num_dev = rec.get_info(info='rec_num_devices')\sa0\par\fi0\sb0
+num_ch = rec.get_info(info='rec_num_channel')\sa0\par\fi0\sb0
+rec_name = rec.get_info(info='rec_name')\sa0\par\fi0\sb0
+rec_date = rec.get_info(info='rec_date')\sa0\par\fi0\sb0
+print "measurement", rec_name.value()\sa0\par\fi0\sb0
+print "recorded at", rec_date.value()\sa0\par\fi0\sb0
+print "#devices =", num_dev.value()\sa0\par\fi0\sb0
+print "#channels =", num_ch.value()\sa0\par\fi0\sb0
+print\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# print name for every device\sa0\par\fi0\sb0
+print "infos about the recording devices used:"\sa0\par\fi0\sb0
+if num_dev.value() > 0:\sa0\par\fi0\sb0
+    for i in range(num_dev.value()):\sa0\par\fi0\sb0
+        name = rec.get_info(dev=i, info='dev_hw_name')\sa0\par\fi0\sb0
+        print "  device #%d: %s" % (i, name.value())\sa0\par\fi0\sb0
+print ""\sa0\par\fi0\sb0
+        \sa0\par\fi0\sb0
+# print name for every channel\sa0\par\fi0\sb0
+print "infos about the channels:";\sa0\par\fi0\sb0
+if num_ch.value() > 0:\sa0\par\fi0\sb0
+    for i in range(num_ch.value()):\sa0\par\fi0\sb0
+        name = rec.get_info(ch=i, info='ch_name')\sa0\par\fi0\sb0
+        unit = rec.get_info(ch=i, info='ch_unit')\sa0\par\fi0\sb0
+        print "  channel #%d: %s [%s]" % (i, name.value(), unit.value())\sa0\par\fi0\sb0
+print "";\sa0\par\fi0\sb0
+    \sa0\par\fi0\sb0
+#\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb400\li960\sl234 measurement 100s\sa0\par\fi0\sb0
+recorded at 00.00.0\sa0\par\fi0\sb0
+#devices = None\sa0\par\fi0\sb0
+#channels = 2\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+infos about the recording devices used:\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+infos about the channels:\sa0\par\fi0\sb0
+  channel #0: MLII []\sa0\par\fi0\sb0
+  channel #1: V5 []\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _488}{\*\bkmkend _488}\b\fs28\lang1024\f1 A.3.4. Matlab/Octave Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 GNU Octave, version 3.0.5\sa0\par\fi0\sb0
+Copyright (C) 2008 John W. Eaton and others.\sa0\par\fi0\sb0
+This is free software; see the source code for copying\sa0\par\fi0\sb0
+conditions.\sa0\par\fi0\sb0
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or\sa0\par\fi0\sb0
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Octave was configured for "i486-pc-linux-gnu".\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Additional information about Octave is available at\sa0\par\fi0\sb0
+http://www.octave.org.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Please contribute if you find this software useful.\sa0\par\fi0\sb0
+For more information, visit\sa0\par\fi0\sb0
+http://www.octave.org/help-wanted.html\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Report bugs to <bug@octave.org> (but first, please read\sa0\par\fi0\sb0
+http://www.octave.org/bugs.html to learn how to write a\sa0\par\fi0\sb0
+helpful report).\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+For information about changes from previous versions, type\sa0\par\fi0\sb0
+`news'.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
++ ra=ra_lib_init\sa0\par\fi0\sb0
+ra =  183558320\sa0\par\fi0\sb0
++ meas=ra_meas_open(ra, './database/100s.hea', '', 0)\sa0\par\fi0\sb0
+meas =  184102104\sa0\par\fi0\sb0
++ rec=ra_rec_get_first(meas, 0)\sa0\par\fi0\sb0
+rec =  184108552\sa0\par\fi0\sb0
++ num_ch=ra_rec_info_get(rec, 'rec_num_channel')\sa0\par\fi0\sb0
+num_ch =  2\sa0\par\fi0\sb0
++ rec_name=ra_rec_info_get(rec, 'rec_name')\sa0\par\fi0\sb0
+rec_name = 100s\sa0\par\fi0\sb0
++ rec_date=ra_rec_info_get(rec, 'rec_date')\sa0\par\fi0\sb0
+rec_date = 00.00.0\sa0\par\fi0\sb0
++ for i=0:(num_ch-1)\sa0\par\fi0\sb0
++     name=ra_ch_info_get(rec, i, 'ch_name')\sa0\par\fi0\sb0
++     unit=ra_ch_info_get(rec, i, 'ch_unit')\sa0\par\fi0\sb0
++ endfor\sa0\par\fi0\sb0
+name = MLII\sa0\par\fi0\sb0
+unit =\sa0\par\fi0\sb0
+name = V5\sa0\par\fi0\sb0
+unit =\sa0\par\fi0\sb0
++ ra_meas_close(meas);\sa0\par\fi0\sb0
++ ra_lib_close(ra);\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb259\s2\sl449 {\*\bkmkstart _492}{\*\bkmkend _492}\b\fs34\lang1024\f1 A.4. Access raw data\keepn\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _494}{\*\bkmkend _494}\fs28 A.4.1. C Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 //\sa0\par\fi0\sb0
+#include <stdio.h>\sa0\par\fi0\sb0
+#include <stdlib.h>\sa0\par\fi0\sb0
+#include <ra.h>\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+int main(int argc, char *argv[])\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    ra_handle ra;\sa0\par\fi0\sb0
+    value_handle vh;\sa0\par\fi0\sb0
+    meas_handle meas;\sa0\par\fi0\sb0
+    rec_handle rec;\sa0\par\fi0\sb0
+    long l, num_ch;\sa0\par\fi0\sb0
+    double *buf = NULL;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* initialize libRASCH */\sa0\par\fi0\sb0
+    ra = ra_lib_init();\sa0\par\fi0\sb0
+    if (ra == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("error initializing libRASCH\\n");\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* open measurement */\sa0\par\fi0\sb0
+    meas = ra_meas_open(ra, argv[1], NULL, 0);\sa0\par\fi0\sb0
+    if (meas == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("can't open measurement %s\\n", argv[1]);\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* get root recording */\sa0\par\fi0\sb0
+    rec = ra_rec_get_first(meas, 0);\sa0\par\fi0\sb0
+    if (rec == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("can't get recording-handle\\n");\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* get first 10000 samples for each channel */\sa0\par\fi0\sb0
+    vh = ra_value_malloc();\sa0\par\fi0\sb0
+    if (ra_info_get(rec, RA_INFO_REC_GEN_NUM_CHANNEL_L, vh) == 0)\sa0\par\fi0\sb0
+        num_ch = ra_value_get_long(vh);\sa0\par\fi0\sb0
+    buf = malloc(sizeof(double) * 10000);\sa0\par\fi0\sb0
+    for (l = 0; l < num_ch; l++)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        long m, num_read;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        num_read = ra_raw_get_unit(rec, l, 0, 10000, buf);\sa0\par\fi0\sb0
+        for (m = 0; m < num_read; m++)\sa0\par\fi0\sb0
+            ;                   /* do something with every sample */\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* clean up */\sa0\par\fi0\sb0
+    free(buf);\sa0\par\fi0\sb0
+    ra_value_free(vh);\sa0\par\fi0\sb0
+    ra_meas_close(meas);\sa0\par\fi0\sb0
+    ra_lib_close(ra);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    return 0;\sa0\par\fi0\sb0
+\}                               /* main() */\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+//\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _498}{\*\bkmkend _498}\b\fs28\lang1024\f1 A.4.2. Perl Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 #\sa0\par\fi0\sb0
+use strict;\sa0\par\fi0\sb0
+use RASCH;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# initialize libRASCH\sa0\par\fi0\sb0
+my $ra = new RASCH or die "error initializing libRASCH\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# open measurement\sa0\par\fi0\sb0
+my $meas = $ra->open_meas($ARGV[0], 0) or\sa0\par\fi0\sb0
+    die "can't open measurement $ARGV[0]\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get root recording\sa0\par\fi0\sb0
+my $rec = $meas->get_first_session_rec(0) or\sa0\par\fi0\sb0
+    die "can't get root recording\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get first 10000 samples for each channel\sa0\par\fi0\sb0
+my ($num_ch) = $rec->get_info(info => 'rec_num_channel');\sa0\par\fi0\sb0
+for (my $i = 0; $i < $num_ch; $i++)\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    my $data_ref = $rec->get_raw($i, 0, 10000);\sa0\par\fi0\sb0
+    for (@$data_ref)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        ; # do something with every sample\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+exit 0;\sa0\par\fi0\sb0
+#\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _502}{\*\bkmkend _502}\b\fs28\lang1024\f1 A.4.3. Python Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 #\sa0\par\fi0\sb0
+import sys\sa0\par\fi0\sb0
+from RASCH import *\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# initialize libRASCH\sa0\par\fi0\sb0
+ra = RASCH()\sa0\par\fi0\sb0
+if not ra:\sa0\par\fi0\sb0
+    print "can't initialize libRASCH"\sa0\par\fi0\sb0
+    sys.exit()\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# open measurement\sa0\par\fi0\sb0
+meas = ra.open_meas(sys.argv[1], 0)\sa0\par\fi0\sb0
+if not meas:\sa0\par\fi0\sb0
+    print "can't open measurement", sys.argv[1]\sa0\par\fi0\sb0
+    sys.exit()\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get root recording\sa0\par\fi0\sb0
+rec = meas.get_first_session_rec(0)\sa0\par\fi0\sb0
+if not rec:\sa0\par\fi0\sb0
+    print "can't get root recording"\sa0\par\fi0\sb0
+    sys.exit()\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get first 10000 samples for each channel\sa0\par\fi0\sb0
+[num_ch, n, d] = rec.get_info(info='rec_num_channel')\sa0\par\fi0\sb0
+if num_ch > 0:\sa0\par\fi0\sb0
+    for i in range(num_ch):\sa0\par\fi0\sb0
+        data = rec.get_raw(i, 0, 10000)\sa0\par\fi0\sb0
+        for elem in data:\sa0\par\fi0\sb0
+            elem # do something with every sample\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+#\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _506}{\*\bkmkend _506}\b\fs28\lang1024\f1 A.4.4. Matlab/Octave Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 GNU Octave, version 3.0.5\sa0\par\fi0\sb0
+Copyright (C) 2008 John W. Eaton and others.\sa0\par\fi0\sb0
+This is free software; see the source code for copying\sa0\par\fi0\sb0
+conditions.\sa0\par\fi0\sb0
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or\sa0\par\fi0\sb0
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Octave was configured for "i486-pc-linux-gnu".\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Additional information about Octave is available at\sa0\par\fi0\sb0
+http://www.octave.org.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Please contribute if you find this software useful.\sa0\par\fi0\sb0
+For more information, visit\sa0\par\fi0\sb0
+http://www.octave.org/help-wanted.html\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Report bugs to <bug@octave.org> (but first, please read\sa0\par\fi0\sb0
+http://www.octave.org/bugs.html to learn how to write a\sa0\par\fi0\sb0
+helpful report).\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+For information about changes from previous versions, type\sa0\par\fi0\sb0
+`news'.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
++ ra=ra_lib_init\sa0\par\fi0\sb0
+ra =  185012408\sa0\par\fi0\sb0
++ meas=ra_meas_open(ra, './database/100s.hea', '', 0)\sa0\par\fi0\sb0
+meas =  185820352\sa0\par\fi0\sb0
++ rec=ra_rec_get_first(meas, 0)\sa0\par\fi0\sb0
+rec =  184808528\sa0\par\fi0\sb0
++ num_ch=ra_rec_info_get(rec, 'rec_num_channel')\sa0\par\fi0\sb0
+num_ch =  2\sa0\par\fi0\sb0
++ ch_all=[];\sa0\par\fi0\sb0
++ for i=0:(num_ch-1)\sa0\par\fi0\sb0
++   ch=ra_raw_get_unit(rec, i, 0, 10000);\sa0\par\fi0\sb0
++   ch_all=[ch_all ch'];\sa0\par\fi0\sb0
++ endfor\sa0\par\fi0\sb0
++ whos ch_all\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+*** local user variables:\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  Prot Name        Size                     Bytes  Class\sa0\par\fi0\sb0
+  ==== ====        ====                     =====  =====\sa0\par\fi0\sb0
+   rwd ch_all  10000x2                     160000  double\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Total is 20000 elements using 160000 bytes\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
++ samplerate=ra_ch_info_get(rec, 0, 'ch_samplerate')\sa0\par\fi0\sb0
+samplerate =  360\sa0\par\fi0\sb0
++ x=0:9999;\sa0\par\fi0\sb0
++ x = x / samplerate;\sa0\par\fi0\sb0
++\sa0\par\fi0\sb0
++ figure();\sa0\par\fi0\sb0
++ for i=1:num_ch\sa0\par\fi0\sb0
++   subplot(num_ch,1,i)\sa0\par\fi0\sb0
++   plot(x,ch_all(:,i))\sa0\par\fi0\sb0
++ endfor\sa0\par\fi0\sb0
++\sa0\par\fi0\sb0
++ ra_meas_close(meas);\sa0\par\fi0\sb0
++ ra_lib_close(ra);\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb259\s2\sl449 {\*\bkmkstart _510}{\*\bkmkend _510}\b\fs34\lang1024\f1 A.5. Access evaluation\keepn\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _512}{\*\bkmkend _512}\fs28 A.5.1. C Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 //\sa0\par\fi0\sb0
+#include <stdio.h>\sa0\par\fi0\sb0
+#include <stdlib.h>\sa0\par\fi0\sb0
+#include <string.h>\sa0\par\fi0\sb0
+#include <ra.h>\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+int main(int argc, char *argv[])\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    ra_handle ra;\sa0\par\fi0\sb0
+    value_handle vh;\sa0\par\fi0\sb0
+    meas_handle meas;\sa0\par\fi0\sb0
+    eval_handle eval;\sa0\par\fi0\sb0
+    long l, m, num_class, num_prop;\sa0\par\fi0\sb0
+    class_handle *clh = NULL;\sa0\par\fi0\sb0
+    prop_handle *ph = NULL;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* initialize libRASCH */\sa0\par\fi0\sb0
+    ra = ra_lib_init();\sa0\par\fi0\sb0
+    if (ra == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("error initializing libRASCH\\n");\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* open measurement */\sa0\par\fi0\sb0
+    meas = ra_meas_open(ra, argv[1], NULL, 0);\sa0\par\fi0\sb0
+    if (meas == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("can't open measurement %s\\n", argv[1]);\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* get default evaluation */\sa0\par\fi0\sb0
+    eval = ra_eval_get_default(meas);\sa0\par\fi0\sb0
+    if (eval == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("no evaluation in measurement %s\\n", argv[1]);\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* get some infos about evaluation */\sa0\par\fi0\sb0
+    vh = ra_value_malloc();\sa0\par\fi0\sb0
+    if (ra_info_get(eval, RA_INFO_EVAL_NAME_C, vh) == 0)\sa0\par\fi0\sb0
+        printf("evaluation %s ", ra_value_get_string(vh));\sa0\par\fi0\sb0
+    if (ra_info_get(eval, RA_INFO_EVAL_ADD_TS_C, vh) == 0)\sa0\par\fi0\sb0
+        printf("was added at %s ", ra_value_get_string(vh));\sa0\par\fi0\sb0
+    if (ra_info_get(eval, RA_INFO_EVAL_PROG_C, vh) == 0)\sa0\par\fi0\sb0
+        printf("using the program %s", ra_value_get_string(vh));\sa0\par\fi0\sb0
+    printf("\\n\\n");\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* list event-class's */\sa0\par\fi0\sb0
+    num_class = 0;\sa0\par\fi0\sb0
+    if (ra_class_get(eval, NULL, vh) == 0)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        num_class = ra_value_get_num_elem(vh);\sa0\par\fi0\sb0
+        clh = malloc(sizeof(class_handle) * num_class);\sa0\par\fi0\sb0
+        memcpy(clh, (void *)ra_value_get_voidp_array(vh),\sa0\par\fi0\sb0
+               sizeof(class_handle) * num_class);\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    for (l = 0; l < num_class; l++)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        if (ra_info_get(clh[l], RA_INFO_CLASS_NAME_C, vh) == 0)\sa0\par\fi0\sb0
+            printf("event-class %s", ra_value_get_string(vh));\sa0\par\fi0\sb0
+        if (ra_info_get(clh[l], RA_INFO_CLASS_EV_NUM_L, vh) == 0)\sa0\par\fi0\sb0
+            printf(" with %d events", ra_value_get_long(vh));\sa0\par\fi0\sb0
+        printf(":\\n");\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        /* list event-properties */\sa0\par\fi0\sb0
+        num_prop = 0;\sa0\par\fi0\sb0
+        if (ra_prop_get_all(clh[l], vh) == 0)\sa0\par\fi0\sb0
+        \{\sa0\par\fi0\sb0
+            num_prop = ra_value_get_num_elem(vh);\sa0\par\fi0\sb0
+            ph = malloc(sizeof(prop_handle) * num_prop);\sa0\par\fi0\sb0
+            memcpy(ph, (void *)ra_value_get_voidp_array(vh),\sa0\par\fi0\sb0
+                   sizeof(prop_handle) * num_prop);\sa0\par\fi0\sb0
+        \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        for (m = 0; m < num_prop; m++)\sa0\par\fi0\sb0
+        \{\sa0\par\fi0\sb0
+            if (ra_info_get(ph[m], RA_INFO_PROP_ASCII_ID_C, vh)\sa0\par\fi0\sb0
+                == 0)\sa0\par\fi0\sb0
+                printf("  %s\\n", ra_value_get_string(vh));\sa0\par\fi0\sb0
+            if (ra_info_get(ph[m], RA_INFO_PROP_DESC_C, vh) == 0)\sa0\par\fi0\sb0
+                printf("    %s", ra_value_get_string(vh));\sa0\par\fi0\sb0
+            printf("\\n");\sa0\par\fi0\sb0
+        \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        free(ph);\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+    free(clh);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* close */\sa0\par\fi0\sb0
+    ra_value_free(vh);\sa0\par\fi0\sb0
+    ra_meas_close(meas);\sa0\par\fi0\sb0
+    ra_lib_close(ra);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    return 0;\sa0\par\fi0\sb0
+\}                               /* main() */\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+//\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb400\li960\sl234 evaluation RASCHlab was added at 15.11.2009  11:48:00 using\sa0\par\fi0\sb0
+the program raschlab_qt\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+event-class heartbeat with 75 events:\sa0\par\fi0\sb0
+  qrs-pos\sa0\par\fi0\sb0
+    position of fiducial point of QRS-complex in sampleunits\sa0\par\fi0\sb0
+  qrs-annot\sa0\par\fi0\sb0
+    annotation of QRS complex\sa0\par\fi0\sb0
+  ecg-noise\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-morph-flags\sa0\par\fi0\sb0
+    flags for the morphology values\sa0\par\fi0\sb0
+  ecg-p-type\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-qrs-type\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-t-type\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-p-start\sa0\par\fi0\sb0
+    offset of p-wave begin from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-p-end\sa0\par\fi0\sb0
+    offset of p-wave end from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-p-width\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-p-peak-1\sa0\par\fi0\sb0
+    offset of p-wave peak from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-p-peak-2\sa0\par\fi0\sb0
+    offset of 2nd p-wave peak (if biphasic) from qrs-pos\sa0\par\fi0\sb0
+    in sampleunits\sa0\par\fi0\sb0
+  ecg-qrs-start\sa0\par\fi0\sb0
+    offset of start of qrs complex from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-qrs-end\sa0\par\fi0\sb0
+    offset of end of qrs complex from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-qrs-width\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-q-peak\sa0\par\fi0\sb0
+    offset of q-wave from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-r-peak\sa0\par\fi0\sb0
+    offset of r-wave from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-s-peak\sa0\par\fi0\sb0
+    offset of s-wave from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-rs-peak\sa0\par\fi0\sb0
+    offset of r'-wave from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-t-start\sa0\par\fi0\sb0
+    offset of t-wave begin from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-t-end\sa0\par\fi0\sb0
+    offset of t-wave end from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-t-width\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-t-peak-1\sa0\par\fi0\sb0
+    offset of t-wave peak from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-t-peak-2\sa0\par\fi0\sb0
+    offset of 2nd t-wave peak (if biphasic) from qrs-pos\sa0\par\fi0\sb0
+    in sampleunits\sa0\par\fi0\sb0
+  ecg-pq\sa0\par\fi0\sb0
+    PQ interval\sa0\par\fi0\sb0
+  ecg-qt\sa0\par\fi0\sb0
+    QT interval\sa0\par\fi0\sb0
+  ecg-qtc\sa0\par\fi0\sb0
+    QTc interval\sa0\par\fi0\sb0
+  qrs-temporal\sa0\par\fi0\sb0
+    temporal setting of beat\sa0\par\fi0\sb0
+  ecg-flags\sa0\par\fi0\sb0
+    ECG releated flags\sa0\par\fi0\sb0
+  rri\sa0\par\fi0\sb0
+    RR interval\sa0\par\fi0\sb0
+  rri-annot\sa0\par\fi0\sb0
+    annoation of RR interval\sa0\par\fi0\sb0
+  rri-refvalue\sa0\par\fi0\sb0
+    reference rri representing the current heart-rate\sa0\par\fi0\sb0
+  rri-num-refvalue\sa0\par\fi0\sb0
+    number of rri's used for calculation of reference value\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _518}{\*\bkmkend _518}\b\fs28\lang1024\f1 A.5.2. Perl Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 #\sa0\par\fi0\sb0
+use strict;\sa0\par\fi0\sb0
+use RASCH;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# initialize libRASCH\sa0\par\fi0\sb0
+my $ra = new RASCH or die "error initializing libRASCH\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# open measurement\sa0\par\fi0\sb0
+my $meas = $ra->open_meas($ARGV[0], '', 0) or \sa0\par\fi0\sb0
+    die "can't open measurement $ARGV[0]\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get default evaluation\sa0\par\fi0\sb0
+my $eval = $meas->get_default_eval() or\sa0\par\fi0\sb0
+    die "no evaluation in measurement\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get some general infos\sa0\par\fi0\sb0
+my $v = $eval->get_info(info => 'eval_name');\sa0\par\fi0\sb0
+my $eval_name = $v->value();\sa0\par\fi0\sb0
+$v = $eval->get_info(info => 'eval_add_timestamp');\sa0\par\fi0\sb0
+my $eval_add_ts = $v->value();\sa0\par\fi0\sb0
+$v = $eval->get_info(info => 'eval_program');\sa0\par\fi0\sb0
+my $eval_prg = $v->value();\sa0\par\fi0\sb0
+print "evaluation $eval_name was added at $eval_add_ts" .\sa0\par\fi0\sb0
+    " using the program $eval_prg\\n\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# list event-class\sa0\par\fi0\sb0
+my $cl_all = $eval->get_class();\sa0\par\fi0\sb0
+for my $cl_curr (@$cl_all)\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    my $name = $cl_curr->get_info(info => 'class_name');\sa0\par\fi0\sb0
+    my $num_events = $cl_curr->get_info(info => 'class_num_events');\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    print "event-class " . $name->value() . " with " . $num_events->value() . " events\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    # list event properties\sa0\par\fi0\sb0
+    my $props = $cl_curr->get_prop_all();\sa0\par\fi0\sb0
+    for my $prop (@$props)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        my $name = $prop->get_info(info => 'prop_name');\sa0\par\fi0\sb0
+        my $desc = $prop->get_info(info => 'prop_desc');\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        print "  " . $name->value() . "\\n";\sa0\par\fi0\sb0
+        print "    " . $desc->value() . "\\n";\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+exit 0;\sa0\par\fi0\sb0
+#\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb400\li960\sl234 evaluation RASCHlab was added at 15.11.2009  11:48:00 using\sa0\par\fi0\sb0
+the program raschlab_qt\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+event-class heartbeat with 75 events\sa0\par\fi0\sb0
+  qrs-pos\sa0\par\fi0\sb0
+    position of fiducial point of QRS-complex in sampleunits\sa0\par\fi0\sb0
+  qrs-annot\sa0\par\fi0\sb0
+    annotation of QRS complex\sa0\par\fi0\sb0
+  ecg-noise\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-morph-flags\sa0\par\fi0\sb0
+    flags for the morphology values\sa0\par\fi0\sb0
+  ecg-p-type\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-qrs-type\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-t-type\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-p-start\sa0\par\fi0\sb0
+    offset of p-wave begin from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-p-end\sa0\par\fi0\sb0
+    offset of p-wave end from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-p-width\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-p-peak-1\sa0\par\fi0\sb0
+    offset of p-wave peak from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-p-peak-2\sa0\par\fi0\sb0
+    offset of 2nd p-wave peak (if biphasic) from qrs-pos\sa0\par\fi0\sb0
+    in sampleunits\sa0\par\fi0\sb0
+  ecg-qrs-start\sa0\par\fi0\sb0
+    offset of start of qrs complex from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-qrs-end\sa0\par\fi0\sb0
+    offset of end of qrs complex from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-qrs-width\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-q-peak\sa0\par\fi0\sb0
+    offset of q-wave from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-r-peak\sa0\par\fi0\sb0
+    offset of r-wave from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-s-peak\sa0\par\fi0\sb0
+    offset of s-wave from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-rs-peak\sa0\par\fi0\sb0
+    offset of r'-wave from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-t-start\sa0\par\fi0\sb0
+    offset of t-wave begin from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-t-end\sa0\par\fi0\sb0
+    offset of t-wave end from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-t-width\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-t-peak-1\sa0\par\fi0\sb0
+    offset of t-wave peak from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-t-peak-2\sa0\par\fi0\sb0
+    offset of 2nd t-wave peak (if biphasic) from qrs-pos\sa0\par\fi0\sb0
+    in sampleunits\sa0\par\fi0\sb0
+  ecg-pq\sa0\par\fi0\sb0
+    PQ interval\sa0\par\fi0\sb0
+  ecg-qt\sa0\par\fi0\sb0
+    QT interval\sa0\par\fi0\sb0
+  ecg-qtc\sa0\par\fi0\sb0
+    QTc interval\sa0\par\fi0\sb0
+  qrs-temporal\sa0\par\fi0\sb0
+    temporal setting of beat\sa0\par\fi0\sb0
+  ecg-flags\sa0\par\fi0\sb0
+    ECG releated flags\sa0\par\fi0\sb0
+  rri\sa0\par\fi0\sb0
+    RR interval\sa0\par\fi0\sb0
+  rri-annotation\sa0\par\fi0\sb0
+    annoation of RR interval\sa0\par\fi0\sb0
+  rri-refvalue\sa0\par\fi0\sb0
+    reference rri representing the current heart-rate\sa0\par\fi0\sb0
+  rri-num-refvalue\sa0\par\fi0\sb0
+    number of rri's used for calculation of reference value\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _524}{\*\bkmkend _524}\b\fs28\lang1024\f1 A.5.3. Python Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 #\sa0\par\fi0\sb0
+import sys\sa0\par\fi0\sb0
+from RASCH import *\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# initialize libRASCH\sa0\par\fi0\sb0
+ra = RASCH()\sa0\par\fi0\sb0
+if not ra:\sa0\par\fi0\sb0
+    print "can't initialize libRASCH"\sa0\par\fi0\sb0
+    sys.exit()\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# open measurement\sa0\par\fi0\sb0
+meas = ra.open_meas(sys.argv[1], '', 0)\sa0\par\fi0\sb0
+if not meas:\sa0\par\fi0\sb0
+    print "can't open measurement", sys.argv[1]\sa0\par\fi0\sb0
+    sys.exit()\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get default evaluation\sa0\par\fi0\sb0
+eva = meas.get_default_eval()\sa0\par\fi0\sb0
+if not eva:\sa0\par\fi0\sb0
+    print "no evaluation in measurement"\sa0\par\fi0\sb0
+    sys.exit()\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get some general infos\sa0\par\fi0\sb0
+eval_name = eva.get_info(info='eval_name')\sa0\par\fi0\sb0
+eval_add_ts = eva.get_info(info='eval_add_timestamp')\sa0\par\fi0\sb0
+eval_prg = eva.get_info(info='eval_program')\sa0\par\fi0\sb0
+print "evaluation", eval_name.value(), "was added at", eval_add_ts.value(), \\\sa0\par\fi0\sb0
+      "using the program", eval_prg.value(), "\\n"\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# list event-class\sa0\par\fi0\sb0
+cl = eva.get_class()\sa0\par\fi0\sb0
+for cl_curr in cl:\sa0\par\fi0\sb0
+    name = cl_curr.get_info(info='class_name')\sa0\par\fi0\sb0
+    num_events = cl_curr.get_info(info='class_num_events')\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    print "event-class", name.value(), "with",\sa0\par\fi0\sb0
+    print num_events.value(),\sa0\par\fi0\sb0
+    print "events"\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    # list event properties\sa0\par\fi0\sb0
+    props = cl_curr.get_prop_all()\sa0\par\fi0\sb0
+    for elem in props:\sa0\par\fi0\sb0
+        name = elem.get_info(info='prop_name')\sa0\par\fi0\sb0
+        desc = elem.get_info(info='prop_desc')\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        print " ", name.value()\sa0\par\fi0\sb0
+        print "   ", desc.value()\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+#\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb400\li960\sl234 evaluation RASCHlab was added at 15.11.2009  11:48:00 using\sa0\par\fi0\sb0
+the program raschlab_qt\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+event-class heartbeat with 75 events\sa0\par\fi0\sb0
+  qrs-pos\sa0\par\fi0\sb0
+    position of fiducial point of QRS-complex in sampleunits\sa0\par\fi0\sb0
+  qrs-annot\sa0\par\fi0\sb0
+    annotation of QRS complex\sa0\par\fi0\sb0
+  ecg-noise\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-morph-flags\sa0\par\fi0\sb0
+    flags for the morphology values\sa0\par\fi0\sb0
+  ecg-p-type\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-qrs-type\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-t-type\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-p-start\sa0\par\fi0\sb0
+    offset of p-wave begin from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-p-end\sa0\par\fi0\sb0
+    offset of p-wave end from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-p-width\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-p-peak-1\sa0\par\fi0\sb0
+    offset of p-wave peak from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-p-peak-2\sa0\par\fi0\sb0
+    offset of 2nd p-wave peak (if biphasic) from qrs-pos\sa0\par\fi0\sb0
+    in sampleunits\sa0\par\fi0\sb0
+  ecg-qrs-start\sa0\par\fi0\sb0
+    offset of start of qrs complex from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-qrs-end\sa0\par\fi0\sb0
+    offset of end of qrs complex from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-qrs-width\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-q-peak\sa0\par\fi0\sb0
+    offset of q-wave from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-r-peak\sa0\par\fi0\sb0
+    offset of r-wave from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-s-peak\sa0\par\fi0\sb0
+    offset of s-wave from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-rs-peak\sa0\par\fi0\sb0
+    offset of r'-wave from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-t-start\sa0\par\fi0\sb0
+    offset of t-wave begin from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-t-end\sa0\par\fi0\sb0
+    offset of t-wave end from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-t-width\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  ecg-t-peak-1\sa0\par\fi0\sb0
+    offset of t-wave peak from qrs-pos in sampleunits\sa0\par\fi0\sb0
+  ecg-t-peak-2\sa0\par\fi0\sb0
+    offset of 2nd t-wave peak (if biphasic) from qrs-pos\sa0\par\fi0\sb0
+    in sampleunits\sa0\par\fi0\sb0
+  ecg-pq\sa0\par\fi0\sb0
+    PQ interval\sa0\par\fi0\sb0
+  ecg-qt\sa0\par\fi0\sb0
+    QT interval\sa0\par\fi0\sb0
+  ecg-qtc\sa0\par\fi0\sb0
+    QTc interval\sa0\par\fi0\sb0
+  qrs-temporal\sa0\par\fi0\sb0
+    temporal setting of beat\sa0\par\fi0\sb0
+  ecg-flags\sa0\par\fi0\sb0
+    ECG releated flags\sa0\par\fi0\sb0
+  rri\sa0\par\fi0\sb0
+    RR interval\sa0\par\fi0\sb0
+  rri-annotation\sa0\par\fi0\sb0
+    annoation of RR interval\sa0\par\fi0\sb0
+  rri-refvalue\sa0\par\fi0\sb0
+    reference rri representing the current heart-rate\sa0\par\fi0\sb0
+  rri-num-refvalue\sa0\par\fi0\sb0
+    number of rri's used for calculation of reference value\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _530}{\*\bkmkend _530}\b\fs28\lang1024\f1 A.5.4. Matlab/Octave Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 GNU Octave, version 3.0.5\sa0\par\fi0\sb0
+Copyright (C) 2008 John W. Eaton and others.\sa0\par\fi0\sb0
+This is free software; see the source code for copying\sa0\par\fi0\sb0
+conditions.\sa0\par\fi0\sb0
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or\sa0\par\fi0\sb0
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Octave was configured for "i486-pc-linux-gnu".\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Additional information about Octave is available at\sa0\par\fi0\sb0
+http://www.octave.org.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Please contribute if you find this software useful.\sa0\par\fi0\sb0
+For more information, visit\sa0\par\fi0\sb0
+http://www.octave.org/help-wanted.html\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Report bugs to <bug@octave.org> (but first, please read\sa0\par\fi0\sb0
+http://www.octave.org/bugs.html to learn how to write a\sa0\par\fi0\sb0
+helpful report).\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+For information about changes from previous versions, type\sa0\par\fi0\sb0
+`news'.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
++ ra=ra_lib_init\sa0\par\fi0\sb0
+ra =  172723872\sa0\par\fi0\sb0
++ meas=ra_meas_open(ra, './database/100s.hea', '', 0)\sa0\par\fi0\sb0
+meas =  173268312\sa0\par\fi0\sb0
++ eva=ra_eval_get_default(meas)\sa0\par\fi0\sb0
+eva =  174110536\sa0\par\fi0\sb0
++ ra_eval_info_get(eva, 'eval_name')\sa0\par\fi0\sb0
+ans = RASCHlab\sa0\par\fi0\sb0
++ ra_eval_info_get(eva, 'eval_add_timestamp')\sa0\par\fi0\sb0
+ans = 15.11.2009  11:48:00\sa0\par\fi0\sb0
++ ra_eval_info_get(eva, 'eval_program')\sa0\par\fi0\sb0
+ans = raschlab_qt\sa0\par\fi0\sb0
++ cl = ra_class_get(eva, '');\sa0\par\fi0\sb0
++ num_cl = length(cl)\sa0\par\fi0\sb0
+num_cl =  1\sa0\par\fi0\sb0
++ for i = 1:num_cl\sa0\par\fi0\sb0
++   name_cl = ra_class_info_get(cl(i), 'class_name')\sa0\par\fi0\sb0
++   desc_cl = ra_prop_info_get(cl(i), 'class_desc')\sa0\par\fi0\sb0
++   num_events = ra_class_info_get(cl(i), 'class_num_events')\sa0\par\fi0\sb0
++\sa0\par\fi0\sb0
++   props = ra_prop_get_all(cl(i));\sa0\par\fi0\sb0
++   num_prop = length(props)\sa0\par\fi0\sb0
++   for j = 1:num_prop\sa0\par\fi0\sb0
++     id_ascii = ra_prop_info_get(props(j), 'prop_id_ascii')\sa0\par\fi0\sb0
++     desc_prop = ra_prop_info_get(props(j), 'prop_desc')\sa0\par\fi0\sb0
++   endfor\sa0\par\fi0\sb0
++ endfor\sa0\par\fi0\sb0
+name_cl = heartbeat\sa0\par\fi0\sb0
+desc_cl = infos about a heart beat\sa0\par\fi0\sb0
+num_events =  75\sa0\par\fi0\sb0
+num_prop =  33\sa0\par\fi0\sb0
+id_ascii = qrs-pos\sa0\par\fi0\sb0
+desc_prop = position of fiducial point of QRS-complex in\sa0\par\fi0\sb0
+sampleunits\sa0\par\fi0\sb0
+id_ascii = qrs-annot\sa0\par\fi0\sb0
+desc_prop = annotation of QRS complex\sa0\par\fi0\sb0
+id_ascii = ecg-noise\sa0\par\fi0\sb0
+desc_prop =\sa0\par\fi0\sb0
+id_ascii = ecg-morph-flags\sa0\par\fi0\sb0
+desc_prop = flags for the morphology values\sa0\par\fi0\sb0
+id_ascii = ecg-p-type\sa0\par\fi0\sb0
+desc_prop =\sa0\par\fi0\sb0
+id_ascii = ecg-qrs-type\sa0\par\fi0\sb0
+desc_prop =\sa0\par\fi0\sb0
+id_ascii = ecg-t-type\sa0\par\fi0\sb0
+desc_prop =\sa0\par\fi0\sb0
+id_ascii = ecg-p-start\sa0\par\fi0\sb0
+desc_prop = offset of p-wave begin from qrs-pos in sampleunits\sa0\par\fi0\sb0
+id_ascii = ecg-p-end\sa0\par\fi0\sb0
+desc_prop = offset of p-wave end from qrs-pos in sampleunits\sa0\par\fi0\sb0
+id_ascii = ecg-p-width\sa0\par\fi0\sb0
+desc_prop =\sa0\par\fi0\sb0
+id_ascii = ecg-p-peak-1\sa0\par\fi0\sb0
+desc_prop = offset of p-wave peak from qrs-pos in sampleunits\sa0\par\fi0\sb0
+id_ascii = ecg-p-peak-2\sa0\par\fi0\sb0
+desc_prop = offset of 2nd p-wave peak (if biphasic) from\sa0\par\fi0\sb0
+qrs-pos in sampleunits\sa0\par\fi0\sb0
+id_ascii = ecg-qrs-start\sa0\par\fi0\sb0
+desc_prop = offset of start of qrs complex from qrs-pos in\sa0\par\fi0\sb0
+sampleunits\sa0\par\fi0\sb0
+id_ascii = ecg-qrs-end\sa0\par\fi0\sb0
+desc_prop = offset of end of qrs complex from qrs-pos in\sa0\par\fi0\sb0
+sampleunits\sa0\par\fi0\sb0
+id_ascii = ecg-qrs-width\sa0\par\fi0\sb0
+desc_prop =\sa0\par\fi0\sb0
+id_ascii = ecg-q-peak\sa0\par\fi0\sb0
+desc_prop = offset of q-wave from qrs-pos in sampleunits\sa0\par\fi0\sb0
+id_ascii = ecg-r-peak\sa0\par\fi0\sb0
+desc_prop = offset of r-wave from qrs-pos in sampleunits\sa0\par\fi0\sb0
+id_ascii = ecg-s-peak\sa0\par\fi0\sb0
+desc_prop = offset of s-wave from qrs-pos in sampleunits\sa0\par\fi0\sb0
+id_ascii = ecg-rs-peak\sa0\par\fi0\sb0
+desc_prop = offset of r'-wave from qrs-pos in sampleunits\sa0\par\fi0\sb0
+id_ascii = ecg-t-start\sa0\par\fi0\sb0
+desc_prop = offset of t-wave begin from qrs-pos in sampleunits\sa0\par\fi0\sb0
+id_ascii = ecg-t-end\sa0\par\fi0\sb0
+desc_prop = offset of t-wave end from qrs-pos in sampleunits\sa0\par\fi0\sb0
+id_ascii = ecg-t-width\sa0\par\fi0\sb0
+desc_prop =\sa0\par\fi0\sb0
+id_ascii = ecg-t-peak-1\sa0\par\fi0\sb0
+desc_prop = offset of t-wave peak from qrs-pos in sampleunits\sa0\par\fi0\sb0
+id_ascii = ecg-t-peak-2\sa0\par\fi0\sb0
+desc_prop = offset of 2nd t-wave peak (if biphasic) from\sa0\par\fi0\sb0
+qrs-pos in sampleunits\sa0\par\fi0\sb0
+id_ascii = ecg-pq\sa0\par\fi0\sb0
+desc_prop = PQ interval\sa0\par\fi0\sb0
+id_ascii = ecg-qt\sa0\par\fi0\sb0
+desc_prop = QT interval\sa0\par\fi0\sb0
+id_ascii = ecg-qtc\sa0\par\fi0\sb0
+desc_prop = QTc interval\sa0\par\fi0\sb0
+id_ascii = qrs-temporal\sa0\par\fi0\sb0
+desc_prop = temporal setting of beat\sa0\par\fi0\sb0
+id_ascii = ecg-flags\sa0\par\fi0\sb0
+desc_prop = ECG releated flags\sa0\par\fi0\sb0
+id_ascii = rri\sa0\par\fi0\sb0
+desc_prop = RR interval\sa0\par\fi0\sb0
+id_ascii = rri-annot\sa0\par\fi0\sb0
+desc_prop = annoation of RR interval\sa0\par\fi0\sb0
+id_ascii = rri-refvalue\sa0\par\fi0\sb0
+desc_prop = reference rri representing the current heart-rate\sa0\par\fi0\sb0
+id_ascii = rri-num-refvalue\sa0\par\fi0\sb0
+desc_prop = number of rri's used for calculation of reference\sa0\par\fi0\sb0
+value\sa0\par\fi0\sb0
++\sa0\par\fi0\sb0
++ ra_meas_close(meas);\sa0\par\fi0\sb0
++ ra_lib_close(ra);\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb259\s2\sl449 {\*\bkmkstart _534}{\*\bkmkend _534}\b\fs34\lang1024\f1 A.6. Access events\keepn\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _536}{\*\bkmkend _536}\fs28 A.6.1. C Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 //\sa0\par\fi0\sb0
+#include <stdio.h>\sa0\par\fi0\sb0
+#include <stdlib.h>\sa0\par\fi0\sb0
+#include <ra.h>\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+int main(int argc, char *argv[])\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    ra_handle ra;\sa0\par\fi0\sb0
+    meas_handle meas;\sa0\par\fi0\sb0
+    eval_handle eval;\sa0\par\fi0\sb0
+    class_handle *clh;\sa0\par\fi0\sb0
+    prop_handle prop_rri, prop_qrs_pos;\sa0\par\fi0\sb0
+    long l, m, num_heartbeat, num_events, num_rri;\sa0\par\fi0\sb0
+    const long *ev_ids;\sa0\par\fi0\sb0
+    double *rri = NULL;\sa0\par\fi0\sb0
+    double *qrs_pos = NULL;\sa0\par\fi0\sb0
+    value_handle vh, vh_id, value;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* initialize libRASCH */\sa0\par\fi0\sb0
+    ra = ra_lib_init();\sa0\par\fi0\sb0
+    if (ra == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("error initializing libRASCH\\n");\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* open measurement */\sa0\par\fi0\sb0
+    meas = ra_meas_open(ra, argv[1], NULL, 0);\sa0\par\fi0\sb0
+    if (meas == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("can't open measurement %s\\n", argv[1]);\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* get default evaluation */\sa0\par\fi0\sb0
+    eval = ra_eval_get_default(meas);\sa0\par\fi0\sb0
+    if (eval == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("no evaluation in measurement %s\\n", argv[1]);\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    vh = ra_value_malloc();\sa0\par\fi0\sb0
+    if (ra_class_get(eval, "heartbeat", vh) != 0)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf\sa0\par\fi0\sb0
+            ("no 'heartbeat' event-classes in measurement %s\\n",\sa0\par\fi0\sb0
+             argv[1]);\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+    num_heartbeat = ra_value_get_num_elem(vh);\sa0\par\fi0\sb0
+    clh = (class_handle *) ra_value_get_voidp_array(vh);\sa0\par\fi0\sb0
+    vh_id = ra_value_malloc();\sa0\par\fi0\sb0
+    value = ra_value_malloc();\sa0\par\fi0\sb0
+    for (l = 0; l < num_heartbeat; l++)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        if (ra_class_get_events(clh[l], -1, -1, 0, 1, vh_id) !=\sa0\par\fi0\sb0
+            0)\sa0\par\fi0\sb0
+        \{\sa0\par\fi0\sb0
+            printf("error getting event-id's\\n");\sa0\par\fi0\sb0
+            continue;\sa0\par\fi0\sb0
+        \}\sa0\par\fi0\sb0
+        ev_ids = ra_value_get_long_array(vh_id);\sa0\par\fi0\sb0
+        num_events = ra_value_get_num_elem(vh_id);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        /* get event-properties for RR-intervals and position of\sa0\par\fi0\sb0
+           QRS-complex */\sa0\par\fi0\sb0
+        prop_rri = ra_prop_get(clh[l], "rri");\sa0\par\fi0\sb0
+        if (prop_rri == NULL)\sa0\par\fi0\sb0
+        \{\sa0\par\fi0\sb0
+            printf("no event-property 'rri' in event-class\\n");\sa0\par\fi0\sb0
+            continue;\sa0\par\fi0\sb0
+        \}\sa0\par\fi0\sb0
+        prop_qrs_pos = ra_prop_get(clh[l], "qrs-pos");\sa0\par\fi0\sb0
+        if (prop_qrs_pos == NULL)\sa0\par\fi0\sb0
+        \{\sa0\par\fi0\sb0
+            printf\sa0\par\fi0\sb0
+                ("no event-property 'qrs-pos' in event-class\\n");\sa0\par\fi0\sb0
+            continue;\sa0\par\fi0\sb0
+        \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        rri = malloc(sizeof(double) * num_events);\sa0\par\fi0\sb0
+        qrs_pos = malloc(sizeof(double) * num_events);\sa0\par\fi0\sb0
+        num_rri = 0;\sa0\par\fi0\sb0
+        for (m = 0; m < num_events; m++)\sa0\par\fi0\sb0
+        \{\sa0\par\fi0\sb0
+            if (ra_prop_get_value(prop_rri, ev_ids[m], -1, value)\sa0\par\fi0\sb0
+                != 0)\sa0\par\fi0\sb0
+                continue;\sa0\par\fi0\sb0
+            rri[num_rri] = ra_value_get_double(value);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+            if (ra_prop_get_value\sa0\par\fi0\sb0
+                (prop_qrs_pos, ev_ids[m], -1, value) != 0)\sa0\par\fi0\sb0
+                continue;\sa0\par\fi0\sb0
+            qrs_pos[num_rri] = ra_value_get_double(value);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+            num_rri++;\sa0\par\fi0\sb0
+        \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        /* now do something with the RR-intervals and QRS-complex\sa0\par\fi0\sb0
+           positions */\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        if (rri)\sa0\par\fi0\sb0
+            free(rri);\sa0\par\fi0\sb0
+        if (qrs_pos)\sa0\par\fi0\sb0
+            free(qrs_pos);\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* clean up */\sa0\par\fi0\sb0
+    ra_value_free(vh);\sa0\par\fi0\sb0
+    ra_value_free(vh_id);\sa0\par\fi0\sb0
+    ra_value_free(value);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    ra_meas_close(meas);\sa0\par\fi0\sb0
+    ra_lib_close(ra);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    return 0;\sa0\par\fi0\sb0
+\}                               /* main() */\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+//\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _540}{\*\bkmkend _540}\b\fs28\lang1024\f1 A.6.2. Perl Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 #\sa0\par\fi0\sb0
+use strict;\sa0\par\fi0\sb0
+use RASCH;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# initialize libRASCH\sa0\par\fi0\sb0
+my $ra = new RASCH or die "error initializing libRASCH\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# open measurement\sa0\par\fi0\sb0
+my $meas = $ra->open_meas($ARGV[0], 0) or\sa0\par\fi0\sb0
+    die "can't open measurement $ARGV[0]\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get default evaluation\sa0\par\fi0\sb0
+my $eval = $meas->get_default_eval() or\sa0\par\fi0\sb0
+    die "no evaluation in the measurement\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+my $cl = $eval->get_class('heartbeat');\sa0\par\fi0\sb0
+# we are only interested in the first 'heartbeat' event-class\sa0\par\fi0\sb0
+# in this example\sa0\par\fi0\sb0
+my $cl_use = $cl->[0];\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get event-properties for RR-intervals and position of QRS-complex\sa0\par\fi0\sb0
+my $prop_rri = $cl_use->get_prop('rri') or\sa0\par\fi0\sb0
+    die "no event-property 'rri' in the evaluation\\n";\sa0\par\fi0\sb0
+my $prop_qrs_pos = $cl_use->get_prop('qrs-pos') or\sa0\par\fi0\sb0
+    die "no event-property 'qrs-pos' in the evaluation\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get values for all RR-intervals and QRS-complexes\sa0\par\fi0\sb0
+my $rri_ref = $prop_rri->get_events();\sa0\par\fi0\sb0
+my $qrs_pos_ref = $prop_qrs_pos->get_events();\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# now do something with the RR-intervals and QRS-complex-positions\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+exit 0;\sa0\par\fi0\sb0
+#\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _544}{\*\bkmkend _544}\b\fs28\lang1024\f1 A.6.3. Python Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 #\sa0\par\fi0\sb0
+import sys\sa0\par\fi0\sb0
+from RASCH import *\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# initialize libRASCH\sa0\par\fi0\sb0
+ra = RASCH()\sa0\par\fi0\sb0
+if not ra:\sa0\par\fi0\sb0
+    print "can't initialize libRASCH"\sa0\par\fi0\sb0
+    sys.exit()\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# open measurement\sa0\par\fi0\sb0
+meas = ra.open_meas(sys.argv[1], 0)\sa0\par\fi0\sb0
+if not meas:\sa0\par\fi0\sb0
+    print "can't open measurement", sys.argv[1]\sa0\par\fi0\sb0
+    sys.exit()\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get default evaluation\sa0\par\fi0\sb0
+eva = meas.get_def_eval()\sa0\par\fi0\sb0
+if not eva:\sa0\par\fi0\sb0
+    print "no evaluation in measurement"\sa0\par\fi0\sb0
+    sys.exit()\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get event-properties for RR-intervals and position of QRS-complexs\sa0\par\fi0\sb0
+prop_rri = eva.get_evprop_by_name('rri')\sa0\par\fi0\sb0
+if not prop_rri:\sa0\par\fi0\sb0
+    print "no event-property 'rri' in the evaluation"\sa0\par\fi0\sb0
+    sys.exit()\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+prop_qrs_pos = eva.get_evprop_by_name('qrs-pos')\sa0\par\fi0\sb0
+if not prop_qrs_pos:\sa0\par\fi0\sb0
+    print "no event-property 'qrs-pos' in the evaluation"\sa0\par\fi0\sb0
+    sys.exit()\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get values for all RR-intervals and QRS-complexes\sa0\par\fi0\sb0
+rri = prop_rri.get_events()\sa0\par\fi0\sb0
+qrs_pos_ref = prop_qrs_pos.get_events()\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# now do something with the RR-intervals and QRS-complex-positions\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+#\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _548}{\*\bkmkend _548}\b\fs28\lang1024\f1 A.6.4. Matlab/Octave Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 GNU Octave, version 3.0.5\sa0\par\fi0\sb0
+Copyright (C) 2008 John W. Eaton and others.\sa0\par\fi0\sb0
+This is free software; see the source code for copying\sa0\par\fi0\sb0
+conditions.\sa0\par\fi0\sb0
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or\sa0\par\fi0\sb0
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Octave was configured for "i486-pc-linux-gnu".\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Additional information about Octave is available at\sa0\par\fi0\sb0
+http://www.octave.org.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Please contribute if you find this software useful.\sa0\par\fi0\sb0
+For more information, visit\sa0\par\fi0\sb0
+http://www.octave.org/help-wanted.html\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Report bugs to <bug@octave.org> (but first, please read\sa0\par\fi0\sb0
+http://www.octave.org/bugs.html to learn how to write a\sa0\par\fi0\sb0
+helpful report).\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+For information about changes from previous versions, type\sa0\par\fi0\sb0
+`news'.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
++ ra=ra_lib_init\sa0\par\fi0\sb0
+ra =  184868040\sa0\par\fi0\sb0
++ meas=ra_meas_open(ra, './database/100s.hea', '', 0)\sa0\par\fi0\sb0
+meas =  185403952\sa0\par\fi0\sb0
++ eva=ra_eval_get_default(meas)\sa0\par\fi0\sb0
+eva =  185920976\sa0\par\fi0\sb0
++\sa0\par\fi0\sb0
++ samplerate=ra_meas_info_get(meas, 'max_samplerate')\sa0\par\fi0\sb0
+samplerate =  360\sa0\par\fi0\sb0
++\sa0\par\fi0\sb0
++ cl = ra_class_get(eva, 'heartbeat')\sa0\par\fi0\sb0
+cl =  185834776\sa0\par\fi0\sb0
++ num_hb = length(cl)\sa0\par\fi0\sb0
+num_hb =  1\sa0\par\fi0\sb0
++ for i = 1:num_hb\sa0\par\fi0\sb0
++   ev = ra_class_get_events(cl(i), -1, -1, 0, 1);\sa0\par\fi0\sb0
++   num_ev = length(ev)\sa0\par\fi0\sb0
++\sa0\par\fi0\sb0
++   prop_rri = ra_prop_get(cl(i), 'rri')\sa0\par\fi0\sb0
++   prop_qrs_pos = ra_prop_get(cl(i), 'qrs-pos')\sa0\par\fi0\sb0
++\sa0\par\fi0\sb0
++   rri = [];\sa0\par\fi0\sb0
++   qrs_pos = [];\sa0\par\fi0\sb0
++   for j = 1:num_ev\sa0\par\fi0\sb0
++     r = ra_prop_get_value(prop_rri, ev(j), -1);\sa0\par\fi0\sb0
++     p = ra_prop_get_value(prop_qrs_pos, ev(j), -1);\sa0\par\fi0\sb0
++\sa0\par\fi0\sb0
++     rri = [rri r];\sa0\par\fi0\sb0
++     qrs_pos = [qrs_pos p];\sa0\par\fi0\sb0
++   endfor\sa0\par\fi0\sb0
++\sa0\par\fi0\sb0
++   %% To get all property values within one function call\sa0\par\fi0\sb0
++   %% use ra_prop_get_value_all():\sa0\par\fi0\sb0
++   % [ev_ids, chs, rri] = ra_prop_get_value_all(prop_rri);\sa0\par\fi0\sb0
++   % [ev_ids, chs, qrs_pos] =\sa0\par\fi0\sb0
+ra_prop_get_value_all(prop_qrs_pos);\sa0\par\fi0\sb0
++   %\sa0\par\fi0\sb0
++   %% !!! This function returns also the event-id's and channel\sa0\par\fi0\sb0
++   %% !!! numbers the value belongs to. The order of returned\sa0\par\fi0\sb0
+values\sa0\par\fi0\sb0
++   %% !!! is not guaranteed to be in chronological order.\sa0\par\fi0\sb0
++\sa0\par\fi0\sb0
++   whos rri\sa0\par\fi0\sb0
++   whos qrs_pos\sa0\par\fi0\sb0
++\sa0\par\fi0\sb0
++   figure();\sa0\par\fi0\sb0
++   x=(qrs_pos/samplerate) / 60;\sa0\par\fi0\sb0
++   plot(x, rri);\sa0\par\fi0\sb0
++ endfor\sa0\par\fi0\sb0
+num_ev =  75\sa0\par\fi0\sb0
+prop_rri =  186329584\sa0\par\fi0\sb0
+prop_qrs_pos =  186289912\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+*** local user variables:\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  Prot Name        Size                     Bytes  Class\sa0\par\fi0\sb0
+  ==== ====        ====                     =====  =====\sa0\par\fi0\sb0
+   rwd rri         1x75                       600  double\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Total is 75 elements using 600 bytes\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+*** local user variables:\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+  Prot Name         Size                     Bytes  Class\sa0\par\fi0\sb0
+  ==== ====         ====                     =====  =====\sa0\par\fi0\sb0
+   rwd qrs_pos      1x75                       600  double\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Total is 75 elements using 600 bytes\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
++\sa0\par\fi0\sb0
++ ra_meas_close(meas);\sa0\par\fi0\sb0
++ ra_lib_close(ra);\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb259\s2\sl449 {\*\bkmkstart _552}{\*\bkmkend _552}\b\fs34\lang1024\f1 A.7. Use process-plugin\keepn\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _554}{\*\bkmkend _554}\fs28 A.7.1. C Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 //\sa0\par\fi0\sb0
+#include <stdio.h>\sa0\par\fi0\sb0
+#include <string.h>\sa0\par\fi0\sb0
+#include <ra.h>\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+int main(int argc, char *argv[])\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    ra_handle ra;\sa0\par\fi0\sb0
+    struct ra_info *inf;\sa0\par\fi0\sb0
+    meas_handle meas;\sa0\par\fi0\sb0
+    eval_handle eval;\sa0\par\fi0\sb0
+    plugin_handle pl;\sa0\par\fi0\sb0
+    struct proc_info *pi;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* initialize libRASCH */\sa0\par\fi0\sb0
+    ra = ra_lib_init();\sa0\par\fi0\sb0
+    if (ra == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("error initializing libRASCH\\n");\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* open measurement */\sa0\par\fi0\sb0
+    meas = ra_meas_open(ra, argv[1], NULL, 0);\sa0\par\fi0\sb0
+    if (meas == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("can't open measurement %s\\n", argv[1]);\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* get default evaluation */\sa0\par\fi0\sb0
+    eval = ra_eval_get_default(meas);\sa0\par\fi0\sb0
+    if (eval == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("no evaluation in measurement %s\\n", argv[1]);\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* get plugin-handle for hrv-plugin */\sa0\par\fi0\sb0
+    pl = ra_plugin_get_by_name(ra, "hrv", 0);\sa0\par\fi0\sb0
+    if (pl == NULL)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        printf("can't find plugin 'hrv'\\n");\sa0\par\fi0\sb0
+        return -1;\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* calculate hrv-values using the hrv-plugin */\sa0\par\fi0\sb0
+    pi = (struct proc_info *)ra_proc_get(meas, pl, NULL);\sa0\par\fi0\sb0
+    if (ra_proc_do(pi) == 0)\sa0\par\fi0\sb0
+    \{\sa0\par\fi0\sb0
+        long num_res_sets, num_results, m, l;\sa0\par\fi0\sb0
+        value_handle vh;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        /* get number of result-sets */\sa0\par\fi0\sb0
+        vh = ra_value_malloc();\sa0\par\fi0\sb0
+        if (ra_info_get(pi, RA_INFO_PROC_NUM_RES_SETS_L, vh) !=\sa0\par\fi0\sb0
+            0)\sa0\par\fi0\sb0
+        \{\sa0\par\fi0\sb0
+            printf("no result-sets\\n");\sa0\par\fi0\sb0
+            return -1;\sa0\par\fi0\sb0
+        \}\sa0\par\fi0\sb0
+        num_res_sets = ra_value_get_long(vh);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        /* get number of results */\sa0\par\fi0\sb0
+        if (ra_info_get(pi, RA_INFO_PROC_NUM_RES_L, vh) != 0)\sa0\par\fi0\sb0
+        \{\sa0\par\fi0\sb0
+            printf("no results\\n");\sa0\par\fi0\sb0
+            return -1;\sa0\par\fi0\sb0
+        \}\sa0\par\fi0\sb0
+        num_results = ra_value_get_long(vh);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        for (m = 0; m < num_res_sets; m++)\sa0\par\fi0\sb0
+        \{\sa0\par\fi0\sb0
+            printf("result-set #%d:\\n", m + 1);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+            for (l = 0; l < num_results; l++)\sa0\par\fi0\sb0
+            \{\sa0\par\fi0\sb0
+                char out[200], t[100];\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+                /* set number of result in which we are interested */\sa0\par\fi0\sb0
+                ra_value_set_number(vh, l);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+                /* test if result is a default value (some\sa0\par\fi0\sb0
+                   non-default results are arrays which we skip in\sa0\par\fi0\sb0
+                   this example) */\sa0\par\fi0\sb0
+                ra_info_get(pl, RA_INFO_PL_RES_DEFAULT_L, vh);\sa0\par\fi0\sb0
+                if (ra_value_get_long(vh) == 0)\sa0\par\fi0\sb0
+                    continue;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+                out[0] = '\\0';\sa0\par\fi0\sb0
+                if (ra_info_get(pl, RA_INFO_PL_RES_NAME_C, vh) ==\sa0\par\fi0\sb0
+                    0)\sa0\par\fi0\sb0
+                \{\sa0\par\fi0\sb0
+                    strcpy(t, ra_value_get_string(vh));\sa0\par\fi0\sb0
+                    strcat(out, t);\sa0\par\fi0\sb0
+                \}\sa0\par\fi0\sb0
+                if (ra_info_get(pl, RA_INFO_PL_RES_DESC_C, vh) ==\sa0\par\fi0\sb0
+                    0)\sa0\par\fi0\sb0
+                \{\sa0\par\fi0\sb0
+                    sprintf(t, " (%s)", ra_value_get_string(vh));\sa0\par\fi0\sb0
+                    strcat(out, t);\sa0\par\fi0\sb0
+                \}\sa0\par\fi0\sb0
+                if (ra_proc_get_result(pi, l, m, vh) == 0)\sa0\par\fi0\sb0
+                \{\sa0\par\fi0\sb0
+                    sprintf(t, ": %lf", ra_value_get_double(vh));\sa0\par\fi0\sb0
+                    strcat(out, t);\sa0\par\fi0\sb0
+                \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+                printf("  %s\\n", out);\sa0\par\fi0\sb0
+            \}\sa0\par\fi0\sb0
+        \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+        ra_value_free(vh);\sa0\par\fi0\sb0
+    \}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    /* close */\sa0\par\fi0\sb0
+    ra_proc_free(pi);\sa0\par\fi0\sb0
+    ra_meas_close(meas);\sa0\par\fi0\sb0
+    ra_lib_close(ra);\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+    return 0;\sa0\par\fi0\sb0
+\}                               /* main() */\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+//\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb400\li960\sl234 result-set #1:\sa0\par\fi0\sb0
+  SDNN (standard deviation of normal-to-normal intervals):\sa0\par\fi0\sb0
+  30.238227\sa0\par\fi0\sb0
+  HRVI (HRV-Index): 7.200000\sa0\par\fi0\sb0
+  SDANN (standard deviation of averaged normal-to-normal\sa0\par\fi0\sb0
+  intervals): nan\sa0\par\fi0\sb0
+  rmssd (root mean of squared sucsessive differences): 32.494403\sa0\par\fi0\sb0
+  pNN50 (): 7.142857\sa0\par\fi0\sb0
+  TP (total power): 476.707920\sa0\par\fi0\sb0
+  ULF (ultra low frequency power): 0.000000\sa0\par\fi0\sb0
+  VLF (very low frequency power of short-term recordings):\sa0\par\fi0\sb0
+  31.580847\sa0\par\fi0\sb0
+  LF (low frequency power): 157.664788\sa0\par\fi0\sb0
+  LF_NORM (normalised low frequency power): 35.420175\sa0\par\fi0\sb0
+  HF (high freuqency power): 287.462286\sa0\par\fi0\sb0
+  HF_NORM (normalised high frequency power): 64.579825\sa0\par\fi0\sb0
+  LF_HF_RATIO (LF/HF ratio): 0.548471\sa0\par\fi0\sb0
+  POWER_LAW (power law behavior): 0.000000\sa0\par\fi0\sb0
+  SD1 (SD1 of the Poincare Plot): 15.845239\sa0\par\fi0\sb0
+  SD2 (SD2 of the Poincare Plot): 17.873049\sa0\par\fi0\sb0
+  DFA (overall DFA Alpha): nan\sa0\par\fi0\sb0
+  DFA_OFFSET (offset of the overall DFA Alpha slope): nan\sa0\par\fi0\sb0
+  DFA1 (DFA Alpha1): 0.242035\sa0\par\fi0\sb0
+  DFA1_OFFSET (offset of the DFA Alpha-1 slope): 1.404195\sa0\par\fi0\sb0
+  DFA2 (DFA Alpha2): nan\sa0\par\fi0\sb0
+  DFA2_OFFSET (offset of the DFA Alpha-2 slope): nan\sa0\par\fi0\sb0
+  DFA_USER (DFA Alpha of user-defined range)\sa0\par\fi0\sb0
+  DFA_USER_OFFSET (offset of the user-defined DFA Alpha slope)\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _560}{\*\bkmkend _560}\b\fs28\lang1024\f1 A.7.2. Perl Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 #\sa0\par\fi0\sb0
+use strict;\sa0\par\fi0\sb0
+use RASCH;\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# initialize libRASCH\sa0\par\fi0\sb0
+my $ra = new RASCH or die "error initializing libRASCH\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# open measurement and get default evaluation\sa0\par\fi0\sb0
+my $meas = $ra->open_meas($ARGV[0], '', 0) or\sa0\par\fi0\sb0
+    die "can't open measurement $ARGV[0]\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get plugin-handle for hrv-plugin\sa0\par\fi0\sb0
+my $pl = $ra->get_plugin_by_name('hrv') or\sa0\par\fi0\sb0
+    die "can't find plugin 'hrv'\\n";\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# calculate hrv-values using the hrv-plugin\sa0\par\fi0\sb0
+my $proc = $pl->get_process($meas) or\sa0\par\fi0\sb0
+    die "can't initialize processing\\n";\sa0\par\fi0\sb0
+my $results = $proc->process();\sa0\par\fi0\sb0
+# $results is a reference to an array; each array-element contains\sa0\par\fi0\sb0
+# another array with three elements (value, name, description)\sa0\par\fi0\sb0
+for (@$results)\sa0\par\fi0\sb0
+\{\sa0\par\fi0\sb0
+    print $_->name() . ' (' . $_->desc() . ') = ' .\sa0\par\fi0\sb0
+        $_->value() . "\\n";\sa0\par\fi0\sb0
+\}\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+exit 0;\sa0\par\fi0\sb0
+#\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb400\li960\sl234 SDNN (standard deviation of normal-to-normal intervals) =\sa0\par\fi0\sb0
+30.2382268563552\sa0\par\fi0\sb0
+HRVI (HRV-Index) = 7.2\sa0\par\fi0\sb0
+SDANN (standard deviation of averaged normal-to-normal\sa0\par\fi0\sb0
+intervals) = nan\sa0\par\fi0\sb0
+rmssd (root mean of squared sucsessive differences) =\sa0\par\fi0\sb0
+32.4944032625042\sa0\par\fi0\sb0
+pNN50 () = 7.14285714285714\sa0\par\fi0\sb0
+TP (total power) = 476.707920259995\sa0\par\fi0\sb0
+ULF (ultra low frequency power) = 0\sa0\par\fi0\sb0
+VLF (very low frequency power of short-term recordings) =\sa0\par\fi0\sb0
+31.5808466629042\sa0\par\fi0\sb0
+LF (low frequency power) = 157.664787578416\sa0\par\fi0\sb0
+LF_NORM (normalised low frequency power) = 35.4201748063357\sa0\par\fi0\sb0
+HF (high freuqency power) = 287.462286018674\sa0\par\fi0\sb0
+HF_NORM (normalised high frequency power) = 64.5798251936643\sa0\par\fi0\sb0
+LF_HF_RATIO (LF/HF ratio) = 0.548471209082966\sa0\par\fi0\sb0
+POWER_LAW (power law behavior) = 0\sa0\par\fi0\sb0
+TACHO_INDEX (Event numbers used for HRV calculations) =\sa0\par\fi0\sb0
+ARRAY(0x9f74b90)\sa0\par\fi0\sb0
+USER_BAND (frequency power in a user-selected frequency band)\sa0\par\fi0\sb0
+= 0\sa0\par\fi0\sb0
+SD1 (SD1 of the Poincare Plot) = 15.8452385921394\sa0\par\fi0\sb0
+SD2 (SD2 of the Poincare Plot) = 17.8730488314873\sa0\par\fi0\sb0
+DFA (overall DFA Alpha) = nan\sa0\par\fi0\sb0
+DFA_OFFSET (offset of the overall DFA Alpha slope) = nan\sa0\par\fi0\sb0
+DFA1 (DFA Alpha1) = 0.242034900196407\sa0\par\fi0\sb0
+DFA1_OFFSET (offset of the DFA Alpha-1 slope) = 1.40419467895075\sa0\par\fi0\sb0
+DFA2 (DFA Alpha2) = nan\sa0\par\fi0\sb0
+DFA2_OFFSET (offset of the DFA Alpha-2 slope) = nan\sa0\par\fi0\sb0
+ () =\sa0\par\fi0\sb0
+ () =\sa0\par\fi0\sb0
+DFA_X (x-axis for DFA plot) = ARRAY(0x9fc82f8)\sa0\par\fi0\sb0
+DFA_Y (y-axis for DFA plot) = ARRAY(0x9fc8438)\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _566}{\*\bkmkend _566}\b\fs28\lang1024\f1 A.7.3. Python Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 #\sa0\par\fi0\sb0
+import sys\sa0\par\fi0\sb0
+from RASCH import *\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# initialize libRASCH\sa0\par\fi0\sb0
+ra = RASCH()\sa0\par\fi0\sb0
+if not ra:\sa0\par\fi0\sb0
+    print "can't initialize libRASCH"\sa0\par\fi0\sb0
+    sys.exit()\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# open measurement and get default evaluation\sa0\par\fi0\sb0
+meas = ra.open_meas(sys.argv[1], '', 0)\sa0\par\fi0\sb0
+if not meas:\sa0\par\fi0\sb0
+    print "can't open measurement", sys.argv[1]\sa0\par\fi0\sb0
+    sys.exit()\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# get plugin-handle for hrv-plugin\sa0\par\fi0\sb0
+pl = ra.get_plugin_by_name('hrv')\sa0\par\fi0\sb0
+if not pl:\sa0\par\fi0\sb0
+    print "can't find plugin 'hrv'"\sa0\par\fi0\sb0
+    sys.exit();\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+# calculate hrv-values using the hrv-plugin\sa0\par\fi0\sb0
+proc = pl.get_process(meas)\sa0\par\fi0\sb0
+if not proc:\sa0\par\fi0\sb0
+    print "can't initialize processing"\sa0\par\fi0\sb0
+    sys.exit()\sa0\par\fi0\sb0
+    \sa0\par\fi0\sb0
+results = proc.process()\sa0\par\fi0\sb0
+for item in results:\sa0\par\fi0\sb0
+    if item.is_ok():\sa0\par\fi0\sb0
+        print item.name(), "("+item.desc()+") =", item.value()    \sa0\par\fi0\sb0
+#\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb400\li960\sl234 SDNN (standard deviation of normal-to-normal intervals) =\sa0\par\fi0\sb0
+30.2382268564\sa0\par\fi0\sb0
+HRVI (HRV-Index) = 7.2\sa0\par\fi0\sb0
+SDANN (standard deviation of averaged normal-to-normal\sa0\par\fi0\sb0
+intervals) = nan\sa0\par\fi0\sb0
+rmssd (root mean of squared sucsessive differences) =\sa0\par\fi0\sb0
+32.4944032625\sa0\par\fi0\sb0
+pNN50 () = 7.14285714286\sa0\par\fi0\sb0
+TP (total power) = 476.70792026\sa0\par\fi0\sb0
+ULF (ultra low frequency power) = 0.0\sa0\par\fi0\sb0
+VLF (very low frequency power of short-term recordings) =\sa0\par\fi0\sb0
+31.5808466629\sa0\par\fi0\sb0
+LF (low frequency power) = 157.664787578\sa0\par\fi0\sb0
+LF_NORM (normalised low frequency power) = 35.4201748063\sa0\par\fi0\sb0
+HF (high freuqency power) = 287.462286019\sa0\par\fi0\sb0
+HF_NORM (normalised high frequency power) = 64.5798251937\sa0\par\fi0\sb0
+LF_HF_RATIO (LF/HF ratio) = 0.548471209083\sa0\par\fi0\sb0
+POWER_LAW (power law behavior) = 0.0\sa0\par\fi0\sb0
+TACHO_INDEX (Event numbers used for HRV calculations) = [2.0,\sa0\par\fi0\sb0
+3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 10.0, 11.0, 12.0, 13.0, 14.0,\sa0\par\fi0\sb0
+15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 24.0,\sa0\par\fi0\sb0
+25.0, 26.0, 27.0, 28.0, 29.0, 30.0, 31.0, 32.0, 33.0, 34.0,\sa0\par\fi0\sb0
+35.0, 36.0, 37.0, 38.0, 39.0, 40.0, 41.0, 42.0, 43.0, 44.0,\sa0\par\fi0\sb0
+45.0, 46.0, 47.0, 48.0, 49.0, 50.0, 51.0, 52.0, 53.0, 54.0,\sa0\par\fi0\sb0
+55.0, 56.0, 57.0, 58.0, 59.0, 60.0, 61.0, 62.0, 63.0, 64.0,\sa0\par\fi0\sb0
+65.0, 66.0, 67.0, 68.0, 69.0, 70.0, 71.0, 72.0, 73.0, 74.0]\sa0\par\fi0\sb0
+USER_BAND (frequency power in a user-selected frequency band)\sa0\par\fi0\sb0
+= 0.0\sa0\par\fi0\sb0
+SD1 (SD1 of the Poincare Plot) = 15.8452385921\sa0\par\fi0\sb0
+SD2 (SD2 of the Poincare Plot) = 17.8730488315\sa0\par\fi0\sb0
+DFA (overall DFA Alpha) = nan\sa0\par\fi0\sb0
+DFA_OFFSET (offset of the overall DFA Alpha slope) = nan\sa0\par\fi0\sb0
+DFA1 (DFA Alpha1) = 0.242034900196\sa0\par\fi0\sb0
+DFA1_OFFSET (offset of the DFA Alpha-1 slope) = 1.40419467895\sa0\par\fi0\sb0
+DFA2 (DFA Alpha2) = nan\sa0\par\fi0\sb0
+DFA2_OFFSET (offset of the DFA Alpha-2 slope) = nan\sa0\par\fi0\sb0
+DFA_X (x-axis for DFA plot) = [0.6020599913279624,\sa0\par\fi0\sb0
+0.69897000433601886, 0.77815125038364363, 0.84509804001425681,\sa0\par\fi0\sb0
+0.90308998699194354, 0.95424250943932487, 1.0,\sa0\par\fi0\sb0
+1.0413926851582251, 1.0791812460476249, 1.1139433523068367,\sa0\par\fi0\sb0
+1.146128035678238, 1.1760912590556813, 1.2041199826559248,\sa0\par\fi0\sb0
+1.2304489213782739]\sa0\par\fi0\sb0
+DFA_Y (y-axis for DFA plot) = [1.4964657214676538,\sa0\par\fi0\sb0
+1.5932815728362522, 1.6208138827475429, 1.6561856924575491,\sa0\par\fi0\sb0
+1.6469306466489699, 1.5934526766952628, 1.6510314905644941,\sa0\par\fi0\sb0
+1.6268009535558938, 1.6141161531657984, 1.6277297067193524,\sa0\par\fi0\sb0
+nan, nan, nan, nan]\sa0\par\fi0\sb0
+\hyphpar0\par\pard\sb216\s3\li960\sl374 {\*\bkmkstart _572}{\*\bkmkend _572}\b\fs28\lang1024\f1 A.7.4. Matlab/Octave Version\keepn\hyphpar0\par\pard\sb400\li960\sl234 \b0\fs18\lang1033\f2 GNU Octave, version 3.0.5\sa0\par\fi0\sb0
+Copyright (C) 2008 John W. Eaton and others.\sa0\par\fi0\sb0
+This is free software; see the source code for copying\sa0\par\fi0\sb0
+conditions.\sa0\par\fi0\sb0
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or\sa0\par\fi0\sb0
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Octave was configured for "i486-pc-linux-gnu".\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Additional information about Octave is available at\sa0\par\fi0\sb0
+http://www.octave.org.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Please contribute if you find this software useful.\sa0\par\fi0\sb0
+For more information, visit\sa0\par\fi0\sb0
+http://www.octave.org/help-wanted.html\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+Report bugs to <bug@octave.org> (but first, please read\sa0\par\fi0\sb0
+http://www.octave.org/bugs.html to learn how to write a\sa0\par\fi0\sb0
+helpful report).\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+For information about changes from previous versions, type\sa0\par\fi0\sb0
+`news'.\sa0\par\fi0\sb0
+\sa0\par\fi0\sb0
+ra =  163726552\sa0\par\fi0\sb0
+meas =  164266056\sa0\par\fi0\sb0
+eva =  164682208\sa0\par\fi0\sb0
+pl =  164481848\sa0\par\fi0\sb0
+proc =  165385144\sa0\par\fi0\sb0
+ans = 0\sa0\par\fi0\sb0
+num =  28\sa0\par\fi0\sb0
+1: SDNN (standard deviation of normal-to-normal intervals)\sa0\par\fi0\sb0
+= 30.238227\sa0\par\fi0\sb0
+2: HRVI (HRV-Index) = 7.200000\sa0\par\fi0\sb0
+3: SDANN (standard deviation of averaged normal-to-normal\sa0\par\fi0\sb0
+intervals) = NaN\sa0\par\fi0\sb0
+4: rmssd (root mean of squared sucsessive differences)\sa0\par\fi0\sb0
+= 32.494403\sa0\par\fi0\sb0
+5: pNN50 () = 7.142857\sa0\par\fi0\sb0
+6: TP (total power) = 476.707920\sa0\par\fi0\sb0
+7: ULF (ultra low frequency power) = 0.000000\sa0\par\fi0\sb0
+8: VLF (very low frequency power of short-term recordings)\sa0\par\fi0\sb0
+= 31.580847\sa0\par\fi0\sb0
+9: LF (low frequency power) = 157.664788\sa0\par\fi0\sb0
+10: LF_NORM (normalised low frequency power) = 35.420175\sa0\par\fi0\sb0
+11: HF (high freuqency power) = 287.462286\sa0\par\fi0\sb0
+12: HF_NORM (normalised high frequency power) = 64.579825\sa0\par\fi0\sb0
+13: LF_HF_RATIO (LF/HF ratio) = 0.548471\sa0\par\fi0\sb0
+14: POWER_LAW (power law behavior) = 0.000000\sa0\par\fi0\sb0
+15: TACHO_INDEX (Event numbers used for HRV calculations) =\sa0\par\fi0\sb0
+[not a scalar value]\sa0\par\fi0\sb0
+16: USER_BAND (frequency power in a user-selected frequency\sa0\par\fi0\sb0
+band) = 0.000000\sa0\par\fi0\sb0
+17: SD1 (SD1 of the Poincare Plot) = 15.845239\sa0\par\fi0\sb0
+18: SD2 (SD2 of the Poincare Plot) = 17.873049\sa0\par\fi0\sb0
+19: DFA (overall DFA Alpha) = NaN\sa0\par\fi0\sb0
+20: DFA_OFFSET (offset of the overall DFA Alpha slope) = NaN\sa0\par\fi0\sb0
+21: DFA1 (DFA Alpha1) = 0.242035\sa0\par\fi0\sb0
+22: DFA1_OFFSET (offset of the DFA Alpha-1 slope) = 1.404195\sa0\par\fi0\sb0
+23: DFA2 (DFA Alpha2) = NaN\sa0\par\fi0\sb0
+24: DFA2_OFFSET (offset of the DFA Alpha-2 slope) = NaN\sa0\par\fi0\sb0
+25: DFA_USER (DFA Alpha of user-defined range) = [not a\sa0\par\fi0\sb0
+scalar value]\sa0\par\fi0\sb0
+\hyphpar0\par}

@@ -1,0 +1,24 @@
+.TH "ra_eval_add" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_eval_add \- adds an evaluation
+.SH SYNOPSIS
+.B "LIBRAAPI eval_handle" ra_eval_add
+.BI "(meas_handle " mh ","
+.BI "const char * " name ","
+.BI "const char * " desc ","
+.BI "int " original ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ measurement-handle
+.IP "name" 12
+ a short name of the evaluation
+.IP "desc" 12
+ a short description of the evaluation
+.IP "original" 12
+ flag if evaluation is the original evaluation
+.SH "DESCRIPTION"
+This function adds an evaluation to a measurement.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

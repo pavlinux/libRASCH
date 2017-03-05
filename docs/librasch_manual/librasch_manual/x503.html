@@ -1,0 +1,594 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Access evaluation</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="User Manual for libRASCH-0.7.2"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Examples for all supported lanuages/systems"
+HREF="all_examples.html"><LINK
+REL="PREVIOUS"
+TITLE="Access raw data"
+HREF="x485.html"><LINK
+REL="NEXT"
+TITLE="Access events"
+HREF="x527.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="SECTION"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>User Manual for libRASCH-0.7.2</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x485.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Appendix A. Examples for all supported lanuages/systems</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x527.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="AEN503"
+>Access evaluation</A
+></H1
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN505"
+>C Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>//
+#include &#60;stdio.h&#62;
+#include &#60;ra.h&#62;
+
+int main(int argc, char *argv[])
+{
+    ra_handle ra;
+    value_handle vh;
+    meas_handle meas;
+    eval_handle eval;
+    long l, num;
+
+    /* initialize libRASCH */
+    ra = ra_lib_init();
+    if (ra == NULL)
+    {
+        printf("error initializing libRASCH\n");
+        return -1;
+    }
+
+    /* open measurement */
+    meas = ra_meas_open(ra, argv[1], 0);
+    if (meas == NULL)
+    {
+        printf("can't open measurement %s\n", argv[1]);
+        return -1;
+    }
+
+    /* get default evaluation */
+    eval = ra_eval_get_def(meas);
+    if (eval == NULL)
+    {
+        printf("no evaluation in measurement %s\n", argv[1]);
+        return -1;
+    }
+
+    /* get some infos about evaluation */
+    vh = ra_value_malloc();
+    if (ra_info_get(eval, RA_INFO_EVAL_NAME_C, vh) == 0)
+        printf("evaluation %s ", ra_value_get_string(vh));
+    if (ra_info_get(eval, RA_INFO_EVAL_ADD_TS_C, vh) == 0)
+        printf("was added at %s ", ra_value_get_string(vh));
+    if (ra_info_get(eval, RA_INFO_EVAL_PROG_C, vh) == 0)
+        printf("using the program %s", ra_value_get_string(vh));
+    printf("\n\n");
+
+    /* list event-properties */
+    num = 0;
+    if (ra_info_get(eval, RA_INFO_EVAL_PROP_NUM_L, vh) == 0)
+        num = ra_value_get_long(vh);
+    for (l = 0; l &#60; num; l++)
+    {
+        prop_handle evprop;
+        evset_handle evset;
+
+        evprop = ra_prop_get_by_num(eval, l);
+        evset = ra_evset_get_by_prop(evprop);
+
+        if ((evprop == NULL) || (evset == NULL))
+            continue;
+
+        if (ra_info_get(evprop, RA_INFO_EVPROP_NAME_C, vh) == 0)
+            printf("event-property %s ",
+                   ra_value_get_string(vh));
+        if (ra_info_get(evprop, RA_INFO_EVPROP_NAME_C, vh) == 0)
+            printf("(%s) ", ra_value_get_string(vh));
+        if (ra_info_get(evset, RA_INFO_EVSET_NAME_C, vh) == 0)
+            printf("belongs to event-set %s ",
+                   ra_value_get_string(vh));
+        if (ra_info_get(evset, RA_INFO_EVSET_EV_NUM_L, vh) == 0)
+            printf("and contains %d events",
+                   ra_value_get_long(vh));
+        printf("\n");
+    }
+
+    /* close */
+    ra_value_free(vh);
+    ra_meas_close(meas);
+    ra_lib_close(ra);
+
+    return 0;
+}                               /* main() */
+
+//&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>evaluation original was added at 08.01.2005  13:48:58 using
+the program handle_eval
+
+event-property qrs-pos (qrs-pos) belongs to event-set heartbeat
+and contains 74 events
+event-property qrs-class (qrs-class) belongs to event-set
+heartbeat and contains 74 events
+event-property qrs-temporal (qrs-temporal) belongs to event-set
+heartbeat and contains 74 events
+event-property rri (rri) belongs to event-set heartbeat and
+contains 74 events
+event-property rri-class (rri-class) belongs to event-set
+heartbeat and contains 74 events
+event-property rri-refvalue (rri-refvalue) belongs to event-set
+heartbeat and contains 74 events
+event-property rri-num-refvalue (rri-num-refvalue) belongs to
+event-set heartbeat and contains 74 events&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN511"
+>Perl Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+use strict;
+use RASCH;
+
+# initialize libRASCH
+my $ra = new RASCH or die "error initializing libRASCH\n";
+
+# open measurement
+my $meas = $ra-&#62;open_meas($ARGV[0], 0) or 
+    die "can't open measurement $ARGV[0]\n";
+
+# get default evaluation
+my $eval = $meas-&#62;get_default_eval() or
+    die "no evaluation in measurement\n";
+
+# get some general infos
+my $v = $eval-&#62;get_info(info =&#62; 'eval_name');
+my $eval_name = $v-&#62;value();
+$v = $eval-&#62;get_info(info =&#62; 'eval_add_timestamp');
+my $eval_add_ts = $v-&#62;value();
+$v = $eval-&#62;get_info(info =&#62; 'eval_program');
+my $eval_prg = $v-&#62;value();
+print "evaluation $eval_name was added at $eval_add_ts" .
+    " using the program $eval_prg\n\n";
+
+# !!!!! eval handling will be changed in the next version !!!!!
+
+# list event-properties
+#my $evprops = $eval-&#62;get_props_all();
+#for (@$evprops)
+#{
+#    my $prop = $eval-&#62;get_evprop_by_name($_);
+#    my ($name) = $prop-&#62;get_info(info =&#62; 'eval_prop_name');
+#    my ($desc) = $prop-&#62;get_info(info =&#62; 'eval_prop_desc');
+#
+#    my $evset = $prop-&#62;get_evset();
+#    my ($evset_name) = $evset-&#62;get_info(info =&#62; 'eval_set_name');
+#    my ($n_ev) = $evset-&#62;get_info(info =&#62; 'eval_set_num_events');
+#
+#    print "event-property $name ($desc) belongs to event-set" .
+#	" $evset_name and contains $n_ev events\n";
+#}
+
+exit 0;
+#&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>evaluation original was added at 08.01.2005  13:48:58 using
+the program perl
+&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN517"
+>Python Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#
+import sys
+from RASCH import *
+
+# initialize libRASCH
+ra = RASCH()
+if not ra:
+    print "can't initialize libRASCH"
+    sys.exit()
+
+# open measurement
+meas = ra.open_meas(sys.argv[1], 0)
+if not meas:
+    print "can't open measurement", sys.argv[1]
+    sys.exit()
+
+# get default evaluation
+eva = meas.get_def_eval()
+if not eva:
+    print "no evaluation in measurement"
+    sys.exit()
+
+# get some general infos
+[eval_name, n, d] = eva.get_info(info='eval_name')
+[eval_add_ts, n, d] = eva.get_info(info='eval_add_timestamp')
+[eval_prg, n, d] = eva.get_info(info='eval_program')
+print "evaluation", eval_name, "was added at", eval_add_ts, \
+      "using the program", eval_prg, "\n"
+
+# list event-properties
+evprops = eva.get_evprops()
+for elem in evprops:
+    prop = eva.get_evprop_by_name(elem)
+    [name, n, d] = prop.get_info(info='eval_prop_name')
+    [desc, n, d] = prop.get_info(info='eval_prop_desc')
+
+    evset = prop.get_evset()
+    [evset_name, n, d] = evset.get_info(info='eval_set_name')
+    [num_events, n, d] = evset.get_info(info='eval_set_num_events')
+
+    print "event-property", name, "("+desc+") belongs to event-set", \
+          evset_name, "and contains", num_events, "events";
+
+#&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>evaluation original was added at 08.01.2005  13:48:58 using
+the program python
+
+event-property qrs-pos (position of fiducial point of
+QRS-complex in sampleunits) belongs to event-set heartbeat
+and contains 74 events
+event-property qrs-class (classification of QRS complex)
+belongs to event-set heartbeat and contains 74 events
+event-property qrs-temporal (temporal setting of beat) belongs
+to event-set heartbeat and contains 74 events
+event-property rri (RR interval) belongs to event-set heartbeat
+and contains 74 events
+event-property rri-class (classification of RR interval)
+belongs to event-set heartbeat and contains 74 events
+event-property rri-refvalue (reference rri representing the
+current heart-rate) belongs to event-set heartbeat and contains
+74 events
+event-property rri-num-refvalue (number of rri's used for
+calculation of reference value) belongs to event-set heartbeat
+and contains 74 events&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN523"
+>Matlab/Octave Version</A
+></H2
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>rasch@rasch:~&#62; octave
+GNU Octave, version 2.1.50 (i686-pc-linux-gnu).
+...
+
+octave:1&#62; ra=ra_lib_init
+ra = 145016856
+octave:2&#62; meas=ra_meas_open(ra, '/home/rasch/ecgs/AT011030_rdi.ART', 0)
+meas = 145245344
+octave:3&#62; eva=ra_eval_get_def(meas)
+eva = 145613352
+octave:4&#62; ra_eval_get_info(eva, 'eval_name')
+ans = detect
+octave:5&#62; ra_eval_get_info(eva, 'eval_add_timestamp')
+ans = 02.02.2004  15:14:06
+octave:6&#62; ra_eval_get_info(eva, 'eval_program')
+ans = raschlab_qt
+octave:7&#62; props=ra_prop_get_all(eva);
+octave:8&#62; num=length(props)
+num = 21
+octave:9&#62; for i=1:num
+&#62; prop=ra_prop_get_by_name(eva, props{i});
+&#62; evset=ra_evset_get_by_prop(prop);
+&#62; name=ra_prop_get_info(prop, 'eval_prop_name')
+&#62; desc=ra_prop_get_info(prop, 'eval_prop_desc')
+&#62; set_name=ra_evset_get_info(evset, 'eval_set_name')
+&#62; num_events=ra_evset_get_info(evset, 'eval_set_num_events')
+&#62; endfor
+name = qrs-pos
+desc = position of fiducial point of QRS-complex in sampleunits
+set_name = heartbeat
+num_events = 1807
+name = qrs-ch
+desc = bitmask of channels where qrs was detected
+set_name = heartbeat
+num_events = 1807
+name = qrs-class
+desc = classification of QRS complex
+set_name = heartbeat
+num_events = 1807
+name = qrs-template
+desc = QRS template number
+set_name = heartbeat
+num_events = 1807
+name = qrs-template-corr
+desc = correlation of qrs-complex with template
+set_name = heartbeat
+num_events = 1807
+name = heartbeat-flags
+desc = Flags for heartbeat events
+set_name = heartbeat
+num_events = 1807
+name = qrs-temporal
+desc = temporal setting of beat
+set_name = heartbeat
+num_events = 1807
+name = rri
+desc = RR interval
+set_name = heartbeat
+num_events = 1807
+name = rri-class
+desc = classification of RR interval
+set_name = heartbeat
+num_events = 1807
+name = rri-refvalue
+desc = reference rri representing the current heart-rate
+set_name = heartbeat
+num_events = 1807
+name = rri-num-refvalue
+desc = number of rri's used for calculation of reference value
+set_name = heartbeat
+num_events = 1807
+name = rr-systolic
+desc = systolic bloodpressure in mmHg
+set_name = heartbeat
+num_events = 1807
+name = rr-diastolic
+desc = diastolic bloodpressure in mmHg
+set_name = heartbeat
+num_events = 1807
+name = rr-mean
+desc = mean bloodpressure in mmHg
+set_name = heartbeat
+num_events = 1807
+name = rr-systolic-pos
+desc = position of systolic bloodpressure in sampleunits
+set_name = heartbeat
+num_events = 1807
+name = rr-diastolic-pos
+desc = position of diastolic bloodpressure in sampleunits
+set_name = heartbeat
+num_events = 1807
+name = rr-flags
+desc = flags for the rr-values
+set_name = heartbeat
+num_events = 1807
+name = ibi
+desc = inter-beat-interval
+set_name = heartbeat
+num_events = 1807
+name = resp-chest-mean-rri
+desc = mean chest measurement of the rr interval
+set_name = heartbeat
+num_events = 1807
+name = resp-chest-mean-ibi
+desc = mean chest measurement of the inter beat interval
+set_name = heartbeat
+num_events = 1807
+name = rr-calibration-seq
+desc = start- and end-value of event is start- and end-position 
+       of calibration sequence
+set_name = rr-calibration
+num_events = 26
+octave:10&#62;&#13;</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x485.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x527.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Access raw data</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="all_examples.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Access events</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

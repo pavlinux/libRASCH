@@ -1,0 +1,24 @@
+.TH "ra_class_get_event_pos" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_class_get_event_pos \- get the start and end position of an event
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_class_get_event_pos
+.BI "(class_handle " clh ","
+.BI "long " event_id ","
+.BI "long * " start ","
+.BI "long * " end ");"
+.SH ARGUMENTS
+.IP "clh" 12
+ event-class handle
+.IP "event_id" 12
+ event-id of the event
+.IP "start" 12
+ here the start position will be returned
+.IP "end" 12
+ here the end position will be returned
+.SH "DESCRIPTION"
+The function returns in 'start' and 'end' the position of the evvent 'event_id' from the event-class 'clh'. The positions are in sample-units.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

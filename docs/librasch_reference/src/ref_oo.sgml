@@ -1,0 +1,9 @@
+<appendix id="oo_interface_ref"><title>Function Reference for Object
+Orientated Interface</title>
+<para>
+This appendix list the functions provided by libRASCH for the OO
+interfaces for C++, Perl and Python.
+</para>
+&oo_interface_auto;
+</appendix>
+

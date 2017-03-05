@@ -1,0 +1,24 @@
+.TH "ra_evset_set_start_end" 3 "January 2005" "libRASCH API (0.7.2)"
+.SH NAME
+ra_evset_set_start_end \- set start- and end-position of an event
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_evset_set_start_end
+.BI "(evset_handle " seth ","
+.BI "long " event ","
+.BI "long " start ","
+.BI "long " end ");"
+.SH ARGUMENTS
+.IP "seth" 12
+ event-set handle
+.IP "event" 12
+ number of the event
+.IP "start" 12
+ new start-position of the event
+.IP "end" 12
+ new end-position of the event
+.SH "DESCRIPTION"
+This function set the start- and end-position of the event number event.
+.SH "SOURCE FILE"
+event.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

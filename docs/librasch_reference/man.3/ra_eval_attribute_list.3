@@ -1,0 +1,18 @@
+.TH "ra_eval_attribute_list" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_eval_attribute_list \- get from 'h' a list of available attributes
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_eval_attribute_list
+.BI "(any_handle " h ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "h" 12
+ an eval-/event-class-/event-prop-handle
+.IP "vh" 12
+ value-handle receiving the attribute list
+.SH "DESCRIPTION"
+This function returns a list of all attributes associated to handle 'h'.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

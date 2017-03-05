@@ -1,0 +1,21 @@
+.TH "ra_class_add_event" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_class_add_event \- add an event
+.SH SYNOPSIS
+.B "LIBRAAPI long" ra_class_add_event
+.BI "(class_handle " clh ","
+.BI "long " start ","
+.BI "long " end ");"
+.SH ARGUMENTS
+.IP "clh" 12
+ event-class handle
+.IP "start" 12
+ start position of the event in sample-units
+.IP "end" 12
+ end position of the event in sample-units
+.SH "DESCRIPTION"
+The function adds an event to the event-class 'clh'. The start and end of the event are given by 'start' and 'end' respectively. If the event is a point in time, use for 'end' the same value as 'start'. A unique event-id is returned.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

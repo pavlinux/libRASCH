@@ -1,0 +1,18 @@
+.TH "ra_prop_get" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_prop_get \- returns event-property 'id'
+.SH SYNOPSIS
+.B "LIBRAAPI prop_handle" ra_prop_get
+.BI "(class_handle " clh ","
+.BI "const char * " id ");"
+.SH ARGUMENTS
+.IP "clh" 12
+ event-class handle
+.IP "id" 12
+ ASCII id of the wanted event-property
+.SH "DESCRIPTION"
+The function returns a handle to the event-property 'id' from event-class 'clh'. If the event-property is not available 'NULL' is returned.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

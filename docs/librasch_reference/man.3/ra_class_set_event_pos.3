@@ -1,0 +1,24 @@
+.TH "ra_class_set_event_pos" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_class_set_event_pos \- set the start and end position of an event
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_class_set_event_pos
+.BI "(class_handle " clh ","
+.BI "long " event_id ","
+.BI "long " start ","
+.BI "long " end ");"
+.SH ARGUMENTS
+.IP "clh" 12
+ event-class handle
+.IP "event_id" 12
+ event-id of the event
+.IP "start" 12
+ the start position of the event
+.IP "end" 12
+ the end position of the event
+.SH "DESCRIPTION"
+The function sets the start and end position of the event 'event_id' in the event-class 'clh' to the values 'start' and 'end'.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

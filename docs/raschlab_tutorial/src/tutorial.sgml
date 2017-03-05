@@ -1,0 +1,37 @@
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.2//EN" [
+<!ENTITY preface SYSTEM "preface.sgml">
+<!ENTITY introduction SYSTEM "intro.sgml">
+<!ENTITY terminology SYSTEM "term.sgml">
+<!ENTITY installation SYSTEM "install.sgml">
+<!ENTITY open-signal SYSTEM "open_signal.sgml">
+<!ENTITY beat-detect SYSTEM "beat_detect.sgml">
+<!ENTITY navigation SYSTEM "navigation.sgml">
+<!ENTITY view-plugin-desc SYSTEM "view_plugin_desc.sgml">
+<!ENTITY signal-comments SYSTEM "signal_comments.sgml">
+<!ENTITY settings SYSTEM "settings.sgml">
+<!ENTITY infos SYSTEM "infos.sgml">
+<!ENTITY process-plugins SYSTEM "process_plugins.sgml">
+
+]>
+<book><title>Tutorial for RASCHlab-0.3.0</title>
+<bookinfo>
+    <author><firstname>Raphael</firstname><surname>Schneider</surname></author>
+    <edition>RASCHlab Tutorial Version 0.1</edition>
+    <pubdate>2004</pubdate>
+    <copyright><year>2004</year>
+      <holder>Raphael Schneider</holder>
+    </copyright>
+</bookinfo>
+<!--&preface;-->
+&introduction;
+&terminology;
+&installation;
+&open-signal;
+&beat-detect;
+&navigation;
+&signal-comments;
+&settings;
+&view-plugin-desc;
+&infos;
+<!--&process-plugins;-->
+</book>

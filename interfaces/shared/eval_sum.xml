@@ -1,0 +1,444 @@
+<func name="ra_sum_add">
+  <para type="in" num="1" perl-type="void *" desc="handle to the event-class">class_handle</para>
+  <para type="in" num="2" perl-type="char *" desc="ASCII-id of the event-summary">id</para>
+  <para type="in" num="3" perl-type="char *" desc="name of the event-summary">name</para>
+  <para type="in" num="4" perl-type="char *" desc="a short description of the event-summary">desc</para>
+  <para type="in" num="5" perl-type="long" desc="number of dimensions">num_dim</para>
+  <para type="in" num="6" perl-type="void *" desc="array of the dimension names">dim_name</para>
+  <para type="in" num="7" perl-type="void *" desc="array of the dimension units">dim_unit</para>
+  <para type="out" num="1">sum_handle</para>
+  <purpose>add an event-summary</purpose>
+  <description>Returns the handle of the added event-summary.
+  </description>
+  <perl-code>
+  CODE:
+    RETVAL = ra_sum_add(p_class_handle, p_id, p_name, p_desc, 
+                        p_num_dim, p_dim_name, p_dim_unit);
+  </perl-code>
+  <perl-out>void *</perl-out>
+  <python-code-init>
+    sum_handle sum;
+  </python-code-init>
+  <python-code>
+    sum = ra_sum_add(p_class_handle, p_id, p_name, p_desc, 
+                     p_num_dim, p_dim_name, p_dim_unit);
+
+    return Py_BuildValue("l", sum);
+  </python-code>
+</func>
+
+
+<func name="ra_sum_add_ch">
+  <para type="in" num="1" perl-type="void *" desc="handle to the event-summary">sum_handle</para>
+  <para type="in" num="2" perl-type="long" desc="channel number">ch</para>
+  <para type="in" num="3" perl-type="long" desc="fiducial offset">fid_offset</para>
+  <para type="out" num="1">OK</para>
+  <purpose>add a channel to an event-summary</purpose>
+  <description>Add a channel to the event-summary 'sum_handle'.
+  </description>
+  <perl-code>
+  CODE:
+    RETVAL = ra_sum_add_ch(p_sum_handle, p_ch, p_fid_offset);
+  </perl-code>
+  <perl-out>long</perl-out>
+  <python-code-init>
+    int ret;
+  </python-code-init>
+  <python-code>
+    ret = ra_sum_add_ch(p_sum_handle, p_ch, p_fid_offset);
+
+    return Py_BuildValue("l", ret);
+  </python-code>
+</func>
+
+
+<func name="ra_sum_delete">
+  <para type="in" num="1" perl-type="void *" desc="handle to an event-summary">sum_handle</para>
+  <para type="out" num="1">ok</para>
+  <purpose>delete an event-summary</purpose>
+  <description>Delete the event-summary given by 'sum_handle'.
+  </description>
+  <perl-code>
+  CODE:
+    RETVAL = ra_sum_delete(p_sum_handle);
+  </perl-code>
+  <perl-out>long</perl-out>
+  <python-code-init>
+    long ok;
+  </python-code-init>
+  <python-code>
+    ok = (long)ra_sum_delete(p_sum_handle);
+    return Py_BuildValue("l", ok);
+  </python-code>
+</func>
+
+
+<func name="ra_sum_get">
+  <para type="in" num="1" perl-type="void *" desc="handle to an event-class">class_handle</para>
+  <para type="in" num="2" perl-type="char *" desc="ASCII-id of the wanted event-property">id</para>
+  <para type="out" num="1">value</para>
+  <purpose>get event-summary</purpose>
+  <description>
+    Returns all event-summaries with the id 'id'.
+  </description>
+  <perl-code><![CDATA[
+    PPCODE:
+      value_handle vh;
+      int ret;
+      SV *value;
+
+      vh = ra_value_malloc();
+
+      ret = ra_sum_get(p_class_handle, p_id, vh);
+      if ((ret != 0) || !ra_value_is_ok(vh))
+      {
+        ra_value_free(vh);
+	PUSHs(&PL_sv_undef);
+	return;
+      }
+
+      value = value_to_sv(vh);
+
+      ra_value_free(vh);
+
+      PUSHs(value);
+  ]]>      
+  </perl-code>
+  <python-code-init>
+    int ret;
+    value_handle vh;
+    PyObject *value;
+  </python-code-init>
+  <python-code><![CDATA[
+    vh = ra_value_malloc();
+
+    ret = ra_sum_get(p_class_handle, p_id, vh);
+    if ((ret != 0) || !ra_value_is_ok(vh))
+    {
+        ra_value_free(vh);
+        return Py_None;
+    }
+
+    value = value_to_py_object(vh);
+
+    ra_value_free(vh);
+
+    return value;
+  ]]>
+  </python-code>
+</func>
+
+
+<func name="ra_sum_add_part">
+  <para type="in" num="1" perl-type="void *" desc="handle to the event-summary">sum_handle</para>
+  <para type="in" num="2" perl-type="void *" desc="summary events">events</para>
+  <para type="out" num="1">part_id</para>
+  <purpose>add a summary part</purpose>
+  <description>Add a summary part; the part-id is returned.  
+  </description>
+  <perl-code>
+  CODE:
+    int ret;
+    value_handle vh;
+
+    vh = ra_value_malloc();
+
+    if ((ret = sv_to_value((SV *)p_events, "l", vh)) == 0)
+      RETVAL = ra_sum_add_part(p_sum_handle, ra_value_get_num_elem(vh), ra_value_get_long_array(vh));
+    else
+      RETVAL = ret;
+
+    ra_value_free(vh);
+  </perl-code>
+  <perl-out>long</perl-out>
+  <python-code-init>
+    int ret;
+    value_handle vh;
+    long part_id;
+ </python-code-init>
+  <python-code>
+    vh = ra_value_malloc();
+    if ((ret = py_object_to_value((PyObject *)p_events, "l", vh)) == 0)
+      part_id = ra_sum_add_part(p_sum_handle, ra_value_get_num_elem(vh), ra_value_get_long_array(vh));
+    else
+      part_id = -1;
+
+    ra_value_free(vh);
+
+    return Py_BuildValue("l", part_id);
+  </python-code>
+</func>
+
+
+<func name="ra_sum_del_part">
+  <para type="in" num="1" perl-type="void *" desc="handle to the event-summary">sum_handle</para>
+  <para type="in" num="2" perl-type="long" desc="part-id">part_id</para>
+  <para type="out" num="1">ok</para>
+  <purpose>delete a summary part</purpose>
+  <description>Delete a summary part.
+  </description>
+  <perl-code>
+  CODE:
+    RETVAL = ra_sum_del_part(p_sum_handle, p_part_id);
+  </perl-code>
+  <perl-out>long</perl-out>
+  <python-code-init>
+    int ret;
+  </python-code-init>
+  <python-code>
+    ret = ra_sum_del_part(p_sum_handle, p_part_id);
+    return Py_BuildValue("l", ret);
+  </python-code>
+</func>
+
+
+<func name="ra_sum_get_part_all">
+  <para type="in" num="1" perl-type="void *" desc="handle to an event-summary">sum_handle</para>
+  <para type="out" num="1">value</para>
+  <purpose>get all event-summary parts</purpose>
+  <description>
+    Returns all parts in the event-summary 'sum_handle'.
+  </description>
+  <perl-code><![CDATA[
+    PPCODE:
+      int ret;
+      value_handle vh;
+      SV *value;
+
+      vh = ra_value_malloc();
+      ret = ra_sum_get_part_all(p_sum_handle, vh);
+      if ((ret != 0) || !ra_value_is_ok(vh))
+      {
+        ra_value_free(vh);
+	PUSHs(&PL_sv_undef);
+        return;
+      }
+
+      value = value_to_sv(vh);
+
+      ra_value_free(vh);
+
+      PUSHs(value);
+  ]]>
+  </perl-code>
+  <python-code-init>
+    int ret;
+    value_handle vh;
+    PyObject *value;
+  </python-code-init>
+  <python-code><![CDATA[
+    vh = ra_value_malloc();
+
+    ret = ra_sum_get_part_all(p_sum_handle, vh);
+    if ((ret != 0) || !ra_value_is_ok(vh))
+    {
+        ra_value_free(vh);
+        return Py_None;
+    }
+
+    value = value_to_py_object(vh);
+
+    ra_value_free(vh);
+
+    return value;
+  ]]>
+  </python-code>
+</func>
+
+
+<func name="ra_sum_set_part_data">
+<para type="in" num="1" perl-type="void *" desc="handle of event-summary">sum_handle</para>
+<para type="in" num="2" perl-type="long" desc="part-id">part_id</para>
+<para type="in" num="3" perl-type="long" desc="channel index">ch_idx</para>
+<para type="in" num="4" perl-type="long" desc="dimension">dim</para>
+<para type="in" num="5" perl-type="char *" desc="data-type">data_type</para>
+<para type="in" num="6" perl-type="void *" desc="data">data</para>
+<para type="out" num="1">ok</para>
+<purpose>set event-summary part data</purpose>
+<description>
+Set the data for an event-summary.
+</description>
+<perl-code>
+CODE:
+  value_handle vh;
+  int ret;
+
+  vh = ra_value_malloc();
+
+  ret = sv_to_value((SV *)p_data, p_data_type, vh);  
+  if (ret == 0)
+    ra_sum_set_part_data(p_sum_handle, p_part_id, p_ch_idx, p_dim, vh);
+
+  ra_value_free(vh);
+
+  RETVAL = ret;
+</perl-code>
+<perl-out>long</perl-out>
+<python-code-init>
+  value_handle vh;
+  int ret;
+</python-code-init>
+<python-code><![CDATA[
+  vh = ra_value_malloc();
+
+  ret = py_object_to_value((PyObject *)p_data, p_data_type, vh);
+  if (ret == 0)
+    ra_sum_set_part_data(p_sum_handle, p_part_id, p_ch_idx, p_dim, vh);
+
+  ra_value_free(vh);
+
+  return Py_BuildValue("l", ret);
+]]>
+</python-code>
+</func>
+
+
+<func name="ra_sum_get_part_data">
+<para type="in" num="1" perl-type="void *" desc="handle to an event-summary">sum_handle</para>
+<para type="in" num="2" perl-type="long" desc="part-id">part_id</para>
+<para type="in" num="3" perl-type="long" desc="channel index">ch_idx</para>
+<para type="in" num="4" perl-type="long" desc="dimension">dim</para>
+<purpose>return event-summary part data</purpose>
+<description>Returns the data of an event-summary part.
+</description>
+<perl-code><![CDATA[
+PPCODE:
+      int ret;
+      value_handle vh;
+      SV *value;
+
+      vh = ra_value_malloc();
+      ret = ra_sum_get_part_data(p_sum_handle, p_part_id, p_ch_idx, p_dim, vh);
+      if ((ret != 0) || !ra_value_is_ok(vh))
+      {
+        ra_value_free(vh);
+	PUSHs(&PL_sv_undef);
+        return;
+      }
+
+      value = value_to_sv(vh);
+
+      ra_value_free(vh);
+
+      PUSHs(value);
+]]>
+</perl-code>
+<python-code-init>
+    int ret;
+    value_handle vh;
+    PyObject *value;
+</python-code-init>
+  <python-code><![CDATA[
+    vh = ra_value_malloc();
+
+    ret = ra_sum_get_part_data(p_sum_handle, p_part_id, p_ch_idx, p_dim, vh);
+    if ((ret != 0) || !ra_value_is_ok(vh))
+    {
+        ra_value_free(vh);
+        return Py_None;
+    }
+
+    value = value_to_py_object(vh);
+
+    ra_value_free(vh);
+
+    return value;
+]]>
+</python-code>
+</func>
+
+
+<func name="ra_sum_get_part_events">
+<para type="in" num="1" perl-type="void *" desc="handle to an event-summary">sum_handle</para>
+<para type="in" num="2" perl-type="long" desc="part-id">part_id</para>
+<purpose>return event-ids belonging to a summary part</purpose>
+<description>Returns for an event-summary part the event-ids which are the part is based on.
+</description>
+<perl-code><![CDATA[
+    PPCODE:
+      int ret;
+      value_handle vh;
+      SV *value;
+
+      vh = ra_value_malloc();
+      ret = ra_sum_get_part_events(p_sum_handle, p_part_id, vh);
+      if ((ret != 0) || !ra_value_is_ok(vh))
+      {
+        ra_value_free(vh);
+	PUSHs(&PL_sv_undef);
+        return;
+      }
+
+      value = value_to_sv(vh);
+
+      ra_value_free(vh);
+
+      PUSHs(value);
+]]>
+</perl-code>
+<python-code-init>
+    int ret;
+    value_handle vh;
+    PyObject *value;
+</python-code-init>
+  <python-code><![CDATA[
+    vh = ra_value_malloc();
+
+    ret = ra_sum_get_part_events(p_sum_handle, p_part_id, vh);
+    if ((ret != 0) || !ra_value_is_ok(vh))
+    {
+      ra_value_free(vh);
+      return Py_None;
+    }
+
+    value = value_to_py_object(vh);
+
+    ra_value_free(vh);
+
+    return value;
+]]>
+</python-code>
+</func>
+
+
+<func name="ra_sum_set_part_events">
+<para type="in" num="1" perl-type="void *" desc="handle to an event-summary">sum_handle</para>
+<para type="in" num="2" perl-type="long" desc="part-id">part_id</para>
+<para type="in" num="3" perl-type="SV *" desc="event-ids">event_ids</para>
+<para type="out" num="1">OK</para>
+<purpose>return event-ids belonging to a summary part</purpose>
+<description>Returns for an event-summary part the event-ids which are the part is based on.
+</description>
+<perl-code><![CDATA[
+PPCODE:
+  int ret;
+  value_handle vh;
+
+  vh = ra_value_malloc();
+
+  ret = sv_to_value(p_event_ids, "l", vh);
+  if (ret == 0)
+    ret = ra_sum_set_part_events(p_sum_handle, p_part_id, vh);
+
+  ra_value_free(vh);
+
+  PUSHs(sv_2mortal(newSViv(ret)));
+]]>
+</perl-code>
+<python-code-init>
+  value_handle vh;
+  int ret;
+</python-code-init>
+  <python-code><![CDATA[
+  vh = ra_value_malloc();
+
+  ret = py_object_to_value(p_event_ids, "l", vh);
+  if (ret == 0)
+    ret = ra_sum_set_part_events(p_sum_handle, p_part_id, vh);
+
+  ra_value_free(vh);
+
+  return Py_BuildValue("l", (long)ret);
+]]>
+</python-code>
+</func>

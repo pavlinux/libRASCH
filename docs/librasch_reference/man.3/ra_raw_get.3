@@ -1,0 +1,30 @@
+.TH "ra_raw_get" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_raw_get \- get raw-signal data 
+.SH SYNOPSIS
+.B "LIBRAAPI size_t" ra_raw_get
+.BI "(rec_handle " rh ","
+.BI "unsigned int " ch ","
+.BI "size_t " start ","
+.BI "size_t " num_data ","
+.BI "DWORD * " data ","
+.BI "DWORD * " data_high ");"
+.SH ARGUMENTS
+.IP "rh" 12
+ recording-handle
+.IP "ch" 12
+ channel
+.IP "start" 12
+ first sample
+.IP "num_data" 12
+ number of samples
+.IP "data" 12
+ buffer for samples
+.IP "data_high" 12
+ buffer for higher 4 bytes of samples (if size of one sample > 4 bytes)
+.SH "DESCRIPTION"
+This function returns the sample's (raw-signal data) from the measurement mh and the recording rh. The first sample in data will be the sample number start (in sampleunits) and max. num_data are in data. The memory for buffer data must  be allocated in calling function. The samples returned in this function are the samples as stored in the file. If the size of one sample is greater than 4 bytes, the upper part of the samples are stored in the data_high buffer. If the size is not greater than 4 bytes, the buffer is not needed.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

@@ -1,0 +1,21 @@
+.TH "ra_meas_find_first" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_meas_find_first \- find libRASCH-handled measurements (return first one)
+.SH SYNOPSIS
+.B "LIBRAAPI ra_find_handle" ra_meas_find_first
+.BI "(ra_handle " h ","
+.BI "const char * " dir ","
+.BI "struct ra_find_struct * " rfs ");"
+.SH ARGUMENTS
+.IP "h" 12
+ handle to libRASCH
+.IP "dir" 12
+ directory which should be scanned for measurements
+.IP "rfs" 12
+ pointer to ra_find_struct which will held the infos for the found measurement.
+.SH "DESCRIPTION"
+Search for libRASCH-handled measurements in dir. If at least on measurement was found a valid (!NULL) ra_find_handle will be returned and the infos about the measurement is in mfs.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

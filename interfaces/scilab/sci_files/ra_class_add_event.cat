@@ -1,0 +1,8 @@
+Returns the id of the added event.
+    Input parameters:
+    class_handle
+    start_pos
+    end_pos
+
+  Output parameters:
+    event_id

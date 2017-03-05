@@ -1,0 +1,10 @@
+all:
+	@cd view && $(MAKE) -f Makefile.w32
+	@cd access && $(MAKE) -f Makefile.w32
+	@cd process && $(MAKE) -f Makefile.w32
+
+clean:
+	@cd view && $(MAKE) -f Makefile.w32 clean
+	@cd access && $(MAKE) -f Makefile.w32 clean
+	@cd process && $(MAKE) -f Makefile.w32 clean
+

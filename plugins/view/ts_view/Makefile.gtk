@@ -1,0 +1,103 @@
+LIBRASCH_HOME = ../../..
+include $(LIBRASCH_HOME)/Makefile.incl
+
+PRG_CFLAGS = $(CFLAGS) $(GTK_CFLAGS) `librasch-config --cflags`
+PRG_LFLAGS = $(GTK_LFLAGS) `librasch-config --libs`
+
+CFLAGS	+= 	$(GTK_CFLAGS) -DGTKMM
+LINK	=	$(LD)
+LFLAGS	= 	$(LDFLAGS_PL) $(GTK_LFLAGS)
+
+
+# OBJS =		ts_view.o \
+# 		ts_view_qt.o \
+# 		ts_view_general.o \
+# 		ch_optdlg_qt.o \
+# 		ts_view_optdlg_qt.o \
+# 		annot_dlg_qt.o
+
+OBJS = 	        ts_view_g.o ts_view_general.o ts_view_gtk.o gen_opt_dlg_gtk.o ch_opt_dlg_gtk.o annot_dlg_gtk.o
+
+OBJS_SHARED = 	../shared/view_frame_general.o \
+		../shared/view_frame_gtk.o
+#		../shared/progress_dlg_gtk.o
+
+
+####### Implicit rules
+
+.SUFFIXES: .cpp .cxx .cc .C .c
+
+.cpp.o:
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
+
+.cxx.o:
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
+
+.cc.o:
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
+
+.C.o:
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
+
+.c.o:
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CC) -c $(CFLAGS) $(INCPATH) -o $@ $<
+
+
+
+all: FORCE $(OBJS) test.o test2.o test3.o test4.o test5.o
+	@cd ../shared && $(MAKE) -f Makefile.gtk
+	@echo $(INDENT)LD $(RELDIR)/ts_view_gtk.o
+	$(Q)$(LINK) $(LFLAGS) $(LDFLAGS_PL) -o ts_view_gtk_t.o $(OBJS) $(OBJS_SHARED)
+	$(Q)cp ts_view_gtk_t.o $(LIBRASCH_HOME)/plugins/bin/ts_view_gtk.o
+
+	$(Q)$(LINK) $(PRG_LFLAGS) -o test_gtk $(OBJS) test.o $(OBJS_SHARED)
+	$(Q)$(LINK) $(PRG_LFLAGS) -o test2_gtk test2.o
+	$(Q)$(LINK) $(PRG_LFLAGS) -o test3_gtk $(OBJS) test3.o $(OBJS_SHARED)
+	$(Q)$(LINK) $(PRG_LFLAGS) -o test4_gtk test4.o
+	$(Q)$(LINK) $(PRG_LFLAGS) -o test5_gtk $(OBJS) test5.o $(OBJS_SHARED)
+
+
+
+FORCE:
+
+
+test.o: test.cpp ts_view_gtk.h
+
+test2.o: test2.cpp
+
+test3.o: test3.cpp
+
+test4.o: test4.cpp
+
+test5.o: test5.cpp
+
+ts_view_g.o: ts_view.cpp ts_view.h $(LIBRASCH_HOME)/include/ra.h $(LIBRASCH_HOME)/include/ra_defines.h
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CC) -c $(CFLAGS) $(INCPATH) -o ts_view_g.o ts_view.cpp
+	
+ts_view_general.o: ts_view_general.cpp ts_view_general.h
+
+ts_view_gtk.o: ts_view_gtk.cpp ts_view_gtk.h ts_view_general.h gen_opt_dlg_gtk.h ch_opt_dlg_gtk.h annot_dlg_gtk.h
+
+gen_opt_dlg_gtk.o: gen_opt_dlg_gtk.cpp gen_opt_dlg_gtk.h ts_view_general.h
+
+ch_opt_dlg_gtk.o: ch_opt_dlg_gtk.cpp ch_opt_dlg_gtk.h ts_view_general.h
+
+annot_dlg_gtk.o: annot_dlg_gtk.cpp annot_dlg_gtk.h ts_view_general.h
+
+
+clean:
+	@echo $(INDENT)clean plugin ts-view
+	$(Q)rm -f *~
+	$(Q)rm -f $(LIBRASCH_HOME)/plugins/bin/ts_view_gtk.o
+	$(Q)rm -f *.o
+
+distclean: clean
+	@echo $(INDENT)dist-clean plugin ts-view
+
+# $Id: $

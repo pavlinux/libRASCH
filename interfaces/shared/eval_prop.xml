@@ -1,0 +1,611 @@
+<func name="ra_prop_add">
+  <para type="in" num="1" perl-type="void *" desc="handle to the event-class">class_handle</para>
+  <para type="in" num="2" perl-type="char *" desc="ASCII-id of the event-class">id</para>
+  <para type="in" num="3" perl-type="long" desc="value-type of the property">value_type</para>
+  <para type="in" num="4" perl-type="char *" desc="name of the event-class">name</para>
+  <para type="in" num="5" perl-type="char *" desc="a short description of the event-class">desc</para>
+  <para type="in" num="6" perl-type="char *" desc="unit of the property">unit</para>
+  <para type="in" num="7" perl-type="long" desc="information about usual range is valid">use_minmax</para>
+  <para type="in" num="8" perl-type="double" desc="usual minimal value of the property">min</para>
+  <para type="in" num="9" perl-type="double" desc="usual maximal value of the property">max</para>
+  <para type="in" num="10" perl-type="long" desc="flag if the ignore-value is valid">has_ignore_value</para>
+  <para type="in" num="11" perl-type="double" desc="value which can be ignored">ignore_value</para>
+  <para type="out" num="1">prop_handle</para>
+  <purpose>add an event-property</purpose>
+  <description>Returns the handle of the added event-property.
+  </description>
+  <perl-code>
+  CODE:
+    RETVAL = ra_prop_add(p_class_handle, p_id, p_value_type,
+                         p_name, p_desc, p_unit, p_use_minmax, p_min, p_max,
+			 p_has_ignore_value, p_ignore_value);
+  </perl-code>
+  <perl-out>void *</perl-out>
+  <python-code-init>
+    prop_handle prop;
+  </python-code-init>
+  <python-code>
+    prop = ra_prop_add(p_class_handle, p_id, p_value_type,
+                       p_name, p_desc, p_unit, p_use_minmax, p_min, p_max,
+		       p_has_ignore_value, p_ignore_value);
+    return Py_BuildValue("l", prop);
+  </python-code>
+</func>
+
+
+<func name="ra_prop_add_predef">
+  <para type="in" num="1" perl-type="void *" desc="handle to the event-class">class_handle</para>
+  <para type="in" num="2" perl-type="char *" desc="ASCII-id of the event-property">id</para>
+  <para type="out" num="1">prop_handle</para>
+  <purpose>add a pre-defined event-property</purpose>
+  <description>Returns the handle of the added event-property.
+  </description>
+  <perl-code>
+  CODE:
+    RETVAL = ra_prop_add_predef(p_class_handle, p_id);
+  </perl-code>
+  <perl-out>void *</perl-out>
+  <python-code-init>
+    prop_handle prop;
+  </python-code-init>
+  <python-code>
+    prop = ra_prop_add_predef(p_class_handle, p_id);
+    return Py_BuildValue("l", prop);
+  </python-code>
+</func>
+
+
+<func name="ra_prop_delete">
+  <para type="in" num="1" perl-type="void *" desc="handle to an event-property">prop_handle</para>
+  <para type="out" num="1">ok</para>
+  <purpose>delete an event-property</purpose>
+  <description>Delete the event-property given by 'prop_handle'.
+  </description>
+  <perl-code>
+  CODE:
+    RETVAL = ra_prop_delete(p_prop_handle);
+  </perl-code>
+  <perl-out>long</perl-out>
+  <python-code-init>
+    long ok;
+  </python-code-init>
+  <python-code>
+    ok = (long)ra_prop_delete(p_prop_handle);
+    return Py_BuildValue("l", ok);
+  </python-code>
+</func>
+
+
+<func name="ra_prop_get">
+  <para type="in" num="1" perl-type="void *" desc="handle to an event-class">class_handle</para>
+  <para type="in" num="2" perl-type="char *" desc="ASCII-id of the wanted event-property">id</para>
+  <para type="out" num="1">value</para>
+  <purpose>get event-property</purpose>
+  <description>
+    Return the event-propertiy with the id 'id'.
+  </description>
+  <perl-code>
+    CODE:
+      RETVAL = ra_prop_get(p_class_handle, p_id);
+  </perl-code>
+  <perl-out>void *</perl-out>
+  <python-code-init>
+    prop_handle prop;
+  </python-code-init>
+  <python-code>
+    prop = ra_prop_get(p_class_handle, p_id);
+    return Py_BuildValue("l", prop);
+  </python-code>
+</func>
+
+
+<func name="ra_prop_get_all">
+  <para type="in" num="1" perl-type="void *" desc="handle to an event-class">class_handle</para>
+  <para type="out" num="1">value</para>
+  <purpose>get all event-properties</purpose>
+  <description>
+    Returns all event-properties within event-class 'class_handle'.
+  </description>
+  <perl-code><![CDATA[
+    PPCODE:
+      value_handle vh;
+      SV *value;
+
+      vh = ra_value_malloc();
+      if (ra_prop_get_all(p_class_handle, vh) != 0)
+      {
+        ra_value_free(vh);
+	PUSHs(&PL_sv_undef);
+        return;
+      }
+      if (!ra_value_is_ok(vh))
+      {
+        ra_value_free(vh);
+	PUSHs(&PL_sv_undef);
+        return;
+      }
+
+      value = value_to_sv(vh);
+
+      ra_value_free(vh);
+
+      PUSHs(value);
+  ]]>
+  </perl-code>
+  <python-code-init>
+    value_handle vh;
+    PyObject *value;
+  </python-code-init>
+  <python-code><![CDATA[
+    vh = ra_value_malloc();
+
+    if (ra_prop_get_all(p_class_handle, vh) != 0)
+    {
+        ra_value_free(vh);
+        return Py_None;
+    }
+    if (!ra_value_is_ok(vh))
+    {
+        ra_value_free(vh);
+        return Py_None;
+    }
+
+    value = value_to_py_object(vh);
+
+    ra_value_free(vh);
+
+    return value;
+  ]]>
+  </python-code>
+</func>
+
+
+<func name="ra_prop_set_value">
+<para type="in" num="1" perl-type="void *" desc="handle of event-property">prop_handle</para>
+<para type="in" num="2" perl-type="long" desc="event-id">event_id</para>
+<para type="in" num="3" perl-type="long" desc="channel (=-1 if independent of the channel)">ch</para>
+<para type="in" num="4" perl-type="char *" desc="value-type">value_type</para>
+<para type="in" num="5" perl-type="SV *" desc="value">value</para>
+<purpose>set event-value</purpose>
+<description>
+Set an event-property.
+</description>
+<perl-code>
+CODE:
+  value_handle vh;
+  int ret;
+
+  vh = ra_value_malloc();
+
+  ret = sv_to_value(p_value, p_value_type, vh);  
+  if (ret == 0)
+    ra_prop_set_value(p_prop_handle, p_event_id, p_ch, vh);
+
+  ra_value_free(vh);
+
+  RETVAL = ret;
+</perl-code>
+  <perl-out>long</perl-out>
+<python-code-init>
+  value_handle vh;
+  int ret;
+</python-code-init>
+<python-code><![CDATA[
+  vh = ra_value_malloc();
+
+  ret = py_object_to_value(p_value, p_value_type, vh);
+  if (ret == 0)
+    ra_prop_set_value(p_prop_handle, p_event_id, p_ch, vh);
+
+  ra_value_free(vh);
+
+  return Py_BuildValue("l", ret);
+]]>
+</python-code>
+</func>
+
+
+<func name="ra_prop_set_value_mass">
+<para type="in" num="1" perl-type="SV *" desc="handle of event-property">prop_handle</para>
+<para type="in" num="2" perl-type="SV *" desc="event-ids">event_id</para>
+<para type="in" num="3" perl-type="SV *" desc="channels">ch</para>
+<para type="in" num="4" perl-type="char *" desc="value-type">value_type</para>
+<para type="in" num="5" perl-type="SV *" desc="values">value</para>
+<para type="out" num="1">ret</para>
+<purpose>set event-value</purpose>
+<description>
+Set all values of an event-property.
+</description>
+<perl-code>
+CODE:
+  value_handle vh, vh_id, vh_ch;
+  int ret;
+
+  vh_id = ra_value_malloc();
+  vh_ch = ra_value_malloc();
+  vh = ra_value_malloc();
+
+  sv_to_value(p_event_id, "pl", vh_id);
+  sv_to_value(p_ch, "pl", vh_ch);
+  sv_to_value(p_event_id, p_value_type, vh);
+
+  ret = ra_prop_set_value_mass(p_prop_handle, ra_value_get_long_array(vh_id),
+                                 ra_value_get_long_array(vh_ch), vh);
+
+  ra_value_free(vh_id);
+  ra_value_free(vh_ch);
+  ra_value_free(vh);
+
+  RETVAL = ret;
+</perl-code>
+<perl-out>long</perl-out>
+<python-code-init>
+  int ret;
+  value_handle vh, vh_id, vh_ch;
+</python-code-init>
+<python-code><![CDATA[
+  vh_id = ra_value_malloc();
+  ret = py_object_to_value(p_event_id, "pl", vh_id);
+  if (ret != 0)
+  {
+    ra_value_free(vh_id);
+    return Py_BuildValue("l", ret);
+  }
+
+  vh_ch = ra_value_malloc();
+  ret = py_object_to_value(p_ch, "pl", vh_ch);
+  if (ret != 0)
+  {
+    ra_value_free(vh_id);
+    ra_value_free(vh_ch);
+    return Py_BuildValue("l", ret);
+  }
+
+  vh = ra_value_malloc();
+  ret = py_object_to_value(p_event_id, p_value_type, vh);
+  if (ret != 0)
+  {
+    ra_value_free(vh_id);
+    ra_value_free(vh_ch);
+    ra_value_free(vh);
+    return Py_BuildValue("l", ret);
+  }
+
+  ret = ra_prop_set_value_mass(p_prop_handle, ra_value_get_long_array(vh_id),
+                               ra_value_get_long_array(vh_ch), vh);
+
+  ra_value_free(vh_id);
+  ra_value_free(vh_ch);
+  ra_value_free(vh);
+
+  return Py_BuildValue("l", ret);
+]]>
+</python-code>
+</func>
+
+
+<func name="ra_prop_get_ch">
+<para type="in" num="1" perl-type="void *" desc="handle to an event-property">prop_handle</para>
+<para type="in" num="2" perl-type="long" desc="event-id">id</para>
+<para type="out" num="1">ch</para>
+<purpose>return channels for which values are available</purpose>
+<description>Returns for event 'event-id' a list of channels for which
+values are available.
+</description>
+<perl-code><![CDATA[
+    PPCODE:
+      value_handle vh;
+      SV *value;
+
+      vh = ra_value_malloc();
+      if (ra_prop_get_ch(p_prop_handle, p_id, vh) != 0)
+      {
+        ra_value_free(vh);
+	PUSHs(&PL_sv_undef);
+        return;
+      }
+      if (!ra_value_is_ok(vh))
+      {
+        ra_value_free(vh);
+	PUSHs(&PL_sv_undef);
+        return;
+      }
+
+      value = value_to_sv(vh);
+
+      ra_value_free(vh);
+
+      PUSHs(value);
+]]>
+</perl-code>
+<python-code-init>
+    value_handle vh;
+    PyObject *value;
+</python-code-init>
+  <python-code><![CDATA[
+    vh = ra_value_malloc();
+
+    if (ra_prop_get_ch(p_prop_handle, p_id, vh) != 0)
+    {
+        ra_value_free(vh);
+        return Py_None;
+    }
+    if (!ra_value_is_ok(vh))
+    {
+        ra_value_free(vh);
+        return Py_None;
+    }
+
+    value = value_to_py_object(vh);
+
+    ra_value_free(vh);
+
+    return value;
+]]>
+</python-code>
+</func>
+
+
+<func name="ra_prop_get_value">
+<para type="in" num="1" perl-type="void *" desc="handle to an event-property">prop_handle</para>
+<para type="in" num="2" perl-type="long" desc="event-id">id</para>
+<para type="in" num="3" perl-type="long" desc="channel">ch</para>
+<para type="out" num="1">value</para>
+<purpose>return event-property value</purpose>
+<description>Returns the event-property value for event 'event-id' and channel 'channel'.
+</description>
+<perl-code><![CDATA[
+PPCODE:
+      value_handle vh;
+      SV *value;
+      long ret;
+
+      vh = ra_value_malloc();
+      ret = ra_prop_get_value(p_prop_handle, p_id, p_ch, vh);
+      if ((ret != 0) && (ret != RA_WARN_CH_INDEP_PROP_VALUE))
+      {
+        ra_value_free(vh);
+	PUSHs(&PL_sv_undef);
+        return;
+      }
+      if (!ra_value_is_ok(vh))
+      {
+        ra_value_free(vh);
+	PUSHs(&PL_sv_undef);
+        return;
+      }
+
+      value = value_to_sv(vh);
+
+      ra_value_free(vh);
+
+      PUSHs(value);
+]]>
+</perl-code>
+<python-code-init>
+    value_handle vh;
+    PyObject *value;
+</python-code-init>
+  <python-code><![CDATA[
+    vh = ra_value_malloc();
+
+    if (ra_prop_get_value(p_prop_handle, p_id, p_ch, vh) != 0)
+    {
+        ra_value_free(vh);
+        return Py_None;
+    }
+    if (!ra_value_is_ok(vh))
+    {
+        ra_value_free(vh);
+        return Py_None;
+    }
+
+    value = value_to_py_object(vh);
+
+    ra_value_free(vh);
+
+    return value;
+]]>
+</python-code>
+</func>
+
+
+<func name="ra_prop_get_value_all">
+<para type="in" num="1" perl-type="void *" desc="handle to an event-property">prop_handle</para>
+<para type="out" num="1">event_ids</para>
+<para type="out" num="2">ch</para>
+<para type="out" num="3">values</para>
+<purpose>return all event-property values</purpose>
+<description>Returns all event-property values and the corresponding event-ids channels.
+</description>
+<perl-code><![CDATA[
+    PPCODE:
+      value_handle vh, vh_id, vh_ch;
+      AV *all;
+
+      all = newAV();
+      sv_2mortal((SV *)all);
+
+      vh = ra_value_malloc();
+      vh_id = ra_value_malloc();
+      vh_ch = ra_value_malloc();
+      if (ra_prop_get_value_all(p_prop_handle, vh_id, vh_ch, vh) != 0)
+      {
+        ra_value_free(vh);
+        ra_value_free(vh_id);
+        ra_value_free(vh_ch);
+
+	av_store(all, 0, &PL_sv_undef);
+	av_store(all, 1, &PL_sv_undef);
+	av_store(all, 2, &PL_sv_undef);
+	PUSHs(newRV_noinc((SV *)all));
+
+        return;
+      }
+      if (!ra_value_is_ok(vh) || !ra_value_is_ok(vh_id) || !ra_value_is_ok(vh_ch))
+      {
+        ra_value_free(vh);
+        ra_value_free(vh_id);
+        ra_value_free(vh_ch);
+
+	av_store(all, 0, &PL_sv_undef);
+	av_store(all, 1, &PL_sv_undef);
+	av_store(all, 2, &PL_sv_undef);
+	PUSHs(newRV_noinc((SV *)all));
+
+        return;
+      }
+
+      av_store(all, 0, value_to_sv(vh_id));
+      av_store(all, 1, value_to_sv(vh_ch));
+      av_store(all, 2, value_to_sv(vh));
+
+      ra_value_free(vh);
+      ra_value_free(vh_id);
+      ra_value_free(vh_ch);
+
+      PUSHs(newRV_noinc((SV *)all));
+]]>
+</perl-code>
+<python-code-init>
+    value_handle vh, vh_id, vh_ch;
+    PyObject *all;
+</python-code-init>
+  <python-code><![CDATA[
+    vh = ra_value_malloc();
+
+    all = PyList_New(3);
+
+    vh = ra_value_malloc();
+    vh_id = ra_value_malloc();
+    vh_ch = ra_value_malloc();
+    if (ra_prop_get_value_all(p_prop_handle, vh_id, vh_ch, vh) != 0)
+    {
+      ra_value_free(vh);
+      ra_value_free(vh_id);
+      ra_value_free(vh_ch);
+
+      return Py_None;
+    }
+    if (!ra_value_is_ok(vh) || !ra_value_is_ok(vh_id) || !ra_value_is_ok(vh_ch))
+    {
+      ra_value_free(vh);
+      ra_value_free(vh_id);
+      ra_value_free(vh_ch);
+
+      return Py_None;
+    }
+
+    PyList_SetItem(all, 0, value_to_py_object(vh_id));
+    PyList_SetItem(all, 1, value_to_py_object(vh_ch));
+    PyList_SetItem(all, 2, value_to_py_object(vh));
+ 
+    ra_value_free(vh);
+    ra_value_free(vh_id);
+    ra_value_free(vh_ch);
+
+    return all;
+]]>
+</python-code>
+</func>
+
+
+<func name="ra_prop_get_events">
+<para type="in" num="1" perl-type="void *" desc="handle to an event-property">prop_handle</para>
+<para type="in" num="2" perl-type="char *" desc="min/max value type">val_type</para>
+<para type="in" num="3" perl-type="void *" desc="min value">min</para>
+<para type="in" num="4" perl-type="void *" desc="max value">max</para>
+<para type="in" num="5" perl-type="long" desc="channel">ch</para>
+<para type="out" num="1">event_ids</para>
+<purpose>return the event-ids which values are between 'min' and 'max</purpose>
+<description>Return the event-ids which values are between 'min' and 'max.
+</description>
+<perl-code><![CDATA[
+    PPCODE:
+      int ret;
+      value_handle vh, vh_min, vh_max;
+      SV *ids;
+
+      vh_min = ra_value_malloc();
+      vh_max = ra_value_malloc();
+      ret = sv_to_value((SV *)p_min, p_val_type, vh_min);
+      if (ret != 0)
+      {
+        ra_value_free(vh_min);
+        ra_value_free(vh_max);
+	PUSHs(&PL_sv_undef);
+	return;
+      }
+      ret = sv_to_value((SV *)p_max, p_val_type, vh_max);
+      if (ret != 0)
+      {
+        ra_value_free(vh_min);
+        ra_value_free(vh_max);
+	PUSHs(&PL_sv_undef);
+	return;
+      }
+
+      vh = ra_value_malloc();
+      ret = ra_prop_get_events(p_prop_handle, vh_min, vh_max, p_ch, vh);
+      if (ret != 0)
+      {
+        ra_value_free(vh_min);
+        ra_value_free(vh_max);
+        ra_value_free(vh);
+	PUSHs(&PL_sv_undef);
+	return;
+      }
+
+      ids = value_to_sv(vh);
+      
+      ra_value_free(vh_min);
+      ra_value_free(vh_max);
+      ra_value_free(vh);
+
+      PUSHs(ids);
+]]>
+</perl-code>
+<python-code-init>
+    int ret;
+    value_handle vh, vh_min, vh_max;
+    PyObject *ids;
+</python-code-init>
+  <python-code><![CDATA[
+      vh_min = ra_value_malloc();
+      vh_max = ra_value_malloc();
+
+      ret = py_object_to_value((PyObject *)p_min, p_val_type, vh_min);
+      if (ret != 0)
+      {
+        ra_value_free(vh_min);
+        ra_value_free(vh_max);
+	return Py_None;
+      }
+      ret = py_object_to_value((PyObject *)p_max, p_val_type, vh_max);
+      if (ret != 0)
+      {
+        ra_value_free(vh_min);
+        ra_value_free(vh_max);
+	return Py_None;
+      }
+
+      vh = ra_value_malloc();
+      ret = ra_prop_get_events(p_prop_handle, vh_min, vh_max, p_ch, vh);
+      if (ret != 0)
+      {
+        ra_value_free(vh_min);
+        ra_value_free(vh_max);
+        ra_value_free(vh);
+	return Py_None;
+      }
+
+    ids = value_to_py_object(vh);
+ 
+    ra_value_free(vh);
+    ra_value_free(vh_min);
+    ra_value_free(vh_max);
+
+    return ids;
+]]>
+</python-code>
+</func>

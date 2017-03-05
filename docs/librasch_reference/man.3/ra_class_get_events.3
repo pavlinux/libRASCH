@@ -1,0 +1,30 @@
+.TH "ra_class_get_events" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_class_get_events \- returns the events in a specific region
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_class_get_events
+.BI "(class_handle " clh ","
+.BI "long " start ","
+.BI "long " end ","
+.BI "int " complete ","
+.BI "int " sort ","
+.BI "value_handle " vh ");"
+.SH ARGUMENTS
+.IP "clh" 12
+ event-class handle
+.IP "start" 12
+ start of the region of interest
+.IP "end" 12
+ end of the region of interest
+.IP "complete" 12
+ flag if the events have to be complete in the region of interest
+.IP "sort" 12
+ flag if the found events should be sorted according their start position
+.IP "vh" 12
+ value handle receiving the event-id's asked for
+.SH "DESCRIPTION"
+The function returns in 'vh' the events which are inside a specific region. The region of interest (ROI)is given by 'start' and 'end'. If the 'complete' flag is set, the events have to be complete inside the ROI. If it is not set, all events are returned which starts or ends inside the ROI.
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

@@ -1,0 +1,237 @@
+<?xml version="1.0"?>
+<libMTK-signals>
+
+  <para_desc name="event-name">
+    <type>char-pointer</type>
+    <desc>name of an event-property</desc>
+  </para_desc>
+
+  <para_desc name="event-value">
+    <type>double</type>
+    <desc>value of an event-property</desc>
+  </para_desc>
+
+  <para_desc name="event-set-name">
+    <type>char-pointer</type>
+    <desc>name of an event-set</desc>
+  </para_desc>
+
+  <para_desc name="event-number">
+    <type>long</type>
+    <desc>number of a single event</desc>
+  </para_desc>
+
+  <para_desc name="template-number">
+    <type>long</type>
+    <desc>number of a template</desc>
+  </para_desc>
+
+  <para_desc name="rec-pos">
+    <type>long</type>
+    <desc>position in recording stream</desc>
+  </para_desc>
+
+  <para_desc name="max-x-scale">
+    <type>double</type>
+    <desc>scaling factor for x-axis for channel with highest samplerate</desc>
+  </para_desc>
+
+  <para_desc name="x-res">
+    <type>double</type>
+    <desc>resolution of the x-axis</desc>
+  </para_desc>
+
+  <para_desc name="mm-per-unit">
+    <type>double</type>
+    <desc>mm/unit a channel</desc>
+  </para_desc>
+
+  <para_desc name="channel">
+    <type>long</type>
+    <desc>channel-number of root-measurement</desc>
+  </para_desc>
+
+  <para_desc name="gui-parent">
+    <type>long</type>
+    <desc>id (e.g. the pointer) of the parent gui-element</desc>
+  </para_desc>
+
+
+  <signal name="select-event">
+    <purpose>select evens with a specific value</purpose>
+    <desc>
+      This signal will be emitted if a set of events ('event-name') with a
+      specific value ('event-value') should be selected.
+    </desc>
+    <para name="event-name"/>
+    <para name="event-value"/>
+  </signal>
+  
+  <signal name="highlight-event">
+    <purpose>highlight an event</purpose>
+    <desc>
+      This signal can be emitted from a plugin if an event was selected and
+      this event should be emphasised in other view-plugins. The
+      selected event has the number 'event-number' and is in the event-set
+      'event-set-name'.      
+    </desc>
+    <para name="event-set-name"/>
+    <para name="event-number"/>
+  </signal>
+  
+  <signal name="eval-change">
+    <purpose>evaluation has changed</purpose>
+    <desc>
+      This signal will be emitted if the default-evaluation has changed. The receiving
+      plugins must re-read the evaluation data and correct their handling of
+      the evaluation data (e.g. displaying a x/y-plot) if necessary.
+    </desc>
+  </signal>
+
+  <signal name="start-event-change">
+    <purpose>some event-change signals are coming</purpose>
+    <desc>
+    This signal will be emitted if more than one event-change signal
+    is coming. The plugin can decide if it will response to every
+    single change or collect all changes and response to the
+    "end-event-change" signal.
+    </desc>
+  </signal>
+
+  <signal name="end-event-change">
+    <purpose>close an start-event-change</purpose>
+    <desc>
+    This signal 'closes' an "start-event-change". If the plugin
+    collected the event-changes, now it can handle the changes.
+    </desc>
+  </signal>
+
+  <signal name="event-change">
+    <purpose>event-value has changed</purpose>
+    <desc>
+      This signal will be emitted if the value of an event-property
+      has changed. The receiving plugins must check if the
+      event-property is handled by the plugin and can ignore it, if it
+      is not handled. If it is handled, the plugin can update whatever
+      is needed (e.g. replot event-property values). If 'event-number'
+      is -1, the whole event-property should be re-read.
+    </desc>
+    <para name="event-name"/>
+    <para name="event-number"/>
+  </signal>
+
+  <signal name="region-change">
+    <purpose></purpose>
+    <desc>
+      This signal will be emitted if something changed between two positions.
+    </desc>
+    <para name="rec-pos"/>
+    <para name="rec-pos"/>
+  </signal>
+
+  <signal name="add-event">
+    <purpose>an event was added</purpose>
+    <desc>
+      This signal will be emitted if a new event (with event-number
+      'event-number') was added to event-set 'event-set-name'.
+    </desc>
+    <para name="event-set-name"/>
+    <para name="event-number"/>
+  </signal>
+  
+  <signal name="del-event-begin">
+    <purpose>start of an event-deletion</purpose>
+    <desc>
+      This signal will be emitted before an event will be deleted. This enables
+      plugins to get infos from the event before deletion. E.g. for templates
+      it is necessary to know th template-number used by an event. The deleted
+      event is event number 'event-number' from the event-set 'event-set-name'.
+    </desc>
+    <para name="event-set-name"/>
+    <para name="event-number"/>
+  </signal>
+  
+  <signal name="del-event-end">
+    <purpose>end of an event-deletion</purpose>
+    <desc>
+      This signal will be emitted after an event was deleted. The deleted
+      event is event number 'event-number' from the event-set 'event-set-name'.
+    </desc>
+    <para name="event-set-name"/>
+    <para name="event-number"/>
+  </signal>
+  
+  <signal name="template-delete">
+    <purpose>a template was deleted</purpose>
+    <desc>
+      This signal will be emitted after a template was deleted. The deleted
+      template is template number 'template-number' from the event-set 'event-set-name'.
+    </desc>
+    <para name="event-set-name"/>
+    <para name="template-number"/>
+  </signal>
+  
+  <signal name="template-add">
+    <purpose>a template was added</purpose>
+    <desc>
+      This signal will be emitted if a template was added. The added template
+      is template number 'template-number' from the event-set 'event-set-name'.
+    </desc>
+    <para name="event-set-name"/>
+    <para name="template-number"/>
+  </signal>
+  
+  <signal name="pos-change">
+    <purpose>set view to a new position</purpose>
+    <desc>
+      This signal will be emitted, if a view-plugin changed the position in the
+      recording stream which is displayed. The new position is given by
+      'rec-pos' and is in sampleunits of the recording. View-plugins MUST
+      handle this signal. (TODO: think about how to handle different recordings?)
+    </desc>
+    <para name="rec-pos"/>
+    <para name="max-x-scale"/>
+  </signal>
+  
+  <signal name="gui-event-start">
+    <purpose>start of signal activated by GUI-event</purpose>
+    <desc>
+      This signal will indicate that the next signal(s) emitted is(are) released by a
+      GUI-event (e.g. mouse click).
+    </desc>
+  </signal>
+  
+  <signal name="gui-event-end">
+    <purpose>end of signal activated by GUI-event</purpose>
+    <desc>
+      Indicating that the GUI-event is finished. (see 'gui-event-start'). 
+    </desc>
+  </signal>
+
+  <signal name="x-resolution">
+    <purpose>set new resolution of x-axis</purpose>
+    <desc>
+      This signal will be emitted if the resolution of the x-axis of a view has
+      changed. The new reslution is given by 'x-res'. Additionally the parent
+      of the view is given by 'gui-parent'. Normally the view only change his
+      x-resolution if the parent of the receiving view is the same as the
+      sending view (sync. of splitted views).
+    </desc>
+    <para name="x-res"/>
+    <para name="gui-parent"/>
+  </signal>
+
+  <signal name="y-resolution">
+    <purpose>set new mm/unit of a channel</purpose>
+    <desc>
+      This signal will be emitted if the mm/unit of a
+      channel has changed. The new y-resolution is given by
+      'mm-per-unit', the channel by 'channel'.
+    </desc>
+    <para name="mm-per-unit"/>
+    <para name="channel"/>
+  </signal>
+
+</libMTK-signals>
+
+

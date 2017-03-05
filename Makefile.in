@@ -1,0 +1,181 @@
+########## Makefile.in ##########
+# Do not print "Entering directory ..."
+MAKEFLAGS += --no-print-directory
+
+##### targets #####
+all: lib plot_lib plugins_all po interfaces raschlab
+
+skipgui: lib plot_lib plugins_access plugins_proc po interfaces
+
+skipinterface: lib plot_lib plugins_all po raschlab
+
+lib: FORCE
+	$(Q) rm -f librasch.so*
+	@echo build core...
+	$(Q) cd src && ${MAKE} $(QS) MAJ_VERSION=$(MAJ_VERSION) VERSION=$(VERSION) RELDIR=src
+	$(Q) ln -s librasch.so.$(VERSION) librasch.so
+	$(Q) ln -s librasch.so.$(VERSION) librasch.so.$(MAJ_VERSION)
+
+plugins_all: plugins_access plugins_process plugins_view
+
+plugins_access: FORCE
+	@echo build access plugins
+	$(Q)cd plugins/access && $(MAKE) $(QS) RELDIR=plugins/access
+
+plugins_process: FORCE
+	@echo build process plugins
+	$(Q)cd plugins/process && $(MAKE) $(QS) RELDIR=plugins/process
+
+plugins_view: FORCE
+	@echo build view plugins
+	$(Q)cd plugins/view && $(MAKE) $(QS) RELDIR=plugins/view
+
+po: FORCE
+	@echo build translations
+	$(Q)cd po && $(MAKE) $(QS) RELDIR=po
+
+interfaces: FORCE
+	@echo build libRASCH interfaces
+	$(Q)cd interfaces && $(MAKE) $(QS) RELDIR=interfaces
+
+plot_lib: FORCE
+ifeq "$(PLOT_LIB)" "yes"
+	@echo build libRASCH plot-lib
+	$(Q)cd plot_lib && $(MAKE) $(QS) RELDIR=plot_lib
+endif
+
+raschlab: FORCE
+ifeq "$(RASCHLAB)" "yes"
+	@echo build RASCHlab
+	$(Q)cd raschlab && $(MAKE) $(QS) RELDIR=raschlab
+endif
+
+# Normally you do not need to build documentation because it
+# will be part of the distribution
+docs: FORCE
+	@echo build documentation
+	$(Q)cd docs && $(MAKE) $(QS) RELDIR=docs
+
+install: lib
+	install -d $(PREFIX)/lib $(PREFIX)/include/librasch $(PREFIX)/bin $(PLUGIN_DIR)
+	install librasch.so.$(VERSION) $(PREFIX)/lib
+	cd $(PREFIX)/lib && ln -sf librasch.so.$(VERSION) librasch.so.$(MAJ_VERSION)
+	cd $(PREFIX)/lib && ln -sf librasch.so.$(VERSION) librasch.so
+	install --mode=644 plugins/bin/*.o $(PLUGIN_DIR)
+	install librasch-config $(PREFIX)/bin
+	install --mode=644 include/*.h $(PREFIX)/include/librasch
+ifeq "$(PLOT_LIB)" "yes"
+	cd plot_lib && $(MAKE) $(QS) install
+endif
+ifeq "$(DOC)" "yes"
+#	cd docs && $(MAKE) $(QS) install
+endif
+ifeq "$(RASCHLAB)" "yes"
+	cd raschlab && $(MAKE) $(QS) install
+endif
+ifneq "$(CONF_FILE)" ""
+	install librasch.conf $(CONF_FILE)
+endif
+#	cd po && $(MAKE) $(QS) install
+	cd interfaces && $(MAKE) $(QS) install
+#	cd docs && $(MAKE) $(QS) install
+	@echo ""
+	@echo "--------------------------------------------------"
+	@echo ""
+	@echo "libRASCH is installed."
+ifeq "$(RASCHLAB)" "yes"
+	@echo "RASCHlab is installed."
+endif
+	@echo ""
+	@echo "do not forget to inform your system that a new library was installed in"
+	@echo ""
+	@echo "  $(PREFIX)/lib"
+	@echo ""
+	@echo "by adding the path to the LD_LIBRARY_PATH environment variable"
+	@echo "or adding the path to '/etc/ld.so.conf' and running /sbin/ldconfig"
+	@echo ""
+	@echo ""
+
+install_po: FORCE
+	cd po && $(MAKE) $(QS) install
+
+install_interfaces: FORCE
+	cd interfaces && $(MAKE) $(QS) install
+
+install_docs: FORCE
+	cd docs && $(MAKE) $(QS) install
+
+uninstall:
+	rm -f $(PREFIX)/lib/librasch.so*
+	rm -f $(PREFIX)/bin/librasch-config
+	rm -rf $(PLUGIN_DIR)
+	rm -rf $(PREFIX)/include/librasch
+	rm -rf $(CONF_FILE)
+	cd interfaces && $(MAKE) $(QS) uninstall
+	cd docs && $(MAKE) $(QS) uninstall
+	cd po && $(MAKE) $(QS) uninstall
+ifeq "$(RASCHLAB)" "yes"
+	cd raschlab && $(MAKE) $(QS) uninstall
+endif
+
+FORCE:
+
+distclean: clean
+	- @cd src && ${MAKE} $(QS) distclean
+	- @cd plugins && ${MAKE} $(QS) distclean
+ifeq "$(RASCHLAB)" "yes"
+	- @cd raschlab && $(MAKE) $(QS) distclean
+endif
+
+clean:
+	$(Q)rm -f *~
+	$(Q)rm -f *.o
+	$(Q)rm -f librasch.so*
+	- @cd src && ${MAKE} $(QS) clean
+	@echo clean plugins
+	- @cd plugins && ${MAKE} $(QS) clean
+	@echo clean interfaces
+	- @cd interfaces && $(MAKE) $(QS) clean
+ifeq "$(PLOT_LIB)" "yes"
+	- @cd plot_lib && $(MAKE) $(QS) clean
+endif
+ifeq "$(RASCHLAB)" "yes"
+	- @cd raschlab && $(MAKE) $(QS) clean
+endif
+
+# extra target because building the documentation needs not to be done
+# so often
+docclean:
+	cd docs && $(MAKE) $(QS) clean
+
+
+# call script to build the distribution of the current source, then
+# make a distclean in the dist-directory and make tar-archives
+dist:
+	perl ./scripts/build_dist.pl . .
+	cp ./Makefile ./librasch-$(VERSION)
+	cp ./Makefile.incl ./librasch-$(VERSION)
+	cd librasch-$(VERSION) && $(MAKE) distclean
+	rm ./librasch-$(VERSION)/Makefile
+	rm ./librasch-$(VERSION)/Makefile.incl
+	tar czf librasch-$(VERSION).tar.gz librasch-$(VERSION)
+	tar czf librasch-$(VERSION)-non-public.tar.gz librasch-$(VERSION)-non-public
+
+# script to set the current versionnumber (from ra_priv.h) in all relevant files
+# (helper-script for my environment used to develop libRASCH)
+version:
+	perl ./scripts/set_version.pl .
+
+
+# script to get all gettext- and tr- enclosed strings for l10n
+strings:
+	perl ./scripts/get_strings.pl . ./po
+
+
+# Script to set the UI version to (at the moment) 3.1 so older Qt can compile
+# libRASCH. This should work because I dont not use new Qt-stuff.
+uic_version:
+	./scripts/set_uic_version.sh ./plugins
+	./scripts/set_uic_version.sh ./raschlab
+
+

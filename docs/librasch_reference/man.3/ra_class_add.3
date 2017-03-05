@@ -1,0 +1,24 @@
+.TH "ra_class_add" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_class_add \- adds an user-defined event-class to an evaluation
+.SH SYNOPSIS
+.B "LIBRAAPI class_handle" ra_class_add
+.BI "(eval_handle " eh ","
+.BI "const char * " id ","
+.BI "const char * " name ","
+.BI "const char * " desc ");"
+.SH ARGUMENTS
+.IP "eh" 12
+ evaluation handle
+.IP "id" 12
+ ASCII-id of the event-class
+.IP "name" 12
+ a short name for the event-class
+.IP "desc" 12
+ a short description of the event-class
+.SH "DESCRIPTION"
+The function adds an event-class to the evaluation 'eh'. The parameter 'id' is used to identifiy the event-class and must contain only ASCII characters. The parameters 'name' and 'desc' are used to describe the  event-class. If you want to use a pre-defined event-class, use ra_class_add_predef().
+.SH "SOURCE FILE"
+eval.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

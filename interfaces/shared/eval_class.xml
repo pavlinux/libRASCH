@@ -1,0 +1,382 @@
+<func name="ra_class_add">
+  <para type="in" num="1" perl-type="void *" desc="handle to the evaluation">eval_handle</para>
+  <para type="in" num="2" perl-type="char *" desc="ASCII-id of the event-class">id</para>
+  <para type="in" num="3" perl-type="char *" desc="name of the event-class">name</para>
+  <para type="in" num="4" perl-type="char *" desc="a short description of the event-class">desc</para>
+  <para type="out" num="1">class_handle</para>
+  <purpose>add a pre-defined event-class</purpose>
+  <description>Returns the handle of the newly added event-class.
+  </description>
+  <perl-code>
+  CODE:
+    RETVAL = ra_class_add(p_eval_handle, p_id, p_name, p_desc);
+  </perl-code>
+  <perl-out>void *</perl-out>
+  <python-code-init>
+    eval_handle eval;
+  </python-code-init>
+  <python-code>
+    eval = ra_class_add(p_eval_handle, p_id, p_name, p_desc);
+    return Py_BuildValue("l", eval);
+  </python-code>
+</func>
+
+
+<func name="ra_class_add_predef">
+  <para type="in" num="1" perl-type="void *" desc="handle to the evaluation">eval_handle</para>
+  <para type="in" num="2" perl-type="char *" desc="ASCII-id of the event-class">id</para>
+  <para type="out" num="1">class_handle</para>
+  <purpose>add a pre-defined event-class</purpose>
+  <description>Returns the handle of the newly added event-class.
+  </description>
+  <perl-code>
+  CODE:
+    RETVAL = ra_class_add_predef(p_eval_handle, p_id);
+  </perl-code>
+  <perl-out>void *</perl-out>
+  <python-code-init>
+    eval_handle eval;
+  </python-code-init>
+  <python-code>
+    eval = ra_class_add_predef(p_eval_handle, p_id);
+    return Py_BuildValue("l", eval);
+  </python-code>
+</func>
+
+
+<func name="ra_class_delete">
+  <para type="in" num="1" perl-type="void *" desc="handle to an event-class">class_handle</para>
+  <para type="out" num="1">ok</para>
+  <purpose>delete an event-class</purpose>
+  <description>Delete the event-class given by 'class_handle'.
+  </description>
+  <perl-code>
+  CODE:
+    RETVAL = ra_class_delete(p_class_handle);
+  </perl-code>
+  <perl-out>long</perl-out>
+  <python-code-init>
+    long ok;
+  </python-code-init>
+  <python-code>
+    ok = (long)ra_class_delete(p_class_handle);
+    return Py_BuildValue("l", ok);
+  </python-code>
+</func>
+
+
+<func name="ra_class_get">
+  <para type="in" num="1" perl-type="void *" desc="handle to an evaluation">eval_handle</para>
+  <para type="in" num="2" perl-type="char *" desc="ASCII-id of the wanted event-class(s)">id</para>
+  <para type="out" num="1">value</para>
+  <purpose>get event-classes</purpose>
+  <description>
+    Returns all event-classes with the id 'id'.
+  </description>
+  <perl-code><![CDATA[
+    PPCODE:
+      value_handle vh;
+      SV *value;
+
+      vh = ra_value_malloc();
+      if (ra_class_get(p_eval_handle, p_id, vh) != 0)
+      {
+        ra_value_free(vh);
+	PUSHs(&PL_sv_undef);
+        return;
+      }
+      if (!ra_value_is_ok(vh))
+      {
+        ra_value_free(vh);
+	PUSHs(&PL_sv_undef);
+        return;
+      }
+
+      value = value_to_sv(vh);
+
+      ra_value_free(vh);
+
+      PUSHs(value);
+  ]]>
+  </perl-code>
+  <python-code-init>
+    value_handle vh;
+    PyObject *value;
+  </python-code-init>
+  <python-code><![CDATA[
+    vh = ra_value_malloc();
+
+    if (ra_class_get(p_eval_handle, p_id, vh) != 0)
+    {
+        ra_value_free(vh);
+        return Py_None;
+    }
+    if (!ra_value_is_ok(vh))
+    {
+        ra_value_free(vh);
+        return Py_None;
+    }
+
+    value = value_to_py_object(vh);
+
+    ra_value_free(vh);
+
+    return value;
+  ]]>
+  </python-code>
+</func>
+
+
+<func name="ra_class_add_event">
+  <para type="in" num="1" perl-type="void *" desc="handle to the event-class">class_handle</para>
+  <para type="in" num="2" perl-type="long" desc="start position of the event">start_pos</para>
+  <para type="in" num="3" perl-type="long" desc="end position of the event">end_pos</para>
+  <para type="out" num="1">event_id</para>
+  <purpose>add an event</purpose>
+  <description>Returns the id of the added event.
+  </description>
+  <perl-code>
+  CODE:
+    RETVAL = ra_class_add_event(p_class_handle, p_start_pos, p_end_pos);
+  </perl-code>
+  <perl-out>long</perl-out>
+  <python-code-init>
+    long ev_id;
+  </python-code-init>
+  <python-code>
+    ev_id = ra_class_add_event(p_class_handle, p_start_pos, p_end_pos);
+    return Py_BuildValue("l", ev_id);
+  </python-code>
+</func>
+
+
+<func name="ra_class_del_event">
+  <para type="in" num="1" perl-type="void *" desc="handle to the event-class">class_handle</para>
+  <para type="in" num="2" perl-type="long" desc="id of the event">event_id</para>
+  <para type="out" num="1">OK</para>
+  <purpose>delete an event</purpose>
+  <description>Delete the event with the id 'event_id'.
+  </description>
+  <perl-code>
+  CODE:
+    RETVAL = ra_class_del_event(p_class_handle, p_event_id);
+  </perl-code>
+  <perl-out>long</perl-out>
+  <python-code-init>
+    long ok;
+  </python-code-init>
+  <python-code>
+    ok = ra_class_del_event(p_class_handle, p_event_id);
+    return Py_BuildValue("l", ok);
+  </python-code>
+</func>
+
+
+<func name="ra_class_get_event_pos">
+  <para type="in" num="1" perl-type="void *" desc="handle to the event-class">class_handle</para>
+  <para type="in" num="2" perl-type="long" desc="id of the event">event_id</para>
+  <para type="out" num="1">pos</para>
+  <purpose>get event-pos</purpose>
+  <description>Returns the start- and end-position of the event 'event_id'.
+  </description>
+  <perl-code><![CDATA[
+    PPCODE:
+      value_handle vh;
+      SV *value;
+      long pos[2];
+
+      if (ra_class_get_event_pos(p_class_handle, p_event_id, &(pos[0]), &(pos[1])) != 0)
+      {
+	PUSHs(&PL_sv_undef);
+        return;
+      }
+
+      vh = ra_value_malloc();
+      ra_value_set_long_array(vh, pos, 2);
+      value = value_to_sv(vh);
+
+      ra_value_free(vh);
+
+      PUSHs(value);
+  ]]>
+  </perl-code>
+  <python-code-init>
+    value_handle vh;
+    PyObject *value;
+    long pos[2];
+  </python-code-init>
+  <python-code><![CDATA[
+    if (ra_class_get_event_pos(p_class_handle, p_event_id, &(pos[0]), &(pos[1])) != 0)
+    {
+        return Py_None;
+    }
+
+    vh = ra_value_malloc();
+    ra_value_set_long_array(vh, pos, 2);
+    value = value_to_py_object(vh);
+
+    ra_value_free(vh);
+
+    return value;
+  ]]>
+  </python-code>
+</func>
+
+
+<func name="ra_class_set_event_pos">
+  <para type="in" num="1" perl-type="void *" desc="handle to the event-class">class_handle</para>
+  <para type="in" num="2" perl-type="long" desc="id of the event">event_id</para>
+  <para type="in" num="3" perl-type="long" desc="start position of the event">start_pos</para>
+  <para type="in" num="4" perl-type="long" desc="end position of the event">end_pos</para>
+  <para type="out" num="1">OK</para>
+  <purpose>set the position of an event</purpose>
+  <description>Set the start- and end-position of the event 'event_id'.
+  </description>
+  <perl-code>
+  CODE:
+    RETVAL = ra_class_set_event_pos(p_class_handle, p_event_id, p_start_pos, p_end_pos);
+  </perl-code>
+  <perl-out>long</perl-out>
+  <python-code-init>
+    long ret;
+  </python-code-init>
+  <python-code>
+    ret = ra_class_set_event_pos(p_class_handle, p_event_id, p_start_pos, p_end_pos);
+    return Py_BuildValue("l", ret);
+  </python-code>
+</func>
+
+
+<func name="ra_class_get_events">
+  <para type="in" num="1" perl-type="void *" desc="handle to an event-class">class_handle</para>
+  <para type="in" num="2" perl-type="long" desc="region start">start_pos</para>
+  <para type="in" num="3" perl-type="long" desc="region end">end_pos</para>
+  <para type="in" num="4" perl-type="long" desc="flag if events have to start and end in the region">complete</para>
+  <para type="in" num="5" perl-type="long" desc="flag if events should be sorted according to their position">sort</para>
+  <para type="out" num="1">value</para>
+  <purpose>get events in a region</purpose>
+  <description>
+    Returns all events which are between 'start_pos' and 'end_pos'. If the flag
+    'complete' is set, only these events are returned which starts AND ends in
+    region. If the flag 'sort' is set, the returned events are sorted according
+    to their position.
+  </description>
+  <perl-code><![CDATA[
+    PPCODE:
+      value_handle vh;
+      SV *value;
+
+      vh = ra_value_malloc();
+      if (ra_class_get_events(p_class_handle, p_start_pos, p_end_pos, p_complete, p_sort, vh) != 0)
+      {
+        ra_value_free(vh);
+	PUSHs(&PL_sv_undef);
+        return;
+      }
+      if (!ra_value_is_ok(vh))
+      {
+        ra_value_free(vh);
+	PUSHs(&PL_sv_undef);
+        return;
+      }
+
+      value = value_to_sv(vh);
+
+      ra_value_free(vh);
+
+      PUSHs(value);
+  ]]>
+  </perl-code>
+  <python-code-init>
+    value_handle vh;
+    PyObject *value;
+  </python-code-init>
+  <python-code><![CDATA[
+    vh = ra_value_malloc();
+
+    if (ra_class_get_events(p_class_handle, p_start_pos, p_end_pos, p_complete, p_sort, vh) != 0)
+    {
+        ra_value_free(vh);
+        return Py_None;
+    }
+    if (!ra_value_is_ok(vh))
+    {
+        ra_value_free(vh);
+        return Py_None;
+    }
+
+    value = value_to_py_object(vh);
+
+    ra_value_free(vh);
+
+    return value;
+  ]]>
+  </python-code>
+</func>
+
+
+<func name="ra_class_get_prev_event">
+  <para type="in" num="1" perl-type="void *" desc="handle to the event-class">class_handle</para>
+  <para type="in" num="2" perl-type="long" desc="id of the event">event_id</para>
+  <para type="out" num="1">event_id</para>
+  <purpose>get the previous event</purpose>
+  <description>Returns the event-id of the previous event.
+  </description>
+  <perl-code>
+  CODE:
+    RETVAL = ra_class_get_prev_event(p_class_handle, p_event_id);
+  </perl-code>
+  <perl-out>long</perl-out>
+  <python-code-init>
+    long ev_id;
+  </python-code-init>
+  <python-code>
+    ev_id = ra_class_get_prev_event(p_class_handle, p_event_id);
+    return Py_BuildValue("l", ev_id);
+  </python-code>
+</func>
+
+
+<func name="ra_class_get_next_event">
+  <para type="in" num="1" perl-type="void *" desc="handle to the event-class">class_handle</para>
+  <para type="in" num="2" perl-type="long" desc="id of the event">event_id</para>
+  <para type="out" num="1">event_id</para>
+  <purpose>get the next event</purpose>
+  <description>Returns the event-id of the next event.
+  </description>
+  <perl-code>
+  CODE:
+    RETVAL = ra_class_get_next_event(p_class_handle, p_event_id);
+  </perl-code>
+  <perl-out>long</perl-out>
+  <python-code-init>
+    long ev_id;
+  </python-code-init>
+  <python-code>
+    ev_id = ra_class_get_next_event(p_class_handle, p_event_id);
+    return Py_BuildValue("l", ev_id);
+  </python-code>
+</func>
+
+
+<func name="ra_class_get_handle">
+  <para type="in" num="1" perl-type="void *" desc="handle to a libRASCH event-property or -summary">handle</para>
+  <para type="out" num="1">class_handle</para>
+  <purpose>return the class-handle associated to 'handle'</purpose>
+  <description>Returns the class-handle the property or summary handle 'handle' belongs to.
+  </description>
+  <perl-code>
+  CODE:
+    RETVAL = ra_class_get_handle(p_handle);
+  </perl-code>
+  <perl-out>void *</perl-out>
+  <python-code-init>
+    eval_handle eval;
+  </python-code-init>
+  <python-code>
+    eval = ra_class_get_handle(p_handle);
+    return Py_BuildValue("l", eval);
+  </python-code>
+</func>
+
+

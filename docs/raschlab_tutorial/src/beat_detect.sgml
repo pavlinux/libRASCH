@@ -1,0 +1,107 @@
+<chapter id="process-signal"><title>Process a Signal</title>
+
+<para>
+After opening the ecg in the previous chapter, we want now to find the
+postions of the beats in the ECG. libRASCH supports this by providing
+a process plugin ('detect-simple') which performs a beat
+detection. Additionally we want to group the found heart beats in
+similar looking groups (templates) and we want to calculate
+some ECG specific values (e.g. the intervals between each heart beat,
+called RR intervals). The later two steps will be done in the
+process plugins 'template' and 'ecg' respectively.
+</para>
+
+<para>
+In RASCHlab, all the above mentioned steps will be performed when
+selecting the menu entry 'Detect->Detect'. After selecting the menu entry,
+the channel selection dialog box will be opened (<xref
+linkend="raschlab-sel-detect-ch-fig">) and the user has to 
+select the channels in which the heart beats should be searched. (At
+the moment all available channels will be selectable, but this will be
+changed in the future, showing only the channels which makes sense.)
+To select the channels, click on the channel-name on the left side and
+then click on the '->' button. This will move the channel-name to the
+right side. <xref linkend="raschlab-sel-detect-ch-2-fig"> shows the
+dialog box after selecting both channels.
+</para>
+
+<figure id="raschlab-sel-detect-ch-fig">
+<title>
+Channel selection dialog box.
+</title>
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="pics/raschlab_sel_detect_ch_new.png" scale="50">
+</imageobject>
+</mediaobject>
+</screenshot>
+</figure>
+
+<figure id="raschlab-sel-detect-ch-2-fig">
+<title>
+Channel selection dialog box after selecting the channels.
+</title>
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="pics/raschlab_sel_detect_ch_new2.png" scale="50">
+</imageobject>
+</mediaobject>
+</screenshot>
+</figure>
+
+<para>
+After selecting the channels, press the 'OK' button. Now the beat
+detection, template grouping and the calculation of the ECG specific
+values will be done. For each processing step, a progress dialog will
+be shown. When all the processing is done, a window with ecg and the found
+beats and a window with the templates will be shown (<xref
+linkend="raschlab-ecg-with-annot-fig">).
+</para>
+
+<para>
+Note that the detection of heart beats are not limited to file
+formats which are used to store only ECG's. RASCHlab do not care which
+file format was used to store a signal. For example when you have an
+EDF file with ECG and EEG signals, you can perform the beat detection
+the same way as described above. As written above, at the moment the
+user has to be sure to select the correct channel containing an ECG
+recording.
+</para>
+
+<figure id="raschlab-ecg-with-annot-fig">
+<title>
+ECG after beat detection performed.
+</title>
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="pics/raschlab_ecg_with_annot_2.png" scale="50">
+</imageobject>
+</mediaobject>
+</screenshot>
+</figure>
+
+<para>
+RASCHlab allows you to correct the automatic evaluation of the ECG. A
+description how you can change an evaluation of an ECG is given in <xref
+linkend="raschlab-ecg-view-desc">.
+</para>
+
+<para>
+Evaluations created with RASCHlab are stored on disk at the same
+position where the signal data is stored. The data is stored in a file
+named using the name of the recording and for the file extension
+'.mte' is used. For example the evaluation created above is stored in the
+file '100s.mte'. The evaluation is stored using XML. The user can
+control with the menu entry 'General->Save ASCII eval-values' if array
+data (e.g. the positions of the heart beats) is stored as ASCII text
+(menu entry with check mark) or as binary (menu entry without check
+mark). When storing the data as ASCII text, it can be used easily with
+other programs. On the other side, when a lot of events are in an evaluation (e.g. heart
+beats in a 24 hour ECG), loading and saving took a lot of time. For
+this type of signals, the binary format is recommended.
+</para>
+
+</chapter>

@@ -1,0 +1,6 @@
+Returns the default evaluation-handle.
+  Input parameters:
+    meas_handle
+
+  Output parameters:
+    eval_handle

@@ -1,0 +1,33 @@
+.TH "ra_raw_process" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_raw_process \- common processing tasks for raw-data (e.g. powerline-noise filter)
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_raw_process
+.BI "(long " task ","
+.BI "value_handle " task_data ","
+.BI "size_t " num_data ","
+.BI "DWORD * " data ","
+.BI "DWORD * " data_high ","
+.BI "rec_handle " rh ","
+.BI "unsigned int " ch ");"
+.SH ARGUMENTS
+.IP "task" 12
+ id of the processing task (see RA_RAW_PROC_* defines)
+.IP "task_data" 12
+ task specific data
+.IP "num_data" 12
+ number of raw-data samples
+.IP "data" 12
+ raw-data
+.IP "data_high" 12
+ upper 32bits of raw-data (if we have 64bit samples; not supported yet)
+.IP "rh" 12
+ recording handle the raw-data comes from
+.IP "ch" 12
+ channel of the raw-data
+.SH "DESCRIPTION"
+This function performs common processing tasks for the raw-data, the tasks are independent of signal-type. For example, one task is to filer powerline noise. For a complete set of available tasks, see the RA_RAW_PROC_* defines in the ra_defines.h header file.
+.SH "SOURCE FILE"
+raw_process.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

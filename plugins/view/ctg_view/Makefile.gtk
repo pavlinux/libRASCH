@@ -1,0 +1,76 @@
+LIBRASCH_HOME = ../../..
+include $(LIBRASCH_HOME)/Makefile.incl
+
+PRG_CFLAGS = $(CFLAGS) $(GTK_CFLAGS) `librasch-config --cflags`
+PRG_LFLAGS = $(GTK_LFLAGS) `librasch-config --libs`
+
+CFLAGS	+= 	$(GTK_CFLAGS) -DGTKMM
+LINK	=	$(LD)
+LFLAGS	= 	$(LDFLAGS_PL) $(GTK_LFLAGS)
+
+OBJS = 	        ctg_view_g.o ctg_view_general.o ctg_view_gtk.o \
+		../ts_view/ts_view_general.o \
+		../ts_view/ts_view_gtk.o \
+		../ts_view/gen_opt_dlg_gtk.o \
+		../ts_view/ch_opt_dlg_gtk.o \
+		../ts_view/annot_dlg_gtk.o
+
+OBJS_SHARED = 	../shared/view_frame_general.o \
+		../shared/view_frame_gtk.o
+#		../shared/progress_dlg_gtk.o
+
+
+####### Implicit rules
+
+.SUFFIXES: .cpp .cxx .cc .C .c
+
+.cpp.o:
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
+
+.cxx.o:
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
+
+.cc.o:
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
+
+.C.o:
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
+
+.c.o:
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CC) -c $(CFLAGS) $(INCPATH) -o $@ $<
+
+
+
+all: FORCE $(OBJS)
+	@cd ../shared && $(MAKE) -f Makefile.gtk
+	@echo $(INDENT)LD $(RELDIR)/ctg_view_gtk.o
+	$(Q)$(LINK) $(LFLAGS) $(LDFLAGS_PL) -o ctg_view_gtk_t.o $(OBJS) $(OBJS_SHARED)
+	$(Q)cp ctg_view_gtk_t.o $(LIBRASCH_HOME)/plugins/bin/ctg_view_gtk.o
+
+
+FORCE:
+
+ctg_view_g.o: ctg_view.cpp ctg_view.h $(LIBRASCH_HOME)/include/ra.h $(LIBRASCH_HOME)/include/ra_defines.h
+	@echo $(INDENT)$($(QUIET)$(CMD_COMPILE))
+	$(Q)$(CC) -c $(CFLAGS) $(INCPATH) -o ctg_view_g.o ctg_view.cpp
+	
+ctg_view_general.o: ctg_view_general.cpp ctg_view_general.h
+
+ctg_view_gtk.o: ctg_view_gtk.cpp ctg_view_gtk.h ctg_view_general.h
+
+
+clean:
+	@echo $(INDENT)clean plugin ctg-view
+	$(Q)rm -f *~
+	$(Q)rm -f $(LIBRASCH_HOME)/plugins/bin/ctg_view_gtk.o
+	$(Q)rm -f *.o
+
+distclean: clean
+	@echo $(INDENT)dist-clean plugin ctg-view
+
+# $Id: $

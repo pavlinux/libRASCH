@@ -1,0 +1,15 @@
+.TH "ra_meas_delete" 3 "February 2010" "libRASCH API (0.8.29)"
+.SH NAME
+ra_meas_delete \- delete measurement
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_meas_delete
+.BI "(meas_handle " mh ");"
+.SH ARGUMENTS
+.IP "mh" 12
+ handle of measurement which should be deleted
+.SH "DESCRIPTION"
+The function deletes the files of measurement mh. The measurement mh will be closed after the deletion. Therefore mh is no longer a valid measurement-handle. IMPORTANT!!! Function _not_ completely tested. Use at your own risk.
+.SH "SOURCE FILE"
+ra.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

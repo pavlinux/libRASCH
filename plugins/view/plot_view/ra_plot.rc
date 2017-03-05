@@ -1,0 +1,251 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Deutsch (Deutschland) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 7, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\ra_plot.rc2""  // Nicht mit Microsoft Visual C++ bearbeitete Ressourcen\r\n"
+    "#include ""l.deu\\afxres.rc""          // Standardkomponenten\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040704B0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "ra_plot DLL\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "ra_plot\0"
+            VALUE "LegalCopyright", "Copyright (C) 2002\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "ra_plot.DLL\0"
+            VALUE "ProductName", "ra_plot Dynamic Link Library\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x407, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_SELECT_DATA_DLG DIALOG DISCARDABLE  0, 0, 280, 212
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Select Data"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,223,191,50,14
+    PUSHBUTTON      "Abbrechen",IDCANCEL,151,191,50,14
+    LTEXT           "data-set",IDC_TXT_DATA_SET,7,7,154,8
+    COMBOBOX        IDC_DATA_SET,7,18,266,69,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    CONTROL         "show legend",IDC_SHOW_LEGEND,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,39,105,10
+    CONTROL         "show grid",IDC_SHOW_GRID,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,7,54,101,10
+    CONTROL         "use Z-Axis",IDC_USE_Z_AXIS,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,7,72,115,10
+    LTEXT           "X-Axis",IDC_TXT_X_AXIS,149,36,122,8
+    LTEXT           "Y-Axis",IDC_TXT_Y_AXIS,150,62,122,8
+    LTEXT           "Z-Axis",IDC_TXT_Z_AXIS,150,88,122,8,WS_DISABLED
+    COMBOBOX        IDC_X_AXIS,149,46,124,71,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDC_Y_AXIS,149,72,124,74,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDC_Z_AXIS,149,99,124,69,CBS_DROPDOWNLIST | WS_DISABLED | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Add",IDC_ADD,114,121,50,14
+    LISTBOX         IDC_PAIR_LIST,7,143,262,40,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Delete",IDC_DELETE,7,191,50,14
+    PUSHBUTTON      "Options...",IDC_OPTIONS,79,191,50,14
+END
+
+IDD_PAIR_OPT_DLG DIALOG DISCARDABLE  0, 0, 283, 287
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Options"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,182,266,50,14
+    PUSHBUTTON      "Abbrechen",IDCANCEL,50,266,50,14
+    COMBOBOX        IDC_PAIR,7,7,269,78,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    CONTROL         "plot symbols",IDC_PLOT_SYMBOLS,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,26,127,10
+    CONTROL         "plot line",IDC_PLOT_LINE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,147,26,129,10
+    LTEXT           "symbol",IDC_SYM_TEXT,14,37,81,8
+    COMBOBOX        IDC_SYMBOL,14,48,83,73,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "line",IDC_LINE_TEXT,152,37,80,8
+    COMBOBOX        IDC_LINE,152,48,80,73,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "color",IDC_SYM_COLOR_TEXT,104,37,33,8
+    LTEXT           "color",IDC_LINE_COLOR_TEXT,240,37,28,8
+    CONTROL         "",IDC_LINE_COLOR,"Button",BS_OWNERDRAW | WS_TABSTOP,240,
+                    47,30,14
+    CONTROL         "",IDC_SYM_COLOR,"Button",BS_OWNERDRAW | WS_TABSTOP,104,
+                    47,30,14
+    LTEXT           "name",IDC_TXT_NAME,7,67,186,8
+    EDITTEXT        IDC_NAME,7,78,186,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "add. Analyses",IDC_ADD_ANALYSES,200,79,76,14,
+                    WS_DISABLED
+    GROUPBOX        "Axis Options",IDC_TXT_AXIS_OPTIONS,7,101,267,157
+    LTEXT           "Axis",IDC_TXT_AXIS,15,114,110,8
+    COMBOBOX        IDC_AXIS,15,125,123,79,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    CONTROL         "use min",IDC_USE_MIN,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,15,175,91,10
+    LTEXT           "value",IDC_MIN_TEXT,23,186,81,8
+    EDITTEXT        IDC_MIN,23,196,82,14,ES_AUTOHSCROLL
+    CONTROL         "use max",IDC_USE_MAX,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,15,216,88,10
+    LTEXT           "value",IDC_MAX_TEXT,23,227,80,8
+    EDITTEXT        IDC_MAX,23,237,80,14,ES_AUTOHSCROLL
+    CONTROL         "is time",IDC_IS_TIME,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,155,175,99,10
+    LTEXT           "format",IDC_TIME_TEXT,164,186,92,8
+    COMBOBOX        IDC_TIME,164,196,91,70,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    CONTROL         "log",IDC_PLOT_LOG,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    155,216,97,10
+    LTEXT           "type",IDC_LOG_TEXT,164,227,87,8
+    COMBOBOX        IDC_LOG,164,237,89,87,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Channel",IDC_STATIC,15,142,110,8
+    COMBOBOX        IDC_CHANNEL,15,154,123,63,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_SELECT_DATA_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 273
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 205
+    END
+
+    IDD_PAIR_OPT_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 276
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 280
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Deutsch (Deutschland) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE 7, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\ra_plot.rc2"  // Nicht mit Microsoft Visual C++ bearbeitete Ressourcen
+#include "l.deu\afxres.rc"          // Standardkomponenten
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

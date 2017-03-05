@@ -1,0 +1,7 @@
+
+    Returns all parts in the event-summary 'sum_handle'.
+    Input parameters:
+    sum_handle
+
+  Output parameters:
+    value

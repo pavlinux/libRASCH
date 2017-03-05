@@ -1,0 +1,689 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNUNG: DIESE ARBEITSBEREICHSDATEI DARF NICHT BEARBEITET ODER GELÖSCHT WERDEN!
+
+###############################################################################
+
+Project: "ADInstruments"=.\plugins\view\sig_sel_dlg\plugins\access\ADInstruments\ADInstruments.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "ART"=.\PLUGINS\ACCESS\ART\ART.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "adi_ascii"=.\plugins\access\adi_ascii\adi_ascii.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "afib_ecg"=.\plugins\process\afib_ecg\afib_ecg.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "ap_morphology"=.\plugins\process\ap_morphology\ap_morphology.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "calibration"=.\plugins\process\calibration\calibration.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "cfs"=.\plugins\access\cfs\cfs.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "ch_sel_dlg"=.\PLUGINS\VIEW\ch_sel_dlg\ch_sel_dlg.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "cont_ap_view"=.\plugins\view\cont_ap_view\cont_ap_view.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name ts_view
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "ctg_rasch"=.\plugins\access\ctg_rasch\ctg.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "ctg_sonicaid"=.\plugins\access\ctg_sonicaid\ctg_sonicaid.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "ctg_view"=.\plugins\view\ctg_view\ctg_view.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name ts_view
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "dadisp"=.\plugins\access\dadisp\dadisp.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "dasylab"=.\plugins\access\dasylab\dasylab.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "dawes_redman"=.\plugins\process\dawes_redman\dawes_redman.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "detect_ctg"=.\plugins\process\detect_ctg\detect_ctg.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "detect_ecg"=.\plugins\process\detect_ecg\detect_ecg.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "ecg"=.\plugins\process\ecg\ecg.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "ecg_view"=.\plugins\view\ecg_view\ecg_view.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name ts_view
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "edf"=.\plugins\access\edf\edf.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "ev_summary_view"=.\plugins\view\ev_summary_view\ev_summary_view.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "eval_dlg"=.\plugins\view\eval_dlg\eval_dlg.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "fiducial"=.\plugins\process\fiducial_point\fiducial.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "freq_analysis"=.\plugins\process\freq_analysis\freq_analysis.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "hrv"=.\plugins\process\hrv\hrv.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "ishne"=.\plugins\access\ishne\ishne.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "librasch"=.\librasch.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "matlab"=.\interfaces\matlab\matlab.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "medtronic_ic_ecg"=.\plugins\access\medtronic_ic_ecg\med_ic_ecg.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "mit_bih"=.\plugins\access\mit_bih\mit_bih.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "mortara_sparc"=.\plugins\access\mortara_sparc\mortara_sparc.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "plot_view"=.\plugins\view\plot_view\plot_view.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "plugin_info_dlg"=.\PLUGINS\VIEW\plugin_info_dlg\plugin_info_dlg.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "portapres"=.\plugins\access\portapres\portapres.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "portilab"=.\plugins\access\portilab\portilab.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "ra_view"=.\plugins\view\ra_view\ra_view.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "raschlab_mfc"=.\raschlab\MFC\raschlab_mfc.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "raschlab_qt4"=.\raschlab\Qt4\raschlab_qt4.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "read_rri"=.\plugins\access\read_rri\read_rri.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "respiration"=.\plugins\view\sig_sel_dlg\plugins\process\respiration\respiration.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "sig_sel_dlg"=.\plugins\view\sig_sel_dlg\sig_sel_dlg.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "sig_sel_dlg_mfc"=.\plugins\view\sig_sel_dlg\sig_sel_dlg_mfc.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "simple_calc_dlg"=.\plugins\view\simple_calc_dlg\simple_calc_dlg.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "template"=.\plugins\process\ra_template\template.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "ts_view"=.\plugins\view\ts_view\ts_view.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name librasch
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

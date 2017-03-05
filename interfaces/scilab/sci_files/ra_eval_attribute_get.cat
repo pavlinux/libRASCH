@@ -1,0 +1,8 @@
+
+    Get the value of the attribute 'attrib_name'.
+    Input parameters:
+    handle
+    attrib_name
+
+  Output parameters:
+    value

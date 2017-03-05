@@ -1,0 +1,7 @@
+<appendix id="perl_interface_ref"><title>Function Reference for Perl (OO-Interface)</title>
+<para>
+This appendix list the functions provided by libRASCH for Perl.
+</para>
+&perl_interface_auto;
+</appendix>
+

@@ -1,0 +1,51 @@
+.TH "ra_prop_add_custom" 3 "January 2005" "libRASCH API (0.7.2)"
+.SH NAME
+ra_prop_add_custom \- add an event-property
+.SH SYNOPSIS
+.B "LIBRAAPI prop_handle" ra_prop_add_custom
+.BI "(eval_handle " eh ","
+.BI "const char * " set_id_ascii ","
+.BI "const char * " set_name ","
+.BI "const char * " set_desc ","
+.BI "int " event_type ","
+.BI "const char * " prop_id_ascii ","
+.BI "const char * " prop_name ","
+.BI "const char * " prop_desc ","
+.BI "int " val_type ","
+.BI "int " use_minmax ","
+.BI "double " min ","
+.BI "double " max ","
+.BI "const char * " unit ");"
+.SH ARGUMENTS
+.IP "eh" 12
+ evaluation handle
+.IP "set_id_ascii" 12
+ event-set id-string (only ASCII char's allowed)
+.IP "set_name" 12
+ event-set name
+.IP "set_desc" 12
+ event-set description
+.IP "event_type" 12
+ type of event (discrete or continues)
+.IP "prop_id_ascii" 12
+ event-property id-string (only ASCII char's allowed)
+.IP "prop_name" 12
+ event-property name
+.IP "prop_desc" 12
+ event-property description
+.IP "val_type" 12
+ type of value (short, long or double)
+.IP "use_minmax" 12
+ are the following parameters min and max are valid
+.IP "min" 12
+ normal min. value of the property
+.IP "max" 12
+ normal max. value of the property
+.IP "unit" 12
+ unit of the property
+.SH "DESCRIPTION"
+This function adds a new event-property the evaluation eh.
+.SH "SOURCE FILE"
+event_prop.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

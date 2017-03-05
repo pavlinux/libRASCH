@@ -1,0 +1,6 @@
+Delete the event-summary given by 'sum_handle'.
+    Input parameters:
+    sum_handle
+
+  Output parameters:
+    ok

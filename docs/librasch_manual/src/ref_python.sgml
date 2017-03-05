@@ -1,0 +1,8 @@
+<appendix id="python_interface_ref"><title>Function Reference for
+Python (OO-Interface)</title>
+<para>
+This appendix list the functions provided by libRASCH for Python.
+</para>
+&python_interface_auto;
+</appendix>
+

@@ -1,0 +1,24 @@
+.TH "ra_ev_set_value_inf" 3 "January 2005" "libRASCH API (0.7.2)"
+.SH NAME
+ra_ev_set_value_inf \- set the property of an event to the value given in a ra_info struct
+.SH SYNOPSIS
+.B "LIBRAAPI int" ra_ev_set_value_inf
+.BI "(prop_handle " proph ","
+.BI "long " event ","
+.BI "value_handle " vh ","
+.BI "value_handle " ch ");"
+.SH ARGUMENTS
+.IP "proph" 12
+ event-property handle
+.IP "event" 12
+ number of the event
+.IP "vh" 12
+ value
+.IP "ch" 12
+ channel value (???)
+.SH "DESCRIPTION"
+This function sets the event-property proph of the event event to the value given in the ra_info struct inf.
+.SH "SOURCE FILE"
+event.c
+.SH AUTHOR
+This manual page was automatically generated using the documentation in the source file. For errors or suggestions please contact Raphael Schneider <rasch@med1.med.tum.de>

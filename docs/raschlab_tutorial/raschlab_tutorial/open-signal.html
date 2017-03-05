@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Open a Signal</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="Tutorial for RASCHlab-0.2.4"
+HREF="book1.html"><LINK
+REL="PREVIOUS"
+TITLE="Installation"
+HREF="install.html"><LINK
+REL="NEXT"
+TITLE="Process a Signal"
+HREF="process-signal.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="CHAPTER"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Tutorial for RASCHlab-0.2.4</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="install.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="process-signal.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="OPEN-SIGNAL"
+></A
+>Chapter 4. Open a Signal</H1
+><P
+>After starting RASCHlab, an empty workspace is shown. In this
+workspace the signal and other information about the signal will be
+shown. Now the first step will be to open a signal. To do this, select
+the menu entry 'File/Open...' or press the open button on the toolbar
+(an opening folder; the first button from left). This will open the
+signal selection dialog box. <A
+HREF="open-signal.html#RASCHLAB-SIG-SEL-FIG"
+>Figure 4-1</A
+> shows
+the screen shot with the dialog box. The signal selection dialog box
+is similar to the file browser in Windows, on the left side you can
+select the folder. On the right side, the signals in the
+selected folder will be shown. (Only the signals which are supported
+by libRASCH are shown.)</P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="RASCHLAB-SIG-SEL-FIG"
+></A
+><P
+><B
+>Figure 4-1. Signal selection dialog box.</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/raschlab_start_2.png"></P
+></DIV
+></DIV
+><P
+>Now select the folder 'LIBRASCH_ROOT/examples/database' on Linux
+systems and 'LIBRASCH_INSTALL_ROOT\examples\database' on Windows
+systems on the left side<A
+NAME="AEN99"
+HREF="#FTN.AEN99"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+>. After selecting the
+folder, the available signals will be shown. Please select the signal
+named '100s'. This is a short ECG (one minute) from the
+PhysioNet database. To open the signal, you can double click on the 
+signal-name or select the signal by clicking once on the signal-name
+and then click on the OK button. Then the signal will be shown in the
+signal window. <A
+HREF="open-signal.html#RASCHLAB-PLAIN-ECG-FIG"
+>Figure 4-2</A
+>
+shows RASCHlab with the signal window showing the ECG. The signal
+window is a libRASCH view-plugin.</P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="RASCHLAB-PLAIN-ECG-FIG"
+></A
+><P
+><B
+>Figure 4-2. Screen shot of RASCHlab showing the ECG 100s.</B
+></P
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="pics/raschlab_plain_ecg_2.png"></P
+></DIV
+></DIV
+><P
+>In the signal window, all channels of a measurement are shown. When
+the measurement contains more than one type of signal (e.g. ECG and
+arterial blood pressure) then each type of signal will be shown in
+their own signal window (for an example see <A
+HREF="navigation.html#RASCHLAB-MORE-SIGS-FIG"
+>Figure 6-1</A
+>). To do this, libRASCH has to
+"detect" which signals are stored in a measurement. In general purpose
+file formats (e.g. file formats used by ADC systems), libRASCH tries
+to estimate the signal-type by the channel name. In file formats which
+have a fixed channel/signal-type relation, the signal type is set by
+the plugin supporting the file format.</P
+></DIV
+><H3
+CLASS="FOOTNOTES"
+>Notes</H3
+><TABLE
+BORDER="0"
+CLASS="FOOTNOTES"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN99"
+HREF="open-signal.html#AEN99"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>LIBRASCH_ROOT is the
+directory of the libRASCH distribution on your system and LIBRASCH_INSTALL_ROOT
+is the directory selected while installing
+libRASCH</P
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="install.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="process-signal.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Installation</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Process a Signal</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
